@@ -1,5 +1,9 @@
 {
   "name": "MeinAutoPreis24",
-  "description": "A professional German car selling platform featuring AI-powered valuations, secure payments, and flexible pickup options.",
+  "short_name": "MAP24",
+  "description": "Professionelle KI-Fahrzeugbewertung und Direktankauf für den deutschen Markt.",
+  "theme_color": "#0f172a",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "requestFramePermissions": []
 }

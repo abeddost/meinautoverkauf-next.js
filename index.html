@@ -7,6 +7,19 @@
     <title>MeinAutoPreis24 | Auto verkaufen zum Bestpreis – Sicher & Schnell</title>
     <meta name="description" content="Verkaufen Sie Ihr Auto stressfrei bei meinautopreis24.de. Kostenlose Online-Bewertung, Sofortauszahlung und Abholung vor Ort. Jetzt Bestpreis sichern!">
     <meta name="keywords" content="Auto verkaufen, Fahrzeugbewertung, PKW Ankauf, meinautopreis24, Gebrauchtwagen verkaufen Deutschland">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://meinautopreis24.de/">
+    <meta property="og:title" content="MeinAutoPreis24 | Auto verkaufen zum Bestpreis">
+    <meta property="og:description" content="Kostenlose KI-Fahrzeugbewertung in 2 Minuten. Sicherer Ankauf mit Bestpreis-Garantie.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="MeinAutoPreis24 | Ihr Auto, unser Bestpreis">
+    <meta property="twitter:description" content="Stressfreier Autoverkauf dank KI-gestützter Wertermittlung. Heute bewerten, morgen Geld erhalten.">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -19,6 +32,14 @@
         .bg-brand-orange { background-color: #f97316; }
         .text-brand-orange { color: #f97316; }
         .border-brand-orange { border-color: #f97316; }
+        
+        /* Custom animations for deployment */
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
     </style>
 <script type="importmap">
 {
@@ -31,7 +52,7 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-slate-900">
+<body class="bg-gray-50 text-slate-900 overflow-x-hidden">
     <div id="root"></div>
 </body>
 </html>

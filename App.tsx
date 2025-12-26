@@ -16,21 +16,23 @@ const App: React.FC = () => {
   const [carDetails, setCarDetails] = useState<CarDetails | null>(null);
   const [valuation, setValuation] = useState<ValuationResult | null>(null);
 
+  // Smooth scroll to top when changing steps
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep]);
+
   const handleStartValuation = (details: CarDetails, result: ValuationResult) => {
     setCarDetails(details);
     setValuation(result);
     setCurrentStep(AppStep.RESULTS);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleProceedToBooking = () => {
     setCurrentStep(AppStep.BOOKING);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBookingComplete = () => {
     setCurrentStep(AppStep.CONFIRMATION);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const resetApp = () => {
@@ -40,12 +42,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
       <Header onLogoClick={resetApp} />
       
       <main className="flex-grow">
         {currentStep === AppStep.VALUATION_FORM && (
-          <>
+          <div className="animate-in fade-in duration-1000">
             <Hero />
             <div id="evaluate" className="container mx-auto px-4 py-16">
               <div className="max-w-4xl mx-auto">
@@ -54,7 +56,7 @@ const App: React.FC = () => {
             </div>
             <TrustElements />
             <FAQSection />
-          </>
+          </div>
         )}
 
         {currentStep === AppStep.RESULTS && valuation && carDetails && (
@@ -63,7 +65,7 @@ const App: React.FC = () => {
               valuation={valuation} 
               carDetails={carDetails} 
               onNext={handleProceedToBooking}
-              onBack={resetApp}
+              onBack={() => setCurrentStep(AppStep.VALUATION_FORM)}
             />
           </div>
         )}
