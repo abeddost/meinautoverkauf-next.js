@@ -1,13 +1,19 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
-import { CarDetails, ValuationResult } from "./types";
+import { CarDetails, ValuationResult } from "./types.ts";
 
 export async function getCarValuation(details: CarDetails): Promise<ValuationResult> {
-  // Ensure we use the latest injected API key from the environment
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Use a safer way to access process.env that won't throw ReferenceError
+  const apiKey = (window as any).process?.env?.API_KEY || process?.env?.API_KEY;
+
+  if (!apiKey) {
+    throw new Error("API-Konfigurationsfehler: Bitte stellen Sie sicher, dass der API_KEY in den Vercel-Umgebungsvariablen hinterlegt ist.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   
   const prompt = `Sie sind ein hochqualifizierter KFZ-Sachverständiger bei MeinAutoPreis24. 
-    Analysieren Sie folgendes Fahrzeug basierend auf aktuellen Marktdaten der letzten 24 Stunden in Deutschland:
+    Analysieren Sie folgendes Fahrzeug basierend auf aktuellen Marktdaten in Deutschland:
     
     FAHRZEUGDATEN:
     - Marke & Modell: ${details.brand} ${details.model}
@@ -17,9 +23,9 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
     - Optischer Zustand: ${details.condition}
 
     AUFGABE:
-    1. Berechnen Sie einen realistischen Händler-Ankaufspreis (nicht Privatverkaufspreis).
-    2. Verfassen Sie eine professionelle, vertrauenserweckende Erklärung (max. 3 Sätze) auf Deutsch.
-    3. Bestimmen Sie den aktuellen Markttrend für dieses spezifische Modell.`;
+    1. Berechnen Sie einen realistischen Händler-Ankaufspreis (EUR).
+    2. Verfassen Sie eine professionelle Erklärung (max. 3 Sätze) auf Deutsch.
+    3. Bestimmen Sie den Markttrend (Up/Down/Stable).`;
 
   try {
     const response = await ai.models.generateContent({
@@ -42,7 +48,7 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
             marketTrend: { 
               type: Type.STRING,
               enum: ['Up', 'Down', 'Stable'],
-              description: "Markt-Tendenz: Up (Steigend), Down (Sinkend), Stable (Stabil)."
+              description: "Markt-Tendenz."
             }
           },
           required: ["estimatedPrice", "explanation", "marketTrend"]
@@ -52,18 +58,15 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
 
     const resultText = response.text;
     if (!resultText) {
-      throw new Error("Fehler bei der Kommunikation mit dem Bewertungs-Modul.");
+      throw new Error("Die KI konnte keine Bewertung generieren.");
     }
 
     return JSON.parse(resultText);
   } catch (error: any) {
-    console.error("AI Valuation Error:", error);
-    
-    // Fallback logic for production stability
+    console.error("Valuation Error:", error);
     if (error.message?.includes("API_KEY")) {
-      throw new Error("System-Konfiguration fehlt: Bitte hinterlegen Sie den API_KEY in den Deployment-Einstellungen.");
+      throw new Error("Hoppla! Der API-Schlüssel scheint ungültig zu sein. Bitte prüfen Sie die Vercel-Einstellungen.");
     }
-    
-    throw new Error("Die KI-Bewertung ist derzeit überlastet. Bitte versuchen Sie es in wenigen Augenblicken erneut.");
+    throw new Error(error.message || "Der Bewertungs-Service ist derzeit nicht erreichbar.");
   }
 }

@@ -6,22 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeinAutoPreis24 | Auto verkaufen zum Bestpreis – Sicher & Schnell</title>
     <meta name="description" content="Verkaufen Sie Ihr Auto stressfrei bei meinautopreis24.de. Kostenlose Online-Bewertung, Sofortauszahlung und Abholung vor Ort. Jetzt Bestpreis sichern!">
-    <meta name="keywords" content="Auto verkaufen, Fahrzeugbewertung, PKW Ankauf, meinautopreis24, Gebrauchtwagen verkaufen Deutschland">
     
+    <script>
+      // Critical shim: Must run before any modules are loaded
+      window.process = window.process || { env: {} };
+      
+      // Global error handler to prevent silent blank pages
+      window.addEventListener('error', function(event) {
+        console.error('Runtime error:', event.error);
+        if (document.getElementById('root') && document.getElementById('root').innerHTML === '') {
+          document.body.innerHTML = '<div style="padding: 20px; font-family: sans-serif; color: #721c24; background: #f8d7da;">' +
+            '<h3>Startfehler</h3><p>Die Anwendung konnte nicht geladen werden. Bitte prüfen Sie die Konsole oder laden Sie die Seite neu.</p>' +
+            '<pre style="font-size: 12px;">' + event.message + '</pre></div>';
+        }
+      });
+    </script>
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://meinautopreis24.de/">
     <meta property="og:title" content="MeinAutoPreis24 | Auto verkaufen zum Bestpreis">
     <meta property="og:description" content="Kostenlose KI-Fahrzeugbewertung in 2 Minuten. Sicherer Ankauf mit Bestpreis-Garantie.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="MeinAutoPreis24 | Ihr Auto, unser Bestpreis">
-    <meta property="twitter:description" content="Stressfreier Autoverkauf dank KI-gestützter Wertermittlung. Heute bewerten, morgen Geld erhalten.">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+      }
+    }
+    </script>
+
     <style>
         body { 
           font-family: 'Inter', sans-serif;
@@ -33,7 +53,6 @@
         .text-brand-orange { color: #f97316; }
         .border-brand-orange { border-color: #f97316; }
         
-        /* Custom animations for deployment */
         @keyframes float {
           0% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
@@ -41,18 +60,10 @@
         }
         .animate-float { animation: float 6s ease-in-out infinite; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-  }
-}
-</script>
 </head>
 <body class="bg-gray-50 text-slate-900 overflow-x-hidden">
     <div id="root"></div>
+    <!-- Explicit module loading for standard browser environments -->
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
