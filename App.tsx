@@ -1,15 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header.tsx';
-import Footer from './components/Footer.tsx';
-import Hero from './components/Hero.tsx';
-import ValuationForm from './components/ValuationForm.tsx';
-import ValuationResults from './components/ValuationResults.tsx';
-import BookingStep from './components/BookingStep.tsx';
-import ConfirmationStep from './components/ConfirmationStep.tsx';
-import TrustElements from './components/TrustElements.tsx';
-import FAQSection from './components/FAQSection.tsx';
-import { AppStep, CarDetails, ValuationResult } from './types.ts';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import ValuationForm from './components/ValuationForm';
+import ValuationResults from './components/ValuationResults';
+import BookingStep from './components/BookingStep';
+import ConfirmationStep from './components/ConfirmationStep';
+import TrustElements from './components/TrustElements';
+import FAQSection from './components/FAQSection';
+import { AppStep, CarDetails, ValuationResult } from './types';
 
 const App: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<AppStep>(AppStep.VALUATION_FORM);
