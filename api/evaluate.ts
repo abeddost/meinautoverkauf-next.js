@@ -6,7 +6,6 @@ export const config = {
 };
 
 export default async function handler(req: Request) {
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { 
       status: 405,
@@ -19,7 +18,6 @@ export default async function handler(req: Request) {
     const apiKey = process.env.API_KEY;
 
     if (!apiKey) {
-      console.error("Critical Error: API_KEY environment variable is missing on Vercel.");
       return new Response(JSON.stringify({ error: 'Server configuration error: API key missing.' }), { 
         status: 500,
         headers: { 'Content-Type': 'application/json' }
@@ -28,42 +26,43 @@ export default async function handler(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Sie sind ein hochqualifizierter KFZ-Sachverständiger bei MeinAutoPreis24. 
-      Analysieren Sie folgendes Fahrzeug basierend auf aktuellen Marktdaten in Deutschland:
-      
-      FAHRZEUGDATEN:
-      - Marke & Modell: ${details.brand} ${details.model}
-      - Baujahr: ${details.year}
-      - Laufleistung: ${details.mileage} km
-      - Kraftstoff: ${details.fuelType}
-      - Optischer Zustand: ${details.condition}
+    const prompt = `Du bist ein erfahrener KFZ-Sachverständiger bei MeinAutoPreis24. 
+    Analysiere dieses Fahrzeug und berechne einen realistischen HÄNDLER-ANKAUFSPREIS (Netto-Einkaufswert für den Weiterverkauf).
+    
+    FAHRZEUG:
+    Marke: ${details.brand}
+    Modell: ${details.model}
+    Jahr: ${details.year}
+    Kilometer: ${details.mileage}
+    Kraftstoff: ${details.fuelType}
+    Zustand: ${details.condition}
 
-      AUFGABE:
-      1. Berechnen Sie einen realistischen Händler-Ankaufspreis (EUR).
-      2. Verfassen Sie eine professionelle Erklärung (max. 3 Sätze) auf Deutsch.
-      3. Bestimmen Sie den Markttrend (Up/Down/Stable).`;
+    REGELN:
+    - Der Preis muss ein fairer Händler-Einkaufspreis sein (ca. 15% unter Privatverkaufspreis).
+    - Die Erklärung muss auf Deutsch sein und fachlich fundiert (max 3 Sätze).
+    - Das Ergebnis MUSS valides JSON sein.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview",
       contents: prompt,
       config: {
-        thinkingConfig: { thinkingBudget: 8192 },
+        thinkingConfig: { thinkingBudget: 4096 },
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
           properties: {
             estimatedPrice: { 
               type: Type.NUMBER,
-              description: "Der berechnete Ankaufspreis in Euro."
+              description: "Berechneter Euro-Betrag (Ganzzahl)."
             },
             explanation: { 
               type: Type.STRING,
-              description: "Fachliche Begründung des Preises auf Deutsch."
+              description: "Fachliche Begründung."
             },
             marketTrend: { 
               type: Type.STRING,
               enum: ['Up', 'Down', 'Stable'],
-              description: "Markt-Tendenz."
+              description: "Aktueller Markttrend."
             }
           },
           required: ["estimatedPrice", "explanation", "marketTrend"]
@@ -71,15 +70,18 @@ export default async function handler(req: Request) {
       }
     });
 
-    const result = response.text;
-    
-    return new Response(result, {
+    const text = response.text;
+    if (!text) {
+      throw new Error("No response from AI");
+    }
+
+    return new Response(text, {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error: any) {
-    console.error("Vercel Serverless Function Error:", error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error: ' + error.message }), { 
+    console.error("Server-side valuation error:", error);
+    return new Response(JSON.stringify({ error: 'Bewertung fehlgeschlagen: ' + error.message }), { 
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

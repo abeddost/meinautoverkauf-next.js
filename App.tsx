@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
-import ValuationForm from './components/ValuationForm';
 import ValuationResults from './components/ValuationResults';
 import BookingStep from './components/BookingStep';
 import ConfirmationStep from './components/ConfirmationStep';
@@ -47,12 +46,53 @@ const App: React.FC = () => {
       <main className="flex-grow">
         {currentStep === AppStep.VALUATION_FORM && (
           <div className="animate-in fade-in duration-1000">
-            <Hero />
-            <div id="evaluate" className="container mx-auto px-4 py-16">
-              <div className="max-w-4xl mx-auto">
-                <ValuationForm onValuationComplete={handleStartValuation} />
+            <Hero onValuationComplete={handleStartValuation} />
+            
+            {/* Process Section (So einfach funktioniert’s) */}
+            <section className="py-20 bg-white border-b border-slate-100">
+              <div className="container mx-auto px-4">
+                <h2 className="text-3xl md:text-4xl font-black text-center text-brand-dark mb-16">
+                  So einfach funktioniert’s:
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                  {[
+                    { 
+                      num: "01", 
+                      title: "Fahrzeugdaten online eingeben", 
+                      desc: "In nur 2 Minuten bequem von zu Hause aus alle Details erfassen.",
+                      sub: "(2 Minuten)"
+                    },
+                    { 
+                      num: "02", 
+                      title: "Finales Händlerangebot erhalten", 
+                      desc: "Unsere KI berechnet basierend auf echten Marktwerten Ihren Bestpreis.",
+                      sub: "Direkt & Realistisch"
+                    },
+                    { 
+                      num: "03", 
+                      title: "Abgabe-Termin buchen & Geld erhalten", 
+                      desc: "Wählen Sie Ihren Wunschtermin. Schnelle Abwicklung & Sofortüberweisung.",
+                      sub: "Sicher & Schnell"
+                    }
+                  ].map((step, i) => (
+                    <div key={i} className="relative group text-center md:text-left">
+                      <div className="text-6xl font-black text-slate-50 absolute -top-8 -left-4 z-0 group-hover:text-orange-50 transition-colors">
+                        {step.num}
+                      </div>
+                      <div className="relative z-10">
+                        <h3 className="text-xl font-black text-brand-dark mb-3">
+                          {step.title} <span className="text-brand-orange block md:inline text-sm italic">{step.sub}</span>
+                        </h3>
+                        <p className="text-slate-500 font-medium leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </section>
+
             <TrustElements />
             <FAQSection />
           </div>

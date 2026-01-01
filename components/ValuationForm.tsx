@@ -9,7 +9,7 @@ interface ValuationFormProps {
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
   const [loading, setLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState("Berechne Bestpreis...");
+  const [loadingStep, setLoadingStep] = useState(0);
   const [formData, setFormData] = useState<CarDetails>({
     brand: '',
     model: '',
@@ -19,22 +19,21 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     condition: 'Good'
   });
 
-  const loadingMessages = [
-    "Analysiere Marktdaten...",
-    "Prüfe aktuelle Trends...",
-    "Vergleiche Auktionsergebnisse...",
-    "Berechne Händler-Ankaufswert...",
-    "Finalisiere Ihr Angebot..."
+  const loadingSteps = [
+    { label: "Fahrzeugdaten werden validiert", status: "Prüfe Eingaben..." },
+    { label: "Marktdaten-Abgleich", status: "Suche Referenzwerte..." },
+    { label: "KI-Modell wird geladen", status: "Analysiere Trends 2024..." },
+    { label: "Auktionsergebnisse werden verglichen", status: "Berechne Händler-Marge..." },
+    { label: "Finales Angebot wird erstellt", status: "Fast fertig..." }
   ];
 
   useEffect(() => {
     let interval: any;
     if (loading) {
-      let i = 0;
+      setLoadingStep(0);
       interval = setInterval(() => {
-        setLoadingText(loadingMessages[i % loadingMessages.length]);
-        i++;
-      }, 1500);
+        setLoadingStep(prev => (prev < loadingSteps.length - 1 ? prev + 1 : prev));
+      }, 1800);
     }
     return () => clearInterval(interval);
   }, [loading]);
@@ -49,139 +48,188 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
-      onValuationComplete(formData, result);
+      // Ensure we stay in loading at least long enough for UX
+      setTimeout(() => {
+        onValuationComplete(formData, result);
+      }, 1000);
     } catch (error: any) {
-      alert(error.message || "Es gab einen Fehler. Bitte versuchen Sie es erneut.");
-    } finally {
+      console.error("Valuation error:", error);
+      alert(error.message || "Hoppla! Der Preis konnte nicht berechnet werden. Bitte versuchen Sie es erneut.");
       setLoading(false);
     }
   };
 
-  return (
-    <div className="bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-12 border border-gray-100 -mt-16 relative z-20 transition-all duration-500">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl font-black mb-2 text-center text-brand-dark">Lassen Sie uns den Wert finden.</h2>
-        <p className="text-gray-500 text-center mb-10">Nur wenige Details trennen Sie von Ihrem Bestpreis-Angebot.</p>
-        
-        <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="group space-y-2">
-              <label className="block text-sm font-bold text-brand-dark uppercase tracking-wider ml-1">Marke</label>
-              <input
-                required
-                name="brand"
-                value={formData.brand}
-                onChange={handleChange}
-                placeholder="z.B. BMW"
-                className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all placeholder:text-gray-300"
-              />
-            </div>
-            
-            <div className="group space-y-2">
-              <label className="block text-sm font-bold text-brand-dark uppercase tracking-wider ml-1">Modell</label>
-              <input
-                required
-                name="model"
-                value={formData.model}
-                onChange={handleChange}
-                placeholder="z.B. 3er Reihe"
-                className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all placeholder:text-gray-300"
-              />
-            </div>
+  if (loading) {
+    return (
+      <div className="bg-[#1e293b]/95 backdrop-blur-xl rounded-[2.5rem] shadow-2xl p-8 md:p-12 border border-white/10 flex flex-col min-h-[550px] relative overflow-hidden text-white">
+        {/* Animated Scanner Beam */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[2.5rem]">
+          <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-orange shadow-[0_0_25px_rgba(249,115,22,0.8)] animate-[scan_3s_ease-in-out_infinite]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-orange/5 to-transparent h-1/2 animate-[scan_3s_ease-in-out_infinite]"></div>
+        </div>
 
-            <div className="space-y-2">
-              <label className="block text-sm font-bold text-brand-dark uppercase tracking-wider ml-1">Zulassung</label>
-              <select
-                name="year"
-                value={formData.year}
-                onChange={handleChange}
-                className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all appearance-none bg-white cursor-pointer"
-              >
-                {Array.from({ length: 30 }, (_, i) => 2024 - i).map(y => (
-                  <option key={y} value={y}>{y}</option>
-                ))}
-              </select>
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="mb-10 text-center">
+            <div className="w-20 h-20 bg-brand-orange/20 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-brand-orange/30 animate-pulse">
+              <svg className="w-10 h-10 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m18.236 0a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 21.359c-1.39-1.365-2.76-2.69-4.04-3.89m8.08 0c-1.28 1.2-2.65 2.525-4.04 3.89" />
+              </svg>
             </div>
-
-            <div className="group space-y-2">
-              <label className="block text-sm font-bold text-brand-dark uppercase tracking-wider ml-1">Laufleistung (km)</label>
-              <input
-                required
-                type="number"
-                name="mileage"
-                value={formData.mileage}
-                onChange={handleChange}
-                placeholder="z.B. 50000"
-                className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all placeholder:text-gray-300"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="block text-sm font-bold text-brand-dark uppercase tracking-wider ml-1">Kraftstoff</label>
-              <select
-                name="fuelType"
-                value={formData.fuelType}
-                onChange={handleChange}
-                className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all appearance-none bg-white cursor-pointer"
-              >
-                <option value="Benzin">Benzin</option>
-                <option value="Diesel">Diesel</option>
-                <option value="Elektro">Elektro</option>
-                <option value="Hybrid">Hybrid</option>
-              </select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="block text-sm font-bold text-brand-dark uppercase tracking-wider ml-1">Zustand</label>
-              <select
-                name="condition"
-                value={formData.condition}
-                onChange={handleChange}
-                className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all appearance-none bg-white cursor-pointer"
-              >
-                <option value="Excellent">Wie neu (Top-Zustand)</option>
-                <option value="Good">Gepflegt (normal)</option>
-                <option value="Fair">Gebraucht (Mängel)</option>
-                <option value="Poor">Reparaturbedürftig</option>
-              </select>
-            </div>
+            <h2 className="text-3xl font-black mb-2 tracking-tight">Preis-Kalkulation läuft</h2>
+            <p className="text-slate-400 font-medium">Präzise Wertermittlung durch Echtzeit-KI...</p>
           </div>
 
-          <div className="pt-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full py-6 rounded-2xl text-2xl font-black text-white shadow-xl transition-all transform ${
-                loading 
-                ? 'bg-slate-700 cursor-wait' 
-                : 'bg-brand-orange hover:bg-orange-600 hover:scale-[1.01] active:scale-95 shadow-orange-200'
-              }`}
-            >
-              {loading ? (
-                <span className="flex items-center justify-center gap-4">
-                  <svg className="animate-spin h-8 w-8 text-brand-orange" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  {loadingText}
-                </span>
-              ) : (
-                "Jetzt Wert ermitteln"
-              )}
-            </button>
-            <div className="flex items-center justify-center gap-6 mt-8 opacity-60">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-                100% Kostenlos
+          <div className="space-y-6 flex-grow py-4">
+            {loadingSteps.map((step, idx) => (
+              <div key={idx} className={`flex items-center gap-5 transition-all duration-700 ${idx > loadingStep ? 'opacity-20 translate-x-2' : 'opacity-100 translate-x-0'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-colors ${
+                  idx < loadingStep ? 'bg-green-500 text-white' : 
+                  idx === loadingStep ? 'bg-brand-orange text-white ring-4 ring-brand-orange/20' : 'bg-slate-700 text-slate-400'
+                }`}>
+                  {idx < loadingStep ? '✓' : idx + 1}
+                </div>
+                <div className="flex-grow">
+                  <div className={`text-base font-bold ${idx === loadingStep ? 'text-white' : 'text-slate-300'}`}>
+                    {step.label}
+                  </div>
+                  {idx === loadingStep && (
+                    <div className="text-[11px] text-brand-orange font-black uppercase tracking-widest mt-0.5 animate-pulse">
+                      {step.status}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-                Unverbindlich
-              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-white/5">
+            <div className="flex justify-between mb-3 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+              <span>Fortschritt</span>
+              <span className="text-brand-orange">{Math.round(((loadingStep + 1) / loadingSteps.length) * 100)}%</span>
+            </div>
+            <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-[2px]">
+              <div 
+                className="h-full bg-brand-orange transition-all duration-1000 ease-out rounded-full shadow-[0_0_15px_rgba(249,115,22,0.6)]" 
+                style={{ width: `${((loadingStep + 1) / loadingSteps.length) * 100}%` }}
+              ></div>
             </div>
           </div>
-        </form>
+        </div>
+
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+          }
+        `}} />
       </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-10 border border-gray-100 transition-all duration-500 text-brand-dark">
+      <div className="mb-8">
+        <h2 className="text-2xl font-black mb-2">Fahrzeug kostenlos bewerten</h2>
+        <p className="text-slate-500 text-sm font-medium">In nur 2 Minuten zum garantierten Ankaufspreis.</p>
+      </div>
+      
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 ml-1">Marke</label>
+            <input
+              required
+              name="brand"
+              value={formData.brand}
+              onChange={handleChange}
+              placeholder="z.B. VW"
+              className="w-full px-5 py-3.5 rounded-xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all placeholder:text-gray-300 font-bold"
+            />
+          </div>
+          
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 ml-1">Modell</label>
+            <input
+              required
+              name="model"
+              value={formData.model}
+              onChange={handleChange}
+              placeholder="z.B. Golf"
+              className="w-full px-5 py-3.5 rounded-xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all placeholder:text-gray-300 font-bold"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 ml-1">Erstzulassung</label>
+            <select
+              name="year"
+              value={formData.year}
+              onChange={handleChange}
+              className="w-full px-5 py-3.5 rounded-xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all appearance-none bg-white cursor-pointer font-bold"
+            >
+              {Array.from({ length: 30 }, (_, i) => 2024 - i).map(y => (
+                <option key={y} value={y}>{y}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 ml-1">Kilometer (km)</label>
+            <input
+              required
+              type="number"
+              name="mileage"
+              value={formData.mileage}
+              onChange={handleChange}
+              placeholder="z.B. 80.000"
+              className="w-full px-5 py-3.5 rounded-xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all placeholder:text-gray-300 font-bold"
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 ml-1">Kraftstoff</label>
+            <select
+              name="fuelType"
+              value={formData.fuelType}
+              onChange={handleChange}
+              className="w-full px-5 py-3.5 rounded-xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all appearance-none bg-white cursor-pointer font-bold"
+            >
+              <option value="Benzin">Benzin</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Elektro">Elektro</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 ml-1">Zustand</label>
+            <select
+              name="condition"
+              value={formData.condition}
+              onChange={handleChange}
+              className="w-full px-5 py-3.5 rounded-xl border-2 border-gray-100 focus:border-brand-orange focus:ring-0 outline-none transition-all appearance-none bg-white cursor-pointer font-bold"
+            >
+              <option value="Excellent">Wie neu (Top Zustand)</option>
+              <option value="Good">Gepflegt (Normal)</option>
+              <option value="Fair">Gebraucht (Mängel vorhanden)</option>
+              <option value="Poor">Reparaturbedürftig</option>
+            </select>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-brand-orange hover:bg-orange-600 text-white py-5 rounded-2xl font-black text-xl shadow-xl hover:shadow-orange-200 transition-all transform hover:-translate-y-1 active:scale-95 mt-4"
+        >
+          Kostenlos bewerten
+        </button>
+        
+        <p className="text-[10px] text-slate-400 text-center uppercase tracking-[0.1em] font-bold">
+          Sicher & Unverbindlich nach DSGVO
+        </p>
+      </form>
     </div>
   );
 };

@@ -1,70 +1,80 @@
 
 import React from 'react';
+import ValuationForm from './ValuationForm';
+import { CarDetails, ValuationResult } from '../types';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
   return (
-    <section className="relative bg-brand-dark text-white py-24 md:py-32 overflow-hidden">
-      {/* Background patterns for emotional depth */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+    <section className="relative bg-brand-dark text-white py-12 lg:py-24 overflow-hidden min-h-[90vh] flex items-center">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white" />
         </svg>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl">
-          <div className="inline-block bg-brand-orange/20 text-brand-orange px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-brand-orange/30">
-            Sorgenfrei & Fair: Der Marktführer für Privatanbieter
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-8">
-            Verabschieden Sie sich mit einem <span className="text-brand-orange italic">lächeln</span> von Ihrem Auto.
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl">
-            Wir schätzen den Wert Ihres Fahrzeugs nicht nur in Zahlen, sondern mit Respekt vor seiner Geschichte. Holen Sie sich jetzt den Bestpreis – einfach, transparent und ohne Stress.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <button 
-              onClick={() => document.getElementById('evaluate')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-brand-orange hover:bg-orange-600 text-white text-xl px-12 py-6 rounded-2xl font-black shadow-2xl transition-all transform hover:-translate-y-1 active:scale-95 text-center"
-            >
-              Gratis Online-Bewertung
-            </button>
-            <div className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-              <div className="flex -space-x-3">
-                {[1,2,3].map(i => (
-                  <div key={i} className={`w-10 h-10 rounded-full border-2 border-brand-dark bg-slate-700 flex items-center justify-center text-xs font-bold`}>
-                    {i === 1 ? 'M' : i === 2 ? 'S' : 'K'}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left Side: Content */}
+          <div className="lg:w-[55%] text-center lg:text-left">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-6 tracking-tight">
+              Dein Auto. <br/>
+              Dein Preis. <br/>
+              <span className="text-brand-orange italic">Deine Entscheidung.</span>
+            </h1>
+            
+            <div className="mb-10 max-w-xl mx-auto lg:mx-0">
+               <p className="text-xl md:text-2xl text-slate-300 font-medium leading-tight mb-2">
+                Schnell. Fair. Sicher.
+               </p>
+               <p className="text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
+                Mit echten Angeboten statt Lockpreisen.
+               </p>
+            </div>
+            
+            {/* Trust-Booster Grid - Matching Screenshot Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12 max-w-xl mx-auto lg:mx-0">
+              {[
+                "100 % transparente Preisfindung",
+                "Geprüfte Händler aus unserem Netzwerk",
+                "Kostenlos & unverbindlich",
+                "Kein Verkaufsdruck"
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-3 bg-white/5 border border-white/10 px-5 py-4 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-colors">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                ))}
+                  <span className="text-sm font-bold text-slate-200">{text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-center lg:justify-start gap-4">
+              <div className="flex -space-x-2">
+                 <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full bg-slate-600 animate-pulse"></div>
+                 </div>
+                 <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full bg-slate-700 animate-pulse"></div>
+                 </div>
+                 <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full bg-slate-500 animate-pulse"></div>
+                 </div>
               </div>
-              <div className="text-sm">
-                <div className="font-bold text-brand-orange">4.9/5 Sternen</div>
-                <div className="text-slate-400">aus 12k+ Bewertungen</div>
-              </div>
+              <div className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">Über 250.000+ bewertete Fahrzeuge</div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-12">
-            {[
-              { label: "Auszahlung", value: "Heute noch" },
-              { label: "Anreise", value: "Wir kommen zu Ihnen" },
-              { label: "Abmeldung", value: "Kostenlos & Fix" },
-              { label: "Zufriedenheit", value: "100% Garantiert" }
-            ].map((item, i) => (
-              <div key={i}>
-                <div className="text-brand-orange font-black text-xl">{item.value}</div>
-                <div className="text-slate-400 text-sm font-medium">{item.label}</div>
-              </div>
-            ))}
+          {/* Right Side: Form */}
+          <div id="evaluate" className="lg:w-[45%] w-full max-w-xl mx-auto lg:mx-0">
+            <ValuationForm onValuationComplete={onValuationComplete} />
           </div>
         </div>
-      </div>
-
-      <div className="absolute right-[-5%] top-1/2 -translate-y-1/2 opacity-20 hidden lg:block pointer-events-none w-1/2">
-        <svg width="600" height="400" viewBox="0 0 100 100" fill="currentColor" className="text-brand-orange">
-          <path d="M10 70 L20 65 L40 65 L45 55 L75 55 L80 65 L95 65 L95 80 L5 80 Z" />
-        </svg>
       </div>
     </section>
   );

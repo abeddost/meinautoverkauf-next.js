@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
         <button 
           onClick={onLogoClick} 
           className="flex items-center gap-2 hover:opacity-90 transition-opacity focus:outline-none"
-          aria-label="MeinAutoPreis24 Home"
+          aria-label="MeinAutoPreis24 Startseite"
         >
           <div className="flex items-center">
             <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
         <nav className="hidden md:flex items-center gap-8">
           <a href="#evaluate" className="text-slate-600 hover:text-brand-orange font-semibold transition-colors">Bewertung</a>
           <a href="#trust" className="text-slate-600 hover:text-brand-orange font-semibold transition-colors">Vorteile</a>
-          <a href="#faq" className="text-slate-600 hover:text-brand-orange font-semibold transition-colors">Fragen</a>
+          <a href="#faq" className="text-slate-600 hover:text-brand-orange font-semibold transition-colors">FAQ</a>
           <button 
             onClick={() => document.getElementById('evaluate')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-brand-orange text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-200 active:scale-95"

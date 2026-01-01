@@ -16,18 +16,10 @@ const Footer: React.FC = () => {
                 MeinAutoPreis<span className="text-brand-orange">24</span>
               </span>
             </div>
-            <p className="max-w-md mb-10 leading-relaxed text-lg">
+            <p className="max-w-md mb-10 leading-relaxed text-lg text-slate-300">
               Wir revolutionieren den Autoverkauf für Privatpersonen. 
               Ehrlich, emotional und immer zum besten Preis. Vertrauen Sie dem Marktführer.
             </p>
-            <div className="flex gap-6">
-              {['facebook', 'instagram', 'linkedin'].map(social => (
-                <a key={social} href="#" className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-brand-orange transition-all hover:scale-110">
-                  <span className="sr-only">{social}</span>
-                  <div className="w-6 h-6 bg-slate-400 rounded-sm"></div>
-                </a>
-              ))}
-            </div>
           </div>
 
           <div>
@@ -36,7 +28,7 @@ const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-brand-orange transition-colors">Jetzt Bewerten</a></li>
               <li><a href="#" className="hover:text-brand-orange transition-colors">Wie es funktioniert</a></li>
               <li><a href="#" className="hover:text-brand-orange transition-colors">Hausabholung</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Standort-Suche</a></li>
+              <li><a href="#" className="hover:text-brand-orange transition-colors">Impressum</a></li>
             </ul>
           </div>
 
@@ -48,7 +40,6 @@ const Footer: React.FC = () => {
                  0800 24 24 24
               </li>
               <li><a href="#" className="hover:text-brand-orange transition-colors">Hilfe-Center</a></li>
-              <li><a href="#" className="hover:text-brand-orange transition-colors">Impressum</a></li>
               <li><a href="#" className="hover:text-brand-orange transition-colors">Datenschutz</a></li>
             </ul>
           </div>
