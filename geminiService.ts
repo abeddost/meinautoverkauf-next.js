@@ -12,29 +12,34 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Du bist ein hochqualifizierter KFZ-Sachverständiger bei MeinAutoPreis24.
-      Analysiere das folgende Fahrzeug basierend auf aktuellen Marktdaten in Deutschland:
+    // We provide a logical framework for the model to follow during its "thinking" phase
+    const prompt = `Du bist ein spezialisierter KFZ-Preiskalkulator für den deutschen Markt.
+      Deine Aufgabe: Berechne einen realistischen Händler-Ankaufspreis (DAT/Schwacke-basiert).
       
-      FAHRZEUGDATEN:
-      - Marke: ${details.brand}
-      - Modell: ${details.model}
-      - Erstzulassung: ${details.year}
-      - Laufleistung: ${details.mileage} km
+      DATEN:
+      - Fahrzeug: ${details.brand} ${details.model}
+      - Jahr: ${details.year}
+      - KM: ${details.mileage}
       - Kraftstoff: ${details.fuelType}
-      - Optischer Zustand: ${details.condition}
+      - Zustand: ${details.condition}
 
-      AUFGABE:
-      1. Berechnen Sie einen realistischen HÄNDLER-ANKAUFSPREIS (Inzahlungnahmewert) in EUR.
-      2. Verfassen Sie eine professionelle Erklärung (max. 3 Sätze) auf DEUTSCH.
-      3. Bestimmen Sie den Markttrend (Up/Down/Stable).
-      
-      WICHTIG: Antworte NUR im JSON-Format.`;
+      DEIN LOGIK-PROZESS (Nutze dies in deiner Thinking-Phase):
+      1. Schätze den durchschnittlichen Bruttolistenpreis (Neupreis) dieses Modells im Jahr ${details.year}.
+      2. Wende Standard-Wertverlust an: ~25% im 1. Jahr, danach ~12-15% p.a.
+      3. Korrigiere die Laufleistung: Basis sind 15.000 km/Jahr. Mehr- oder Minderkilometer mit ca. 0,05-0,10€ verrechnen.
+      4. Zustands-Faktor: Excellent (+5%), Good (0%), Fair (-15%), Poor (-30% oder mehr).
+      5. Händler-Marge: Ziehe 15-20% vom geschätzten Marktwert ab, um den HÄNDLER-ANKAUFSPREIS zu erhalten.
+
+      Antworte NUR im JSON-Format mit:
+      - estimatedPrice (Zahl, EUR)
+      - explanation (Deutsch, max. 2 Sätze, nenne konkrete Gründe wie KM-Stand oder Markttrend)
+      - marketTrend (Up, Down, Stable)`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview",
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        thinkingConfig: { thinkingBudget: 4096 },
+        thinkingConfig: { thinkingBudget: 4096 }, // Increased budget for complex math logic
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
@@ -60,20 +65,10 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
 
     const text = response.text;
     if (!text) {
-      console.error("Gemini empty response text");
       throw new Error("Keine Antwort von der KI erhalten.");
     }
 
-    try {
-      const result: ValuationResult = JSON.parse(text);
-      if (typeof result.estimatedPrice !== 'number') {
-        throw new Error("Ungültiger Preis von der KI geliefert.");
-      }
-      return result;
-    } catch (parseError) {
-      console.error("JSON Parse Error:", text, parseError);
-      throw new Error("Fehler beim Verarbeiten der Fahrzeugbewertung.");
-    }
+    return JSON.parse(text.trim());
   } catch (error: any) {
     console.error("Valuation Service Error:", error);
     throw new Error(error.message || "Der Bewertungs-Service ist derzeit nicht erreichbar.");

@@ -26,24 +26,13 @@ export default async function handler(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Du bist ein erfahrener KFZ-Sachverständiger bei MeinAutoPreis24. 
-    Analysiere dieses Fahrzeug und berechne einen realistischen HÄNDLER-ANKAUFSPREIS (Netto-Einkaufswert für den Weiterverkauf).
-    
-    FAHRZEUG:
-    Marke: ${details.brand}
-    Modell: ${details.model}
-    Jahr: ${details.year}
-    Kilometer: ${details.mileage}
-    Kraftstoff: ${details.fuelType}
-    Zustand: ${details.condition}
-
-    REGELN:
-    - Der Preis muss ein fairer Händler-Einkaufspreis sein (ca. 15% unter Privatverkaufspreis).
-    - Die Erklärung muss auf Deutsch sein und fachlich fundiert (max 3 Sätze).
-    - Das Ergebnis MUSS valides JSON sein.`;
+    const prompt = `Berechne den Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}), ${details.mileage}km, ${details.fuelType}, Zustand: ${details.condition}.
+      Nutze Standard-Depreziationskurven für Deutschland (ca. 15% Wertverlust p.a. nach dem 1. Jahr).
+      Berücksichtige die Kilometer-Laufleistung (Soll: 15k/Jahr) und den Zustand.
+      Antworte nur mit validem JSON.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3-pro-preview",
+      model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
         thinkingConfig: { thinkingBudget: 4096 },
@@ -51,18 +40,11 @@ export default async function handler(req: Request) {
         responseSchema: {
           type: Type.OBJECT,
           properties: {
-            estimatedPrice: { 
-              type: Type.NUMBER,
-              description: "Berechneter Euro-Betrag (Ganzzahl)."
-            },
-            explanation: { 
-              type: Type.STRING,
-              description: "Fachliche Begründung."
-            },
+            estimatedPrice: { type: Type.NUMBER },
+            explanation: { type: Type.STRING },
             marketTrend: { 
-              type: Type.STRING,
-              enum: ['Up', 'Down', 'Stable'],
-              description: "Aktueller Markttrend."
+              type: Type.STRING, 
+              enum: ['Up', 'Down', 'Stable'] 
             }
           },
           required: ["estimatedPrice", "explanation", "marketTrend"]
@@ -70,17 +52,11 @@ export default async function handler(req: Request) {
       }
     });
 
-    const text = response.text;
-    if (!text) {
-      throw new Error("No response from AI");
-    }
-
-    return new Response(text, {
+    return new Response(response.text, {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error: any) {
-    console.error("Server-side valuation error:", error);
     return new Response(JSON.stringify({ error: 'Bewertung fehlgeschlagen: ' + error.message }), { 
       status: 500,
       headers: { 'Content-Type': 'application/json' }
