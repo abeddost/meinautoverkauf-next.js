@@ -4,10 +4,10 @@ import { CarDetails, ValuationResult } from "./types";
 
 export async function getCarValuation(details: CarDetails): Promise<ValuationResult> {
   try {
-    const apiKey = (process.env.API_KEY) as string;
+    const apiKey = process.env.API_KEY;
 
     if (!apiKey) {
-      throw new Error("API Key ist nicht konfiguriert.");
+      throw new Error("API Key ist nicht konfiguriert oder ungültig.");
     }
 
     const ai = new GoogleGenAI({ apiKey });
@@ -24,11 +24,11 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       - Optischer Zustand: ${details.condition}
 
       AUFGABE:
-      1. Berechnen Sie einen realistischen HÄNDLER-ANKAUFSPREIS (Inzahlungnahmewert) in EUR. Dies ist der Preis, den ein professioneller Händler für den sofortigen Ankauf zahlen würde.
-      2. Verfassen Sie eine professionelle Erklärung (max. 3 Sätze) auf DEUTSCH, warum dieser Preis gewählt wurde.
+      1. Berechnen Sie einen realistischen HÄNDLER-ANKAUFSPREIS (Inzahlungnahmewert) in EUR.
+      2. Verfassen Sie eine professionelle Erklärung (max. 3 Sätze) auf DEUTSCH.
       3. Bestimmen Sie den Markttrend (Up/Down/Stable).
       
-      WICHTIG: Das Ergebnis MUSS valides JSON sein.`;
+      WICHTIG: Antworte NUR im JSON-Format.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview",
@@ -60,11 +60,20 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
 
     const text = response.text;
     if (!text) {
+      console.error("Gemini empty response text");
       throw new Error("Keine Antwort von der KI erhalten.");
     }
 
-    const result: ValuationResult = JSON.parse(text);
-    return result;
+    try {
+      const result: ValuationResult = JSON.parse(text);
+      if (typeof result.estimatedPrice !== 'number') {
+        throw new Error("Ungültiger Preis von der KI geliefert.");
+      }
+      return result;
+    } catch (parseError) {
+      console.error("JSON Parse Error:", text, parseError);
+      throw new Error("Fehler beim Verarbeiten der Fahrzeugbewertung.");
+    }
   } catch (error: any) {
     console.error("Valuation Service Error:", error);
     throw new Error(error.message || "Der Bewertungs-Service ist derzeit nicht erreichbar.");

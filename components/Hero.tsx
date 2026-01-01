@@ -9,7 +9,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
   return (
-    <section className="relative bg-brand-dark text-white py-12 lg:py-24 overflow-hidden min-h-[90vh] flex items-center">
+    <section className="relative bg-brand-dark text-white overflow-hidden min-h-[calc(100vh-80px)] flex items-center py-12 lg:py-0">
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white" />
@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           {/* Left Side: Content */}
           <div className="lg:w-[55%] text-center lg:text-left">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-6 tracking-tight">
@@ -35,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
                </p>
             </div>
             
-            {/* Trust-Booster Grid - Matching Screenshot Layout */}
+            {/* Trust-Booster Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12 max-w-xl mx-auto lg:mx-0">
               {[
                 "100 % transparente Preisfindung",
@@ -56,22 +56,18 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
 
             <div className="flex items-center justify-center lg:justify-start gap-4">
               <div className="flex -space-x-2">
-                 <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
-                    <div className="w-full h-full bg-slate-600 animate-pulse"></div>
-                 </div>
-                 <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
-                    <div className="w-full h-full bg-slate-700 animate-pulse"></div>
-                 </div>
-                 <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
-                    <div className="w-full h-full bg-slate-500 animate-pulse"></div>
-                 </div>
+                 {[1, 2, 3].map(i => (
+                   <div key={i} className="w-10 h-10 rounded-full bg-slate-800 border-2 border-brand-dark flex items-center justify-center overflow-hidden">
+                      <div className="w-full h-full bg-slate-700 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}></div>
+                   </div>
+                 ))}
               </div>
               <div className="text-xs font-black uppercase tracking-[0.2em] text-slate-500">Über 250.000+ bewertete Fahrzeuge</div>
             </div>
           </div>
 
           {/* Right Side: Form */}
-          <div id="evaluate" className="lg:w-[45%] w-full max-w-xl mx-auto lg:mx-0">
+          <div id="evaluate" className="lg:w-[42%] w-full max-w-xl mx-auto lg:mx-0 flex items-center justify-center">
             <ValuationForm onValuationComplete={onValuationComplete} />
           </div>
         </div>
