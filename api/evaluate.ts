@@ -28,8 +28,7 @@ export default async function handler(req: Request) {
     
     const prompt = `Berechne Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}).
       Zustand: ${details.condition}.
-      LOGIK: Berücksichtige hohe Abzüge für Fair/Poor Zustände. Nutze degressive Marge (22% bis 8%).
-      Marketing-Text: Fokus auf Sicherheit und "Kauf wie gesehen".
+      Anforderung: Erstelle einen überzeugenden Marketing-Text (ca. 30 Wörter), der den stressfreien Verkauf ohne Haftung betont. 
       Antworte als JSON mit 'estimatedPrice', 'priceRange' {min, max}, 'explanation' und 'marketTrend'.`;
 
     const response = await ai.models.generateContent({
