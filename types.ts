@@ -17,6 +17,7 @@ export interface ValuationResult {
   };
   explanation: string;
   marketTrend: 'Up' | 'Down' | 'Stable';
+  sources?: { title: string; uri: string }[];
 }
 
 export enum AppStep {

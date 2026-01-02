@@ -7,42 +7,41 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
     const apiKey = process.env.API_KEY;
 
     if (!apiKey) {
-      throw new Error("API Key ist nicht konfiguriert oder ungültig.");
+      throw new Error("API Key ist nicht konfiguriert.");
     }
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Du bist ein professioneller KFZ-Sachverständiger, spezialisiert auf den Händler-Ankauf (B2B/Ankauf von Privat).
-      Deine Aufgabe: Ermittle den Händler-Ankaufspreis (NICHT den Marktwert für den Privatverkauf!) für folgendes Fahrzeug:
-      Marke & Modell: ${details.brand} ${details.model}
-      Erstzulassung: ${details.year}
-      Kilometerstand: ${details.mileage} km
-      Kraftstoff: ${details.fuelType}
-      Zustand: ${details.condition}
-
-      WICHTIGE PREIS-GUIDELINES:
-      - Du berechnest den Preis, den ein gewerblicher Händler bereit ist zu zahlen (Sofort-Ankaufspreis).
-      - Dieser Preis liegt zwingend ca. 15% bis 25% UNTER dem Marktwert für Privatverkäufe (wegen Händlermarge, Gewährleistungsrisiko, Aufbereitung und Standkosten).
-      - Berücksichtige den Wertverlust basierend auf Alter, Laufleistung und Zustand.
-      - Das Ziel ist ein realistisches Angebot für einen schnellen "Ankauf ohne Stress".
-
-      ANFORDERUNG AN DIE 'explanation':
-      - Erstelle einen rein verkaufsfördernden Marketing-Text auf Deutsch.
-      - Erwähne NICHT die prozentualen Abzüge oder Margen.
-      - Hebe hervor, dass dieser Preis ein faires, sofortiges Angebot für den Direkt-Verkauf darstellt.
-      - Betone die Zeitersparnis und Sicherheit im Vergleich zum mühsamen Privatverkauf.
-
+    // DYNAMIC TIERED MARGIN (DTM) LOGIC
+    // Purpose: High-margin for low-price cars, high-volume/fair-margin for luxury cars.
+    
+    const prompt = `Handel als strategischer KFZ-Einkaufsdirektor. 
+      ZIEL: Berechne einen Ankaufspreis, der für den Händler attraktiv ist, aber bei teuren Autos nicht unrealistisch niedrig wirkt.
+      
+      FAHRZEUG: ${details.brand} ${details.model}, ${details.year}, ${details.mileage} km, ${details.fuelType}, Zustand: ${details.condition}.
+      
+      LOGIK (STAFFEL-MARGE):
+      1. Suche auf mobile.de nach dem "Wettbewerbsfähigen VK" (unteres Marktviertel).
+      2. Wende folgende Abzüge auf den Wettbewerbs-VK an:
+         - Wenn VK < 15k €: 22% Marge + 1.000 € Aufbereitung.
+         - Wenn VK 15k - 45k €: 15% Marge + 1.500 € Aufbereitung.
+         - Wenn VK 45k - 100k €: 10% Marge + 2.500 € Aufbereitung.
+         - Wenn VK > 100k €: 8% Marge + 4.000 € Aufbereitung.
+      3. Das Ergebnis ist der 'estimatedPrice'.
+      
       Antworte NUR im JSON-Format:
-      - estimatedPrice: Der berechnete Händler-Ankaufspreis als Zahl.
-      - priceRange: { min: Zahl, max: Zahl } (Spanne ca. +/- 5% um den Ankaufspreis).
-      - explanation: Der Marketing-Text.
+      - estimatedPrice: Der berechnete Händler-Ankaufspreis (Zahl).
+      - priceRange: { min: Zahl, max: Zahl } (Spanne +/- 4%).
+      - explanation: Marketing-Text auf Deutsch. Erkläre bei teuren Autos (>50k), dass wir durch Direktankauf das Vermarktungsrisiko für Luxuswagen komplett übernehmen.
       - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        temperature: 0.1, // Lower temperature for more consistency
+        tools: [{ googleSearch: {} }],
+        temperature: 0.1,
+        thinkingConfig: { thinkingBudget: 0 },
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
@@ -72,7 +71,19 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       throw new Error("Keine Antwort von der KI erhalten.");
     }
 
-    return JSON.parse(text.trim());
+    const result: ValuationResult = JSON.parse(text.trim());
+
+    const groundingChunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks;
+    if (groundingChunks) {
+      result.sources = groundingChunks
+        .filter((chunk: any) => chunk.web)
+        .map((chunk: any) => ({
+          title: chunk.web.title || "Markt-Referenz",
+          uri: chunk.web.uri
+        }));
+    }
+
+    return result;
   } catch (error: any) {
     console.error("Valuation Service Error:", error);
     throw new Error(error.message || "Der Bewertungs-Service ist derzeit nicht erreichbar.");
