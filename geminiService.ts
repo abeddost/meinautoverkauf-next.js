@@ -12,11 +12,8 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
 
     const ai = new GoogleGenAI({ apiKey });
     
-    // DYNAMIC TIERED MARGIN (DTM) LOGIC
-    // Purpose: High-margin for low-price cars, high-volume/fair-margin for luxury cars.
-    
-    const prompt = `Handel als strategischer KFZ-Einkaufsdirektor. 
-      ZIEL: Berechne einen Ankaufspreis, der für den Händler attraktiv ist, aber bei teuren Autos nicht unrealistisch niedrig wirkt.
+    const prompt = `Handel als erfahrener KFZ-Einkaufsdirektor. 
+      ZIEL: Berechne einen Ankaufspreis, der für den Händler profitabel ist, aber bei teuren Autos marktgerecht bleibt.
       
       FAHRZEUG: ${details.brand} ${details.model}, ${details.year}, ${details.mileage} km, ${details.fuelType}, Zustand: ${details.condition}.
       
@@ -31,8 +28,10 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       
       Antworte NUR im JSON-Format:
       - estimatedPrice: Der berechnete Händler-Ankaufspreis (Zahl).
-      - priceRange: { min: Zahl, max: Zahl } (Spanne +/- 4%).
-      - explanation: Marketing-Text auf Deutsch. Erkläre bei teuren Autos (>50k), dass wir durch Direktankauf das Vermarktungsrisiko für Luxuswagen komplett übernehmen.
+      - priceRange: { min: Zahl, max: Zahl } (Spanne +/- 3%).
+      - explanation: Ein professioneller, emotionaler Marketing-Text auf Deutsch (2-3 Sätze). 
+        Konzentriere dich auf: Stressfreier Verkauf, sofortige Sicherheit, keine Haftung und Zeitersparnis. 
+        ERWÄHNE KEINE Prozentzahlen, Margen oder technischen Abzüge.
       - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({

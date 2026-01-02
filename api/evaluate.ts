@@ -26,11 +26,9 @@ export default async function handler(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Berechne einen strategischen Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}).
-      LOGIK (Dynamic Tiered Margin):
-      1. Bestimme Marktwert (Retail).
-      2. Abzug Marge: 22% bei <15k, 15% bei 15-45k, 10% bei 45-100k, 8% bei >100k.
-      3. Abzug Aufbereitung: 1k - 4k je nach Wertklasse.
+    const prompt = `Berechne einen sicheren Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}).
+      LOGIK: Nutze die degressive Marge (22% bei Kleinwagen bis 8% bei Luxuswagen). 
+      Die 'explanation' muss reiner Marketing-Text sein: Fokus auf Komfort und Sicherheit, keine technischen Details oder Abzüge erwähnen.
       Antworte als JSON mit 'estimatedPrice', 'explanation' (deutsch) und 'marketTrend'.`;
 
     const response = await ai.models.generateContent({
