@@ -11,6 +11,10 @@ export interface CarDetails {
 
 export interface ValuationResult {
   estimatedPrice: number;
+  priceRange: {
+    min: number;
+    max: number;
+  };
   explanation: string;
   marketTrend: 'Up' | 'Down' | 'Stable';
 }

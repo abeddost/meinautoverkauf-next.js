@@ -26,16 +26,16 @@ export default async function handler(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Berechne den Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}), ${details.mileage}km, ${details.fuelType}, Zustand: ${details.condition}.
-      Nutze Standard-Depreziationskurven für Deutschland (ca. 15% Wertverlust p.a. nach dem 1. Jahr).
-      Berücksichtige die Kilometer-Laufleistung (Soll: 15k/Jahr) und den Zustand.
+    const prompt = `KFZ-Wertermittlung für Händler-Ankauf (Sofort-Preis): ${details.brand} ${details.model} (${details.year}), ${details.mileage}km, ${details.fuelType}, Zustand: ${details.condition}.
+      Berechne den Preis, den ein Händler im Ankauf zahlen würde (ca. 15-20% unter Marktwert).
+      Die 'explanation' soll ein rein verkaufsfördernder Marketing-Text auf Deutsch sein.
       Antworte nur mit validem JSON.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        thinkingConfig: { thinkingBudget: 4096 },
+        temperature: 0.1,
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,

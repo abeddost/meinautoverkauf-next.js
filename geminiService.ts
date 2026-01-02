@@ -12,53 +12,57 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
 
     const ai = new GoogleGenAI({ apiKey });
     
-    // We provide a logical framework for the model to follow during its "thinking" phase
-    const prompt = `Du bist ein spezialisierter KFZ-Preiskalkulator für den deutschen Markt.
-      Deine Aufgabe: Berechne einen realistischen Händler-Ankaufspreis (DAT/Schwacke-basiert).
-      
-      DATEN:
-      - Fahrzeug: ${details.brand} ${details.model}
-      - Jahr: ${details.year}
-      - KM: ${details.mileage}
-      - Kraftstoff: ${details.fuelType}
-      - Zustand: ${details.condition}
+    const prompt = `Du bist ein professioneller KFZ-Sachverständiger, spezialisiert auf den Händler-Ankauf (B2B/Ankauf von Privat).
+      Deine Aufgabe: Ermittle den Händler-Ankaufspreis (NICHT den Marktwert für den Privatverkauf!) für folgendes Fahrzeug:
+      Marke & Modell: ${details.brand} ${details.model}
+      Erstzulassung: ${details.year}
+      Kilometerstand: ${details.mileage} km
+      Kraftstoff: ${details.fuelType}
+      Zustand: ${details.condition}
 
-      DEIN LOGIK-PROZESS (Nutze dies in deiner Thinking-Phase):
-      1. Schätze den durchschnittlichen Bruttolistenpreis (Neupreis) dieses Modells im Jahr ${details.year}.
-      2. Wende Standard-Wertverlust an: ~25% im 1. Jahr, danach ~12-15% p.a.
-      3. Korrigiere die Laufleistung: Basis sind 15.000 km/Jahr. Mehr- oder Minderkilometer mit ca. 0,05-0,10€ verrechnen.
-      4. Zustands-Faktor: Excellent (+5%), Good (0%), Fair (-15%), Poor (-30% oder mehr).
-      5. Händler-Marge: Ziehe 15-20% vom geschätzten Marktwert ab, um den HÄNDLER-ANKAUFSPREIS zu erhalten.
+      WICHTIGE PREIS-GUIDELINES:
+      - Du berechnest den Preis, den ein gewerblicher Händler bereit ist zu zahlen (Sofort-Ankaufspreis).
+      - Dieser Preis liegt zwingend ca. 15% bis 25% UNTER dem Marktwert für Privatverkäufe (wegen Händlermarge, Gewährleistungsrisiko, Aufbereitung und Standkosten).
+      - Berücksichtige den Wertverlust basierend auf Alter, Laufleistung und Zustand.
+      - Das Ziel ist ein realistisches Angebot für einen schnellen "Ankauf ohne Stress".
 
-      Antworte NUR im JSON-Format mit:
-      - estimatedPrice (Zahl, EUR)
-      - explanation (Deutsch, max. 2 Sätze, nenne konkrete Gründe wie KM-Stand oder Markttrend)
-      - marketTrend (Up, Down, Stable)`;
+      ANFORDERUNG AN DIE 'explanation':
+      - Erstelle einen rein verkaufsfördernden Marketing-Text auf Deutsch.
+      - Erwähne NICHT die prozentualen Abzüge oder Margen.
+      - Hebe hervor, dass dieser Preis ein faires, sofortiges Angebot für den Direkt-Verkauf darstellt.
+      - Betone die Zeitersparnis und Sicherheit im Vergleich zum mühsamen Privatverkauf.
+
+      Antworte NUR im JSON-Format:
+      - estimatedPrice: Der berechnete Händler-Ankaufspreis als Zahl.
+      - priceRange: { min: Zahl, max: Zahl } (Spanne ca. +/- 5% um den Ankaufspreis).
+      - explanation: Der Marketing-Text.
+      - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
       config: {
-        thinkingConfig: { thinkingBudget: 4096 }, // Increased budget for complex math logic
+        temperature: 0.1, // Lower temperature for more consistency
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
           properties: {
-            estimatedPrice: { 
-              type: Type.NUMBER,
-              description: "Der berechnete Händler-Ankaufspreis in Euro."
+            estimatedPrice: { type: Type.NUMBER },
+            priceRange: {
+              type: Type.OBJECT,
+              properties: {
+                min: { type: Type.NUMBER },
+                max: { type: Type.NUMBER }
+              },
+              required: ["min", "max"]
             },
-            explanation: { 
-              type: Type.STRING,
-              description: "Fachliche Begründung des Preises auf Deutsch."
-            },
+            explanation: { type: Type.STRING },
             marketTrend: { 
               type: Type.STRING,
-              enum: ['Up', 'Down', 'Stable'],
-              description: "Markttendenz."
+              enum: ['Up', 'Down', 'Stable']
             }
           },
-          required: ["estimatedPrice", "explanation", "marketTrend"]
+          required: ["estimatedPrice", "priceRange", "explanation", "marketTrend"]
         }
       }
     });
