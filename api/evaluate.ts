@@ -26,10 +26,11 @@ export default async function handler(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Berechne einen sicheren Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}).
-      LOGIK: Nutze die degressive Marge (22% bei Kleinwagen bis 8% bei Luxuswagen). 
-      Die 'explanation' muss reiner Marketing-Text sein: Fokus auf Komfort und Sicherheit, keine technischen Details oder Abzüge erwähnen.
-      Antworte als JSON mit 'estimatedPrice', 'explanation' (deutsch) und 'marketTrend'.`;
+    const prompt = `Berechne Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}).
+      Zustand: ${details.condition}.
+      LOGIK: Berücksichtige hohe Abzüge für Fair/Poor Zustände. Nutze degressive Marge (22% bis 8%).
+      Marketing-Text: Fokus auf Sicherheit und "Kauf wie gesehen".
+      Antworte als JSON mit 'estimatedPrice', 'priceRange' {min, max}, 'explanation' und 'marketTrend'.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -42,13 +43,21 @@ export default async function handler(req: Request) {
           type: Type.OBJECT,
           properties: {
             estimatedPrice: { type: Type.NUMBER },
+            priceRange: {
+              type: Type.OBJECT,
+              properties: {
+                min: { type: Type.NUMBER },
+                max: { type: Type.NUMBER }
+              },
+              required: ["min", "max"]
+            },
             explanation: { type: Type.STRING },
             marketTrend: { 
               type: Type.STRING, 
               enum: ['Up', 'Down', 'Stable'] 
             }
           },
-          required: ["estimatedPrice", "explanation", "marketTrend"]
+          required: ["estimatedPrice", "priceRange", "explanation", "marketTrend"]
         }
       }
     });
@@ -58,7 +67,7 @@ export default async function handler(req: Request) {
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: 'Bewertung fehlgeschlagen: ' + error.message }), { 
+    return new Response(JSON.stringify({ error: 'Bewertung fehlgeschlagen' }), { 
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

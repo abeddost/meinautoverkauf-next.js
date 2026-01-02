@@ -43,9 +43,9 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
             </div>
             
             <div className="mb-8">
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Gültigkeits-Zeitraum:</span>
-              <div className="text-sm font-black text-slate-300">
-                Verfügbar bis {new Date(Date.now() + 86400000).toLocaleDateString('de-DE')}
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1 text-center">Geschätzte Preisspanne:</span>
+              <div className="text-lg font-black text-slate-300">
+                {formattedMin} — {formattedMax}
               </div>
             </div>
             
@@ -75,19 +75,6 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                 </p>
               </div>
 
-              {valuation.sources && valuation.sources.length > 0 && (
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Aktuelle Markteinsicht</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {valuation.sources.slice(0, 3).map((source, idx) => (
-                      <div key={idx} className="bg-slate-100 text-slate-600 px-3 py-1.5 rounded-lg text-[10px] font-bold border border-slate-200">
-                        Markt-Referenz geprüft ✓
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest px-2 pt-2">
                 <svg className="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m18.236 0a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 21.359c-1.39-1.365-2.76-2.69-4.04-3.89m8.08 0c-1.28 1.2-2.65 2.525-4.04 3.89" />
@@ -100,9 +87,12 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
           <div className="grid grid-cols-1 gap-10">
             <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group">
                <div className="flex justify-between items-center mb-8">
-                 <h4 className="font-bold text-slate-400 uppercase text-xs tracking-[0.2em]">Zusammenfassung</h4>
-                 <div className="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider bg-slate-700 text-white">
-                   Status: Sofort verfügbar
+                 <h4 className="font-bold text-slate-400 uppercase text-xs tracking-[0.2em]">Fahrzeug-Check</h4>
+                 <div className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider ${
+                   valuation.marketTrend === 'Up' ? 'bg-green-600 text-white' : 
+                   valuation.marketTrend === 'Down' ? 'bg-red-600 text-white' : 'bg-slate-700 text-white'
+                 }`}>
+                   Markt: {valuation.marketTrend === 'Up' ? 'Steigend' : valuation.marketTrend === 'Down' ? 'Sinkend' : 'Stabil'}
                  </div>
                </div>
                
@@ -110,8 +100,8 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                   {[
                     { label: "Modell", val: `${carDetails.brand} ${carDetails.model}` },
                     { label: "Laufleistung", val: `${parseInt(carDetails.mileage).toLocaleString('de-DE')} km` },
-                    { label: "Baujahr", val: carDetails.year },
-                    { label: "Vorteil", val: "Sofortige Auszahlung" }
+                    { label: "Zustand", val: carDetails.condition === 'Excellent' ? 'Wie neu' : carDetails.condition === 'Good' ? 'Gepflegt' : carDetails.condition === 'Fair' ? 'Mängel' : 'Defekt' },
+                    { label: "Garantie", val: "Preis gesichert" }
                   ].map((row, i) => (
                     <div key={i} className="flex flex-col border-b border-slate-200 pb-2">
                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{row.label}</span>

@@ -13,25 +13,27 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
     const ai = new GoogleGenAI({ apiKey });
     
     const prompt = `Handel als erfahrener KFZ-Einkaufsdirektor. 
-      ZIEL: Berechne einen Ankaufspreis, der für den Händler profitabel ist, aber bei teuren Autos marktgerecht bleibt.
+      ZIEL: Berechne einen Ankaufspreis unter Berücksichtigung des Zustands: "${details.condition}".
       
-      FAHRZEUG: ${details.brand} ${details.model}, ${details.year}, ${details.mileage} km, ${details.fuelType}, Zustand: ${details.condition}.
+      FAHRZEUG: ${details.brand} ${details.model}, ${details.year}, ${details.mileage} km, ${details.fuelType}.
       
-      LOGIK (STAFFEL-MARGE):
-      1. Suche auf mobile.de nach dem "Wettbewerbsfähigen VK" (unteres Marktviertel).
-      2. Wende folgende Abzüge auf den Wettbewerbs-VK an:
-         - Wenn VK < 15k €: 22% Marge + 1.000 € Aufbereitung.
-         - Wenn VK 15k - 45k €: 15% Marge + 1.500 € Aufbereitung.
-         - Wenn VK 45k - 100k €: 10% Marge + 2.500 € Aufbereitung.
-         - Wenn VK > 100k €: 8% Marge + 4.000 € Aufbereitung.
-      3. Das Ergebnis ist der 'estimatedPrice'.
+      ZUSTANDS-LOGIK (WICHTIG):
+      - Excellent: Marktwert (Retail) + 5%. Basis für Abzüge ist das obere Marktsegment.
+      - Good: Standard Marktwert. Basis ist der Marktschnitt.
+      - Fair: Ziehe 20% vom Marktwert ab (Reparaturstau/Mängel) BEVOR die Marge berechnet wird.
+      - Poor: Ziehe 45% vom Marktwert ab (Export/Verwertung) BEVOR die Marge berechnet wird.
+      
+      STAFFEL-MARGE (Nach Zustands-Anpassung):
+      - < 15k €: 22% Marge + 1.000 € Aufbereitung.
+      - 15k - 45k €: 15% Marge + 1.500 € Aufbereitung.
+      - 45k - 100k €: 10% Marge + 2.500 € Aufbereitung.
+      - > 100k €: 8% Marge + 4.000 € Aufbereitung.
       
       Antworte NUR im JSON-Format:
       - estimatedPrice: Der berechnete Händler-Ankaufspreis (Zahl).
-      - priceRange: { min: Zahl, max: Zahl } (Spanne +/- 3%).
-      - explanation: Ein professioneller, emotionaler Marketing-Text auf Deutsch (2-3 Sätze). 
-        Konzentriere dich auf: Stressfreier Verkauf, sofortige Sicherheit, keine Haftung und Zeitersparnis. 
-        ERWÄHNE KEINE Prozentzahlen, Margen oder technischen Abzüge.
+      - priceRange: { min: Zahl, max: Zahl } (Berechne eine Spanne von +/- 5% um den estimatedPrice).
+      - explanation: Ein professioneller, emotionaler Marketing-Text auf Deutsch. 
+        Betone bei schlechtem Zustand (Fair/Poor), dass wir das Auto "wie besehen" kaufen und der Verkäufer keine Gewährleistung übernehmen muss.
       - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({
