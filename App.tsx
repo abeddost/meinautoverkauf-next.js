@@ -43,7 +43,7 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
       <Header onLogoClick={resetApp} />
       
-      <main className="flex-grow">
+      <main className={`flex-grow ${currentStep === AppStep.VALUATION_FORM ? 'bg-brand-dark' : 'bg-gray-50'}`}>
         {currentStep === AppStep.VALUATION_FORM && (
           <div className="animate-in fade-in duration-1000">
             <Hero onValuationComplete={handleStartValuation} />

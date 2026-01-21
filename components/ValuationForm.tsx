@@ -93,7 +93,7 @@ const CONDITIONS = [
   { val: 'Poor', label: 'Defekt / Unfall (Beschädigt)' }
 ];
 
-const MATRIX_CHARS = "0101010182746395AFBECD";
+const MATRIX_CHARS = "010110010182736459ABCDEF";
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
   const [loading, setLoading] = useState(false);
@@ -135,8 +135,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
-      // Simulating a deep scan time for UX impact
-      setTimeout(() => onValuationComplete(formData, result), 8000);
+      // Extra delay to show off the scanning animation
+      setTimeout(() => onValuationComplete(formData, result), 6000);
     } catch (error: any) {
       alert("Fehler bei der Bewertung.");
       setLoading(false);
@@ -145,11 +145,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
   if (loading) {
     return (
-      <div className="bg-[#0f172a] rounded-[2.5rem] p-8 min-h-[580px] flex flex-col items-center justify-center text-white border border-white/5 relative overflow-hidden">
-        {/* Matrix Rain Background Effect */}
-        <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none overflow-hidden flex justify-around">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="flex flex-col animate-matrix-drop" style={{ animationDelay: `${Math.random() * 5}s`, animationDuration: `${3 + Math.random() * 5}s` }}>
+      <div className="bg-[#0a0f1d] rounded-[1.5rem] lg:rounded-[2.5rem] p-6 lg:p-12 min-h-[450px] lg:min-h-[580px] flex flex-col items-center justify-center text-white shadow-2xl overflow-hidden relative border border-white/5 animate-in fade-in duration-500">
+        
+        {/* Matrix Rain Effect */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none flex justify-around overflow-hidden">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div key={i} className="flex flex-col animate-matrix-drop" style={{ animationDelay: `${Math.random() * 4}s`, animationDuration: `${3 + Math.random() * 4}s` }}>
               {Array.from({ length: 40 }).map((_, j) => (
                 <span key={j} className="font-mono text-xs leading-none py-1 text-brand-orange">
                   {MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]}
@@ -159,45 +160,55 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           ))}
         </div>
 
-        {/* Pulsing Nodes Animation */}
-        <div className="relative z-10 mb-12 flex items-center justify-center">
-            {/* Outer pulsating circles */}
-            <div className="absolute w-48 h-48 rounded-full border border-brand-orange/20 animate-ping opacity-20"></div>
-            <div className="absolute w-64 h-64 rounded-full border border-brand-orange/10 animate-pulse opacity-20"></div>
+        {/* Pulsing Central Node & Scanning Effect */}
+        <div className="relative z-10 mb-8 lg:mb-12 flex items-center justify-center">
+            {/* Concentric Pulsing Rings */}
+            <div className="absolute w-32 h-32 lg:w-40 lg:h-40 rounded-full border border-brand-orange/20 animate-ping opacity-30"></div>
+            <div className="absolute w-48 h-48 lg:w-56 lg:h-56 rounded-full border border-brand-orange/10 animate-pulse opacity-20"></div>
             
-            <div className="w-40 h-40 rounded-full border-[6px] border-slate-800 flex items-center justify-center relative bg-[#0f172a]/80 backdrop-blur-sm">
-                <div className="absolute inset-[-6px] rounded-full border-[6px] border-brand-orange border-t-transparent border-r-transparent animate-spin duration-[1.5s]"></div>
+            <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center relative shadow-[0_0_40px_rgba(249,115,22,0.15)]">
+                {/* Laser scan line inside the node */}
+                <div className="absolute inset-2 border-t border-brand-orange animate-scan-line opacity-50 z-20"></div>
                 
-                {/* Visualizing Data Complexity (Internal Pulsing Node) */}
-                <div className="flex flex-col gap-1 items-center animate-pulse">
-                    <div className="w-12 h-2.5 bg-brand-orange rounded-sm skew-x-[-20deg] shadow-[0_0_15px_rgba(249,115,22,0.5)]"></div>
-                    <div className="w-12 h-2.5 bg-brand-orange rounded-sm skew-x-[-20deg] opacity-70"></div>
-                    <div className="w-12 h-2.5 bg-brand-orange rounded-sm skew-x-[-20deg] opacity-40"></div>
+                {/* Dynamic Data Stream Icon */}
+                <div className="flex flex-col gap-1 items-center">
+                   <div className="w-8 lg:w-10 h-1 bg-brand-orange/40 rounded-full"></div>
+                   <div className="w-5 lg:w-6 h-1 bg-brand-orange/60 rounded-full"></div>
+                   <div className="w-10 lg:w-12 h-1 bg-brand-orange rounded-full shadow-[0_0_10px_#f97316]"></div>
+                   <div className="w-6 lg:w-8 h-1 bg-brand-orange/60 rounded-full"></div>
                 </div>
             </div>
         </div>
 
-        {/* Text Group */}
-        <div className="text-center z-10 space-y-3 mb-12">
-          <h2 className="text-4xl font-black tracking-tight drop-shadow-lg">Finalisierung...</h2>
+        {/* Status Text Area */}
+        <div className="text-center z-10 space-y-3 lg:space-y-4 mb-8 lg:mb-10">
+          <h3 className="text-2xl lg:text-3xl font-black tracking-tight text-white drop-shadow-md uppercase">Berechne Marktwert</h3>
           <div className="flex flex-col items-center gap-1">
-            <p className="text-brand-orange text-[10px] font-black uppercase tracking-[0.4em] animate-pulse">
-              DEEP LEARNING ANALYSE LÄUFT
-            </p>
-            <div className="h-0.5 w-12 bg-brand-orange/30 rounded-full"></div>
+             <div className="text-[9px] lg:text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] lg:tracking-[0.4em] animate-pulse">
+               Grounding Markt-Analyse
+             </div>
+             <div className="flex gap-1">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="w-1 h-1 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: `${i * 0.2}s` }}></div>
+                ))}
+             </div>
           </div>
         </div>
 
-        {/* Detailed Progress Tracker */}
-        <div className="w-full max-w-sm space-y-4 z-10">
-          <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden relative shadow-inner">
-            <div className="absolute inset-y-0 left-0 bg-brand-orange rounded-full shadow-[0_0_10px_rgba(249,115,22,0.8)] transition-all duration-300 animate-scan-progress"></div>
+        {/* Complex Progress Tracker */}
+        <div className="w-full max-w-xs lg:max-w-sm space-y-3 lg:space-y-4 z-10">
+          <div className="flex justify-between items-end mb-1">
+            <span className="text-[9px] lg:text-[10px] font-black text-slate-500 uppercase tracking-widest">Dauer: ca. 10-20 Sekunden</span>
+            <span className="text-[9px] lg:text-[10px] font-black text-brand-orange">ANALYSE...</span>
           </div>
           
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-[11px] text-slate-300 font-bold uppercase tracking-widest text-center px-4 leading-relaxed">
-              Dies kann 10-20 Sekunden dauern. <br/>
-              <span className="text-slate-500 italic lowercase font-medium tracking-normal">Wir bitten um ein wenig Geduld...</span>
+          <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5 p-0.5">
+            <div className="h-full bg-brand-orange rounded-full shadow-[0_0_10px_#f97316] animate-complex-progress transition-all duration-300 ease-out"></div>
+          </div>
+          
+          <div className="flex justify-center">
+            <p className="text-[10px] lg:text-[11px] text-slate-400 font-bold uppercase tracking-widest px-6 lg:px-8 py-2 bg-white/5 rounded-lg border border-white/10 text-center leading-relaxed">
+              Bitte haben Sie einen Moment Geduld. <br/> Wir ermitteln den Bestpreis.
             </p>
           </div>
         </div>
@@ -208,146 +219,172 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             50% { opacity: 1; }
             100% { transform: translateY(100%); opacity: 0; }
           }
-          @keyframes scan-progress {
+          @keyframes scan-line {
+            0% { transform: translateY(-15px); lg:transform: translateY(-20px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(15px); lg:transform: translateY(20px); opacity: 0; }
+          }
+          @keyframes complex-progress {
             0% { width: 0%; }
-            20% { width: 15%; }
-            45% { width: 40%; }
-            60% { width: 42%; }
-            80% { width: 85%; }
-            100% { width: 95%; }
+            15% { width: 10%; }
+            30% { width: 45%; }
+            45% { width: 48%; }
+            60% { width: 75%; }
+            85% { width: 92%; }
+            100% { width: 98%; }
           }
-          .animate-matrix-drop {
-            animation-name: matrix-drop;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-          }
-          .animate-scan-progress {
-            animation-name: scan-progress;
-            animation-duration: 8s;
-            animation-fill-mode: forwards;
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          }
+          .animate-matrix-drop { animation-name: matrix-drop; animation-timing-function: linear; animation-iteration-count: infinite; }
+          .animate-scan-line { animation-name: scan-line; animation-duration: 1.5s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+          .animate-complex-progress { animation-name: complex-progress; animation-duration: 5.5s; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(0.1, 0, 0.4, 1); }
         `}</style>
       </div>
     );
   }
 
-  const Dropdown = ({ label, name, value, options, placeholder = "Wählen..." }: any) => (
-    <div className="flex flex-col gap-0.5">
-      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{label}</label>
-      <div className="relative">
-        <select
-          name={name}
-          value={value}
-          onChange={handleSelectChange}
-          className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold text-[#004d7c] appearance-none outline-none focus:border-brand-orange transition-colors"
-        >
-          <option value="" disabled>{placeholder}</option>
-          {options.map((opt: any) => {
-            const isObj = typeof opt === 'object';
-            const val = isObj ? opt.val : opt;
-            const labelStr = isObj ? opt.label : opt;
-            return <option key={val} value={val}>{labelStr}</option>
-          })}
-        </select>
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M19 9l-7 7-7-7" /></svg>
-        </div>
-      </div>
-    </div>
+  const StepLabel = ({ label }: { label: string }) => (
+    <label className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">{label}</label>
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-xl overflow-hidden text-brand-dark border border-slate-100 flex flex-col w-full max-w-2xl mx-auto min-h-[340px] lg:min-h-[580px]">
-      <div className="bg-slate-50 border-b border-slate-100 px-4 py-2.5 flex items-center justify-between">
-        <div className="flex flex-col gap-0.5">
-          <div className="flex items-center gap-2">
-            <span className="bg-brand-orange text-white text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-widest">Schritt {currentPage}/4</span>
-            <span className="text-[9px] font-bold text-slate-400 uppercase">
-              {currentPage === 1 && "Fahrzeugwahl"} {currentPage === 2 && "Technik"} {currentPage === 3 && "Zustand"} {currentPage === 4 && "Check"}
-            </span>
+    <div className="bg-white rounded-[1.5rem] lg:rounded-[2.5rem] shadow-[0_16px_32px_-8px_rgba(0,0,0,0.15)] lg:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] overflow-hidden text-brand-dark flex flex-col w-full border border-white/5">
+      {/* Form Header */}
+      <div className="px-6 py-4 lg:px-8 lg:py-6 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-3">
+             <div className="bg-brand-orange text-white text-[9px] lg:text-[10px] font-black px-2 py-0.5 lg:px-2.5 lg:py-1 rounded lg:rounded-lg uppercase tracking-tight">
+               Schritt {currentPage}/4
+             </div>
+             <span className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest">
+               {currentPage === 1 ? "Fahrzeugwahl" : currentPage === 2 ? "Technik" : currentPage === 3 ? "Zustand" : "Check"}
+             </span>
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-1 mt-1">
             {[1, 2, 3, 4].map(p => (
-              <div key={p} className={`h-1 rounded-full transition-all duration-500 ${currentPage >= p ? 'w-5 lg:w-16 bg-brand-orange' : 'w-2 bg-slate-200'}`}></div>
+              <div key={p} className={`h-1 lg:h-1.5 rounded-full transition-all duration-500 ${currentPage >= p ? 'w-8 lg:w-10 bg-brand-orange' : 'w-1.5 lg:w-2 bg-slate-200'}`}></div>
             ))}
           </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-4 lg:p-8 flex-grow flex flex-col justify-between gap-3">
-        <div className="space-y-3 lg:space-y-6">
+      <form onSubmit={handleSubmit} className="p-6 lg:p-10 space-y-5 lg:space-y-8 flex-grow flex flex-col justify-between">
+        <div className="space-y-4 lg:space-y-6">
           {currentPage === 1 && (
-            <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Marke" name="brand" value={formData.brand} options={Object.keys(BRAND_DATA).sort()} />
-              <Dropdown label="Modell" name="model" value={formData.model} options={formData.brand ? BRAND_DATA[formData.brand].sort() : []} placeholder={formData.brand ? "Modell..." : "Wähle zuerst die Marke"} />
-              <Dropdown label="Erstzulassung" name="year" value={formData.year} options={YEARS} />
-            </div>
-          )}
-          {currentPage === 2 && (
-            <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Motorleistung (Bereich)" name="power" value={formData.power} options={POWER_RANGES} />
-              <Dropdown label="Bauform" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
-              <Dropdown label="Getriebe" name="transmission" value={formData.transmission} options={TRANSMISSIONS} />
-            </div>
-          )}
-          {currentPage === 3 && (
-            <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Kilometerstand" name="mileage" value={formData.mileage} options={MILEAGE_OPTIONS} />
-              <Dropdown label="Kraftstoff" name="fuelType" value={formData.fuelType} options={FUELS} />
-              <Dropdown label="Gesamtzustand" name="condition" value={formData.condition} options={CONDITIONS} />
-            </div>
-          )}
-          {currentPage === 4 && (
-            <div className="space-y-6 animate-in fade-in slide-in-from-right-2">
-              <div className="flex flex-col gap-0.5">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Fahrzeug-Identifizierungsnummer (FIN) - Optional</label>
-                <input 
-                  type="text"
-                  name="vin"
-                  placeholder="Z.B. WVWZZZ..."
-                  value={formData.vin}
-                  onChange={handleSelectChange}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-colors"
-                />
-                <p className="text-[9px] text-slate-400 font-medium italic mt-1">Die FIN hilft uns bei einer noch genaueren Wertermittlung vor Ort, hat aber keinen Einfluss auf die KI-Berechnung.</p>
+            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+              <div>
+                <StepLabel label="Automarke" />
+                <select name="brand" value={formData.brand} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Bitte wählen...</option>
+                  {Object.keys(BRAND_DATA).sort().map(b => <option key={b} value={b}>{b}</option>)}
+                </select>
               </div>
+              <div>
+                <StepLabel label="Modellreihe" />
+                <select name="model" value={formData.model} onChange={handleSelectChange} disabled={!formData.brand} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none disabled:opacity-50 cursor-pointer text-sm lg:text-base">
+                  <option value="">{formData.brand ? "Modell wählen..." : "Wähle zuerst die Marke"}</option>
+                  {formData.brand && BRAND_DATA[formData.brand].map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+              </div>
+              <div>
+                <StepLabel label="Erstzulassung" />
+                <select name="year" value={formData.year} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                </select>
+              </div>
+            </div>
+          )}
 
-              <div className="text-center space-y-4 py-4">
-                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-brand-orange shadow-inner">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          {currentPage === 2 && (
+            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+              <div>
+                <StepLabel label="Motorleistung" />
+                <select name="power" value={formData.power} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  {POWER_RANGES.map(p => <option key={p.val} value={p.val}>{p.label}</option>)}
+                </select>
+              </div>
+              <div>
+                <StepLabel label="Karosserieform" />
+                <select name="bodyType" value={formData.bodyType} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  {BODY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
+              </div>
+              <div>
+                <StepLabel label="Getriebeart" />
+                <select name="transmission" value={formData.transmission} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
+              </div>
+            </div>
+          )}
+
+          {currentPage === 3 && (
+            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+              <div>
+                <StepLabel label="Laufleistung" />
+                <select name="mileage" value={formData.mileage} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  {MILEAGE_OPTIONS.map(o => <option key={o.val} value={o.val}>{o.label}</option>)}
+                </select>
+              </div>
+              <div>
+                <StepLabel label="Antrieb / Kraftstoff" />
+                <select name="fuelType" value={formData.fuelType} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  {FUELS.map(f => <option key={f} value={f}>{f}</option>)}
+                </select>
+              </div>
+              <div>
+                <StepLabel label="Fahrzeugzustand" />
+                <div className="grid grid-cols-2 gap-2.5 lg:gap-3">
+                  {CONDITIONS.map(c => (
+                    <button 
+                      key={c.val}
+                      type="button"
+                      onClick={() => setFormData(p => ({ ...p, condition: c.val as any }))}
+                      className={`py-2.5 lg:py-3.5 rounded-lg lg:rounded-xl font-bold text-xs lg:text-sm transition-all border-2 ${formData.condition === c.val ? 'bg-orange-50 border-brand-orange text-brand-orange' : 'bg-slate-50 border-slate-100 text-slate-500'}`}
+                    >
+                      {c.label.split(' (')[0]}
+                    </button>
+                  ))}
                 </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-black text-brand-dark uppercase tracking-tight">Eingaben geprüft</p>
-                  <p className="text-[11px] lg:text-sm text-slate-500 font-bold max-w-[200px] mx-auto leading-tight">Berechne jetzt den Bestpreis für Ihren {formData.brand} {formData.model}.</p>
-                </div>
+              </div>
+            </div>
+          )}
+
+          {currentPage === 4 && (
+            <div className="space-y-6 lg:space-y-8 text-center animate-in fade-in slide-in-from-right-2 duration-300">
+              <div className="w-20 h-20 lg:w-24 lg:h-24 bg-orange-50 rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto text-brand-orange shadow-inner">
+                <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="space-y-2 lg:space-y-3">
+                <h4 className="text-xl lg:text-2xl font-black">Fast geschafft!</h4>
+                <p className="text-xs lg:text-base text-slate-500 font-bold leading-relaxed px-4">
+                  Wir sind bereit für die Wertermittlung Ihres <span className="text-brand-dark">{formData.brand} {formData.model}</span>.
+                </p>
               </div>
             </div>
           )}
         </div>
 
-        <div className="flex items-center gap-2 mt-2">
+        <div className="pt-4 lg:pt-6 flex flex-col gap-3 lg:gap-4">
+          <button 
+            type={currentPage === 4 ? "submit" : "button"} 
+            onClick={currentPage === 4 ? undefined : nextPage}
+            disabled={currentPage === 1 && (!formData.brand || !formData.model)}
+            className="w-full bg-gradient-to-b from-[#ff8437] to-[#f97316] text-white py-4 lg:py-5 rounded-lg lg:rounded-2xl font-black text-base lg:text-xl shadow-[0_8px_16px_-4px_rgba(249,115,22,0.3)] lg:shadow-[0_12px_24px_-8px_rgba(249,115,22,0.4)] hover:shadow-[0_16px_32px_-8px_rgba(249,115,22,0.5)] active:scale-[0.97] transition-all disabled:opacity-50"
+          >
+            {currentPage === 4 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}
+          </button>
+          
           {currentPage > 1 && (
-            <button type="button" onClick={prevPage} className="w-1/3 h-[42px] lg:h-[60px] rounded-lg border border-slate-200 text-[#004d7c] font-black text-xs lg:text-base flex items-center justify-center gap-1 active:scale-95 transition-all">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M15 19l-7-7 7-7" /></svg>
-              Zurück
-            </button>
-          )}
-          {currentPage < 4 ? (
             <button 
               type="button" 
-              disabled={currentPage === 1 && (!formData.brand || !formData.model)} 
-              onClick={nextPage} 
-              className="flex-grow h-[46px] lg:h-[64px] bg-gradient-to-b from-[#ff8437] to-[#f97316] hover:from-[#f97316] hover:to-[#ea580c] disabled:opacity-50 text-white rounded-lg font-bold text-xs lg:text-xl transition-all active:scale-95 shadow-md shadow-orange-900/10"
+              onClick={prevPage}
+              className="w-full text-slate-400 font-bold text-xs lg:text-sm hover:text-slate-600 transition-colors flex items-center justify-center gap-2"
             >
-              Kostenlosen Verkaufspreis erhalten
-            </button>
-          ) : (
-            <button 
-              type="submit" 
-              className="flex-grow h-[46px] lg:h-[64px] bg-gradient-to-b from-[#ff8437] to-[#f97316] hover:from-[#f97316] hover:to-[#ea580c] text-white rounded-lg font-bold text-xs lg:text-xl shadow-md shadow-orange-900/10 active:scale-95 transition-all"
-            >
-              Kostenlosen Verkaufspreis erhalten
+              <svg className="w-3.5 h-3.5 lg:w-4 lg:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7" />
+              </svg>
+              Zurück
             </button>
           )}
         </div>
