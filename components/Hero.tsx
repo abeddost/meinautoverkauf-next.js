@@ -49,15 +49,15 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
         </div>
       </div>
 
-      {/* --- MOBILE VIEW (Ultra Compact) --- */}
+      {/* --- MOBILE VIEW --- */}
       <div className="lg:hidden flex flex-col pt-4 pb-6">
         <div className="container mx-auto px-4 z-10">
           <div className="text-center mb-3">
             <h1 className="text-lg font-black leading-tight tracking-tight text-brand-orange">
-              Verkaufe dein Auto – Schnell, fair & ohne Stress.
+              Gratis Fahrzeug-Bewertung
             </h1>
             <p className="text-xs font-bold text-slate-300 mt-0.5">
-              Gratis Fahrzeug-Bewertung
+              Verkaufe dein Auto – Schnell, fair & ohne Stress.
             </p>
           </div>
           <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
