@@ -29,7 +29,7 @@ const TrustElements: React.FC = () => {
           {[
             {
               name: "Sebastian K.",
-              comment: "Ich hatte Tränen in den Augen, als ich meinen geliebten Oldtimer verkaufte. Das Team von MeinAutoPreis24 war so einfühlsam und hat einen Wahnsinnspreis gezahlt.",
+              comment: "Ich hatte Tränen in den Augen, als ich meinen geliebten Oldtimer verkaufte. Das Team von Meinautoverkauf war so einfühlsam und hat einen Wahnsinnspreis gezahlt.",
               rating: 5,
               date: "vor 2 Tagen"
             },

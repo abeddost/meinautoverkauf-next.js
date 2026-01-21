@@ -5,6 +5,9 @@ export interface CarDetails {
   year: string;
   mileage: string;
   fuelType: string;
+  transmission: string;
+  power: string;
+  bodyType: string;
   condition: 'Excellent' | 'Good' | 'Fair' | 'Poor';
   images?: string[];
 }

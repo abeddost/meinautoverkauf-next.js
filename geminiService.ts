@@ -13,26 +13,27 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
     const ai = new GoogleGenAI({ apiKey });
     
     const prompt = `Handel als KFZ-Einkaufsdirektor eines Premium-Ankaufportals. 
-      ZIEL: Berechne den Händler-Ankaufspreis für einen "${details.condition}" Zustand und generiere ein überzeugendes Verkaufsargument.
+      ZIEL: Berechne den Händler-Ankaufspreis für ein Fahrzeug mit folgenden Daten:
       
-      FAHRZEUG: ${details.brand} ${details.model}, ${details.year}, ${details.mileage} km.
+      FAHRZEUG: 
+      - Marke/Modell: ${details.brand} ${details.model}
+      - Karosserie: ${details.bodyType}
+      - Erstzulassung: ${details.year}
+      - Kilometerstand: ${details.mileage} km
+      - Kraftstoff: ${details.fuelType}
+      - Getriebe: ${details.transmission}
+      - Leistung: ${details.power} PS
+      - Zustand: ${details.condition}
       
       BEWERTUNGS-LOGIK:
-      1. Suche aktuellen Marktpreis (Retail).
-      2. Abzug für Zustand: Excellent (+5%), Good (0%), Fair (-20%), Poor (-45%).
-      3. Abzug Händlermarge & Risiko:
-         - < 15k €: 22% + 1.000€
-         - 15k-45k €: 15% + 1.500€
-         - 45k-100k €: 10% + 2.500€
-         - > 100k €: 8% + 4.000€
+      1. Nutze Google Search Grounding für aktuelle Marktpreise (Mobile.de/Autoscout24).
+      2. Berücksichtige Wertverlust für Getriebeart und Motorleistung.
+      3. Abzug Händlermarge & Risiko: Ca. 15-20% vom Marktwert.
       
       AUSGABE-FORMAT (JSON):
       - estimatedPrice: Finaler Preis (Zahl).
       - priceRange: { min: Zahl, max: Zahl } (+/- 5%).
-      - explanation: Ein überzeugender Marketing-Text (25-35 Wörter). 
-        Fokus: Warum ist der Verkauf an UNS besser als privat? 
-        Punkte: "Verkauf wie gesehen" (keine Gewährleistung für den Verkäufer), sofortige Echtzeit-Überweisung, kein Stress mit 'Letzte Preis'-Anfragen, volle Rechtssicherheit. 
-        Sprich den Nutzer direkt an (Sie/Ihr).
+      - explanation: Ein Text (30 Wörter) an den Kunden, warum UNSER Angebot fair ist (Sofortankauf, keine Haftung, Bargeld).
       - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({

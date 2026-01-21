@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                 <path d="M20 65L35 45H65L80 65V75H20V65Z" fill="#f97316"/>
               </svg>
               <span className="text-white text-2xl font-black uppercase tracking-tighter">
-                MeinAutoPreis<span className="text-brand-orange">24</span>
+                MeinAuto<span className="text-brand-orange">verkauf</span>
               </span>
             </div>
             <p className="max-w-md mb-10 leading-relaxed text-lg text-slate-300">
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-12 border-t border-white/5 text-xs font-bold text-center tracking-[0.2em] uppercase opacity-40">
-          &copy; {new Date().getFullYear()} MeinAutoPreis24.de — Echte Preise, echtes Vertrauen.
+          &copy; {new Date().getFullYear()} Meinautoverkauf.de — Echte Preise, echtes Vertrauen.
         </div>
       </div>
     </footer>
