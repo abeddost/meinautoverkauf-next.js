@@ -32,16 +32,18 @@ const BRAND_DATA: Record<string, string[]> = {
   'Dacia': ['Sandero', 'Duster', 'Jogger', 'Spring']
 };
 
-const VARIANTS: Record<string, string[]> = {
-  'default': ['Standard', 'Business Edition', 'Sport Line', 'Luxury', 'Einstiegsmodell', 'Highline', 'Advanced']
-};
-
 const BODY_TYPES = ['Limousine', 'Kombi', 'SUV / Geländewagen', 'Kleinwagen', 'Cabrio', 'Coupé', 'Van'];
 const FUELS = ['Benzin', 'Diesel', 'Elektro', 'Hybrid'];
 const TRANSMISSIONS = ['Manuelles Getriebe', 'Automatikgetriebe'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
 const MILEAGE_OPTIONS = Array.from({ length: 21 }, (_, i) => (i * 10000).toString());
 const POWER_OPTIONS = ['60', '75', '90', '110', '130', '150', '170', '190', '210', '250', '300', '400', '500'];
+const CONDITIONS = [
+  { val: 'Excellent', label: 'Neuwertig / Top' },
+  { val: 'Good', label: 'Gepflegt / Normal' },
+  { val: 'Fair', label: 'Mängel / Gebraucht' },
+  { val: 'Poor', label: 'Defekt / Unfall' }
+];
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
   const [loading, setLoading] = useState(false);
@@ -49,7 +51,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const [formData, setFormData] = useState<CarDetails>({
     brand: '',
     model: '',
-    variant: '',
     year: '2019',
     mileage: '70000',
     fuelType: 'Benzin',
@@ -64,15 +65,14 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     setFormData(prev => ({ 
       ...prev, 
       [name]: value,
-      ...(name === 'brand' ? { model: '', variant: '' } : {}),
-      ...(name === 'model' ? { variant: '' } : {})
+      ...(name === 'brand' ? { model: '' } : {})
     }));
   };
 
   const nextPage = () => {
-    if (currentPage === 1 && (!formData.brand || !formData.model || !formData.year)) return;
-    if (currentPage === 2 && (!formData.bodyType || !formData.fuelType)) return;
-    if (currentPage === 3 && (!formData.power || !formData.mileage)) return;
+    if (currentPage === 1 && (!formData.brand || !formData.model || !formData.bodyType)) return;
+    if (currentPage === 2 && (!formData.fuelType || !formData.transmission || !formData.power)) return;
+    if (currentPage === 3 && (!formData.year || !formData.mileage || !formData.condition)) return;
     setCurrentPage(prev => (prev < 4 ? (prev + 1) as FormPage : prev));
   };
 
@@ -131,7 +131,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           <div className="flex items-center gap-2">
             <span className="bg-brand-orange text-white text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-widest">Schritt {currentPage}/4</span>
             <span className="text-[9px] font-bold text-slate-400 uppercase">
-              {currentPage === 1 && "Modell"} {currentPage === 2 && "Variante"} {currentPage === 3 && "Technik"} {currentPage === 4 && "Check"}
+              {currentPage === 1 && "Fahrzeug"} {currentPage === 2 && "Technik"} {currentPage === 3 && "Zustand"} {currentPage === 4 && "Check"}
             </span>
           </div>
           <div className="flex gap-1">
@@ -148,21 +148,21 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
               <Dropdown label="Marke" name="brand" value={formData.brand} options={Object.keys(BRAND_DATA)} />
               <Dropdown label="Modell" name="model" value={formData.model} options={formData.brand ? BRAND_DATA[formData.brand] : []} placeholder={formData.brand ? "Modell..." : "Wähle Marke"} />
-              <Dropdown label="Erstzulassung" name="year" value={formData.year} options={YEARS} />
+              <Dropdown label="Karosserie" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
             </div>
           )}
           {currentPage === 2 && (
             <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Bauform" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
-              <Dropdown label="Modellvariante" name="variant" value={formData.variant} options={VARIANTS.default} />
               <Dropdown label="Kraftstoff" name="fuelType" value={formData.fuelType} options={FUELS} />
+              <Dropdown label="Getriebe" name="transmission" value={formData.transmission} options={TRANSMISSIONS} />
+              <Dropdown label="Leistung" name="power" value={formData.power} options={POWER_OPTIONS.map(ps => ({ label: `${ps} PS`, val: ps }))} />
             </div>
           )}
           {currentPage === 3 && (
             <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Wie viel PS" name="power" value={formData.power} options={POWER_OPTIONS.map(ps => ({ label: `${ps} PS`, val: ps }))} />
+              <Dropdown label="Erstzulassung" name="year" value={formData.year} options={YEARS} />
               <Dropdown label="Kilometerstand" name="mileage" value={formData.mileage} options={MILEAGE_OPTIONS.map(km => ({ label: `${new Intl.NumberFormat('de-DE').format(parseInt(km))} km`, val: km }))} />
-              <Dropdown label="Getriebe" name="transmission" value={formData.transmission} options={TRANSMISSIONS} />
+              <Dropdown label="Optik" name="condition" value={formData.condition} options={CONDITIONS} />
             </div>
           )}
           {currentPage === 4 && (
@@ -170,7 +170,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
               <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mx-auto text-brand-orange">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
-              <p className="text-[11px] lg:text-sm text-slate-500 font-bold max-w-[180px] mx-auto leading-tight">Fast geschafft! Berechne jetzt den Bestpreis für deinen {formData.brand}.</p>
+              <p className="text-[11px] lg:text-sm text-slate-500 font-bold max-w-[180px] mx-auto leading-tight">Bereit zur kostenlosen KI-Preisermittlung für Ihren {formData.brand}.</p>
             </div>
           )}
         </div>
