@@ -54,10 +54,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
         <div className="container mx-auto px-4 z-10">
           <div className="text-center mb-3">
             <h1 className="text-lg font-black leading-tight tracking-tight text-brand-orange">
-              Gratis Fahrzeug-Bewertung
+              Verkaufe dein Auto – Schnell, fair & ohne Stress.
             </h1>
             <p className="text-xs font-bold text-slate-300 mt-0.5">
-              Verkaufe dein Auto – Schnell, fair & ohne Stress.
+              Gratis Fahrzeug-Bewertung
             </p>
           </div>
           <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">

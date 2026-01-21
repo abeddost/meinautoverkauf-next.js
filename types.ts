@@ -13,6 +13,11 @@ export interface CarDetails {
   images?: string[];
 }
 
+export interface CarSpecs {
+  variants: string[];
+  powers: string[];
+}
+
 export interface ValuationResult {
   estimatedPrice: number;
   priceRange: {

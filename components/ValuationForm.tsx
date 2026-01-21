@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { CarDetails, ValuationResult } from '../types';
+import React, { useState, useMemo, useEffect } from 'react';
+import { CarDetails, ValuationResult, CarSpecs } from '../types';
 import { getCarValuation } from '../geminiService';
 
 interface ValuationFormProps {
@@ -8,6 +8,41 @@ interface ValuationFormProps {
 }
 
 type FormPage = 1 | 2 | 3 | 4;
+
+// Local High-Speed Car Database for Automatic Detection (Expanded)
+const SPECS_DATABASE: Record<string, Record<string, CarSpecs>> = {
+  'Audi': {
+    'A1': { variants: ['Basis', 'Advanced', 'S line'], powers: ['95', '110', '150', '207'] },
+    'A3': { variants: ['Basis', 'Advanced', 'S line', 'S3', 'RS3'], powers: ['110', '116', '150', '204', '310', '400'] },
+    'A4': { variants: ['Basis', 'Advanced', 'S line', 'S4', 'RS4'], powers: ['136', '150', '163', '190', '204', '245', '265', '341', '450'] },
+    'A6': { variants: ['Basis', 'Sport', 'Design', 'S line'], powers: ['163', '204', '245', '286', '340', '600'] },
+    'Q3': { variants: ['Basis', 'Advanced', 'S line', 'RS Q3'], powers: ['150', '190', '200', '245', '400'] },
+    'Q5': { variants: ['Basis', 'Advanced', 'S line', 'SQ5'], powers: ['163', '190', '204', '265', '286', '341'] },
+  },
+  'BMW': {
+    '1er': { variants: ['Basis', 'Advantage', 'Sport Line', 'Luxury Line', 'M Sport', 'M135i'], powers: ['109', '116', '136', '140', '150', '178', '190', '306'] },
+    '3er': { variants: ['Basis', 'Advantage', 'Sport Line', 'Luxury Line', 'M Sport', 'M3'], powers: ['150', '156', '184', '190', '258', '286', '340', '374', '480', '510'] },
+    '5er': { variants: ['Basis', 'Luxury Line', 'M Sport', 'M5'], powers: ['184', '190', '197', '252', '286', '333', '340', '400', '600', '625'] },
+    'X1': { variants: ['Basis', 'xLine', 'Sport Line', 'M Sport'], powers: ['116', '136', '140', '150', '190', '211', '231'] },
+    'X3': { variants: ['Basis', 'xLine', 'M Sport', 'X3 M'], powers: ['150', '184', '190', '245', '252', '286', '340', '360', '480', '510'] },
+  },
+  'Mercedes-Benz': {
+    'A-Klasse': { variants: ['Basis', 'Style', 'Progressive', 'AMG Line', 'AMG A35', 'AMG A45 S'], powers: ['109', '116', '136', '150', '163', '190', '218', '224', '306', '421'] },
+    'C-Klasse': { variants: ['Basis', 'Avantgarde', 'Exclusive', 'AMG Line', 'C43 AMG', 'C63 AMG'], powers: ['170', '197', '200', '204', '258', '265', '300', '408', '680'] },
+    'E-Klasse': { variants: ['Avantgarde', 'Exclusive', 'AMG Line', 'E53 AMG', 'E63 AMG'], powers: ['160', '194', '197', '245', '258', '272', '313', '330', '367', '435', '612'] },
+    'GLC': { variants: ['Basis', 'Offroad', 'AMG Line', 'GLC 43 AMG'], powers: ['163', '194', '197', '204', '245', '258', '265', '300', '306', '367', '390'] },
+  },
+  'VW': {
+    'Golf': { variants: ['Basis', 'Life', 'Style', 'R-Line', 'GTI', 'GTD', 'GTE', 'R'], powers: ['90', '110', '115', '130', '150', '200', '245', '300', '320'] },
+    'Polo': { variants: ['Basis', 'Life', 'Style', 'R-Line', 'GTI'], powers: ['80', '95', '110', '150', '207'] },
+    'Passat': { variants: ['Basis', 'Business', 'Elegance', 'R-Line', 'GTE'], powers: ['120', '122', '150', '190', '200', '218', '240', '272', '280'] },
+    'Tiguan': { variants: ['Basis', 'Life', 'Elegance', 'R-Line', 'Tiguan R'], powers: ['122', '130', '150', '190', '200', '245', '320'] },
+  },
+  'Tesla': {
+    'Model 3': { variants: ['Standard Range Plus', 'Long Range AWD', 'Performance'], powers: ['283', '325', '440', '498', '513'] },
+    'Model Y': { variants: ['Rear-Wheel Drive', 'Long Range AWD', 'Performance'], powers: ['299', '514', '534'] },
+  }
+};
 
 const BRAND_DATA: Record<string, string[]> = {
   'Abarth': ['595', '695', '124 Spider'],
@@ -44,7 +79,7 @@ const BRAND_DATA: Record<string, string[]> = {
   'Maserati': ['Ghibli', 'Levante', 'Quattroporte', 'Grecale'],
   'Mazda': ['2', '3', '6', 'CX-3', 'CX-30', 'CX-5', 'CX-60', 'MX-30', 'MX-5'],
   'McLaren': ['720S', 'Artura', 'GT'],
-  'Mercedes-Benz': ['A-Klasse', 'B-Klasse', 'C-Klasse', 'E-Klasse', 'S-Klasse', 'CLA', 'CLS', 'GLA', 'GLB', 'GLC', 'GLE', 'GLS', 'G-Klasse', 'EQA', 'EQB', 'EQC', 'EQE', 'EQS', 'V-Klasse', 'SL'],
+  'Mercedes-Benz': ['A-Klasse', 'B-Klasse', 'C-Klasse', 'E-Klasse', 'S-Klasse', 'CLA', 'GLS', 'GLA', 'GLB', 'GLC', 'GLE', 'GLS', 'G-Klasse', 'EQA', 'EQB', 'EQC', 'EQE', 'EQS', 'V-Klasse', 'SL'],
   'MG': ['MG4', 'MG5', 'ZS', 'EHS', 'Marvel R'],
   'Mini': ['One', 'Cooper', 'Cooper S', 'Countryman', 'Clubman', 'Cabrio'],
   'Mitsubishi': ['Space Star', 'ASX', 'Eclipse Cross', 'Outlander', 'L200', 'Pajero'],
@@ -68,27 +103,12 @@ const BRAND_DATA: Record<string, string[]> = {
   'VW': ['up!', 'Polo', 'Golf', 'ID.3', 'ID.4', 'ID.5', 'ID.Buzz', 'Passat', 'Arteon', 'T-Cross', 'T-Roc', 'Tiguan', 'Touareg', 'Touran', 'Sharan', 'Caddy', 'Multivan', 'Amarok']
 };
 
-const VARIANTS: Record<string, string[]> = {
-  'default': [
-    'Basis / Trend', 
-    'Business Edition', 
-    'Sport Line / R-Line', 
-    'Luxury / Elegance / L&K', 
-    'Highline / Premium', 
-    'Advanced / Comfort', 
-    'GT / RS / GTI / M-Sport', 
-    'Plug-in Hybrid', 
-    '4-Motion / Quattro / xDrive',
-    'Black Edition / Night Paket'
-  ]
-};
-
 const BODY_TYPES = ['Limousine', 'Kombi', 'SUV / Geländewagen', 'Kleinwagen', 'Cabrio', 'Coupé', 'Van', 'Pick-up'];
 const FUELS = ['Benzin', 'Diesel', 'Elektro', 'Hybrid', 'LPG / Autogas'];
 const TRANSMISSIONS = ['Manuelles Getriebe', 'Automatikgetriebe'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
 const MILEAGE_OPTIONS = Array.from({ length: 26 }, (_, i) => (i * 10000).toString());
-const POWER_OPTIONS = ['60', '75', '90', '110', '130', '150', '170', '190', '210', '250', '300', '350', '400', '450', '500', '600+'];
+
 const CONDITIONS = [
   { val: 'Excellent', label: 'Neuwertig / Top (Keine Kratzer)' },
   { val: 'Good', label: 'Gepflegt / Normal (Gebrauchspuren)' },
@@ -107,18 +127,45 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     mileage: '70000',
     fuelType: 'Benzin',
     transmission: 'Automatikgetriebe',
-    power: '150',
+    power: '',
     bodyType: 'Limousine',
     condition: 'Good'
   });
+
+  // Dynamic Spec Discovery (Instant Local Lookup)
+  const currentSpecs = useMemo(() => {
+    if (formData.brand && formData.model && SPECS_DATABASE[formData.brand]?.[formData.model]) {
+      return SPECS_DATABASE[formData.brand][formData.model];
+    }
+    // Generic high-quality fallback based on Brand
+    let baseVariants = ['Basis / Trend', 'Business Edition', 'Highline / Premium', 'Advanced / Comfort'];
+    if (['Audi', 'BMW', 'Mercedes-Benz', 'Porsche'].includes(formData.brand)) {
+      baseVariants = ['Basis', 'Sport Paket', 'Premium / Luxury', 'Performance / RS / AMG'];
+    }
+    
+    return {
+      variants: baseVariants,
+      powers: ['60', '75', '90', '110', '130', '150', '170', '190', '210', '250', '300', '400', '500+']
+    };
+  }, [formData.brand, formData.model]);
+
+  // Update dependent fields automatically when car changes
+  useEffect(() => {
+    if (currentSpecs) {
+      setFormData(prev => ({
+        ...prev,
+        variant: currentSpecs.variants.includes(prev.variant) ? prev.variant : currentSpecs.variants[0],
+        power: currentSpecs.powers.includes(prev.power) ? prev.power : currentSpecs.powers[0]
+      }));
+    }
+  }, [currentSpecs]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ 
       ...prev, 
       [name]: value,
-      ...(name === 'brand' ? { model: '', variant: '' } : {}),
-      ...(name === 'model' ? { variant: '' } : {})
+      ...(name === 'brand' ? { model: '', variant: '', power: '' } : {})
     }));
   };
 
@@ -207,8 +254,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
           {currentPage === 2 && (
             <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Modellvariante / Trim" name="variant" value={formData.variant} options={VARIANTS.default} />
-              <Dropdown label="Wie viel PS" name="power" value={formData.power} options={POWER_OPTIONS.map(ps => ({ label: `${ps} PS`, val: ps }))} />
+              <Dropdown label="Modellvariante / Trim" name="variant" value={formData.variant} options={currentSpecs.variants} />
+              <Dropdown label="Wie viel PS" name="power" value={formData.power} options={currentSpecs.powers.map(ps => ({ label: `${ps} PS`, val: ps }))} />
               <Dropdown label="Bauform" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
             </div>
           )}
