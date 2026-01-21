@@ -54,19 +54,19 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
         <div className="container mx-auto px-4 z-10">
           <div className="text-center mb-3">
             <h1 className="text-lg font-black leading-tight tracking-tight text-brand-orange">
-              Gratis Fahrzeug-Bewertung
+              Verkaufe dein Auto sicher, schnell und zum fairen Preis
             </h1>
-            <p className="text-xs font-bold text-slate-300 mt-0.5">
-              Verkaufe dein Auto – Schnell, fair & ohne Stress.
+            <p className="text-xs font-bold text-slate-300 mt-1 max-w-[280px] mx-auto leading-relaxed">
+              Kostenlose <br/> Online-Bewertung • Unverbindlich • In nur 2 Minuten
             </p>
           </div>
           <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <ValuationForm onValuationComplete={onValuationComplete} />
           </div>
           <div className="mt-3 flex justify-center gap-4 text-[8px] font-bold text-slate-400 uppercase tracking-widest opacity-80">
-            <span>✓ Kostenlos</span>
+            <span>✓ Kein Risiko</span>
             <span>✓ In 2 Min.</span>
-            <span>✓ Sofort-Preis</span>
+            <span>✓ 100% Unverbindlich</span>
           </div>
         </div>
       </div>

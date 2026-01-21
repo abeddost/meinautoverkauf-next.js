@@ -18,14 +18,15 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       FAHRZEUG: 
       - Marke: ${details.brand}
       - Modell: ${details.model}
-      - Modellvariante: ${details.variant}
       - Karosserie: ${details.bodyType}
       - Erstzulassung: ${details.year}
-      - Kilometerstand: ${details.mileage} km
+      - Kilometerstand (maximal): ${details.mileage} km
       - Kraftstoff: ${details.fuelType}
       - Getriebe: ${details.transmission}
-      - Leistung: ${details.power} PS
+      - Leistungsbereich: ${details.power}
       - Zustand: ${details.condition}
+      
+      HINWEIS: Die FIN (Fahrzeug-Identifizierungsnummer) wird hier explizit NICHT zur Preisberechnung herangezogen.
       
       BEWERTUNGS-LOGIK:
       1. Nutze Google Search Grounding für aktuelle Marktpreise (Mobile.de/Autoscout24).

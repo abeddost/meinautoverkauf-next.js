@@ -10,6 +10,7 @@ export interface CarDetails {
   power: string;
   bodyType: string;
   condition: 'Excellent' | 'Good' | 'Fair' | 'Poor';
+  vin?: string;
   images?: string[];
 }
 

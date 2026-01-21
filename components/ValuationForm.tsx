@@ -1,6 +1,6 @@
 
-import React, { useState, useMemo, useEffect } from 'react';
-import { CarDetails, ValuationResult, CarSpecs } from '../types';
+import React, { useState } from 'react';
+import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
 
 interface ValuationFormProps {
@@ -8,36 +8,6 @@ interface ValuationFormProps {
 }
 
 type FormPage = 1 | 2 | 3 | 4;
-
-const SPECS_DATABASE: Record<string, Record<string, CarSpecs>> = {
-  'Audi': {
-    'A1': { variants: ['Basis', 'Advanced', 'S line', 'Citycarver'], powers: ['95', '110', '116', '150', '200', '207'] },
-    'A3': { variants: ['Basis', 'Advanced', 'S line', 'S3', 'RS3', 'g-tron', 'e-tron'], powers: ['110', '116', '150', '184', '190', '204', '245', '310', '400'] },
-    'A4': { variants: ['Basis', 'Advanced', 'S line', 'S4', 'RS4', 'allroad'], powers: ['122', '136', '150', '163', '190', '204', '245', '265', '341', '354', '450'] },
-    'A6': { variants: ['Basis', 'Sport', 'Design', 'S line', 'S6', 'RS6'], powers: ['163', '190', '204', '245', '286', '340', '344', '367', '600'] },
-    'Q3': { variants: ['Basis', 'Advanced', 'S line', 'RS Q3', 'Sportback'], powers: ['150', '184', '190', '200', '230', '245', '400'] },
-    'Q5': { variants: ['Basis', 'Advanced', 'S line', 'SQ5', 'Sportback'], powers: ['150', '163', '190', '204', '265', '286', '299', '341', '367'] },
-  },
-  'BMW': {
-    '1er': { variants: ['Basis', 'Advantage', 'Sport Line', 'Luxury Line', 'M Sport', 'M135i', 'M140i'], powers: ['109', '116', '136', '140', '150', '178', '190', '224', '306', '340'] },
-    '3er': { variants: ['Basis', 'Advantage', 'Sport Line', 'Luxury Line', 'M Sport', 'M3', 'M340i', 'M340d'], powers: ['116', '150', '156', '184', '190', '258', '286', '292', '340', '374', '480', '510'] },
-    '5er': { variants: ['Basis', 'Luxury Line', 'M Sport', 'M5', 'M550i', 'M550d'], powers: ['184', '190', '197', '252', '286', '299', '333', '340', '400', '530', '600', '625'] },
-    'X1': { variants: ['Basis', 'xLine', 'Sport Line', 'M Sport'], powers: ['116', '136', '140', '150', '170', '190', '211', '218', '231'] },
-    'X3': { variants: ['Basis', 'xLine', 'M Sport', 'X3 M', 'M40i', 'M40d'], powers: ['150', '184', '190', '245', '252', '286', '292', '340', '360', '480', '510'] },
-  },
-  'Mercedes-Benz': {
-    'A-Klasse': { variants: ['Basis', 'Style', 'Progressive', 'AMG Line', 'AMG A35', 'AMG A45 S'], powers: ['109', '116', '136', '150', '163', '190', '218', '224', '306', '421'] },
-    'C-Klasse': { variants: ['Basis', 'Avantgarde', 'Exclusive', 'AMG Line', 'C43 AMG', 'C63 AMG'], powers: ['156', '170', '184', '197', '200', '204', '245', '258', '265', '300', '408', '510', '680'] },
-    'E-Klasse': { variants: ['Avantgarde', 'Exclusive', 'AMG Line', 'E53 AMG', 'E63 AMG'], powers: ['150', '160', '194', '197', '245', '258', '272', '313', '330', '367', '435', '612'] },
-    'GLC': { variants: ['Basis', 'Offroad', 'AMG Line', 'GLC 43 AMG', 'GLC 63 AMG'], powers: ['163', '170', '194', '197', '204', '245', '258', '265', '300', '306', '367', '390', '476', '510'] },
-  },
-  'VW': {
-    'Golf': { variants: ['Basis', 'Life', 'Style', 'R-Line', 'GTI', 'GTD', 'GTE', 'R', 'Clubsport'], powers: ['80', '90', '110', '115', '130', '150', '200', '204', '245', '300', '310', '320', '333'] },
-    'Polo': { variants: ['Basis', 'Life', 'Style', 'R-Line', 'GTI', 'Fresh'], powers: ['65', '75', '80', '95', '110', '115', '150', '200', '207'] },
-    'Passat': { variants: ['Basis', 'Business', 'Elegance', 'R-Line', 'GTE', 'Alltrack'], powers: ['120', '122', '125', '150', '190', '200', '218', '240', '272', '280'] },
-    'Tiguan': { variants: ['Basis', 'Life', 'Elegance', 'R-Line', 'Tiguan R', 'Allspace'], powers: ['115', '122', '130', '150', '190', '200', '240', '245', '320'] },
-  }
-};
 
 const BRAND_DATA: Record<string, string[]> = {
   'Abarth': ['500', '595', '695', '124 Spider', 'Punto', 'Grande Punto'],
@@ -100,7 +70,23 @@ const BODY_TYPES = ['Limousine', 'Kombi', 'SUV / Geländewagen', 'Kleinwagen', '
 const FUELS = ['Benzin', 'Diesel', 'Elektro', 'Hybrid', 'LPG / Autogas'];
 const TRANSMISSIONS = ['Manuelles Getriebe', 'Automatikgetriebe'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
-const MILEAGE_OPTIONS = Array.from({ length: 26 }, (_, i) => (i * 10000).toString());
+
+// Mileage Options: bis zu 10.000, bis zu 20.000...
+const MILEAGE_OPTIONS = Array.from({ length: 26 }, (_, i) => {
+    const val = (i * 10000).toString();
+    const label = i === 0 ? "weniger als 5.000 km" : `bis zu ${new Intl.NumberFormat('de-DE').format(i * 10000)} km`;
+    return { val, label };
+});
+
+// PS Ranges with kW
+const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
+    const start = 40 + (i * 5);
+    const end = start + 5;
+    const kwStart = Math.round(start / 1.35962);
+    const kwEnd = Math.round(end / 1.35962);
+    const label = `${start} - ${end} PS (${kwStart} - ${kwEnd} kW)`;
+    return { val: label, label };
+});
 
 const CONDITIONS = [
   { val: 'Excellent', label: 'Neuwertig / Top (Keine Kratzer)' },
@@ -115,54 +101,30 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const [formData, setFormData] = useState<CarDetails>({
     brand: '',
     model: '',
-    variant: '',
+    variant: 'Basis', // Simplified, model variant dropdown removed per request
     year: '2019',
     mileage: '70000',
     fuelType: 'Benzin',
     transmission: 'Automatikgetriebe',
-    power: '',
+    power: '100 - 105 PS (74 - 77 kW)',
     bodyType: 'Limousine',
-    condition: 'Good'
+    condition: 'Good',
+    vin: ''
   });
 
-  const currentSpecs = useMemo(() => {
-    if (formData.brand && formData.model && SPECS_DATABASE[formData.brand]?.[formData.model]) {
-      return SPECS_DATABASE[formData.brand][formData.model];
-    }
-    let baseVariants = ['Basis / Trend', 'Business Edition', 'Highline / Premium', 'Advanced / Comfort'];
-    if (['Audi', 'BMW', 'Mercedes-Benz', 'Porsche'].includes(formData.brand)) {
-      baseVariants = ['Basis', 'Sport Paket', 'Premium / Luxury', 'Performance / RS / AMG'];
-    }
-    
-    return {
-      variants: baseVariants,
-      powers: ['60', '75', '90', '110', '130', '150', '170', '190', '210', '250', '300', '400', '500+']
-    };
-  }, [formData.brand, formData.model]);
-
-  useEffect(() => {
-    if (currentSpecs) {
-      setFormData(prev => ({
-        ...prev,
-        variant: currentSpecs.variants.includes(prev.variant) ? prev.variant : currentSpecs.variants[0],
-        power: currentSpecs.powers.includes(prev.power) ? prev.power : currentSpecs.powers[0]
-      }));
-    }
-  }, [currentSpecs]);
-
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ 
       ...prev, 
       [name]: value,
-      ...(name === 'brand' ? { model: '', variant: '', power: '' } : {})
+      ...(name === 'brand' ? { model: '' } : {})
     }));
   };
 
   const nextPage = () => {
     if (currentPage === 1 && (!formData.brand || !formData.model || !formData.year)) return;
-    if (currentPage === 2 && (!formData.variant || !formData.power || !formData.bodyType)) return;
-    if (currentPage === 3 && (!formData.mileage || !formData.condition)) return;
+    if (currentPage === 2 && (!formData.power || !formData.bodyType || !formData.transmission)) return;
+    if (currentPage === 3 && (!formData.mileage || !formData.condition || !formData.fuelType)) return;
     setCurrentPage(prev => (prev < 4 ? (prev + 1) as FormPage : prev));
   };
 
@@ -185,7 +147,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
       <div className="bg-brand-dark rounded-2xl p-6 flex flex-col items-center justify-center min-h-[300px] text-white border border-white/10">
         <div className="w-12 h-12 border-4 border-brand-orange border-t-transparent rounded-full animate-spin mb-4"></div>
         <h2 className="text-base font-black">Marktanalyse läuft...</h2>
-        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Prüfe aktuelle Börsenpreise</p>
+        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Berechne Echtzeit-Ankaufspreis</p>
       </div>
     );
   }
@@ -222,7 +184,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           <div className="flex items-center gap-2">
             <span className="bg-brand-orange text-white text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-widest">Schritt {currentPage}/4</span>
             <span className="text-[9px] font-bold text-slate-400 uppercase">
-              {currentPage === 1 && "Fahrzeug"} {currentPage === 2 && "Variante"} {currentPage === 3 && "Zustand"} {currentPage === 4 && "Check"}
+              {currentPage === 1 && "Fahrzeugwahl"} {currentPage === 2 && "Technik"} {currentPage === 3 && "Zustand"} {currentPage === 4 && "Check"}
             </span>
           </div>
           <div className="flex gap-1">
@@ -244,26 +206,41 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
           {currentPage === 2 && (
             <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Modellvariante / Trim" name="variant" value={formData.variant} options={currentSpecs.variants} />
-              <Dropdown label="Wie viel PS" name="power" value={formData.power} options={currentSpecs.powers.map(ps => ({ label: `${ps} PS`, val: ps }))} />
+              <Dropdown label="Motorleistung (Bereich)" name="power" value={formData.power} options={POWER_RANGES} />
               <Dropdown label="Bauform" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
+              <Dropdown label="Getriebe" name="transmission" value={formData.transmission} options={TRANSMISSIONS} />
             </div>
           )}
           {currentPage === 3 && (
             <div className="grid grid-cols-1 gap-3 animate-in fade-in slide-in-from-right-2">
-              <Dropdown label="Kilometerstand" name="mileage" value={formData.mileage} options={MILEAGE_OPTIONS.map(km => ({ label: `${new Intl.NumberFormat('de-DE').format(parseInt(km))} km`, val: km }))} />
+              <Dropdown label="Kilometerstand" name="mileage" value={formData.mileage} options={MILEAGE_OPTIONS} />
               <Dropdown label="Kraftstoff" name="fuelType" value={formData.fuelType} options={FUELS} />
               <Dropdown label="Gesamtzustand" name="condition" value={formData.condition} options={CONDITIONS} />
             </div>
           )}
           {currentPage === 4 && (
-            <div className="text-center space-y-4 py-4">
-              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-brand-orange shadow-inner">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <div className="space-y-6 animate-in fade-in slide-in-from-right-2">
+              <div className="flex flex-col gap-0.5">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Fahrzeug-Identifizierungsnummer (FIN) - Optional</label>
+                <input 
+                  type="text"
+                  name="vin"
+                  placeholder="Z.B. WVWZZZ..."
+                  value={formData.vin}
+                  onChange={handleSelectChange}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-colors"
+                />
+                <p className="text-[9px] text-slate-400 font-medium italic mt-1">Die FIN hilft uns bei einer noch genaueren Wertermittlung vor Ort, hat aber keinen Einfluss auf die KI-Berechnung.</p>
               </div>
-              <div className="space-y-1">
-                <p className="text-sm font-black text-brand-dark uppercase tracking-tight">Eingaben geprüft</p>
-                <p className="text-[11px] lg:text-sm text-slate-500 font-bold max-w-[200px] mx-auto leading-tight">Berechne jetzt den Bestpreis für Ihren {formData.brand} {formData.model}.</p>
+
+              <div className="text-center space-y-4 py-4">
+                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-brand-orange shadow-inner">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-black text-brand-dark uppercase tracking-tight">Eingaben geprüft</p>
+                  <p className="text-[11px] lg:text-sm text-slate-500 font-bold max-w-[200px] mx-auto leading-tight">Berechne jetzt den Bestpreis für Ihren {formData.brand} {formData.model}.</p>
+                </div>
               </div>
             </div>
           )}
