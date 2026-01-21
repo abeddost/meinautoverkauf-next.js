@@ -7,7 +7,6 @@ interface ValuationFormProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
 }
 
-// Pagination logic: 4 Pages (3 items each, last page is summary)
 type FormPage = 1 | 2 | 3 | 4;
 
 const BRAND_DATA: Record<string, string[]> = {
@@ -48,14 +47,14 @@ const BRAND_DATA: Record<string, string[]> = {
 const BODY_TYPES = ['Limousine', 'Kombi', 'SUV / Geländewagen', 'Kleinwagen', 'Cabrio', 'Coupé', 'Van / Minibus', 'Pickup', 'Transporter'];
 const FUELS = ['Benzin', 'Diesel', 'Elektro', 'Hybrid (Benzin)', 'Hybrid (Diesel)', 'LPG (Autogas)', 'CNG (Erdgas)'];
 const TRANSMISSIONS = ['Manuelles Getriebe', 'Automatikgetriebe', 'Halbautomatik'];
-const POWER_OPTIONS = Array.from({ length: 55 }, (_, i) => ((i + 5) * 10).toString()); // 50 to 590 PS
-const YEARS = Array.from({ length: 35 }, (_, i) => (2024 - i).toString()); // Last 35 years
-const MILEAGE_OPTIONS = Array.from({ length: 81 }, (_, i) => (i * 5000).toString()); // 0 to 400,000 km
+const POWER_OPTIONS = Array.from({ length: 55 }, (_, i) => ((i + 5) * 10).toString());
+const YEARS = Array.from({ length: 35 }, (_, i) => (2024 - i).toString());
+const MILEAGE_OPTIONS = Array.from({ length: 81 }, (_, i) => (i * 5000).toString());
 const CONDITIONS = [
-  { val: 'Excellent', label: 'Neuwertig / Top-Zustand' },
-  { val: 'Good', label: 'Gepflegt / Normale Gebrauchsspuren' },
-  { val: 'Fair', label: 'Starke Gebrauchsspuren / Mängel' },
-  { val: 'Poor', label: 'Defekt / Unfallfahrzeug' }
+  { val: 'Excellent', label: 'Neuwertig / Top' },
+  { val: 'Good', label: 'Gepflegt / Normal' },
+  { val: 'Fair', label: 'Mängel / Gebraucht' },
+  { val: 'Poor', label: 'Defekt / Unfall' }
 ];
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
@@ -81,7 +80,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
       setLoadingStep(0);
       interval = setInterval(() => {
         setLoadingStep(prev => (prev < 4 ? prev + 1 : prev));
-      }, 1200);
+      }, 1000);
     }
     return () => clearInterval(interval);
   }, [loading]);
@@ -109,46 +108,25 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
-      setTimeout(() => onValuationComplete(formData, result), 500);
+      setTimeout(() => onValuationComplete(formData, result), 300);
     } catch (error: any) {
-      alert("Bewertung fehlgeschlagen. Bitte versuchen Sie es später erneut.");
+      alert("Fehler. Bitte erneut versuchen.");
       setLoading(false);
     }
   };
 
   if (loading) {
-    const loadingLabels = ["KI-System startet...", "Marktdaten-Abgleich...", "Trend-Analyse...", "Fahrzeug-Prüfung...", "Preis wird generiert..."];
     return (
-      <div className="bg-brand-dark rounded-[2.5rem] shadow-2xl p-8 flex flex-col items-center justify-center min-h-[550px] text-white overflow-hidden relative border border-white/10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(249,115,22,0.1),transparent)] pointer-events-none"></div>
-        <div className="relative mb-10">
-          <div className="w-32 h-32 border-4 border-white/5 rounded-full flex items-center justify-center">
-             <div className="w-24 h-24 border-4 border-brand-orange border-t-transparent rounded-full animate-spin"></div>
-             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 bg-brand-orange/20 rounded-full animate-pulse flex items-center justify-center">
-                   <svg className="w-6 h-6 text-brand-orange" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
-                </div>
-             </div>
-          </div>
-        </div>
-        <h2 className="text-2xl lg:text-3xl font-black mb-2 text-center">{loadingLabels[loadingStep]}</h2>
-        <p className="text-brand-orange font-black uppercase text-[10px] tracking-[0.4em] mb-10">AI Valuation Engine 6.0</p>
-        <div className="w-full max-w-xs h-2 bg-white/10 rounded-full overflow-hidden mb-10 shadow-inner">
-           <div className="h-full bg-brand-orange transition-all duration-1000 ease-out shadow-[0_0_20px_#f97316]" style={{ width: `${(loadingStep + 1) * 20}%` }}></div>
-        </div>
-        <div className="grid grid-cols-2 gap-6 text-[9px] font-black uppercase tracking-widest text-slate-500 opacity-70">
-           <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Live Market Sync</div>
-           <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Price Crawler</div>
-           <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Valuation Log</div>
-           <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span> Best Price Match</div>
-        </div>
+      <div className="bg-brand-dark rounded-2xl lg:rounded-[2.5rem] p-6 lg:p-8 flex flex-col items-center justify-center min-h-[300px] lg:min-h-[550px] text-white relative border border-white/10">
+        <div className="w-16 h-16 lg:w-32 lg:h-32 border-4 border-brand-orange border-t-transparent rounded-full animate-spin mb-6"></div>
+        <h2 className="text-lg lg:text-2xl font-black text-center">Analysiere Marktdaten...</h2>
       </div>
     );
   }
 
-  const Dropdown = ({ label, name, value, options, placeholder = "Bitte wählen..." }: any) => (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-[12px] font-black text-slate-400 uppercase tracking-widest ml-1">
+  const Dropdown = ({ label, name, value, options, placeholder = "Wählen..." }: any) => (
+    <div className="flex flex-col gap-0.5">
+      <label className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">
         {label}
       </label>
       <div className="relative group">
@@ -156,7 +134,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           name={name}
           value={value}
           onChange={handleSelectChange}
-          className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-base font-bold text-[#004d7c] appearance-none cursor-pointer focus:border-brand-orange focus:ring-4 focus:ring-orange-50 outline-none transition-all group-hover:border-slate-200 shadow-sm"
+          className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-2xl px-3 py-2.5 lg:px-6 lg:py-4 text-sm lg:text-base font-bold text-[#004d7c] appearance-none cursor-pointer focus:border-brand-orange outline-none"
         >
           <option value="" disabled>{placeholder}</option>
           {options.map((opt: any) => {
@@ -166,125 +144,80 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             return <option key={val} value={val}>{labelStr}</option>
           })}
         </select>
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-brand-orange transition-colors">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M19 9l-7 7-7-7" /></svg>
+        <div className="absolute right-3 lg:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+          <svg className="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M19 9l-7 7-7-7" /></svg>
         </div>
       </div>
     </div>
   );
 
   return (
-    <div className="bg-white rounded-[2rem] lg:rounded-[3rem] shadow-2xl overflow-hidden text-brand-dark border border-slate-100 flex flex-col w-full max-w-2xl mx-auto min-h-[560px] lg:min-h-[620px]">
-      {/* Navigation Header */}
-      <div className="bg-slate-50 border-b border-slate-100 px-6 lg:px-10 py-6 flex items-center justify-between">
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3">
-            <span className="bg-brand-orange text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
+    <div className="bg-white rounded-xl lg:rounded-[3rem] shadow-xl overflow-hidden text-brand-dark border border-slate-100 flex flex-col w-full max-w-2xl mx-auto min-h-[360px] lg:min-h-[620px]">
+      <div className="bg-slate-50 border-b border-slate-100 px-4 lg:px-10 py-3 lg:py-6 flex items-center justify-between">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <span className="bg-brand-orange text-white text-[8px] lg:text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">
               Schritt {currentPage}/4
             </span>
-            <span className="text-xs font-bold text-slate-400">
-              {currentPage === 1 && "Fahrzeugmodell wählen"}
-              {currentPage === 2 && "Technische Details"}
-              {currentPage === 3 && "Kilometer & Zustand"}
-              {currentPage === 4 && "Berechnung starten"}
+            <span className="text-[9px] lg:text-xs font-bold text-slate-400 uppercase">
+              {currentPage === 1 && "Fahrzeug"} {currentPage === 2 && "Technik"} {currentPage === 3 && "Zustand"} {currentPage === 4 && "Check"}
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-1 lg:gap-2">
             {[1, 2, 3, 4].map(p => (
-              <div key={p} className={`h-1.5 rounded-full transition-all duration-500 ${currentPage >= p ? 'w-10 lg:w-16 bg-brand-orange' : 'w-4 bg-slate-200'}`}></div>
+              <div key={p} className={`h-1 lg:h-1.5 rounded-full transition-all duration-500 ${currentPage >= p ? 'w-6 lg:w-16 bg-brand-orange' : 'w-2 bg-slate-200'}`}></div>
             ))}
           </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6 lg:p-10 flex-grow flex flex-col justify-between gap-6">
-        <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="p-4 lg:p-10 flex-grow flex flex-col justify-between gap-3 lg:gap-6">
+        <div className="space-y-3 lg:space-y-6">
           {currentPage === 1 && (
-            <div className="grid grid-cols-1 gap-5 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="grid grid-cols-1 gap-3 lg:gap-5 animate-in fade-in slide-in-from-right-2">
               <Dropdown label="Marke" name="brand" value={formData.brand} options={Object.keys(BRAND_DATA)} />
-              <Dropdown 
-                label="Modell" 
-                name="model" 
-                value={formData.model} 
-                options={formData.brand ? BRAND_DATA[formData.brand] : []} 
-                placeholder={formData.brand ? "Modell auswählen..." : "Wähle erst die Marke"}
-              />
-              <Dropdown label="Bauform / Karosserie" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
+              <Dropdown label="Modell" name="model" value={formData.model} options={formData.brand ? BRAND_DATA[formData.brand] : []} />
+              <Dropdown label="Karosserie" name="bodyType" value={formData.bodyType} options={BODY_TYPES} />
             </div>
           )}
-
           {currentPage === 2 && (
-            <div className="grid grid-cols-1 gap-5 animate-in fade-in slide-in-from-right-4 duration-300">
-              <Dropdown label="Kraftstoffart" name="fuelType" value={formData.fuelType} options={FUELS} />
+            <div className="grid grid-cols-1 gap-3 lg:gap-5 animate-in fade-in slide-in-from-right-2">
+              <Dropdown label="Kraftstoff" name="fuelType" value={formData.fuelType} options={FUELS} />
               <Dropdown label="Getriebe" name="transmission" value={formData.transmission} options={TRANSMISSIONS} />
-              <Dropdown label="Motorleistung" name="power" value={formData.power} options={POWER_OPTIONS.map(ps => ({ label: `${ps} PS`, val: ps }))} />
+              <Dropdown label="Leistung" name="power" value={formData.power} options={POWER_OPTIONS.map(ps => ({ label: `${ps} PS`, val: ps }))} />
             </div>
           )}
-
           {currentPage === 3 && (
-            <div className="grid grid-cols-1 gap-5 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="grid grid-cols-1 gap-3 lg:gap-5 animate-in fade-in slide-in-from-right-2">
               <Dropdown label="Erstzulassung" name="year" value={formData.year} options={YEARS} />
-              <Dropdown 
-                label="Kilometerstand" 
-                name="mileage" 
-                value={formData.mileage} 
-                options={MILEAGE_OPTIONS.map(km => ({ 
-                  label: km === '0' ? 'Neufahrzeug' : `${new Intl.NumberFormat('de-DE').format(parseInt(km))} km`, 
-                  val: km 
-                }))} 
-              />
-              <Dropdown label="Optischer Zustand" name="condition" value={formData.condition} options={CONDITIONS} />
+              <Dropdown label="Kilometerstand" name="mileage" value={formData.mileage} options={MILEAGE_OPTIONS.map(km => ({ label: km === '0' ? 'Neuwagen' : `${new Intl.NumberFormat('de-DE').format(parseInt(km))} km`, val: km }))} />
+              <Dropdown label="Optik" name="condition" value={formData.condition} options={CONDITIONS} />
             </div>
           )}
-
           {currentPage === 4 && (
-            <div className="text-center space-y-6 animate-in fade-in slide-in-from-right-4 duration-300 lg:pt-4">
-              <div className="w-20 h-20 bg-orange-100 rounded-3xl flex items-center justify-center mx-auto text-brand-orange shadow-inner">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <div className="text-center space-y-4 lg:space-y-6 py-2">
+              <div className="w-12 h-12 lg:w-20 lg:h-20 bg-orange-100 rounded-lg flex items-center justify-center mx-auto text-brand-orange">
+                <svg className="w-6 h-6 lg:w-10 lg:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               </div>
-              <div className="space-y-3">
-                 <h3 className="text-2xl font-black text-[#004d7c] tracking-tight">Analyse bereit!</h3>
-                 <p className="text-base text-slate-500 font-bold leading-relaxed max-w-sm mx-auto">
-                   Sie erhalten eine Bewertung für Ihren <span className="text-brand-orange">{formData.brand} {formData.model}</span>.
-                 </p>
-              </div>
-              <div className="p-5 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 text-[11px] font-bold text-slate-400 leading-relaxed max-w-sm mx-auto">
-                Klicken Sie auf "Preis berechnen", um die kostenlose Marktwert-Ermittlung durch unsere KI zu starten.
-              </div>
+              <p className="text-xs lg:text-base text-slate-500 font-bold max-w-[200px] mx-auto">Bereit zur kostenlosen KI-Preisermittlung für Ihren {formData.brand}.</p>
             </div>
           )}
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-4 mt-4">
+        <div className="flex items-center gap-2 lg:gap-4 mt-1">
           {currentPage > 1 && (
-            <button
-              type="button"
-              onClick={prevPage}
-              className="flex-grow lg:flex-none lg:w-1/3 h-[68px] rounded-2xl border-2 border-slate-100 text-[#004d7c] font-black text-lg hover:bg-slate-50 hover:border-slate-200 transition-all flex items-center justify-center gap-3 active:scale-95 group"
-            >
-              <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M15 19l-7-7 7-7" /></svg>
+            <button type="button" onClick={prevPage} className="w-1/3 h-[48px] lg:h-[68px] rounded-lg lg:rounded-2xl border border-slate-200 text-[#004d7c] font-black text-xs lg:text-lg flex items-center justify-center gap-1 active:scale-95 transition-all">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M15 19l-7-7 7-7" /></svg>
               Zurück
             </button>
           )}
-          
           {currentPage < 4 ? (
-            <button
-              type="button"
-              disabled={currentPage === 1 && (!formData.brand || !formData.model)}
-              onClick={nextPage}
-              className="flex-grow h-[68px] bg-[#004d7c] hover:bg-[#003d63] disabled:opacity-50 text-white rounded-2xl font-black text-xl shadow-xl shadow-slate-200 transition-all flex items-center justify-center gap-4 active:scale-95 group"
-            >
-              Nächster Schritt
-              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M9 5l7 7-7 7" /></svg>
+            <button type="button" disabled={currentPage === 1 && (!formData.brand || !formData.model)} onClick={nextPage} className="flex-grow h-[48px] lg:h-[68px] bg-[#004d7c] disabled:opacity-50 text-white rounded-lg lg:rounded-2xl font-black text-sm lg:text-xl transition-all active:scale-95">
+              Weiter
             </button>
           ) : (
-            <button
-              type="submit"
-              className="flex-grow h-[68px] bg-brand-orange hover:bg-orange-600 text-white rounded-2xl font-black text-xl shadow-xl shadow-orange-100 transition-all transform active:scale-95 flex items-center justify-center gap-4 group"
-            >
+            <button type="submit" className="flex-grow h-[48px] lg:h-[68px] bg-brand-orange text-white rounded-lg lg:rounded-2xl font-black text-sm lg:text-xl shadow-lg active:scale-95">
               Preis berechnen
-              <svg className="w-6 h-6 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             </button>
           )}
         </div>
