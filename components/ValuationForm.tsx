@@ -334,12 +334,20 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             </button>
           )}
           {currentPage < 4 ? (
-            <button type="button" disabled={currentPage === 1 && (!formData.brand || !formData.model)} onClick={nextPage} className="flex-grow h-[42px] lg:h-[60px] bg-[#004d7c] disabled:opacity-50 text-white rounded-lg font-black text-xs lg:text-base transition-all active:scale-95 shadow-lg shadow-blue-900/10">
-              Nächster Schritt
+            <button 
+              type="button" 
+              disabled={currentPage === 1 && (!formData.brand || !formData.model)} 
+              onClick={nextPage} 
+              className="flex-grow h-[46px] lg:h-[64px] bg-gradient-to-b from-[#ff8437] to-[#f97316] hover:from-[#f97316] hover:to-[#ea580c] disabled:opacity-50 text-white rounded-lg font-bold text-xs lg:text-xl transition-all active:scale-95 shadow-md shadow-orange-900/10"
+            >
+              Kostenlosen Verkaufspreis erhalten
             </button>
           ) : (
-            <button type="submit" className="flex-grow h-[42px] lg:h-[60px] bg-brand-orange text-white rounded-lg font-black text-xs lg:text-base shadow-lg shadow-orange-900/20 active:scale-95 hover:bg-orange-600 transition-colors">
-              Jetzt Bestpreis ermitteln
+            <button 
+              type="submit" 
+              className="flex-grow h-[46px] lg:h-[64px] bg-gradient-to-b from-[#ff8437] to-[#f97316] hover:from-[#f97316] hover:to-[#ea580c] text-white rounded-lg font-bold text-xs lg:text-xl shadow-md shadow-orange-900/10 active:scale-95 transition-all"
+            >
+              Kostenlosen Verkaufspreis erhalten
             </button>
           )}
         </div>

@@ -13,18 +13,24 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
       {/* --- DESKTOP VIEW --- */}
       <div className="hidden lg:flex min-h-[calc(100vh-80px)] items-center relative py-20">
         <div className="container mx-auto px-4 z-10">
-          <div className="flex flex-row items-center justify-between gap-16">
+          <div className="flex flex-row items-start justify-between gap-16">
             {/* Desktop Left */}
             <div className="w-[55%] animate-in fade-in slide-in-from-left-8 duration-1000">
-              <h1 className="text-7xl lg:text-8xl font-black leading-[0.95] mb-6 tracking-tight">
+              <h1 className="text-4xl lg:text-5xl font-black leading-[1.1] mb-6 tracking-tighter">
                 Dein Auto. <br/>
                 Dein Preis. <br/>
-                <span className="text-brand-orange italic">Deine Entscheidung.</span>
+                <span className="text-brand-orange">Deine Entscheidung.</span>
               </h1>
-              <div className="mb-10 max-w-xl">
-                 <p className="text-2xl text-slate-300 font-medium leading-tight mb-2">Schnell. Fair. Sicher.</p>
-                 <p className="text-xl text-slate-400 font-medium leading-relaxed">Mit echten Angeboten statt Lockpreisen.</p>
+              <div className="mb-8 max-w-xl">
+                 <p className="text-xl text-white font-bold leading-tight mb-6 tracking-tight">
+                   Verkaufe dein Auto in 2–3 Tagen zum echten Marktpreis.
+                 </p>
+                 <div className="space-y-1">
+                    <p className="text-base text-slate-200 font-bold">Schnell. Fair. Sicher.</p>
+                    <p className="text-sm text-slate-400 font-medium">Mit echten Angeboten statt Lockpreisen.</p>
+                 </div>
               </div>
+              
               <div className="grid grid-cols-2 gap-3 mb-12 max-w-xl">
                 {[
                   "100 % transparente Preisfindung",
@@ -42,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
               </div>
             </div>
             {/* Desktop Right */}
-            <div className="w-[42%] animate-in fade-in slide-in-from-right-8 duration-1000">
+            <div className="w-[42%] pt-8 animate-in fade-in slide-in-from-right-8 duration-1000">
               <ValuationForm onValuationComplete={onValuationComplete} />
             </div>
           </div>
