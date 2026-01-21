@@ -18,6 +18,7 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       FAHRZEUG: 
       - Marke: ${details.brand}
       - Modell: ${details.model}
+      - Modellvariante: ${details.variant}
       - Karosserie: ${details.bodyType}
       - Erstzulassung: ${details.year}
       - Kilometerstand: ${details.mileage} km
