@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
 
@@ -71,14 +71,12 @@ const FUELS = ['Benzin', 'Diesel', 'Elektro', 'Hybrid', 'LPG / Autogas'];
 const TRANSMISSIONS = ['Manuelles Getriebe', 'Automatikgetriebe'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
 
-// Mileage Options: bis zu 10.000, bis zu 20.000...
 const MILEAGE_OPTIONS = Array.from({ length: 26 }, (_, i) => {
     const val = (i * 10000).toString();
     const label = i === 0 ? "weniger als 5.000 km" : `bis zu ${new Intl.NumberFormat('de-DE').format(i * 10000)} km`;
     return { val, label };
 });
 
-// PS Ranges with kW
 const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
     const start = 40 + (i * 5);
     const end = start + 5;
@@ -95,13 +93,15 @@ const CONDITIONS = [
   { val: 'Poor', label: 'Defekt / Unfall (Beschädigt)' }
 ];
 
+const MATRIX_CHARS = "0101010182746395AFBECD";
+
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState<FormPage>(1);
   const [formData, setFormData] = useState<CarDetails>({
     brand: '',
     model: '',
-    variant: 'Basis', // Simplified, model variant dropdown removed per request
+    variant: 'Basis',
     year: '2019',
     mileage: '70000',
     fuelType: 'Benzin',
@@ -135,7 +135,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
-      setTimeout(() => onValuationComplete(formData, result), 300);
+      // Simulating a deep scan time for UX impact
+      setTimeout(() => onValuationComplete(formData, result), 8000);
     } catch (error: any) {
       alert("Fehler bei der Bewertung.");
       setLoading(false);
@@ -144,10 +145,89 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
   if (loading) {
     return (
-      <div className="bg-brand-dark rounded-2xl p-6 flex flex-col items-center justify-center min-h-[300px] text-white border border-white/10">
-        <div className="w-12 h-12 border-4 border-brand-orange border-t-transparent rounded-full animate-spin mb-4"></div>
-        <h2 className="text-base font-black">Marktanalyse läuft...</h2>
-        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-2">Berechne Echtzeit-Ankaufspreis</p>
+      <div className="bg-[#0f172a] rounded-[2.5rem] p-8 min-h-[580px] flex flex-col items-center justify-center text-white border border-white/5 relative overflow-hidden">
+        {/* Matrix Rain Background Effect */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none overflow-hidden flex justify-around">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div key={i} className="flex flex-col animate-matrix-drop" style={{ animationDelay: `${Math.random() * 5}s`, animationDuration: `${3 + Math.random() * 5}s` }}>
+              {Array.from({ length: 40 }).map((_, j) => (
+                <span key={j} className="font-mono text-xs leading-none py-1 text-brand-orange">
+                  {MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Pulsing Nodes Animation */}
+        <div className="relative z-10 mb-12 flex items-center justify-center">
+            {/* Outer pulsating circles */}
+            <div className="absolute w-48 h-48 rounded-full border border-brand-orange/20 animate-ping opacity-20"></div>
+            <div className="absolute w-64 h-64 rounded-full border border-brand-orange/10 animate-pulse opacity-20"></div>
+            
+            <div className="w-40 h-40 rounded-full border-[6px] border-slate-800 flex items-center justify-center relative bg-[#0f172a]/80 backdrop-blur-sm">
+                <div className="absolute inset-[-6px] rounded-full border-[6px] border-brand-orange border-t-transparent border-r-transparent animate-spin duration-[1.5s]"></div>
+                
+                {/* Visualizing Data Complexity (Internal Pulsing Node) */}
+                <div className="flex flex-col gap-1 items-center animate-pulse">
+                    <div className="w-12 h-2.5 bg-brand-orange rounded-sm skew-x-[-20deg] shadow-[0_0_15px_rgba(249,115,22,0.5)]"></div>
+                    <div className="w-12 h-2.5 bg-brand-orange rounded-sm skew-x-[-20deg] opacity-70"></div>
+                    <div className="w-12 h-2.5 bg-brand-orange rounded-sm skew-x-[-20deg] opacity-40"></div>
+                </div>
+            </div>
+        </div>
+
+        {/* Text Group */}
+        <div className="text-center z-10 space-y-3 mb-12">
+          <h2 className="text-4xl font-black tracking-tight drop-shadow-lg">Finalisierung...</h2>
+          <div className="flex flex-col items-center gap-1">
+            <p className="text-brand-orange text-[10px] font-black uppercase tracking-[0.4em] animate-pulse">
+              DEEP LEARNING ANALYSE LÄUFT
+            </p>
+            <div className="h-0.5 w-12 bg-brand-orange/30 rounded-full"></div>
+          </div>
+        </div>
+
+        {/* Detailed Progress Tracker */}
+        <div className="w-full max-w-sm space-y-4 z-10">
+          <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden relative shadow-inner">
+            <div className="absolute inset-y-0 left-0 bg-brand-orange rounded-full shadow-[0_0_10px_rgba(249,115,22,0.8)] transition-all duration-300 animate-scan-progress"></div>
+          </div>
+          
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-[11px] text-slate-300 font-bold uppercase tracking-widest text-center px-4 leading-relaxed">
+              Dies kann 10-20 Sekunden dauern. <br/>
+              <span className="text-slate-500 italic lowercase font-medium tracking-normal">Wir bitten um ein wenig Geduld...</span>
+            </p>
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes matrix-drop {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+          }
+          @keyframes scan-progress {
+            0% { width: 0%; }
+            20% { width: 15%; }
+            45% { width: 40%; }
+            60% { width: 42%; }
+            80% { width: 85%; }
+            100% { width: 95%; }
+          }
+          .animate-matrix-drop {
+            animation-name: matrix-drop;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+          }
+          .animate-scan-progress {
+            animation-name: scan-progress;
+            animation-duration: 8s;
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          }
+        `}</style>
       </div>
     );
   }
