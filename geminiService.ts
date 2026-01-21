@@ -16,7 +16,9 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       ZIEL: Berechne den Händler-Ankaufspreis für ein Fahrzeug mit folgenden Daten:
       
       FAHRZEUG: 
-      - Marke/Modell: ${details.brand} ${details.model}
+      - Marke: ${details.brand}
+      - Modell: ${details.model}
+      - Modellvariante: ${details.variant}
       - Karosserie: ${details.bodyType}
       - Erstzulassung: ${details.year}
       - Kilometerstand: ${details.mileage} km

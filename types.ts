@@ -2,6 +2,7 @@
 export interface CarDetails {
   brand: string;
   model: string;
+  variant: string;
   year: string;
   mileage: string;
   fuelType: string;
