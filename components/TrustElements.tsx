@@ -14,13 +14,17 @@ const TrustElements: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center mb-32">
           {[
-            { val: "250.000+", label: "Erfolgreiche Verkäufe", color: "text-brand-orange" },
-            { val: "Top 1%", label: "Kundenzufriedenheit", color: "text-brand-dark" },
-            { val: "Instant", label: "Geld auf Ihrem Konto", color: "text-brand-orange" }
+            { val: "Auto einfach verkaufen", label: "OHNE STRESS & ZEITVERLUST", color: "text-brand-orange" },
+            { val: "Faire Bewertung", label: "MARKTGERECHT & TRANSPARENT", color: "text-brand-dark" },
+            { val: "Instant", label: "BAR ODER DIREKT AUFS KONTO", color: "text-brand-orange" }
           ].map((stat, i) => (
             <div key={i} className="group cursor-default">
-              <div className={`text-6xl font-black ${stat.color} mb-4 transform transition-transform group-hover:scale-110 tracking-tighter`}>{stat.val}</div>
-              <div className="text-slate-400 font-black uppercase tracking-[0.15em] text-xs">{stat.label}</div>
+              <div className={`text-4xl lg:text-6xl font-black ${stat.color} mb-4 transform transition-transform group-hover:scale-105 tracking-tighter leading-tight px-4`}>
+                {stat.val}
+              </div>
+              <div className="text-slate-400 font-black uppercase tracking-[0.15em] text-xs">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
