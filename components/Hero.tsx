@@ -9,78 +9,114 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
   return (
-    <section className="relative bg-brand-dark text-white overflow-hidden min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-80px)] flex flex-col">
+    <section className="relative bg-gradient-to-br from-slate-50 via-slate-100 to-slate-50 overflow-hidden min-h-[calc(100vh-56px)] lg:min-h-[calc(100vh-80px)] flex flex-col">
+      {/* Germany Map Background with Location Pins */}
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Simplified Germany outline */}
+          <path d="M 600,150 L 650,180 L 680,160 L 710,190 L 750,170 L 780,200 L 800,250 L 820,300 L 810,350 L 790,400 L 770,450 L 740,480 L 700,500 L 650,510 L 600,500 L 550,520 L 500,510 L 450,480 L 420,450 L 400,400 L 390,350 L 400,300 L 420,250 L 450,210 L 500,180 L 550,160 Z" 
+                stroke="#1e293b" strokeWidth="2" fill="none" opacity="0.3"/>
+          {/* Location pins */}
+          <circle cx="600" cy="250" r="6" fill="#ff8437"/>
+          <circle cx="520" cy="320" r="6" fill="#ff8437"/>
+          <circle cx="680" cy="300" r="6" fill="#ff8437"/>
+          <circle cx="650" cy="380" r="6" fill="#ff8437"/>
+          <circle cx="550" cy="420" r="6" fill="#ff8437"/>
+          <circle cx="720" cy="280" r="6" fill="#ff8437"/>
+        </svg>
+      </div>
+
       {/* --- DESKTOP VIEW --- */}
-      <div className="hidden lg:flex flex-grow items-center relative py-12">
-        <div className="container mx-auto px-8 lg:px-12 z-10">
-          <div className="flex flex-row items-center justify-between gap-20">
-            {/* Desktop Left: Content Area */}
-            <div className="w-[50%] animate-in fade-in slide-in-from-left-12 duration-1000">
-              <div className="mb-10">
-                <h1 className="text-4xl lg:text-5xl font-black leading-[1.1] mb-6 tracking-tight">
-                  Dein Auto. <br/>
-                  Dein Preis. <br/>
-                  <span className="text-brand-orange">Deine Entscheidung.</span>
+      <div className="hidden lg:flex flex-grow items-center relative py-16">
+        <div className="container mx-auto px-8 lg:px-16 z-10 max-w-7xl">
+          <div className="grid grid-cols-2 gap-16 items-center">
+            {/* Desktop Left: Content + Car Image */}
+            <div className="animate-in fade-in slide-in-from-left-8 duration-1000">
+              {/* Headline */}
+              <div className="mb-8">
+                <h1 className="text-[42px] lg:text-[48px] font-black leading-[1.1] mb-4 tracking-tight text-[#1e293b]">
+                  Verkaufe dein Auto in 48 Stunden zum besten Marktpreis.
                 </h1>
-                <p className="text-lg lg:text-xl text-slate-100 font-bold leading-snug mb-6 max-w-lg">
-                  Verkaufe dein Auto in 2–3 Tagen zum echten Marktpreis.
-                </p>
-                <div className="flex flex-col gap-1">
-                   <p className="text-base text-white font-black">Schnell. Fair. Sicher.</p>
-                   <p className="text-sm text-slate-400 font-medium">Mit echten Angeboten statt Lockpreisen.</p>
-                </div>
+              </div>
+
+              {/* Car Image */}
+              <div className="relative mb-10">
+                <img 
+                  src="/bmw.png" 
+                  alt="BMW Car" 
+                  className="w-full h-auto object-contain"
+                  onError={(e) => {
+                    // Fallback if image doesn't load
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
               </div>
               
-              <div className="grid grid-cols-2 gap-4 max-w-xl">
+              {/* Feature Cards */}
+              <div className="grid grid-cols-2 gap-4">
                 {[
-                  "100 % transparente Preisfindung",
-                  "Geprüfte Händler aus unserem Netzwerk",
-                  "Kostenlos & unverbindlich",
-                  "Kein Verkaufsdruck"
-                ].map((text, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-5 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-orange/20 flex items-center justify-center">
-                      <svg className="w-3.5 h-3.5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M5 13l4 4L19 7" />
-                      </svg>
+                  { icon: "🛡️", text: "100 % transparente Preisfindung" },
+                  { icon: "✓", text: "Geprüfte Händler aus unserem Netzwerk" },
+                  { icon: "✓", text: "Kostenlos & unverbindlich" },
+                  { icon: "✗", text: "Kein Verkaufsdruck" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-white border border-slate-200 px-5 py-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center">
+                      {item.icon === "🛡️" ? (
+                        <span className="text-xl">{item.icon}</span>
+                      ) : item.icon === "✓" ? (
+                        <svg className="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      )}
                     </div>
-                    <span className="text-sm font-bold text-slate-100 leading-tight">{text}</span>
+                    <span className="text-sm font-semibold text-slate-700 leading-tight">{item.text}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Desktop Right: Form Area */}
-            <div className="w-[45%] flex justify-end animate-in fade-in slide-in-from-right-12 duration-1000">
-              <div className="w-full max-w-md">
+            {/* Desktop Right: Floating Form Card */}
+            <div className="flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
+              <div className="w-full max-w-[480px]">
                 <ValuationForm onValuationComplete={onValuationComplete} />
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Background Decorative Element */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/3 h-full bg-brand-orange/5 blur-[120px] rounded-full pointer-events-none"></div>
       </div>
 
-      {/* --- MOBILE VIEW (Updated to prevent white area) --- */}
-      <div className="lg:hidden flex flex-col flex-grow pt-4 pb-8">
-        <div className="container mx-auto px-4 z-10 flex-grow flex flex-col justify-center">
-          <div className="text-center mb-4">
-            <h1 className="text-xl font-black leading-tight tracking-tight text-brand-orange">
-              Verkaufe dein Auto sicher, schnell und zum fairen Preis
+      {/* --- MOBILE VIEW --- */}
+      <div className="lg:hidden flex flex-col flex-grow pt-6 pb-8">
+        <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-black leading-tight tracking-tight text-[#1e293b] mb-2">
+              Verkaufe dein Auto in 48 Stunden zum besten Marktpreis
             </h1>
-            <p className="text-xs font-bold text-slate-300 mt-1 max-w-[280px] mx-auto leading-relaxed">
-              Kostenlose Online-Bewertung • Unverbindlich • In nur 2 Minuten
-            </p>
           </div>
+          
           <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <ValuationForm onValuationComplete={onValuationComplete} />
           </div>
-          <div className="mt-4 flex justify-center gap-4 text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-80">
-            <span>✓ Kein Risiko</span>
-            <span>✓ In 2 Min.</span>
-            <span>✓ 100% Unverbindlich</span>
+          
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            {[
+              "100% transparent",
+              "Geprüfte Händler",
+              "Kostenlos",
+              "Kein Druck"
+            ].map((text, i) => (
+              <div key={i} className="flex items-center justify-center gap-2 bg-white border border-slate-200 px-3 py-2 rounded-lg">
+                <svg className="w-3 h-3 text-brand-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-xs font-semibold text-slate-700">{text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

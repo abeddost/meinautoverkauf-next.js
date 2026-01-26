@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
   };
 
   return (
-    <header className="bg-brand-dark border-b border-white/5 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
         <button 
           onClick={() => {
@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
               <path d="M40 35L50 25L60 35H40Z" fill="#f97316"/>
             </svg>
             <div className="ml-2 text-left">
-              <div className="text-sm lg:text-base font-extrabold text-white leading-none uppercase tracking-tighter">
+              <div className="text-sm lg:text-base font-extrabold text-slate-800 leading-none uppercase tracking-tighter">
                 MeinAuto<span className="text-brand-orange">verkauf</span>.de
               </div>
             </div>
@@ -49,18 +49,18 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
           aria-expanded={isMenuOpen}
           aria-label="Menü umschalten"
         >
-          <div className={`w-6 h-0.5 bg-white transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
-          <div className={`w-6 h-0.5 bg-white transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></div>
-          <div className={`w-6 h-0.5 bg-white transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
-          {!isMenuOpen && <span className="text-[8px] text-white font-bold uppercase mt-0.5">Menü</span>}
+          <div className={`w-6 h-0.5 bg-slate-700 transition-transform duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
+          <div className={`w-6 h-0.5 bg-slate-700 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></div>
+          <div className={`w-6 h-0.5 bg-slate-700 transition-transform duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
+          {!isMenuOpen && <span className="text-[8px] text-slate-700 font-bold uppercase mt-0.5">Menü</span>}
         </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <button onClick={() => onViewChange(AppView.AUTO_BEWERTEN)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Bewertung</button>
-          <button onClick={() => onViewChange(AppView.AUTO_VERKAUFEN)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Verkaufen</button>
-          <button onClick={() => onViewChange(AppView.VORTEILE)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Vorteile</button>
-          <button onClick={() => onViewChange(AppView.RATGEBER)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Ratgeber</button>
+          <button onClick={() => onViewChange(AppView.AUTO_BEWERTEN)} className="text-sm text-slate-700 hover:text-brand-orange font-semibold transition-colors">Bewertung</button>
+          <button onClick={() => onViewChange(AppView.AUTO_VERKAUFEN)} className="text-sm text-slate-700 hover:text-brand-orange font-semibold transition-colors">Verkaufen</button>
+          <button onClick={() => onViewChange(AppView.VORTEILE)} className="text-sm text-slate-700 hover:text-brand-orange font-semibold transition-colors">Vorteile</button>
+          <button onClick={() => onViewChange(AppView.RATGEBER)} className="text-sm text-slate-700 hover:text-brand-orange font-semibold transition-colors">Ratgeber</button>
           <button 
             onClick={() => {
               onViewChange(AppView.HOME);
@@ -75,30 +75,30 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
 
       {/* Mobile Navigation Menu Dropdown */}
       <div 
-        className={`md:hidden absolute left-0 right-0 bg-brand-dark border-t border-white/5 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[400px] border-b border-white/5 opacity-100' : 'max-h-0 opacity-0'}`}
+        className={`md:hidden absolute left-0 right-0 bg-white border-t border-slate-200 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[400px] border-b border-slate-200 opacity-100' : 'max-h-0 opacity-0'}`}
       >
         <nav className="flex flex-col p-6 gap-4">
           <button 
             onClick={() => handleNavigation(AppView.AUTO_BEWERTEN)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
+            className="text-left text-slate-700 hover:text-brand-orange font-semibold text-base border-b border-slate-200 pb-2"
           >
             Fahrzeugbewertung
           </button>
           <button 
             onClick={() => handleNavigation(AppView.AUTO_VERKAUFEN)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
+            className="text-left text-slate-700 hover:text-brand-orange font-semibold text-base border-b border-slate-200 pb-2"
           >
             Auto verkaufen
           </button>
           <button 
             onClick={() => handleNavigation(AppView.VORTEILE)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
+            className="text-left text-slate-700 hover:text-brand-orange font-semibold text-base border-b border-slate-200 pb-2"
           >
             Ihre Vorteile
           </button>
           <button 
             onClick={() => handleNavigation(AppView.RATGEBER)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
+            className="text-left text-slate-700 hover:text-brand-orange font-semibold text-base border-b border-slate-200 pb-2"
           >
             Verkaufs-Ratgeber
           </button>
