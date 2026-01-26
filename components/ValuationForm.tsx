@@ -101,16 +101,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const [formData, setFormData] = useState<CarDetails>({
     brand: '',
     model: '',
-    variant: 'Basis',
-    year: '2019',
-    mileage: '70000',
-    fuelType: 'Benzin',
-    transmission: 'Automatikgetriebe',
-    power: '100 - 105 PS (74 - 77 kW)',
-    bodyType: 'Limousine',
-    condition: 'Good',
+    variant: '',
+    year: '',
+    mileage: '',
+    fuelType: '',
+    transmission: '',
+    power: '',
+    bodyType: '',
+    condition: '',
     vin: '',
-    doors: '4/5',
+    doors: '',
     postalCode: '',
     color: '',
     images: []
@@ -127,12 +127,29 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   };
 
   const nextPage = () => {
-    if (currentPage === 1 && (!formData.brand || !formData.model || !formData.year)) return;
-    if (currentPage === 2 && (!formData.power || !formData.bodyType || !formData.transmission)) return;
-    if (currentPage === 3 && (!formData.mileage || !formData.condition || !formData.fuelType)) return;
-    if (currentPage === 4 && (!formData.postalCode || formData.postalCode.length !== 5)) {
-      alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
-      return;
+    if (currentPage === 1) {
+      if (!formData.brand || !formData.model || !formData.year) {
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        return;
+      }
+    }
+    if (currentPage === 2) {
+      if (!formData.power || !formData.bodyType || !formData.transmission || !formData.doors) {
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        return;
+      }
+    }
+    if (currentPage === 3) {
+      if (!formData.mileage || !formData.condition || !formData.fuelType) {
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        return;
+      }
+    }
+    if (currentPage === 4) {
+      if (!formData.postalCode || formData.postalCode.length !== 5) {
+        alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
+        return;
+      }
     }
     setCurrentPage(prev => (prev < 4 ? (prev + 1) as FormPage : prev));
   };
@@ -257,8 +274,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     );
   }
 
-  const StepLabel = ({ label }: { label: string }) => (
-    <label className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">{label}</label>
+  const StepLabel = ({ label, required }: { label: string; required?: boolean }) => (
+    <label className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">
+      {label}
+      {required && <span className="text-brand-orange ml-1">*</span>}
+    </label>
   );
 
   return (
@@ -287,22 +307,23 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           {currentPage === 1 && (
             <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
-                <StepLabel label="Automarke" />
-                <select name="brand" value={formData.brand} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Automarke" required />
+                <select name="brand" value={formData.brand} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
                   <option value="">Bitte wählen...</option>
                   {Object.keys(BRAND_DATA).sort().map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
               </div>
               <div>
-                <StepLabel label="Modellreihe" />
-                <select name="model" value={formData.model} onChange={handleSelectChange} disabled={!formData.brand} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none disabled:opacity-50 cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Modellreihe" required />
+                <select name="model" value={formData.model} onChange={handleSelectChange} disabled={!formData.brand} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none disabled:opacity-50 cursor-pointer text-sm lg:text-base">
                   <option value="">{formData.brand ? "Modell wählen..." : "Wähle zuerst die Marke"}</option>
                   {formData.brand && BRAND_DATA[formData.brand].map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
               </div>
               <div>
-                <StepLabel label="Erstzulassung" />
-                <select name="year" value={formData.year} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Erstzulassung" required />
+                <select name="year" value={formData.year} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Jahr wählen...</option>
                   {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
               </div>
@@ -312,28 +333,32 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           {currentPage === 2 && (
             <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
-                <StepLabel label="Motorleistung" />
-                <select name="power" value={formData.power} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Motorleistung" required />
+                <select name="power" value={formData.power} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Leistung wählen...</option>
                   {POWER_RANGES.map(p => <option key={p.val} value={p.val}>{p.label}</option>)}
                 </select>
               </div>
               <div>
-                <StepLabel label="Karosserieform" />
-                <select name="bodyType" value={formData.bodyType} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Karosserieform" required />
+                <select name="bodyType" value={formData.bodyType} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Karosserieform wählen...</option>
                   {BODY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
               <div>
-                <StepLabel label="Anzahl der Türen *" />
-                <select name="doors" value={formData.doors || '4/5'} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Anzahl der Türen" required />
+                <select name="doors" value={formData.doors || ''} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Anzahl wählen...</option>
                   <option value="2/3">2/3 Türen</option>
                   <option value="4/5">4/5 Türen</option>
                   <option value="6/7">6/7 Türen (Van/Bus)</option>
                 </select>
               </div>
               <div>
-                <StepLabel label="Getriebeart" />
-                <select name="transmission" value={formData.transmission} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Getriebeart" required />
+                <select name="transmission" value={formData.transmission} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Getriebeart wählen...</option>
                   {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
@@ -343,19 +368,21 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           {currentPage === 3 && (
             <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
-                <StepLabel label="Laufleistung" />
-                <select name="mileage" value={formData.mileage} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Laufleistung" required />
+                <select name="mileage" value={formData.mileage} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Laufleistung wählen...</option>
                   {MILEAGE_OPTIONS.map(o => <option key={o.val} value={o.val}>{o.label}</option>)}
                 </select>
               </div>
               <div>
-                <StepLabel label="Antrieb / Kraftstoff" />
-                <select name="fuelType" value={formData.fuelType} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <StepLabel label="Antrieb / Kraftstoff" required />
+                <select name="fuelType" value={formData.fuelType} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="">Kraftstoff wählen...</option>
                   {FUELS.map(f => <option key={f} value={f}>{f}</option>)}
                 </select>
               </div>
               <div>
-                <StepLabel label="Fahrzeugzustand" />
+                <StepLabel label="Fahrzeugzustand" required />
                 <div className="grid grid-cols-2 gap-2.5 lg:gap-3">
                   {CONDITIONS.map(c => (
                     <button 
@@ -368,6 +395,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                     </button>
                   ))}
                 </div>
+                {!formData.condition && (
+                  <p className="text-xs text-red-400 mt-1 ml-1">Bitte wählen Sie den Zustand *</p>
+                )}
               </div>
             </div>
           )}
@@ -375,7 +405,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           {currentPage === 4 && (
             <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
-                <StepLabel label="Postleitzahl (Standort) *" />
+                <StepLabel label="Postleitzahl (Standort)" required />
                 <input
                   type="text"
                   name="postalCode"
@@ -392,7 +422,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                 <p className="text-xs text-slate-400 mt-1 ml-1">Wird benötigt für regionale Preisermittlung</p>
               </div>
               <div>
-                <StepLabel label="Fahrzeug-Identifizierungsnummer (FIN/VIN) - Optional" />
+                <StepLabel label="Fahrzeug-Identifizierungsnummer (FIN/VIN)" />
                 <input
                   type="text"
                   name="vin"
@@ -402,9 +432,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   maxLength={17}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base uppercase"
                 />
+                <p className="text-xs text-slate-400 mt-1 ml-1">Optional - hilft bei präziserer Bewertung</p>
               </div>
               <div>
-                <StepLabel label="Farbe (Optional)" />
+                <StepLabel label="Farbe" />
                 <input
                   type="text"
                   name="color"
@@ -413,9 +444,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   placeholder="z.B. Schwarz, Weiß, Silber..."
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base"
                 />
+                <p className="text-xs text-slate-400 mt-1 ml-1">Optional</p>
               </div>
               <div>
-                <StepLabel label="Fotos hochladen (Optional, max 5)" />
+                <StepLabel label="Fotos hochladen" />
                 <div className="space-y-2">
                   <input
                     type="file"
@@ -439,6 +471,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                       {uploadedImages.length} Bild(er) ausgewählt: {uploadedImages.join(', ')}
                     </div>
                   )}
+                  <p className="text-xs text-slate-400 mt-1 ml-1">Optional - max. 5 Bilder</p>
                 </div>
               </div>
             </div>
@@ -446,10 +479,15 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
         </div>
 
         <div className="pt-4 lg:pt-6 flex flex-col gap-3 lg:gap-4">
+          {currentPage === 4 && (
+            <div className="text-xs text-slate-400 mb-2">
+              <span className="text-brand-orange">*</span> Pflichtfelder müssen ausgefüllt werden
+            </div>
+          )}
           <button 
             type={currentPage === 4 ? "submit" : "button"} 
             onClick={currentPage === 4 ? undefined : nextPage}
-            disabled={currentPage === 1 && (!formData.brand || !formData.model)}
+            disabled={currentPage === 1 && (!formData.brand || !formData.model || !formData.year)}
             className="w-full bg-gradient-to-b from-[#ff8437] to-[#f97316] text-white py-4 lg:py-5 rounded-lg lg:rounded-2xl font-black text-base lg:text-xl shadow-[0_8px_16px_-4px_rgba(249,115,22,0.3)] lg:shadow-[0_12px_24px_-8px_rgba(249,115,22,0.4)] hover:shadow-[0_16px_32px_-8px_rgba(249,115,22,0.5)] active:scale-[0.97] transition-all disabled:opacity-50"
           >
             {currentPage === 4 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}

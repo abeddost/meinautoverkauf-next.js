@@ -9,7 +9,7 @@ export interface CarDetails {
   transmission: string;
   power: string;
   bodyType: string;
-  condition: 'Excellent' | 'Good' | 'Fair' | 'Poor';
+  condition: 'Excellent' | 'Good' | 'Fair' | 'Poor' | '';
   vin?: string;
   images?: string[];
   doors?: string;
