@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
               <path d="M40 35L50 25L60 35H40Z" fill="#f97316"/>
             </svg>
             <div className="ml-2 text-left">
-              <div className="text-base lg:text-xl font-extrabold text-white leading-none uppercase tracking-tighter">
+              <div className="text-sm lg:text-base font-extrabold text-white leading-none uppercase tracking-tighter">
                 MeinAuto<span className="text-brand-orange">verkauf</span>.de
               </div>
             </div>
@@ -56,17 +56,17 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <button onClick={() => onViewChange(AppView.AUTO_BEWERTEN)} className="text-slate-300 hover:text-brand-orange font-semibold transition-colors">Bewertung</button>
-          <button onClick={() => onViewChange(AppView.AUTO_VERKAUFEN)} className="text-slate-300 hover:text-brand-orange font-semibold transition-colors">Verkaufen</button>
-          <button onClick={() => onViewChange(AppView.VORTEILE)} className="text-slate-300 hover:text-brand-orange font-semibold transition-colors">Vorteile</button>
-          <button onClick={() => onViewChange(AppView.RATGEBER)} className="text-slate-300 hover:text-brand-orange font-semibold transition-colors">Ratgeber</button>
+        <nav className="hidden md:flex items-center gap-6">
+          <button onClick={() => onViewChange(AppView.AUTO_BEWERTEN)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Bewertung</button>
+          <button onClick={() => onViewChange(AppView.AUTO_VERKAUFEN)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Verkaufen</button>
+          <button onClick={() => onViewChange(AppView.VORTEILE)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Vorteile</button>
+          <button onClick={() => onViewChange(AppView.RATGEBER)} className="text-sm text-slate-300 hover:text-brand-orange font-semibold transition-colors">Ratgeber</button>
           <button 
             onClick={() => {
               onViewChange(AppView.HOME);
               setTimeout(() => document.getElementById('evaluate')?.scrollIntoView({ behavior: 'smooth' }), 100);
             }}
-            className="bg-brand-orange text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg active:scale-95"
+            className="bg-brand-orange text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 transition-all shadow-lg active:scale-95"
           >
             Auto verkaufen
           </button>
@@ -77,28 +77,28 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
       <div 
         className={`md:hidden absolute left-0 right-0 bg-brand-dark border-t border-white/5 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[400px] border-b border-white/5 opacity-100' : 'max-h-0 opacity-0'}`}
       >
-        <nav className="flex flex-col p-6 gap-5">
+        <nav className="flex flex-col p-6 gap-4">
           <button 
             onClick={() => handleNavigation(AppView.AUTO_BEWERTEN)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-bold text-lg border-b border-white/5 pb-2"
+            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
           >
             Fahrzeugbewertung
           </button>
           <button 
             onClick={() => handleNavigation(AppView.AUTO_VERKAUFEN)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-bold text-lg border-b border-white/5 pb-2"
+            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
           >
             Auto verkaufen
           </button>
           <button 
             onClick={() => handleNavigation(AppView.VORTEILE)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-bold text-lg border-b border-white/5 pb-2"
+            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
           >
             Ihre Vorteile
           </button>
           <button 
             onClick={() => handleNavigation(AppView.RATGEBER)} 
-            className="text-left text-slate-100 hover:text-brand-orange font-bold text-lg border-b border-white/5 pb-2"
+            className="text-left text-slate-100 hover:text-brand-orange font-semibold text-base border-b border-white/5 pb-2"
           >
             Verkaufs-Ratgeber
           </button>
@@ -107,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
               handleNavigation(AppView.HOME);
               setTimeout(() => document.getElementById('evaluate')?.scrollIntoView({ behavior: 'smooth' }), 100);
             }}
-            className="bg-brand-orange text-white w-full py-4 rounded-xl font-black text-center shadow-lg active:scale-95 transition-transform mt-2"
+            className="bg-brand-orange text-white w-full py-3 rounded-xl text-base font-bold text-center shadow-lg active:scale-95 transition-transform mt-2"
           >
             JETZT BEWERTEN
           </button>

@@ -33,14 +33,14 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
         <div className="bg-brand-dark text-white p-12 lg:w-[35%] flex flex-col justify-center items-center text-center relative">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-orange"></div>
           
-          <h2 className="text-sm font-bold text-slate-500 uppercase tracking-[0.3em] mb-4">Ihr Ankauf-Angebot</h2>
-          <div className="text-6xl lg:text-7xl font-black text-brand-orange mb-6 tracking-tighter">
+          <h2 className="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-4">Ihr Ankauf-Angebot</h2>
+          <div className="text-4xl lg:text-5xl font-black text-brand-orange mb-6 tracking-tighter">
             {formatPrice(valuation.estimatedPrice)}
           </div>
           
-          <div className="w-full p-5 bg-white/5 rounded-2xl border border-white/10 mb-8">
+          <div className="w-full p-4 bg-white/5 rounded-2xl border border-white/10 mb-8">
             <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-1">Geprüfter Preiskorridor</span>
-            <div className="text-xl font-black text-slate-300">
+            <div className="text-lg font-black text-slate-300">
               {formatPrice(valuation.priceRange.min)} — {formatPrice(valuation.priceRange.max)}
             </div>
           </div>
@@ -64,12 +64,12 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m18.236 0a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 21.359c-1.39-1.365-2.76-2.69-4.04-3.89m8.08 0c-1.28 1.2-2.65 2.525-4.04 3.89" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-black text-brand-dark tracking-tight">Ihr Rundum-Sorglos-Vorteil</h3>
+              <h3 className="text-2xl font-black text-brand-dark tracking-tight">Ihr Rundum-Sorglos-Vorteil</h3>
             </div>
             
             <div className="relative mb-10">
               <div className="absolute -left-4 top-0 bottom-0 w-1 bg-brand-orange/20 rounded-full"></div>
-              <p className="text-brand-dark text-xl lg:text-2xl font-bold leading-snug italic text-slate-700">
+              <p className="text-brand-dark text-lg lg:text-xl font-bold leading-snug italic text-slate-700">
                 "{valuation.explanation}"
               </p>
             </div>
@@ -113,7 +113,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
               
               <button 
                 onClick={onNext}
-                className="bg-brand-orange hover:bg-orange-600 text-white px-10 py-5 rounded-2xl font-black text-xl shadow-2xl transition-all transform hover:scale-[1.03] active:scale-95 shadow-orange-900/20"
+                className="bg-brand-orange hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold text-base lg:text-lg shadow-2xl transition-all transform hover:scale-[1.03] active:scale-95 shadow-orange-900/20"
               >
                 Termin zur Übergabe buchen
               </button>

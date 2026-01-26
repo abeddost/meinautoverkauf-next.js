@@ -9,17 +9,17 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
-        <h1 className="text-4xl lg:text-6xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
+        <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
           Auto verkaufen leicht gemacht: Der ultimative Leitfaden für den Bestpreis
         </h1>
         
-        <p className="text-xl text-slate-600 leading-relaxed mb-12 font-medium">
+        <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium">
           Der Verkauf eines Autos ist für viele eine stressige Angelegenheit. Nervige Anrufe, unzuverlässige Käufer und endlose Preisverhandlungen. Wir zeigen Ihnen, wie Sie Ihr Auto ohne Kopfschmerzen und zum fairen Preis verkaufen können.
         </p>
 
         <section className="prose prose-lg max-w-none text-slate-700 space-y-12">
           <div>
-            <h2 className="text-3xl font-black text-brand-dark mb-6">Privatverkauf vs. Händlerverkauf: Was passt zu Ihnen?</h2>
+            <h2 className="text-2xl font-black text-brand-dark mb-6">Privatverkauf vs. Händlerverkauf: Was passt zu Ihnen?</h2>
             <p>
               Es gibt grundsätzlich zwei Wege. Der Privatverkauf verspricht theoretisch einen höheren Preis, erfordert aber viel Eigeninitiative: Inserate erstellen, Probefahrten koordinieren und das Risiko von Zahlungsausfällen oder späteren Reklamationen tragen.
             </p>
@@ -29,7 +29,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
 
           <div className="bg-slate-50 p-8 lg:p-12 rounded-[2.5rem] border border-slate-100">
-            <h3 className="text-2xl font-black text-brand-dark mb-6">Checkliste: Diese Dokumente brauchen Sie</h3>
+            <h3 className="text-xl font-black text-brand-dark mb-6">Checkliste: Diese Dokumente brauchen Sie</h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
               {[
                 "Zulassungsbescheinigung Teil I (Fahrzeugschein)",
@@ -49,7 +49,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
 
           <div>
-            <h2 className="text-3xl font-black text-brand-dark mb-6">So bereiten Sie Ihr Auto vor</h2>
+            <h2 className="text-2xl font-black text-brand-dark mb-6">So bereiten Sie Ihr Auto vor</h2>
             <p>
               Der erste Eindruck zählt – auch beim Autoankauf. Eine gründliche Reinigung (Innen und Außen) kann den Schätzwert signifikant beeinflussen. Entfernen Sie persönliche Gegenstände und lüften Sie den Wagen gut durch. Kleinere "Schönheitsreparaturen" wie das Polieren von blinden Scheinwerfern können sich ebenfalls lohnen.
             </p>
@@ -75,18 +75,18 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <div className="my-16 bg-brand-orange rounded-[3rem] p-12 text-center text-white shadow-2xl">
-          <h2 className="text-3xl lg:text-4xl font-black mb-6">Bereit für den stressfreien Verkauf?</h2>
+          <h2 className="text-2xl lg:text-3xl font-black mb-6">Bereit für den stressfreien Verkauf?</h2>
           <p className="text-white/90 mb-10 max-w-lg mx-auto font-bold">Erhalten Sie jetzt Ihr unverbindliches Angebot in Rekordzeit.</p>
           <button 
             onClick={onCtaClick}
-            className="bg-brand-dark text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-slate-800 transition-all shadow-xl"
+            className="bg-brand-dark text-white px-10 py-4 rounded-2xl font-bold text-base lg:text-lg hover:bg-slate-800 transition-all shadow-xl"
           >
             Jetzt Auto bewerten & verkaufen
           </button>
         </div>
 
         <section className="space-y-8">
-          <h2 className="text-3xl font-black text-brand-dark text-center">Wichtige Fragen zum Verkaufsprozess</h2>
+          <h2 className="text-2xl font-black text-brand-dark text-center">Wichtige Fragen zum Verkaufsprozess</h2>
           <div className="space-y-4">
             {[
               {
@@ -107,7 +107,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               }
             ].map((faq, i) => (
               <div key={i} className="p-8 border-b border-slate-100 last:border-0">
-                <h4 className="text-xl font-black text-brand-dark mb-4">{faq.q}</h4>
+                <h4 className="text-base font-black text-brand-dark mb-4">{faq.q}</h4>
                 <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
               </div>
             ))}

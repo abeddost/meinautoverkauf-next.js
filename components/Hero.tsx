@@ -17,17 +17,17 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
             {/* Desktop Left: Content Area */}
             <div className="w-[50%] animate-in fade-in slide-in-from-left-12 duration-1000">
               <div className="mb-10">
-                <h1 className="text-5xl lg:text-[64px] font-black leading-[1.05] mb-8 tracking-tight">
+                <h1 className="text-4xl lg:text-5xl font-black leading-[1.1] mb-6 tracking-tight">
                   Dein Auto. <br/>
                   Dein Preis. <br/>
                   <span className="text-brand-orange">Deine Entscheidung.</span>
                 </h1>
-                <p className="text-xl text-slate-100 font-bold leading-snug mb-8 max-w-lg">
+                <p className="text-lg lg:text-xl text-slate-100 font-bold leading-snug mb-6 max-w-lg">
                   Verkaufe dein Auto in 2–3 Tagen zum echten Marktpreis.
                 </p>
                 <div className="flex flex-col gap-1">
-                   <p className="text-lg text-white font-black">Schnell. Fair. Sicher.</p>
-                   <p className="text-base text-slate-400 font-medium">Mit echten Angeboten statt Lockpreisen.</p>
+                   <p className="text-base text-white font-black">Schnell. Fair. Sicher.</p>
+                   <p className="text-sm text-slate-400 font-medium">Mit echten Angeboten statt Lockpreisen.</p>
                 </div>
               </div>
               
