@@ -109,8 +109,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     power: '100 - 105 PS (74 - 77 kW)',
     bodyType: 'Limousine',
     condition: 'Good',
-    vin: ''
+    vin: '',
+    doors: '4/5',
+    postalCode: '',
+    color: '',
+    images: []
   });
+  const [uploadedImages, setUploadedImages] = useState<string[]>([]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -125,6 +130,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     if (currentPage === 1 && (!formData.brand || !formData.model || !formData.year)) return;
     if (currentPage === 2 && (!formData.power || !formData.bodyType || !formData.transmission)) return;
     if (currentPage === 3 && (!formData.mileage || !formData.condition || !formData.fuelType)) return;
+    if (currentPage === 4 && (!formData.postalCode || formData.postalCode.length !== 5)) {
+      alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
+      return;
+    }
     setCurrentPage(prev => (prev < 4 ? (prev + 1) as FormPage : prev));
   };
 
@@ -132,6 +141,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate postal code before submission
+    if (!formData.postalCode || formData.postalCode.length !== 5) {
+      alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
+      return;
+    }
+    
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
@@ -255,7 +271,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                Schritt {currentPage}/4
              </div>
              <span className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest">
-               {currentPage === 1 ? "Fahrzeugwahl" : currentPage === 2 ? "Technik" : currentPage === 3 ? "Zustand" : "Check"}
+               {currentPage === 1 ? "Fahrzeugwahl" : currentPage === 2 ? "Technik" : currentPage === 3 ? "Zustand" : "Details"}
              </span>
           </div>
           <div className="flex gap-1 mt-1">
@@ -308,6 +324,14 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                 </select>
               </div>
               <div>
+                <StepLabel label="Anzahl der Türen *" />
+                <select name="doors" value={formData.doors || '4/5'} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                  <option value="2/3">2/3 Türen</option>
+                  <option value="4/5">4/5 Türen</option>
+                  <option value="6/7">6/7 Türen (Van/Bus)</option>
+                </select>
+              </div>
+              <div>
                 <StepLabel label="Getriebeart" />
                 <select name="transmission" value={formData.transmission} onChange={handleSelectChange} className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
                   {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
@@ -349,17 +373,73 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
 
           {currentPage === 4 && (
-            <div className="space-y-6 lg:space-y-8 text-center animate-in fade-in slide-in-from-right-2 duration-300">
-              <div className="w-20 h-20 lg:w-24 lg:h-24 bg-orange-50 rounded-2xl lg:rounded-[2rem] flex items-center justify-center mx-auto text-brand-orange shadow-inner">
-                <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+              <div>
+                <StepLabel label="Postleitzahl (Standort) *" />
+                <input
+                  type="text"
+                  name="postalCode"
+                  value={formData.postalCode || ''}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, '').slice(0, 5);
+                    setFormData(prev => ({ ...prev, postalCode: value }));
+                  }}
+                  placeholder="z.B. 10115"
+                  maxLength={5}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base"
+                  required
+                />
+                <p className="text-xs text-slate-400 mt-1 ml-1">Wird benötigt für regionale Preisermittlung</p>
               </div>
-              <div className="space-y-2 lg:space-y-3">
-                <h4 className="text-xl lg:text-2xl font-black">Fast geschafft!</h4>
-                <p className="text-xs lg:text-base text-slate-500 font-bold leading-relaxed px-4">
-                  Wir sind bereit für die Wertermittlung Ihres <span className="text-brand-dark">{formData.brand} {formData.model}</span>.
-                </p>
+              <div>
+                <StepLabel label="Fahrzeug-Identifizierungsnummer (FIN/VIN) - Optional" />
+                <input
+                  type="text"
+                  name="vin"
+                  value={formData.vin || ''}
+                  onChange={handleSelectChange}
+                  placeholder="17-stellige Nummer (z.B. WVWZZZ1KZBW123456)"
+                  maxLength={17}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base uppercase"
+                />
+              </div>
+              <div>
+                <StepLabel label="Farbe (Optional)" />
+                <input
+                  type="text"
+                  name="color"
+                  value={formData.color || ''}
+                  onChange={handleSelectChange}
+                  placeholder="z.B. Schwarz, Weiß, Silber..."
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base"
+                />
+              </div>
+              <div>
+                <StepLabel label="Fotos hochladen (Optional, max 5)" />
+                <div className="space-y-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={(e) => {
+                      const files = Array.from(e.target.files || []);
+                      if (files.length > 5) {
+                        alert('Maximal 5 Bilder erlaubt');
+                        return;
+                      }
+                      // For now, just store file names (in production, you'd upload to Supabase Storage)
+                      const fileNames = files.map(f => f.name);
+                      setUploadedImages(fileNames);
+                      setFormData(prev => ({ ...prev, images: fileNames }));
+                    }}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-orange file:text-white hover:file:bg-orange-600"
+                  />
+                  {uploadedImages.length > 0 && (
+                    <div className="text-xs text-slate-500 font-medium">
+                      {uploadedImages.length} Bild(er) ausgewählt: {uploadedImages.join(', ')}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}

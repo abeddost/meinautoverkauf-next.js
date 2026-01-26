@@ -12,6 +12,9 @@ export interface CarDetails {
   condition: 'Excellent' | 'Good' | 'Fair' | 'Poor';
   vin?: string;
   images?: string[];
+  doors?: string;
+  postalCode?: string;
+  color?: string;
 }
 
 export interface CarSpecs {
