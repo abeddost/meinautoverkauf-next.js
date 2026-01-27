@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppView } from '../types';
 
 interface HeaderProps {
@@ -9,14 +9,28 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleNavigation = (view: AppView) => {
     onViewChange(view);
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        isScrolled ? 'bg-white border-b border-slate-200 shadow-sm' : 'bg-transparent border-b border-white/40 backdrop-blur-md'
+      }`}
+    >
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
         <button 
           onClick={() => {
@@ -26,20 +40,14 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
           className="flex items-center gap-2 hover:opacity-90 transition-opacity focus:outline-none"
           aria-label="Meinautoverkauf Startseite"
         >
-          <div className="flex items-center">
-            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="lg:w-[45px] lg:h-[45px]">
-              <rect width="100" height="100" rx="12" fill="#1e293b"/>
-              <path d="M20 65L35 45H65L80 65V75H20V65Z" fill="#f97316"/>
-              <circle cx="35" cy="75" r="8" fill="white"/>
-              <circle cx="65" cy="75" r="8" fill="white"/>
-              <path d="M40 35L50 25L60 35H40Z" fill="#f97316"/>
-            </svg>
-            <div className="ml-2 text-left">
-              <div className="text-sm lg:text-base font-extrabold text-slate-800 leading-none uppercase tracking-tighter">
-                MeinAuto<span className="text-brand-orange">verkauf</span>.de
-              </div>
-            </div>
-          </div>
+          <img
+            src="/logo.png"
+            alt="MeinAutoVerkauf.de"
+            className="h-20 lg:h-24 w-auto"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
         </button>
 
         {/* Mobile Menu Toggle Button */}

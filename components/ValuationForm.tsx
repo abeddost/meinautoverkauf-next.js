@@ -277,52 +277,115 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const StepLabel = ({ label, required }: { label: string; required?: boolean }) => (
     <label className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">
       {label}
-      {required && <span className="text-brand-orange ml-1">*</span>}
+      {required && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange ml-1 align-middle"></span>}
     </label>
   );
 
+  const steps = [
+    {
+      label: 'Fahrzeugwahl',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 13l2-5 3-2h8l3 2 2 5" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13v5h2m10-5v5h2" />
+          <circle cx="7" cy="18" r="1.5" />
+          <circle cx="17" cy="18" r="1.5" />
+        </svg>
+      )
+    },
+    {
+      label: 'Technik',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 12h6l2-3h8" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 12h6l2 3h8" />
+          <circle cx="6" cy="12" r="1.5" />
+        </svg>
+      )
+    },
+    {
+      label: 'Zustand',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" />
+        </svg>
+      )
+    },
+    {
+      label: 'Details',
+      icon: (
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h10M5 12h14M5 17h8" />
+        </svg>
+      )
+    }
+  ];
+
+  const baseFieldClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-sm lg:text-base disabled:opacity-50 disabled:cursor-not-allowed";
+  const selectClass = `${baseFieldClass} appearance-none cursor-pointer`;
+  const inputClass = `${baseFieldClass} cursor-text`;
+  const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
+
   return (
-    <div className="bg-white rounded-[1.5rem] lg:rounded-[2.5rem] shadow-[0_16px_32px_-8px_rgba(0,0,0,0.15)] lg:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] overflow-hidden text-brand-dark flex flex-col w-full border border-white/5">
-      {/* Form Header */}
-      <div className="px-6 py-4 lg:px-8 lg:py-6 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-3">
-             <div className="bg-brand-orange text-white text-[9px] lg:text-[10px] font-black px-2 py-0.5 lg:px-2.5 lg:py-1 rounded lg:rounded-lg uppercase tracking-tight">
-               Schritt {currentPage}/4
-             </div>
-             <span className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest">
-               {currentPage === 1 ? "Fahrzeugwahl" : currentPage === 2 ? "Technik" : currentPage === 3 ? "Zustand" : "Details"}
-             </span>
-          </div>
-          <div className="flex gap-1 mt-1">
-            {[1, 2, 3, 4].map(p => (
-              <div key={p} className={`h-1 lg:h-1.5 rounded-full transition-all duration-500 ${currentPage >= p ? 'w-8 lg:w-10 bg-brand-orange' : 'w-1.5 lg:w-2 bg-slate-200'}`}></div>
-            ))}
+    <div className="relative bg-white/70 backdrop-blur-xl rounded-[1.5rem] lg:rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(15,23,42,0.45)] overflow-hidden text-brand-dark flex flex-col w-full border border-white/60">
+      <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/40 to-orange-50/50 pointer-events-none"></div>
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Form Header */}
+        <div className="px-4 py-3 lg:px-6 lg:py-4 border-b border-white/40 bg-white/50 backdrop-blur flex items-center justify-between">
+          <div className="flex flex-col gap-2 w-full">
+            <div className="flex items-center gap-3">
+              <div className="bg-gradient-to-r from-[#ffb347] to-[#ff7a1a] text-white text-[9px] lg:text-[10px] font-black px-2 py-0.5 lg:px-2.5 lg:py-1 rounded-full uppercase tracking-tight shadow-[0_6px_14px_-6px_rgba(255,122,26,0.8)]">
+                Schritt {currentPage}/4
+              </div>
+              <span className="text-[10px] lg:text-[11px] font-black text-slate-500 uppercase tracking-widest">
+                {steps[currentPage - 1].label}
+              </span>
+            </div>
+            <div className="relative mt-1">
+              <div className="absolute left-4 right-4 top-1/2 h-[2px] bg-slate-200/80"></div>
+              <div
+                className="absolute left-4 right-4 top-1/2 h-[2px] bg-gradient-to-r from-[#ffb347] to-[#ff7a1a] transition-transform duration-500 ease-out"
+                style={{ transformOrigin: 'left', transform: `scaleX(${(currentPage - 1) / 3})` }}
+              ></div>
+              <div className="relative flex items-center justify-between px-4">
+                {steps.map((step, index) => {
+                  const isActive = currentPage >= index + 1;
+                  return (
+                    <div
+                      key={step.label}
+                      className={`w-8 h-8 lg:w-9 lg:h-9 rounded-full flex items-center justify-center border transition-all duration-300 ${isActive ? 'bg-gradient-to-br from-[#ffb347] to-[#ff7a1a] text-white border-white/40 shadow-[0_10px_20px_-10px_rgba(255,122,26,0.8)]' : 'bg-white/70 text-slate-400 border-white/60'}`}
+                    >
+                      {step.icon}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <form onSubmit={handleSubmit} className="p-6 lg:p-10 space-y-5 lg:space-y-8 flex-grow flex flex-col justify-between">
-        <div className="space-y-4 lg:space-y-6">
+        <form onSubmit={handleSubmit} className="p-4 lg:p-6 space-y-4 lg:space-y-5 flex-grow flex flex-col justify-between">
+        <div className="space-y-3 lg:space-y-4">
           {currentPage === 1 && (
-            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+            <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
                 <StepLabel label="Automarke" required />
-                <select name="brand" value={formData.brand} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="brand" value={formData.brand} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Bitte wählen...</option>
                   {Object.keys(BRAND_DATA).sort().map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
               </div>
               <div>
                 <StepLabel label="Modellreihe" required />
-                <select name="model" value={formData.model} onChange={handleSelectChange} disabled={!formData.brand} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none disabled:opacity-50 cursor-pointer text-sm lg:text-base">
+                <select name="model" value={formData.model} onChange={handleSelectChange} disabled={!formData.brand} required className={selectClass}>
                   <option value="">{formData.brand ? "Modell wählen..." : "Wähle zuerst die Marke"}</option>
                   {formData.brand && BRAND_DATA[formData.brand].map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
               </div>
               <div>
                 <StepLabel label="Erstzulassung" required />
-                <select name="year" value={formData.year} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="year" value={formData.year} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Jahr wählen...</option>
                   {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
@@ -331,24 +394,24 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
 
           {currentPage === 2 && (
-            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+            <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
                 <StepLabel label="Motorleistung" required />
-                <select name="power" value={formData.power} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="power" value={formData.power} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Leistung wählen...</option>
                   {POWER_RANGES.map(p => <option key={p.val} value={p.val}>{p.label}</option>)}
                 </select>
               </div>
               <div>
                 <StepLabel label="Karosserieform" required />
-                <select name="bodyType" value={formData.bodyType} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="bodyType" value={formData.bodyType} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Karosserieform wählen...</option>
                   {BODY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
               <div>
                 <StepLabel label="Anzahl der Türen" required />
-                <select name="doors" value={formData.doors || ''} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="doors" value={formData.doors || ''} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Anzahl wählen...</option>
                   <option value="2/3">2/3 Türen</option>
                   <option value="4/5">4/5 Türen</option>
@@ -357,7 +420,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
               </div>
               <div>
                 <StepLabel label="Getriebeart" required />
-                <select name="transmission" value={formData.transmission} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="transmission" value={formData.transmission} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Getriebeart wählen...</option>
                   {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
@@ -366,17 +429,17 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
 
           {currentPage === 3 && (
-            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+            <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
                 <StepLabel label="Laufleistung" required />
-                <select name="mileage" value={formData.mileage} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="mileage" value={formData.mileage} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Laufleistung wählen...</option>
                   {MILEAGE_OPTIONS.map(o => <option key={o.val} value={o.val}>{o.label}</option>)}
                 </select>
               </div>
               <div>
                 <StepLabel label="Antrieb / Kraftstoff" required />
-                <select name="fuelType" value={formData.fuelType} onChange={handleSelectChange} required className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all appearance-none cursor-pointer text-sm lg:text-base">
+                <select name="fuelType" value={formData.fuelType} onChange={handleSelectChange} required className={selectClass}>
                   <option value="">Kraftstoff wählen...</option>
                   {FUELS.map(f => <option key={f} value={f}>{f}</option>)}
                 </select>
@@ -389,7 +452,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                       key={c.val}
                       type="button"
                       onClick={() => setFormData(p => ({ ...p, condition: c.val as any }))}
-                      className={`py-2.5 lg:py-3.5 rounded-lg lg:rounded-xl font-bold text-xs lg:text-sm transition-all border-2 ${formData.condition === c.val ? 'bg-orange-50 border-brand-orange text-brand-orange' : 'bg-slate-50 border-slate-100 text-slate-500'}`}
+                      className={`py-2.5 lg:py-3.5 rounded-xl font-bold text-xs lg:text-sm transition-all border-2 ${formData.condition === c.val ? 'bg-white border-brand-orange text-brand-orange shadow-[0_10px_20px_-14px_rgba(255,122,26,0.7)]' : 'bg-white/60 border-white/70 text-slate-500 hover:border-orange-200/70'}`}
                     >
                       {c.label.split(' (')[0]}
                     </button>
@@ -403,7 +466,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
 
           {currentPage === 4 && (
-            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-in fade-in slide-in-from-right-2 duration-300">
+            <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
                 <StepLabel label="Postleitzahl (Standort)" required />
                 <input
@@ -416,7 +479,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   }}
                   placeholder="z.B. 10115"
                   maxLength={5}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base"
+                  className={inputClass}
                   required
                 />
                 <p className="text-xs text-slate-400 mt-1 ml-1">Wird benötigt für regionale Preisermittlung</p>
@@ -430,7 +493,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   placeholder="17-stellige Nummer (z.B. WVWZZZ1KZBW123456)"
                   maxLength={17}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base uppercase"
+                  className={`${inputClass} uppercase`}
                 />
                 <p className="text-xs text-slate-400 mt-1 ml-1">Optional - hilft bei präziserer Bewertung</p>
               </div>
@@ -442,7 +505,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   value={formData.color || ''}
                   onChange={handleSelectChange}
                   placeholder="z.B. Schwarz, Weiß, Silber..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 font-bold text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base"
+                  className={inputClass}
                 />
                 <p className="text-xs text-slate-400 mt-1 ml-1">Optional</p>
               </div>
@@ -464,7 +527,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                       setUploadedImages(fileNames);
                       setFormData(prev => ({ ...prev, images: fileNames }));
                     }}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg lg:rounded-xl px-4 py-2.5 lg:py-3.5 text-[#004d7c] outline-none focus:border-brand-orange transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-orange file:text-white hover:file:bg-orange-600"
+                    className={fileInputClass}
                   />
                   {uploadedImages.length > 0 && (
                     <div className="text-xs text-slate-500 font-medium">
@@ -478,7 +541,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
         </div>
 
-        <div className="pt-4 lg:pt-6 flex flex-col gap-3 lg:gap-4">
+        <div className="pt-3 lg:pt-4 flex flex-col gap-2 lg:gap-3">
           {currentPage === 4 && (
             <div className="text-xs text-slate-400 mb-2">
               <span className="text-brand-orange">*</span> Pflichtfelder müssen ausgefüllt werden
@@ -488,9 +551,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             type={currentPage === 4 ? "submit" : "button"} 
             onClick={currentPage === 4 ? undefined : nextPage}
             disabled={currentPage === 1 && (!formData.brand || !formData.model || !formData.year)}
-            className="w-full bg-gradient-to-b from-[#ff8437] to-[#f97316] text-white py-4 lg:py-5 rounded-lg lg:rounded-2xl font-black text-base lg:text-xl shadow-[0_8px_16px_-4px_rgba(249,115,22,0.3)] lg:shadow-[0_12px_24px_-8px_rgba(249,115,22,0.4)] hover:shadow-[0_16px_32px_-8px_rgba(249,115,22,0.5)] active:scale-[0.97] transition-all disabled:opacity-50"
+            className="group w-full bg-gradient-to-r from-[#ffb347] via-[#ff8f2d] to-[#ff7a1a] text-white py-4 lg:py-5 rounded-2xl font-black text-base lg:text-lg shadow-[0_14px_30px_-14px_rgba(255,130,50,0.7)] hover:shadow-[0_20px_40px_-16px_rgba(255,130,50,0.9)] hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {currentPage === 4 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}
+            <span className="flex items-center justify-center gap-3">
+              <span>{currentPage === 4 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white transition-transform duration-300 group-hover:translate-x-1">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </span>
           </button>
           
           {currentPage > 1 && (
@@ -507,6 +577,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           )}
         </div>
       </form>
+      </div>
     </div>
   );
 };

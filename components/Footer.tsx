@@ -8,13 +8,14 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
-              <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="100" rx="12" fill="#1e293b"/>
-                <path d="M20 65L35 45H65L80 65V75H20V65Z" fill="#f97316"/>
-              </svg>
-              <span className="text-white text-2xl font-black uppercase tracking-tighter">
-                MeinAuto<span className="text-brand-orange">verkauf</span>
-              </span>
+              <img
+                src="/logo.png"
+                alt="MeinAutoVerkauf.de"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
             </div>
             <p className="max-w-md mb-10 leading-relaxed text-lg text-slate-300">
               Wir revolutionieren den Autoverkauf für Privatpersonen. 
