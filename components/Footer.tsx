@@ -18,8 +18,8 @@ const Footer: React.FC = () => {
               />
             </div>
             <p className="max-w-md mb-10 leading-relaxed text-lg text-slate-300">
-              Wir revolutionieren den Autoverkauf für Privatpersonen. 
-              Ehrlich, emotional und immer zum besten Preis. Vertrauen Sie dem Marktführer.
+              Wir vereinfachen den Autoverkauf für Privatpersonen.
+              Transparent, nachvollziehbar und mit marktgerechten Preisen. Eine der führenden Plattformen in Deutschland.
             </p>
           </div>
 

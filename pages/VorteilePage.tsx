@@ -41,7 +41,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="w-12 h-24 bg-brand-orange/20 rounded-t-xl"></div>
               <div className="w-12 h-16 bg-brand-orange/40 rounded-t-xl"></div>
               <div className="w-12 h-32 bg-brand-orange rounded-t-xl shadow-lg"></div>
-              <span className="text-[10px] font-black text-slate-400 uppercase ml-4 mb-2 tracking-widest">Marktführer Speed</span>
+              <span className="text-[10px] font-black text-slate-400 uppercase ml-4 mb-2 tracking-widest">Schnelle Abwicklung</span>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { t: "Bestpreis-Garantie", d: "Wir matchen Angebote bei gleicher Datenlage." },
+              { t: "Marktgerechte Preisermittlung", d: "Preis orientiert sich an Händlerangeboten." },
               { t: "Hausabholung", d: "Sparen Sie sich den Weg, wir kommen zu Ihnen." },
               { t: "Sofort-Cash", d: "Auszahlung per Echtzeit-Überweisung vor Ort." },
               { t: "Papierkrieg-Adieu", d: "Wir übernehmen die gesamte Bürokratie." },

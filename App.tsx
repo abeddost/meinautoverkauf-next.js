@@ -71,7 +71,7 @@ const App: React.FC = () => {
                 { 
                   num: "02", 
                   title: "Finales Händlerangebot erhalten", 
-                  desc: "Unsere KI berechnet basierend auf echten Marktwerten Ihren Bestpreis.",
+                  desc: "Unsere KI berechnet basierend auf echten Marktwerten einen marktgerechten Preis.",
                   sub: "Direkt & Realistisch"
                 },
                 { 

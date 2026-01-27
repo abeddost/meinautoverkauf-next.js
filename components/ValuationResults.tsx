@@ -79,7 +79,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                 { title: "Keine Haftung", desc: "Verkauf ohne Gewährleistungspflicht Ihrerseits." },
                 { title: "Echtzeit-Geld", desc: "Direkte Überweisung bei Fahrzeugübergabe." },
                 { title: "Kostenlose Abmeldung", desc: "Wir übernehmen den Behörden-Service für Sie." },
-                { title: "Fixer Bestpreis", desc: "Kein Nachverhandeln oder 'Letzte Preis'-Fragen." }
+                { title: "Marktgerechter Preis", desc: "Transparenter Richtpreis ohne Verhandlungsdruck." }
               ].map((benefit, i) => (
                 <div key={i} className="flex gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-orange-50 transition-colors">
                   <div className="mt-1 flex-shrink-0 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center text-white">

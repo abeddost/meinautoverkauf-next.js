@@ -10,7 +10,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
         <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
-          Auto verkaufen leicht gemacht: Der ultimative Leitfaden für den Bestpreis
+          Auto verkaufen leicht gemacht: Der Leitfaden für einen marktgerechten Preis
         </h1>
         
         <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium">

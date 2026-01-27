@@ -241,7 +241,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           
           <div className="flex justify-center">
             <p className="text-[10px] lg:text-[11px] text-slate-400 font-bold uppercase tracking-widest px-6 lg:px-8 py-2 bg-white/5 rounded-lg border border-white/10 text-center leading-relaxed">
-              Bitte haben Sie einen Moment Geduld. <br/> Wir ermitteln den Bestpreis.
+              Bitte haben Sie einen Moment Geduld. <br/> Wir ermitteln einen marktgerechten Preis.
             </p>
           </div>
         </div>
