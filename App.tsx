@@ -19,10 +19,37 @@ const App: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<AppStep>(AppStep.VALUATION_FORM);
   const [carDetails, setCarDetails] = useState<CarDetails | null>(null);
   const [valuation, setValuation] = useState<ValuationResult | null>(null);
+  const [showMobileCta, setShowMobileCta] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentStep, currentView]);
+
+  useEffect(() => {
+    let raf: number | null = null;
+
+    const updateCtaVisibility = () => {
+      if (raf !== null) return;
+      raf = window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const viewport = window.innerHeight;
+        const maxScroll = Math.max(1, scrollHeight - viewport);
+        const progress = scrollTop / maxScroll;
+        setShowMobileCta(progress >= 0.2);
+        raf = null;
+      });
+    };
+
+    updateCtaVisibility();
+    window.addEventListener('scroll', updateCtaVisibility, { passive: true });
+    window.addEventListener('resize', updateCtaVisibility);
+    return () => {
+      if (raf !== null) window.cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', updateCtaVisibility);
+      window.removeEventListener('resize', updateCtaVisibility);
+    };
+  }, []);
 
   const handleStartValuation = (details: CarDetails, result: ValuationResult) => {
     setCarDetails(details);
@@ -43,6 +70,18 @@ const App: React.FC = () => {
     setCarDetails(null);
     setValuation(null);
     setCurrentView(AppView.HOME);
+  };
+
+  const scrollToValuation = () => {
+    if (currentView !== AppView.HOME) {
+      setCurrentView(AppView.HOME);
+    }
+    if (currentStep !== AppStep.VALUATION_FORM) {
+      setCurrentStep(AppStep.VALUATION_FORM);
+    }
+    window.setTimeout(() => {
+      document.getElementById('bewerten')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 120);
   };
 
   const renderContent = () => {
@@ -361,12 +400,12 @@ const App: React.FC = () => {
               Egal ob Sie Ihren Gebrauchtwagen verkaufen, ein Fahrzeug mit Motorschaden loswerden oder einen PKW für den Export anbieten möchten –
               wir sind Ihr zuverlässiger Partner für den Autoankauf in ganz Deutschland.
             </p>
-            <a
-              href="#bewerten"
-              className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
-            >
-              Jetzt Auto verkaufen – Stressfrei und fair!
-            </a>
+              <a
+                href="#bewerten"
+                className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
+              >
+                Jetzt Auto verkaufen – Stressfrei und fair!
+              </a>
           </div>
         </section>
       </div>
@@ -375,9 +414,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
-      <Header onLogoClick={resetApp} onViewChange={setCurrentView} />
+      <Header onLogoClick={resetApp} onViewChange={setCurrentView} onScrollToValuation={scrollToValuation} />
       
-      <main className={`flex-grow ${currentStep === AppStep.VALUATION_FORM && currentView === AppView.HOME ? 'bg-brand-dark' : 'bg-gray-50'}`}>
+      <main className={`flex-grow pb-20 md:pb-0 ${currentStep === AppStep.VALUATION_FORM && currentView === AppView.HOME ? 'bg-brand-dark' : 'bg-gray-50'}`}>
         {currentView === AppView.HOME ? (
           <>
             {currentStep === AppStep.VALUATION_FORM && renderContent()}
@@ -410,6 +449,20 @@ const App: React.FC = () => {
           </>
         ) : renderContent()}
       </main>
+
+      <div
+        className={`md:hidden fixed left-0 right-0 bottom-0 px-4 pb-4 z-40 transition-transform duration-300 ease-in-out ${
+          showMobileCta ? 'translate-y-0' : 'translate-y-full'
+        }`}
+        aria-hidden={!showMobileCta}
+      >
+        <button
+          onClick={scrollToValuation}
+          className="mx-auto w-full max-w-[280px] rounded-full bg-brand-orange text-white text-sm font-bold py-3 shadow-[0_10px_20px_rgba(15,23,42,0.22)] active:scale-[0.99] transition-transform"
+        >
+          Jetzt Auto bewerten
+        </button>
+      </div>
 
       <Footer />
     </div>

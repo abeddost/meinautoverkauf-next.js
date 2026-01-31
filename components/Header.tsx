@@ -5,14 +5,20 @@ import { AppView } from '../types';
 interface HeaderProps {
   onLogoClick: () => void;
   onViewChange: (view: AppView) => void;
+  onScrollToValuation: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
+const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange, onScrollToValuation }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleNavigation = (view: AppView) => {
     onViewChange(view);
+    setIsMenuOpen(false);
+  };
+
+  const handleScrollToValuation = () => {
+    onScrollToValuation();
     setIsMenuOpen(false);
   };
 
@@ -70,10 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
           <button onClick={() => onViewChange(AppView.VORTEILE)} className="text-sm text-slate-700 hover:text-brand-orange font-semibold transition-colors">Vorteile</button>
           <button onClick={() => onViewChange(AppView.RATGEBER)} className="text-sm text-slate-700 hover:text-brand-orange font-semibold transition-colors">Ratgeber</button>
           <button 
-            onClick={() => {
-              onViewChange(AppView.HOME);
-              setTimeout(() => document.getElementById('evaluate')?.scrollIntoView({ behavior: 'smooth' }), 100);
-            }}
+            onClick={handleScrollToValuation}
             className="bg-brand-orange text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 transition-all shadow-lg active:scale-95"
           >
             Auto verkaufen
@@ -111,10 +114,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onViewChange }) => {
             Verkaufs-Ratgeber
           </button>
           <button 
-            onClick={() => {
-              handleNavigation(AppView.HOME);
-              setTimeout(() => document.getElementById('evaluate')?.scrollIntoView({ behavior: 'smooth' }), 100);
-            }}
+            onClick={handleScrollToValuation}
             className="bg-brand-orange text-white w-full py-3 rounded-xl text-base font-bold text-center shadow-lg active:scale-95 transition-transform mt-2"
           >
             JETZT BEWERTEN
