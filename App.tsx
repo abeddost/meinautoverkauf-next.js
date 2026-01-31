@@ -69,26 +69,26 @@ const App: React.FC = () => {
               {[
                 {
                   num: "01",
-                  title: "Online-Bewertung (2 Minuten)",
-                  desc: "Geben Sie online die wichtigsten Daten zu Ihrem Fahrzeug ein. Dieser Schritt dauert maximal zwei Minuten und kann bequem von zu Hause aus erledigt werden. Sie benötigen lediglich Ihre Fahrzeugpapiere – keine Besichtigung, keine Probefahrt nötig.",
-                  img: "/3%20steps/Fahrzeugdaten%20online%20eingeben.png"
+                  title: "Fahrzeugdaten eingeben",
+                  desc: "Gib online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.",
+                  img: "/3-steps/fahrzeugdaten-online-eingeben.png"
                 },
                 {
                   num: "02",
-                  title: "Sofortangebot erhalten",
-                  desc: "Unsere künstliche Intelligenz erstellt eine detaillierte Bewertung. Sie erhalten sofort einen realistischen Preiskorridor auf Basis echter Marktwerte – transparent, nachvollziehbar und ohne versteckte Abzüge.",
-                  img: "/3%20steps/Preis%20Erhalten.png"
+                  title: "Fairen Preis erhalten",
+                  desc: "Du erhältst eine transparente Preiseinschätzung auf Basis aktueller Marktdaten.",
+                  img: "/3-steps/preis-erhalten.png"
                 },
                 {
                   num: "03",
-                  title: "Übergabe & Auszahlung (wenige Stunden)",
-                  desc: "Wählen Sie Ihren Termin aus, wir holen das Fahrzeug bei Ihnen ab (kostenlos im Einzugsgebiet). Vor Ort findet eine kurze Begutachtung statt, danach unterzeichnen Sie den Kaufvertrag und erhalten Ihr Geld per Sofortüberweisung.",
-                  img: "/3%20steps/Abgabe-Termin%20buchen%20%26%20Geld%20erhalten.png"
+                  title: "Termin wählen & Geld erhalten",
+                  desc: "Wähle einen passenden Übergabetermin und erhalte die Auszahlung bequem per Banküberweisung.",
+                  img: "/3-steps/abgabe-termin-buchen-geld-erhalten.png"
                 }
               ].map((step, i) => (
                 <div key={i} className="relative bg-white rounded-[2rem] border border-slate-100 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)] overflow-hidden">
                   <div className="absolute top-4 right-5 text-3xl font-black text-orange-100">{step.num}</div>
-                  <img src={step.img} alt={step.title} className="w-full h-48 object-cover" />
+                  <img src={step.img} alt={step.title} className="w-full h-56 object-contain bg-slate-50/80 p-4" />
                   <div className="p-6">
                     <h3 className="text-lg font-black text-brand-dark mb-3">{step.title}</h3>
                     <p className="text-slate-600 font-medium leading-relaxed">{step.desc}</p>
@@ -212,8 +212,6 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <TrustElements />
-
         <section id="motorschaden" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
@@ -315,6 +313,8 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
+
+        <TrustElements />
 
         <FAQSection />
 
