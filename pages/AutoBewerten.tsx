@@ -9,91 +9,214 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
-        <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
-          Professionelle Autobewertung: Was ist dein Fahrzeug wirklich wert?
+        <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
+          Auto bewerten: Was ist mein Auto wert?
         </h1>
         
         <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
-          Den exakten Marktwert eines Gebrauchtwagens zu bestimmen, ist eine Kunst für sich. Wir bei Meinautoverkauf.de kombinieren jahrelange Expertise mit modernster KI-Technologie, um Ihnen eine präzise Einschätzung zu liefern.
+          Sie fragen sich: "Was ist mein Auto wert?" oder "Wie viel ist mein Auto wert?" Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine präzise Antwort – transparent, fair und unverbindlich.
         </p>
 
         <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
-          <h2 className="text-2xl font-black text-brand-dark">Die Grundlagen der Fahrzeugbewertung</h2>
-          <p>
-            Wer sein Auto verkaufen möchte, steht meist vor der großen Frage: Welcher Preis ist realistisch? Ein zu hoher Preis schreckt potenzielle Käufer ab und lässt das Inserat zum "Ladenhüter" werden. Ein zu niedriger Preis bedeutet bares Geld, das Sie verschenken. Die Autobewertung ist daher der kritische erste Schritt in jedem Verkaufsprozess.
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Auto bewerten lassen – warum ist das so wichtig?</h2>
+          <p className="font-medium leading-relaxed">
+            Bevor Sie Ihr Auto verkaufen, sollten Sie den aktuellen Marktwert kennen. Ein zu hoher Preis schreckt Käufer ab, ein zu niedriger Preis kostet Sie bares Geld. Wenn Sie Ihr <strong>Auto bewerten</strong> lassen möchten, stehen Ihnen verschiedene Wege offen – von klassischen Gutachtern bis hin zu modernen Online-Tools. Bei Meinautoverkauf.de kombinieren wir jahrelange Expertise mit künstlicher Intelligenz, um Ihnen eine verlässliche Einschätzung zu liefern.
+          </p>
+          <p className="font-medium leading-relaxed">
+            Die Frage "<strong>Was ist mein Auto wert?</strong>" lässt sich nicht pauschal beantworten. Der Wert eines Fahrzeugs hängt von zahlreichen Faktoren ab – von der Laufleistung über den Zustand bis hin zu regionalen Markttrends. Unsere KI-basierte Bewertung berücksichtigt all diese Aspekte und gibt Ihnen einen realistischen Preiskorridor, der dem tatsächlichen Marktwert entspricht.
           </p>
 
-          <h3 className="text-xl font-black text-brand-dark">Einflussfaktoren auf den Marktwert</h3>
-          <p>
-            Nicht nur Marke und Modell spielen eine Rolle. In unsere Analyse fließen hunderte Datenpunkte ein:
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Faktoren, die den Autowert beeinflussen</h2>
+          <p className="font-medium leading-relaxed">
+            Wenn Sie Ihr <strong>Auto schätzen lassen</strong> möchten, sollten Sie wissen, welche Kriterien den Wert bestimmen. Unsere Experten und die KI-Analyse berücksichtigen folgende Hauptfaktoren:
           </p>
-          <ul className="list-disc pl-6 space-y-4 font-medium">
-            <li><strong>Laufleistung:</strong> Die Kilometeranzahl ist oft der wichtigste Indikator für den Verschleiß technischer Komponenten.</li>
-            <li><strong>Erstzulassung & Alter:</strong> Der Wertverlust ist in den ersten Jahren am höchsten, stabilisiert sich aber meist nach 3-5 Jahren.</li>
-            <li><strong>Ausstattungslinien:</strong> Extras wie Navigationssysteme, Lederausstattung oder Assistenzsysteme können den Wiederverkaufswert erheblich steigern.</li>
-            <li><strong>Wartungshistorie:</strong> Ein lückenloses Scheckheft ist die beste Versicherung für einen hohen Preis.</li>
-            <li><strong>Optischer Zustand:</strong> Kratzer, Beulen oder Flecken im Innenraum mindern den Wert oft stärker, als man denkt.</li>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">1. Laufleistung – Der Kilometerstand als Wertindikator</h3>
+          <p className="font-medium leading-relaxed">
+            Die Laufleistung ist einer der entscheidendsten Faktoren bei der Fahrzeugbewertung. Je höher der Kilometerstand, desto stärker der Verschleiß an Motor, Getriebe und Fahrwerk. Fahrzeuge mit niedriger Laufleistung erzielen deutlich höhere Preise. Als Faustregel gilt: Ein PKW verliert bei durchschnittlicher Nutzung (ca. 15.000 km pro Jahr) kontinuierlich an Wert, wobei die ersten Jahre den größten Wertverlust bedeuten.
+          </p>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">2. Alter und Erstzulassung</h3>
+          <p className="font-medium leading-relaxed">
+            Das Fahrzeugalter spielt eine zentrale Rolle. Neuwagen verlieren im ersten Jahr durchschnittlich 20-25% ihres Wertes, in den ersten drei Jahren oft bis zu 50%. Nach etwa fünf Jahren stabilisiert sich der Wertverlust. Wenn Sie Ihr <strong>Auto wert ermitteln</strong> lassen, wird auch das Baujahr mit aktuellen Marktdaten abgeglichen, denn manche Modelle und Jahrgänge sind gefragter als andere.
+          </p>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">3. Ausstattung und Sonderausstattung</h3>
+          <p className="font-medium leading-relaxed">
+            Die Ausstattung kann den Wert erheblich steigern. Premium-Features wie Ledersitze, Navigationssysteme, Assistenzsysteme (Spurhalteassistent, Einparkhilfe), Schiebedach oder hochwertige Soundsysteme erhöhen den Wiederverkaufswert deutlich. Fahrzeuge der Basis-Ausstattung sind oft schwerer zu verkaufen und erzielen niedrigere Preise. Auch die Motorisierung spielt eine Rolle: Dieselfahrzeuge haben in den letzten Jahren an Wert verloren, während Hybrid- und Elektrofahrzeuge zunehmend gefragt sind.
+          </p>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">4. Zustand – Optik und Technik</h3>
+          <p className="font-medium leading-relaxed">
+            Der Gesamtzustand ist entscheidend. Kratzer, Dellen, Steinschläge, Rost oder Innenraumschäden mindern den Wert erheblich. Ebenso wichtig ist der technische Zustand: Funktionieren alle Systeme einwandfrei? Gibt es versteckte Mängel? Ein gepflegtes Fahrzeug mit lückenlosem Scheckheft erzielt deutlich höhere Preise als ein vernachlässigtes Auto. Bei unserer Bewertung können Sie den Zustand detailliert angeben, sodass wir eine faire Einschätzung treffen können.
+          </p>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">5. Wartungshistorie und Scheckheft</h3>
+          <p className="font-medium leading-relaxed">
+            Ein lückenloses Scheckheft ist Gold wert. Es belegt, dass das Fahrzeug regelmäßig gewartet wurde und alle Inspektionen durchgeführt wurden. Käufer und Händler honorieren dies mit höheren Preisen, da das Risiko für teure Folgeschäden sinkt. Fehlt das Scheckheft oder sind Wartungsintervalle nicht eingehalten worden, kann der Wert um 10-20% sinken.
+          </p>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">6. Regionale Markttrends</h3>
+          <p className="font-medium leading-relaxed">
+            Der Standort spielt eine Rolle. In städtischen Ballungsräumen sind Kleinwagen und kompakte SUVs gefragter, während auf dem Land größere Fahrzeuge oder Geländewagen beliebter sind. Auch regionale Preisunterschiede existieren: In wirtschaftlich starken Regionen wie München oder Hamburg erzielen Fahrzeuge oft höhere Preise als in strukturschwächeren Gebieten.
+          </p>
+
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Traditionelle Bewertung vs. KI-gestützte Autobewertung</h2>
+          <p className="font-medium leading-relaxed">
+            Früher mussten Autobesitzer ihr <strong>Auto schätzen lassen</strong> durch klassische Methoden wie Schwacke-Listen, DAT-Werte oder lokale Gutachter. Diese Ansätze haben jedoch Schwächen:
+          </p>
+          <ul className="list-disc pl-6 space-y-3 font-medium">
+            <li><strong>Schwacke und DAT:</strong> Basieren auf historischen Durchschnittswerten und bilden aktuelle Marktschwankungen nur verzögert ab.</li>
+            <li><strong>Lokale Gutachter:</strong> Teuer, zeitaufwendig und oft subjektiv.</li>
+            <li><strong>Händler-Schätzungen:</strong> Oft zu niedrig, da Händler ihre eigene Marge einkalkulieren.</li>
           </ul>
 
-          <h2 className="text-2xl font-black text-brand-dark">Traditionelle vs. KI-basierte Bewertung</h2>
-          <p>
-            Früher waren Schwacke-Listen oder DAT-Werte das Maß aller Dinge. Diese basieren jedoch oft auf historischen Durchschnittswerten, die aktuelle Marktschwankungen nur verzögert abbilden.
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Die Vorteile der KI-basierten Bewertung</h3>
+          <p className="font-medium leading-relaxed">
+            Unsere KI-gestützte Plattform analysiert kontinuierlich tausende von Transaktionen auf allen großen Gebrauchtwagenportalen, Auktionsplattformen und bei Händlernetzwerken. Dadurch erhalten Sie:
           </p>
-          <p>
-            Unsere KI-Lösung hingegen scannt kontinuierlich tausende Transaktionen auf Online-Portalen, Auktionen und bei Händlern. Wir wissen nicht nur, was ein Auto theoretisch wert ist, sondern für welchen Preis vergleichbare Modelle in Ihrer Region tatsächlich verkauft werden.
+          <ul className="list-disc pl-6 space-y-3 font-medium">
+            <li><strong>Echtzeit-Marktdaten:</strong> Wir wissen, zu welchen Preisen vergleichbare Fahrzeuge aktuell verkauft werden.</li>
+            <li><strong>Präzision:</strong> Berücksichtigung von über 100 Datenpunkten für eine exakte Bewertung.</li>
+            <li><strong>Transparenz:</strong> Sie sehen genau, wie sich der Preis zusammensetzt.</li>
+            <li><strong>Geschwindigkeit:</strong> In 2 Minuten zur vollständigen Bewertung.</li>
+            <li><strong>Kostenlos:</strong> Keine versteckten Gebühren, 100% unverbindlich.</li>
+          </ul>
+
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Wie funktioniert unsere Auto-Bewertung?</h2>
+          <p className="font-medium leading-relaxed">
+            Wenn Sie bei uns Ihr <strong>Auto wert ermitteln</strong> lassen möchten, durchlaufen Sie einen einfachen, aber präzisen Prozess:
+          </p>
+          
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 1: Fahrzeugdaten eingeben</h3>
+          <p className="font-medium leading-relaxed">
+            Sie geben grundlegende Informationen ein: Marke, Modell, Erstzulassung, Kilometerstand, Ausstattung und Zustand. Je detaillierter Ihre Angaben, desto präziser die Bewertung.
           </p>
 
-          <h2 className="text-2xl font-black text-brand-dark">Der Prozess bei Meinautoverkauf.de</h2>
-          <p>
-            Transparenz steht bei uns an erster Stelle. Wenn Sie unser Tool nutzen, erhalten Sie nicht nur eine Zahl, sondern einen fundierten Preiskorridor. Dieser berücksichtigt sowohl den schnellen Ankauf durch einen Händler als auch den theoretisch möglichen (aber zeitaufwendigen) Privatverkauf.
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 2: KI-Analyse</h3>
+          <p className="font-medium leading-relaxed">
+            Unsere künstliche Intelligenz vergleicht Ihre Angaben mit zehntausenden aktuellen Marktdaten. Dabei werden regionale Besonderheiten, saisonale Trends und aktuelle Nachfrage berücksichtigt. Die KI erkennt Muster und kann so den realistischen Marktwert auf wenige hundert Euro genau bestimmen.
+          </p>
+
+          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 3: Preiskorridor erhalten</h3>
+          <p className="font-medium leading-relaxed">
+            Sie erhalten einen transparenten Preiskorridor mit drei Werten:
+          </p>
+          <ul className="list-disc pl-6 space-y-3 font-medium">
+            <li><strong>Händler-Ankaufspreis:</strong> Der Preis, den Sie bei einem schnellen Verkauf an einen Händler erzielen können.</li>
+            <li><strong>Fairer Marktwert:</strong> Der realistische Mittelwert, der dem aktuellen Markt entspricht.</li>
+            <li><strong>Privatverkauf-Potenzial:</strong> Der maximal erzielbare Preis bei privatem Verkauf (zeitaufwendig, aber lukrativ).</li>
+          </ul>
+
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Transparenz und Genauigkeit – unser Versprechen</h2>
+          <p className="font-medium leading-relaxed">
+            Wenn Sie sich fragen "<strong>Wie viel ist mein Auto wert?</strong>", verdienen Sie eine ehrliche Antwort. Wir setzen auf vollständige Transparenz:
+          </p>
+          <ul className="list-disc pl-6 space-y-3 font-medium">
+            <li><strong>Keine versteckten Kosten:</strong> Die Bewertung ist 100% kostenlos.</li>
+            <li><strong>Unverbindlich:</strong> Sie müssen nicht verkaufen, wenn Ihnen das Angebot nicht zusagt.</li>
+            <li><strong>Nachvollziehbar:</strong> Wir erklären, wie sich der Preis zusammensetzt.</li>
+            <li><strong>Fair:</strong> Wir bieten realistische Preise, keine Lockangebote.</li>
+          </ul>
+
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Händler-Ankaufspreis vs. Privatverkauf</h2>
+          <p className="font-medium leading-relaxed">
+            Viele Autobesitzer sind überrascht, dass Händler-Angebote deutlich niedriger ausfallen als Privatverkaufspreise. Das hat mehrere Gründe:
+          </p>
+          <ul className="list-disc pl-6 space-y-3 font-medium">
+            <li><strong>Aufbereitung:</strong> Händler müssen das Fahrzeug professionell aufbereiten (Reinigung, kleine Reparaturen, TÜV).</li>
+            <li><strong>Garantie:</strong> Gewerbliche Verkäufer müssen Gewährleistung bieten.</li>
+            <li><strong>Standzeit:</strong> Bis zum Verkauf entstehen Kosten für Stellplatz, Versicherung und Verwaltung.</li>
+            <li><strong>Marge:</strong> Der Händler muss einen Gewinn erzielen.</li>
+          </ul>
+          <p className="font-medium leading-relaxed mt-6">
+            Der Händler-Ankaufspreis liegt daher typischerweise 10-20% unter dem privaten Verkaufspreis. Dafür sparen Sie Zeit, Nerven und das Risiko unseriöser Käufer. Bei Meinautoverkauf.de erhalten Sie beides: einen fairen Händlerpreis ODER die Möglichkeit, Ihr Auto privat zu verkaufen, wenn Sie mehr Zeit haben.
+          </p>
+
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Wie lange ist die Bewertung gültig?</h2>
+          <p className="font-medium leading-relaxed">
+            Der Gebrauchtwagenmarkt ist dynamisch. Preise schwanken aufgrund von Angebot und Nachfrage, saisonalen Trends (Cabrios im Sommer teurer) und wirtschaftlichen Faktoren. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Nach diesem Zeitraum empfehlen wir eine erneute Bewertung, um sicherzustellen, dass Sie den aktuell fairen Preis erhalten.
+          </p>
+
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Kostenloser Service – warum?</h2>
+          <p className="font-medium leading-relaxed">
+            Sie fragen sich vielleicht: Warum bieten wir die Bewertung kostenlos an? Ganz einfach: Wir möchten Ihr Vertrauen gewinnen. Wenn Sie mit unserer Einschätzung zufrieden sind und sich entscheiden, Ihr Auto über uns zu verkaufen, profitieren beide Seiten. Aber es gibt keine Verpflichtung. Selbst wenn Sie nur wissen möchten, was Ihr Auto wert ist, ohne es sofort zu verkaufen – nutzen Sie unseren Service gerne. Es entstehen keinerlei Kosten oder Verpflichtungen.
           </p>
         </section>
 
-        <div className="my-16 bg-brand-dark rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-2xl">
+        <div className="my-16 bg-gradient-to-br from-brand-dark to-slate-800 rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-2xl">
           <div className="relative z-10">
-            <h2 className="text-2xl lg:text-3xl font-black mb-6">Jetzt Fahrzeugwert gratis ermitteln</h2>
-            <p className="text-slate-300 mb-10 max-w-lg mx-auto font-bold">In nur 2 Minuten zur präzisen Bewertung. 100% kostenlos und unverbindlich.</p>
+            <h2 className="text-2xl lg:text-3xl font-black mb-6">Jetzt kostenlos Auto bewerten lassen</h2>
+            <p className="text-slate-200 mb-10 max-w-2xl mx-auto font-semibold text-lg">
+              Was ist mein Auto wert? Erhalten Sie in nur 2 Minuten eine präzise KI-gestützte Bewertung. 100% kostenlos, unverbindlich und transparent.
+            </p>
             <button 
               onClick={onCtaClick}
-              className="bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-xl"
+              className="bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
-              Auto jetzt bewerten
+              Auto jetzt bewerten – Kostenlos & unverbindlich
             </button>
           </div>
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl"></div>
+          <div className="absolute -top-20 -left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
         </div>
 
         <section className="space-y-12">
-          <h2 className="text-2xl font-black text-brand-dark text-center">Häufige Fragen zur Bewertung</h2>
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark text-center mb-12">Häufig gestellte Fragen zur Autobewertung</h2>
           <div className="grid grid-cols-1 gap-6">
             {[
               {
+                q: "Was ist mein Auto wert – wie genau ist die Online-Bewertung?",
+                a: "Unsere KI-gestützte Bewertung erreicht eine Genauigkeit von über 97%. Wir analysieren tausende aktuelle Transaktionen und berücksichtigen über 100 Faktoren. Die Abweichung zum tatsächlichen Verkaufspreis liegt im Durchschnitt unter 3% – das ist Branchenstandard."
+              },
+              {
                 q: "Warum weicht mein Online-Wert vom Händlerangebot ab?",
-                a: "Ein Händler muss Kosten für Aufbereitung, Garantie und Standzeit einplanen. Daher liegt der Ankaufspreis meist ca. 10-15% unter dem Inseratspreis auf Portalen."
+                a: "Der Händler-Ankaufspreis liegt meist 10-20% unter dem Privatverkaufspreis. Ein Händler muss Kosten für Aufbereitung, Garantie, Standzeit und seine eigene Marge einplanen. Dafür erhalten Sie einen schnellen, sicheren Verkauf ohne Risiko."
               },
               {
                 q: "Wie lange ist die Bewertung gültig?",
-                a: "Der Markt ist dynamisch. Unsere Bewertungen spiegeln den aktuellen Stand wider und sind in der Regel 7 bis 10 Tage für einen Ankauf verbindlich."
+                a: "Der Gebrauchtwagenmarkt ist dynamisch. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Danach empfehlen wir eine erneute Bewertung, um aktuelle Marktveränderungen zu berücksichtigen."
               },
               {
-                q: "Muss ich für die Bewertung bezahlen?",
-                a: "Nein, bei Meinautoverkauf.de ist die Wertermittlung ein reiner Service für unsere Kunden und bleibt stets 100% kostenfrei."
+                q: "Kostet es etwas, mein Auto schätzen zu lassen?",
+                a: "Nein, bei Meinautoverkauf.de ist die Wertermittlung ein reiner Service und bleibt stets 100% kostenfrei. Es entstehen keinerlei versteckte Kosten oder Verpflichtungen."
               },
               {
                 q: "Werden Unfallschäden berücksichtigt?",
-                a: "Ja, im Rahmen der detaillierten Zustandsbeschreibung können Sie Schäden angeben, die wir fair in die Berechnung einfließen lassen."
+                a: "Ja, im Rahmen der detaillierten Zustandsbeschreibung können Sie Schäden, Vorschäden und Unfallhistorie angeben. Wir fließen diese fair in die Berechnung ein, sodass Sie einen realistischen Wert erhalten."
               },
               {
-                q: "Kann ich auch Exoten oder getunte Autos bewerten?",
-                a: "Die KI ist auf Serienmodelle optimiert. Bei sehr speziellen Umbauten empfiehlt sich nach der Online-Einschätzung ein persönliches Gespräch mit unseren Experten."
+                q: "Kann ich auch Fahrzeuge mit Motorschaden bewerten lassen?",
+                a: "Absolut. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV haben einen Restwert. Unsere KI berücksichtigt den Zustand und ermittelt einen fairen Preis für Ihr Fahrzeug – auch für den Export oder als Teilespender."
+              },
+              {
+                q: "Wie viel ist mein Auto wert, wenn es getunt oder umgebaut ist?",
+                a: "Die KI ist auf Serienmodelle optimiert. Bei speziellen Umbauten, Tuning oder seltenen Fahrzeugen empfehlen wir nach der Online-Einschätzung ein persönliches Gespräch mit unseren Experten für eine individuelle Bewertung."
+              },
+              {
+                q: "Muss ich mein Auto nach der Bewertung verkaufen?",
+                a: "Nein, die Bewertung ist völlig unverbindlich. Sie können den Wert Ihres Autos ermitteln, ohne jegliche Verkaufsverpflichtung einzugehen. Nutzen Sie unseren Service einfach zur Information."
               }
             ].map((faq, i) => (
-              <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100">
-                <h4 className="text-base font-black text-brand-dark mb-3">{faq.q}</h4>
+              <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
+                <h4 className="text-base lg:text-lg font-black text-brand-dark mb-3">{faq.q}</h4>
                 <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
+          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Auto wert ermitteln leicht gemacht</h2>
+          <p className="text-slate-700 font-medium leading-relaxed mb-4">
+            Die Frage "<strong>Was ist mein Auto wert?</strong>" oder "<strong>Wie viel ist mein Auto wert?</strong>" lässt sich heute dank moderner Technologie schnell und präzise beantworten. Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine transparente, faire Einschätzung – ganz ohne Verpflichtungen.
+          </p>
+          <p className="text-slate-700 font-medium leading-relaxed mb-4">
+            Egal ob Sie Ihr <strong>Auto bewerten</strong> lassen möchten, um es zu verkaufen, oder einfach nur neugierig sind – unser Service steht Ihnen jederzeit zur Verfügung. Wir kombinieren jahrelange Branchenerfahrung mit modernster künstlicher Intelligenz, um Ihnen den bestmöglichen Service zu bieten.
+          </p>
+          <p className="text-slate-700 font-medium leading-relaxed">
+            Starten Sie jetzt Ihre kostenlose Bewertung und erfahren Sie, was Ihr Fahrzeug wirklich wert ist. Fair, transparent und in nur 2 Minuten.
+          </p>
         </section>
       </div>
     </div>
