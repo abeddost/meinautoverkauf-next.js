@@ -4,6 +4,9 @@ import { CarDetails, ValuationResult } from '../types';
 
 interface HeroProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
+  headline?: string;
+  subheadline?: string;
+  accent?: 'home' | 'bewerten' | 'verkaufen' | 'vorteile' | 'ratgeber';
 }
 
 const PARTICLES = [
@@ -50,8 +53,49 @@ const BENEFITS = [
 ];
 
 
-const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
+const ACCENTS = {
+  home: {
+    gradientClass: 'from-[#dbe9ff] via-white to-[#ffe1c6]',
+    blobTopClass: 'bg-[#c9ddff]',
+    blobBottomClass: 'bg-[#ffd6b3]',
+    radial:
+      'radial-gradient(circle at 85% 35%, rgba(255,204,163,0.75), rgba(255,255,255,0) 50%)'
+  },
+  bewerten: {
+    gradientClass: 'from-[#cfe6ff] via-white to-[#e7f2ff]',
+    blobTopClass: 'bg-[#b9d9ff]',
+    blobBottomClass: 'bg-[#cfe4ff]',
+    radial:
+      'radial-gradient(circle at 85% 35%, rgba(148,200,255,0.7), rgba(255,255,255,0) 50%)'
+  },
+  verkaufen: {
+    gradientClass: 'from-[#ffd9bf] via-white to-[#ffd6e4]',
+    blobTopClass: 'bg-[#ffc9a8]',
+    blobBottomClass: 'bg-[#ffc6de]',
+    radial:
+      'radial-gradient(circle at 85% 35%, rgba(255,179,128,0.7), rgba(255,255,255,0) 50%)'
+  },
+  vorteile: {
+    gradientClass: 'from-[#cfeee0] via-white to-[#daf7ea]',
+    blobTopClass: 'bg-[#bfe6d6]',
+    blobBottomClass: 'bg-[#c6efdd]',
+    radial:
+      'radial-gradient(circle at 85% 35%, rgba(120,220,190,0.7), rgba(255,255,255,0) 50%)'
+  },
+  ratgeber: {
+    gradientClass: 'from-[#f2e6c9] via-white to-[#ffe7c5]',
+    blobTopClass: 'bg-[#e6d6b2]',
+    blobBottomClass: 'bg-[#f4d9b5]',
+    radial:
+      'radial-gradient(circle at 85% 35%, rgba(230,186,120,0.7), rgba(255,255,255,0) 50%)'
+  }
+} as const;
+
+const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline, accent }) => {
   const [carTransform, setCarTransform] = useState({ tiltX: 0, tiltY: 0, offsetY: 0 });
+  const heroHeadline = headline ?? 'Auto verkaufen online – Einfach, schnell & stressfrei';
+  const heroSubheadline = subheadline ?? 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis';
+  const heroAccent = ACCENTS[accent ?? 'home'];
 
   useEffect(() => {
     let raf: number | null = null;
@@ -102,19 +146,21 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
   );
 
   return (
-    <section id="bewerten" className="relative bg-gradient-to-br from-[#e6f0ff] via-white to-[#fff6ef] overflow-hidden min-h-[100vh] -mt-16 lg:-mt-20 pt-16 lg:pt-20 flex flex-col">
+    <section
+      id="bewerten"
+      className={`relative bg-gradient-to-br ${heroAccent.gradientClass} overflow-hidden min-h-[100vh] -mt-16 lg:-mt-20 pt-16 lg:pt-20 flex flex-col`}
+    >
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-100"
           style={{ backgroundImage: "url('/hero%20section.png')" }}
         ></div>
-        <div className="absolute -top-32 right-[-80px] h-[420px] w-[420px] rounded-full bg-[#dbe9ff] blur-3xl opacity-70 animate-float-slow"></div>
-        <div className="absolute -bottom-40 left-[-120px] h-[520px] w-[520px] rounded-full bg-[#ffe8d1] blur-3xl opacity-70 animate-float-slower"></div>
+        <div className={`absolute -top-32 right-[-80px] h-[420px] w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>
+        <div className={`absolute -bottom-40 left-[-120px] h-[520px] w-[520px] rounded-full ${heroAccent.blobBottomClass} blur-3xl opacity-85 animate-float-slower`}></div>
         <div
-          className="absolute inset-0 opacity-50"
+          className="absolute inset-0 opacity-70"
           style={{
-            background:
-              'radial-gradient(circle at 85% 35%, rgba(255,221,190,0.55), rgba(255,255,255,0) 45%)'
+            background: heroAccent.radial
           }}
         ></div>
         <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -160,10 +206,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
             <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
               <div className="max-w-2xl mt-1">
                 <h1 className="text-[38px] lg:text-[46px] font-black leading-[1.12] tracking-tight text-[#1e293b]">
-                  Auto verkaufen online – Einfach, schnell & stressfrei
+                  {heroHeadline}
                 </h1>
                 <p className="mt-3 text-base lg:text-lg text-slate-600 font-medium max-w-lg">
-                  Autoankauf – Wir kaufen Ihr Auto zum fairen Preis
+                  {heroSubheadline}
                 </p>
               </div>
 
@@ -230,10 +276,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
         <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
           <div className="text-left mb-4">
             <h2 className="text-[24px] sm:text-[26px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
-              Auto verkaufen online – Einfach, schnell & stressfrei
+              {heroHeadline}
             </h2>
             <p className="mt-3 text-base text-slate-600 font-medium">
-              Autoankauf – Wir kaufen Ihr Auto zum fairen Preis
+              {heroSubheadline}
             </p>
           </div>
 

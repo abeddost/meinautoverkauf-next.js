@@ -9,15 +9,15 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
-        <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
+        <h2 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
           Auto bewerten: Was ist mein Auto wert?
-        </h1>
+        </h2>
         
-        <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
+        <p className="text-base text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
           Sie fragen sich: "Was ist mein Auto wert?" oder "Wie viel ist mein Auto wert?" Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine präzise Antwort – transparent, fair und unverbindlich.
         </p>
 
-        <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
+        <section className="prose max-w-none text-slate-700 space-y-8">
           <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Auto bewerten lassen – warum ist das so wichtig?</h2>
           <p className="font-medium leading-relaxed">
             Bevor Sie Ihr Auto verkaufen, sollten Sie den aktuellen Marktwert kennen. Ein zu hoher Preis schreckt Käufer ab, ein zu niedriger Preis kostet Sie bares Geld. Wenn Sie Ihr <strong>Auto bewerten</strong> lassen möchten, stehen Ihnen verschiedene Wege offen – von klassischen Gutachtern bis hin zu modernen Online-Tools. Bei Meinautoverkauf.de kombinieren wir jahrelange Expertise mit künstlicher Intelligenz, um Ihnen eine verlässliche Einschätzung zu liefern.
@@ -144,21 +144,28 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           </p>
         </section>
 
-        <div className="my-16 bg-gradient-to-br from-brand-dark to-slate-800 rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-2xl">
-          <div className="relative z-10">
-            <h2 className="text-2xl lg:text-3xl font-black mb-6">Jetzt kostenlos Auto bewerten lassen</h2>
-            <p className="text-slate-200 mb-10 max-w-2xl mx-auto font-semibold text-lg">
-              Was ist mein Auto wert? Erhalten Sie in nur 2 Minuten eine präzise KI-gestützte Bewertung. 100% kostenlos, unverbindlich und transparent.
+        <div className="my-16 bg-brand-dark rounded-[3rem] p-10 lg:p-12 text-white relative overflow-hidden shadow-2xl">
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
+            <p className="text-brand-orange font-bold tracking-wide uppercase text-sm mb-3">Kostenlos & unverbindlich</p>
+            <h2 className="text-2xl lg:text-4xl font-black mb-4">Jetzt Auto bewerten in 2 Minuten</h2>
+            <p className="text-slate-200 mb-8 font-semibold text-base lg:text-lg">
+              Erhalten Sie eine klare, faire Einschätzung Ihres Fahrzeugwerts – ohne Anmeldung, ohne Risiko.
             </p>
-            <button 
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 text-sm lg:text-base text-slate-200">
+              <span className="bg-white/10 px-4 py-2 rounded-full">Dauer: ca. 2 Minuten</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">100% kostenlos</span>
+              <span className="bg-white/10 px-4 py-2 rounded-full">Sofort-Ergebnis</span>
+            </div>
+            <button
               onClick={onCtaClick}
-              className="bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
+              className="w-full sm:w-auto bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] transform duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-orange/40"
             >
-              Auto jetzt bewerten – Kostenlos & unverbindlich
+              Auto jetzt bewerten
             </button>
+            <p className="text-slate-300 text-sm mt-4">Keine Verpflichtung. Sie entscheiden, ob Sie verkaufen.</p>
           </div>
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl"></div>
-          <div className="absolute -top-20 -left-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-orange/15 rounded-full blur-3xl"></div>
+          <div className="absolute -top-28 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         </div>
 
         <section className="space-y-12">

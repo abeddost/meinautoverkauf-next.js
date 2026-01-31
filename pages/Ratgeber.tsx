@@ -9,11 +9,11 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
-        <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
+        <h2 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
           Der Meinautoverkauf Ratgeber: Wissen rund um den Gebrauchtwagenmarkt
-        </h1>
+        </h2>
         
-        <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium">
+        <p className="text-base text-slate-600 leading-relaxed mb-12 font-medium">
           Wir möchten, dass Sie gut informiert sind. In unserem Ratgeber finden Sie Tipps zum Werterhalt, rechtliche Hintergründe und aktuelle Analysen zum deutschen Automobilmarkt.
         </p>
 
@@ -49,7 +49,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
           ))}
         </section>
 
-        <section className="prose prose-lg max-w-none text-slate-700 space-y-12">
+        <section className="prose max-w-none text-slate-700 space-y-12">
           <h2 className="text-2xl font-black text-brand-dark">Saisonalität im Autohandel</h2>
           <p>
             Wussten Sie, dass Cabrios im Frühling deutlich teurer gehandelt werden als im Herbst? Oder dass Allradfahrzeuge im Oktober ihren preislichen Höhepunkt erreichen? Wir helfen Ihnen, den richtigen Zeitpunkt für Ihren Verkauf zu finden.

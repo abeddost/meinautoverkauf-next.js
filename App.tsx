@@ -26,6 +26,31 @@ const App: React.FC = () => {
   }, [currentStep, currentView]);
 
   useEffect(() => {
+    if (currentView === AppView.HOME) return;
+    const timeout = window.setTimeout(() => {
+      const target = document.getElementById('after-hero');
+      if (!target) return;
+      const start = window.scrollY;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+      const distance = targetTop - start;
+      const duration = 900;
+      const startTime = performance.now();
+
+      const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        window.scrollTo(0, start + distance * easeInOut(progress));
+        if (progress < 1) window.requestAnimationFrame(step);
+      };
+
+      window.requestAnimationFrame(step);
+    }, 120);
+    return () => window.clearTimeout(timeout);
+  }, [currentView]);
+
+  useEffect(() => {
     let raf: number | null = null;
 
     const updateCtaVisibility = () => {
@@ -85,15 +110,79 @@ const App: React.FC = () => {
     }, 120);
   };
 
+  const heroCopyByView: Record<AppView, { headline: string; subheadline: string; accent: 'home' | 'bewerten' | 'verkaufen' | 'vorteile' | 'ratgeber' }> = {
+    [AppView.HOME]: {
+      headline: 'Auto verkaufen online – Einfach, schnell & stressfrei',
+      subheadline: 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis',
+      accent: 'home'
+    },
+    [AppView.AUTO_BEWERTEN]: {
+      headline: 'Auto bewerten online – Kostenlos & präzise Wertermittlung',
+      subheadline: 'In 2 Minuten den realistischen Marktwert Ihres Fahrzeugs erhalten',
+      accent: 'bewerten'
+    },
+    [AppView.AUTO_VERKAUFEN]: {
+      headline: 'Auto verkaufen online – Schnell, fair & sicher',
+      subheadline: 'Kostenlose Bewertung und stressfreier Verkauf in ganz Deutschland',
+      accent: 'verkaufen'
+    },
+    [AppView.VORTEILE]: {
+      headline: 'Ihre Vorteile beim Autoankauf – Transparent & zuverlässig',
+      subheadline: 'Geprüfte Händler, faire Preise und schnelle Auszahlung',
+      accent: 'vorteile'
+    },
+    [AppView.RATGEBER]: {
+      headline: 'Auto Ratgeber – Tipps, Checklisten & Wissen',
+      subheadline: 'Alles rund um Bewertung, Verkauf und Marktpreise',
+      accent: 'ratgeber'
+    }
+  };
+
   const renderContent = () => {
-    if (currentView === AppView.AUTO_BEWERTEN) return <AutoBewertenPage onCtaClick={() => setCurrentView(AppView.HOME)} />;
-    if (currentView === AppView.AUTO_VERKAUFEN) return <AutoVerkaufenPage onCtaClick={() => setCurrentView(AppView.HOME)} />;
-    if (currentView === AppView.VORTEILE) return <VorteilePage onCtaClick={() => setCurrentView(AppView.HOME)} />;
-    if (currentView === AppView.RATGEBER) return <RatgeberPage onCtaClick={() => setCurrentView(AppView.HOME)} />;
+    if (currentView === AppView.AUTO_BEWERTEN) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.AUTO_BEWERTEN]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <AutoBewertenPage onCtaClick={() => setCurrentView(AppView.HOME)} />
+          </div>
+        </div>
+      );
+    }
+    if (currentView === AppView.AUTO_VERKAUFEN) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.AUTO_VERKAUFEN]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <AutoVerkaufenPage onCtaClick={() => setCurrentView(AppView.HOME)} />
+          </div>
+        </div>
+      );
+    }
+    if (currentView === AppView.VORTEILE) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.VORTEILE]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <VorteilePage onCtaClick={() => setCurrentView(AppView.HOME)} />
+          </div>
+        </div>
+      );
+    }
+    if (currentView === AppView.RATGEBER) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.RATGEBER]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <RatgeberPage onCtaClick={() => setCurrentView(AppView.HOME)} />
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div className="animate-in fade-in duration-1000">
-        <Hero onValuationComplete={handleStartValuation} />
+        <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.HOME]} />
 
         <section id="evaluate" className="py-20 bg-white border-b border-slate-100">
           <div className="container mx-auto px-4">

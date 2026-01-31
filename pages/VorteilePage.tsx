@@ -11,9 +11,9 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
         <div className="text-center mb-16">
           <span className="text-brand-orange font-black uppercase tracking-[0.3em] text-sm mb-4 block">Warum wir?</span>
-          <h1 className="text-3xl lg:text-4xl font-black text-brand-dark leading-tight tracking-tighter">
+          <h2 className="text-3xl lg:text-4xl font-black text-brand-dark leading-tight tracking-tighter">
             Ihre Vorteile bei <br/> Meinautoverkauf.de
-          </h1>
+          </h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
@@ -46,7 +46,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </div>
 
-        <section className="prose prose-lg max-w-none text-slate-700 space-y-12 mb-20">
+        <section className="prose max-w-none text-slate-700 space-y-12 mb-20">
           <h2 className="text-2xl font-black text-brand-dark text-center">Ehrliche Preise durch KI-Intelligenz</h2>
           <p className="text-center max-w-2xl mx-auto">
             Unsere Algorithmen analysieren nicht nur den IST-Zustand, sondern auch die Marktdynamik. Wir erkennen Trends früher und können Ihnen so oft einen besseren Preis bieten als lokale Händler, die nur ihr eigenes Inventar im Blick haben.
