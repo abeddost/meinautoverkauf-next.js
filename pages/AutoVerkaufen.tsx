@@ -12,7 +12,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
             <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tighter">
-              Auto verkaufen online – Schnell, sicher und zum fairen Preis | Meinautoverkauf.de
+              Auto verkaufen online – Einfach, schnell & stressfrei | Meinautoverkauf.de
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
               Sie möchten Ihr Auto verkaufen und suchen nach einer stressfreien Lösung? Bei Meinautoverkauf.de profitieren Sie von einem

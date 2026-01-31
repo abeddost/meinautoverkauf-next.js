@@ -160,10 +160,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
             <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
               <div className="max-w-2xl mt-1">
                 <h1 className="text-[38px] lg:text-[46px] font-black leading-[1.12] tracking-tight text-[#1e293b]">
-                  Auto verkaufen online – Schnell, sicher und zum fairen Preis
+                  Auto verkaufen online – Einfach, schnell & stressfrei
                 </h1>
                 <p className="mt-3 text-base lg:text-lg text-slate-600 font-medium max-w-lg">
-                  Autoankauf mit mehreren Händlerangeboten – schnell, sicher und transparent.
+                  Autoankauf – Wir kaufen Ihr Auto zum fairen Preis
                 </p>
               </div>
 
@@ -226,24 +226,24 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
         </div>
       </div>
 
-      <div className="lg:hidden flex flex-col flex-grow pt-3 pb-4">
+      <div className="lg:hidden flex flex-col pt-4 pb-6 min-h-[calc(100vh-64px)]">
         <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
-          <div className="text-left mb-0">
-            <h2 className="text-[22px] font-black leading-tight tracking-tight text-[#1e293b]">
-              Auto verkaufen online – Schnell, sicher und zum fairen Preis
+          <div className="text-left mb-4">
+            <h2 className="text-[24px] sm:text-[26px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
+              Auto verkaufen online – Einfach, schnell & stressfrei
             </h2>
-            <p className="mt-1 text-[13px] text-slate-600 font-medium">
-              Autoankauf mit mehreren Händlerangeboten – schnell, sicher und transparent.
+            <p className="mt-3 text-base text-slate-600 font-medium">
+              Autoankauf – Wir kaufen Ihr Auto zum fairen Preis
             </p>
           </div>
 
-          <div className="relative mb-0 flex justify-center">
-            <div className="relative w-[100%] max-w-[340px]">
+          <div className="relative mb-4 flex justify-center">
+            <div className="relative w-[95%] max-w-[380px]">
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
                 src="/bmw.png"
                 alt="BMW Car"
-                className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
+                className="relative w-full h-auto max-h-[220px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
@@ -251,18 +251,18 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
             </div>
           </div>
 
-          <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 mt-0 scale-[0.84] origin-top">
+          <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <ValuationForm onValuationComplete={onValuationComplete} />
           </div>
 
-          <div className="mt-1 grid grid-cols-2 gap-1">
-            {BENEFITS.slice(0, 2).map((benefit, index) => (
+          <div className="mt-4 grid grid-cols-3 gap-2">
+            {BENEFITS.map((benefit, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-white/70 bg-white/70 px-2 py-1.5 shadow-[0_12px_20px_-16px_rgba(15,23,42,0.45)] backdrop-blur"
+                className="rounded-xl border border-white/80 bg-white/85 px-2 py-3 shadow-[0_8px_16px_-8px_rgba(15,23,42,0.25)] backdrop-blur"
               >
-                <div className="flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70">
+                <div className="flex flex-col items-center gap-1.5 text-center">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70 flex-shrink-0">
                     {benefit.icon}
                   </div>
                   <div className="text-[10px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
