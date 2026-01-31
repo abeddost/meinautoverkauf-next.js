@@ -48,7 +48,7 @@ const FAQSection: React.FC = () => {
   return (
     <section id="faq" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-black text-center text-brand-dark mb-12">Häufig gestellte Fragen</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">Häufig gestellte Fragen</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {faqs.map((faq, i) => (
             <details key={i} className="group bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">

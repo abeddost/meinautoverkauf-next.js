@@ -51,6 +51,7 @@ const App: React.FC = () => {
     };
   }, []);
 
+
   const handleStartValuation = (details: CarDetails, result: ValuationResult) => {
     setCarDetails(details);
     setValuation(result);
@@ -97,7 +98,7 @@ const App: React.FC = () => {
         <section id="evaluate" className="py-20 bg-white border-b border-slate-100">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto mb-14">
-              <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-5">
+              <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">
                 So funktioniert der Auto Ankauf bei uns – In 3 einfachen Schritten
               </h2>
               <p className="text-slate-600 font-medium leading-relaxed">
@@ -140,11 +141,11 @@ const App: React.FC = () => {
 
         <section id="vorteile" className="py-20 bg-white border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-black text-center text-brand-dark mb-12">
+            <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">
               Auto verkaufen online: Die Vorteile auf einen Blick
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
                 <ul className="space-y-3 text-slate-600 font-medium">
                   {[
                     "Sie sparen Zeit – Keine Anzeigen schalten, keine Fotos aufnehmen, keine potenziellen Käufer empfangen",
@@ -171,7 +172,7 @@ const App: React.FC = () => {
                 <img
                   src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.png"
                   alt="Vorteile beim Auto verkaufen online"
-                  className="w-full max-w-[420px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                  className="w-full max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[420px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
                 />
               </div>
             </div>
@@ -181,7 +182,7 @@ const App: React.FC = () => {
         <section id="versprechen" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-5">
+              <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">
                 Sicher, schnell und seriös: Das Versprechen von Meinautoverkauf.de
               </h2>
               <p className="text-slate-600 font-medium leading-relaxed">
@@ -215,9 +216,9 @@ const App: React.FC = () => {
 
         <section id="warum" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
+                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
                   Autoankauf neu gedacht: Warum Meinautoverkauf.de die beste Wahl ist
                 </h2>
                 <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -244,7 +245,7 @@ const App: React.FC = () => {
                 <img
                   src="/elements/autoankauf-neu-gedacht.png"
                   alt="Autoankauf neu gedacht"
-                  className="w-full max-w-[440px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                  className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[440px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
                 />
               </div>
             </div>
@@ -253,9 +254,9 @@ const App: React.FC = () => {
 
         <section id="motorschaden" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
+                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
                   Autoverkauf auch bei Motorschaden oder für Export möglich
                 </h2>
                 <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -302,7 +303,7 @@ const App: React.FC = () => {
                 <img
                   src="/elements/auto-verkaufen-mit-motorschaden.png"
                   alt="Auto verkaufen mit Motorschaden"
-                  className="w-full max-w-[420px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                  className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[420px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
                 />
               </div>
             </div>
@@ -311,7 +312,7 @@ const App: React.FC = () => {
 
         <section id="transparenz" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+            <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
               Gebrauchtwagen verkaufen: Transparenz steht an erster Stelle
             </h2>
             <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -337,9 +338,9 @@ const App: React.FC = () => {
 
         <section id="ki" className="py-20 bg-white border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
+                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
                   Faire Bewertung durch künstliche Intelligenz
                 </h2>
                 <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -365,7 +366,7 @@ const App: React.FC = () => {
                 <img
                   src="/elements/car-valuation.png"
                   alt="KI-gestützte Fahrzeugbewertung"
-                  className="w-full max-w-[420px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                  className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[420px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
                 />
               </div>
             </div>
@@ -378,7 +379,7 @@ const App: React.FC = () => {
 
         <section id="zufriedenheit" className="py-20 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+            <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
               Ihre Zufriedenheit ist unser Maßstab
             </h2>
             <p className="text-slate-600 leading-relaxed font-medium mb-4">

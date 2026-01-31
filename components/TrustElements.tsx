@@ -6,7 +6,7 @@ const TrustElements: React.FC = () => {
     <section id="trust" className="py-20 bg-white relative border-b border-slate-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-5">Was unsere Kunden sagen</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">Was unsere Kunden sagen</h2>
           <p className="text-slate-500 text-lg font-medium max-w-2xl mx-auto">
             Echte Erfahrungen von Verkäufern aus ganz Deutschland – schnell, fair und unkompliziert.
           </p>
