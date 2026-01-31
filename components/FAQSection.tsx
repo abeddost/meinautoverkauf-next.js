@@ -1,8 +1,19 @@
 
 import React from 'react';
 
-const FAQSection: React.FC = () => {
-  const faqs = [
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface FAQSectionProps {
+  title?: string;
+  faqs?: FAQItem[];
+  sectionId?: string;
+  className?: string;
+}
+
+const DEFAULT_FAQS: FAQItem[] = [
     {
       q: "Wie kann ich mein Auto online verkaufen?",
       a: "Geben Sie die Fahrzeugdaten in unser Online-Bewertungstool ein. Sie erhalten sofort ein unverbindliches Angebot. Wenn Ihnen der Preis zusagt, vereinbaren Sie einen Abholtermin. Wir holen das Auto bei Ihnen ab, prüfen den Zustand und überweisen Ihnen das Geld direkt."
@@ -45,12 +56,17 @@ const FAQSection: React.FC = () => {
     }
   ];
 
+const FAQSection: React.FC<FAQSectionProps> = ({ title, faqs, sectionId, className }) => {
+  const resolvedFaqs = faqs ?? DEFAULT_FAQS;
+  const resolvedTitle = title ?? "Häufig gestellte Fragen";
+  const resolvedSectionId = sectionId ?? "faq";
+
   return (
-    <section id="faq" className="py-20 bg-gray-50">
+    <section id={resolvedSectionId} className={`py-20 bg-gray-50 ${className ?? ''}`.trim()}>
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">Häufig gestellte Fragen</h2>
+        <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">{resolvedTitle}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {faqs.map((faq, i) => (
+          {resolvedFaqs.map((faq, i) => (
             <details key={i} className="group bg-white rounded-[2rem] p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left">
                 <span className="text-base md:text-lg font-black text-brand-dark">{faq.q}</span>

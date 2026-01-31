@@ -9,19 +9,29 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-6xl">
-        {/* Hero Section with Image */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
-              Auto verkaufen online – Schnell, sicher und zum fairen Preis
+        {/* Hero Section with Background Image */}
+        <section className="relative mb-16 max-w-5xl mx-auto">
+          <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
+            <img
+              src="/elements/auto-schnell-verkaufen.png"
+              alt=""
+              className="w-full max-w-[520px] opacity-[0.16]"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+          <div className="relative z-10 text-left">
+            <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-6 leading-tight tracking-tight text-center lg:text-left">
+              Auto verkaufen online – Schnell, transparent und zum fairen Preis
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
               Sie möchten Ihr <strong>Auto verkaufen</strong> und suchen nach einer stressfreien Lösung? Wir kaufen dein Auto – egal ob <strong>Gebrauchtwagen verkaufen</strong>, <strong>Auto mit Motorschaden verkaufen</strong> oder <strong>defektes Auto verkaufen</strong>. Bei Meinautoverkauf.de profitieren Sie von einem innovativen Service, der den gesamten Verkaufsprozess vereinfacht.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
-              Ob Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, ein <strong>Auto für Export verkaufen</strong> wollen oder einfach den besten Preis suchen – wir garantieren Ihnen eine faire KI-gestützte Bewertung und einen reibungslosen Ablauf.
+              Ob Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, ein <strong>Auto für Export verkaufen</strong> wollen oder einen marktgerechten Preis anstreben – wir bieten Ihnen eine faire KI-gestützte Bewertung und einen reibungslosen Ablauf.
             </p>
-            <div className="flex flex-wrap gap-3 mt-8">
+            <div className="flex flex-wrap gap-3 mt-8 justify-start">
               <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full">
                 <span className="text-green-600 font-black text-xl">✓</span>
                 <span className="text-sm font-bold text-slate-700">Kostenlose Bewertung</span>
@@ -35,14 +45,6 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
                 <span className="text-sm font-bold text-slate-700">Keine Haftung</span>
               </div>
             </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-6 bg-gradient-to-br from-orange-100/60 via-white to-blue-50/70 rounded-[2.5rem] blur-2xl"></div>
-            <img
-              src="/elements/auto-schnell-verkaufen.png"
-              alt="Auto schnell verkaufen"
-              className="relative w-full max-w-[520px] mx-auto drop-shadow-2xl"
-            />
           </div>
         </section>
 
@@ -95,7 +97,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <img 
                 src="/elements/car-details.png" 
                 alt="" 
-                className="absolute top-4 right-4 w-24 h-24 opacity-[0.08] pointer-events-none hidden lg:block"
+                className="absolute top-4 right-4 w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 opacity-[0.12] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <h3 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">Wichtige Dokumente zum Auto verkaufen</h3>
@@ -223,7 +225,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Gebrauchtwagen verkaufen: Tipps für den besten Preis</h2>
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Gebrauchtwagen verkaufen: Tipps für einen besseren Preis</h2>
             <p className="font-medium leading-relaxed">
               Wenn Sie Ihren <strong>Gebrauchtwagen verkaufen</strong> möchten, können Sie mit einigen Tricks den Preis optimieren:
             </p>
@@ -237,20 +239,30 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* CTA Section */}
-        <div className="my-16 bg-gradient-to-br from-brand-orange to-orange-600 rounded-[3rem] p-12 text-center text-white shadow-2xl relative overflow-hidden">
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute -top-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="relative z-10">
-            <h2 className="text-2xl lg:text-4xl font-black mb-6">Bereit, Ihr Auto zu verkaufen?</h2>
-            <p className="text-white/95 mb-10 max-w-2xl mx-auto font-semibold text-lg">
-              Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong>, ein <strong>Auto mit Motorschaden verkaufen</strong> oder einfach den besten Preis erzielen möchten – starten Sie jetzt Ihre kostenlose Bewertung!
-            </p>
-            <button 
-              onClick={onCtaClick}
-              className="bg-brand-dark text-white px-12 py-5 rounded-2xl font-bold text-base lg:text-lg hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
-            >
-              Jetzt kostenlos Auto bewerten & verkaufen
-            </button>
+        <div className="my-12 bg-gradient-to-br from-orange-100 via-white to-orange-50 rounded-[2.5rem] p-8 lg:p-10 text-slate-800 shadow-2xl relative overflow-hidden max-w-5xl mx-auto border border-orange-200/70">
+          <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute -top-16 -left-16 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div className="lg:col-span-8">
+              <p className="text-orange-600 text-sm font-bold uppercase tracking-widest mb-3">Kostenlos & unverbindlich</p>
+              <h2 className="text-2xl lg:text-3xl font-black mb-3">Bereit, Ihr Auto zu verkaufen?</h2>
+              <p className="text-slate-600 font-semibold text-base">
+                Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong>, ein <strong>Auto mit Motorschaden verkaufen</strong> oder einen marktgerechten Preis erzielen möchten – starten Sie jetzt Ihre kostenlose Bewertung!
+              </p>
+            </div>
+            <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-3">
+              <button
+                onClick={onCtaClick}
+                className="w-full lg:w-auto bg-brand-dark text-white px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] transform duration-200"
+              >
+                Jetzt kostenlos Auto bewerten & verkaufen
+              </button>
+              <div className="flex flex-wrap gap-2 text-xs text-slate-600">
+                <span className="bg-orange-100 px-3 py-1 rounded-full">2 Minuten</span>
+                <span className="bg-orange-100 px-3 py-1 rounded-full">Sofort-Ergebnis</span>
+                <span className="bg-orange-100 px-3 py-1 rounded-full">100% kostenlos</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -278,7 +290,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
                 },
                 {
                   q: "Wie viel weniger bekomme ich beim Händler als beim Privatverkauf?",
-                  a: "Der Händler-Ankaufspreis liegt typischerweise 10-20% unter dem Privatverkaufspreis. Dafür sparen Sie Zeit, Nerven, Haftungsrisiken und erhalten eine sofortige, sichere Zahlung."
+                a: "Der Händler-Ankaufspreis liegt typischerweise 10-20% unter dem Privatverkaufspreis. Dafür sparen Sie Zeit und Aufwand, und die Abwicklung ist vertraglich klar geregelt."
                 },
                 {
                   q: "Kann ich auch ein Auto mit Motorschaden verkaufen?",
@@ -313,10 +325,10 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Auto verkaufen leicht gemacht</h2>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              Ob Sie Ihr <strong>Auto verkaufen online</strong> möchten, einen <strong>Gebrauchtwagen verkaufen</strong>, ein <strong>defektes Auto verkaufen</strong> oder sogar ein <strong>Auto mit Motorschaden verkaufen</strong> wollen – bei Meinautoverkauf.de sind Sie richtig. Wir bieten Ihnen eine schnelle, sichere und faire Lösung.
+              Ob Sie Ihr <strong>Auto verkaufen online</strong> möchten, einen <strong>Gebrauchtwagen verkaufen</strong>, ein <strong>defektes Auto verkaufen</strong> oder sogar ein <strong>Auto mit Motorschaden verkaufen</strong> wollen – bei Meinautoverkauf.de sind Sie richtig. Wir bieten Ihnen eine schnelle, transparente und faire Lösung.
             </p>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              "Wir kaufen dein Auto" bedeutet bei uns: Transparente KI-gestützte Bewertung, keine versteckten Kosten, sofortige Auszahlung und keinerlei Haftungsrisiken für Sie. Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong> müssen oder ein <strong>Auto für Export verkaufen</strong> möchten – wir finden die beste Lösung.
+              "Wir kaufen dein Auto" bedeutet bei uns: Transparente KI-gestützte Bewertung, keine versteckten Kosten und eine schnelle Auszahlung. Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong> müssen oder ein <strong>Auto für Export verkaufen</strong> möchten – wir finden eine passende Lösung.
             </p>
             <p className="text-slate-700 font-medium leading-relaxed">
               Starten Sie jetzt Ihre kostenlose Bewertung und erfahren Sie, was Ihr Fahrzeug wirklich wert ist. In nur 2 Minuten zum fairen Angebot – unverbindlich und ohne Risiko.

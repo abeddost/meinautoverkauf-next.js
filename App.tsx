@@ -233,36 +233,62 @@ const App: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">
               Auto verkaufen online: Die Vorteile auf einen Blick
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
-                <ul className="space-y-3 text-slate-600 font-medium">
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
+                <img
+                  src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.png"
+                  alt=""
+                  className="w-full max-w-[420px] opacity-[0.22]"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <div className="relative z-10 text-center lg:text-left">
+                <ul className="space-y-3 text-slate-600 font-medium max-w-3xl mx-auto text-left">
                   {[
-                    "Sie sparen Zeit – Keine Anzeigen schalten, keine Fotos aufnehmen, keine potenziellen Käufer empfangen",
-                    "Sie sparen Nerven – Keine Preisverhandlungen oder unseriöse Interessenten",
-                    "Sie erhalten faire Preise – KI-gestützte Bewertung, oft höher als Angebote lokaler Händler",
-                    "Maximale Sicherheit – Keine Betrüger, sichere Banküberweisung, rechtssichere Dokumentation",
-                    "Abholung – Wir kommen zu Ihnen nach Hause",
-                    "Blitzschnelle Auszahlung – Geld in weniger Stunden auf Ihrem Konto",
-                    "Keine Gewährleistung – Sie verkaufen \"wie gesehen\" ohne spätere Haftung"
+                    {
+                      label: "Sie sparen Zeit",
+                      text: "Keine Anzeigen schalten, keine Fotos aufnehmen, keine potenziellen Käufer empfangen"
+                    },
+                    {
+                      label: "Sie sparen Nerven",
+                      text: "Keine Preisverhandlungen oder unseriöse Interessenten"
+                    },
+                    {
+                      label: "Sie erhalten faire Preise",
+                      text: "KI-gestützte Bewertung, oft höher als Angebote lokaler Händler"
+                    },
+                    {
+                      label: "Maximale Sicherheit",
+                      text: "Keine Betrüger, sichere Banküberweisung, rechtssichere Dokumentation"
+                    },
+                    {
+                      label: "Abholung",
+                      text: "Wir kommen zu Ihnen nach Hause"
+                    },
+                    {
+                      label: "Blitzschnelle Auszahlung",
+                      text: "Geld in weniger Stunden auf Ihrem Konto"
+                    },
+                    {
+                      label: "Keine Gewährleistung",
+                      text: "Sie verkaufen \"wie gesehen\" ohne spätere Haftung"
+                    }
                   ].map((item, index) => (
-                    <li key={index} className="flex gap-3">
+                    <li key={index} className="flex items-start justify-start gap-3">
                       <span className="mt-1 h-5 w-5 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-xs font-black">✓</span>
-                      <span>{item}</span>
+                      <span className="max-w-2xl">
+                        <span className="font-bold text-brand-orange">{item.label}</span> – {item.text}
+                      </span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-slate-600 leading-relaxed font-medium pt-6">
+                <p className="text-slate-600 leading-relaxed font-medium pt-6 max-w-3xl mx-auto text-left">
                   Ein weiterer großer Vorteil ist die Sicherheit. Beim Privatverkauf besteht immer das Risiko, an Betrüger zu geraten. Gefälschte
                   Überweisungsbestätigungen, ungedeckte Schecks oder sogar Diebstahl sind leider keine Seltenheit. Bei uns erhalten Sie Ihr Geld per
                   sicherer Banküberweisung, und die gesamte Transaktion wird rechtssicher dokumentiert.
                 </p>
-              </div>
-              <div className="order-1 lg:order-2 flex justify-center">
-                <img
-                  src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.png"
-                  alt="Vorteile beim Auto verkaufen online"
-                  className="w-full max-w-[160px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[420px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
-                />
               </div>
             </div>
           </div>
@@ -305,9 +331,19 @@ const App: React.FC = () => {
 
         <section id="warum" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
-                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
+                <img
+                  src="/elements/autoankauf-neu-gedacht.png"
+                  alt=""
+                  className="w-full max-w-[460px] opacity-[0.16]"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <div className="relative z-10 text-left">
+                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6 text-center">
                   Autoankauf neu gedacht: Warum Meinautoverkauf.de die beste Wahl ist
                 </h2>
                 <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -330,22 +366,25 @@ const App: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="order-1 lg:order-2 flex justify-center">
-                <img
-                  src="/elements/autoankauf-neu-gedacht.png"
-                  alt="Autoankauf neu gedacht"
-                  className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[440px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
-                />
-              </div>
             </div>
           </div>
         </section>
 
         <section id="motorschaden" className="py-20 bg-slate-50 border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
-                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 flex items-center justify-start pl-2 sm:pl-6 lg:pl-10 pointer-events-none">
+                <img
+                  src="/elements/auto-verkaufen-mit-motorschaden.png"
+                  alt=""
+                  className="w-full max-w-[460px] opacity-[0.4]"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <div className="relative z-10 text-left">
+                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6 text-center">
                   Autoverkauf auch bei Motorschaden oder für Export möglich
                 </h2>
                 <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -388,13 +427,6 @@ const App: React.FC = () => {
                   Jetzt Fahrzeugwert prüfen – kostenlos & unverbindlich
                 </a>
               </div>
-              <div className="order-1 lg:order-2 flex justify-center">
-                <img
-                  src="/elements/auto-verkaufen-mit-motorschaden.png"
-                  alt="Auto verkaufen mit Motorschaden"
-                  className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[420px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -427,9 +459,19 @@ const App: React.FC = () => {
 
         <section id="ki" className="py-20 bg-white border-b border-slate-100">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-              <div className="order-2 lg:order-1 max-w-2xl mx-auto text-center lg:text-left">
-                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
+                <img
+                  src="/elements/car-valuation.png"
+                  alt=""
+                  className="w-full max-w-[460px] opacity-[0.16]"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <div className="relative z-10 text-left">
+                <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6 text-center">
                   Faire Bewertung durch künstliche Intelligenz
                 </h2>
                 <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -450,13 +492,6 @@ const App: React.FC = () => {
                 >
                   JETZT AUTO BEWERTEN – Kostenlos & unverbindlich in 2 Minuten
                 </a>
-              </div>
-              <div className="order-1 lg:order-2 flex justify-center">
-                <img
-                  src="/elements/car-valuation.png"
-                  alt="KI-gestützte Fahrzeugbewertung"
-                  className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[420px] mx-auto rounded-none lg:rounded-[2rem] shadow-none lg:shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border-0 lg:border border-white"
-                />
               </div>
             </div>
           </div>

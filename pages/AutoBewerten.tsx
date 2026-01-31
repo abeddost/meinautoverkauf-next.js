@@ -1,5 +1,6 @@
 
 import React from 'react';
+import FAQSection from '../components/FAQSection';
 
 interface Props {
   onCtaClick: () => void;
@@ -8,16 +9,38 @@ interface Props {
 const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
+      <div className="relative container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute -top-20 -right-10 w-64 h-64 bg-brand-orange/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-40 -left-16 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-8 w-56 h-56 bg-slate-200/60 rounded-full blur-3xl"></div>
+          <img
+            src="/elements/auto-wert-ermitteln.png"
+            alt=""
+            className="absolute top-6 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.08]"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
+        <div className="relative z-10">
         <h2 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
           Auto bewerten: Was ist mein Auto wert?
         </h2>
         
         <p className="text-base text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
-          Sie fragen sich: "Was ist mein Auto wert?" oder "Wie viel ist mein Auto wert?" Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine präzise Antwort – transparent, fair und unverbindlich.
+          Sie fragen sich: "Was ist mein Auto wert?" oder "Wie viel ist mein Auto wert?" Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine transparente, faire und unverbindliche Einschätzung.
         </p>
 
-        <section className="prose max-w-none text-slate-700 space-y-8">
+        <section className="prose max-w-none text-slate-700 space-y-8 relative">
+          <img
+            src="/elements/auto-bewerten.png"
+            alt=""
+            className="absolute -top-8 right-6 w-36 h-36 sm:w-44 sm:h-44 lg:w-60 lg:h-60 opacity-[0.08] pointer-events-none"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
           <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Auto bewerten lassen – warum ist das so wichtig?</h2>
           <p className="font-medium leading-relaxed">
             Bevor Sie Ihr Auto verkaufen, sollten Sie den aktuellen Marktwert kennen. Ein zu hoher Preis schreckt Käufer ab, ein zu niedriger Preis kostet Sie bares Geld. Wenn Sie Ihr <strong>Auto bewerten</strong> lassen möchten, stehen Ihnen verschiedene Wege offen – von klassischen Gutachtern bis hin zu modernen Online-Tools. Bei Meinautoverkauf.de kombinieren wir jahrelange Expertise mit künstlicher Intelligenz, um Ihnen eine verlässliche Einschätzung zu liefern.
@@ -80,7 +103,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             <li><strong>Präzision:</strong> Berücksichtigung von über 100 Datenpunkten für eine exakte Bewertung.</li>
             <li><strong>Transparenz:</strong> Sie sehen genau, wie sich der Preis zusammensetzt.</li>
             <li><strong>Geschwindigkeit:</strong> In 2 Minuten zur vollständigen Bewertung.</li>
-            <li><strong>Kostenlos:</strong> Keine versteckten Gebühren, 100% unverbindlich.</li>
+            <li><strong>Kostenlos:</strong> Keine versteckten Gebühren, unverbindlich.</li>
           </ul>
 
           <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Wie funktioniert unsere Auto-Bewertung?</h2>
@@ -90,7 +113,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           
           <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 1: Fahrzeugdaten eingeben</h3>
           <p className="font-medium leading-relaxed">
-            Sie geben grundlegende Informationen ein: Marke, Modell, Erstzulassung, Kilometerstand, Ausstattung und Zustand. Je detaillierter Ihre Angaben, desto präziser die Bewertung.
+            Sie geben grundlegende Informationen ein: Marke, Modell, Erstzulassung, Kilometerstand, Ausstattung und Zustand. Je detaillierter Ihre Angaben, desto besser kann die Einschätzung ausfallen.
           </p>
 
           <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 2: KI-Analyse</h3>
@@ -113,7 +136,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             Wenn Sie sich fragen "<strong>Wie viel ist mein Auto wert?</strong>", verdienen Sie eine ehrliche Antwort. Wir setzen auf vollständige Transparenz:
           </p>
           <ul className="list-disc pl-6 space-y-3 font-medium">
-            <li><strong>Keine versteckten Kosten:</strong> Die Bewertung ist 100% kostenlos.</li>
+            <li><strong>Keine versteckten Kosten:</strong> Die Bewertung ist kostenlos.</li>
             <li><strong>Unverbindlich:</strong> Sie müssen nicht verkaufen, wenn Ihnen das Angebot nicht zusagt.</li>
             <li><strong>Nachvollziehbar:</strong> Wir erklären, wie sich der Preis zusammensetzt.</li>
             <li><strong>Fair:</strong> Wir bieten realistische Preise, keine Lockangebote.</li>
@@ -143,77 +166,81 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             Sie fragen sich vielleicht: Warum bieten wir die Bewertung kostenlos an? Ganz einfach: Wir möchten Ihr Vertrauen gewinnen. Wenn Sie mit unserer Einschätzung zufrieden sind und sich entscheiden, Ihr Auto über uns zu verkaufen, profitieren beide Seiten. Aber es gibt keine Verpflichtung. Selbst wenn Sie nur wissen möchten, was Ihr Auto wert ist, ohne es sofort zu verkaufen – nutzen Sie unseren Service gerne. Es entstehen keinerlei Kosten oder Verpflichtungen.
           </p>
         </section>
+        </div>
 
-        <div className="my-16 bg-brand-dark rounded-[3rem] p-10 lg:p-12 text-white relative overflow-hidden shadow-2xl">
-          <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <p className="text-brand-orange font-bold tracking-wide uppercase text-sm mb-3">Kostenlos & unverbindlich</p>
-            <h2 className="text-2xl lg:text-4xl font-black mb-4">Jetzt Auto bewerten in 2 Minuten</h2>
-            <p className="text-slate-200 mb-8 font-semibold text-base lg:text-lg">
+        <div className="my-12 bg-brand-dark rounded-[2.5rem] p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl max-w-4xl mx-auto">
+          <div className="relative z-10 max-w-2xl mx-auto text-center">
+            <p className="text-brand-orange font-bold tracking-wide uppercase text-xs mb-2">Kostenlos & unverbindlich</p>
+            <h2 className="text-2xl lg:text-3xl font-black mb-3">Jetzt Auto bewerten in 2 Minuten</h2>
+            <p className="text-slate-200 mb-6 font-semibold text-sm lg:text-base">
               Erhalten Sie eine klare, faire Einschätzung Ihres Fahrzeugwerts – ohne Anmeldung, ohne Risiko.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 text-sm lg:text-base text-slate-200">
-              <span className="bg-white/10 px-4 py-2 rounded-full">Dauer: ca. 2 Minuten</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">100% kostenlos</span>
-              <span className="bg-white/10 px-4 py-2 rounded-full">Sofort-Ergebnis</span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-6 text-xs lg:text-sm text-slate-200">
+              <span className="bg-white/10 px-3 py-1.5 rounded-full">Dauer: ca. 2 Minuten</span>
+              <span className="bg-white/10 px-3 py-1.5 rounded-full">100% kostenlos</span>
+              <span className="bg-white/10 px-3 py-1.5 rounded-full">Sofort-Ergebnis</span>
             </div>
             <button
               onClick={onCtaClick}
-              className="w-full sm:w-auto bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] transform duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-orange/40"
+              className="w-full sm:w-auto bg-brand-orange text-white px-8 py-3.5 rounded-2xl font-bold text-sm lg:text-base hover:bg-orange-600 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] transform duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-orange/40"
             >
               Auto jetzt bewerten
             </button>
-            <p className="text-slate-300 text-sm mt-4">Keine Verpflichtung. Sie entscheiden, ob Sie verkaufen.</p>
+            <p className="text-slate-300 text-xs mt-3">Keine Verpflichtung. Sie entscheiden, ob Sie verkaufen.</p>
           </div>
           <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-orange/15 rounded-full blur-3xl"></div>
           <div className="absolute -top-28 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         </div>
 
-        <section className="space-y-12">
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark text-center mb-12">Häufig gestellte Fragen zur Autobewertung</h2>
-          <div className="grid grid-cols-1 gap-6">
-            {[
-              {
-                q: "Was ist mein Auto wert – wie genau ist die Online-Bewertung?",
-                a: "Unsere KI-gestützte Bewertung erreicht eine Genauigkeit von über 97%. Wir analysieren tausende aktuelle Transaktionen und berücksichtigen über 100 Faktoren. Die Abweichung zum tatsächlichen Verkaufspreis liegt im Durchschnitt unter 3% – das ist Branchenstandard."
-              },
-              {
-                q: "Warum weicht mein Online-Wert vom Händlerangebot ab?",
-                a: "Der Händler-Ankaufspreis liegt meist 10-20% unter dem Privatverkaufspreis. Ein Händler muss Kosten für Aufbereitung, Garantie, Standzeit und seine eigene Marge einplanen. Dafür erhalten Sie einen schnellen, sicheren Verkauf ohne Risiko."
-              },
-              {
-                q: "Wie lange ist die Bewertung gültig?",
-                a: "Der Gebrauchtwagenmarkt ist dynamisch. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Danach empfehlen wir eine erneute Bewertung, um aktuelle Marktveränderungen zu berücksichtigen."
-              },
-              {
-                q: "Kostet es etwas, mein Auto schätzen zu lassen?",
-                a: "Nein, bei Meinautoverkauf.de ist die Wertermittlung ein reiner Service und bleibt stets 100% kostenfrei. Es entstehen keinerlei versteckte Kosten oder Verpflichtungen."
-              },
-              {
-                q: "Werden Unfallschäden berücksichtigt?",
-                a: "Ja, im Rahmen der detaillierten Zustandsbeschreibung können Sie Schäden, Vorschäden und Unfallhistorie angeben. Wir fließen diese fair in die Berechnung ein, sodass Sie einen realistischen Wert erhalten."
-              },
-              {
-                q: "Kann ich auch Fahrzeuge mit Motorschaden bewerten lassen?",
-                a: "Absolut. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV haben einen Restwert. Unsere KI berücksichtigt den Zustand und ermittelt einen fairen Preis für Ihr Fahrzeug – auch für den Export oder als Teilespender."
-              },
-              {
-                q: "Wie viel ist mein Auto wert, wenn es getunt oder umgebaut ist?",
-                a: "Die KI ist auf Serienmodelle optimiert. Bei speziellen Umbauten, Tuning oder seltenen Fahrzeugen empfehlen wir nach der Online-Einschätzung ein persönliches Gespräch mit unseren Experten für eine individuelle Bewertung."
-              },
-              {
-                q: "Muss ich mein Auto nach der Bewertung verkaufen?",
-                a: "Nein, die Bewertung ist völlig unverbindlich. Sie können den Wert Ihres Autos ermitteln, ohne jegliche Verkaufsverpflichtung einzugehen. Nutzen Sie unseren Service einfach zur Information."
-              }
-            ].map((faq, i) => (
-              <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
-                <h4 className="text-base lg:text-lg font-black text-brand-dark mb-3">{faq.q}</h4>
-                <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <FAQSection
+          title="Häufig gestellte Fragen zur Autobewertung"
+          sectionId="faq-autobewertung"
+          className="mt-12"
+          faqs={[
+            {
+              q: "Was ist mein Auto wert – wie genau ist die Online-Bewertung?",
+              a: "Unsere KI-gestützte Bewertung liefert eine fundierte Einschätzung auf Basis vieler aktueller Transaktionen und relevanter Faktoren. Der tatsächliche Verkaufspreis kann je nach Ausstattung, Zustand und Nachfrage abweichen."
+            },
+            {
+              q: "Warum weicht mein Online-Wert vom Händlerangebot ab?",
+              a: "Der Händler-Ankaufspreis liegt meist unter dem Privatverkaufspreis. Ein Händler muss Kosten für Aufbereitung, Garantie, Standzeit und seine eigene Marge einplanen. Dafür erhalten Sie eine schnelle und bequeme Abwicklung."
+            },
+            {
+              q: "Wie lange ist die Bewertung gültig?",
+              a: "Der Gebrauchtwagenmarkt ist dynamisch. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Danach empfehlen wir eine erneute Bewertung, um aktuelle Marktveränderungen zu berücksichtigen."
+            },
+            {
+              q: "Kostet es etwas, mein Auto schätzen zu lassen?",
+              a: "Nein, bei Meinautoverkauf.de ist die Wertermittlung ein reiner Service und bleibt kostenfrei. Es entstehen keine versteckten Kosten oder Verpflichtungen."
+            },
+            {
+              q: "Werden Unfallschäden berücksichtigt?",
+              a: "Ja, im Rahmen der detaillierten Zustandsbeschreibung können Sie Schäden, Vorschäden und Unfallhistorie angeben. Wir fließen diese fair in die Berechnung ein, sodass Sie einen realistischen Wert erhalten."
+            },
+            {
+              q: "Kann ich auch Fahrzeuge mit Motorschaden bewerten lassen?",
+              a: "Absolut. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV haben einen Restwert. Unsere KI berücksichtigt den Zustand und ermittelt einen fairen Preis für Ihr Fahrzeug – auch für den Export oder als Teilespender."
+            },
+            {
+              q: "Wie viel ist mein Auto wert, wenn es getunt oder umgebaut ist?",
+              a: "Die KI ist auf Serienmodelle optimiert. Bei speziellen Umbauten, Tuning oder seltenen Fahrzeugen empfehlen wir nach der Online-Einschätzung ein persönliches Gespräch mit unseren Experten für eine individuelle Bewertung."
+            },
+            {
+              q: "Muss ich mein Auto nach der Bewertung verkaufen?",
+              a: "Nein, die Bewertung ist völlig unverbindlich. Sie können den Wert Ihres Autos ermitteln, ohne jegliche Verkaufsverpflichtung einzugehen. Nutzen Sie unseren Service einfach zur Information."
+            }
+          ]}
+        />
 
-        <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
+        <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100 relative overflow-hidden">
+          <img
+            src="/elements/auto-wert-ermitteln.png"
+            alt=""
+            className="absolute -bottom-6 -right-6 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.08] pointer-events-none"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
           <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Auto wert ermitteln leicht gemacht</h2>
           <p className="text-slate-700 font-medium leading-relaxed mb-4">
             Die Frage "<strong>Was ist mein Auto wert?</strong>" oder "<strong>Wie viel ist mein Auto wert?</strong>" lässt sich heute dank moderner Technologie schnell und präzise beantworten. Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine transparente, faire Einschätzung – ganz ohne Verpflichtungen.
