@@ -130,31 +130,37 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section id="intro" className="py-20 bg-white border-b border-slate-100">
-          <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
-                Auto verkaufen online – Schnell, sicher und zum fairen Preis | Meinautoverkauf.de
+        <section id="versprechen" className="py-20 bg-slate-50 border-b border-slate-100">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-5">
+                Sicher, schnell und seriös: Das Versprechen von Meinautoverkauf.de
               </h2>
-              <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Sie möchten Ihr Auto verkaufen und suchen nach einer stressfreien Lösung? Bei Meinautoverkauf.de profitieren Sie von
-                einem innovativen Service, der den gesamten Verkaufsprozess vereinfacht.
-              </p>
-              <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Ob Gebrauchtwagen, Fahrzeug mit Motorschaden oder Exportfahrzeug – wir garantieren Ihnen eine faire Bewertung und einen
-                reibungslosen Ablauf.
-              </p>
-              <p className="text-slate-600 leading-relaxed font-semibold">
-                Innerhalb weniger Stunden können Sie Ihr Fahrzeug verkaufen und erhalten Ihr Geld direkt auf Ihr Konto.
+              <p className="text-slate-600 font-medium leading-relaxed">
+                Seriösität ist im Autoankauf-Geschäft leider keine Selbstverständlichkeit. Bei Meinautoverkauf.de legen wir größten Wert auf einen
+                sauberen und transparenten Geschäftsablauf.
               </p>
             </div>
-            <div className="relative">
-              <div className="absolute -inset-6 bg-gradient-to-br from-orange-100/60 via-white to-blue-50/70 rounded-[2.5rem] blur-2xl"></div>
-              <img
-                src="/elements/auto%20schnell%20verkaufen.png"
-                alt="Auto schnell verkaufen"
-                className="relative w-full max-w-[440px] mx-auto rounded-[2rem] shadow-[0_25px_55px_-30px_rgba(15,23,42,0.45)] border border-white"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Rechtssichere Abwicklung",
+                  desc: "Alle Verträge entsprechen den aktuellen rechtlichen Anforderungen. Sie erhalten eine Kopie des Kaufvertrags für Ihre Unterlagen."
+                },
+                {
+                  title: "Kostenlose Abmeldung",
+                  desc: "Die Abmeldung des Fahrzeugs bei der Zulassungsstelle übernehmen wir kostenfrei. Sie müssen sich um nichts kümmern."
+                },
+                {
+                  title: "Sichere Auszahlung",
+                  desc: "Ihr Geld wird per Banküberweisung oder Bar transferiert – keine unsicheren Zahlungsmethoden."
+                }
+              ].map((item, index) => (
+                <div key={index} className="bg-white rounded-[2rem] border border-slate-100 p-6 shadow-sm">
+                  <div className="text-brand-orange font-black text-lg mb-2">{item.title}</div>
+                  <p className="text-slate-600 font-medium leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -181,32 +187,6 @@ const App: React.FC = () => {
               <p className="text-slate-600 leading-relaxed font-semibold">
                 Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von Frankfurt bis Köln
                 und darüber hinaus. Egal ob Sie in Wiesbaden, Stuttgart oder Dresden wohnen: Unser Service ist überall verfügbar.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="transparenz" className="py-20 bg-slate-50 border-b border-slate-100">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
-              Gebrauchtwagen verkaufen: Transparenz steht an erster Stelle
-            </h2>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Transparenz ist das Fundament unseres Geschäftsmodells. Wenn Sie Ihren Gebrauchtwagen verkaufen möchten, haben Sie ein Recht darauf
-              zu wissen, wie der angebotene Preis zustande kommt. Deshalb legen wir alle Bewertungskriterien offen.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Sie erfahren genau, welchen Einfluss Faktoren wie die Laufleistung, das Alter des Fahrzeugs, die Ausstattung und der Zustand auf den
-              Ankaufspreis haben.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Anders als beim Privatverkauf müssen Sie sich bei uns keine Sorgen über rechtliche Fallstricke machen. Wir übernehmen die vollständige
-              Haftung und Sie verkaufen das Fahrzeug wie gesehen. Das bedeutet: keine späteren Reklamationen, keine Diskussionen über versteckte Mängel
-              und keine juristischen Auseinandersetzungen.
-            </p>
-            <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
-              <p className="text-slate-600 leading-relaxed font-semibold">
-                Sobald der Kaufvertrag unterschrieben ist, sind Sie aus dem Schneider.
               </p>
             </div>
           </div>
@@ -250,6 +230,38 @@ const App: React.FC = () => {
             <div className="mt-4 text-slate-600 font-semibold">
               💡 Tipp: Auch wenn Ihr Auto nicht mehr fährt – kontaktieren Sie uns trotzdem. Sie werden überrascht sein, was es noch wert ist!
             </div>
+            <a
+              href="#bewerten"
+              className="inline-flex items-center gap-2 mt-5 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
+            >
+              Jetzt Fahrzeugwert prüfen – kostenlos & unverbindlich
+            </a>
+          </div>
+        </section>
+
+        <section id="transparenz" className="py-20 bg-slate-50 border-b border-slate-100">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+              Gebrauchtwagen verkaufen: Transparenz steht an erster Stelle
+            </h2>
+            <p className="text-slate-600 leading-relaxed font-medium mb-4">
+              Transparenz ist das Fundament unseres Geschäftsmodells. Wenn Sie Ihren Gebrauchtwagen verkaufen möchten, haben Sie ein Recht darauf
+              zu wissen, wie der angebotene Preis zustande kommt. Deshalb legen wir alle Bewertungskriterien offen.
+            </p>
+            <p className="text-slate-600 leading-relaxed font-medium mb-4">
+              Sie erfahren genau, welchen Einfluss Faktoren wie die Laufleistung, das Alter des Fahrzeugs, die Ausstattung und der Zustand auf den
+              Ankaufspreis haben.
+            </p>
+            <p className="text-slate-600 leading-relaxed font-medium mb-4">
+              Anders als beim Privatverkauf müssen Sie sich bei uns keine Sorgen über rechtliche Fallstricke machen. Wir übernehmen die vollständige
+              Haftung und Sie verkaufen das Fahrzeug wie gesehen. Das bedeutet: keine späteren Reklamationen, keine Diskussionen über versteckte Mängel
+              und keine juristischen Auseinandersetzungen.
+            </p>
+            <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
+              <p className="text-slate-600 leading-relaxed font-semibold">
+                Sobald der Kaufvertrag unterschrieben ist, sind Sie aus dem Schneider.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -274,43 +286,8 @@ const App: React.FC = () => {
               href="#bewerten"
               className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
             >
-              🚀 JETZT AUTO BEWERTEN – Kostenlos & unverbindlich in 2 Minuten
+              JETZT AUTO BEWERTEN – Kostenlos & unverbindlich in 2 Minuten
             </a>
-          </div>
-        </section>
-
-        <section id="versprechen" className="py-20 bg-slate-50 border-b border-slate-100">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-5">
-                Sicher, schnell und seriös: Das Versprechen von Meinautoverkauf.de
-              </h2>
-              <p className="text-slate-600 font-medium leading-relaxed">
-                Seriösität ist im Autoankauf-Geschäft leider keine Selbstverständlichkeit. Bei Meinautoverkauf.de legen wir größten Wert auf einen
-                sauberen und transparenten Geschäftsablauf.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "Rechtssichere Abwicklung",
-                  desc: "Alle Verträge entsprechen den aktuellen rechtlichen Anforderungen. Sie erhalten eine Kopie des Kaufvertrags für Ihre Unterlagen."
-                },
-                {
-                  title: "Kostenlose Abmeldung",
-                  desc: "Die Abmeldung des Fahrzeugs bei der Zulassungsstelle übernehmen wir kostenfrei. Sie müssen sich um nichts kümmern."
-                },
-                {
-                  title: "Sichere Auszahlung",
-                  desc: "Ihr Geld wird per Banküberweisung oder Bar transferiert – keine unsicheren Zahlungsmethoden."
-                }
-              ].map((item, index) => (
-                <div key={index} className="bg-white rounded-[2rem] border border-slate-100 p-6 shadow-sm">
-                  <div className="text-brand-orange font-black text-lg mb-2">{item.title}</div>
-                  <p className="text-slate-600 font-medium leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -348,12 +325,6 @@ const App: React.FC = () => {
             >
               Jetzt Auto verkaufen – Stressfrei und fair!
             </a>
-            <div className="mt-6 text-slate-500 font-semibold">
-              Deutschlandweiter Service · KI-gestützte Bewertung · Faire Preise · Auszahlung in weniger Stunden
-            </div>
-            <div className="mt-3 text-slate-600 font-semibold">
-              Meinautoverkauf.de – Ihr vertrauensvoller Partner für den schnellen und sicheren Autoverkauf online.
-            </div>
           </div>
         </section>
       </div>

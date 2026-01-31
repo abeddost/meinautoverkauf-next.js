@@ -8,10 +8,37 @@ interface Props {
 const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
-        <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
+      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-6xl">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tighter">
+              Auto verkaufen online – Schnell, sicher und zum fairen Preis | Meinautoverkauf.de
+            </h1>
+            <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
+              Sie möchten Ihr Auto verkaufen und suchen nach einer stressfreien Lösung? Bei Meinautoverkauf.de profitieren Sie von einem
+              innovativen Service, der den gesamten Verkaufsprozess vereinfacht.
+            </p>
+            <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
+              Ob Gebrauchtwagen, Fahrzeug mit Motorschaden oder Exportfahrzeug – wir garantieren Ihnen eine faire Bewertung und einen
+              reibungslosen Ablauf.
+            </p>
+            <p className="text-lg text-slate-600 leading-relaxed font-semibold">
+              Innerhalb weniger Stunden können Sie Ihr Fahrzeug verkaufen und erhalten Ihr Geld direkt auf Ihr Konto.
+            </p>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-6 bg-gradient-to-br from-orange-100/60 via-white to-blue-50/70 rounded-[2.5rem] blur-2xl"></div>
+            <img
+              src="/elements/auto%20schnell%20verkaufen.png"
+              alt="Auto schnell verkaufen"
+              className="relative w-full max-w-[520px] mx-auto rounded-[2rem] shadow-[0_25px_55px_-30px_rgba(15,23,42,0.45)] border border-white"
+            />
+          </div>
+        </section>
+
+        <h2 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tighter">
           Auto verkaufen leicht gemacht: Der Leitfaden für einen marktgerechten Preis
-        </h1>
+        </h2>
         
         <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium">
           Der Verkauf eines Autos ist für viele eine stressige Angelegenheit. Nervige Anrufe, unzuverlässige Käufer und endlose Preisverhandlungen. Wir zeigen Ihnen, wie Sie Ihr Auto ohne Kopfschmerzen und zum fairen Preis verkaufen können.
