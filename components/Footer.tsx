@@ -9,9 +9,9 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
               <img
-                src="/logo.png"
+                src="/logo-white.png"
                 alt="MeinAutoVerkauf.de"
-                className="h-10 w-auto"
+                className="h-14 w-auto"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
