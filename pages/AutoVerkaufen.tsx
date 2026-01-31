@@ -29,7 +29,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative">
             <div className="absolute -inset-6 bg-gradient-to-br from-orange-100/60 via-white to-blue-50/70 rounded-[2.5rem] blur-2xl"></div>
             <img
-              src="/elements/auto%20schnell%20verkaufen.png"
+              src="/elements/auto-schnell-verkaufen.png"
               alt="Auto schnell verkaufen"
               className="relative w-full max-w-[520px] mx-auto rounded-[2rem] shadow-[0_25px_55px_-30px_rgba(15,23,42,0.45)] border border-white"
             />

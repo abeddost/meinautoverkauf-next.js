@@ -104,28 +104,37 @@ const App: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-black text-center text-brand-dark mb-12">
               Auto verkaufen online: Die Vorteile auf einen Blick
             </h2>
-            <div className="max-w-4xl mx-auto">
-              <ul className="space-y-3 text-slate-600 font-medium">
-                {[
-                  "Sie sparen Zeit – Keine Anzeigen schalten, keine Fotos aufnehmen, keine potenziellen Käufer empfangen",
-                  "Sie sparen Nerven – Keine Preisverhandlungen oder unseriöse Interessenten",
-                  "Sie erhalten faire Preise – KI-gestützte Bewertung, oft höher als Angebote lokaler Händler",
-                  "Maximale Sicherheit – Keine Betrüger, sichere Banküberweisung, rechtssichere Dokumentation",
-                  "Abholung – Wir kommen zu Ihnen nach Hause",
-                  "Blitzschnelle Auszahlung – Geld in weniger Stunden auf Ihrem Konto",
-                  "Keine Gewährleistung – Sie verkaufen \"wie gesehen\" ohne spätere Haftung"
-                ].map((item, index) => (
-                  <li key={index} className="flex gap-3">
-                    <span className="mt-1 h-5 w-5 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-xs font-black">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-slate-600 leading-relaxed font-medium pt-6">
-                Ein weiterer großer Vorteil ist die Sicherheit. Beim Privatverkauf besteht immer das Risiko, an Betrüger zu geraten. Gefälschte
-                Überweisungsbestätigungen, ungedeckte Schecks oder sogar Diebstahl sind leider keine Seltenheit. Bei uns erhalten Sie Ihr Geld per
-                sicherer Banküberweisung, und die gesamte Transaktion wird rechtssicher dokumentiert.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
+                <ul className="space-y-3 text-slate-600 font-medium">
+                  {[
+                    "Sie sparen Zeit – Keine Anzeigen schalten, keine Fotos aufnehmen, keine potenziellen Käufer empfangen",
+                    "Sie sparen Nerven – Keine Preisverhandlungen oder unseriöse Interessenten",
+                    "Sie erhalten faire Preise – KI-gestützte Bewertung, oft höher als Angebote lokaler Händler",
+                    "Maximale Sicherheit – Keine Betrüger, sichere Banküberweisung, rechtssichere Dokumentation",
+                    "Abholung – Wir kommen zu Ihnen nach Hause",
+                    "Blitzschnelle Auszahlung – Geld in weniger Stunden auf Ihrem Konto",
+                    "Keine Gewährleistung – Sie verkaufen \"wie gesehen\" ohne spätere Haftung"
+                  ].map((item, index) => (
+                    <li key={index} className="flex gap-3">
+                      <span className="mt-1 h-5 w-5 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-xs font-black">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-slate-600 leading-relaxed font-medium pt-6">
+                  Ein weiterer großer Vorteil ist die Sicherheit. Beim Privatverkauf besteht immer das Risiko, an Betrüger zu geraten. Gefälschte
+                  Überweisungsbestätigungen, ungedeckte Schecks oder sogar Diebstahl sind leider keine Seltenheit. Bei uns erhalten Sie Ihr Geld per
+                  sicherer Banküberweisung, und die gesamte Transaktion wird rechtssicher dokumentiert.
+                </p>
+              </div>
+              <div className="order-1 lg:order-2 flex justify-center">
+                <img
+                  src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.png"
+                  alt="Vorteile beim Auto verkaufen online"
+                  className="w-full max-w-[420px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -166,76 +175,98 @@ const App: React.FC = () => {
         </section>
 
         <section id="warum" className="py-20 bg-slate-50 border-b border-slate-100">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
-              Autoankauf neu gedacht: Warum Meinautoverkauf.de die beste Wahl ist
-            </h2>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Der Autoverkauf kann eine nervenaufreibende Angelegenheit sein. Unzählige Anrufe von unseriösen Interessenten,
-              zeitraubende Besichtigungen und zähe Preisverhandlungen gehören beim Privatverkauf leider oft dazu. Genau hier setzen wir an.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Unser Autoankauf-Service kombiniert modernste Technologie mit langjähriger Branchenerfahrung, um Ihnen den bestmöglichen
-              Service zu bieten. Bei uns können Sie Ihr Auto verkaufen online, ohne das Haus verlassen zu müssen.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Unsere künstliche Intelligenz analysiert in Echtzeit Tausende von Transaktionsdaten und ermittelt so einen marktgerechten Preis
-              für Ihr Fahrzeug. Diese KI-gestützte Bewertung berücksichtigt nicht nur Marke, Modell und Kilometerstand, sondern auch regionale
-              Markttrends und saisonale Schwankungen.
-            </p>
-            <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
-              <p className="text-slate-600 leading-relaxed font-semibold">
-                Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von Frankfurt bis Köln
-                und darüber hinaus. Egal ob Sie in Wiesbaden, Stuttgart oder Dresden wohnen: Unser Service ist überall verfügbar.
-              </p>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+                  Autoankauf neu gedacht: Warum Meinautoverkauf.de die beste Wahl ist
+                </h2>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Der Autoverkauf kann eine nervenaufreibende Angelegenheit sein. Unzählige Anrufe von unseriösen Interessenten,
+                  zeitraubende Besichtigungen und zähe Preisverhandlungen gehören beim Privatverkauf leider oft dazu. Genau hier setzen wir an.
+                </p>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Unser Autoankauf-Service kombiniert modernste Technologie mit langjähriger Branchenerfahrung, um Ihnen den bestmöglichen
+                  Service zu bieten. Bei uns können Sie Ihr Auto verkaufen online, ohne das Haus verlassen zu müssen.
+                </p>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Unsere künstliche Intelligenz analysiert in Echtzeit Tausende von Transaktionsdaten und ermittelt so einen marktgerechten Preis
+                  für Ihr Fahrzeug. Diese KI-gestützte Bewertung berücksichtigt nicht nur Marke, Modell und Kilometerstand, sondern auch regionale
+                  Markttrends und saisonale Schwankungen.
+                </p>
+                <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
+                  <p className="text-slate-600 leading-relaxed font-semibold">
+                    Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von Frankfurt bis Köln
+                    und darüber hinaus. Egal ob Sie in Wiesbaden, Stuttgart oder Dresden wohnen: Unser Service ist überall verfügbar.
+                  </p>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2 flex justify-center">
+                <img
+                  src="/elements/autoankauf-neu-gedacht.png"
+                  alt="Autoankauf neu gedacht"
+                  className="w-full max-w-[440px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         <section id="motorschaden" className="py-20 bg-slate-50 border-b border-slate-100">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
-              Autoverkauf auch bei Motorschaden oder für Export möglich
-            </h2>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Nicht jedes Fahrzeug ist in einem perfekten Zustand. Vielleicht hat Ihr Auto einen Motorschaden, einen Unfallschaden oder ist einfach
-              schon sehr alt. Kein Problem – wir kaufen auch solche Fahrzeuge an.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Während Privatpersonen bei einem Motorschaden oft abwinken, sehen wir den Wert, der in jedem Fahrzeug steckt. Selbst Autos, die nicht
-              mehr fahrtüchtig sind, haben noch einen Restwert, sei es für Ersatzteile oder für den Export.
-            </p>
-            <div className="rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
-              <div className="font-bold text-brand-dark mb-3">Wir kaufen jeden PKW:</div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-600 font-medium">
-                {[
-                  "Autos mit Motorschaden",
-                  "Unfallfahrzeuge",
-                  "Fahrzeuge ohne TÜV",
-                  "Exportfahrzeuge",
-                  "Oldtimer und Liebhaberfahrzeuge",
-                  "Hochwertige Gebrauchtwagen aller Marken"
-                ].map((item, index) => (
-                  <li key={index} className="flex gap-2 items-start">
-                    <span className="mt-1 h-4 w-4 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-[10px] font-black">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+                  Autoverkauf auch bei Motorschaden oder für Export möglich
+                </h2>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Nicht jedes Fahrzeug ist in einem perfekten Zustand. Vielleicht hat Ihr Auto einen Motorschaden, einen Unfallschaden oder ist einfach
+                  schon sehr alt. Kein Problem – wir kaufen auch solche Fahrzeuge an.
+                </p>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Während Privatpersonen bei einem Motorschaden oft abwinken, sehen wir den Wert, der in jedem Fahrzeug steckt. Selbst Autos, die nicht
+                  mehr fahrtüchtig sind, haben noch einen Restwert, sei es für Ersatzteile oder für den Export.
+                </p>
+                <div className="rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
+                  <div className="font-bold text-brand-dark mb-3">Wir kaufen jeden PKW:</div>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-600 font-medium">
+                    {[
+                      "Autos mit Motorschaden",
+                      "Unfallfahrzeuge",
+                      "Fahrzeuge ohne TÜV",
+                      "Exportfahrzeuge",
+                      "Oldtimer und Liebhaberfahrzeuge",
+                      "Hochwertige Gebrauchtwagen aller Marken"
+                    ].map((item, index) => (
+                      <li key={index} className="flex gap-2 items-start">
+                        <span className="mt-1 h-4 w-4 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-[10px] font-black">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="text-slate-600 leading-relaxed font-medium mt-4">
+                  Besonders interessant ist unser Service für Besitzer von Fahrzeugen, die sich für den Export eignen. Ältere Mercedes-Modelle, robuste
+                  Geländewagen oder beliebte Kleinwagen finden auf ausländischen Märkten oft dankbare Abnehmer.
+                </p>
+                <div className="mt-4 text-slate-600 font-semibold">
+                  💡 Tipp: Auch wenn Ihr Auto nicht mehr fährt – kontaktieren Sie uns trotzdem. Sie werden überrascht sein, was es noch wert ist!
+                </div>
+                <a
+                  href="#bewerten"
+                  className="inline-flex items-center gap-2 mt-5 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
+                >
+                  Jetzt Fahrzeugwert prüfen – kostenlos & unverbindlich
+                </a>
+              </div>
+              <div className="order-1 lg:order-2 flex justify-center">
+                <img
+                  src="/elements/auto-verkaufen-mit-motorschaden.png"
+                  alt="Auto verkaufen mit Motorschaden"
+                  className="w-full max-w-[420px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                />
+              </div>
             </div>
-            <p className="text-slate-600 leading-relaxed font-medium mt-4">
-              Besonders interessant ist unser Service für Besitzer von Fahrzeugen, die sich für den Export eignen. Ältere Mercedes-Modelle, robuste
-              Geländewagen oder beliebte Kleinwagen finden auf ausländischen Märkten oft dankbare Abnehmer.
-            </p>
-            <div className="mt-4 text-slate-600 font-semibold">
-              💡 Tipp: Auch wenn Ihr Auto nicht mehr fährt – kontaktieren Sie uns trotzdem. Sie werden überrascht sein, was es noch wert ist!
-            </div>
-            <a
-              href="#bewerten"
-              className="inline-flex items-center gap-2 mt-5 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
-            >
-              Jetzt Fahrzeugwert prüfen – kostenlos & unverbindlich
-            </a>
           </div>
         </section>
 
@@ -266,28 +297,39 @@ const App: React.FC = () => {
         </section>
 
         <section id="ki" className="py-20 bg-white border-b border-slate-100">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
-              Faire Bewertung durch künstliche Intelligenz
-            </h2>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Unser größter Trumpf ist die KI-gestützte Bewertung. Während traditionelle Händler oft aus dem Bauch heraus entscheiden oder veraltete
-              Preislisten verwenden, setzen wir auf Datenanalyse.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-4">
-              Unsere Algorithmen werten kontinuierlich Verkaufsdaten von allen großen Gebrauchtwagenportalen, Auktionsplattformen und Händlernetzwerken
-              aus. Das Ergebnis ist eine Preiseinschätzung, die den aktuellen Marktwert präzise widerspiegelt.
-            </p>
-            <p className="text-slate-600 leading-relaxed font-medium mb-6">
-              Sie erhalten keinen Fantasiepreis, der sich später als unrealistisch herausstellt, sondern ein solides Angebot, das auf echten
-              Verkaufszahlen basiert. Diese Transparenz schafft Vertrauen und sorgt dafür, dass beide Seiten zufrieden sind.
-            </p>
-            <a
-              href="#bewerten"
-              className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
-            >
-              JETZT AUTO BEWERTEN – Kostenlos & unverbindlich in 2 Minuten
-            </a>
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1 max-w-2xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">
+                  Faire Bewertung durch künstliche Intelligenz
+                </h2>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Unser größter Trumpf ist die KI-gestützte Bewertung. Während traditionelle Händler oft aus dem Bauch heraus entscheiden oder veraltete
+                  Preislisten verwenden, setzen wir auf Datenanalyse.
+                </p>
+                <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                  Unsere Algorithmen werten kontinuierlich Verkaufsdaten von allen großen Gebrauchtwagenportalen, Auktionsplattformen und Händlernetzwerken
+                  aus. Das Ergebnis ist eine Preiseinschätzung, die den aktuellen Marktwert präzise widerspiegelt.
+                </p>
+                <p className="text-slate-600 leading-relaxed font-medium mb-6">
+                  Sie erhalten keinen Fantasiepreis, der sich später als unrealistisch herausstellt, sondern ein solides Angebot, das auf echten
+                  Verkaufszahlen basiert. Diese Transparenz schafft Vertrauen und sorgt dafür, dass beide Seiten zufrieden sind.
+                </p>
+                <a
+                  href="#bewerten"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition"
+                >
+                  JETZT AUTO BEWERTEN – Kostenlos & unverbindlich in 2 Minuten
+                </a>
+              </div>
+              <div className="order-1 lg:order-2 flex justify-center">
+                <img
+                  src="/elements/car-valuation.png"
+                  alt="KI-gestützte Fahrzeugbewertung"
+                  className="w-full max-w-[420px] rounded-[2rem] shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] border border-white"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
