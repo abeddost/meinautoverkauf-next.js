@@ -281,45 +281,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     </label>
   );
 
+  const formElementsBase = '/form%20elements';
   const steps = [
-    {
-      label: 'Fahrzeugwahl',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 13l2-5 3-2h8l3 2 2 5" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13v5h2m10-5v5h2" />
-          <circle cx="7" cy="18" r="1.5" />
-          <circle cx="17" cy="18" r="1.5" />
-        </svg>
-      )
-    },
-    {
-      label: 'Technik',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 12h6l2-3h8" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 12h6l2 3h8" />
-          <circle cx="6" cy="12" r="1.5" />
-        </svg>
-      )
-    },
-    {
-      label: 'Zustand',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" />
-        </svg>
-      )
-    },
-    {
-      label: 'Details',
-      icon: (
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h10M5 12h14M5 17h8" />
-        </svg>
-      )
-    }
+    { label: 'Fahrzeugwahl', iconSrc: `${formElementsBase}/Fahrzeug.png` },
+    { label: 'Technik', iconSrc: `${formElementsBase}/Technik.png` },
+    { label: 'Zustand', iconSrc: `${formElementsBase}/Zustand.png` },
+    { label: 'Details', iconSrc: `${formElementsBase}/Details.png` }
   ];
 
   const baseFieldClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-sm lg:text-base disabled:opacity-50 disabled:cursor-not-allowed";
@@ -331,36 +298,62 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     <div className="relative bg-white/70 backdrop-blur-xl rounded-[1.5rem] lg:rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(15,23,42,0.45)] overflow-hidden text-brand-dark flex flex-col w-full border border-white/60">
       <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/40 to-orange-50/50 pointer-events-none"></div>
       <div className="relative z-10 flex flex-col h-full">
-        {/* Form Header */}
-        <div className="px-4 py-3 lg:px-6 lg:py-4 border-b border-white/40 bg-white/50 backdrop-blur flex items-center justify-between">
-          <div className="flex flex-col gap-2 w-full">
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-r from-[#ffb347] to-[#ff7a1a] text-white text-[9px] lg:text-[10px] font-black px-2 py-0.5 lg:px-2.5 lg:py-1 rounded-full uppercase tracking-tight shadow-[0_6px_14px_-6px_rgba(255,122,26,0.8)]">
-                Schritt {currentPage}/4
-              </div>
-              <span className="text-[10px] lg:text-[11px] font-black text-slate-500 uppercase tracking-widest">
+        {/* Form Header - Step indicator */}
+        <div className="px-4 py-4 lg:px-6 lg:py-5 border-b border-slate-100 bg-gradient-to-b from-slate-50/80 to-white/60">
+          <div className="flex flex-col gap-4 w-full">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-bold text-slate-600">
+                Schritt <span className="text-brand-orange">{currentPage}</span> von 4
+              </span>
+              <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
                 {steps[currentPage - 1].label}
               </span>
             </div>
-            <div className="relative mt-1">
-              <div className="absolute left-4 right-4 top-1/2 h-[2px] bg-slate-200/80"></div>
+            {/* Progress bar */}
+            <div className="h-2 rounded-full bg-slate-200 overflow-hidden">
               <div
-                className="absolute left-4 right-4 top-1/2 h-[2px] bg-gradient-to-r from-[#ffb347] to-[#ff7a1a] transition-transform duration-500 ease-out"
-                style={{ transformOrigin: 'left', transform: `scaleX(${(currentPage - 1) / 3})` }}
-              ></div>
-              <div className="relative flex items-center justify-between px-4">
-                {steps.map((step, index) => {
-                  const isActive = currentPage >= index + 1;
-                  return (
+                className="h-full rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff7a1a] transition-all duration-500 ease-out"
+                style={{ width: `${(currentPage / 4) * 100}%` }}
+              />
+            </div>
+            {/* Step circles with labels */}
+            <div className="grid grid-cols-4 gap-2">
+              {steps.map((step, index) => {
+                const stepNumber = index + 1;
+                const isCompleted = currentPage > stepNumber;
+                const isCurrent = currentPage === stepNumber;
+                return (
+                  <div key={step.label} className="flex flex-col items-center gap-1.5">
                     <div
-                      key={step.label}
-                      className={`w-8 h-8 lg:w-9 lg:h-9 rounded-full flex items-center justify-center border transition-all duration-300 ${isActive ? 'bg-gradient-to-br from-[#ffb347] to-[#ff7a1a] text-white border-white/40 shadow-[0_10px_20px_-10px_rgba(255,122,26,0.8)]' : 'bg-white/70 text-slate-400 border-white/60'}`}
+                      className={`
+                        w-10 h-10 lg:w-11 lg:h-11 rounded-full flex items-center justify-center overflow-hidden
+                        transition-all duration-300 ease-out
+                        ${isCurrent
+                          ? 'bg-white shadow-lg shadow-orange-200/60 ring-2 ring-[#ff7a1a] scale-105'
+                          : isCompleted
+                            ? 'bg-emerald-500'
+                            : 'bg-slate-100'
+                        }
+                      `}
                     >
-                      {step.icon}
+                      {isCompleted ? (
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <img
+                          src={step.iconSrc}
+                          alt={step.label}
+                          className={`w-full h-full object-contain ${isCurrent ? '' : 'opacity-80 saturate-75'}`}
+                        />
+                      )}
                     </div>
-                  );
-                })}
-              </div>
+                    <span className={`text-[10px] lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
+                      {step.label}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

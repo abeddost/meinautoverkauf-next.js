@@ -3,54 +3,37 @@ import React from 'react';
 
 const TrustElements: React.FC = () => {
   return (
-    <section id="trust" className="py-32 bg-white relative">
+    <section id="trust" className="py-20 bg-white relative border-b border-slate-100">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-6">Warum unsere Kunden <span className="text-brand-orange underline decoration-wavy">strahlen</span>.</h2>
-          <p className="text-slate-500 text-lg font-medium max-w-2xl mx-auto italic">
-            "Es geht nicht nur um ein Auto, es geht um den nächsten Lebensabschnitt. Wir machen den Übergang so einfach wie möglich."
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-5">Was unsere Kunden sagen</h2>
+          <p className="text-slate-500 text-lg font-medium max-w-2xl mx-auto">
+            Echte Erfahrungen von Verkäufern aus ganz Deutschland – schnell, fair und unkompliziert.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center mb-32">
-          {[
-            { val: "Auto einfach verkaufen", label: "OHNE STRESS & ZEITVERLUST", color: "text-brand-orange" },
-            { val: "Faire Bewertung", label: "MARKTGERECHT & TRANSPARENT", color: "text-brand-dark" },
-            { val: "Instant", label: "BAR ODER DIREKT AUFS KONTO", color: "text-brand-orange" }
-          ].map((stat, i) => (
-            <div key={i} className="group cursor-default">
-              <div className={`text-4xl lg:text-6xl font-black ${stat.color} mb-4 transform transition-transform group-hover:scale-105 tracking-tighter leading-tight px-4`}>
-                {stat.val}
-              </div>
-              <div className="text-slate-400 font-black uppercase tracking-[0.15em] text-xs">
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              name: "Sebastian K.",
-              comment: "Ich hatte Tränen in den Augen, als ich meinen geliebten Oldtimer verkaufte. Das Team von Meinautoverkauf war so einfühlsam und hat einen Wahnsinnspreis gezahlt.",
+              name: "Michael S.",
+              comment: "Ich war skeptisch, ob der Online-Autoverkauf wirklich funktioniert. Aber Meinautoverkauf.de hat mich überzeugt – faire Bewertung, schnelle Abwicklung und das Geld war nach wenigen Stunden auf meinem Konto. Absolut empfehlenswert!",
               rating: 5,
-              date: "vor 2 Tagen"
+              date: "München"
             },
             {
-              name: "Martina H.",
-              comment: "Hausabholung war das beste Argument. Kein Warten beim Amt, keine nervigen Probefahrten. Einfach nur klasse!",
+              name: "Sandra K.",
+              comment: "Mein Golf hatte einen Motorschaden und ich dachte, ich müsste ihn verschrotten. Stattdessen bekam ich ein faires Angebot und konnte das Auto unkompliziert verkaufen. Top Service!",
               rating: 5,
-              date: "vor 1 Woche"
+              date: "Hamburg"
             },
             {
-              name: "David L.",
-              comment: "In 2 Minuten bewertet, in 4 Stunden war der Gutachter da. Wer sein Auto woanders verkauft, ist selbst schuld.",
+              name: "Thomas R.",
+              comment: "Keine nervigen Besichtigungen, keine Zeitverschwendung. Einfach online bewertet, Termin vereinbart, Auto übergeben – fertig. So muss Autoverkauf heute sein!",
               rating: 5,
-              date: "vor 3 Tagen"
+              date: "Berlin"
             }
           ].map((t, i) => (
-            <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-xl hover:shadow-2xl transition-all border-b-4 border-b-brand-orange">
+            <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-xl hover:shadow-2xl transition-all border-b-4 border-b-brand-orange">
               <div className="flex items-center gap-1 text-brand-orange mb-6">
                 {Array.from({ length: 5 }).map((_, star) => (
                   <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 20 20">

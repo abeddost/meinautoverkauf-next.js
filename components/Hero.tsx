@@ -21,7 +21,7 @@ const PARTICLES = [
 
 const BENEFITS = [
   {
-    title: 'Oft Verkauf innerhalb von 48 Stunden',
+    title: 'Schnelle Abwicklung',
     icon: (
       <svg className="w-5 h-5 text-brand-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2" />
@@ -30,7 +30,7 @@ const BENEFITS = [
     )
   },
   {
-    title: 'Marktgerechter Preis durch Händlerangebote',
+    title: 'Fairer Marktpreis',
     icon: (
       <svg className="w-5 h-5 text-brand-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 12l8-8 8 8" />
@@ -39,7 +39,7 @@ const BENEFITS = [
     )
   },
   {
-    title: 'Geprüfte Händler & transparente Abwicklung',
+    title: 'Geprüfte Händler',
     icon: (
       <svg className="w-5 h-5 text-brand-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" />
@@ -102,7 +102,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
   );
 
   return (
-    <section className="relative bg-gradient-to-br from-[#e6f0ff] via-white to-[#fff6ef] overflow-hidden min-h-[100vh] -mt-16 lg:-mt-20 pt-16 lg:pt-20 flex flex-col">
+    <section id="bewerten" className="relative bg-gradient-to-br from-[#e6f0ff] via-white to-[#fff6ef] overflow-hidden min-h-[100vh] -mt-16 lg:-mt-20 pt-16 lg:pt-20 flex flex-col">
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-100"
@@ -160,10 +160,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
             <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
               <div className="max-w-2xl mt-1">
                 <h1 className="text-[38px] lg:text-[46px] font-black leading-[1.12] tracking-tight text-[#1e293b]">
-                  Auto verkaufen online – oft innerhalb von 48 Stunden zum marktgerechten Preis
+                  Auto verkaufen online – Schnell, sicher und zum fairen Preis
                 </h1>
                 <p className="mt-3 text-base lg:text-lg text-slate-600 font-medium max-w-lg">
-                  Erhalte mehrere Händlerangebote und verkaufe dein Auto schnell, sicher und ohne Stress.
+                  Autoankauf mit mehreren Händlerangeboten – schnell, sicher und transparent.
                 </p>
               </div>
 
@@ -229,11 +229,11 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete }) => {
       <div className="lg:hidden flex flex-col flex-grow pt-3 pb-4">
         <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
           <div className="text-left mb-0">
-            <h1 className="text-[22px] font-black leading-tight tracking-tight text-[#1e293b]">
-              Auto verkaufen online – oft innerhalb von 48 Stunden zum marktgerechten Preis
-            </h1>
+            <h2 className="text-[22px] font-black leading-tight tracking-tight text-[#1e293b]">
+              Auto verkaufen online – Schnell, sicher und zum fairen Preis
+            </h2>
             <p className="mt-1 text-[13px] text-slate-600 font-medium">
-              Erhalte mehrere Händlerangebote und verkaufe dein Auto schnell, sicher und ohne Stress.
+              Autoankauf mit mehreren Händlerangeboten – schnell, sicher und transparent.
             </p>
           </div>
 
