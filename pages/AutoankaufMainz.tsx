@@ -340,8 +340,8 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏭 Mombach & Industriegebiet: Robuste Fahrzeuge</h3>
             <p className="font-medium leading-relaxed">
-              Mombach mit seinem Industriegebiet, Hafengebiet und Arbeiterwohnvierteln ist geprägt von Handwerkern, kleinen Betrieben und Transportgewerbe. Hier kaufen wir häufig Nutzfahrzeuge, Transporter (Mercedes Sprinter, VW Crafter), ältere PKW für den Export und robuste Arbeitsfahrzeuge an. Auch Fahrzeuge mit hoher Laufleistung (200.000+ km) oder Defekten sind willkommen – wir bewerten fair und kennen den Restwert.</p:parameter>
-</invoke>
+              Mombach mit seinem Industriegebiet, Hafengebiet und Arbeiterwohnvierteln ist geprägt von Handwerkern, kleinen Betrieben und Transportgewerbe. Hier kaufen wir häufig Nutzfahrzeuge, Transporter (Mercedes Sprinter, VW Crafter), ältere PKW für den Export und robuste Arbeitsfahrzeuge an. Auch Fahrzeuge mit hoher Laufleistung (200.000+ km) oder Defekten sind willkommen – wir bewerten fair und kennen den Restwert.
+            </p>
 
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz vs. Privatverkauf – Der direkte Vergleich</h2>

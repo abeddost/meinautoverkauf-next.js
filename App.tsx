@@ -21,19 +21,36 @@ import { AppStep, CarDetails, ValuationResult } from './types';
 
 // Scroll: home → hero (top); other pages → main content (below hero)
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     if (pathname === '/') {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'auto' });
     } else {
       const timer = setTimeout(() => {
+        if (hash) {
+          const hashedEl = document.querySelector(hash);
+          if (hashedEl) {
+            hashedEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+            return;
+          }
+        }
+
         const el = document.getElementById('content');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        else window.scrollTo(0, window.innerHeight);
-      }, 80);
+        if (el) {
+          const headerOffset = 88;
+          const target = (el.previousElementSibling as HTMLElement | null) ?? el;
+          const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top, behavior: 'auto' });
+        } else {
+          window.scrollTo({ top: window.innerHeight, behavior: 'auto' });
+        }
+      }, 0);
       return () => clearTimeout(timer);
     }
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 };
 
