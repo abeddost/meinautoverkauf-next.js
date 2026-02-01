@@ -226,7 +226,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
                   <img
                     src="/bmw.png"
                     alt="BMW Car"
-                    className="relative z-10 w-[210%] -ml-[25%] h-auto max-h-[260px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
+                    className="relative z-10 w-[190%] -ml-[22%] h-auto max-h-[230px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
@@ -235,7 +235,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
                   <img
                     src="/bmw.png"
                     alt="BMW Car Reflection"
-                    className="absolute left-0 right-0 top-[64%] w-[210%] -ml-[25%] h-auto max-h-[260px] object-contain opacity-25 blur-sm"
+                    className="absolute left-0 right-0 top-[64%] w-[190%] -ml-[22%] h-auto max-h-[230px] object-contain opacity-25 blur-sm"
                     style={{
                       ...reflectionStyle,
                       WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
@@ -291,7 +291,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
               <img
                 src="/bmw.png"
                 alt="BMW Car"
-                className="relative w-full h-auto max-h-[220px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
+                className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
