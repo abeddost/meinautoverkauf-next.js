@@ -283,10 +283,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     );
   }
 
-  const StepLabel = ({ label, required }: { label: string; required?: boolean }) => (
-    <label className="text-[10px] lg:text-[11px] font-black text-slate-400 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">
+  const StepLabel = ({ label, required, optional }: { label: string; required?: boolean; optional?: boolean }) => (
+    <label className="text-[11px] lg:text-[12px] font-black text-slate-500 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">
       {label}
-      {required && <span className="inline-block w-1.5 h-1.5 rounded-full bg-brand-orange ml-1 align-middle"></span>}
+      {required && <span className="text-brand-orange ml-1 align-middle">*</span>}
+      {optional && <span className="ml-2 text-[10px] lg:text-[11px] font-semibold text-slate-400 normal-case tracking-normal">(optional)</span>}
     </label>
   );
 
@@ -299,7 +300,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     { label: 'Kontakt', iconSrc: `${formElementsBase}/details.png` }
   ];
 
-  const baseFieldClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-sm lg:text-base disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-4 py-3 lg:py-3.5 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-sm lg:text-base disabled:opacity-50 disabled:cursor-not-allowed";
   const selectClass = `${baseFieldClass} appearance-none cursor-pointer`;
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
@@ -327,7 +328,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
               />
             </div>
             {/* Step circles with labels */}
-            <div className="grid grid-cols-5 gap-1.5 lg:gap-2">
+            <div className="grid grid-cols-5 gap-2 lg:gap-3">
               {steps.map((step, index) => {
                 const stepNumber = index + 1;
                 const isCompleted = currentPage > stepNumber;
@@ -336,7 +337,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   <div key={step.label} className="flex flex-col items-center gap-1.5">
                     <div
                       className={`
-                        w-9 h-9 lg:w-10 lg:h-10 rounded-full flex items-center justify-center overflow-hidden
+                        w-10 h-10 lg:w-11 lg:h-11 rounded-full flex items-center justify-center overflow-hidden
                         transition-all duration-300 ease-out
                         ${isCurrent
                           ? 'bg-white shadow-lg shadow-orange-200/60 ring-2 ring-[#ff7a1a] scale-105'
@@ -347,7 +348,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                       `}
                     >
                       {isCompleted ? (
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                         </svg>
                       ) : (
@@ -358,7 +359,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                         />
                       )}
                     </div>
-                    <span className={`text-[9px] lg:text-[10px] font-semibold text-center leading-tight max-w-[60px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <span className={`text-[10px] lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
                       {step.label}
                     </span>
                   </div>
@@ -368,8 +369,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-4 lg:p-6 space-y-4 lg:space-y-5 flex-grow flex flex-col justify-between">
-        <div className="space-y-3 lg:space-y-4">
+        <form onSubmit={handleSubmit} noValidate className="p-5 lg:p-7 space-y-5 lg:space-y-6 flex-grow flex flex-col justify-between">
+        <div className="space-y-4 lg:space-y-5">
           {currentPage === 1 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div>
@@ -485,10 +486,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   className={inputClass}
                   required
                 />
-                <p className="text-xs text-slate-400 mt-1 ml-1">Wird benötigt für regionale Preisermittlung</p>
               </div>
               <div>
-                <StepLabel label="Fahrzeug-Identifizierungsnummer (FIN/VIN)" />
+                <StepLabel label="Fahrzeug-Identifizierungsnummer (FIN/VIN)" optional />
                 <input
                   type="text"
                   name="vin"
@@ -501,7 +501,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                 <p className="text-xs text-slate-400 mt-1 ml-1">Optional - hilft bei präziserer Bewertung</p>
               </div>
               <div>
-                <StepLabel label="Farbe" />
+                <StepLabel label="Farbe" optional />
                 <input
                   type="text"
                   name="color"
@@ -510,10 +510,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   placeholder="z.B. Schwarz, Weiß, Silber..."
                   className={inputClass}
                 />
-                <p className="text-xs text-slate-400 mt-1 ml-1">Optional</p>
               </div>
               <div>
-                <StepLabel label="Fotos hochladen" />
+                <StepLabel label="Fotos hochladen" optional />
                 <div className="space-y-2">
                   <input
                     type="file"
@@ -596,7 +595,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                 />
               </div>
               <div>
-                <StepLabel label="Dein Wunschpreis (€)" />
+                <StepLabel label="Dein Wunschpreis (€)" optional />
                 <input
                   type="number"
                   name="desiredPrice"
@@ -609,18 +608,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   min={0}
                   className={inputClass}
                 />
-                <p className="text-xs text-slate-400 mt-1 ml-1">Optional: Wunschpreis hilft beim Angebot</p>
               </div>
             </div>
           )}
         </div>
 
         <div className="pt-3 lg:pt-4 flex flex-col gap-2 lg:gap-3">
-          {currentPage >= 4 && (
-            <div className="text-xs text-slate-400 mb-2">
-              <span className="text-brand-orange">*</span> Pflichtfelder müssen ausgefüllt werden
-            </div>
-          )}
           <button 
             type={currentPage === 5 ? "submit" : "button"} 
             onClick={currentPage === 5 ? undefined : nextPage}

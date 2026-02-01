@@ -266,7 +266,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
             </div>
 
             <div className="col-span-5 flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
-              <div className="w-full max-w-[400px] scale-[0.92] origin-top">
+              <div className="w-full max-w-[560px] scale-[1] origin-top">
                 <ValuationForm onValuationComplete={onValuationComplete} />
               </div>
             </div>
@@ -286,7 +286,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
           </div>
 
           <div className="relative mb-4 flex justify-center">
-            <div className="relative w-[95%] max-w-[360px]">
+            <div className="relative w-[95%] max-w-[440px]">
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
                 src="/bmw.png"

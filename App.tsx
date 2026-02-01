@@ -22,12 +22,17 @@ import DatenschutzPage from './pages/Datenschutz';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
 // Scroll: home → hero (top); other pages → main content (below hero)
-const ScrollToTop = () => {
+const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) => {
   const { pathname, hash } = useLocation();
+  const prevPathRef = React.useRef<string | null>(null);
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
+    if (pathname === '/' && prevPathRef.current && prevPathRef.current !== '/') {
+      onHomeEnter?.();
+    }
+    prevPathRef.current = pathname;
     if (pathname === '/') {
       window.scrollTo({ top: 0, behavior: 'auto' });
     } else {
@@ -52,7 +57,7 @@ const ScrollToTop = () => {
       }, 0);
       return () => clearTimeout(timer);
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, onHomeEnter]);
   return null;
 };
 
@@ -99,7 +104,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
-      <ScrollToTop />
+      <ScrollToTop onHomeEnter={resetApp} />
       <Header onLogoClick={resetApp} />
       
       <main className="flex-grow pb-20 md:pb-0 bg-gray-50 relative">
