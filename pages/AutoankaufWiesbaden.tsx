@@ -10,19 +10,25 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
     <div className="bg-white relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-[30%] -left-32 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 bg-slate-200/40 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-gradient-to-br from-orange-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-[30%] -left-32 w-[520px] h-[520px] bg-gradient-to-tr from-blue-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[16%] right-[10%] w-80 h-80 bg-orange-300/40 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-24 left-[12%] w-24 h-24 bg-blue-200/50 rounded-full blur-xl"></div>
+        <div className="absolute top-28 right-[18%] w-72 h-72 border-4 border-orange-200/40 rounded-full"></div>
+        <div className="absolute top-[55%] left-[6%] w-40 h-40 border-2 border-blue-200/40 rounded-full"></div>
+        <div className="absolute top-24 left-20 w-4 h-4 bg-orange-300 rounded-full"></div>
+        <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
+        <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
         <img
           src="/elements/kurhaus-wiesbaden.png"
           alt=""
-          className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.04] pointer-events-none"
+          className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.08] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
           src="/elements/auto-ankauf-wiesbaden.png"
           alt=""
-          className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.06] pointer-events-none"
+          className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.12] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       </div>
@@ -30,7 +36,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mb-16 relative">
-          <div className="absolute -top-10 -left-10 w-20 h-20 bg-brand-orange/10 rounded-full blur-2xl"></div>
+          <div className="absolute -top-10 -left-10 w-20 h-20 bg-brand-orange/40 rounded-full blur-2xl"></div>
           <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Wiesbaden – Schnell, sicher & fair in der Landeshauptstadt
           </h1>
@@ -39,8 +45,9 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
             Sie möchten Ihr <strong>Auto in Wiesbaden verkaufen</strong>? Als erfahrener Partner für <strong>Autoankauf Wiesbaden</strong> bieten wir Ihnen einen komfortablen Service direkt vor Ihrer Haustür – ob am Kurhaus, in Biebrich am Rhein, in Dotzheim oder Mainz-Kastel. Keine Fahrten nach Frankfurt nötig: Wir kommen zu Ihnen, bewerten Ihr Fahrzeug fair und zahlen sofort aus. Egal ob gepflegter Gebrauchtwagen, Luxusfahrzeug, <strong>Motorschaden Ankauf Wiesbaden</strong> oder <strong>Unfallwagen Ankauf Wiesbaden</strong> – bei uns sind Sie richtig.
           </p>
 
-          <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-100 rounded-3xl p-8 mb-12 relative overflow-hidden">
-            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-brand-orange/10 rounded-full blur-2xl"></div>
+          <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200/60 rounded-3xl p-8 mb-12 relative overflow-hidden">
+            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-brand-orange/40 rounded-full blur-2xl"></div>
+            <div className="absolute top-6 right-24 w-24 h-24 border-2 border-orange-200/40 rounded-full"></div>
             <h2 className="text-xl font-black text-brand-dark mb-4 relative z-10">✓ Ihre Vorteile beim Autoankauf Wiesbaden:</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700 font-medium">
               <li className="flex items-start gap-2">

@@ -9,15 +9,26 @@ interface Props {
 
 const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
-    <div className="bg-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-6xl">
+    <div className="bg-white relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute -top-36 -right-28 w-[560px] h-[560px] bg-gradient-to-br from-orange-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-[22%] -left-44 w-[560px] h-[560px] bg-gradient-to-tr from-blue-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[12%] right-[12%] w-80 h-80 bg-orange-300/40 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-24 left-[10%] w-24 h-24 bg-blue-200/50 rounded-full blur-xl"></div>
+        <div className="absolute top-32 right-[18%] w-72 h-72 border-4 border-orange-200/40 rounded-full"></div>
+        <div className="absolute top-[52%] left-[6%] w-40 h-40 border-2 border-blue-200/40 rounded-full"></div>
+        <div className="absolute top-24 left-20 w-4 h-4 bg-orange-300 rounded-full"></div>
+        <div className="absolute top-[38%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
+        <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
+      </div>
+      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-6xl relative z-10">
         {/* Hero Section with Background Image */}
         <section className="relative mb-16 max-w-5xl mx-auto">
           <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
             <img
               src="/elements/auto-schnell-verkaufen.png"
               alt=""
-              className="w-full max-w-[520px] opacity-[0.16]"
+              className="w-full max-w-[520px] opacity-[0.24]"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}

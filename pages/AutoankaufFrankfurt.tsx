@@ -10,19 +10,25 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
     <div className="bg-white relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-[25%] -left-40 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[15%] right-[8%] w-80 h-80 bg-slate-200/40 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-gradient-to-br from-blue-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-[25%] -left-40 w-[520px] h-[520px] bg-gradient-to-tr from-orange-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[12%] right-[8%] w-80 h-80 bg-orange-300/40 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-24 left-[12%] w-24 h-24 bg-blue-200/50 rounded-full blur-xl"></div>
+        <div className="absolute top-28 right-[18%] w-72 h-72 border-4 border-orange-200/40 rounded-full"></div>
+        <div className="absolute top-[55%] left-[6%] w-40 h-40 border-2 border-blue-200/40 rounded-full"></div>
+        <div className="absolute top-24 left-20 w-4 h-4 bg-orange-300 rounded-full"></div>
+        <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
+        <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
         <img
           src="/elements/frankfurt-skyline.png"
           alt=""
-          className="absolute top-16 right-0 w-80 h-80 lg:w-96 lg:h-96 opacity-[0.04] pointer-events-none"
+          className="absolute top-16 right-0 w-80 h-80 lg:w-96 lg:h-96 opacity-[0.08] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
           src="/elements/ezb-frankfurt.png"
           alt=""
-          className="absolute bottom-32 left-0 w-72 h-72 lg:w-80 lg:h-80 opacity-[0.05] pointer-events-none"
+          className="absolute bottom-32 left-0 w-72 h-72 lg:w-80 lg:h-80 opacity-[0.1] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       </div>
@@ -30,7 +36,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mb-16 relative">
-          <div className="absolute -top-12 -left-12 w-24 h-24 bg-blue-100/30 rounded-full blur-2xl"></div>
+          <div className="absolute -top-12 -left-12 w-24 h-24 bg-blue-200/60 rounded-full blur-2xl"></div>
           <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Frankfurt – Schnell, professionell & fair in der Finanzmetropole
           </h1>

@@ -9,16 +9,27 @@ interface Props {
 
 const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
-    <div className="bg-white">
-      <div className="relative container mx-auto px-4 py-16 lg:py-24 max-w-4xl">
+    <div className="bg-white relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute -top-32 -right-24 w-[520px] h-[520px] bg-gradient-to-br from-orange-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-[18%] -left-40 w-[520px] h-[520px] bg-gradient-to-tr from-blue-200/60 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[10%] right-[12%] w-72 h-72 bg-orange-300/40 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-24 left-[12%] w-24 h-24 bg-blue-200/50 rounded-full blur-xl"></div>
+        <div className="absolute top-32 right-[20%] w-64 h-64 border-4 border-orange-200/40 rounded-full"></div>
+        <div className="absolute top-[55%] left-[8%] w-40 h-40 border-2 border-blue-200/40 rounded-full"></div>
+        <div className="absolute top-24 left-24 w-4 h-4 bg-orange-300 rounded-full"></div>
+        <div className="absolute top-[40%] right-[35%] w-3 h-3 bg-blue-200 rounded-full"></div>
+        <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
+      </div>
+      <div className="relative container mx-auto px-4 py-16 lg:py-24 max-w-4xl z-10">
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute -top-20 -right-10 w-64 h-64 bg-brand-orange/20 rounded-full blur-3xl"></div>
-          <div className="absolute top-40 -left-16 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-8 w-56 h-56 bg-slate-200/60 rounded-full blur-3xl"></div>
+          <div className="absolute -top-20 -right-10 w-64 h-64 bg-brand-orange/50 rounded-full blur-3xl"></div>
+          <div className="absolute top-40 -left-16 w-72 h-72 bg-blue-500/50 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-8 w-56 h-56 bg-slate-200/70 rounded-full blur-3xl"></div>
           <img
             src="/elements/auto-wert-ermitteln.png"
             alt=""
-            className="absolute top-6 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.08]"
+            className="absolute top-6 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.12]"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
@@ -37,7 +48,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           <img
             src="/elements/auto-bewerten.png"
             alt=""
-            className="absolute -top-8 right-6 w-36 h-36 sm:w-44 sm:h-44 lg:w-60 lg:h-60 opacity-[0.08] pointer-events-none"
+            className="absolute -top-8 right-6 w-36 h-36 sm:w-44 sm:h-44 lg:w-60 lg:h-60 opacity-[0.12] pointer-events-none"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
