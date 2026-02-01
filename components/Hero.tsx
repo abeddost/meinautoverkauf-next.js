@@ -206,16 +206,16 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
         <div className="container mx-auto px-8 lg:px-16 z-10 max-w-7xl">
           <div className="grid grid-cols-12 gap-10 items-center">
             <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
-              <div className="max-w-2xl mt-1">
-                <DesktopHeadlineTag className="text-[38px] lg:text-[46px] font-black leading-[1.12] tracking-tight text-[#1e293b]">
+              <div className="max-w-2xl -mt-2">
+                <DesktopHeadlineTag className="text-[42px] lg:text-[52px] font-black leading-[1.08] tracking-tight text-[#1e293b]">
                   {heroHeadline}
                 </DesktopHeadlineTag>
-                <p className="mt-3 text-base lg:text-lg text-slate-600 font-medium max-w-lg">
+                <p className="mt-4 text-lg lg:text-xl text-slate-600 font-medium max-w-xl">
                   {heroSubheadline}
                 </p>
               </div>
 
-              <div className="relative mt-0 overflow-visible">
+              <div className="relative mt-6 overflow-visible">
                 <div className="absolute -bottom-12 left-28 right-0 h-32 rounded-full bg-orange-100/70 blur-3xl"></div>
                 <div
                   className="relative overflow-visible"
@@ -226,7 +226,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
                   <img
                     src="/bmw.png"
                     alt="BMW Car"
-                    className="relative z-10 w-[190%] -ml-[22%] h-auto max-h-[230px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
+                    className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
@@ -235,7 +235,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
                   <img
                     src="/bmw.png"
                     alt="BMW Car Reflection"
-                    className="absolute left-0 right-0 top-[64%] w-[190%] -ml-[22%] h-auto max-h-[230px] object-contain opacity-25 blur-sm"
+                    className="absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
                     style={{
                       ...reflectionStyle,
                       WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
@@ -248,17 +248,17 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
                 </div>
               </div>
 
-              <div className="mt-0 grid grid-cols-3 gap-2">
+              <div className="mt-8 grid grid-cols-3 gap-3">
                 {BENEFITS.map((benefit, index) => (
                   <div
                     key={index}
-                    className="rounded-2xl border border-white/70 bg-white/70 px-2.5 py-2.5 shadow-[0_14px_24px_-18px_rgba(15,23,42,0.45)] backdrop-blur"
+                    className="rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-[0_14px_24px_-18px_rgba(15,23,42,0.45)] backdrop-blur"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70">
                         {benefit.icon}
                       </div>
-                      <div className="text-[11px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
+                      <div className="text-[12px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
                     </div>
                   </div>
                 ))}
