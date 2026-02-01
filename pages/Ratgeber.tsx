@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FAQSection from '../components/FAQSection';
 
 interface Props {
   onCtaClick: () => void;
@@ -316,58 +317,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
 
           {/* FAQ Section */}
-          <section className="space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark text-center mb-12">Ratgeber FAQ – Häufige Fragen</h2>
-            <div className="space-y-4">
-              {[
-                {
-                  q: "Sollte ich das Auto vor dem Verkauf abmelden?",
-                  a: "Beim Privatverkauf: Ja, unbedingt! Lassen Sie niemals einen Fremden mit Ihrem angemeldeten Auto davonfahren. Das Haftungsrisiko ist zu groß. Bei einem Händlerverkauf: Nein, der Händler übernimmt die Abmeldung sicher und kostenlos für Sie."
-                },
-                {
-                  q: "Was tun, wenn der Fahrzeugbrief verloren gegangen ist?",
-                  a: "Sie müssen bei der Zulassungsstelle eine eidesstattliche Versicherung abgeben und einen neuen Fahrzeugbrief beantragen. Das dauert ca. 2-4 Wochen und kostet etwa 70€. Erst danach können Sie das Fahrzeug verkaufen."
-                },
-                {
-                  q: "Beeinflusst Rauchen im Auto den Verkaufspreis?",
-                  a: "Ja, erheblich. Nikotingeruch und Verfärbungen können den Wert um bis zu 10% mindern. Eine professionelle Ozonbehandlung und Innenreinigung kostet 200-400€, was viele Käufer vom Preis abziehen werden."
-                },
-                {
-                  q: "Was ist ein scheckheftgepflegtes Auto?",
-                  a: "Das bedeutet, dass alle vom Hersteller vorgeschriebenen Inspektionen lückenlos, fristgerecht und in autorisierten Werkstätten durchgeführt und im Serviceheft dokumentiert wurden. Solche Fahrzeuge erzielen 15-20% höhere Preise."
-                },
-                {
-                  q: "Kann ich ein Auto mit Motorschaden noch verkaufen?",
-                  a: "Ja! Ein motorschaden auto verkaufen ist durchaus möglich. Der Restwert durch Ersatzteile, Export oder Recycling kann je nach Fahrzeug noch 30-50% des normalen Marktwertes betragen. Händler kaufen solche Fahrzeuge gezielt an."
-                },
-                {
-                  q: "Muss ich Unfallschäden angeben, wenn sie repariert sind?",
-                  a: "Ja, auch reparierte Unfallschäden müssen angegeben werden. Verschweigen Sie diese, kann der Käufer vom Vertrag zurücktreten oder Schadensersatz fordern – selbst bei einer 'gekauft wie gesehen'-Klausel."
-                },
-                {
-                  q: "Lohnt sich eine neue HU vor dem Verkauf?",
-                  a: "Das hängt vom Zustand ab. Bei einem gepflegten Fahrzeug ohne größere Mängel: Ja, ein frischer TÜV kann den Preis um 5-10% steigern. Bei einem Fahrzeug mit bekannten Problemen: Nein, verkaufen Sie lieber ohne HU und reduzieren Sie den Preis entsprechend."
-                },
-                {
-                  q: "Wie verkaufe ich ein defektes auto am besten?",
-                  a: "Seien Sie ehrlich über alle Defekte und suchen Sie spezialisierte Ankäufer. Händler für Ersatzteile, Export-Händler oder Online-Plattformen für Unfallwagen sind gute Anlaufstellen. Wir kaufen auch defekte Fahrzeuge zu fairen Preisen."
-                },
-                {
-                  q: "Welche Dokumente brauche ich zwingend für den Verkauf?",
-                  a: "Mindestens Fahrzeugschein, Fahrzeugbrief, alle Schlüssel und Ihren Personalausweis. Scheckheft und TÜV-Berichte sind sehr hilfreich, aber nicht zwingend erforderlich. Je vollständiger die Unterlagen, desto reibungsloser der Verkauf."
-                },
-                {
-                  q: "Wann ist der beste Zeitpunkt für den Verkauf Gebrauchtwagen?",
-                  a: "Das hängt vom Fahrzeugtyp ab. Cabrios im Frühling (März-Mai), Geländewagen im Herbst (September-November), Familienautos vor den Sommerferien. Generell gilt: Verkaufen Sie bevor teure Reparaturen anstehen."
-                }
-              ].map((faq, i) => (
-                <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
-                  <h3 className="text-base lg:text-lg font-black text-brand-dark mb-4">{faq.q}</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          <FAQSection />
 
           {/* Conclusion */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">

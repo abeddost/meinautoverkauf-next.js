@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FAQSection from '../components/FAQSection';
 
 interface Props {
   onCtaClick: () => void;
@@ -448,51 +449,10 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </table>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Häufige Fragen zum Autoankauf Frankfurt</h2>
           </section>
 
           {/* FAQ Section */}
-          <section className="space-y-4 mt-8">
-            {[
-              {
-                q: "Wie schnell kann der Autoankauf in Frankfurt abgewickelt werden?",
-                a: "Für vielbeschäftigte Frankfurter ist Geschwindigkeit entscheidend. Bei uns dauert der komplette Prozess vom ersten Kontakt bis zur Auszahlung nur 24-48 Stunden. Die Online-Bewertung erhalten Sie in 2 Minuten – auch um Mitternacht nach einem langen Arbeitstag. Nach der Besichtigung vor Ort in Frankfurt (dauert 15-20 Minuten) erhalten Sie das finale Angebot sofort. Bei Einigung erfolgt die Express-Auszahlung innerhalb von 2-4 Stunden auf Ihr Konto. Auto verkaufen Frankfurt sofort – das ist unser Standard!"
-              },
-              {
-                q: "Holen Sie das Auto auch im Frankfurter Bankenviertel oder am Flughafen ab?",
-                a: "Ja, absolut! Wir holen Ihr Fahrzeug überall in Frankfurt ab – ob Bankenviertel, Römerberg, Sachsenhausen, Westend, Bockenheim, Höchst oder direkt am Frankfurter Flughafen (Terminal-Parkhaus, Langzeitparkplatz, P&R). Auch Firmengelände, Büroparkhäuser oder Hotel-Parkplätze sind kein Problem. Wir kommen zu Ihnen – Sie müssen sich um nichts kümmern."
-              },
-              {
-                q: "Kaufen Sie Diesel trotz Frankfurter Umweltzone und Fahrverboten?",
-                a: "Ja! Frankfurt hat zwar eine strenge Umweltzone und zunehmende Diesel-Beschränkungen, aber Ihr Diesel hat trotzdem Wert. Wir kaufen auch Fahrzeuge ohne grüne Plakette, Euro-4/Euro-5 Diesel oder ältere Modelle. Diese Fahrzeuge haben Export-Wert (viele Länder haben keine solchen Einschränkungen) oder Ersatzteil-Wert. Unsere Umweltzone-Expertise garantiert Ihnen einen fairen Preis."
-              },
-              {
-                q: "Ist der Service auch abends oder am Wochenende in Frankfurt verfügbar?",
-                a: "Ja! Wir wissen, dass viele Frankfurter Geschäftsleute unter der Woche kaum Zeit haben. Deshalb bieten wir flexible Termine: Montag bis Freitag auch nach 18 Uhr (bis 20 Uhr), samstags den ganzen Tag und nach Absprache auch sonntags. So können Sie Ihr Auto verkaufen, ohne Urlaub nehmen zu müssen."
-              },
-              {
-                q: "Was ist mit Firmenwagen oder Dienstwagen in Frankfurt?",
-                a: "Firmenwagen sind in Frankfurt besonders häufig. Wir kaufen Dienstwagen aller Art – egal ob Leasing-Rückläufer, ausgemusterte Poolfahrzeuge oder Geschäftsführer-PKWs. Bei noch laufendem Leasing kontaktieren wir die Leasinggesellschaft direkt. Die Abwicklung ist professionell, diskret und schnell – passend zu Frankfurts Business-Standards."
-              },
-              {
-                q: "Welche Zahlungsmethoden bieten Sie beim Autoankauf Frankfurt an?",
-                a: "Sie haben die Wahl: 1) Express-Banküberweisung (innerhalb 2-4 Stunden auf Ihrem Konto, ideal für Geschäftsleute) oder 2) Barzahlung bei Übergabe (bis zu einem sicheren Betrag). Beide Varianten sind absolut sicher, werden vertraglich festgehalten und entsprechen höchsten Sicherheitsstandards. Keine Schecks, keine unsicheren Zahlungsmethoden."
-              },
-              {
-                q: "Kaufen Sie auch Luxusfahrzeuge und Sportwagen in Frankfurt?",
-                a: "Unbedingt! Frankfurt hat einen der stärksten Premium-Märkte Deutschlands. Wir kaufen Mercedes S-Klasse, BMW 7er, Audi A8, Porsche 911/Cayenne, Tesla Model S, Range Rover und alle anderen Luxusmarken zu fairen, marktgerechten Preisen. Unsere Expertise im Premiumsegment ist durch jahrelange Erfahrung im Frankfurter Markt erprobt."
-              },
-              {
-                q: "Wie wird der Preis für mein Auto in Frankfurt ermittelt?",
-                a: "Unsere KI-Bewertung analysiert täglich tausende aktuelle Verkaufsdaten speziell für Frankfurt und das Rhein-Main-Gebiet. Faktoren wie Marke, Modell, Alter, Kilometerstand, Zustand, Ausstattung und lokale Nachfrage fließen ein. Frankfurt-spezifisch berücksichtigen wir auch: Umweltzonen-Konformität, Premiummarkt-Trends, Firmenwagen-Verfügbarkeit und saisonale Schwankungen. So erhalten Sie einen präzisen, marktgerechten Preis."
-              }
-            ].map((faq, i) => (
-              <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
-                <h3 className="text-base lg:text-lg font-black text-brand-dark mb-4">{faq.q}</h3>
-                <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </section>
+          <FAQSection title="Häufige Fragen zum Autoankauf in Frankfurt" />
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">

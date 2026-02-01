@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FAQSection from '../components/FAQSection';
 
 interface Props {
   onCtaClick: () => void;
@@ -397,43 +398,10 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </table>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Häufige Fragen zum Autoankauf in Mainz</h2>
           </section>
 
           {/* FAQ Section */}
-          <section className="space-y-4 mt-8">
-            {[
-              {
-                q: "Holen Sie auch in Mainz-Kastel und Kostheim ab?",
-                a: "Ja, unbedingt! Obwohl Mainz-Kastel und Mainz-Kostheim administrativ zu Wiesbaden gehören, sind sie historisch und kulturell eng mit Mainz verbunden. Unser Auto verkaufen Mainz Kastel Service ist speziell auf diese besondere Lage zugeschnitten – wir holen auf beiden Seiten des Rheins ab, ohne Aufpreis. Die Nähe zur Theodor-Heuss-Brücke und zur Wiesbadener Innenstadt machen diese Stadtteile besonders interessant."
-              },
-              {
-                q: "Wie schnell erfolgt die Auszahlung in Mainz?",
-                a: "Sehr schnell! Nach der Besichtigung und Einigung erhalten Sie Ihr Geld per Express-Überweisung meist innerhalb von 2-4 Stunden auf Ihrem Konto – perfekt für Mainzer, die ihr Auto schnell zu Geld machen möchten. Alternativ zahlen wir auch bar bei Abholung aus (bis zu einem sicheren Betrag). Beide Varianten sind absolut sicher und werden vertraglich festgehalten."
-              },
-              {
-                q: "Kaufen Sie auch Studentenautos in Mainz?",
-                a: "Absolut! Mainz ist Universitätsstadt mit über 32.000 Studierenden. Wir kaufen häufig ältere Kleinwagen (VW Polo, Opel Corsa, Ford Fiesta) von Studenten, die ihr Studium beenden, umziehen oder kein Auto mehr brauchen. Auch Autos mit höherer Laufleistung, ohne TÜV oder mit kleinen Mängeln kaufen wir fair an – perfekt für den Student-to-Student-Kreislauf oder Export."
-              },
-              {
-                q: "Was ist mit der Zulassungsstelle Mainz – übernehmen Sie das?",
-                a: "Ja, komplett und kostenlos! Die Abmeldung bei der Zulassungsstelle Mainz-Bingen in der Kreyßigstraße übernehmen wir für Sie. Sie müssen nicht einmal persönlich zur Behörde – wir regeln alles. Sie geben uns nur die Papiere (Fahrzeugschein, Fahrzeugbrief), wir kümmern uns um den Rest. Das spart Ihnen Zeit, Nerven und den Gang zur oft überfüllten Zulassungsstelle."
-              },
-              {
-                q: "Decken Sie auch Mainz-Bingen Landkreis und Rheinhessen ab?",
-                a: "Ja! Unser Service erstreckt sich über ganz Mainz, den Landkreis Mainz-Bingen und weite Teile von Rheinhessen. Wir holen in Ingelheim, Bingen, Budenheim, Bodenheim, Nieder-Olm, Alzey und vielen weiteren Orten ab. Auch im angrenzenden Bad Kreuznach sind wir aktiv. Die rheinhessische Weinregion mit ihren Transportern, Familienautos und Nutzfahrzeugen kennen wir bestens."
-              },
-              {
-                q: "Sind Sie auch samstags in Mainz verfügbar?",
-                a: "Ja, samstags sind wir verfügbar! Wir wissen, dass viele Mainzer unter der Woche arbeiten oder studieren. Deshalb bieten wir auch samstags Besichtigungstermine an. Nach Absprache sind auch Sonntagtermine möglich. So können Sie Ihr Auto verkaufen, ohne Urlaub nehmen oder Vorlesungen verpassen zu müssen. Flexibilität ist uns wichtig!"
-              }
-            ].map((faq, i) => (
-              <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
-                <h3 className="text-base lg:text-lg font-black text-brand-dark mb-4">{faq.q}</h3>
-                <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </section>
+          <FAQSection title="Häufige Fragen zum Autoankauf in Mainz" />
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">

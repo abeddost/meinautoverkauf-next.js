@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FAQSection from '../components/FAQSection';
 
 interface Props {
   onCtaClick: () => void;
@@ -320,51 +321,10 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Häufige Fragen zum Autoankauf Wiesbaden</h2>
           </section>
 
           {/* FAQ Section */}
-          <section className="space-y-4 mt-8">
-            {[
-              {
-                q: "Wie lange dauert der Autoankauf in Wiesbaden?",
-                a: "Der gesamte Prozess dauert in der Regel 24-48 Stunden. Die Online-Bewertung erhalten Sie in 2 Minuten, die Besichtigung vor Ort in Wiesbaden dauert 15-20 Minuten, und die Auszahlung erfolgt noch am selben Tag per Express-Überweisung (2-4 Stunden) oder bar. Wenn Sie Ihr Auto verkaufen Wiesbaden sofort möchten, sind wir Ihr schnellster Partner!"
-              },
-              {
-                q: "Welche Stadtteile in Wiesbaden deckt ihr ab?",
-                a: "Wir holen Fahrzeuge in allen Wiesbadener Stadtteilen kostenlos ab: Mitte, Rheingauviertel, Biebrich, Schierstein, Dotzheim, Sonnenberg, Rambach, Mainz-Kastel, Mainz-Kostheim, Mainz-Amöneburg, Erbenheim, Nordenstadt, Auringen, Breckenheim, Delkenheim, Medenbach, Kloppenheim und Naurod. Auch im Umland (Mainz, Taunusstein, Hochheim, Eltville, Geisenheim) sind wir tätig."
-              },
-              {
-                q: "Kauft ihr auch Luxusfahrzeuge und Sportwagen?",
-                a: "Ja, absolut! Wiesbaden hat einen starken Markt für Premiumfahrzeuge. Wir kaufen Mercedes, BMW, Audi, Porsche, Tesla und alle anderen Luxusmarken zu fairen Preisen. Unsere Expertise im Premiumsegment ist langjährig erprobt."
-              },
-              {
-                q: "Kauft ihr auch Autos mit Motorschaden oder Unfallschäden?",
-                a: "Ja, absolut! Unser Motorschaden Ankauf Wiesbaden und Unfallwagen Ankauf Wiesbaden Service ist sehr gefragt. Wir kaufen Fahrzeuge mit Motor- oder Getriebeschaden, Unfallschäden (repariert oder unrepariert), ohne TÜV und selbst nicht fahrbereite Autos. Auch defekte Fahrzeuge haben einen Restwert durch Ersatzteile oder Export. Fordern Sie einfach eine kostenlose Bewertung an!"
-              },
-              {
-                q: "Wie unterscheidet sich euer Preis von anderen Wiesbaden Händlern?",
-                a: "Unsere KI-Bewertung analysiert kontinuierlich den aktuellen Wiesbadener und Rhein-Main-Markt. Im Gegensatz zu lokalen Händlern, die oft eigene Margen einpreisen oder nur ihr Inventar im Blick haben, bieten wir transparente, datenbasierte Preise. Wiesbaden hat einen starken Premiummarkt – davon profitieren Sie bei uns durch faire Ankaufspreise, besonders bei Mercedes, BMW, Audi und Porsche."
-              },
-              {
-                q: "Welche Dokumente brauche ich für den Verkauf?",
-                a: "Sie benötigen: Fahrzeugschein (Zulassungsbescheinigung Teil I), Fahrzeugbrief (Teil II), alle Schlüssel und Ihren Personalausweis. Scheckheft und TÜV-Berichte sind hilfreich, aber nicht zwingend."
-              },
-              {
-                q: "Übernehmt ihr die Abmeldung?",
-                a: "Ja, die Abmeldung bei der Zulassungsstelle Wiesbaden übernehmen wir komplett und kostenlos für Sie. Sie müssen sich um nichts kümmern."
-              },
-              {
-                q: "Ist die Bewertung wirklich kostenlos?",
-                a: "Ja, 100% kostenlos und unverbindlich. Sie gehen keinerlei Verpflichtungen ein. Erst wenn Sie mit unserem finalen Angebot nach der Besichtigung einverstanden sind, kommt ein Kauf zustande."
-              }
-            ].map((faq, i) => (
-              <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
-                <h3 className="text-base lg:text-lg font-black text-brand-dark mb-4">{faq.q}</h3>
-                <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </section>
+          <FAQSection title="Häufige Fragen zum Autoankauf in Wiesbaden" />
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
