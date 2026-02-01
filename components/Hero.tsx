@@ -266,7 +266,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
             </div>
 
             <div className="col-span-5 flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
-              <div className="w-full max-w-[560px] scale-[1] origin-top">
+              <div className="w-full max-w-[460px] lg:max-w-[640px] scale-[1] origin-top">
                 <ValuationForm onValuationComplete={onValuationComplete} />
               </div>
             </div>

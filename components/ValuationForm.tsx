@@ -284,7 +284,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   }
 
   const StepLabel = ({ label, required, optional }: { label: string; required?: boolean; optional?: boolean }) => (
-    <label className="text-[11px] lg:text-[12px] font-black text-slate-500 uppercase tracking-widest mb-1.5 lg:mb-2 block ml-1">
+    <label className="text-[10px] lg:text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1 lg:mb-1.5 block ml-1">
       {label}
       {required && <span className="text-brand-orange ml-1 align-middle">*</span>}
       {optional && <span className="ml-2 text-[10px] lg:text-[11px] font-semibold text-slate-400 normal-case tracking-normal">(optional)</span>}
@@ -300,7 +300,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     { label: 'Kontakt', iconSrc: `${formElementsBase}/details.png` }
   ];
 
-  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-4 py-3 lg:py-3.5 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-sm lg:text-base disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-3.5 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-xs lg:text-sm disabled:opacity-50 disabled:cursor-not-allowed";
   const selectClass = `${baseFieldClass} appearance-none cursor-pointer`;
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
@@ -618,7 +618,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             type={currentPage === 5 ? "submit" : "button"} 
             onClick={currentPage === 5 ? undefined : nextPage}
             disabled={currentPage === 1 && (!formData.brand || !formData.model || !formData.year)}
-            className="group w-full bg-gradient-to-r from-[#ffb347] via-[#ff8f2d] to-[#ff7a1a] text-white py-4 lg:py-5 rounded-2xl font-black text-base lg:text-lg shadow-[0_14px_30px_-14px_rgba(255,130,50,0.7)] hover:shadow-[0_20px_40px_-16px_rgba(255,130,50,0.9)] hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group w-full bg-gradient-to-r from-[#ffb347] via-[#ff8f2d] to-[#ff7a1a] text-white py-3.5 lg:py-4 rounded-2xl font-black text-sm lg:text-base shadow-[0_14px_30px_-14px_rgba(255,130,50,0.7)] hover:shadow-[0_20px_40px_-16px_rgba(255,130,50,0.9)] hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="flex items-center justify-center gap-3">
               <span>{currentPage === 5 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}</span>
