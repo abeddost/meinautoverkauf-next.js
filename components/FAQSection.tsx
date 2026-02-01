@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface FAQItem {
   q: string;
@@ -60,9 +61,29 @@ const FAQSection: React.FC<FAQSectionProps> = ({ title, faqs, sectionId, classNa
   const resolvedFaqs = faqs ?? DEFAULT_FAQS;
   const resolvedTitle = title ?? "Häufig gestellte Fragen";
   const resolvedSectionId = sectionId ?? "faq";
+  const hasFaqs = resolvedFaqs.length > 0;
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: resolvedFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a
+      }
+    }))
+  };
 
   return (
     <section id={resolvedSectionId} className={`py-20 bg-gray-50 ${className ?? ''}`.trim()}>
+      {hasFaqs && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        </Helmet>
+      )}
       <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">{resolvedTitle}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -7,6 +7,7 @@ interface HeroProps {
   headline?: string;
   subheadline?: string;
   accent?: 'home' | 'bewerten' | 'verkaufen' | 'vorteile' | 'ratgeber';
+  headlineTag?: 'h1' | 'h2';
 }
 
 const PARTICLES = [
@@ -91,11 +92,12 @@ const ACCENTS = {
   }
 } as const;
 
-const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline, accent }) => {
+const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline, accent, headlineTag }) => {
   const [carTransform, setCarTransform] = useState({ tiltX: 0, tiltY: 0, offsetY: 0 });
   const heroHeadline = headline ?? 'Auto verkaufen online – Einfach, schnell & stressfrei';
   const heroSubheadline = subheadline ?? 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis';
   const heroAccent = ACCENTS[accent ?? 'home'];
+  const DesktopHeadlineTag = headlineTag ?? 'h1';
 
   useEffect(() => {
     let raf: number | null = null;
@@ -205,9 +207,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
           <div className="grid grid-cols-12 gap-10 items-center">
             <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
               <div className="max-w-2xl mt-1">
-                <h1 className="text-[38px] lg:text-[46px] font-black leading-[1.12] tracking-tight text-[#1e293b]">
+                <DesktopHeadlineTag className="text-[38px] lg:text-[46px] font-black leading-[1.12] tracking-tight text-[#1e293b]">
                   {heroHeadline}
-                </h1>
+                </DesktopHeadlineTag>
                 <p className="mt-3 text-base lg:text-lg text-slate-600 font-medium max-w-lg">
                   {heroSubheadline}
                 </p>

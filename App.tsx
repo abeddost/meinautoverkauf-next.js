@@ -405,6 +405,7 @@ const AppContent: React.FC = () => {
                 headline="Auto bewerten online – Kostenlos & präzise Wertermittlung"
                 subheadline="In 2 Minuten den realistischen Marktwert Ihres Fahrzeugs erhalten"
                 accent="bewerten"
+                headlineTag="h2"
               />
               <AutoBewertenPage onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
             </div>
