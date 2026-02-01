@@ -17,6 +17,8 @@ import RatgeberPage from './pages/Ratgeber';
 import AutoankaufFrankfurtPage from './pages/AutoankaufFrankfurt';
 import AutoankaufWiesbadenPage from './pages/AutoankaufWiesbaden';
 import AutoankaufMainzPage from './pages/AutoankaufMainz';
+import ImpressumPage from './pages/Impressum';
+import DatenschutzPage from './pages/Datenschutz';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
 // Scroll: home → hero (top); other pages → main content (below hero)
@@ -595,6 +597,28 @@ const AppContent: React.FC = () => {
               <AutoankaufMainzPage 
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
+            </div>
+          } />
+
+          <Route path="/impressum" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Impressum | Meinautoverkauf.de"
+                description="Impressum von Meinautoverkauf.de – Anbieterkennzeichnung, Kontakt und rechtliche Hinweise."
+                canonicalUrl="/impressum"
+              />
+              <ImpressumPage />
+            </div>
+          } />
+
+          <Route path="/datenschutz" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Datenschutzerklärung | Meinautoverkauf.de"
+                description="Datenschutzerklärung von Meinautoverkauf.de – Informationen zur Verarbeitung personenbezogener Daten."
+                canonicalUrl="/datenschutz"
+              />
+              <DatenschutzPage />
             </div>
           } />
         </Routes>

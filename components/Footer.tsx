@@ -68,8 +68,8 @@ const Footer: React.FC = () => {
                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-brand-orange">☎</div>
                  0800 24 24 24
               </li>
-              <li><Link to="/" className="hover:text-brand-orange transition-colors">Impressum</Link></li>
-              <li><Link to="/" className="hover:text-brand-orange transition-colors">Datenschutz</Link></li>
+              <li><Link to="/impressum" className="hover:text-brand-orange transition-colors">Impressum</Link></li>
+              <li><Link to="/datenschutz" className="hover:text-brand-orange transition-colors">Datenschutz</Link></li>
             </ul>
           </div>
         </div>
