@@ -66,7 +66,11 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       }
     });
 
-    const result: ValuationResult = JSON.parse(response.text.trim());
+    const responseText = response.text?.trim();
+    if (!responseText) {
+      throw new Error("Leere Antwort von der KI.");
+    }
+    const result: ValuationResult = JSON.parse(responseText);
     return result;
   } catch (error: any) {
     console.error("Valuation Error:", error);
