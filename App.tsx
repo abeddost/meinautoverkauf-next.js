@@ -128,7 +128,7 @@ const App: React.FC = () => {
     },
     [AppView.VORTEILE]: {
       headline: 'Ihre Vorteile beim Autoankauf – Transparent & zuverlässig',
-      subheadline: 'Geprüfte Händler, faire Preise und schnelle Auszahlung',
+      subheadline: 'Ihr Auto. Ihr Preis. In wenigen Tagen verkauft.',
       accent: 'vorteile'
     },
     [AppView.RATGEBER]: {

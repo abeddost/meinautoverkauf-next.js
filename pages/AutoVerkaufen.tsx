@@ -1,5 +1,6 @@
 
 import React from 'react';
+import FAQSection from '../components/FAQSection';
 
 interface Props {
   onCtaClick: () => void;
@@ -266,61 +267,55 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto">
-          <section className="space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark text-center mb-12">Häufig gestellte Fragen zum Auto verkaufen</h2>
-            <div className="space-y-4">
-              {[
-                {
-                  q: "Wie schnell kann ich mein Auto verkaufen?",
-                  a: "Bei Meinautoverkauf.de können Sie Ihr Auto innerhalb von 24-48 Stunden verkaufen. Nach der Online-Bewertung vereinbaren Sie einen Termin, das Fahrzeug wird geprüft, der Vertrag unterzeichnet und das Geld überwiesen – alles an einem Tag möglich."
-                },
-                {
-                  q: "Kann ich ein finanziertes Auto verkaufen?",
-                  a: "Ja, absolut! Wir lösen die Finanzierung direkt bei Ihrer Bank ab und zahlen Ihnen den Differenzbetrag aus. Wir kümmern uns um den gesamten Schriftverkehr mit der finanzierenden Bank."
-                },
-                {
-                  q: "Was passiert mit meiner Versicherung und Steuern?",
-                  a: "Wir melden Ihr Fahrzeug zeitnah nach dem Ankauf bei der Zulassungsstelle ab. Damit endet automatisch auch die Versicherungspflicht und die KFZ-Steuerpflicht. Sie sollten Ihre Versicherung trotzdem informieren."
-                },
-                {
-                  q: "Muss ich das Auto vor dem Verkauf reparieren lassen?",
-                  a: "Nein, in der Regel nicht. Wir kaufen Fahrzeuge in jedem Zustand – auch mit Motorschaden, Unfallschäden oder ohne TÜV. Größere Reparaturen vor dem Verkauf lohnen sich meist finanziell nicht für Sie."
-                },
-                {
-                  q: "Wie viel weniger bekomme ich beim Händler als beim Privatverkauf?",
-                a: "Der Händler-Ankaufspreis liegt typischerweise 10-20% unter dem Privatverkaufspreis. Dafür sparen Sie Zeit und Aufwand, und die Abwicklung ist vertraglich klar geregelt."
-                },
-                {
-                  q: "Kann ich auch ein Auto mit Motorschaden verkaufen?",
-                  a: "Ja! Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder anderen schweren Defekten haben einen Restwert. Wir berücksichtigen den Wert der Ersatzteile, Exportpotenzial und Recycling-Wert in unserer Bewertung."
-                },
-                {
-                  q: "Ist der Export meines Autos möglich?",
-                  a: "Ja, wir haben ein internationales Händlernetzwerk. Wenn Ihr Fahrzeug für den Export geeignet ist (z.B. ältere Mercedes, robuste Geländewagen, Dieselfahrzeuge), können Sie oft einen besseren Preis erzielen als auf dem deutschen Markt."
-                },
-                {
-                  q: "Welche Dokumente brauche ich zum Auto verkaufen?",
-                  a: "Sie benötigen: Fahrzeugschein, Fahrzeugbrief, TÜV-Bericht, alle Schlüssel, Scheckheft/Service-Nachweise, Ihren Personalausweis und Ihre Bankverbindung. Je vollständiger die Unterlagen, desto reibungsloser der Verkauf."
-                },
-                {
-                  q: "Haftet ich nach dem Verkauf noch für Mängel?",
-                  a: "Nein! Beim Verkauf an einen Händler (wie uns) verkaufen Sie das Fahrzeug 'wie gesehen' ohne Gewährleistung. Es gibt keine späteren Reklamationen oder Haftungsansprüche."
-                },
-                {
-                  q: "Wie lange dauert die Fahrzeugprüfung vor Ort?",
-                  a: "Die Begutachtung und Vertragsunterzeichnung dauert in der Regel 45-60 Minuten. Unser Experte prüft den Zustand, vergleicht mit den Angaben und erstellt das finale Angebot."
-                }
-              ].map((faq, i) => (
-                <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
-                  <h4 className="text-base lg:text-lg font-black text-brand-dark mb-4">{faq.q}</h4>
-                  <p className="text-slate-600 font-medium leading-relaxed">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+        <FAQSection
+          title="Häufig gestellte Fragen zum Auto verkaufen"
+          sectionId="faq-verkaufen"
+          className="mt-16"
+          faqs={[
+            {
+              q: "Wie schnell kann ich mein Auto verkaufen?",
+              a: "Bei Meinautoverkauf.de können Sie Ihr Auto innerhalb von 24-48 Stunden verkaufen. Nach der Online-Bewertung vereinbaren Sie einen Termin, das Fahrzeug wird geprüft, der Vertrag unterzeichnet und das Geld überwiesen – alles an einem Tag möglich."
+            },
+            {
+              q: "Kann ich ein finanziertes Auto verkaufen?",
+              a: "Ja, absolut! Wir lösen die Finanzierung direkt bei Ihrer Bank ab und zahlen Ihnen den Differenzbetrag aus. Wir kümmern uns um den gesamten Schriftverkehr mit der finanzierenden Bank."
+            },
+            {
+              q: "Was passiert mit meiner Versicherung und Steuern?",
+              a: "Wir melden Ihr Fahrzeug zeitnah nach dem Ankauf bei der Zulassungsstelle ab. Damit endet automatisch auch die Versicherungspflicht und die KFZ-Steuerpflicht. Sie sollten Ihre Versicherung trotzdem informieren."
+            },
+            {
+              q: "Muss ich das Auto vor dem Verkauf reparieren lassen?",
+              a: "Nein, in der Regel nicht. Wir kaufen Fahrzeuge in jedem Zustand – auch mit Motorschaden, Unfallschäden oder ohne TÜV. Größere Reparaturen vor dem Verkauf lohnen sich meist finanziell nicht für Sie."
+            },
+            {
+              q: "Wie viel weniger bekomme ich beim Händler als beim Privatverkauf?",
+              a: "Der Händler-Ankaufspreis liegt typischerweise 10-20% unter dem Privatverkaufspreis. Dafür sparen Sie Zeit und Aufwand, und die Abwicklung ist vertraglich klar geregelt."
+            },
+            {
+              q: "Kann ich auch ein Auto mit Motorschaden verkaufen?",
+              a: "Ja. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder anderen Defekten haben einen Restwert. Wir berücksichtigen den Zustand, Ersatzteile und Exportpotenzial in unserer Bewertung."
+            },
+            {
+              q: "Ist der Export meines Autos möglich?",
+              a: "Ja, wir haben ein internationales Händlernetzwerk. Wenn Ihr Fahrzeug für den Export geeignet ist (z.B. ältere Mercedes, robuste Geländewagen, Dieselfahrzeuge), kann der Export eine Option sein."
+            },
+            {
+              q: "Welche Dokumente brauche ich zum Auto verkaufen?",
+              a: "Sie benötigen: Fahrzeugschein, Fahrzeugbrief, TÜV-Bericht, alle Schlüssel, Scheckheft/Service-Nachweise, Ihren Personalausweis und Ihre Bankverbindung. Je vollständiger die Unterlagen, desto reibungsloser der Verkauf."
+            },
+            {
+              q: "Haftet ich nach dem Verkauf noch für Mängel?",
+              a: "Nein. Beim Verkauf an einen Händler (wie uns) verkaufen Sie das Fahrzeug in der Regel 'wie gesehen' ohne Gewährleistung. Es gibt keine späteren Reklamationen oder Haftungsansprüche."
+            },
+            {
+              q: "Wie lange dauert die Fahrzeugprüfung vor Ort?",
+              a: "Die Begutachtung und Vertragsunterzeichnung dauert in der Regel 45-60 Minuten. Unser Experte prüft den Zustand, vergleicht mit den Angaben und erstellt das finale Angebot."
+            }
+          ]}
+        />
 
+        <div className="max-w-4xl mx-auto">
           {/* Conclusion Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Auto verkaufen leicht gemacht</h2>
