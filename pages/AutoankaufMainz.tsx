@@ -7,223 +7,341 @@ interface Props {
 
 const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
-    <div className="bg-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
+    <div className="bg-white relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-[20%] -left-32 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 bg-slate-200/30 rounded-full blur-3xl"></div>
+        <img
+          src="/elements/mainzer-dom.png"
+          alt=""
+          className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.04] pointer-events-none"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+        <img
+          src="/elements/gutenberg-mainz.png"
+          alt=""
+          className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.05] pointer-events-none"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
-            Autoankauf Mainz – Ihr Partner in der Landeshauptstadt Rheinland-Pfalz
+        <div className="max-w-4xl mx-auto mb-16 relative">
+          <div className="absolute -top-10 -left-10 w-20 h-20 bg-red-100/30 rounded-full blur-2xl"></div>
+          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+            Autoankauf Mainz – Ihr vertrauensvoller Partner in der Landeshauptstadt
           </h1>
           
-          <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
-            Sie möchten Ihr Auto in <strong>Mainz</strong> verkaufen? Wir sind Ihr erfahrener Partner für den <strong>Autoankauf Mainz</strong> – von der Altstadt bis Gonsenheim, von Mombach bis Bretzenheim. Ob Gebrauchtwagen, Neuwagen, Unfallfahrzeug oder Auto mit Motorschaden – bei uns erhalten Sie faire Preise in der Gutenberg-Stadt am Rhein.
+          <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium relative">
+            Sie möchten Ihr <strong>Auto verkaufen Mainz</strong>? Herzlich willkommen! Als Landeshauptstadt von Rheinland-Pfalz und Heimat von Johannes Gutenberg verbindet Mainz Geschichte mit Moderne – und genau das spiegelt unser <strong>Autoankauf Mainz</strong> Service wider: traditionell vertrauensvoll, modern effizient. Ob Sie am Rheinufer flanieren, im Dom beten, in der Altstadt wohnen oder in Gonsenheim zu Hause sind: Wir holen Ihr Auto überall in Mainz ab – von der Neustadt über Bretzenheim bis nach Weisenau, von Finthen bis Mainz-Kastel. <strong>Gebrauchtwagen Ankauf Mainz</strong> mit Herz und Verstand – fair, schnell und persönlich.
           </p>
 
-          <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-100 rounded-3xl p-8 mb-12">
-            <h2 className="text-xl font-black text-brand-dark mb-4">✓ Darum Autoankauf Mainz mit uns:</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700 font-medium">
+          <div className="bg-gradient-to-br from-red-50 to-white border-2 border-red-100 rounded-3xl p-8 mb-12 relative overflow-hidden">
+            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-red-100/40 rounded-full blur-2xl"></div>
+            <h2 className="text-xl font-black text-brand-dark mb-4 relative z-10">✓ Autoankauf Mainz – Ihre Vorteile:</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700 font-medium relative z-10">
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
-                <span>Kostenlose Sofort-Bewertung online</span>
+                <span>Kostenlose Bewertung – rund um die Uhr verfügbar</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
-                <span>Marktgerechte Preise durch KI-Analyse</span>
+                <span>Persönlicher Service – kein Callcenter, echte Menschen</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
-                <span>Abholung in ganz Mainz & Rheinhessen</span>
+                <span>Abholung in ganz Mainz & Rheinhessen – auch Kastel & Kostheim</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
-                <span>Schnelle Auszahlung am selben Tag</span>
+                <span>Faire Preise – marktgerechte Bewertung für Mainzer Verhältnisse</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
-                <span>Kostenlose Abmeldung & Zulassungsstelle</span>
+                <span>Zulassungsstelle Mainz – wir regeln alles kostenlos</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
-                <span>100% rechtssicher & seriös</span>
+                <span>Express-Auszahlung am selben Tag – bar oder Überweisung</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Main Content */}
-        <div id="content" className="max-w-4xl mx-auto">
+        <div id="content" className="max-w-4xl mx-auto relative">
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz – Lokaler Service in der Gutenberg-Stadt</h2>
-            <p className="font-medium leading-relaxed">
-              Mainz, die Landeshauptstadt von Rheinland-Pfalz, ist mit über 220.000 Einwohnern eine lebendige Universitätsstadt und Medienmetropole (ZDF, SWR). Der <strong>Autoankauf Mainz</strong> Markt profitiert von der zentralen Lage im Rhein-Main-Gebiet, der Nähe zu Wiesbaden und Frankfurt sowie der starken Wirtschaft. Ob Sie in der Altstadt, Neustadt, Gonsenheim, Mombach oder Bretzenheim wohnen – unser Service ist überall verfügbar.
-            </p>
-
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8">
-              <h3 className="text-xl font-black text-brand-dark mb-4">Unser Autoankauf-Service in Mainz und Umgebung:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-bold text-brand-orange mb-2">Mainz Stadtteile:</h4>
-                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
-                    <li>• Altstadt & Neustadt</li>
-                    <li>• Gonsenheim & Finthen</li>
-                    <li>• Mombach & Hartenberg-Münchfeld</li>
-                    <li>• Bretzenheim & Oberstadt</li>
-                    <li>• Hechtsheim & Weisenau</li>
-                    <li>• Lerchenberg & Drais</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold text-brand-orange mb-2">Umland Mainz:</h4>
-                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
-                    <li>• Wiesbaden & Wiesbaden-Kastel</li>
-                    <li>• Ingelheim am Rhein</li>
-                    <li>• Budenheim & Bodenheim</li>
-                    <li>• Nieder-Olm & Essenheim</li>
-                    <li>• Bingen am Rhein</li>
-                    <li>• Alzey & Bad Kreuznach</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz – So einfach geht's</h2>
-            
-            <div className="space-y-6">
-              <div className="flex gap-6 items-start">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black">1</div>
-                <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Online-Bewertung in 2 Minuten</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">
-                    Geben Sie die Eckdaten Ihres Fahrzeugs ein: Hersteller, Modell, Baujahr, Laufleistung und allgemeiner Zustand. Unsere KI analysiert den Mainzer Markt und berechnet einen realistischen Ankaufspreis. Völlig kostenlos und unverbindlich.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-6 items-start">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black">2</div>
-                <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Vor-Ort-Besichtigung in Mainz</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">
-                    Vereinbaren Sie einen Wunschtermin. Unser Fahrzeugexperte kommt zu Ihnen nach Hause, an Ihren Arbeitsplatz oder zu einem beliebigen Ort in Mainz. Die Begutachtung dauert 15-20 Minuten. Danach erhalten Sie unser finales Kaufangebot.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-6 items-start">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black">3</div>
-                <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Kaufvertrag, Zahlung & Abmeldung</h3>
-                  <p className="text-slate-600 font-medium leading-relaxed">
-                    Bei Zustimmung unterzeichnen wir den rechtssicheren Kaufvertrag. Sie erhalten Ihr Geld per Express-Überweisung (meist innerhalb von 2-4 Stunden) oder bar. Wir übernehmen die Abmeldung bei der Zulassungsstelle Mainz-Bingen. Fertig!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Diese Fahrzeuge kaufen wir in Mainz an</h2>
-            <p className="font-medium leading-relaxed">
-              Beim <strong>Autoankauf Mainz</strong> sind wir auf sämtliche Fahrzeugtypen, Marken und Zustände spezialisiert:
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors">
-                <h3 className="text-lg font-black text-brand-dark mb-4">Alle Marken:</h3>
-                <ul className="space-y-2 text-slate-600 font-medium">
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Deutsche Premium-Marken (Mercedes, BMW, Audi, Porsche)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Volumen-Hersteller (VW, Opel, Ford, Skoda)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Französische Fahrzeuge (Renault, Peugeot, Citroën)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Asiatische Modelle (Toyota, Mazda, Hyundai, Kia)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Italienische Marken (Fiat, Alfa Romeo, Lancia)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>E-Autos & Hybride (Tesla, VW ID, BMW i, Hyundai Ioniq)</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors">
-                <h3 className="text-lg font-black text-brand-dark mb-4">Alle Zustände:</h3>
-                <ul className="space-y-2 text-slate-600 font-medium">
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Gepflegte Gebrauchtwagen mit Scheckheft</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Ältere PKW mit hoher Kilometerleistung</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Unfallwagen (repariert oder unrepariert)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Fahrzeuge mit Motorschaden</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Autos ohne gültigen TÜV/HU</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-orange">✓</span>
-                    <span>Export-Fahrzeuge & Liebhaberautos</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz: Was macht uns besonders?</h2>
-            <p className="font-medium leading-relaxed">
-              Mainz liegt im Herzen des Rhein-Main-Gebiets und ist verkehrstechnisch perfekt angebunden – A60, A63, Hauptbahnhof, Rheinufer. Das macht die Stadt attraktiv für Pendler, Studenten und Medienschaffende. Der Automarkt ist entsprechend vielfältig.
-            </p>
-
-            <p className="font-medium leading-relaxed mt-4">
-              Unsere Erfahrung im <strong>Autoankauf Mainz</strong> zeigt: Die Nachfrage nach zuverlässigen Familienautos, kompakten Stadtfahrzeugen und Premium-Limousinen ist hoch. Durch die Nähe zum Weinbaugebiet Rheinhessen sind auch Transporter und Nutzfahrzeuge gefragt. Wir kaufen alles!
-            </p>
-
-            <div className="bg-orange-50 border-l-4 border-brand-orange p-6 rounded-r-2xl my-8">
-              <p className="font-bold text-brand-dark mb-2">💡 Mainz-Tipp:</p>
-              <p className="text-slate-700 font-medium">
-                Mainz ist eine Faschingshochburg und Medienstadt – viele Menschen ziehen hier hin oder weg. Das bedeutet: Hohe Fluktuation und ständige Nachfrage nach Gebrauchtwagen. Perfekte Bedingungen für einen schnellen und fairen Verkauf!
+            <div className="relative">
+              <img
+                src="/elements/rheinufer-mainz.png"
+                alt=""
+                className="absolute -top-6 right-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 opacity-[0.06] pointer-events-none"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+              <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Mainz: Ihr Partner vor Ort</h2>
+              <p className="font-medium leading-relaxed relative z-10">
+                Mainz – die über 2.000 Jahre alte Römerstadt am Rhein, Landeshauptstadt von Rheinland-Pfalz und Heimat von Johannes Gutenberg. Mit rund 220.000 Einwohnern ist Mainz eine lebendige Universitätsstadt (Johannes Gutenberg-Universität mit 32.000 Studierenden), Medienstadt (ZDF-Sendezentrum am Lerchenberg) und Faschingshochburg. Der <strong>Autoankauf Mainz</strong> Markt profitiert von der zentralen Lage zwischen Wiesbaden, Frankfurt und dem Rheinhessischen Hügelland – eine perfekte Mischung aus urbanem Leben und regionaler Verwurzelung.
+              </p>
+              <p className="font-medium leading-relaxed relative z-10 mt-4">
+                Unser <strong>KFZ Ankauf Mainz</strong> Service ist auf die besonderen Bedürfnisse der Mainzer zugeschnitten: persönlich, unkompliziert, vertrauensvoll. Wir sind kein anonymes Großunternehmen, sondern ein regionaler Partner, der die Stadt kennt – vom Mainzer Dom über die Theodor-Heuss-Brücke bis zum Volkspark. Ob Sie Ihr Auto in der Altstadt (mit ihren engen Gassen), in Gonsenheim (im grünen Westen), in Bretzenheim (nahe der Uni), in Weisenau (am südlichen Rheinufer) oder in Mainz-Kastel (über dem Rhein in Richtung Wiesbaden) verkaufen möchten – wir kommen zu Ihnen. Keine Parkplatzsuche am Rheinufer, keine Fahrt zur Zulassungsstelle – Sie sparen Zeit und Nerven.
               </p>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Mainz Stadtteile – Wo wir Ihr Auto abholen</h2>
+            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
+              <div className="absolute -left-6 -top-6 w-28 h-28 bg-amber-100/40 rounded-full blur-2xl"></div>
+              <h3 className="text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Mainz & Rheinhessen:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+                <div>
+                  <h4 className="font-bold text-brand-orange mb-2">Alle Mainz Stadtteile:</h4>
+                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
+                    <li>• Altstadt & Neustadt (Zentrum)</li>
+                    <li>• Oberstadt & Hartenberg-Münchfeld</li>
+                    <li>• Gonsenheim & Finthen (Westen)</li>
+                    <li>• Bretzenheim & Drais (Uni-Nähe)</li>
+                    <li>• Mombach (Industriegebiet)</li>
+                    <li>• Weisenau & Hechtsheim (Süden)</li>
+                    <li>• Lerchenberg (ZDF-Viertel)</li>
+                    <li>• Laubenheim & Ebersheim</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-bold text-brand-orange mb-2">Cross-Rhein & Umland:</h4>
+                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
+                    <li>• Mainz-Kastel & Mainz-Kostheim</li>
+                    <li>• Ingelheim am Rhein & Budenheim</li>
+                    <li>• Bodenheim & Nieder-Olm</li>
+                    <li>• Wiesbaden-Biebrich & Erbenheim</li>
+                    <li>• Bingen & Bad Kreuznach</li>
+                    <li>• Alzey & Landkreis Mainz-Bingen</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Warum wir die beste Wahl in Mainz sind</h2>
             
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Mainz Altstadt & Neustadt</h3>
+            <div className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-100 rounded-3xl p-8 my-8 relative overflow-hidden">
+              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-100/30 rounded-full blur-3xl"></div>
+              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🍷 Mainzer Charme trifft auf professionellen Service</h3>
+              <p className="text-slate-700 font-medium leading-relaxed relative z-10">
+                Mainz ist keine anonyme Großstadt – hier kennt man sich, hier gibt man sich die Hand. Und genau so funktioniert unser <strong>Auto verkaufen Mainz</strong> Service: persönlich, vertrauensvoll, auf Augenhöhe. Wir kennen den Mainzer Markt seit Jahren – wissen, welche Autos in Gonsenheim gefragt sind (Familienautos), was Studenten in Bretzenheim brauchen (günstige Kleinwagen) und welche Premium-Fahrzeuge in der Oberstadt gesucht werden.
+              </p>
+              <p className="text-slate-700 font-medium leading-relaxed mt-4 relative z-10">
+                <strong>Besonders wichtig:</strong> Die Verbindung zwischen Mainz und Wiesbaden über den Rhein. Viele Mainzer arbeiten "dribbe" (drüben) in Wiesbaden, viele Wiesbadener studieren "hibber" (herüben) in Mainz. Unser <strong>Autoankauf Mainz Kastel</strong> und <strong>Auto verkaufen Mainz Kostheim</strong> Service berücksichtigt diese besondere Lage – wir holen auf beiden Seiten des Rheins ab, ohne Aufpreis.
+              </p>
+            </div>
+
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Vielfältiger Mainzer Automarkt verstanden</h3>
             <p className="font-medium leading-relaxed">
-              Das historische Zentrum mit Dom, Gutenberg-Museum und Rheinuferpromenade. Hier wohnen viele Studenten und junge Berufstätige. Parkplätze sind rar – perfekt für den <strong>Autoankauf Mainz Altstadt</strong> Service. Viele verkaufen ihr Auto und nutzen ÖPNV.
+              Mainz ist bunt: Studenten mit kleinem Budget, ZDF-Mitarbeiter mit soliden Gehältern, Landesbeamte mit Dienstwagen, Winzer aus Rheinhessen mit Transportern, Pendler nach Frankfurt mit Langstreckenfahrzeugen. Wir kaufen alles – vom 15 Jahre alten Opel Corsa (perfekt fürs Studium) bis zum gepflegten Audi A6 (Regierungsbeamter geht in Rente). Unser Anspruch: Jedes Auto verdient eine faire Bewertung, jeder Verkäufer verdient respektvollen Service.</p:parameter>
+</invoke>
+
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen in Mainz: Der Ablauf</h2>
+            <p className="font-medium leading-relaxed mb-6">
+              Keine komplizierten Prozesse, keine versteckten Gebühren – nur drei einfache Schritte zum fairen Autoverkauf in Mainz:
+            </p>
+            
+            <div className="space-y-6">
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">1</div>
+                <div>
+                  <h3 className="text-lg font-black text-brand-dark mb-2">Online-Bewertung – 24/7 verfügbar</h3>
+                  <p className="text-slate-600 font-medium leading-relaxed">
+                    Geben Sie die Eckdaten Ihres Fahrzeugs ein: Hersteller, Modell, Baujahr, Laufleistung und Zustand. Unsere KI analysiert speziell den <strong>Autoankauf Mainz</strong> Markt – berücksichtigt lokale Nachfrage, Rheinhessische Besonderheiten und Rhein-Main-Preise. Das funktioniert rund um die Uhr – auch nach dem Feierabend oder am Wochenende. Völlig kostenlos und unverbindlich.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">2</div>
+                <div>
+                  <h3 className="text-lg font-black text-brand-dark mb-2">Vor-Ort-Besichtigung in Mainz – flexibel & unkompliziert</h3>
+                  <p className="text-slate-600 font-medium leading-relaxed">
+                    Vereinbaren Sie einen Wunschtermin. Unser Fahrzeugexperte kommt zu Ihnen: nach Hause in Gonsenheim, zur Uni nach Bretzenheim, zum Büro in die Neustadt, zum ZDF-Parkplatz am Lerchenberg oder nach Mainz-Kastel über dem Rhein. Auch samstags kein Problem! Die Begutachtung dauert 15-20 Minuten. Danach erhalten Sie unser finales, faires Kaufangebot – keine Nachverhandlungen, keine versteckten Abzüge.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">3</div>
+                <div>
+                  <h3 className="text-lg font-black text-brand-dark mb-2">Kaufvertrag, Zahlung & Zulassungsstelle Mainz</h3>
+                  <p className="text-slate-600 font-medium leading-relaxed">
+                    Bei Zustimmung unterzeichnen wir den rechtssicheren Kaufvertrag. Sie erhalten Ihr Geld per Express-Überweisung (meist innerhalb von 2-4 Stunden auf Ihrem Konto) oder bar. Wir übernehmen die komplette Abmeldung bei der Zulassungsstelle Mainz-Bingen in der Kreyßigstraße – Sie müssen nicht einmal persönlich zur Behörde. Fertig! Ihr Auto ist verkauft, das Geld ist da, die Papiere sind erledigt.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Welche Autos kaufen wir in Mainz an?</h2>
+            <p className="font-medium leading-relaxed">
+              Mainz ist vielfältig – und so auch die Autos, die wir hier ankaufen. Vom Studentenauto bis zum Dienstwagen, vom Familien-Kombi bis zum Winzer-Transporter:
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Gonsenheim & Finthen</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-50 rounded-full blur-xl"></div>
+                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🎓 Studenten & Einsteiger:</h3>
+                <ul className="space-y-2 text-slate-600 font-medium relative z-10">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Kleinwagen:</strong> VW Polo, Opel Corsa, Ford Fiesta, Renault Clio</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Günstige Gebrauchte:</strong> Ältere Modelle mit 150.000+ km</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Erste Autos:</strong> Ohne TÜV, mit kleinen Mängeln</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span>Perfekt für Uni-Abgänger, die umziehen</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-amber-50 rounded-full blur-xl"></div>
+                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">👨‍👩‍👧‍👦 Familien & Alltag:</h3>
+                <ul className="space-y-2 text-slate-600 font-medium relative z-10">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Kombis & Vans:</strong> VW Passat, Skoda Octavia, Ford Mondeo</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>SUVs:</strong> VW Tiguan, Audi Q3, BMW X1, Nissan Qashqai</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>7-Sitzer:</strong> VW Touran, Seat Alhambra, Opel Zafira</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span>Mainzer Familien-Favoriten aus Gonsenheim & Finthen</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-slate-100 rounded-full blur-xl"></div>
+                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Business & Behörden:</h3>
+                <ul className="space-y-2 text-slate-600 font-medium relative z-10">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Dienstwagen:</strong> Mercedes, BMW, Audi (oft von Landesbeamten)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>ZDF-Mitarbeiter:</strong> Solide Mittelklasse (Passat, 3er, A4)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Firmenwagen-Rückläufer:</strong> Gepflegt, Vollausstattung</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span>Schnelle Abwicklung für Jobwechsel oder Ruhestand</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-red-50 rounded-full blur-xl"></div>
+                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🔧 Auch Problemfälle:</h3>
+                <ul className="space-y-2 text-slate-600 font-medium relative z-10">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Unfallwagen Ankauf Mainz:</strong> Repariert oder unrepariert</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Motorschaden verkaufen Mainz:</strong> Motor kaputt? Restwert zahlen wir!</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span><strong>Ohne TÜV/HU:</strong> Abgelaufene Plakette kein Problem</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange font-black">→</span>
+                    <span>Getriebeschaden, Rost, Elektronikdefekte – wir kaufen alles</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Mainz und Umgebung: Wo wir abholen</h2>
+            
             <p className="font-medium leading-relaxed">
-              Die westlichen Stadtteile mit hoher Wohnqualität und Familienfreundlichkeit. Hier werden häufig größere Fahrzeuge wie Kombis und SUVs verkauft. Unser Service ist schnell und unkompliziert – von der Bewertung bis zur Abholung.
+              Unser <strong>Autoankauf Mainz</strong> Service endet nicht an der Stadtgrenze. Wir decken das gesamte Rheinhessische Umland ab – von Ingelheim bis Alzey, von Bingen bis Nieder-Olm:
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Mombach & Hartenberg-Münchfeld</h3>
+            <div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
+              <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-slate-200/40 rounded-full blur-2xl"></div>
+              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🍇 Rheinhessen & Mainz-Bingen Landkreis:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                <div>
+                  <h4 className="font-bold text-brand-orange mb-2 text-sm">Weinstraße & Rheinufer:</h4>
+                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
+                    <li>• Ingelheim am Rhein</li>
+                    <li>• Bingen am Rhein</li>
+                    <li>• Budenheim</li>
+                    <li>• Bodenheim</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-bold text-brand-orange mb-2 text-sm">Hinterland:</h4>
+                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
+                    <li>• Nieder-Olm</li>
+                    <li>• Alzey</li>
+                    <li>• Bad Kreuznach (Grenze)</li>
+                    <li>• Oppenheim</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-bold text-brand-orange mb-2 text-sm">Cross-Rhein:</h4>
+                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
+                    <li>• Mainz-Kastel ✓</li>
+                    <li>• Mainz-Kostheim ✓</li>
+                    <li>• Wiesbaden-Biebrich</li>
+                    <li>• Wiesbaden-Erbenheim</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="text-slate-600 font-medium mt-6 text-sm relative z-10">
+                💡 <strong>Besonderheit Mainz-Kastel & Kostheim:</strong> Obwohl administrativ zu Wiesbaden gehörend, sind diese Stadtteile historisch und kulturell eng mit Mainz verbunden. Unser <strong>Autoankauf Mainz Kastel</strong> Service berücksichtigt diese einzigartige Lage – wir kennen beide Seiten des Rheins!
+              </p>
+            </div>
+
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Mainz Stadtteile – Individuelle Abholung überall</h2>
+            <p className="font-medium leading-relaxed mb-6">
+              Jeder Mainzer Stadtteil hat seinen eigenen Charakter – und wir kennen sie alle:
+            </p>
+            
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">⛪ Mainz Altstadt & Neustadt: Historisches Herz</h3>
             <p className="font-medium leading-relaxed">
-              Industriegebiet und Wohnviertel mit guter Verkehrsanbindung. Hier kaufen wir häufig Nutzfahrzeuge, Transporter und ältere PKW für den Export. Auch Fahrzeuge mit Defekten sind willkommen.
+              Das historische Zentrum mit dem prächtigen Mainzer Dom, dem Gutenberg-Museum und der malerischen Rheinuferpromenade. Hier wohnen viele Studenten in WGs, junge Berufstätige und Kulturliebhaber. Parkplätze sind Mangelware, die Straßen eng. Perfekt für unseren <strong>Autoankauf Mainz</strong> Altstadt Service – viele verkaufen ihr Auto und nutzen nur noch ÖPNV, Fahrrad oder Car-Sharing. Wir holen direkt vor der Haustür ab, Sie müssen sich nicht durch die Gassen quälen.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Bretzenheim & Lerchenberg</h3>
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏡 Gonsenheim & Finthen: Familienfreundlicher Westen</h3>
             <p className="font-medium leading-relaxed">
-              Universitätsnähe und Medienviertel (ZDF). Hier verkaufen viele jüngere Menschen ihre Erst- oder Zweitwagen. Kleinwagen und Kompaktfahrzeuge sind besonders gefragt. Unser <strong>Autoankauf Mainz Bretzenheim</strong> Service ist bei Studenten beliebt.
+              Die westlichen Stadtteile mit hoher Wohnqualität, Einfamilienhäusern, Gärten und Schulen. Hier leben viele junge Familien, die größere Fahrzeuge wie Kombis (VW Passat, Skoda Octavia) oder SUVs (Tiguan, Q3) fahren. Wenn die Kinder größer werden oder ein zweites Auto nicht mehr gebraucht wird – wir kaufen fair und unkompliziert.
             </p>
+
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🎓 Bretzenheim & Lerchenberg: Uni & Medien</h3>
+            <p className="font-medium leading-relaxed">
+              Bretzenheim liegt direkt neben der Johannes Gutenberg-Universität – viele Studenten wohnen hier. Der Lerchenberg ist das ZDF-Viertel mit Medienschaffenden und Angestellten. Hier verkaufen viele ihr Erst- oder Zweitauto: Kleinwagen (Polo, Corsa, Clio) sind besonders gefragt. Unser <strong>Autoankauf Mainz Weisenau</strong> bis Bretzenheim Service ist bei jungen Leuten beliebt – schnelle Online-Bewertung, flexible Termine, faire Preise auch für ältere Autos.
+            </p>
+
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏭 Mombach & Industriegebiet: Robuste Fahrzeuge</h3>
+            <p className="font-medium leading-relaxed">
+              Mombach mit seinem Industriegebiet und Hafengebiet ist geprägt von Arbeitern, Handwerkern und kleinen Betrieben. Hier kaufen wir häufig Nutzfahrzeuge, Transporter (Mercedes Sprinter, VW Crafter), ältere PKW für den Export und robuste Arbeitsfahrzeuge an. Auch Fahrzeuge mit hoher Laufleistung oder Defekten sind willkommen – wir bewerten fair.</p>
+
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz vs. Privatverkauf – Der direkte Vergleich</h2>
             
@@ -271,43 +389,35 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </table>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Häufige Fragen zum Autoankauf Mainz</h2>
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Häufige Fragen zum Autoankauf in Mainz</h2>
           </section>
 
           {/* FAQ Section */}
           <section className="space-y-4 mt-8">
             {[
               {
-                q: "Wie lange dauert der Autoankauf in Mainz?",
-                a: "Von der ersten Kontaktaufnahme bis zur Auszahlung vergehen in der Regel nur 1-2 Tage. Die Online-Bewertung dauert 2 Minuten, die Vor-Ort-Besichtigung 15-20 Minuten. Die Auszahlung erfolgt meist noch am selben Tag per Express-Überweisung."
+                q: "Holen Sie auch in Mainz-Kastel und Kostheim ab?",
+                a: "Ja, unbedingt! Obwohl Mainz-Kastel und Mainz-Kostheim administrativ zu Wiesbaden gehören, sind sie historisch und kulturell eng mit Mainz verbunden. Unser Auto verkaufen Mainz Kastel Service ist speziell auf diese besondere Lage zugeschnitten – wir holen auf beiden Seiten des Rheins ab, ohne Aufpreis. Die Nähe zur Theodor-Heuss-Brücke und zur Wiesbadener Innenstadt machen diese Stadtteile besonders interessant."
               },
               {
-                q: "Holt ihr auch in Gonsenheim, Bretzenheim oder Mombach ab?",
-                a: "Ja, wir holen Fahrzeuge in allen Mainzer Stadtteilen ab – von der Altstadt über Neustadt, Gonsenheim, Finthen, Mombach, Bretzenheim bis Lerchenberg und überall dazwischen. Auch im Umland (Wiesbaden, Ingelheim, Budenheim, Bingen) sind wir aktiv."
+                q: "Wie schnell erfolgt die Auszahlung in Mainz?",
+                a: "Sehr schnell! Nach der Besichtigung und Einigung erhalten Sie Ihr Geld per Express-Überweisung meist innerhalb von 2-4 Stunden auf Ihrem Konto – perfekt für Mainzer, die ihr Auto schnell zu Geld machen möchten. Alternativ zahlen wir auch bar bei Abholung aus (bis zu einem sicheren Betrag). Beide Varianten sind absolut sicher und werden vertraglich festgehalten."
               },
               {
-                q: "Kauft ihr auch Autos mit Motorschaden oder Unfallschäden?",
-                a: "Ja! Wir kaufen alle Fahrzeuge – egal ob Motorschaden, Getriebeschaden, Unfallschaden oder ohne TÜV. Selbst nicht fahrbereite Autos haben einen Restwert durch Ersatzteile oder Export. Fordern Sie eine kostenlose Bewertung an."
+                q: "Kaufen Sie auch Studentenautos in Mainz?",
+                a: "Absolut! Mainz ist Universitätsstadt mit über 32.000 Studierenden. Wir kaufen häufig ältere Kleinwagen (VW Polo, Opel Corsa, Ford Fiesta) von Studenten, die ihr Studium beenden, umziehen oder kein Auto mehr brauchen. Auch Autos mit höherer Laufleistung, ohne TÜV oder mit kleinen Mängeln kaufen wir fair an – perfekt für den Student-to-Student-Kreislauf oder Export."
               },
               {
-                q: "Wie wird der Preis ermittelt?",
-                a: "Unsere KI-Bewertung analysiert tausende aktuelle Verkäufe im Rhein-Main-Gebiet und Rheinhessen. Faktoren wie Marke, Modell, Baujahr, Kilometerstand, Zustand, Ausstattung und lokale Nachfrage in Mainz fließen in die Preisberechnung ein."
+                q: "Was ist mit der Zulassungsstelle Mainz – übernehmen Sie das?",
+                a: "Ja, komplett und kostenlos! Die Abmeldung bei der Zulassungsstelle Mainz-Bingen in der Kreyßigstraße übernehmen wir für Sie. Sie müssen nicht einmal persönlich zur Behörde – wir regeln alles. Sie geben uns nur die Papiere (Fahrzeugschein, Fahrzeugbrief), wir kümmern uns um den Rest. Das spart Ihnen Zeit, Nerven und den Gang zur oft überfüllten Zulassungsstelle."
               },
               {
-                q: "Welche Dokumente brauche ich?",
-                a: "Sie benötigen: Fahrzeugschein (Zulassungsbescheinigung Teil I), Fahrzeugbrief (Teil II), alle Fahrzeugschlüssel und Ihren Personalausweis. Scheckheft und TÜV-Berichte sind hilfreich, aber nicht zwingend erforderlich."
+                q: "Decken Sie auch Mainz-Bingen Landkreis und Rheinhessen ab?",
+                a: "Ja! Unser Service erstreckt sich über ganz Mainz, den Landkreis Mainz-Bingen und weite Teile von Rheinhessen. Wir holen in Ingelheim, Bingen, Budenheim, Bodenheim, Nieder-Olm, Alzey und vielen weiteren Orten ab. Auch im angrenzenden Bad Kreuznach sind wir aktiv. Die rheinhessische Weinregion mit ihren Transportern, Familienautos und Nutzfahrzeugen kennen wir bestens."
               },
               {
-                q: "Übernehmt ihr die Abmeldung in Mainz?",
-                a: "Ja, die Abmeldung bei der Zulassungsstelle Mainz-Bingen übernehmen wir komplett und kostenlos für Sie. Sie müssen sich um nichts kümmern – wir erledigen alles."
-              },
-              {
-                q: "Wie bekomme ich mein Geld?",
-                a: "Sie haben die Wahl zwischen Express-Banküberweisung (innerhalb von 2-4 Stunden) oder Barzahlung bei Abholung. Beide Varianten sind absolut sicher und werden vertraglich festgehalten."
-              },
-              {
-                q: "Ist die Bewertung wirklich kostenlos?",
-                a: "Ja, 100% kostenlos und unverbindlich! Die Online-Bewertung dauert nur 2 Minuten. Sie gehen keinerlei Verpflichtungen ein. Erst wenn Sie mit unserem finalen Angebot einverstanden sind, kommt ein Kaufvertrag zustande."
+                q: "Sind Sie auch samstags in Mainz verfügbar?",
+                a: "Ja, samstags sind wir verfügbar! Wir wissen, dass viele Mainzer unter der Woche arbeiten oder studieren. Deshalb bieten wir auch samstags Besichtigungstermine an. Nach Absprache sind auch Sonntagstermine möglich. So können Sie Ihr Auto verkaufen, ohne Urlaub nehmen oder Vorlesungen verpassen zu müssen. Flexibilität ist uns wichtig!"
               }
             ].map((faq, i) => (
               <div key={i} className="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-brand-orange/30 hover:shadow-lg transition-all duration-200">
@@ -355,28 +465,40 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
           {/* CTA Section */}
           <div className="my-20 bg-gradient-to-br from-brand-dark via-slate-800 to-brand-dark rounded-[3rem] p-16 text-center text-white shadow-2xl relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-12 left-12 w-56 h-56 bg-white/5 rounded-full blur-3xl"></div>
             <div className="relative z-10">
-              <h2 className="text-2xl lg:text-4xl font-black mb-6">Auto verkaufen in Mainz – Jetzt starten!</h2>
-              <p className="text-slate-300 mb-12 max-w-2xl mx-auto font-semibold text-lg">
-                Kostenlose Bewertung in 2 Minuten. Fair, transparent und absolut unverbindlich.
+              <p className="text-brand-orange font-bold uppercase tracking-widest text-xs mb-3">Autoankauf Mainz</p>
+              <h2 className="text-2xl lg:text-4xl font-black mb-6">Auto in Mainz verkaufen – Vertrauen Sie dem Mainzer Service!</h2>
+              <p className="text-slate-300 mb-8 max-w-2xl mx-auto font-semibold text-lg">
+                Kostenlose Bewertung in 2 Minuten. Persönlich, fair und unverbindlich – so wie Mainzer es schätzen.
               </p>
+              <div className="flex flex-wrap justify-center gap-3 mb-10 text-sm text-slate-300">
+                <span className="bg-white/10 px-4 py-2 rounded-full">✓ Alle Mainz Stadtteile</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full">✓ Auch Kastel & Kostheim</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full">✓ Studentenautos willkommen</span>
+              </div>
               <button 
                 onClick={onCtaClick}
                 className="bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-2xl transform hover:scale-105 duration-200"
               >
                 Jetzt kostenlos Auto bewerten
               </button>
+              <p className="text-slate-400 text-xs mt-4">Vertrauen Sie dem freundlichen Mainzer Autoankauf-Service</p>
             </div>
           </div>
 
           {/* Conclusion */}
-          <section className="mt-12 text-slate-700 font-medium leading-relaxed space-y-4">
-            <p>
-              Der <strong>Autoankauf Mainz</strong> mit Meinautoverkauf.de ist die smarte, sichere und unkomplizierte Alternative zum Privatverkauf. Sie sparen Zeit, vermeiden Stress und erhalten einen fairen, marktgerechten Preis. Egal ob Altstadt, Gonsenheim, Bretzenheim oder Mombach – wir kommen zu Ihnen!
+          <section className="mt-12 text-slate-700 font-medium leading-relaxed space-y-4 relative">
+            <div className="absolute -right-6 -top-6 w-28 h-28 bg-red-50 rounded-full blur-2xl"></div>
+            <p className="relative z-10">
+              Der <strong>Autoankauf Mainz</strong> mit Meinautoverkauf.de ist die persönliche, vertrauensvolle Alternative zum Privatverkauf – perfekt für Mainzer, die Wert auf ehrlichen Service legen. Ob Sie am Rheinufer wohnen, in Gonsenheim Ihre Familie großziehen, in Bretzenheim studieren, am Lerchenberg beim ZDF arbeiten oder in Mainz-Kastel über dem Rhein leben: Wir sind Ihr regionaler Partner. <strong>Auto verkaufen Mainz</strong> – so einfach, so fair, so persönlich.
             </p>
-            <p>
-              Starten Sie jetzt Ihre kostenlose Online-Bewertung und erleben Sie, wie einfach und schnell Autoverkauf in Mainz sein kann. Ihre Zufriedenheit ist uns wichtig!
+            <p className="relative z-10">
+              Sie sparen Zeit (kein wochenlanges Inserat), vermeiden Stress mit unseriösen Käufern und erhalten einen fairen Preis basierend auf aktuellen Mainzer und Rheinhessischen Marktdaten. <strong>Gebrauchtwagen Ankauf Mainz</strong>, <strong>Unfallwagen Ankauf Mainz</strong> oder <strong>Motorschaden verkaufen Mainz</strong> – wir kaufen alles und behandeln jeden Kunden mit Respekt.
+            </p>
+            <p className="font-bold text-brand-dark text-lg mt-6 relative z-10">
+              Starten Sie jetzt Ihre kostenlose Bewertung und erleben Sie, wie unkompliziert <strong>KFZ Ankauf Mainz</strong> sein kann. Mainzer vertrauen Mainzern – und wir sind stolz darauf, Teil dieser Gemeinschaft zu sein!
             </p>
           </section>
         </div>
