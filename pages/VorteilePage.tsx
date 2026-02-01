@@ -55,22 +55,22 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
               <li className="flex items-start gap-3 text-sm font-bold text-slate-700"><span className="text-brand-orange text-lg flex-shrink-0">⚡</span> <span>Fahrzeugprüfung dauert nur 45-60 Minuten</span></li>
               <li className="flex items-start gap-3 text-sm font-bold text-slate-700"><span className="text-brand-orange text-lg flex-shrink-0">⚡</span> <span>Auszahlung am Tag der Übergabe</span></li>
             </ul>
-            <div className="mt-6 flex items-end gap-6 justify-center scale-[0.75]">
+            <div className="mt-6 flex items-end gap-8 justify-center scale-[0.95]">
               <div className="flex flex-col items-center">
-                <div className="relative w-20 h-56 rounded-t-3xl bg-gradient-to-t from-slate-200 to-slate-50 ring-1 ring-slate-200 shadow-sm bar-rise">
-                  <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[10px] font-black text-slate-500">LANGSAM</span>
+                <div className="relative w-24 h-64 rounded-t-3xl bg-gradient-to-t from-slate-200 to-slate-50 ring-1 ring-slate-200 shadow-sm bar-rise">
+                  <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[11px] font-black text-slate-500">LANGSAM</span>
                 </div>
-                <span className="text-[10px] font-black text-slate-400 uppercase mt-2">Privat</span>
-                <span className="text-[9px] text-slate-400 font-bold">4–6 Wochen</span>
+                <span className="text-[11px] font-black text-slate-400 uppercase mt-2">Privat</span>
+                <span className="text-[10px] text-slate-400 font-bold">4–6 Wochen</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="relative w-20 h-20 rounded-t-3xl bg-gradient-to-t from-brand-orange to-brand-orange/85 ring-1 ring-orange-300/70 shadow-lg bar-rise bar-delay-200">
-                  <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[11px] font-black text-slate-500">
+                <div className="relative w-24 h-24 rounded-t-3xl bg-gradient-to-t from-brand-orange to-brand-orange/85 ring-1 ring-orange-300/70 shadow-lg bar-rise bar-delay-200">
+                  <span className="absolute top-2 left-1/2 -translate-x-1/2 text-[12px] font-black text-slate-500">
                     SCHNELL
                   </span>
                 </div>
-                <span className="text-[10px] font-black text-brand-orange uppercase mt-2">BEI UNS</span>
-                <span className="text-[9px] text-brand-orange font-bold">24–48h</span>
+                <span className="text-[11px] font-black text-brand-orange uppercase mt-2">BEI UNS</span>
+                <span className="text-[10px] text-brand-orange font-bold">24–48h</span>
               </div>
             </div>
           </div>

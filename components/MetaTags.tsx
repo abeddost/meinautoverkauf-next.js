@@ -17,6 +17,12 @@ const MetaTags: React.FC<MetaTagsProps> = ({ title, description, canonicalUrl })
     url: "https://meinautoverkauf.de",
     logo: "https://meinautoverkauf.de/logo.png"
   };
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Meinautoverkauf.de",
+    url: "https://meinautoverkauf.de"
+  };
 
   return (
     <Helmet>
@@ -42,6 +48,9 @@ const MetaTags: React.FC<MetaTagsProps> = ({ title, description, canonicalUrl })
 
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
       </script>
     </Helmet>
   );

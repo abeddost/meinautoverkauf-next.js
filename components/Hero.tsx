@@ -292,6 +292,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
                 src="/bmw.png"
                 alt="BMW Car"
                 className="relative w-full h-auto max-h-[220px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
