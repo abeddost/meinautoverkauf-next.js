@@ -498,7 +498,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   maxLength={17}
                   className={`${inputClass} uppercase`}
                 />
-                <p className="text-xs text-slate-400 mt-1 ml-1">Optional - hilft bei präziserer Bewertung</p>
               </div>
               <div>
                 <StepLabel label="Farbe" optional />
