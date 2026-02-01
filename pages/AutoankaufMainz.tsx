@@ -38,7 +38,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-10 -left-10 w-20 h-20 bg-red-200/60 rounded-full blur-2xl"></div>
-          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Mainz – Ihr vertrauensvoller Partner in der Landeshauptstadt
           </h1>
           
@@ -89,7 +89,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
                 className="absolute -top-6 right-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 opacity-[0.06] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Mainz: Ihr Partner vor Ort</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Mainz: Ihr Partner vor Ort</h2>
               <p className="font-medium leading-relaxed relative z-10">
                 Mainz – die über 2.000 Jahre alte Römerstadt am Rhein, Landeshauptstadt von Rheinland-Pfalz und Geburtsstadt des Buchdrucks durch Johannes Gutenberg. Mit rund 220.000 Einwohnern ist Mainz eine lebendige Universitätsstadt (Johannes Gutenberg-Universität mit 32.000 Studierenden), Medienstadt (ZDF-Sendezentrum am Lerchenberg) und Faschingshochburg am Rhein. Der <strong>Autoankauf Mainz</strong> Markt profitiert von der zentralen Lage zwischen Wiesbaden, Frankfurt und dem Rheinhessischen Weinland – eine perfekte Mischung aus urbanem Leben und regionaler Verwurzelung.
               </p>
@@ -100,7 +100,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
               <div className="absolute -left-6 -top-6 w-28 h-28 bg-amber-100/40 rounded-full blur-2xl"></div>
-              <h3 className="text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Mainz & Rheinhessen:</h3>
+              <h3 className="text-lg md:text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Mainz & Rheinhessen:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
                 <div>
                   <h4 className="font-bold text-brand-orange mb-2">Alle Mainz Stadtteile:</h4>
@@ -129,11 +129,11 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Warum wir die beste Wahl in Mainz sind</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Warum wir die beste Wahl in Mainz sind</h2>
             
             <div className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-100 rounded-3xl p-8 my-8 relative overflow-hidden">
               <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-100/30 rounded-full blur-3xl"></div>
-              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🍷 Mainzer Charme trifft auf professionellen Service</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🍷 Mainzer Charme trifft auf professionellen Service</h3>
               <p className="text-slate-700 font-medium leading-relaxed relative z-10">
                 Mainz ist keine anonyme Großstadt – hier kennt man sich, hier gibt man sich die Hand, hier ist der rheinische Frohsinn zuhause. Und genau so funktioniert unser <strong>Auto verkaufen Mainz</strong> Service: persönlich, herzlich, auf Augenhöhe. Wir kennen den Mainzer Markt seit Jahren – wissen, welche Autos in Gonsenheim gefragt sind (Familienautos, SUVs), was Studenten in Bretzenheim brauchen (günstige Kleinwagen, erste Autos) und welche Fahrzeuge in der Oberstadt oder Neustadt gesucht werden (Mittelklasse bis Premium).
               </p>
@@ -142,12 +142,12 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Vielfältiger Mainzer Automarkt – wir verstehen ihn</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Vielfältiger Mainzer Automarkt – wir verstehen ihn</h3>
             <p className="font-medium leading-relaxed">
               Mainz ist bunt: Studenten mit kleinem Budget, ZDF-Mitarbeiter und Landesbeamte mit soliden Gehältern, Winzer aus Rheinhessen mit Transportern, Familien in Gonsenheim mit Kombis, Pendler nach Frankfurt mit Langstreckenfahrzeugen. Wir kaufen alles – vom 15 Jahre alten Opel Corsa (perfekt fürs Studium) bis zum gepflegten Audi A6 (Beamter geht in Ruhestand). Jedes Auto verdient eine faire Bewertung, jeder Verkäufer verdient respektvollen, freundlichen Service – das ist Mainzer Art.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen in Mainz: Der Ablauf</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen in Mainz: Der Ablauf</h2>
             <p className="font-medium leading-relaxed mb-6">
               Keine komplizierten Prozesse, keine versteckten Gebühren – nur drei einfache Schritte zum fairen Autoverkauf in Mainz:
             </p>
@@ -156,7 +156,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">1</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Online-Bewertung – 24/7 verfügbar</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Online-Bewertung – 24/7 verfügbar</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Geben Sie die Eckdaten Ihres Fahrzeugs ein: Hersteller, Modell, Baujahr, Laufleistung und Zustand. Unsere KI analysiert speziell den <strong>Autoankauf Mainz</strong> Markt – berücksichtigt lokale Nachfrage, Rheinhessische Besonderheiten und Rhein-Main-Preise. Das funktioniert rund um die Uhr – auch nach Feierabend oder am Wochenende, wenn Sie Zeit haben. Völlig kostenlos und unverbindlich.
                   </p>
@@ -166,7 +166,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">2</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Vor-Ort-Besichtigung in Mainz – flexibel & unkompliziert</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Vor-Ort-Besichtigung in Mainz – flexibel & unkompliziert</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Vereinbaren Sie einen Wunschtermin. Unser Fahrzeugexperte kommt zu Ihnen: nach Hause in Gonsenheim, zur Uni nach Bretzenheim, zum Büro in die Neustadt, zum ZDF-Parkplatz am Lerchenberg oder nach Mainz-Kastel über den Rhein. Auch samstags kein Problem! Die Begutachtung dauert 15-20 Minuten. Danach erhalten Sie unser finales, faires Kaufangebot – keine Nachverhandlungen, keine versteckten Abzüge.
                   </p>
@@ -176,7 +176,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">3</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Kaufvertrag, Zahlung & Zulassungsstelle Mainz</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Kaufvertrag, Zahlung & Zulassungsstelle Mainz</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Bei Zustimmung unterzeichnen wir den rechtssicheren Kaufvertrag. Sie erhalten Ihr Geld per Express-Überweisung (meist innerhalb von 2-4 Stunden auf Ihrem Konto) oder bar. Wir übernehmen die komplette Abmeldung bei der Zulassungsstelle Mainz-Bingen in der Kreyßigstraße – Sie müssen nicht einmal persönlich zur Behörde. Fertig! Ihr Auto ist verkauft, das Geld ist da, die Papiere sind erledigt.
                   </p>
@@ -184,7 +184,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Welche Autos kaufen wir in Mainz an?</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Welche Autos kaufen wir in Mainz an?</h2>
             <p className="font-medium leading-relaxed">
               Mainz ist vielfältig – und so auch die Fahrzeuge, die wir hier ankaufen. Vom Studentenauto bis zum Dienstwagen, vom Familien-Kombi bis zum Winzer-Transporter:
             </p>
@@ -192,7 +192,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🎓 Studenten & Einsteiger:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🎓 Studenten & Einsteiger:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -215,7 +215,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-amber-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">👨‍👩‍👧‍👦 Familien & Alltag:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">👨‍👩‍👧‍👦 Familien & Alltag:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -238,7 +238,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-slate-100 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Business & Behörden:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Business & Behörden:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -261,7 +261,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-red-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🔧 Auch Problemfälle:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🔧 Auch Problemfälle:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -283,7 +283,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Mainz und Umgebung: Wo wir abholen</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Mainz und Umgebung: Wo wir abholen</h2>
             
             <p className="font-medium leading-relaxed">
               Unser <strong>Autoankauf Mainz</strong> Service endet nicht an der Stadtgrenze. Wir decken das gesamte Rheinhessische Umland ab:
@@ -291,7 +291,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
               <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-slate-200/40 rounded-full blur-2xl"></div>
-              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🍇 Rheinhessen & Mainz-Bingen Landkreis:</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🍇 Rheinhessen & Mainz-Bingen Landkreis:</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
                 <div>
                   <h4 className="font-bold text-brand-orange mb-2 text-sm">Weinstraße & Rheinufer:</h4>
@@ -326,33 +326,33 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Mainz Stadtteile – Individuelle Abholung überall</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Mainz Stadtteile – Individuelle Abholung überall</h2>
             <p className="font-medium leading-relaxed mb-6">
               Jeder Mainzer Stadtteil hat seinen eigenen Charakter – und wir kennen sie alle:
             </p>
             
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">⛪ Mainz Altstadt & Neustadt: Historisches Herz</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">⛪ Mainz Altstadt & Neustadt: Historisches Herz</h3>
             <p className="font-medium leading-relaxed">
               Das historische Zentrum mit dem prächtigen Mainzer Dom, dem Gutenberg-Museum und der Rheinuferpromenade mit Blick auf die Theodor-Heuss-Brücke. Hier wohnen viele Studenten in WGs, junge Berufstätige und Kulturliebhaber. Parkplätze sind Mangelware, die Straßen eng. Perfekt für unseren <strong>Autoankauf Mainz</strong> Altstadt Service – viele verkaufen ihr Auto und nutzen nur noch ÖPNV, Fahrrad oder MVG-Mainzer Mobilität. Wir holen direkt vor der Haustür ab, Sie müssen sich nicht durch die engen Gassen quälen.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏡 Gonsenheim & Finthen: Familienfreundlicher Westen</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🏡 Gonsenheim & Finthen: Familienfreundlicher Westen</h3>
             <p className="font-medium leading-relaxed">
               Die westlichen Stadtteile mit hoher Wohnqualität, Einfamilienhäusern, Gärten und Schulen. Hier leben viele junge Familien, die größere Fahrzeuge wie Kombis (VW Passat, Skoda Octavia) oder SUVs (Tiguan, Q3) fahren. Wenn die Kinder größer werden, ein zweites Auto nicht mehr gebraucht wird oder die Familie umzieht – wir kaufen fair und unkompliziert. Unser <strong>Gebrauchtwagen Ankauf Mainz</strong> ist in diesen Vierteln besonders geschätzt.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🎓 Bretzenheim & Lerchenberg: Uni & Medien</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🎓 Bretzenheim & Lerchenberg: Uni & Medien</h3>
             <p className="font-medium leading-relaxed">
               Bretzenheim liegt direkt neben der Johannes Gutenberg-Universität – viele Studenten wohnen hier in günstigen Wohnungen. Der Lerchenberg ist das ZDF-Viertel mit Medienschaffenden und Redakteuren. Hier verkaufen viele ihr Erst- oder Zweitauto: Kleinwagen (Polo, Corsa, Clio) sind besonders gefragt. Unser <strong>Autoankauf Mainz Weisenau</strong> bis Bretzenheim Service ist bei jungen Leuten und Berufseinsteigern beliebt – schnelle Online-Bewertung, flexible Termine, faire Preise auch für ältere Autos mit Gebrauchsspuren.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏭 Mombach & Industriegebiet: Robuste Fahrzeuge</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🏭 Mombach & Industriegebiet: Robuste Fahrzeuge</h3>
             <p className="font-medium leading-relaxed">
               Mombach mit seinem Industriegebiet, Hafengebiet und Arbeiterwohnvierteln ist geprägt von Handwerkern, kleinen Betrieben und Transportgewerbe. Hier kaufen wir häufig Nutzfahrzeuge, Transporter (Mercedes Sprinter, VW Crafter), ältere PKW für den Export und robuste Arbeitsfahrzeuge an. Auch Fahrzeuge mit hoher Laufleistung (200.000+ km) oder Defekten sind willkommen – wir bewerten fair und kennen den Restwert.
             </p>
 
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz vs. Privatverkauf – Der direkte Vergleich</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz vs. Privatverkauf – Der direkte Vergleich</h2>
             
             <div className="overflow-x-auto my-8">
               <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-sm">
@@ -405,7 +405,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
-            <h2 className="text-2xl font-black text-brand-dark mb-6 text-center">Weitere Standorte im Rhein-Main-Gebiet</h2>
+            <h2 className="text-xl font-black text-brand-dark mb-6 text-center">Weitere Standorte im Rhein-Main-Gebiet</h2>
             <p className="text-slate-600 font-medium leading-relaxed mb-6 text-center">
               Wir bieten unseren professionellen Autoankauf-Service auch in weiteren Städten an:
             </p>
@@ -445,7 +445,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="absolute top-12 left-12 w-56 h-56 bg-white/5 rounded-full blur-3xl"></div>
             <div className="relative z-10">
               <p className="text-brand-orange font-bold uppercase tracking-widest text-xs mb-3">Autoankauf Mainz</p>
-              <h2 className="text-2xl lg:text-4xl font-black mb-6">Auto in Mainz verkaufen – Vertrauen Sie dem Mainzer Service!</h2>
+              <h2 className="text-xl lg:text-2xl font-black mb-6">Auto in Mainz verkaufen – Vertrauen Sie dem Mainzer Service!</h2>
               <p className="text-slate-300 mb-8 max-w-2xl mx-auto font-semibold text-lg">
                 Kostenlose Bewertung in 2 Minuten. Persönlich, fair und unverbindlich – so wie Mainzer es schätzen.
               </p>

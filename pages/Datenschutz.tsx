@@ -14,7 +14,7 @@ const DatenschutzPage: React.FC = () => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-4xl relative z-10">
         <div className="bg-white/90 backdrop-blur rounded-[2.5rem] p-8 lg:p-12 shadow-xl border border-slate-100">
-          <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8">Datenschutzerklärung</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8">Datenschutzerklärung</h1>
 
           <div className="space-y-10 text-slate-700 leading-relaxed">
             <section className="space-y-3">

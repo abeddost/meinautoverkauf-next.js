@@ -137,7 +137,7 @@ const AppContent: React.FC = () => {
                     </div>
                     <div className="container mx-auto px-4 relative z-10">
                       <div className="text-center max-w-3xl mx-auto mb-14">
-                        <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">
+                        <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-5">
                           So funktioniert der Auto Ankauf bei uns – In 3 einfachen Schritten
                         </h2>
                         <p className="text-slate-600 font-medium leading-relaxed">
@@ -154,7 +154,7 @@ const AppContent: React.FC = () => {
                             <div className="absolute top-4 right-5 text-3xl font-black text-orange-100">{step.num}</div>
                             <img src={step.img} alt={step.title} className="w-full h-56 object-contain bg-slate-50/80 p-4" />
                             <div className="p-6">
-                              <h3 className="text-lg font-black text-brand-dark mb-3">{step.title}</h3>
+                              <h3 className="text-base md:text-lg font-black text-brand-dark mb-3">{step.title}</h3>
                               <p className="text-slate-600 font-medium leading-relaxed">{step.desc}</p>
                             </div>
                           </div>
@@ -173,7 +173,7 @@ const AppContent: React.FC = () => {
                       <div className="absolute top-1/3 right-10 w-24 h-24 bg-orange-300/30 rounded-full"></div>
                     </div>
                     <div className="container mx-auto px-4 relative z-10">
-                      <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">
+                      <h2 className="text-xl md:text-2xl font-black text-center text-brand-dark mb-12">
                         Auto verkaufen online: <Link to="/vorteile" className="text-brand-orange hover:underline">Die Vorteile</Link> auf einen Blick
                       </h2>
                       <div className="relative max-w-4xl mx-auto">
@@ -222,7 +222,7 @@ const AppContent: React.FC = () => {
                     </div>
                     <div className="container mx-auto px-4 relative z-10">
                       <div className="max-w-3xl mx-auto text-center mb-12">
-                        <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">
+                        <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-5">
                           Sicher, schnell und seriös: Das Versprechen von Meinautoverkauf.de
                         </h2>
                         <p className="text-slate-600 font-medium leading-relaxed">
@@ -259,7 +259,7 @@ const AppContent: React.FC = () => {
                           <img src="/elements/autoankauf-neu-gedacht.png" alt="" className="w-full max-w-[460px] opacity-[0.16]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                         </div>
                         <div className="relative z-10 text-left">
-                          <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6 text-center">
+                          <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">
                             Autoankauf neu gedacht: Warum Meinautoverkauf.de die beste Wahl ist
                           </h2>
                           <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -300,7 +300,7 @@ const AppContent: React.FC = () => {
                           <img src="/elements/auto-verkaufen-mit-motorschaden.png" alt="" className="w-full max-w-[460px] opacity-[0.4]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                         </div>
                         <div className="relative z-10 text-left">
-                          <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6 text-center">
+                          <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">
                             Autoverkauf auch bei Motorschaden oder für Export möglich
                           </h2>
                           <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -346,7 +346,7 @@ const AppContent: React.FC = () => {
                       <div className="absolute bottom-1/3 right-10 w-32 h-32 border-2 border-blue-200/40 rounded-full"></div>
                     </div>
                     <div className="container mx-auto px-4 max-w-4xl relative z-10">
-                      <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
+                      <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6">
                         Gebrauchtwagen verkaufen: Transparenz steht an erster Stelle
                       </h2>
                       <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -385,7 +385,7 @@ const AppContent: React.FC = () => {
                           <img src="/elements/car-valuation.png" alt="" className="w-full max-w-[460px] opacity-[0.16]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                         </div>
                         <div className="relative z-10 text-left">
-                          <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6 text-center">
+                          <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">
                             Faire Bewertung durch künstliche Intelligenz
                           </h2>
                           <p className="text-slate-600 leading-relaxed font-medium mb-4">
@@ -421,7 +421,7 @@ const AppContent: React.FC = () => {
                       <div className="absolute top-20 right-20 w-32 h-32 bg-orange-300/30 rounded-full"></div>
                     </div>
                     <div className="container mx-auto px-4 max-w-4xl relative z-10">
-                      <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
+                      <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6">
                         Ihre Zufriedenheit ist unser Maßstab
                       </h2>
                       <p className="text-slate-600 leading-relaxed font-medium mb-4">

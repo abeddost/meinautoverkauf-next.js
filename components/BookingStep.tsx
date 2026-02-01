@@ -29,7 +29,7 @@ const BookingStep: React.FC<BookingStepProps> = ({ onComplete, onBack }) => {
       </button>
 
       <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 border border-gray-100">
-        <h2 className="text-3xl font-black mb-8 text-brand-dark">Wählen Sie Ihren Termin</h2>
+        <h2 className="text-xl md:text-2xl font-black mb-8 text-brand-dark">Wählen Sie Ihren Termin</h2>
         
         <form onSubmit={handleSubmit} className="space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -14,14 +14,14 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({ onReset }) => {
         </svg>
       </div>
       
-      <h2 className="text-5xl font-black mb-4 text-brand-dark">Vielen Dank!</h2>
+      <h2 className="text-3xl md:text-4xl font-black mb-4 text-brand-dark">Vielen Dank!</h2>
       <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">
         Ihre Buchung war erfolgreich. Wir haben Ihnen eine Bestätigung per E-Mail gesendet. 
         Ein Experte wird Sie innerhalb der nächsten Stunde kontaktieren.
       </p>
 
       <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 mb-12 text-left space-y-5 border border-gray-100">
-        <h3 className="font-black text-xl text-brand-dark mb-4">Checkliste für Ihren Termin:</h3>
+        <h3 className="font-black text-lg md:text-xl text-brand-dark mb-4">Checkliste für Ihren Termin:</h3>
         {[
           "Fahrzeugbrief (Zulassungsbescheinigung Teil II)",
           "Fahrzeugschein (Zulassungsbescheinigung Teil I)",

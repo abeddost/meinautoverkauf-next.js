@@ -38,7 +38,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-blue-200/60 rounded-full blur-2xl"></div>
-          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Frankfurt – Schnell, professionell & fair in der Finanzmetropole
           </h1>
           
@@ -88,7 +88,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
                 className="absolute -top-6 right-0 w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 opacity-[0.06] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Frankfurt: Service in allen Stadtteilen</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Frankfurt: Service in allen Stadtteilen</h2>
               <p className="font-medium leading-relaxed relative z-10">
                 Frankfurt am Main – Finanzhauptstadt Europas, Heimat der EZB und Deutschen Börse, Drehkreuz des internationalen Verkehrs mit dem größten deutschen Flughafen. Mit über 750.000 Einwohnern und einer der höchsten Kaufkräfte bundesweit ist Frankfurt ein einzigartiger Markt für den <strong>Autoankauf Frankfurt</strong>. Die Stadt ist geprägt von Pendlern, internationalen Fach- und Führungskräften, Studierenden und einer dynamischen Start-up-Szene – entsprechend vielfältig ist die Nachfrage nach Fahrzeugen.
               </p>
@@ -99,7 +99,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
               <div className="absolute -left-8 -top-8 w-32 h-32 bg-blue-100/40 rounded-full blur-2xl"></div>
-              <h3 className="text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Frankfurt & Rhein-Main:</h3>
+              <h3 className="text-lg md:text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Frankfurt & Rhein-Main:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
                 <div>
                   <h4 className="font-bold text-brand-orange mb-2">Frankfurt Mitte & Zentrum:</h4>
@@ -146,11 +146,11 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Warum Autoankauf Frankfurt statt Privatverkauf?</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Warum Autoankauf Frankfurt statt Privatverkauf?</h2>
             
             <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-100 rounded-3xl p-8 my-8 relative overflow-hidden">
               <div className="absolute -right-12 -bottom-12 w-48 h-48 bg-orange-100/30 rounded-full blur-3xl"></div>
-              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Frankfurt-Lifestyle: Keine Zeit für wochenlange Verkaufsverhandlungen</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Frankfurt-Lifestyle: Keine Zeit für wochenlange Verkaufsverhandlungen</h3>
               <p className="text-slate-700 font-medium leading-relaxed relative z-10">
                 Frankfurt ist eine Stadt, die nie schläft. Börsenöffnungszeiten, internationale Calls, Geschäftsreisen – wer hier arbeitet, hat schlicht keine Zeit, sein <strong>Auto verkaufen Frankfurt</strong> über Wochen auf Plattformen zu inserieren, dutzende Anrufe zu beantworten, Probefahrten zu koordinieren und mit Tiefstapeln zu verhandeln. Ein Privatverkauf dauert im Schnitt 3-4 Wochen. Bei uns ist alles in 1-2 Tagen erledigt – vom ersten Kontakt bis zur Auszahlung.
               </p>
@@ -159,16 +159,16 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Keine Parkplatz-Odyssee in der Innenstadt</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Keine Parkplatz-Odyssee in der Innenstadt</h3>
             <p className="font-medium leading-relaxed">
               Wer schon einmal versucht hat, einen Parkplatz im Bankenviertel, rund um den Römerberg oder in Sachsenhausen zu finden, weiß: Das kann Stunden dauern. Für einen Händlerbesuch müssten Sie durch den dichten Frankfurter Verkehr navigieren, einen teuren Parkplatz finden (falls überhaupt verfügbar) und wertvolle Zeit opfern. Bei unserem <strong>Gebrauchtwagen Ankauf Frankfurt</strong> Service entfällt das komplett – wir kommen zu Ihnen, egal ob ins Büro im Westend, nach Hause nach Bornheim oder direkt zum Frankfurter Flughafen vor Ihrem Abflug.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen Frankfurt: Auch Umweltzonen-Probleme?</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen Frankfurt: Auch Umweltzonen-Probleme?</h2>
             
             <div className="bg-gradient-to-br from-green-50 to-white border-2 border-green-100 rounded-3xl p-8 my-8 relative overflow-hidden">
               <div className="absolute -left-10 -top-10 w-40 h-40 bg-green-100/40 rounded-full blur-2xl"></div>
-              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🌱 Frankfurts strenge Umweltzone – Ihr Diesel hat trotzdem Wert!</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🌱 Frankfurts strenge Umweltzone – Ihr Diesel hat trotzdem Wert!</h3>
               <p className="text-slate-700 font-medium leading-relaxed relative z-10">
                 Frankfurt hat eine der strengsten Umweltzonen Deutschlands. Fahrzeuge ohne grüne Plakette dürfen nicht ins Stadtgebiet fahren, und auch für bestimmte Diesel-Fahrzeuge gelten zunehmend Einschränkungen. Viele Frankfurter Autobesitzer glauben deshalb, ihr Diesel oder älteres Fahrzeug sei wertlos geworden. Das stimmt nicht!
               </p>
@@ -194,7 +194,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen Frankfurt: Der Prozess in 3 einfachen Schritten</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen Frankfurt: Der Prozess in 3 einfachen Schritten</h2>
             <p className="font-medium leading-relaxed mb-6">
               Zeit ist Geld – besonders in Frankfurt. Deshalb haben wir unseren Prozess für <strong>Auto verkaufen Frankfurt sofort</strong> maximal effizient gestaltet:
             </p>
@@ -203,7 +203,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">1</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Online-Bewertung – 24/7 verfügbar</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Online-Bewertung – 24/7 verfügbar</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Geben Sie die wichtigsten Daten Ihres Fahrzeugs ein: Marke, Modell, Baujahr, Kilometerstand und Zustand. Unsere KI-gestützte Bewertung analysiert aktuelle Verkaufsdaten speziell für den <strong>Autoankauf Frankfurt</strong> Markt und erstellt ein individuelles Angebot. Das funktioniert rund um die Uhr – perfekt für Ihre Feierabend-Planung oder Ihren Sonntag.
                   </p>
@@ -213,7 +213,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">2</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Fahrzeugbesichtigung vor Ort in Frankfurt – flexibel nach Ihrem Zeitplan</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Fahrzeugbesichtigung vor Ort in Frankfurt – flexibel nach Ihrem Zeitplan</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Wählen Sie einen Termin, der zu Ihrem Kalender passt – auch abends nach 18 Uhr oder samstags/sonntags. Unser Experte kommt zu Ihnen: nach Hause im Nordend, ins Büro im Bankenviertel, auf den Firmenparkplatz in Eschborn oder sogar zum Frankfurter Flughafen vor Ihrer Abreise. Die Besichtigung dauert nur 15-20 Minuten. Wir prüfen Zustand und Ausstattung, erstellen sofort das finale Angebot.
                   </p>
@@ -223,7 +223,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black shadow-lg">3</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Geld erhalten, Zulassungsstelle Frankfurt – wir regeln alles</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Geld erhalten, Zulassungsstelle Frankfurt – wir regeln alles</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Bei Einigung unterzeichnen wir den rechtssicheren Kaufvertrag. Sie erhalten Ihr Geld per Express-Banküberweisung (innerhalb 2-4 Stunden auf Ihrem Konto) oder bar. Wir kümmern uns um die Abmeldung bei der Zulassungsstelle Frankfurt am Konrad-Adenauer-Ring. Sie müssen nicht einmal persönlich zur Behörde – wir regeln alles für Sie. Fertig!
                   </p>
@@ -231,7 +231,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Spezialisiert auf Frankfurt: Diese Autos kaufen wir</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Spezialisiert auf Frankfurt: Diese Autos kaufen wir</h2>
             <p className="font-medium leading-relaxed">
               Frankfurt ist keine gewöhnliche Stadt – und der <strong>Autoankauf Frankfurt</strong> Markt ist es auch nicht. Als Finanzmetropole mit hoher internationaler Präsenz kaufen wir gezielt Fahrzeuge, die in Frankfurt besonders gefragt sind:
             </p>
@@ -239,7 +239,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Business & Premium:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🏢 Business & Premium:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -262,7 +262,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-green-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🌱 Eco & Modern:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🌱 Eco & Modern:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -285,7 +285,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-slate-100 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🚗 Volumen & Alltag:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🚗 Volumen & Alltag:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -308,7 +308,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-red-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🔧 Auch mit Problemen:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🔧 Auch mit Problemen:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -330,7 +330,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Frankfurt Rhein-Main: Auch Umgebung abgedeckt</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Autoankauf Frankfurt Rhein-Main: Auch Umgebung abgedeckt</h2>
             
             <p className="font-medium leading-relaxed">
               Unser <strong>Autoankauf Frankfurt</strong> Service endet nicht an der Stadtgrenze. Das gesamte Rhein-Main-Gebiet profitiert von unserem schnellen, professionellen Service:
@@ -338,7 +338,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-slate-200/40 rounded-full blur-2xl"></div>
-              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">📍 Frankfurt Umland – Wir sind überall im Rhein-Main-Gebiet aktiv:</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">📍 Frankfurt Umland – Wir sind überall im Rhein-Main-Gebiet aktiv:</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
                 <div>
                   <h4 className="font-bold text-brand-orange mb-2 text-sm">Östlich:</h4>
@@ -373,37 +373,37 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Frankfurt Stadtteile im Fokus – Wir holen überall ab</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Frankfurt Stadtteile im Fokus – Wir holen überall ab</h2>
             <p className="font-medium leading-relaxed mb-6">
               Frankfurt ist eine Stadt der Gegensätze: vom hochmodernen Bankenviertel bis zu den historischen Fachwerkhäusern am Römerberg, von den Villen im Westend bis zu den Industrieanlagen in Höchst. Unser <strong>Autoankauf Frankfurt</strong> Service deckt alle 46 Stadtteile ab:
             </p>
             
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏛️ Frankfurt Mitte: Innenstadt, Bankenviertel & Bahnhofsviertel</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🏛️ Frankfurt Mitte: Innenstadt, Bankenviertel & Bahnhofsviertel</h3>
             <p className="font-medium leading-relaxed">
               Das pulsierende Herz der Stadt: EZB, Deutsche Bank, Commerzbank-Tower, Hauptwache und der historische Römerberg. Hier arbeiten täglich hunderttausende Menschen. Unser <strong>Autoankauf Frankfurt Innenstadt</strong> Service ist besonders gefragt bei Geschäftsleuten, die ihren Firmenwagen verkaufen oder auf Car-Sharing umsteigen. Wir kommen auch ins Parkhaus, zum Bürogebäude oder direkt zum Hauptbahnhof – maximale Flexibilität für Ihren vollen Terminkalender.
             </p>
             
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏛️ Sachsenhausen: Alt-Sachsenhausen & Museumsufer</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🏛️ Sachsenhausen: Alt-Sachsenhausen & Museumsufer</h3>
             <p className="font-medium leading-relaxed">
               Das beliebte Sachsenhausen mit seinen Museen und der einmaligen Skyline-Aussicht vom Mainufer ist eines der begehrtesten Wohngebiete Frankfurts. Viele unserer Kunden im <strong>Autoankauf Frankfurt Sachsenhausen</strong> verkaufen hochwertige Fahrzeuge, Cabrios oder Zweitwagen, die in den engen Altstadtgassen nicht mehr benötigt werden. Wir holen Ihr Auto direkt vor der Haustür ab – ohne dass Sie sich um Parkverbote oder Anwohner-Beschwerden kümmern müssen.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏢 Westend & Nordend: Villen, Banken & Szene-Viertel</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🏢 Westend & Nordend: Villen, Banken & Szene-Viertel</h3>
             <p className="font-medium leading-relaxed">
               Das Westend – Frankfurts exklusivstes Wohnviertel mit Gründerzeitvillen, Villenkolonien und dem berühmten Bankenviertel. Hier verkaufen viele Geschäftsleute ihre Dienstwagen, Manager steigen um oder Expats verlassen Deutschland. Unser <strong>Autoankauf Frankfurt Westend</strong> Service ist auf Premium-Fahrzeuge spezialisiert: Mercedes S-Klasse, BMW 7er, Audi A8, Porsche. Das Nordend als Szene- und Familienviertel mit Cafés, Parks und Altbauten hat hohe Nachfrage nach zuverlässigen Gebrauchtwagen für den Alltag – auch hier sind wir schnell vor Ort.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🎓 Bockenheim & Rödelheim: Uni-Viertel & Wohngegenden</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🎓 Bockenheim & Rödelheim: Uni-Viertel & Wohngegenden</h3>
             <p className="font-medium leading-relaxed">
               Bockenheim als Studierenden-Hotspot mit Goethe-Universität und Rödelheim als ruhiges Wohngebiet haben andere Bedürfnisse: Hier werden vor allem praktische, sparsame Fahrzeuge für den Alltag gesucht – Kleinwagen (VW Polo, Opel Corsa), Kombis für Familien und kompakte SUVs. Auch ältere Fahrzeuge mit höherer Laufleistung haben hier Abnehmer. Unser Team bewertet fair und transparent, egal ob Ihr Auto 50.000 oder 250.000 km gelaufen ist.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏭 Höchst & Griesheim: Industriepark & Arbeiterviertel</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">🏭 Höchst & Griesheim: Industriepark & Arbeiterviertel</h3>
             <p className="font-medium leading-relaxed">
               Der Frankfurter Westen mit dem riesigen Industriepark Höchst (Chemie, Pharma) und dem traditionellen Arbeiterviertel Griesheim. Hier kaufen wir häufig Nutzfahrzeuge, Transporter, Baustellenfahrzeuge und robuste PKWs für den harten Arbeitsalltag an. Auch beschädigte oder ältere Fahrzeuge für den Export sind stark gefragt – besonders ältere Mercedes, VW oder Opel-Modelle.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Frankfurt vs. Privatverkauf – Der Vergleich</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Autoankauf Frankfurt vs. Privatverkauf – Der Vergleich</h2>
             
             <div className="overflow-x-auto my-8">
               <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-sm">
@@ -456,7 +456,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
-            <h2 className="text-2xl font-black text-brand-dark mb-6 text-center">Weitere Standorte in der Region</h2>
+            <h2 className="text-xl font-black text-brand-dark mb-6 text-center">Weitere Standorte in der Region</h2>
             <p className="text-slate-600 font-medium leading-relaxed mb-6 text-center">
               Wir bieten unseren Autoankauf-Service auch in anderen Städten im Rhein-Main-Gebiet an:
             </p>
@@ -496,7 +496,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="absolute top-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
             <div className="relative z-10">
               <p className="text-brand-orange font-bold uppercase tracking-widest text-xs mb-3">Autoankauf Frankfurt</p>
-              <h2 className="text-2xl lg:text-4xl font-black mb-6">Jetzt Auto in Frankfurt verkaufen – Fair, schnell & professionell!</h2>
+              <h2 className="text-xl lg:text-2xl font-black mb-6">Jetzt Auto in Frankfurt verkaufen – Fair, schnell & professionell!</h2>
               <p className="text-slate-300 mb-8 max-w-2xl mx-auto font-semibold text-lg">
                 Erhalten Sie in 2 Minuten eine kostenlose Bewertung für Ihr Fahrzeug. Perfekt für Frankfurts schnelles Tempo – keine Zeit verschwenden, fairen Preis erhalten.
               </p>

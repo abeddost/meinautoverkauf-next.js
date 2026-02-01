@@ -346,7 +346,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
         {/* Status Text Area */}
         <div className="text-center z-10 space-y-3 lg:space-y-4 mb-8 lg:mb-10">
-          <h3 className="text-2xl lg:text-3xl font-black tracking-tight text-white drop-shadow-md uppercase">Berechne Marktwert</h3>
+          <h3 className="text-xl lg:text-2xl font-black tracking-tight text-white drop-shadow-md uppercase">Berechne Marktwert</h3>
           <div className="flex flex-col items-center gap-1">
              <div className="text-[9px] lg:text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] lg:tracking-[0.4em] animate-pulse">
                Grounding Markt-Analyse

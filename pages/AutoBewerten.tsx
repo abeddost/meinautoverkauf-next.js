@@ -36,7 +36,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
             Auto bewerten: Was ist mein Auto wert?
           </h1>
           
@@ -53,7 +53,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Auto bewerten lassen – warum ist das so wichtig?</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Auto bewerten lassen – warum ist das so wichtig?</h2>
           <p className="font-medium leading-relaxed">
             Bevor Sie Ihr <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">Auto verkaufen</Link>, sollten Sie den aktuellen Marktwert kennen. Ein zu hoher Preis schreckt Käufer ab, ein zu niedriger Preis kostet Sie bares Geld. Wenn Sie Ihr <strong>Auto bewerten</strong> lassen möchten, stehen Ihnen verschiedene Wege offen – von klassischen Gutachtern bis hin zu modernen Online-Tools. Bei Meinautoverkauf.de kombinieren wir jahrelange Expertise mit künstlicher Intelligenz, um Ihnen eine verlässliche Einschätzung zu liefern.
           </p>
@@ -61,42 +61,42 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             Die Frage "<strong>Was ist mein Auto wert?</strong>" lässt sich nicht pauschal beantworten. Der Wert eines Fahrzeugs hängt von zahlreichen Faktoren ab – von der Laufleistung über den Zustand bis hin zu regionalen Markttrends. Unsere KI-basierte Bewertung berücksichtigt all diese Aspekte und gibt Ihnen einen realistischen Preiskorridor, der dem tatsächlichen Marktwert entspricht.
           </p>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Faktoren, die den Autowert beeinflussen</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Faktoren, die den Autowert beeinflussen</h2>
           <p className="font-medium leading-relaxed">
             Wenn Sie Ihr <strong>Auto schätzen lassen</strong> möchten, sollten Sie wissen, welche Kriterien den Wert bestimmen. Unsere Experten und die KI-Analyse berücksichtigen folgende Hauptfaktoren:
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">1. Laufleistung – Der Kilometerstand als Wertindikator</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">1. Laufleistung – Der Kilometerstand als Wertindikator</h3>
           <p className="font-medium leading-relaxed">
             Die Laufleistung ist einer der entscheidendsten Faktoren bei der Fahrzeugbewertung. Je höher der Kilometerstand, desto stärker der Verschleiß an Motor, Getriebe und Fahrwerk. Fahrzeuge mit niedriger Laufleistung erzielen deutlich höhere Preise. Als Faustregel gilt: Ein PKW verliert bei durchschnittlicher Nutzung (ca. 15.000 km pro Jahr) kontinuierlich an Wert, wobei die ersten Jahre den größten Wertverlust bedeuten.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">2. Alter und Erstzulassung</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">2. Alter und Erstzulassung</h3>
           <p className="font-medium leading-relaxed">
             Das Fahrzeugalter spielt eine zentrale Rolle. Neuwagen verlieren im ersten Jahr durchschnittlich 20-25% ihres Wertes, in den ersten drei Jahren oft bis zu 50%. Nach etwa fünf Jahren stabilisiert sich der Wertverlust. Wenn Sie Ihr <strong>Auto wert ermitteln</strong> lassen, wird auch das Baujahr mit aktuellen Marktdaten abgeglichen, denn manche Modelle und Jahrgänge sind gefragter als andere.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">3. Ausstattung und Sonderausstattung</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">3. Ausstattung und Sonderausstattung</h3>
           <p className="font-medium leading-relaxed">
             Die Ausstattung kann den Wert erheblich steigern. Premium-Features wie Ledersitze, Navigationssysteme, Assistenzsysteme (Spurhalteassistent, Einparkhilfe), Schiebedach oder hochwertige Soundsysteme erhöhen den Wiederverkaufswert deutlich. Fahrzeuge der Basis-Ausstattung sind oft schwerer zu verkaufen und erzielen niedrigere Preise. Auch die Motorisierung spielt eine Rolle: Dieselfahrzeuge haben in den letzten Jahren an Wert verloren, während Hybrid- und Elektrofahrzeuge zunehmend gefragt sind.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">4. Zustand – Optik und Technik</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">4. Zustand – Optik und Technik</h3>
           <p className="font-medium leading-relaxed">
             Der Gesamtzustand ist entscheidend. Kratzer, Dellen, Steinschläge, Rost oder Innenraumschäden mindern den Wert erheblich. Ebenso wichtig ist der technische Zustand: Funktionieren alle Systeme einwandfrei? Gibt es versteckte Mängel? Ein gepflegtes Fahrzeug mit lückenlosem Scheckheft erzielt deutlich höhere Preise als ein vernachlässigtes Auto. Bei unserer Bewertung können Sie den Zustand detailliert angeben, sodass wir eine faire Einschätzung treffen können.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">5. Wartungshistorie und Scheckheft</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">5. Wartungshistorie und Scheckheft</h3>
           <p className="font-medium leading-relaxed">
             Ein lückenloses Scheckheft ist Gold wert. Es belegt, dass das Fahrzeug regelmäßig gewartet wurde und alle Inspektionen durchgeführt wurden. Käufer und Händler honorieren dies mit höheren Preisen, da das Risiko für teure Folgeschäden sinkt. Fehlt das Scheckheft oder sind Wartungsintervalle nicht eingehalten worden, kann der Wert um 10-20% sinken.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">6. Regionale Markttrends</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">6. Regionale Markttrends</h3>
           <p className="font-medium leading-relaxed">
             Der Standort spielt eine Rolle. In städtischen Ballungsräumen sind Kleinwagen und kompakte SUVs gefragter, während auf dem Land größere Fahrzeuge oder Geländewagen beliebter sind. Auch regionale Preisunterschiede existieren: In wirtschaftlich starken Regionen wie München oder Hamburg erzielen Fahrzeuge oft höhere Preise als in strukturschwächeren Gebieten. Im Rhein-Main-Gebiet bieten wir direkten <Link to="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Autoankauf Frankfurt</Link>, <Link to="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Autoankauf Wiesbaden</Link> und <Link to="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Autoankauf Mainz</Link> an.
           </p>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Traditionelle Bewertung vs. KI-gestützte Autobewertung</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Traditionelle Bewertung vs. KI-gestützte Autobewertung</h2>
           <p className="font-medium leading-relaxed">
             Früher mussten Autobesitzer ihr <strong>Auto schätzen lassen</strong> durch klassische Methoden wie Schwacke-Listen, DAT-Werte oder lokale Gutachter. Diese Ansätze haben jedoch Schwächen:
           </p>
@@ -106,7 +106,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             <li><strong>Händler-Schätzungen:</strong> Oft zu niedrig, da Händler ihre eigene Marge einkalkulieren.</li>
           </ul>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Die Vorteile der KI-basierten Bewertung</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Die Vorteile der KI-basierten Bewertung</h3>
           <p className="font-medium leading-relaxed">
             Unsere KI-gestützte Plattform analysiert kontinuierlich tausende von Transaktionen auf allen großen Gebrauchtwagenportalen, Auktionsplattformen und bei Händlernetzwerken. Dadurch erhalten Sie:
           </p>
@@ -118,22 +118,22 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             <li><strong>Kostenlos:</strong> Keine versteckten Gebühren, unverbindlich.</li>
           </ul>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Wie funktioniert unsere Auto-Bewertung?</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Wie funktioniert unsere Auto-Bewertung?</h2>
           <p className="font-medium leading-relaxed">
             Wenn Sie bei uns Ihr <strong>Auto wert ermitteln</strong> lassen möchten, durchlaufen Sie einen einfachen, aber präzisen Prozess:
           </p>
           
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 1: Fahrzeugdaten eingeben</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 1: Fahrzeugdaten eingeben</h3>
           <p className="font-medium leading-relaxed">
             Sie geben grundlegende Informationen ein: Marke, Modell, Erstzulassung, Kilometerstand, Ausstattung und Zustand. Je detaillierter Ihre Angaben, desto besser kann die Einschätzung ausfallen.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 2: KI-Analyse</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 2: KI-Analyse</h3>
           <p className="font-medium leading-relaxed">
             Unsere künstliche Intelligenz vergleicht Ihre Angaben mit zehntausenden aktuellen Marktdaten. Dabei werden regionale Besonderheiten, saisonale Trends und aktuelle Nachfrage berücksichtigt. Die KI erkennt Muster und kann so den realistischen Marktwert auf wenige hundert Euro genau bestimmen.
           </p>
 
-          <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 3: Preiskorridor erhalten</h3>
+          <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Schritt 3: Preiskorridor erhalten</h3>
           <p className="font-medium leading-relaxed">
             Sie erhalten einen transparenten Preiskorridor mit drei Werten:
           </p>
@@ -143,7 +143,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             <li><strong>Privatverkauf-Potenzial:</strong> Der maximal erzielbare Preis bei privatem Verkauf (zeitaufwendig, aber lukrativ).</li>
           </ul>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Transparenz und Genauigkeit – unser Versprechen</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Transparenz und Genauigkeit – unser Versprechen</h2>
           <p className="font-medium leading-relaxed">
             Wenn Sie sich fragen "<strong>Wie viel ist mein Auto wert?</strong>", verdienen Sie eine ehrliche Antwort. Wir setzen auf vollständige Transparenz:
           </p>
@@ -154,7 +154,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             <li><strong>Fair:</strong> Wir bieten realistische Preise, keine Lockangebote.</li>
           </ul>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Händler-Ankaufspreis vs. Privatverkauf</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Händler-Ankaufspreis vs. Privatverkauf</h2>
           <p className="font-medium leading-relaxed">
             Viele Autobesitzer sind überrascht, dass Händler-Angebote deutlich niedriger ausfallen als Privatverkaufspreise. Das hat mehrere Gründe:
           </p>
@@ -168,12 +168,12 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             Der Händler-Ankaufspreis liegt daher typischerweise 10-20% unter dem privaten Verkaufspreis. Dafür sparen Sie Zeit, Nerven und das Risiko unseriöser Käufer. Bei Meinautoverkauf.de erhalten Sie beides: einen fairen Händlerpreis ODER die Möglichkeit, Ihr Auto privat zu verkaufen, wenn Sie mehr Zeit haben.
           </p>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Wie lange ist die Bewertung gültig?</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Wie lange ist die Bewertung gültig?</h2>
           <p className="font-medium leading-relaxed">
             Der Gebrauchtwagenmarkt ist dynamisch. Preise schwanken aufgrund von Angebot und Nachfrage, saisonalen Trends (Cabrios im Sommer teurer) und wirtschaftlichen Faktoren. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Nach diesem Zeitraum empfehlen wir eine erneute Bewertung, um sicherzustellen, dass Sie den aktuell fairen Preis erhalten.
           </p>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Kostenloser Service – warum?</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Kostenloser Service – warum?</h2>
           <p className="font-medium leading-relaxed">
             Sie fragen sich vielleicht: Warum bieten wir die Bewertung kostenlos an? Ganz einfach: Wir möchten Ihr Vertrauen gewinnen. Wenn Sie mit unserer Einschätzung zufrieden sind und sich entscheiden, Ihr Auto über uns zu verkaufen, profitieren beide Seiten. Aber es gibt keine Verpflichtung. Selbst wenn Sie nur wissen möchten, was Ihr Auto wert ist, ohne es sofort zu verkaufen – nutzen Sie unseren Service gerne. Es entstehen keinerlei Kosten oder Verpflichtungen.
           </p>
@@ -183,7 +183,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="my-12 bg-brand-dark rounded-[2.5rem] p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl max-w-4xl mx-auto">
           <div className="relative z-10 max-w-2xl mx-auto text-center">
             <p className="text-brand-orange font-bold tracking-wide uppercase text-xs mb-2">Kostenlos & unverbindlich</p>
-            <h2 className="text-2xl lg:text-3xl font-black mb-3">Jetzt Auto bewerten in 2 Minuten</h2>
+            <h2 className="text-xl lg:text-2xl font-black mb-3">Jetzt Auto bewerten in 2 Minuten</h2>
             <p className="text-slate-200 mb-6 font-semibold text-sm lg:text-base">
               Erhalten Sie eine klare, faire Einschätzung Ihres Fahrzeugwerts – ohne Anmeldung, ohne Risiko.
             </p>
@@ -253,7 +253,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Auto wert ermitteln leicht gemacht</h2>
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Auto wert ermitteln leicht gemacht</h2>
           <p className="text-slate-700 font-medium leading-relaxed mb-4">
             Die Frage "<strong>Was ist mein Auto wert?</strong>" oder "<strong>Wie viel ist mein Auto wert?</strong>" lässt sich heute dank moderner Technologie schnell und präzise beantworten. Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine transparente, faire Einschätzung – ganz ohne Verpflichtungen.
           </p>

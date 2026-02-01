@@ -25,7 +25,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Hero Section */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <span className="text-brand-orange font-black uppercase tracking-[0.3em] text-sm mb-4 block">Ihre Vorteile</span>
-          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark leading-tight tracking-tight mb-6">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark leading-tight tracking-tight mb-6">
             Autoankauf mit Meinautoverkauf.de – <br className="hidden lg:block"/> Ihre Vorteile auf einen Blick
           </h1>
           <p className="text-lg text-slate-600 font-medium leading-relaxed">
@@ -38,7 +38,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
           {/* Security & Trust */}
           <div className="p-10 bg-brand-dark bg-gradient-to-br from-brand-dark to-slate-800 text-white rounded-[3rem] shadow-2xl relative overflow-hidden group border border-slate-800/40">
             <div className="relative z-10">
-              <h2 className="text-2xl font-black mb-6 text-brand-orange">Sicherheit & Vertrauen – Auto verkaufen ohne Risiko</h2>
+              <h2 className="text-xl font-black mb-6 text-brand-orange">Sicherheit & Vertrauen – Auto verkaufen ohne Risiko</h2>
               <p className="text-slate-100 font-semibold leading-relaxed mb-6">
                 Beim <strong>Autoankauf</strong> mit Meinautoverkauf.de verkaufen Sie Ihr Fahrzeug mit maximaler Sicherheit. Kein Verkauf an dubiose Händler, keine versteckten Klauseln – nur ein rechtssicherer Vertrag nach deutschem Recht. <strong>Auto verkaufen ohne Risiko</strong> bedeutet bei uns:
               </p>
@@ -56,7 +56,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* Speed */}
           <div className="p-10 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-100 rounded-[3rem] group relative overflow-hidden">
-            <h2 className="text-2xl font-black mb-6 text-brand-dark">Geschwindigkeit – Auto verkaufen schnell</h2>
+            <h2 className="text-xl font-black mb-6 text-brand-dark">Geschwindigkeit – Auto verkaufen schnell</h2>
             <p className="text-slate-700 font-semibold leading-relaxed mb-6">
               Zeit ist Geld. Während ein Privatverkauf durchschnittlich 4-6 Wochen dauert, können Sie bei uns Ihr <strong>Auto verkaufen schnell</strong> – oft noch am selben Tag. <strong>Auto verkaufen sofort Geld</strong> erhalten:
             </p>
@@ -105,32 +105,32 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Main Content */}
         <div className="max-w-4xl mx-auto">
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">KI-gestützte faire Preisermittlung</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">KI-gestützte faire Preisermittlung</h2>
             <p className="font-medium leading-relaxed">
               Beim <strong>Auto Ankauf</strong> ist der Preis entscheidend. Wir setzen auf modernste künstliche Intelligenz, die kontinuierlich tausende Transaktionen analysiert. Mit unserer <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlosen Bewertung</Link> erhalten Sie in 2 Minuten einen fairen Preis. Unsere Algorithmen bewerten nicht nur den aktuellen Zustand Ihres Fahrzeugs, sondern auch Marktdynamik, regionale Nachfrage und saisonale Trends. Das Ergebnis: Sie erhalten einen fairen, marktgerechten Preis – oft höher als bei lokalen Händlern, die nur ihr eigenes Inventar im Blick haben.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Transparente Bewertung ohne versteckte Kosten</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Transparente Bewertung ohne versteckte Kosten</h3>
             <p className="font-medium leading-relaxed">
               <strong>Autoankauf ohne versteckte Kosten</strong> ist für uns selbstverständlich. Der Preis, den wir Ihnen nennen, ist der Preis, den Sie erhalten – ohne Abzüge, ohne Gebühren, ohne Überraschungen. Andere Anbieter ziehen nachträglich "Bearbeitungsgebühren" oder "Logistikkosten" ab. Nicht bei uns.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Hausabholung – Autoankauf mit Abholung</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Hausabholung – Autoankauf mit Abholung</h2>
             <p className="font-medium leading-relaxed">
               Sie möchten Ihr <strong>Gebrauchtwagen verkaufen</strong>, aber haben keine Zeit für lange Fahrten? Unser <strong>Autoankauf mit Abholung</strong> macht es möglich: Wir kommen zu Ihnen nach Hause, prüfen das Fahrzeug vor Ort, unterzeichnen den Vertrag und nehmen das Auto direkt mit. Innerhalb unseres Einzugsgebiets ist dieser Service vollkommen kostenlos – keine Kilometer-Pauschalen, keine versteckten Gebühren.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Deutschlandweite Abholung</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Deutschlandweite Abholung</h3>
             <p className="font-medium leading-relaxed">
               Egal ob Sie in München, Berlin, Hamburg, <Link to="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Frankfurt</Link>, <Link to="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Wiesbaden</Link>, <Link to="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Mainz</Link>, Köln, Stuttgart oder einer kleineren Stadt wohnen – unser Service ist überall verfügbar. Wir haben ein deutschlandweites Netzwerk und können Ihr Fahrzeug flexibel abholen.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Sofortige Auszahlung – Auto verkaufen sofort Geld</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Sofortige Auszahlung – Auto verkaufen sofort Geld</h2>
             <p className="font-medium leading-relaxed">
               Beim Privatverkauf warten Sie oft Tage oder Wochen auf das Geld. Bei uns nicht. <strong>Auto verkaufen sofort Geld</strong> bedeutet: Sobald der Vertrag unterzeichnet ist, erfolgt die Überweisung auf Ihr Konto – oft noch am selben Tag. Keine Schecks, keine verzögerten Zahlungen, keine "das Geld ist unterwegs"-Ausreden. Sie erhalten Ihr Geld sofort und sicher per Banküberweisung.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Papierkram-Service – Auto verkaufen ohne Papierkram</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Papierkram-Service – Auto verkaufen ohne Papierkram</h2>
             <p className="font-medium leading-relaxed">
               <strong>Auto verkaufen ohne Papierkram</strong> klingt zu schön, um wahr zu sein? Nicht bei uns. Wir übernehmen die gesamte Bürokratie für Sie:
             </p>
@@ -142,7 +142,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
               <li><strong>Exportpapiere:</strong> Falls Ihr Auto exportiert wird, erstellen wir alle notwendigen Dokumente.</li>
             </ul>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Finanzierungsservice – Restkredit? Kein Problem!</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Finanzierungsservice – Restkredit? Kein Problem!</h2>
             <p className="font-medium leading-relaxed">
               Viele Autobesitzer glauben, sie können ihr Fahrzeug nicht verkaufen, solange noch ein Kredit läuft. Das stimmt nicht! Wir bieten einen vollständigen Finanzierungsservice:
             </p>
@@ -156,7 +156,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
               Dieser Service ist selbstverständlich kostenlos und erspart Ihnen viel Zeit und Kommunikation mit der Bank.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Flexible Terminplanung nach Ihrem Zeitplan</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Flexible Terminplanung nach Ihrem Zeitplan</h2>
             <p className="font-medium leading-relaxed">
               Wir wissen, dass Ihr Alltag vollgepackt ist. Deshalb bieten wir maximale Flexibilität bei der Terminplanung. Sie bestimmen, wann und wo wir Ihr Fahrzeug prüfen und abholen:
             </p>
@@ -167,7 +167,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
               <li><strong>Flexible Stornierung:</strong> Termin ändern oder absagen ohne Gebühren</li>
             </ul>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Kundenzufriedenheit: Was unsere Kunden sagen</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Kundenzufriedenheit: Was unsere Kunden sagen</h2>
             <p className="font-medium leading-relaxed">
               Über 95% unserer Kunden würden uns weiterempfehlen. Das ist kein Zufall – es ist das Ergebnis unseres kundenorientierten Ansatzes. Wenn Sie Ihren <strong>Gebrauchtwagen verkaufen</strong> möchten, erwarten Sie:
             </p>
@@ -181,7 +181,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* Key Benefits Grid */}
           <div className="mt-20 mb-20">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark text-center mb-12">Alle Vorteile auf einen Blick</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark text-center mb-12">Alle Vorteile auf einen Blick</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 { 
@@ -244,7 +244,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
             <div className="relative z-10">
-              <h2 className="text-2xl lg:text-4xl font-black mb-6">Überzeugen Sie sich selbst von unserem Autoankauf</h2>
+              <h2 className="text-xl lg:text-2xl font-black mb-6">Überzeugen Sie sich selbst von unserem Autoankauf</h2>
               <p className="text-slate-100 mb-12 max-w-2xl mx-auto font-semibold text-lg">
                 Viele Kunden nutzen unseren Service, um ihren <strong>Gebrauchtwagen zu verkaufen</strong>. Starten Sie jetzt Ihre kostenlose Bewertung – unverbindlich und in nur 2 Minuten.
               </p>
@@ -309,7 +309,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="max-w-4xl mx-auto">
           {/* Conclusion */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Autoankauf mit maximalen Vorteilen</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Autoankauf mit maximalen Vorteilen</h2>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
               Wenn Sie Ihr <strong>Auto verkaufen</strong> möchten, bietet Ihnen Meinautoverkauf.de den besten Service auf dem Markt. <strong>Wir kaufen dein Auto</strong> schnell, sicher und zum fairen Preis – mit allen Vorteilen, die Sie sich wünschen können.
             </p>

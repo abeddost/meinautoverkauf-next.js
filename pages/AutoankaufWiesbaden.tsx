@@ -38,7 +38,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-10 -left-10 w-20 h-20 bg-brand-orange/40 rounded-full blur-2xl"></div>
-          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Wiesbaden – Schnell, sicher & fair in der Landeshauptstadt
           </h1>
           
@@ -89,7 +89,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
                 className="absolute -top-4 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.07] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Wiesbaden – Unser Service vor Ort</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Wiesbaden – Unser Service vor Ort</h2>
               <p className="font-medium leading-relaxed relative z-10">
                 Wiesbaden, die hessische Landeshauptstadt und weltberühmte Kurstadt mit ihren heißen Quellen, dem prachtvollen Kurhaus und der wilhelminischen Architektur, ist mit rund 280.000 Einwohnern eine der wohlhabendsten Städte Deutschlands. Als wichtiger Standort für Versicherungen, Medien und Dienstleister sowie als Pendlerstadt ins Rhein-Main-Gebiet spiegelt sich die Vielfalt auch im Automarkt wider.
               </p>
@@ -100,7 +100,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
               <div className="absolute -left-6 -top-6 w-24 h-24 bg-blue-100/50 rounded-full blur-xl"></div>
-              <h3 className="text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Wiesbaden und Umgebung:</h3>
+              <h3 className="text-lg md:text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Wiesbaden und Umgebung:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <h4 className="font-bold text-brand-orange mb-2">Wiesbaden Stadtteile:</h4>
@@ -127,7 +127,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen in Wiesbaden: So einfach geht's</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen in Wiesbaden: So einfach geht's</h2>
             <p className="font-medium leading-relaxed mb-6">
               <strong>Auto verkaufen Wiesbaden sofort</strong> – das ist unser Versprechen. Während ein Privatverkauf Wochen dauern kann, ist bei uns der gesamte Prozess in 1-2 Tagen abgeschlossen. Hier die drei einfachen Schritte:
             </p>
@@ -136,7 +136,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black">1</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Kostenlose Online-Bewertung</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Kostenlose Online-Bewertung</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Füllen Sie unser Online-Formular aus – Marke, Modell, Baujahr, Kilometerstand und Zustand. Unsere KI analysiert den Wiesbadener Markt und erstellt eine realistische Preiseinschätzung. Das dauert nur 2 Minuten und ist völlig unverbindlich.
                   </p>
@@ -146,7 +146,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black">2</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Persönliche Besichtigung in Wiesbaden</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Persönliche Besichtigung in Wiesbaden</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Wählen Sie Wunschtermin und -ort. Unser Experte kommt zu Ihnen nach Hause, an Ihre Arbeitsstelle oder zu einem Treffpunkt Ihrer Wahl in Wiesbaden. Die Fahrzeugbegutachtung dauert 15-20 Minuten. Anschließend erhalten Sie unser finales Kaufangebot.
                   </p>
@@ -156,7 +156,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-orange-600 text-white flex items-center justify-center text-xl font-black">3</div>
                 <div>
-                  <h3 className="text-lg font-black text-brand-dark mb-2">Vertrag, Auszahlung & Abmeldung</h3>
+                  <h3 className="text-base md:text-lg font-black text-brand-dark mb-2">Vertrag, Auszahlung & Abmeldung</h3>
                   <p className="text-slate-600 font-medium leading-relaxed">
                     Bei Einigung unterzeichnen wir den notariell sicheren Kaufvertrag. Sie erhalten Ihr Geld per Überweisung (Express innerhalb von 2-4 Stunden) oder bar. Wir kümmern uns um die Abmeldung bei der Zulassungsstelle Wiesbaden. Fertig!
                   </p>
@@ -164,14 +164,14 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Welche Fahrzeuge kaufen wir in Wiesbaden an?</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Welche Fahrzeuge kaufen wir in Wiesbaden an?</h2>
             <p className="font-medium leading-relaxed">
               Beim <strong>Autoankauf Wiesbaden</strong> sind wir auf alle Fahrzeugklassen und Marken spezialisiert. Von der Luxuslimousine bis zum Kleinwagen, vom Neuwagen bis zum Oldtimer – wir kaufen alles:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors">
-                <h3 className="text-lg font-black text-brand-dark mb-4">Marken & Modelle:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4">Marken & Modelle:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
@@ -202,7 +202,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
 
               <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
                 <div className="absolute -top-6 -right-6 w-16 h-16 bg-orange-50 rounded-full blur-xl"></div>
-                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">Auch bei Schäden:</h3>
+                <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">Auch bei Schäden:</h3>
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
@@ -232,11 +232,11 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Was macht uns beim Autoankauf in Wiesbaden besonders?</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Was macht uns beim Autoankauf in Wiesbaden besonders?</h2>
             
             <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-3xl p-8 my-8 relative overflow-hidden">
               <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-200/20 rounded-full blur-3xl"></div>
-              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🏛️ Lokale Expertise für Wiesbaden</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-4 relative z-10">🏛️ Lokale Expertise für Wiesbaden</h3>
               <p className="text-slate-700 font-medium leading-relaxed relative z-10">
                 Als etablierter Partner für <strong>Gebrauchtwagen Ankauf Wiesbaden</strong> kennen wir den lokalen Markt genau. Wiesbaden hat einen überdurchschnittlich hohen Anteil an Luxus- und Premiumfahrzeugen – Mercedes-Benz, BMW, Audi und Porsche sind hier besonders gefragt. Die Nähe zu Frankfurt, die hohe Kaufkraft und die vielen Geschäftsleute sorgen für stabile Nachfrage und faire Preise.
               </p>
@@ -245,7 +245,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Nachbarstädte im Fokus</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Nachbarstädte im Fokus</h3>
             <p className="font-medium leading-relaxed">
               Unser <strong>KFZ Ankauf Wiesbaden</strong> Service erstreckt sich auch ins direkte Umland: <strong>Mainz</strong> (nur 10 km), <strong>Taunusstein</strong>, <strong>Hochheim am Main</strong>, <strong>Eltville am Rhein</strong> mit seinen Weingütern, und <strong>Bad Schwalbach</strong> im Taunus. Selbst wenn Sie außerhalb wohnen, profitieren Sie von unserem schnellen und zuverlässigen Service.
             </p>
@@ -258,37 +258,37 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schnelle Zulassungsstelle-Abwicklung</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Schnelle Zulassungsstelle-Abwicklung</h3>
             <p className="font-medium leading-relaxed">
               Die Wiesbadener Zulassungsstelle am Konrad-Adenauer-Ring kennen wir aus jahrelanger Praxis. Wir übernehmen die komplette Abmeldung Ihres Fahrzeugs – Sie müssen nicht einmal persönlich zur Behörde. Das spart Ihnen Zeit, Parkplatzsuche und Wartezeiten. Bei uns läuft alles digital und effizient.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Wiesbaden Stadtteile – Wo wir Ihr Auto abholen</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Wiesbaden Stadtteile – Wo wir Ihr Auto abholen</h2>
             
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Wiesbaden Mitte & Rheingauviertel</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Wiesbaden Mitte & Rheingauviertel</h3>
             <p className="font-medium leading-relaxed">
               Das Stadtzentrum mit dem prächtigen Kurhaus, Casino, Hessischem Staatstheater, Wilhelmstraße und wilhelminischer Pracht-Architektur. Hier wohnen viele Geschäftsleute, Kulturliebhaber und wohlhabende Familien. Unser <strong>Autoankauf Wiesbaden Mitte</strong> Service ist besonders bei Luxusfahrzeugen und Cabrios stark nachgefragt – kein Wunder bei so viel Eleganz ringsum!
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Biebrich & Schierstein am Rhein</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Biebrich & Schierstein am Rhein</h3>
             <p className="font-medium leading-relaxed">
               Die malerischen Rheinufer-Stadtteile mit dem barocken Schloss Biebrich, idyllischen Weinbergen und direktem Zugang zum Rhein. Hier verkaufen viele Familien ihre Zweitwagen, Oldtimer oder Cabrios. Der <strong>Autoankauf Wiesbaden Biebrich</strong> und Schierstein Service ist ganzjährig stark frequentiert – besonders im Frühjahr, wenn die Cabrio-Saison startet.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Dotzheim, Sonnenberg & Rambach</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Dotzheim, Sonnenberg & Rambach</h3>
             <p className="font-medium leading-relaxed">
               Beliebte Wohnviertel im Westen und Nordwesten mit hervorragender Infrastruktur und vielen Familien. Hier werden vor allem praktische Alltagsfahrzeuge gesucht: Kombis, Kleinwagen, kompakte SUVs und zuverlässige Mittelklasse-Modelle für den täglichen Pendlerverkehr nach Frankfurt oder Mainz.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Mainz-Kastel, Mainz-Kostheim & Mainz-Amöneburg</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Mainz-Kastel, Mainz-Kostheim & Mainz-Amöneburg</h3>
             <p className="font-medium leading-relaxed">
               Die rechtsrheinischen Stadtteile mit direkter Anbindung nach Mainz über die Theodor-Heuss-Brücke. Viele Pendler verkaufen hier ihre Firmenwagen oder steigen auf öffentliche Verkehrsmittel um. Unser Service ist schnell, unkompliziert und passt perfekt in den Alltag berufstätiger Wiesbadener.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Wiesbaden: Fair, transparent, sicher</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Autoankauf Wiesbaden: Fair, transparent, sicher</h2>
             
             <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8">
-              <h3 className="text-lg font-black text-brand-dark mb-6">Unsere Garantien für Sie:</h3>
+              <h3 className="text-base md:text-lg font-black text-brand-dark mb-6">Unsere Garantien für Sie:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex gap-4 items-start">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center font-black">✓</div>
@@ -328,7 +328,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
-            <h2 className="text-2xl font-black text-brand-dark mb-6 text-center">Weitere Standorte im Rhein-Main-Gebiet</h2>
+            <h2 className="text-xl font-black text-brand-dark mb-6 text-center">Weitere Standorte im Rhein-Main-Gebiet</h2>
             <p className="text-slate-600 font-medium leading-relaxed mb-6 text-center">
               Wir bieten unseren Autoankauf-Service auch in anderen Städten der Region an:
             </p>
@@ -366,7 +366,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
             <div className="relative z-10">
-              <h2 className="text-2xl lg:text-4xl font-black mb-6">Jetzt Auto in Wiesbaden verkaufen!</h2>
+              <h2 className="text-xl lg:text-2xl font-black mb-6">Jetzt Auto in Wiesbaden verkaufen!</h2>
               <p className="text-slate-300 mb-12 max-w-2xl mx-auto font-semibold text-lg">
                 Kostenlose Bewertung in 2 Minuten. Fair, transparent und unverbindlich.
               </p>

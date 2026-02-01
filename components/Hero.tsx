@@ -207,10 +207,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
           <div className="grid grid-cols-12 gap-10 items-center">
             <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
               <div className="max-w-2xl -mt-2">
-                <DesktopHeadlineTag className="text-[42px] lg:text-[52px] font-black leading-[1.08] tracking-tight text-[#1e293b]">
+                <DesktopHeadlineTag className="text-[32px] sm:text-[36px] lg:text-[40px] font-black leading-[1.08] tracking-tight text-[#1e293b]">
                   {heroHeadline}
                 </DesktopHeadlineTag>
-                <p className="mt-4 text-lg lg:text-xl text-slate-600 font-medium max-w-xl">
+                <p className="mt-4 text-base lg:text-lg text-slate-600 font-medium max-w-xl">
                   {heroSubheadline}
                 </p>
               </div>
@@ -277,7 +277,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
       <div className="lg:hidden flex flex-col pt-4 pb-6 min-h-[calc(100vh-64px)]">
         <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
           <div className="text-left mb-4">
-            <h2 className="text-[24px] sm:text-[26px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
+            <h2 className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
               {heroHeadline}
             </h2>
             <p className="mt-3 text-base text-slate-600 font-medium">

@@ -64,7 +64,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m18.236 0a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 21.359c-1.39-1.365-2.76-2.69-4.04-3.89m8.08 0c-1.28 1.2-2.65 2.525-4.04 3.89" />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-brand-dark tracking-tight">Ihr Rundum-Sorglos-Vorteil</h3>
+              <h3 className="text-lg sm:text-xl font-black text-brand-dark tracking-tight">Ihr Rundum-Sorglos-Vorteil</h3>
             </div>
             
             <div className="relative mb-8 lg:mb-10">

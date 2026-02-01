@@ -35,7 +35,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
             />
           </div>
           <div className="relative z-10 text-left">
-            <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-6 leading-tight tracking-tight text-center lg:text-left">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight text-center lg:text-left">
               Auto verkaufen online – Schnell, transparent und zum fairen Preis
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
@@ -68,12 +68,12 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           </p>
 
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Auto verkaufen: Privatverkauf vs. Händlerankauf</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Auto verkaufen: Privatverkauf vs. Händlerankauf</h2>
             <p className="font-medium leading-relaxed">
               Wenn Sie Ihr <strong>Auto verkaufen</strong> möchten, stehen Ihnen grundsätzlich zwei Wege offen: der Privatverkauf oder der Verkauf an einen Händler. Beide Optionen haben Vor- und Nachteile, die Sie kennen sollten.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Privatverkauf: Mehr Geld, mehr Aufwand</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Privatverkauf: Mehr Geld, mehr Aufwand</h3>
             <p className="font-medium leading-relaxed">
               Der Privatverkauf verspricht theoretisch den höchsten Preis. Sie verkaufen direkt an den Endkunden ohne Zwischenhändler. Allerdings erfordert dieser Weg viel Eigeninitiative und Zeit:
             </p>
@@ -89,7 +89,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               Der Privatverkauf kann Wochen oder sogar Monate dauern – Zeit, in der Sie weiter Versicherung und Steuern zahlen müssen.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Händlerankauf: Schnell, sicher, stressfrei</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Händlerankauf: Schnell, sicher, stressfrei</h3>
             <p className="font-medium leading-relaxed">
               Der Händlerankauf, wie wir ihn bei Meinautoverkauf.de anbieten, ist auf Geschwindigkeit und Sicherheit optimiert. "Wir kaufen dein Auto" bedeutet bei uns:
             </p>
@@ -113,7 +113,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
                 className="absolute top-4 right-4 w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 opacity-[0.12] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <h3 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">Wichtige Dokumente zum Auto verkaufen</h3>
+              <h3 className="text-lg md:text-xl font-black text-brand-dark mb-6">Wichtige Dokumente zum Auto verkaufen</h3>
               <p className="font-medium text-slate-600 mb-6">
                 Bevor Sie Ihr <strong>Auto verkaufen</strong>, sollten Sie diese Unterlagen bereithalten. Eine vollständige Dokumentation erleichtert den Verkauf und erhöht das Vertrauen potenzieller Käufer:
               </p>
@@ -140,32 +140,32 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               </p>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Vorbereitung: So erhöhen Sie den Verkaufspreis</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Vorbereitung: So erhöhen Sie den Verkaufspreis</h2>
             <p className="font-medium leading-relaxed">
               Wenn Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, spielt die Präsentation eine wichtige Rolle. Mit diesen Tipps maximieren Sie den Verkaufspreis:
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">1. Gründliche Reinigung</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">1. Gründliche Reinigung</h3>
             <p className="font-medium leading-relaxed">
               Der erste Eindruck zählt. Eine professionelle Innen- und Außenreinigung kann den wahrgenommenen Wert um mehrere hundert Euro steigern. Entfernen Sie alle persönlichen Gegenstände, saugen Sie Teppiche und Sitze, reinigen Sie das Armaturenbrett und polieren Sie die Scheiben. Ein frischer Duft (aber kein penetranter Lufterfrischer) macht einen guten Eindruck.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">2. Kleine Reparaturen</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">2. Kleine Reparaturen</h3>
             <p className="font-medium leading-relaxed">
               Kleinigkeiten wie defekte Glühbirnen, beschädigte Scheibenwischer oder blinde Scheinwerfer sollten Sie vor dem Verkauf beheben. Diese Reparaturen kosten wenig, signalisieren aber Pflege und Sorgfalt. Größere Reparaturen lohnen sich meist nicht – besprechen Sie dies vorab mit uns.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">3. Dokumentation vorbereiten</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">3. Dokumentation vorbereiten</h3>
             <p className="font-medium leading-relaxed">
               Sammeln Sie alle Unterlagen: Scheckheft, TÜV-Berichte, Reparaturrechnungen. Eine lückenlose Service-Historie erhöht das Vertrauen und den Wert erheblich.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Defektes Auto verkaufen: Motorschaden, Unfallschaden & Co.</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Defektes Auto verkaufen: Motorschaden, Unfallschaden & Co.</h2>
             <p className="font-medium leading-relaxed">
               Viele Autobesitzer glauben, dass ein <strong>defektes Auto verkaufen</strong> unmöglich oder nicht lohnenswert ist. Das stimmt nicht! Auch Fahrzeuge mit erheblichen Mängeln haben einen Restwert.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Auto mit Motorschaden verkaufen</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Auto mit Motorschaden verkaufen</h3>
             <p className="font-medium leading-relaxed">
               Ein Motorschaden bedeutet nicht das Ende. Wenn Sie Ihr <strong>Auto mit Motorschaden verkaufen</strong> möchten, gibt es mehrere Abnehmer: Händler, die Fahrzeuge für Ersatzteile nutzen, Exporteure oder Werkstätten, die Motoren austauschen. Bei uns erhalten Sie auch für ein <strong>motorschaden auto verkaufen</strong> ein faires Angebot – basierend auf:
             </p>
@@ -175,17 +175,17 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <li><strong>Recycling-Wert:</strong> Metalle, Katalysatoren und andere Komponenten können verwertet werden.</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Unfallfahrzeuge und Totalschäden</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Unfallfahrzeuge und Totalschäden</h3>
             <p className="font-medium leading-relaxed">
               Auch nach einem Unfall müssen Sie Ihr Fahrzeug nicht verschrotten. Unfallwagen mit reparierbaren Schäden oder sogar Totalschäden werden häufig an Händler verkauft, die diese professionell aufarbeiten oder für Ersatzteile nutzen.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Fahrzeuge ohne TÜV</h3>
+            <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Fahrzeuge ohne TÜV</h3>
             <p className="font-medium leading-relaxed">
               Ein abgelaufener TÜV mindert den Wert, macht einen Verkauf aber nicht unmöglich. Wir kaufen auch Fahrzeuge ohne gültige Hauptuntersuchung. Der Preis wird entsprechend angepasst, aber Sie sparen sich die Kosten und den Aufwand einer neuen Prüfung.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto für Export verkaufen</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Auto für Export verkaufen</h2>
             <p className="font-medium leading-relaxed">
               Wenn Sie Ihr <strong>Auto für Export verkaufen</strong> möchten, können Sie oft bessere Preise erzielen als auf dem deutschen Markt. Bestimmte Fahrzeugtypen sind in anderen Ländern besonders gefragt:
             </p>
@@ -199,7 +199,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               Wir haben ein internationales Händlernetzwerk und wissen genau, welche Fahrzeuge wo gefragt sind. Wenn Ihr Auto exportfähig ist, erhalten Sie bei uns oft einen höheren Preis als bei einem lokalen Verkauf.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Seriöse Käufer erkennen (beim Privatverkauf)</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Seriöse Käufer erkennen (beim Privatverkauf)</h2>
             <p className="font-medium leading-relaxed">
               Falls Sie sich für den Privatverkauf entscheiden, sollten Sie wissen, wie Sie seriöse Käufer von Betrügern unterscheiden:
             </p>
@@ -214,7 +214,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <strong>Achtung vor Betrugsmaschen:</strong> Gefälschte Überweisungsbestätigungen, angebliche "Freunde", die das Auto abholen, oder plötzliche "Notfälle" sind klassische Warnsignale.
             </p>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Der Verkaufsprozess bei Meinautoverkauf.de</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Der Verkaufsprozess bei Meinautoverkauf.de</h2>
             <p className="font-medium leading-relaxed">
               Wenn Sie bei uns Ihr <strong>Auto verkaufen online</strong> möchten, durchlaufen Sie einen einfachen, transparenten Prozess in nur 3 Schritten:
             </p>
@@ -238,7 +238,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Gebrauchtwagen verkaufen: Tipps für einen besseren Preis</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Gebrauchtwagen verkaufen: Tipps für einen besseren Preis</h2>
             <p className="font-medium leading-relaxed">
               Wenn Sie Ihren <strong>Gebrauchtwagen verkaufen</strong> möchten, können Sie mit einigen Tricks den Preis optimieren:
             </p>
@@ -258,7 +258,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div className="lg:col-span-8">
               <p className="text-orange-600 text-sm font-bold uppercase tracking-widest mb-3">Kostenlos & unverbindlich</p>
-              <h2 className="text-2xl lg:text-3xl font-black mb-3">Bereit, Ihr Auto zu verkaufen?</h2>
+              <h2 className="text-xl lg:text-2xl font-black mb-3">Bereit, Ihr Auto zu verkaufen?</h2>
               <p className="text-slate-600 font-semibold text-base">
                 Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong>, ein <strong>Auto mit Motorschaden verkaufen</strong> oder einen marktgerechten Preis erzielen möchten – starten Sie jetzt Ihre kostenlose Bewertung!
               </p>
@@ -330,7 +330,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="max-w-4xl mx-auto">
           {/* Conclusion Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mb-6 text-center">Fazit: Auto verkaufen leicht gemacht</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Auto verkaufen leicht gemacht</h2>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
               Ob Sie Ihr <strong>Auto verkaufen online</strong> möchten, einen <strong>Gebrauchtwagen verkaufen</strong>, ein <strong>defektes Auto verkaufen</strong> oder sogar ein <strong>Auto mit Motorschaden verkaufen</strong> wollen – bei Meinautoverkauf.de sind Sie richtig. Wir bieten Ihnen eine schnelle, transparente und faire Lösung.
             </p>
