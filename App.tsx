@@ -503,8 +503,8 @@ const AppContent: React.FC = () => {
           <Route path="/autoankauf-mainz" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Autoankauf Mainz | Auto schnell verkaufen in Mainz" 
-                description="Wir kaufen Ihr Auto in Mainz ✓ Faire Preise ✓ Sofortige Auszahlung ✓ Kostenlose Abmeldung ✓ Alle Marken & Zustände."
+                title="Autoankauf Mainz | Alle Stadtteile | Kastel & Kostheim | Fair" 
+                description="Autoankauf Mainz ✓ Kostenlose Abholung in allen Stadtteilen ✓ Auch Mainz-Kastel & Kostheim ✓ Sofortige Zahlung ✓ Persönlich & vertrauensvoll."
                 canonicalUrl="/autoankauf-mainz"
               />
               <Hero 
