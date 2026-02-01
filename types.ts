@@ -10,6 +10,11 @@ export interface CarDetails {
   power: string;
   bodyType: string;
   condition: 'Excellent' | 'Good' | 'Fair' | 'Poor' | '';
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  desiredPrice: string;
   vin?: string;
   images?: string[];
   doors?: string;

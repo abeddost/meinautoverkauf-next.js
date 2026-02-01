@@ -7,7 +7,7 @@ interface ValuationFormProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
 }
 
-type FormPage = 1 | 2 | 3 | 4;
+type FormPage = 1 | 2 | 3 | 4 | 5;
 
 const BRAND_DATA: Record<string, string[]> = {
   'Abarth': ['500', '595', '695', '124 Spider', 'Punto', 'Grande Punto'],
@@ -109,6 +109,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     power: '',
     bodyType: '',
     condition: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    desiredPrice: '',
     vin: '',
     doors: '',
     postalCode: '',
@@ -151,7 +156,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
         return;
       }
     }
-    setCurrentPage(prev => (prev < 4 ? (prev + 1) as FormPage : prev));
+    setCurrentPage(prev => (prev < 5 ? (prev + 1) as FormPage : prev));
   };
 
   const prevPage = () => setCurrentPage(prev => (prev > 1 ? (prev - 1) as FormPage : prev));
@@ -159,7 +164,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate postal code before submission
+    // Validate contact details and postal code before submission
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+      alert('Bitte füllen Sie alle Pflichtfelder aus.');
+      return;
+    }
     if (!formData.postalCode || formData.postalCode.length !== 5) {
       alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
       return;
@@ -286,7 +295,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     { label: 'Fahrzeugwahl', iconSrc: `${formElementsBase}/fahrzeug.png` },
     { label: 'Technik', iconSrc: `${formElementsBase}/technik.png` },
     { label: 'Zustand', iconSrc: `${formElementsBase}/zustand.png` },
-    { label: 'Details', iconSrc: `${formElementsBase}/details.png` }
+    { label: 'Details', iconSrc: `${formElementsBase}/details.png` },
+    { label: 'Kontakt', iconSrc: `${formElementsBase}/details.png` }
   ];
 
   const baseFieldClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-sm lg:text-base disabled:opacity-50 disabled:cursor-not-allowed";
@@ -303,7 +313,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           <div className="flex flex-col gap-4 w-full">
             <div className="flex items-center justify-between">
               <span className="text-sm font-bold text-slate-600">
-                Schritt <span className="text-brand-orange">{currentPage}</span> von 4
+                Schritt <span className="text-brand-orange">{currentPage}</span> von 5
               </span>
               <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
                 {steps[currentPage - 1].label}
@@ -313,11 +323,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
             <div className="h-2 rounded-full bg-slate-200 overflow-hidden">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff7a1a] transition-all duration-500 ease-out"
-                style={{ width: `${(currentPage / 4) * 100}%` }}
+                style={{ width: `${(currentPage / 5) * 100}%` }}
               />
             </div>
             {/* Step circles with labels */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-5 gap-1.5 lg:gap-2">
               {steps.map((step, index) => {
                 const stepNumber = index + 1;
                 const isCompleted = currentPage > stepNumber;
@@ -326,7 +336,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   <div key={step.label} className="flex flex-col items-center gap-1.5">
                     <div
                       className={`
-                        w-10 h-10 lg:w-11 lg:h-11 rounded-full flex items-center justify-center overflow-hidden
+                        w-9 h-9 lg:w-10 lg:h-10 rounded-full flex items-center justify-center overflow-hidden
                         transition-all duration-300 ease-out
                         ${isCurrent
                           ? 'bg-white shadow-lg shadow-orange-200/60 ring-2 ring-[#ff7a1a] scale-105'
@@ -337,7 +347,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                       `}
                     >
                       {isCompleted ? (
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                         </svg>
                       ) : (
@@ -348,7 +358,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                         />
                       )}
                     </div>
-                    <span className={`text-[10px] lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <span className={`text-[9px] lg:text-[10px] font-semibold text-center leading-tight max-w-[60px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
                       {step.label}
                     </span>
                   </div>
@@ -532,22 +542,93 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
               </div>
             </div>
           )}
+
+          {currentPage === 5 && (
+            <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
+                <div>
+                  <StepLabel label="Vorname" required />
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleSelectChange}
+                    placeholder="Vorname"
+                    className={inputClass}
+                    required
+                  />
+                </div>
+                <div>
+                  <StepLabel label="Nachname" required />
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleSelectChange}
+                    placeholder="Nachname"
+                    className={inputClass}
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <StepLabel label="Deine E-Mail-Adresse" required />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleSelectChange}
+                  placeholder="z.B. max@beispiel.de"
+                  className={inputClass}
+                  required
+                />
+              </div>
+              <div>
+                <StepLabel label="Deine Handynummer" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleSelectChange}
+                  placeholder="z.B. 0176 12345678"
+                  className={inputClass}
+                  required
+                />
+              </div>
+              <div>
+                <StepLabel label="Dein Wunschpreis (€)" />
+                <input
+                  type="number"
+                  name="desiredPrice"
+                  value={formData.desiredPrice}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/[^\d]/g, '');
+                    setFormData(prev => ({ ...prev, desiredPrice: value }));
+                  }}
+                  placeholder="z.B. 12500"
+                  min={0}
+                  className={inputClass}
+                />
+                <p className="text-xs text-slate-400 mt-1 ml-1">Optional: Wunschpreis hilft beim Angebot</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="pt-3 lg:pt-4 flex flex-col gap-2 lg:gap-3">
-          {currentPage === 4 && (
+          {currentPage >= 4 && (
             <div className="text-xs text-slate-400 mb-2">
               <span className="text-brand-orange">*</span> Pflichtfelder müssen ausgefüllt werden
             </div>
           )}
           <button 
-            type={currentPage === 4 ? "submit" : "button"} 
-            onClick={currentPage === 4 ? undefined : nextPage}
+            type={currentPage === 5 ? "submit" : "button"} 
+            onClick={currentPage === 5 ? undefined : nextPage}
             disabled={currentPage === 1 && (!formData.brand || !formData.model || !formData.year)}
             className="group w-full bg-gradient-to-r from-[#ffb347] via-[#ff8f2d] to-[#ff7a1a] text-white py-4 lg:py-5 rounded-2xl font-black text-base lg:text-lg shadow-[0_14px_30px_-14px_rgba(255,130,50,0.7)] hover:shadow-[0_20px_40px_-16px_rgba(255,130,50,0.9)] hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="flex items-center justify-center gap-3">
-              <span>{currentPage === 4 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}</span>
+              <span>{currentPage === 5 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}</span>
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white transition-transform duration-300 group-hover:translate-x-1">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
