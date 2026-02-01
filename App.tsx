@@ -12,6 +12,9 @@ import AutoBewertenPage from './pages/AutoBewerten';
 import AutoVerkaufenPage from './pages/AutoVerkaufen';
 import VorteilePage from './pages/VorteilePage';
 import RatgeberPage from './pages/Ratgeber';
+import AutoankaufFrankfurtPage from './pages/AutoankaufFrankfurt';
+import AutoankaufWiesbadenPage from './pages/AutoankaufWiesbaden';
+import AutoankaufMainzPage from './pages/AutoankaufMainz';
 import { AppStep, AppView, CarDetails, ValuationResult } from './types';
 
 const App: React.FC = () => {
@@ -128,13 +131,28 @@ const App: React.FC = () => {
     },
     [AppView.VORTEILE]: {
       headline: 'Ihre Vorteile beim Autoankauf – Transparent & zuverlässig',
-      subheadline: 'Ihr Auto. Ihr Preis. In wenigen Tagen verkauft.',
+      subheadline: 'So einfach war Auto verkaufen noch nie',
       accent: 'vorteile'
     },
     [AppView.RATGEBER]: {
       headline: 'Auto Ratgeber – Tipps, Checklisten & Wissen',
       subheadline: 'Alles rund um Bewertung, Verkauf und Marktpreise',
       accent: 'ratgeber'
+    },
+    [AppView.AUTOANKAUF_FRANKFURT]: {
+      headline: 'Autoankauf Frankfurt – Ihr lokaler Partner',
+      subheadline: 'Faire Preise, schnelle Abwicklung in Frankfurt am Main',
+      accent: 'verkaufen'
+    },
+    [AppView.AUTOANKAUF_WIESBADEN]: {
+      headline: 'Autoankauf Wiesbaden – Seriös & transparent',
+      subheadline: 'Auto verkaufen in der Landeshauptstadt Hessen',
+      accent: 'verkaufen'
+    },
+    [AppView.AUTOANKAUF_MAINZ]: {
+      headline: 'Autoankauf Mainz – Zuverlässiger Service',
+      subheadline: 'Ihr Auto-Partner in der Gutenberg-Stadt',
+      accent: 'verkaufen'
     }
   };
 
@@ -175,6 +193,63 @@ const App: React.FC = () => {
           <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.RATGEBER]} />
           <div id="after-hero" className="scroll-mt-24">
             <RatgeberPage onCtaClick={() => setCurrentView(AppView.HOME)} />
+          </div>
+        </div>
+      );
+    }
+    if (currentView === AppView.AUTOANKAUF_FRANKFURT) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.AUTOANKAUF_FRANKFURT]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <AutoankaufFrankfurtPage 
+              onCtaClick={() => setCurrentView(AppView.HOME)}
+              onNavigate={(page) => {
+                if (page === 'wiesbaden') setCurrentView(AppView.AUTOANKAUF_WIESBADEN);
+                else if (page === 'mainz') setCurrentView(AppView.AUTOANKAUF_MAINZ);
+                else if (page === 'bewerten') setCurrentView(AppView.AUTO_BEWERTEN);
+                else if (page === 'verkaufen') setCurrentView(AppView.AUTO_VERKAUFEN);
+                else if (page === 'ratgeber') setCurrentView(AppView.RATGEBER);
+              }}
+            />
+          </div>
+        </div>
+      );
+    }
+    if (currentView === AppView.AUTOANKAUF_WIESBADEN) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.AUTOANKAUF_WIESBADEN]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <AutoankaufWiesbadenPage 
+              onCtaClick={() => setCurrentView(AppView.HOME)}
+              onNavigate={(page) => {
+                if (page === 'frankfurt') setCurrentView(AppView.AUTOANKAUF_FRANKFURT);
+                else if (page === 'mainz') setCurrentView(AppView.AUTOANKAUF_MAINZ);
+                else if (page === 'bewerten') setCurrentView(AppView.AUTO_BEWERTEN);
+                else if (page === 'verkaufen') setCurrentView(AppView.AUTO_VERKAUFEN);
+                else if (page === 'ratgeber') setCurrentView(AppView.RATGEBER);
+              }}
+            />
+          </div>
+        </div>
+      );
+    }
+    if (currentView === AppView.AUTOANKAUF_MAINZ) {
+      return (
+        <div className="animate-in fade-in duration-1000">
+          <Hero onValuationComplete={handleStartValuation} {...heroCopyByView[AppView.AUTOANKAUF_MAINZ]} />
+          <div id="after-hero" className="scroll-mt-24">
+            <AutoankaufMainzPage 
+              onCtaClick={() => setCurrentView(AppView.HOME)}
+              onNavigate={(page) => {
+                if (page === 'frankfurt') setCurrentView(AppView.AUTOANKAUF_FRANKFURT);
+                else if (page === 'wiesbaden') setCurrentView(AppView.AUTOANKAUF_WIESBADEN);
+                else if (page === 'bewerten') setCurrentView(AppView.AUTO_BEWERTEN);
+                else if (page === 'verkaufen') setCurrentView(AppView.AUTO_VERKAUFEN);
+                else if (page === 'ratgeber') setCurrentView(AppView.RATGEBER);
+              }}
+            />
           </div>
         </div>
       );
