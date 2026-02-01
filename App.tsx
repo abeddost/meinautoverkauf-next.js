@@ -100,7 +100,9 @@ const AppContent: React.FC = () => {
       <ScrollToTop />
       <Header onLogoClick={resetApp} />
       
-      <main className="flex-grow pb-20 md:pb-0 bg-gray-50">
+      <main className="flex-grow pb-20 md:pb-0 bg-gray-50 relative">
+        {/* Global background pattern */}
+        <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(148 163 184) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
         <Routes>
           <Route path="/" element={
             <div className="animate-in fade-in duration-1000">
@@ -118,8 +120,15 @@ const AppContent: React.FC = () => {
               
               {currentStep === AppStep.VALUATION_FORM && (
                 <>
-                  <section id="evaluate" className="py-20 bg-white border-b border-slate-100">
-                    <div className="container mx-auto px-4">
+                  <section id="evaluate" className="relative py-20 bg-white border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-100/60 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-100/50 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute top-1/2 left-1/2 w-80 h-80 border-4 border-orange-200/40 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                      <div className="absolute top-20 right-40 w-32 h-32 bg-orange-200/30 rounded-full blur-xl"></div>
+                    </div>
+                    <div className="container mx-auto px-4 relative z-10">
                       <div className="text-center max-w-3xl mx-auto mb-14">
                         <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">
                           So funktioniert der Auto Ankauf bei uns – In 3 einfachen Schritten
@@ -147,8 +156,16 @@ const AppContent: React.FC = () => {
                     </div>
                   </section>
 
-                  <section id="vorteile" className="py-20 bg-white border-b border-slate-100">
-                    <div className="container mx-auto px-4">
+                  <section id="vorteile" className="relative py-20 bg-white border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-br from-orange-200/40 via-orange-100/30 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute top-0 right-1/4 w-[400px] h-[400px] border-4 border-orange-200/50 rounded-full"></div>
+                      <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-slate-200/60 to-transparent rounded-full blur-2xl"></div>
+                      <div className="absolute bottom-20 left-20 w-48 h-48 border-2 border-blue-200/40 rounded-full"></div>
+                      <div className="absolute top-1/3 right-10 w-24 h-24 bg-orange-300/30 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 relative z-10">
                       <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">
                         Auto verkaufen online: <Link to="/vorteile" className="text-brand-orange hover:underline">Die Vorteile</Link> auf einen Blick
                       </h2>
@@ -188,8 +205,15 @@ const AppContent: React.FC = () => {
                     </div>
                   </section>
 
-                  <section id="versprechen" className="py-20 bg-slate-50 border-b border-slate-100">
-                    <div className="container mx-auto px-4">
+                  <section id="versprechen" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute -top-20 -right-20 w-80 h-80 bg-orange-300/30 rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-10 left-10 w-64 h-64 border-4 border-orange-200/40 rounded-full"></div>
+                      <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-blue-200/30 rounded-full blur-2xl"></div>
+                      <div className="absolute top-10 right-1/3 w-32 h-32 border-2 border-slate-300/50 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 relative z-10">
                       <div className="max-w-3xl mx-auto text-center mb-12">
                         <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-5">
                           Sicher, schnell und seriös: Das Versprechen von Meinautoverkauf.de
@@ -214,8 +238,15 @@ const AppContent: React.FC = () => {
                     </div>
                   </section>
 
-                  <section id="warum" className="py-20 bg-slate-50 border-b border-slate-100">
-                    <div className="container mx-auto px-4">
+                  <section id="warum" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-orange-200/50 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute -bottom-10 -right-10 w-96 h-96 border-4 border-slate-300/60 rounded-full"></div>
+                      <div className="absolute top-1/3 right-20 w-40 h-40 bg-blue-200/40 rounded-full blur-xl"></div>
+                      <div className="absolute bottom-1/4 left-10 w-56 h-56 border-2 border-orange-200/40 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 relative z-10">
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
                           <img src="/elements/autoankauf-neu-gedacht.png" alt="" className="w-full max-w-[460px] opacity-[0.16]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
@@ -247,8 +278,16 @@ const AppContent: React.FC = () => {
                     </div>
                   </section>
 
-                  <section id="motorschaden" className="py-20 bg-slate-50 border-b border-slate-100">
-                    <div className="container mx-auto px-4">
+                  <section id="motorschaden" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-br from-slate-200/70 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 border-4 border-orange-300/40 rounded-full"></div>
+                      <div className="absolute top-1/3 right-10 w-56 h-56 bg-orange-200/40 rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-10 left-1/3 w-40 h-40 border-2 border-blue-200/50 rounded-full"></div>
+                      <div className="absolute top-20 left-20 w-28 h-28 bg-slate-300/40 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 relative z-10">
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-start pl-2 sm:pl-6 lg:pl-10 pointer-events-none">
                           <img src="/elements/auto-verkaufen-mit-motorschaden.png" alt="" className="w-full max-w-[460px] opacity-[0.4]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
@@ -291,8 +330,15 @@ const AppContent: React.FC = () => {
                     </div>
                   </section>
 
-                  <section id="transparenz" className="py-20 bg-slate-50 border-b border-slate-100">
-                    <div className="container mx-auto px-4 max-w-4xl">
+                  <section id="transparenz" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-200/50 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-10 left-20 w-80 h-80 border-4 border-slate-300/50 rounded-full"></div>
+                      <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-orange-200/30 rounded-full blur-2xl"></div>
+                      <div className="absolute bottom-1/3 right-10 w-32 h-32 border-2 border-blue-200/40 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 max-w-4xl relative z-10">
                       <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
                         Gebrauchtwagen verkaufen: Transparenz steht an erster Stelle
                       </h2>
@@ -317,8 +363,16 @@ const AppContent: React.FC = () => {
                     </div>
                   </section>
 
-                  <section id="ki" className="py-20 bg-white border-b border-slate-100">
-                    <div className="container mx-auto px-4">
+                  <section id="ki" className="relative py-20 bg-white border-b border-slate-100 overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-orange-200/60 via-blue-200/40 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-0 right-1/4 w-96 h-96 border-4 border-orange-300/40 rounded-full"></div>
+                      <div className="absolute top-1/2 right-10 w-64 h-64 bg-slate-200/70 rounded-full blur-2xl"></div>
+                      <div className="absolute top-20 left-1/3 w-48 h-48 border-2 border-blue-200/50 rounded-full"></div>
+                      <div className="absolute bottom-20 left-20 w-36 h-36 bg-orange-300/30 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 relative z-10">
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
                           <img src="/elements/car-valuation.png" alt="" className="w-full max-w-[460px] opacity-[0.16]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
@@ -350,8 +404,16 @@ const AppContent: React.FC = () => {
                   <TrustElements />
                   <FAQSection />
 
-                  <section id="zufriedenheit" className="py-20 bg-white">
-                    <div className="container mx-auto px-4 max-w-4xl">
+                  <section id="zufriedenheit" className="relative py-20 bg-white overflow-hidden">
+                    {/* Background decorative elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-gradient-to-br from-orange-200/50 to-transparent rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-0 right-0 w-80 h-80 border-4 border-orange-300/40 rounded-full"></div>
+                      <div className="absolute top-1/3 left-10 w-60 h-60 bg-blue-200/40 rounded-full blur-2xl"></div>
+                      <div className="absolute bottom-1/4 right-1/3 w-44 h-44 border-2 border-slate-300/50 rounded-full"></div>
+                      <div className="absolute top-20 right-20 w-32 h-32 bg-orange-300/30 rounded-full"></div>
+                    </div>
+                    <div className="container mx-auto px-4 max-w-4xl relative z-10">
                       <h2 className="text-2xl md:text-3xl font-black text-brand-dark mb-6">
                         Ihre Zufriedenheit ist unser Maßstab
                       </h2>
