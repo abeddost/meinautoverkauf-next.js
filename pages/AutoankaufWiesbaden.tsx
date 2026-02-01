@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   onCtaClick: () => void;
-  onNavigate?: (page: string) => void;
 }
 
-const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick, onNavigate }) => {
+const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
@@ -314,27 +314,27 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick, onNavigate }) =>
               Wir bieten unseren Autoankauf-Service auch in anderen Städten der Region an:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => onNavigate?.('frankfurt')} className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
+              <Link to="/autoankauf-frankfurt" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
                 Autoankauf Frankfurt →
-              </button>
-              <button onClick={() => onNavigate?.('mainz')} className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
+              </Link>
+              <Link to="/autoankauf-mainz" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
                 Autoankauf Mainz →
-              </button>
+              </Link>
             </div>
             <div className="mt-8 text-center">
               <p className="text-slate-600 font-medium mb-4">
                 Weitere hilfreiche Informationen finden Sie in unserem Ratgeber:
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <button onClick={() => onNavigate?.('bewerten')} className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                <Link to="/auto-bewerten" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
                   Auto Bewerten
-                </button>
-                <button onClick={() => onNavigate?.('verkaufen')} className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                </Link>
+                <Link to="/auto-verkaufen" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
                   Auto Verkaufen Tipps
-                </button>
-                <button onClick={() => onNavigate?.('ratgeber')} className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                </Link>
+                <Link to="/ratgeber" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
                   Verkaufs-Ratgeber
-                </button>
+                </Link>
               </div>
             </div>
           </section>
