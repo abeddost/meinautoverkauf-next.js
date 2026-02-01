@@ -121,56 +121,178 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     images: []
   });
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  const [fileError, setFileError] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState('');
+
+  const isValueValid = (field: string, value: string) => {
+    if (field === 'postalCode') return value.length === 5;
+    if (field === 'images') return !fileError;
+    return Boolean(value);
+  };
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ 
-      ...prev, 
+    setFormData(prev => ({
+      ...prev,
       [name]: value,
       ...(name === 'brand' ? { model: '' } : {})
     }));
+    if (fieldErrors[name] && isValueValid(name, value)) {
+      setFieldError(name, '');
+    }
+  };
+
+  const isFieldValid = (field: string) => {
+    switch (field) {
+      case 'postalCode':
+        return !!formData.postalCode && formData.postalCode.length === 5;
+      case 'condition':
+        return !!formData.condition;
+      case 'images':
+        return !fileError;
+      case 'brand':
+      case 'model':
+      case 'year':
+      case 'power':
+      case 'bodyType':
+      case 'transmission':
+      case 'doors':
+      case 'mileage':
+      case 'fuelType':
+      case 'firstName':
+      case 'lastName':
+      case 'email':
+      case 'phone':
+        return Boolean((formData as any)[field]);
+      default:
+        return true;
+    }
+  };
+
+  const validateField = (field: string) => {
+    if (isFieldValid(field)) return '';
+    switch (field) {
+      case 'brand':
+        return 'Bitte Marke wählen.';
+      case 'model':
+        return 'Bitte Modell wählen.';
+      case 'year':
+        return 'Bitte Erstzulassung wählen.';
+      case 'power':
+        return 'Bitte Motorleistung wählen.';
+      case 'bodyType':
+        return 'Bitte Karosserieform wählen.';
+      case 'doors':
+        return 'Bitte Türenanzahl wählen.';
+      case 'transmission':
+        return 'Bitte Getriebeart wählen.';
+      case 'mileage':
+        return 'Bitte Laufleistung wählen.';
+      case 'fuelType':
+        return 'Bitte Kraftstoff wählen.';
+      case 'condition':
+        return 'Bitte Zustand auswählen.';
+      case 'postalCode':
+        return 'Bitte 5-stellige PLZ eingeben.';
+      case 'firstName':
+        return 'Bitte Vorname eingeben.';
+      case 'lastName':
+        return 'Bitte Nachname eingeben.';
+      case 'email':
+        return 'Bitte E-Mail eingeben.';
+      case 'phone':
+        return 'Bitte Handynummer eingeben.';
+      case 'images':
+        return 'Maximal 5 Bilder erlaubt.';
+      default:
+        return 'Bitte Feld ausfüllen.';
+    }
+  };
+
+  const setFieldError = (field: string, message: string) => {
+    setFieldErrors(prev => {
+      const next = { ...prev };
+      if (message) {
+        next[field] = message;
+      } else {
+        delete next[field];
+      }
+      return next;
+    });
+    if (!message && activeTooltip === field) {
+      setActiveTooltip(null);
+    }
+  };
+
+  const handleBlur = (field: string) => {
+    setFieldError(field, validateField(field));
+  };
+
+  const requiredByPage: Record<number, string[]> = {
+    1: ['brand', 'model', 'year'],
+    2: ['power', 'bodyType', 'transmission', 'doors'],
+    3: ['mileage', 'condition', 'fuelType'],
+    4: ['postalCode'],
+    5: ['firstName', 'lastName', 'email', 'phone']
   };
 
   const nextPage = () => {
-    if (currentPage === 1) {
-      if (!formData.brand || !formData.model || !formData.year) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
-        return;
-      }
+    const required = requiredByPage[currentPage] ?? [];
+    const errors: Record<string, string> = {};
+    required.forEach((field) => {
+      const message = validateField(field);
+      if (message) errors[field] = message;
+    });
+    setFieldErrors(prev => {
+      const next = { ...prev };
+      required.forEach((field) => {
+        if (errors[field]) {
+          next[field] = errors[field];
+        } else {
+          delete next[field];
+        }
+      });
+      return next;
+    });
+    if (Object.keys(errors).length > 0) {
+      return;
     }
-    if (currentPage === 2) {
-      if (!formData.power || !formData.bodyType || !formData.transmission || !formData.doors) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
-        return;
-      }
-    }
-    if (currentPage === 3) {
-      if (!formData.mileage || !formData.condition || !formData.fuelType) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
-        return;
-      }
-    }
-    if (currentPage === 4) {
-      if (!formData.postalCode || formData.postalCode.length !== 5) {
-        alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
-        return;
-      }
-    }
+    setSubmitError('');
+    setActiveTooltip(null);
     setCurrentPage(prev => (prev < 5 ? (prev + 1) as FormPage : prev));
   };
 
-  const prevPage = () => setCurrentPage(prev => (prev > 1 ? (prev - 1) as FormPage : prev));
+  const prevPage = () => {
+    setActiveTooltip(null);
+    setSubmitError('');
+    setCurrentPage(prev => (prev > 1 ? (prev - 1) as FormPage : prev));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError('');
     
     // Validate contact details and postal code before submission
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
-      alert('Bitte füllen Sie alle Pflichtfelder aus.');
-      return;
-    }
-    if (!formData.postalCode || formData.postalCode.length !== 5) {
-      alert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
+    const required = [...requiredByPage[5], 'postalCode'];
+    const errors: Record<string, string> = {};
+    required.forEach((field) => {
+      const message = validateField(field);
+      if (message) errors[field] = message;
+    });
+    setFieldErrors(prev => {
+      const next = { ...prev };
+      required.forEach((field) => {
+        if (errors[field]) {
+          next[field] = errors[field];
+        } else {
+          delete next[field];
+        }
+      });
+      return next;
+    });
+    if (Object.keys(errors).length > 0) {
       return;
     }
     
@@ -180,7 +302,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
       // Extra delay to show off the scanning animation
       setTimeout(() => onValuationComplete(formData, result), 6000);
     } catch (error: any) {
-      alert("Fehler bei der Bewertung.");
+      setSubmitError('Leider ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
       setLoading(false);
     }
   };
@@ -304,6 +426,72 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const selectClass = `${baseFieldClass} appearance-none cursor-pointer`;
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
+  const invalidFieldClass = "ring-1 ring-amber-300/60";
+
+  const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2") => {
+    if (!fieldErrors[field]) return null;
+    const errorMessage = fieldErrors[field] || message;
+    const tooltipId = `err-${field}`;
+    const isOpen = activeTooltip === field;
+    return (
+      <span className={`absolute ${positionClass} z-20`}>
+        <button
+          type="button"
+          aria-label={errorMessage}
+          aria-describedby={isOpen ? tooltipId : undefined}
+          onMouseEnter={() => setActiveTooltip(field)}
+          onMouseLeave={() => setActiveTooltip(null)}
+          onFocus={() => setActiveTooltip(field)}
+          onBlur={() => setActiveTooltip(null)}
+          onClick={() => setActiveTooltip(isOpen ? null : field)}
+          className="h-7 w-7 rounded-full text-amber-600/90 text-[16px] flex items-center justify-center bg-white/80 shadow-sm"
+        >
+          ⚠️
+        </button>
+        {isOpen && (
+          <div
+            id={tooltipId}
+            role="tooltip"
+            className="absolute right-0 mt-2 w-max max-w-[220px] rounded-xl bg-slate-900 text-white text-xs px-3 py-2 shadow-lg"
+          >
+            {errorMessage}
+          </div>
+        )}
+      </span>
+    );
+  };
+
+  const renderSubmitErrorIcon = () => {
+    if (!submitError) return null;
+    const tooltipId = 'err-submit';
+    const isOpen = activeTooltip === 'submit';
+    return (
+      <span className="relative">
+        <button
+          type="button"
+          aria-label={submitError}
+          aria-describedby={isOpen ? tooltipId : undefined}
+          onMouseEnter={() => setActiveTooltip('submit')}
+          onMouseLeave={() => setActiveTooltip(null)}
+          onFocus={() => setActiveTooltip('submit')}
+          onBlur={() => setActiveTooltip(null)}
+          onClick={() => setActiveTooltip(isOpen ? null : 'submit')}
+          className="h-7 w-7 rounded-full text-amber-600/90 text-[16px] flex items-center justify-center bg-white/80 shadow-sm"
+        >
+          ⚠️
+        </button>
+        {isOpen && (
+          <div
+            id={tooltipId}
+            role="tooltip"
+            className="absolute right-0 mt-2 w-max max-w-[240px] rounded-xl bg-slate-900 text-white text-xs px-3 py-2 shadow-lg"
+          >
+            {submitError}
+          </div>
+        )}
+      </span>
+    );
+  };
 
   return (
     <div className="relative bg-white/70 backdrop-blur-xl rounded-[1.5rem] lg:rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(15,23,42,0.45)] overflow-hidden text-brand-dark flex flex-col w-full border border-white/60">
@@ -373,105 +561,179 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
         <div className="space-y-4 lg:space-y-5">
           {currentPage === 1 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
-              <div>
+              <div className="relative">
                 <StepLabel label="Automarke" required />
-                <select name="brand" value={formData.brand} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="brand"
+                  value={formData.brand}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('brand')}
+                  required
+                  className={`${selectClass} ${fieldErrors.brand ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Bitte wählen...</option>
                   {Object.keys(BRAND_DATA).sort().map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
+                {renderErrorIcon('brand', 'Bitte Marke wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Modellreihe" required />
-                <select name="model" value={formData.model} onChange={handleSelectChange} disabled={!formData.brand} required className={selectClass}>
+                <select
+                  name="model"
+                  value={formData.model}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('model')}
+                  disabled={!formData.brand}
+                  required
+                  className={`${selectClass} ${fieldErrors.model ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">{formData.brand ? "Modell wählen..." : "Wähle zuerst die Marke"}</option>
                   {formData.brand && BRAND_DATA[formData.brand].map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
+                {renderErrorIcon('model', 'Bitte Modell wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Erstzulassung" required />
-                <select name="year" value={formData.year} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="year"
+                  value={formData.year}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('year')}
+                  required
+                  className={`${selectClass} ${fieldErrors.year ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Jahr wählen...</option>
                   {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
+                {renderErrorIcon('year', 'Bitte Erstzulassung wählen.')}
               </div>
             </div>
           )}
 
           {currentPage === 2 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
-              <div>
+              <div className="relative">
                 <StepLabel label="Motorleistung" required />
-                <select name="power" value={formData.power} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="power"
+                  value={formData.power}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('power')}
+                  required
+                  className={`${selectClass} ${fieldErrors.power ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Leistung wählen...</option>
                   {POWER_RANGES.map(p => <option key={p.val} value={p.val}>{p.label}</option>)}
                 </select>
+                {renderErrorIcon('power', 'Bitte Motorleistung wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Karosserieform" required />
-                <select name="bodyType" value={formData.bodyType} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="bodyType"
+                  value={formData.bodyType}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('bodyType')}
+                  required
+                  className={`${selectClass} ${fieldErrors.bodyType ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Karosserieform wählen...</option>
                   {BODY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
+                {renderErrorIcon('bodyType', 'Bitte Karosserieform wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Anzahl der Türen" required />
-                <select name="doors" value={formData.doors || ''} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="doors"
+                  value={formData.doors || ''}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('doors')}
+                  required
+                  className={`${selectClass} ${fieldErrors.doors ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Anzahl wählen...</option>
                   <option value="2/3">2/3 Türen</option>
                   <option value="4/5">4/5 Türen</option>
                   <option value="6/7">6/7 Türen (Van/Bus)</option>
                 </select>
+                {renderErrorIcon('doors', 'Bitte Türenanzahl wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Getriebeart" required />
-                <select name="transmission" value={formData.transmission} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="transmission"
+                  value={formData.transmission}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('transmission')}
+                  required
+                  className={`${selectClass} ${fieldErrors.transmission ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Getriebeart wählen...</option>
                   {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
+                {renderErrorIcon('transmission', 'Bitte Getriebeart wählen.')}
               </div>
             </div>
           )}
 
           {currentPage === 3 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
-              <div>
+              <div className="relative">
                 <StepLabel label="Laufleistung" required />
-                <select name="mileage" value={formData.mileage} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="mileage"
+                  value={formData.mileage}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('mileage')}
+                  required
+                  className={`${selectClass} ${fieldErrors.mileage ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Laufleistung wählen...</option>
                   {MILEAGE_OPTIONS.map(o => <option key={o.val} value={o.val}>{o.label}</option>)}
                 </select>
+                {renderErrorIcon('mileage', 'Bitte Laufleistung wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Antrieb / Kraftstoff" required />
-                <select name="fuelType" value={formData.fuelType} onChange={handleSelectChange} required className={selectClass}>
+                <select
+                  name="fuelType"
+                  value={formData.fuelType}
+                  onChange={handleSelectChange}
+                  onBlur={() => handleBlur('fuelType')}
+                  required
+                  className={`${selectClass} ${fieldErrors.fuelType ? `${invalidFieldClass} pr-10` : ''}`}
+                >
                   <option value="">Kraftstoff wählen...</option>
                   {FUELS.map(f => <option key={f} value={f}>{f}</option>)}
                 </select>
+                {renderErrorIcon('fuelType', 'Bitte Kraftstoff wählen.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Fahrzeugzustand" required />
                 <div className="grid grid-cols-2 gap-2.5 lg:gap-3">
                   {CONDITIONS.map(c => (
                     <button 
                       key={c.val}
                       type="button"
-                      onClick={() => setFormData(p => ({ ...p, condition: c.val as any }))}
+                      onClick={() => {
+                        setFieldError('condition', '');
+                        setFormData(p => ({ ...p, condition: c.val as any }));
+                      }}
                       className={`py-2.5 lg:py-3.5 rounded-xl font-bold text-xs lg:text-sm transition-all border-2 ${formData.condition === c.val ? 'bg-white border-brand-orange text-brand-orange shadow-[0_10px_20px_-14px_rgba(255,122,26,0.7)]' : 'bg-white/60 border-white/70 text-slate-500 hover:border-orange-200/70'}`}
                     >
                       {c.label.split(' (')[0]}
                     </button>
                   ))}
                 </div>
-                {!formData.condition && (
-                  <p className="text-xs text-red-400 mt-1 ml-1">Bitte wählen Sie den Zustand *</p>
-                )}
+                {renderErrorIcon('condition', 'Bitte Zustand auswählen.', 'right-2 top-2')}
               </div>
             </div>
           )}
 
           {currentPage === 4 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
-              <div>
+              <div className="relative">
                 <StepLabel label="Postleitzahl (Standort)" required />
                 <input
                   type="text"
@@ -480,12 +742,17 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={(e) => {
                     const value = e.target.value.replace(/\D/g, '').slice(0, 5);
                     setFormData(prev => ({ ...prev, postalCode: value }));
+                    if (fieldErrors.postalCode && value.length === 5) {
+                      setFieldError('postalCode', '');
+                    }
                   }}
+                  onBlur={() => handleBlur('postalCode')}
                   placeholder="z.B. 10115"
                   maxLength={5}
-                  className={inputClass}
+                  className={`${inputClass} ${fieldErrors.postalCode ? `${invalidFieldClass} pr-10` : ''}`}
                   required
                 />
+                {renderErrorIcon('postalCode', 'Bitte 5-stellige PLZ eingeben.')}
               </div>
               <div>
                 <StepLabel label="Fahrzeug-Identifizierungsnummer (FIN/VIN)" optional />
@@ -510,26 +777,32 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   className={inputClass}
                 />
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Fotos hochladen" optional />
                 <div className="space-y-2">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={(e) => {
-                      const files = Array.from(e.target.files || []);
-                      if (files.length > 5) {
-                        alert('Maximal 5 Bilder erlaubt');
-                        return;
-                      }
-                      // For now, just store file names (in production, you'd upload to Supabase Storage)
-                      const fileNames = files.map(f => f.name);
-                      setUploadedImages(fileNames);
-                      setFormData(prev => ({ ...prev, images: fileNames }));
-                    }}
-                    className={fileInputClass}
-                  />
+                  <div className="relative">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(e) => {
+                        const files = Array.from(e.target.files || []);
+                        if (files.length > 5) {
+                          setFileError(true);
+                          setFieldError('images', 'Maximal 5 Bilder erlaubt.');
+                          return;
+                        }
+                        setFileError(false);
+                        setFieldError('images', '');
+                        // For now, just store file names (in production, you'd upload to Supabase Storage)
+                        const fileNames = files.map(f => f.name);
+                        setUploadedImages(fileNames);
+                        setFormData(prev => ({ ...prev, images: fileNames }));
+                      }}
+                      className={`${fileInputClass} ${fieldErrors.images ? `${invalidFieldClass} pr-10` : ''}`}
+                    />
+                    {renderErrorIcon('images', 'Maximal 5 Bilder erlaubt.')}
+                  </div>
                   {uploadedImages.length > 0 && (
                     <div className="text-xs text-slate-500 font-medium">
                       {uploadedImages.length} Bild(er) ausgewählt: {uploadedImages.join(', ')}
@@ -544,54 +817,62 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           {currentPage === 5 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
-                <div>
+                <div className="relative">
                   <StepLabel label="Vorname" required />
                   <input
                     type="text"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleSelectChange}
+                    onBlur={() => handleBlur('firstName')}
                     placeholder="Vorname"
-                    className={inputClass}
+                    className={`${inputClass} ${fieldErrors.firstName ? `${invalidFieldClass} pr-10` : ''}`}
                     required
                   />
+                  {renderErrorIcon('firstName', 'Bitte Vorname eingeben.')}
                 </div>
-                <div>
+                <div className="relative">
                   <StepLabel label="Nachname" required />
                   <input
                     type="text"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleSelectChange}
+                    onBlur={() => handleBlur('lastName')}
                     placeholder="Nachname"
-                    className={inputClass}
+                    className={`${inputClass} ${fieldErrors.lastName ? `${invalidFieldClass} pr-10` : ''}`}
                     required
                   />
+                  {renderErrorIcon('lastName', 'Bitte Nachname eingeben.')}
                 </div>
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Deine E-Mail-Adresse" required />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleSelectChange}
+                  onBlur={() => handleBlur('email')}
                   placeholder="z.B. max@beispiel.de"
-                  className={inputClass}
+                  className={`${inputClass} ${fieldErrors.email ? `${invalidFieldClass} pr-10` : ''}`}
                   required
                 />
+                {renderErrorIcon('email', 'Bitte E-Mail eingeben.')}
               </div>
-              <div>
+              <div className="relative">
                 <StepLabel label="Deine Handynummer" required />
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleSelectChange}
+                  onBlur={() => handleBlur('phone')}
                   placeholder="z.B. 0176 12345678"
-                  className={inputClass}
+                  className={`${inputClass} ${fieldErrors.phone ? `${invalidFieldClass} pr-10` : ''}`}
                   required
                 />
+                {renderErrorIcon('phone', 'Bitte Handynummer eingeben.')}
               </div>
               <div>
                 <StepLabel label="Dein Wunschpreis (€)" optional />
@@ -628,6 +909,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
               </span>
             </span>
           </button>
+          {submitError && (
+            <div className="flex justify-end pr-1">
+              {renderSubmitErrorIcon()}
+            </div>
+          )}
           
           {currentPage > 1 && (
             <button 

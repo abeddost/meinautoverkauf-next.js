@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
@@ -96,11 +96,11 @@ const AppContent: React.FC = () => {
     setCurrentStep(AppStep.RESULTS);
   };
 
-  const resetApp = () => {
+  const resetApp = useCallback(() => {
     setCurrentStep(AppStep.VALUATION_FORM);
     setCarDetails(null);
     setValuation(null);
-  };
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
