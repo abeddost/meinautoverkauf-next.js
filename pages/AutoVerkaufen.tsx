@@ -51,7 +51,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto">
+        <div id="content" className="max-w-4xl mx-auto">
           <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
             Der Verkauf eines Autos kann eine stressige Angelegenheit sein – nervige Anrufe, unzuverlässige Käufer und endlose Preisverhandlungen. Wir zeigen Ihnen, wie Sie Ihr <strong>Auto verkaufen online</strong> können, ohne Kopfschmerzen und zum fairen Preis.
           </p>

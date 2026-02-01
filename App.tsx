@@ -19,11 +19,20 @@ import AutoankaufWiesbadenPage from './pages/AutoankaufWiesbaden';
 import AutoankaufMainzPage from './pages/AutoankaufMainz';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
-// Scroll to top on route change
+// Scroll: home → hero (top); other pages → main content (below hero)
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (pathname === '/') {
+      window.scrollTo(0, 0);
+    } else {
+      const timer = setTimeout(() => {
+        const el = document.getElementById('content');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        else window.scrollTo(0, window.innerHeight);
+      }, 80);
+      return () => clearTimeout(timer);
+    }
   }, [pathname]);
   return null;
 };

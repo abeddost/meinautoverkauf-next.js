@@ -22,7 +22,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Quick Tips Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <section id="content" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {[
             {
               title: "Werterhalt durch richtige Pflege",

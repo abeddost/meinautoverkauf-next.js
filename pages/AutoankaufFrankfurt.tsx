@@ -51,7 +51,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto">
+        <div id="content" className="max-w-4xl mx-auto">
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Frankfurt – Ihr lokaler Experte für Gebrauchtwagenankauf</h2>
             <p className="font-medium leading-relaxed">

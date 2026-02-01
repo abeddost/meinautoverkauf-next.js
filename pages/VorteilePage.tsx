@@ -23,7 +23,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Main Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 scale-[0.85] origin-top">
+        <div id="content" className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 scale-[0.85] origin-top">
           {/* Security & Trust */}
           <div className="p-10 bg-brand-dark bg-gradient-to-br from-brand-dark to-slate-800 text-white rounded-[3rem] shadow-2xl relative overflow-hidden group border border-slate-800/40">
             <div className="relative z-10">
