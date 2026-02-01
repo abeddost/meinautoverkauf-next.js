@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
 
 interface Props {
@@ -30,7 +31,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               Sie möchten Ihr <strong>Auto verkaufen</strong> und suchen nach einer stressfreien Lösung? Wir kaufen dein Auto – egal ob <strong>Gebrauchtwagen verkaufen</strong>, <strong>Auto mit Motorschaden verkaufen</strong> oder <strong>defektes Auto verkaufen</strong>. Bei Meinautoverkauf.de profitieren Sie von einem innovativen Service, der den gesamten Verkaufsprozess vereinfacht.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
-              Ob Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, ein <strong>Auto für Export verkaufen</strong> wollen oder einen marktgerechten Preis anstreben – wir bieten Ihnen eine faire KI-gestützte Bewertung und einen reibungslosen Ablauf.
+              Ob Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, ein <strong>Auto für Export verkaufen</strong> wollen oder einen marktgerechten Preis anstreben – wir bieten Ihnen eine faire <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link> und einen reibungslosen Ablauf.
             </p>
             <div className="flex flex-wrap gap-3 mt-8 justify-start">
               <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full">
@@ -82,7 +83,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               Der Händlerankauf, wie wir ihn bei Meinautoverkauf.de anbieten, ist auf Geschwindigkeit und Sicherheit optimiert. "Wir kaufen dein Auto" bedeutet bei uns:
             </p>
             <ul className="list-disc pl-6 space-y-3 font-medium">
-              <li><strong>Sofortiges Angebot:</strong> In 2 Minuten erhalten Sie eine verbindliche KI-gestützte Bewertung.</li>
+              <li><strong>Sofortiges Angebot:</strong> In 2 Minuten erhalten Sie eine verbindliche <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link>.</li>
               <li><strong>Keine Haftung:</strong> Sie verkaufen "wie gesehen" ohne spätere Reklamationen.</li>
               <li><strong>Sichere Zahlung:</strong> Geld per Banküberweisung, oft am selben Tag.</li>
               <li><strong>Kostenlose Abmeldung:</strong> Wir kümmern uns um alle Formalitäten.</li>
@@ -212,7 +213,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">1</div>
                 <h4 className="font-black text-lg text-brand-dark">Online bewerten</h4>
-                <p className="text-sm text-slate-600 font-medium leading-relaxed">Geben Sie Fahrzeugdaten ein und erhalten Sie sofort eine KI-gestützte Bewertung – kostenlos und unverbindlich.</p>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">Geben Sie Fahrzeugdaten ein und erhalten Sie sofort eine <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link> – kostenlos und unverbindlich.</p>
               </div>
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">2</div>
@@ -323,11 +324,20 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               Ob Sie Ihr <strong>Auto verkaufen online</strong> möchten, einen <strong>Gebrauchtwagen verkaufen</strong>, ein <strong>defektes Auto verkaufen</strong> oder sogar ein <strong>Auto mit Motorschaden verkaufen</strong> wollen – bei Meinautoverkauf.de sind Sie richtig. Wir bieten Ihnen eine schnelle, transparente und faire Lösung.
             </p>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              "Wir kaufen dein Auto" bedeutet bei uns: Transparente KI-gestützte Bewertung, keine versteckten Kosten und eine schnelle Auszahlung. Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong> müssen oder ein <strong>Auto für Export verkaufen</strong> möchten – wir finden eine passende Lösung.
+              "Wir kaufen dein Auto" bedeutet bei uns: Transparente <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link>, keine versteckten Kosten und eine schnelle Auszahlung. Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong> müssen oder ein <strong>Auto für Export verkaufen</strong> möchten – wir finden eine passende Lösung.
             </p>
-            <p className="text-slate-700 font-medium leading-relaxed">
+            <p className="text-slate-700 font-medium leading-relaxed mb-6">
               Starten Sie jetzt Ihre kostenlose Bewertung und erfahren Sie, was Ihr Fahrzeug wirklich wert ist. In nur 2 Minuten zum fairen Angebot – unverbindlich und ohne Risiko.
             </p>
+            <div className="flex flex-wrap gap-3 justify-center pt-6 border-t border-slate-200">
+              <Link to="/auto-bewerten" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Kostenlos bewerten</Link>
+              <Link to="/vorteile" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Ihre Vorteile</Link>
+              <Link to="/ratgeber" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Verkaufs-Ratgeber</Link>
+              <span className="text-slate-400 text-sm font-medium py-2">Standorte:</span>
+              <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Frankfurt</Link>
+              <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Wiesbaden</Link>
+              <Link to="/autoankauf-mainz" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Mainz</Link>
+            </div>
           </section>
         </div>
       </div>

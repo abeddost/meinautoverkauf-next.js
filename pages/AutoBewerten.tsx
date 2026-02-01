@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
 
 interface Props {
@@ -43,7 +44,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           />
           <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Auto bewerten lassen – warum ist das so wichtig?</h2>
           <p className="font-medium leading-relaxed">
-            Bevor Sie Ihr Auto verkaufen, sollten Sie den aktuellen Marktwert kennen. Ein zu hoher Preis schreckt Käufer ab, ein zu niedriger Preis kostet Sie bares Geld. Wenn Sie Ihr <strong>Auto bewerten</strong> lassen möchten, stehen Ihnen verschiedene Wege offen – von klassischen Gutachtern bis hin zu modernen Online-Tools. Bei Meinautoverkauf.de kombinieren wir jahrelange Expertise mit künstlicher Intelligenz, um Ihnen eine verlässliche Einschätzung zu liefern.
+            Bevor Sie Ihr <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">Auto verkaufen</Link>, sollten Sie den aktuellen Marktwert kennen. Ein zu hoher Preis schreckt Käufer ab, ein zu niedriger Preis kostet Sie bares Geld. Wenn Sie Ihr <strong>Auto bewerten</strong> lassen möchten, stehen Ihnen verschiedene Wege offen – von klassischen Gutachtern bis hin zu modernen Online-Tools. Bei Meinautoverkauf.de kombinieren wir jahrelange Expertise mit künstlicher Intelligenz, um Ihnen eine verlässliche Einschätzung zu liefern.
           </p>
           <p className="font-medium leading-relaxed">
             Die Frage "<strong>Was ist mein Auto wert?</strong>" lässt sich nicht pauschal beantworten. Der Wert eines Fahrzeugs hängt von zahlreichen Faktoren ab – von der Laufleistung über den Zustand bis hin zu regionalen Markttrends. Unsere KI-basierte Bewertung berücksichtigt all diese Aspekte und gibt Ihnen einen realistischen Preiskorridor, der dem tatsächlichen Marktwert entspricht.
@@ -81,7 +82,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
 
           <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">6. Regionale Markttrends</h3>
           <p className="font-medium leading-relaxed">
-            Der Standort spielt eine Rolle. In städtischen Ballungsräumen sind Kleinwagen und kompakte SUVs gefragter, während auf dem Land größere Fahrzeuge oder Geländewagen beliebter sind. Auch regionale Preisunterschiede existieren: In wirtschaftlich starken Regionen wie München oder Hamburg erzielen Fahrzeuge oft höhere Preise als in strukturschwächeren Gebieten.
+            Der Standort spielt eine Rolle. In städtischen Ballungsräumen sind Kleinwagen und kompakte SUVs gefragter, während auf dem Land größere Fahrzeuge oder Geländewagen beliebter sind. Auch regionale Preisunterschiede existieren: In wirtschaftlich starken Regionen wie München oder Hamburg erzielen Fahrzeuge oft höhere Preise als in strukturschwächeren Gebieten. Im Rhein-Main-Gebiet bieten wir direkten <Link to="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Autoankauf Frankfurt</Link>, <Link to="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Autoankauf Wiesbaden</Link> und <Link to="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Autoankauf Mainz</Link> an.
           </p>
 
           <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-12 mb-6">Traditionelle Bewertung vs. KI-gestützte Autobewertung</h2>
@@ -246,11 +247,16 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             Die Frage "<strong>Was ist mein Auto wert?</strong>" oder "<strong>Wie viel ist mein Auto wert?</strong>" lässt sich heute dank moderner Technologie schnell und präzise beantworten. Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine transparente, faire Einschätzung – ganz ohne Verpflichtungen.
           </p>
           <p className="text-slate-700 font-medium leading-relaxed mb-4">
-            Egal ob Sie Ihr <strong>Auto bewerten</strong> lassen möchten, um es zu verkaufen, oder einfach nur neugierig sind – unser Service steht Ihnen jederzeit zur Verfügung. Wir kombinieren jahrelange Branchenerfahrung mit modernster künstlicher Intelligenz, um Ihnen den bestmöglichen Service zu bieten.
+            Egal ob Sie Ihr <strong>Auto bewerten</strong> lassen möchten, um es zu <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">verkaufen</Link>, oder einfach nur neugierig sind – unser Service steht Ihnen jederzeit zur Verfügung. Wir kombinieren jahrelange Branchenerfahrung mit modernster künstlicher Intelligenz, um Ihnen den bestmöglichen Service zu bieten.
           </p>
-          <p className="text-slate-700 font-medium leading-relaxed">
+          <p className="text-slate-700 font-medium leading-relaxed mb-6">
             Starten Sie jetzt Ihre kostenlose Bewertung und erfahren Sie, was Ihr Fahrzeug wirklich wert ist. Fair, transparent und in nur 2 Minuten.
           </p>
+          <div className="flex flex-wrap gap-3 justify-center pt-4 border-t border-slate-200">
+            <Link to="/auto-verkaufen" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Auto verkaufen</Link>
+            <Link to="/vorteile" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Ihre Vorteile</Link>
+            <Link to="/ratgeber" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Verkaufs-Ratgeber</Link>
+          </div>
         </section>
       </div>
     </div>

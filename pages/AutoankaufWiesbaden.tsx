@@ -330,7 +330,10 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
                   Auto Bewerten
                 </Link>
                 <Link to="/auto-verkaufen" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
-                  Auto Verkaufen Tipps
+                  Auto Verkaufen
+                </Link>
+                <Link to="/vorteile" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                  Ihre Vorteile
                 </Link>
                 <Link to="/ratgeber" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
                   Verkaufs-Ratgeber

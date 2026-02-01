@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -124,7 +124,7 @@ const AppContent: React.FC = () => {
                   <section id="vorteile" className="py-20 bg-white border-b border-slate-100">
                     <div className="container mx-auto px-4">
                       <h2 className="text-2xl md:text-3xl font-black text-center text-brand-dark mb-12">
-                        Auto verkaufen online: Die Vorteile auf einen Blick
+                        Auto verkaufen online: <Link to="/vorteile" className="text-brand-orange hover:underline">Die Vorteile</Link> auf einen Blick
                       </h2>
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
@@ -213,8 +213,7 @@ const AppContent: React.FC = () => {
                           </p>
                           <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
                             <p className="text-slate-600 leading-relaxed font-semibold">
-                              Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von Frankfurt bis Köln
-                              und darüber hinaus. Egal ob Sie in Wiesbaden, Stuttgart oder Dresden wohnen: Unser Service ist überall verfügbar.
+                              Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von <Link to="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Frankfurt</Link> über <Link to="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Wiesbaden</Link> und <Link to="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Mainz</Link> bis Köln und darüber hinaus. Unser Service ist überall verfügbar.
                             </p>
                           </div>
                         </div>
@@ -346,8 +345,8 @@ const AppContent: React.FC = () => {
                         Minuten, was Ihr Fahrzeug wert ist. Unverbindlich, schnell und präzise. Der erste Schritt zu Ihrem stressfreien Autoverkauf ist nur einen Klick entfernt.
                       </p>
                       <p className="text-slate-600 leading-relaxed font-medium mb-6">
-                        Egal ob Sie Ihren Gebrauchtwagen verkaufen, ein Fahrzeug mit Motorschaden loswerden oder einen PKW für den Export anbieten möchten –
-                        wir sind Ihr zuverlässiger Partner für den Autoankauf in ganz Deutschland.
+                        Egal ob Sie Ihren <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">Gebrauchtwagen verkaufen</Link>, ein Fahrzeug mit Motorschaden loswerden oder einen PKW für den Export anbieten möchten –
+                        wir sind Ihr zuverlässiger Partner für den Autoankauf in ganz Deutschland. Mehr über unsere <Link to="/vorteile" className="text-brand-orange font-bold hover:underline">Vorteile</Link> und den <Link to="/ratgeber" className="text-brand-orange font-bold hover:underline">Verkaufs-Ratgeber</Link>.
                       </p>
                       <a href="#bewerten" className="inline-flex items-center gap-2 text-sm font-bold text-white bg-gradient-to-r from-[#ff9a3c] to-[#ff7a1a] px-5 py-2.5 rounded-full shadow-lg shadow-orange-200/60 hover:brightness-105 transition">
                         Jetzt Auto verkaufen – Stressfrei und fair!

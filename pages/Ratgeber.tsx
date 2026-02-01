@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   onCtaClick: () => void;
@@ -64,7 +65,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Werterhalt: So maximieren Sie den Preis beim Verkauf Gebrauchtwagen</h2>
             <p className="font-medium leading-relaxed">
-              Der Wert eines Gebrauchtwagens hängt maßgeblich davon ab, wie gut er gepflegt wurde. Wenn Sie in ein paar Jahren Ihren <strong>Verkauf Gebrauchtwagen</strong> planen, sollten Sie schon heute auf diese Faktoren achten:
+              Der Wert eines Gebrauchtwagens hängt maßgeblich davon ab, wie gut er gepflegt wurde. Wenn Sie in ein paar Jahren Ihren <strong>Verkauf Gebrauchtwagen</strong> planen, sollten Sie schon heute auf diese Faktoren achten. Mit unserer <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlosen Bewertung</Link> erfahren Sie den aktuellen Marktwert.
             </p>
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">1. Regelmäßige Wartung und lückenloses Scheckheft</h3>
@@ -140,7 +141,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Motorschaden Auto verkaufen – Ihre Optionen</h2>
             <p className="font-medium leading-relaxed">
-              Viele Autobesitzer glauben, ein <strong>motorschaden auto verkaufen</strong> sei unmöglich oder nicht lohnenswert. Das stimmt nicht! Auch Fahrzeuge mit schweren Defekten haben einen Restwert:
+              Viele Autobesitzer glauben, ein <strong>motorschaden auto verkaufen</strong> sei unmöglich oder nicht lohnenswert. Das stimmt nicht! Auch Fahrzeuge mit schweren Defekten haben einen Restwert. Erfahren Sie mehr über den <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">Verkaufsprozess</Link> und unsere faire Bewertung.
             </p>
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Wert trotz Motorschaden</h3>
@@ -366,9 +367,18 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
               Werterhalt beginnt beim Kauf: Pflegen Sie Ihr Fahrzeug von Anfang an, dokumentieren Sie alle Wartungen und seien Sie beim Verkauf transparent über alle Mängel. Das schafft Vertrauen und maximiert den Preis.
             </p>
-            <p className="text-slate-700 font-medium leading-relaxed">
-              Wenn Sie Unterstützung beim Verkauf benötigen oder einfach einen fairen Preis ohne Aufwand möchten – wir sind für Sie da. Starten Sie jetzt Ihre kostenlose Bewertung!
+            <p className="text-slate-700 font-medium leading-relaxed mb-6">
+              Wenn Sie Unterstützung beim Verkauf benötigen oder einfach einen fairen Preis ohne Aufwand möchten – wir sind für Sie da. Starten Sie jetzt Ihre <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlose Bewertung</Link> oder erfahren Sie mehr über unsere <Link to="/vorteile" className="text-brand-orange font-bold hover:underline">Vorteile beim Autoankauf</Link>.
             </p>
+            <div className="flex flex-wrap gap-3 justify-center pt-6 border-t border-slate-200">
+              <Link to="/auto-bewerten" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Kostenlos bewerten</Link>
+              <Link to="/auto-verkaufen" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Auto verkaufen</Link>
+              <Link to="/vorteile" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Ihre Vorteile</Link>
+              <span className="text-slate-400 text-sm font-medium py-2">Standorte:</span>
+              <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Frankfurt</Link>
+              <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Wiesbaden</Link>
+              <Link to="/autoankauf-mainz" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Mainz</Link>
+            </div>
           </section>
         </div>
       </div>

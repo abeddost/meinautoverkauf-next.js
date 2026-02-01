@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
 
 interface Props {
@@ -95,7 +96,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">KI-gestützte faire Preisermittlung</h2>
             <p className="font-medium leading-relaxed">
-              Beim <strong>Auto Ankauf</strong> ist der Preis entscheidend. Wir setzen auf modernste künstliche Intelligenz, die kontinuierlich tausende Transaktionen analysiert. Unsere Algorithmen bewerten nicht nur den aktuellen Zustand Ihres Fahrzeugs, sondern auch Marktdynamik, regionale Nachfrage und saisonale Trends. Das Ergebnis: Sie erhalten einen fairen, marktgerechten Preis – oft höher als bei lokalen Händlern, die nur ihr eigenes Inventar im Blick haben.
+              Beim <strong>Auto Ankauf</strong> ist der Preis entscheidend. Wir setzen auf modernste künstliche Intelligenz, die kontinuierlich tausende Transaktionen analysiert. Mit unserer <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlosen Bewertung</Link> erhalten Sie in 2 Minuten einen fairen Preis. Unsere Algorithmen bewerten nicht nur den aktuellen Zustand Ihres Fahrzeugs, sondern auch Marktdynamik, regionale Nachfrage und saisonale Trends. Das Ergebnis: Sie erhalten einen fairen, marktgerechten Preis – oft höher als bei lokalen Händlern, die nur ihr eigenes Inventar im Blick haben.
             </p>
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Transparente Bewertung ohne versteckte Kosten</h3>
@@ -110,7 +111,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Deutschlandweite Abholung</h3>
             <p className="font-medium leading-relaxed">
-              Egal ob Sie in München, Berlin, Hamburg, Frankfurt, Köln, Stuttgart oder einer kleineren Stadt wohnen – unser Service ist überall verfügbar. Wir haben ein deutschlandweites Netzwerk und können Ihr Fahrzeug flexibel abholen.
+              Egal ob Sie in München, Berlin, Hamburg, <Link to="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Frankfurt</Link>, <Link to="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Wiesbaden</Link>, <Link to="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Mainz</Link>, Köln, Stuttgart oder einer kleineren Stadt wohnen – unser Service ist überall verfügbar. Wir haben ein deutschlandweites Netzwerk und können Ihr Fahrzeug flexibel abholen.
             </p>
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Sofortige Auszahlung – Auto verkaufen sofort Geld</h2>
@@ -304,8 +305,8 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
               Ob <strong>Auto verkaufen schnell</strong>, <strong>Auto verkaufen ohne Risiko</strong>, <strong>Autoankauf mit Abholung</strong>, <strong>Auto verkaufen sofort Geld</strong>, <strong>Auto verkaufen ohne Papierkram</strong> oder <strong>Autoankauf ohne versteckte Kosten</strong> – wir erfüllen all diese Anforderungen und noch mehr.
             </p>
-            <p className="text-slate-700 font-medium leading-relaxed">
-              Starten Sie jetzt Ihre kostenlose Bewertung und überzeugen Sie sich selbst von unseren Vorteilen. Tausende zufriedene Kunden können nicht irren!
+            <p className="text-slate-700 font-medium leading-relaxed mb-6">
+              Starten Sie jetzt Ihre <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlose Bewertung</Link> und überzeugen Sie sich selbst von unseren Vorteilen. Erfahren Sie mehr über den <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">Verkaufsprozess</Link> oder nutzen Sie unseren <Link to="/ratgeber" className="text-brand-orange font-bold hover:underline">Verkaufs-Ratgeber</Link> für Tipps.
             </p>
           </section>
         </div>
