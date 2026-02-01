@@ -465,8 +465,8 @@ const AppContent: React.FC = () => {
           <Route path="/autoankauf-frankfurt" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Autoankauf Frankfurt | Auto verkaufen in Frankfurt am Main" 
-                description="Sicherer Autoankauf in Frankfurt ✓ Wir kaufen Ihren PKW in FFM ✓ Kostenlose Abholung ✓ Sofort Bargeld ✓ Alle Stadtteile."
+                title="Autoankauf Frankfurt | Alle Stadtteile | Sofort-Auszahlung | Fair" 
+                description="Autoankauf Frankfurt ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Auch Diesel & Umweltzone ✓ Business-Service für Frankfurter."
                 canonicalUrl="/autoankauf-frankfurt"
               />
               <Hero 
