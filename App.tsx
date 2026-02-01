@@ -484,8 +484,8 @@ const AppContent: React.FC = () => {
           <Route path="/autoankauf-wiesbaden" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Autoankauf Wiesbaden | Ihr Partner in der Landeshauptstadt" 
-                description="Auto verkaufen in Wiesbaden ✓ Seriöser PKW-Ankauf ✓ Kostenlose Wertermittlung ✓ Abholung vor Ort ✓ Sicher & Transparent."
+                title="Autoankauf Wiesbaden | Auto verkaufen sofort | Kostenlose Abholung" 
+                description="Autoankauf Wiesbaden ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Motorschaden & Unfallwagen ✓ Faire Preise in der Kurstadt."
                 canonicalUrl="/autoankauf-wiesbaden"
               />
               <Hero 

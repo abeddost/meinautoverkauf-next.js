@@ -7,20 +7,41 @@ interface Props {
 
 const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
-    <div className="bg-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
+    <div className="bg-white relative overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-[30%] -left-32 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 bg-slate-200/40 rounded-full blur-3xl"></div>
+        <img
+          src="/elements/kurhaus-wiesbaden.png"
+          alt=""
+          className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.04] pointer-events-none"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+        <img
+          src="/elements/auto-ankauf-wiesbaden.png"
+          alt=""
+          className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.06] pointer-events-none"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
-            Autoankauf Wiesbaden – Ihr zuverlässiger Partner in der Kurstadt
+        <div className="max-w-4xl mx-auto mb-16 relative">
+          <div className="absolute -top-10 -left-10 w-20 h-20 bg-brand-orange/10 rounded-full blur-2xl"></div>
+          <h1 className="text-3xl lg:text-5xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+            Autoankauf Wiesbaden – Schnell, sicher & fair in der Landeshauptstadt
           </h1>
           
           <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
-            Sie möchten Ihr Auto in <strong>Wiesbaden</strong> verkaufen? Wir sind Ihr kompetenter Ansprechpartner für den <strong>Autoankauf Wiesbaden</strong> – von der Kurstadt bis Mainz-Kastel, vom Nerotal bis Biebrich. Egal ob gepflegter Gebrauchtwagen, Luxusfahrzeug oder Auto mit Motorschaden – bei uns erhalten Sie faire Preise und professionellen Service in der hessischen Landeshauptstadt.
+            Sie möchten Ihr <strong>Auto in Wiesbaden verkaufen</strong>? Als erfahrener Partner für <strong>Autoankauf Wiesbaden</strong> bieten wir Ihnen einen komfortablen Service direkt vor Ihrer Haustür – ob am Kurhaus, in Biebrich am Rhein, in Dotzheim oder Mainz-Kastel. Keine Fahrten nach Frankfurt nötig: Wir kommen zu Ihnen, bewerten Ihr Fahrzeug fair und zahlen sofort aus. Egal ob gepflegter Gebrauchtwagen, Luxusfahrzeug, <strong>Motorschaden Ankauf Wiesbaden</strong> oder <strong>Unfallwagen Ankauf Wiesbaden</strong> – bei uns sind Sie richtig.
           </p>
 
-          <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-100 rounded-3xl p-8 mb-12">
-            <h2 className="text-xl font-black text-brand-dark mb-4">✓ Ihre Vorteile beim Autoankauf Wiesbaden:</h2>
+          <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-100 rounded-3xl p-8 mb-12 relative overflow-hidden">
+            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-brand-orange/10 rounded-full blur-2xl"></div>
+            <h2 className="text-xl font-black text-brand-dark mb-4 relative z-10">✓ Ihre Vorteile beim Autoankauf Wiesbaden:</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700 font-medium">
               <li className="flex items-start gap-2">
                 <span className="text-brand-orange font-black">→</span>
@@ -51,15 +72,27 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Main Content */}
-        <div id="content" className="max-w-4xl mx-auto">
+        <div id="content" className="max-w-4xl mx-auto relative">
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Wiesbaden – Lokaler Service in der Landeshauptstadt</h2>
-            <p className="font-medium leading-relaxed">
-              Wiesbaden, die hessische Landeshauptstadt und weltbekannte Kurstadt, ist mit rund 280.000 Einwohnern eine der wohlhabendsten Städte Deutschlands. Der <strong>Autoankauf Wiesbaden</strong> Markt zeichnet sich durch eine hohe Nachfrage nach Premiumfahrzeugen und gepflegten Gebrauchtwagen aus. Ob Sie in der Innenstadt, Biebrich, Dotzheim, Mainz-Kastel oder Erbenheim wohnen – unser Service ist überall verfügbar.
-            </p>
+            <div className="relative">
+              <img
+                src="/elements/neroberg-wiesbaden.png"
+                alt=""
+                className="absolute -top-4 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.07] pointer-events-none"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+              <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Wiesbaden – Unser Service vor Ort</h2>
+              <p className="font-medium leading-relaxed relative z-10">
+                Wiesbaden, die hessische Landeshauptstadt und weltberühmte Kurstadt mit ihren heißen Quellen, dem prachtvollen Kurhaus und der wilhelminischen Architektur, ist mit rund 280.000 Einwohnern eine der wohlhabendsten Städte Deutschlands. Als wichtiger Standort für Versicherungen, Medien und Dienstleister sowie als Pendlerstadt ins Rhein-Main-Gebiet spiegelt sich die Vielfalt auch im Automarkt wider.
+              </p>
+              <p className="font-medium leading-relaxed relative z-10">
+                Beim <strong>Autoankauf Wiesbaden</strong> profitieren Sie von unserem lokalen Service: Wir kennen den Wiesbadener Markt, die Nachfrage nach bestimmten Fahrzeugtypen und die Besonderheiten der Region. Ob Sie in der Innenstadt nahe Wilhelmstraße und Schlossplatz wohnen, in Biebrich am Rhein mit Blick auf das barocke Schloss, im grünen Dotzheim, am Neroberg mit seiner Zahnradbahn, in Schierstein direkt am Rheinufer oder in Mainz-Kastel und Mainz-Kostheim auf der "rechten Rheinseite" – unser Service ist überall verfügbar. <strong>Auto verkaufen Wiesbaden</strong> war noch nie so einfach!
+              </p>
+            </div>
 
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8">
-              <h3 className="text-xl font-black text-brand-dark mb-4">Unser Autoankauf in Wiesbaden und Umgebung:</h3>
+            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 my-8 relative overflow-hidden">
+              <div className="absolute -left-6 -top-6 w-24 h-24 bg-blue-100/50 rounded-full blur-xl"></div>
+              <h3 className="text-xl font-black text-brand-dark mb-4 relative z-10">Kostenlose Abholung in ganz Wiesbaden und Umgebung:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <h4 className="font-bold text-brand-orange mb-2">Wiesbaden Stadtteile:</h4>
@@ -86,7 +119,10 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">So läuft der Autoankauf Wiesbaden ab – Einfach & transparent</h2>
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen in Wiesbaden: So einfach geht's</h2>
+            <p className="font-medium leading-relaxed mb-6">
+              <strong>Auto verkaufen Wiesbaden sofort</strong> – das ist unser Versprechen. Während ein Privatverkauf Wochen dauern kann, ist bei uns der gesamte Prozess in 1-2 Tagen abgeschlossen. Hier die drei einfachen Schritte:
+            </p>
             
             <div className="space-y-6">
               <div className="flex gap-6 items-start">
@@ -120,9 +156,9 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Diese Fahrzeuge kaufen wir in Wiesbaden an</h2>
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Welche Fahrzeuge kaufen wir in Wiesbaden an?</h2>
             <p className="font-medium leading-relaxed">
-              Beim <strong>Autoankauf Wiesbaden</strong> sind wir auf alle Fahrzeugklassen und Marken spezialisiert:
+              Beim <strong>Autoankauf Wiesbaden</strong> sind wir auf alle Fahrzeugklassen und Marken spezialisiert. Von der Luxuslimousine bis zum Kleinwagen, vom Neuwagen bis zum Oldtimer – wir kaufen alles:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
@@ -156,73 +192,89 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
                 </ul>
               </div>
 
-              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors">
-                <h3 className="text-lg font-black text-brand-dark mb-4">Auch bei Schäden:</h3>
-                <ul className="space-y-2 text-slate-600 font-medium">
+              <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-brand-orange/30 transition-colors relative overflow-hidden">
+                <div className="absolute -top-6 -right-6 w-16 h-16 bg-orange-50 rounded-full blur-xl"></div>
+                <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">Auch bei Schäden:</h3>
+                <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span>Motorschaden & Getriebeschaden</span>
+                    <span><strong>Motorschaden Ankauf Wiesbaden</strong> – Reparatur lohnt sich nicht? Wir zahlen den Restwert!</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span>Unfallwagen (repariert oder unrepariert)</span>
+                    <span><strong>Unfallwagen Ankauf Wiesbaden</strong> – Repariert oder unrepariert, wir kaufen beides</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span>Fahrzeuge ohne TÜV oder HU</span>
+                    <span>Fahrzeuge ohne TÜV oder HU – Auch ohne gültige Hauptuntersuchung</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span>Hagelschaden & Rostschäden</span>
+                    <span>Getriebeschaden – Automatik oder Schaltgetriebe defekt</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span>Alte Fahrzeuge mit hoher Laufleistung</span>
+                    <span>Alte Fahrzeuge mit hoher Laufleistung – 200.000+ km kein Problem</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span>Exportfahrzeuge & Liebhaberfahrzeuge</span>
+                    <span>Exportfahrzeuge & Liebhaberfahrzeuge – Für den internationalen Markt</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Warum Autoankauf Wiesbaden mit uns?</h2>
-            <p className="font-medium leading-relaxed">
-              Wiesbaden ist nicht nur Kurstadt und Landeshauptstadt, sondern auch ein wichtiger Wirtschaftsstandort mit zahlreichen Versicherungen, Dienstleistern und Pendlern nach Frankfurt, Mainz und ins Rhein-Main-Gebiet. Diese Vielfalt spiegelt sich im Automarkt wider.
-            </p>
-
-            <p className="font-medium leading-relaxed mt-4">
-              Unsere Erfahrung im <strong>Autoankauf Wiesbaden</strong> zeigt: Luxusfahrzeuge, Cabrios und SUVs sind besonders gefragt. Aber auch praktische Familienautos, Kleinwagen und Kombi-Modelle finden dankbare Abnehmer. Die Nähe zu Frankfurt sorgt für starke Nachfrage und faire Preise.
-            </p>
-
-            <div className="bg-orange-50 border-l-4 border-brand-orange p-6 rounded-r-2xl my-8">
-              <p className="font-bold text-brand-dark mb-2">💡 Wiesbaden-Tipp:</p>
-              <p className="text-slate-700 font-medium">
-                Wiesbaden hat eine der höchsten Dichten an Premium-Fahrzeugen in Deutschland. Wenn Sie einen Mercedes, BMW oder Audi verkaufen möchten, sind Sie hier besonders gut aufgehoben – die Nachfrage ist enorm!
+            <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Was macht uns beim Autoankauf in Wiesbaden besonders?</h2>
+            
+            <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-3xl p-8 my-8 relative overflow-hidden">
+              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-200/20 rounded-full blur-3xl"></div>
+              <h3 className="text-lg font-black text-brand-dark mb-4 relative z-10">🏛️ Lokale Expertise für Wiesbaden</h3>
+              <p className="text-slate-700 font-medium leading-relaxed relative z-10">
+                Als etablierter Partner für <strong>Gebrauchtwagen Ankauf Wiesbaden</strong> kennen wir den lokalen Markt genau. Wiesbaden hat einen überdurchschnittlich hohen Anteil an Luxus- und Premiumfahrzeugen – Mercedes-Benz, BMW, Audi und Porsche sind hier besonders gefragt. Die Nähe zu Frankfurt, die hohe Kaufkraft und die vielen Geschäftsleute sorgen für stabile Nachfrage und faire Preise.
+              </p>
+              <p className="text-slate-700 font-medium leading-relaxed mt-4 relative z-10">
+                Wir kennen auch die lokalen Besonderheiten: die verkehrsberuhigte Innenstadt, die Umweltzone, die Parkplatzsituation am Kurpark und die Zulassungsstelle an der Konrad-Adenauer-Ring. Diese Ortskenntnisse erleichtern den gesamten Prozess erheblich.
               </p>
             </div>
+
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Nachbarstädte im Fokus</h3>
+            <p className="font-medium leading-relaxed">
+              Unser <strong>KFZ Ankauf Wiesbaden</strong> Service erstreckt sich auch ins direkte Umland: <strong>Mainz</strong> (nur 10 km), <strong>Taunusstein</strong>, <strong>Hochheim am Main</strong>, <strong>Eltville am Rhein</strong> mit seinen Weingütern, und <strong>Bad Schwalbach</strong> im Taunus. Selbst wenn Sie außerhalb wohnen, profitieren Sie von unserem schnellen und zuverlässigen Service.
+            </p>
+
+            <div className="bg-orange-50 border-l-4 border-brand-orange p-6 rounded-r-2xl my-8 relative overflow-hidden">
+              <div className="absolute -right-4 -top-4 w-20 h-20 bg-orange-100/40 rounded-full blur-xl"></div>
+              <p className="font-bold text-brand-dark mb-2 relative z-10">💡 Wiesbaden-Tipp:</p>
+              <p className="text-slate-700 font-medium relative z-10">
+                Wiesbaden hat eine der höchsten Dichten an Premiumfahrzeugen in Deutschland. Wenn Sie einen Mercedes, BMW, Audi oder Porsche verkaufen möchten, sind Sie hier besonders gut aufgehoben – die lokale Nachfrage ist enorm! Auch Cabrios (perfekt für Fahrten durch den Rheingau) und gehobene SUVs erzielen in Wiesbaden Top-Preise.
+              </p>
+            </div>
+
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Schnelle Zulassungsstelle-Abwicklung</h3>
+            <p className="font-medium leading-relaxed">
+              Die Wiesbadener Zulassungsstelle am Konrad-Adenauer-Ring kennen wir aus jahrelanger Praxis. Wir übernehmen die komplette Abmeldung Ihres Fahrzeugs – Sie müssen nicht einmal persönlich zur Behörde. Das spart Ihnen Zeit, Parkplatzsuche und Wartezeiten. Bei uns läuft alles digital und effizient.
+            </p>
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Wiesbaden Stadtteile – Wo wir Ihr Auto abholen</h2>
             
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Wiesbaden Mitte & Rheingauviertel</h3>
             <p className="font-medium leading-relaxed">
-              Das Stadtzentrum mit Kurhaus, Casino, Theater und wilhelminischer Architektur. Hier wohnen viele Geschäftsleute und Kulturinteressierte. Unser <strong>Autoankauf Wiesbaden Mitte</strong> Service ist besonders bei Luxusfahrzeugen gefragt.
+              Das Stadtzentrum mit dem prächtigen Kurhaus, Casino, Hessischem Staatstheater, Wilhelmstraße und wilhelminischer Pracht-Architektur. Hier wohnen viele Geschäftsleute, Kulturliebhaber und wohlhabende Familien. Unser <strong>Autoankauf Wiesbaden Mitte</strong> Service ist besonders bei Luxusfahrzeugen und Cabrios stark nachgefragt – kein Wunder bei so viel Eleganz ringsum!
             </p>
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Biebrich & Schierstein am Rhein</h3>
             <p className="font-medium leading-relaxed">
-              Die Rheinufer-Stadtteile mit dem barocken Schloss Biebrich und idyllischen Weinbergen. Hier verkaufen viele Familien ihre Zweitwagen oder Cabrios. Der <strong>Autoankauf Wiesbaden Biebrich</strong> und Schierstein Service ist ganzjährig stark nachgefragt.
+              Die malerischen Rheinufer-Stadtteile mit dem barocken Schloss Biebrich, idyllischen Weinbergen und direktem Zugang zum Rhein. Hier verkaufen viele Familien ihre Zweitwagen, Oldtimer oder Cabrios. Der <strong>Autoankauf Wiesbaden Biebrich</strong> und Schierstein Service ist ganzjährig stark frequentiert – besonders im Frühjahr, wenn die Cabrio-Saison startet.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Dotzheim & Sonnenberg</h3>
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Dotzheim, Sonnenberg & Rambach</h3>
             <p className="font-medium leading-relaxed">
-              Beliebte Wohnviertel im Westen mit guter Infrastruktur. Hier werden vor allem praktische Alltagsfahrzeuge gekauft – Kombis, Kleinwagen und kompakte SUVs sind besonders gefragt.
+              Beliebte Wohnviertel im Westen und Nordwesten mit hervorragender Infrastruktur und vielen Familien. Hier werden vor allem praktische Alltagsfahrzeuge gesucht: Kombis, Kleinwagen, kompakte SUVs und zuverlässige Mittelklasse-Modelle für den täglichen Pendlerverkehr nach Frankfurt oder Mainz.
             </p>
 
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Mainz-Kastel & Mainz-Kostheim</h3>
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">Mainz-Kastel, Mainz-Kostheim & Mainz-Amöneburg</h3>
             <p className="font-medium leading-relaxed">
-              Die rechtsrheinischen Stadtteile mit direkter Anbindung nach Mainz. Viele Pendler verkaufen hier ihre Firmenwagen oder steigen auf öffentliche Verkehrsmittel um. Unser Service ist schnell und unkompliziert.
+              Die rechtsrheinischen Stadtteile mit direkter Anbindung nach Mainz über die Theodor-Heuss-Brücke. Viele Pendler verkaufen hier ihre Firmenwagen oder steigen auf öffentliche Verkehrsmittel um. Unser Service ist schnell, unkompliziert und passt perfekt in den Alltag berufstätiger Wiesbadener.
             </p>
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Autoankauf Wiesbaden: Fair, transparent, sicher</h2>
@@ -268,24 +320,24 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="space-y-4 mt-8">
             {[
               {
-                q: "Wie schnell kann ich mein Auto in Wiesbaden verkaufen?",
-                a: "Der gesamte Prozess dauert in der Regel 1-2 Tage. Die Online-Bewertung erhalten Sie in 2 Minuten, die Besichtigung vor Ort dauert 15-20 Minuten, und die Auszahlung erfolgt noch am selben Tag per Express-Überweisung oder bar."
+                q: "Wie lange dauert der Autoankauf in Wiesbaden?",
+                a: "Der gesamte Prozess dauert in der Regel 24-48 Stunden. Die Online-Bewertung erhalten Sie in 2 Minuten, die Besichtigung vor Ort in Wiesbaden dauert 15-20 Minuten, und die Auszahlung erfolgt noch am selben Tag per Express-Überweisung (2-4 Stunden) oder bar. Wenn Sie Ihr Auto verkaufen Wiesbaden sofort möchten, sind wir Ihr schnellster Partner!"
               },
               {
-                q: "Kommt ihr auch nach Biebrich, Dotzheim oder Mainz-Kastel?",
-                a: "Ja, wir holen Fahrzeuge in allen Wiesbadener Stadtteilen ab – von der Innenstadt über Biebrich, Dotzheim, Schierstein bis Mainz-Kastel, Erbenheim und überall dazwischen. Auch im Umland (Mainz, Taunusstein, Hochheim, Eltville) sind wir aktiv."
+                q: "Welche Stadtteile in Wiesbaden deckt ihr ab?",
+                a: "Wir holen Fahrzeuge in allen Wiesbadener Stadtteilen kostenlos ab: Mitte, Rheingauviertel, Biebrich, Schierstein, Dotzheim, Sonnenberg, Rambach, Mainz-Kastel, Mainz-Kostheim, Mainz-Amöneburg, Erbenheim, Nordenstadt, Auringen, Breckenheim, Delkenheim, Medenbach, Kloppenheim und Naurod. Auch im Umland (Mainz, Taunusstein, Hochheim, Eltville, Geisenheim) sind wir tätig."
               },
               {
                 q: "Kauft ihr auch Luxusfahrzeuge und Sportwagen?",
                 a: "Ja, absolut! Wiesbaden hat einen starken Markt für Premiumfahrzeuge. Wir kaufen Mercedes, BMW, Audi, Porsche, Tesla und alle anderen Luxusmarken zu fairen Preisen. Unsere Expertise im Premiumsegment ist langjährig erprobt."
               },
               {
-                q: "Was ist, wenn mein Auto einen Motorschaden hat?",
-                a: "Kein Problem! Wir kaufen auch Fahrzeuge mit Motor- oder Getriebeschaden, Unfallschäden oder ohne TÜV. Selbst nicht fahrbereite Autos haben einen Restwert. Fordern Sie einfach eine kostenlose Bewertung an."
+                q: "Kauft ihr auch Autos mit Motorschaden oder Unfallschäden?",
+                a: "Ja, absolut! Unser Motorschaden Ankauf Wiesbaden und Unfallwagen Ankauf Wiesbaden Service ist sehr gefragt. Wir kaufen Fahrzeuge mit Motor- oder Getriebeschaden, Unfallschäden (repariert oder unrepariert), ohne TÜV und selbst nicht fahrbereite Autos. Auch defekte Fahrzeuge haben einen Restwert durch Ersatzteile oder Export. Fordern Sie einfach eine kostenlose Bewertung an!"
               },
               {
-                q: "Wie wird der Ankaufspreis ermittelt?",
-                a: "Unsere KI analysiert tausende aktuelle Verkäufe im Rhein-Main-Gebiet und berücksichtigt Marke, Modell, Alter, Kilometerstand, Zustand, Ausstattung sowie lokale Nachfrage in Wiesbaden. So erhalten Sie einen marktgerechten Preis."
+                q: "Wie unterscheidet sich euer Preis von anderen Wiesbaden Händlern?",
+                a: "Unsere KI-Bewertung analysiert kontinuierlich den aktuellen Wiesbadener und Rhein-Main-Markt. Im Gegensatz zu lokalen Händlern, die oft eigene Margen einpreisen oder nur ihr Inventar im Blick haben, bieten wir transparente, datenbasierte Preise. Wiesbaden hat einen starken Premiummarkt – davon profitieren Sie bei uns durch faire Ankaufspreise, besonders bei Mercedes, BMW, Audi und Porsche."
               },
               {
                 q: "Welche Dokumente brauche ich für den Verkauf?",
@@ -361,12 +413,16 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
 
           {/* Conclusion */}
-          <section className="mt-12 text-slate-700 font-medium leading-relaxed space-y-4">
-            <p>
-              Der <strong>Autoankauf Wiesbaden</strong> mit Meinautoverkauf.de ist die unkomplizierte, sichere und faire Alternative zum Privatverkauf. Sie sparen Zeit, vermeiden Stress und erhalten einen marktgerechten Preis. Egal ob Innenstadt, Biebrich, Dotzheim oder Mainz-Kastel – wir kommen zu Ihnen!
+          <section className="mt-12 text-slate-700 font-medium leading-relaxed space-y-4 relative">
+            <div className="absolute -right-6 -top-6 w-24 h-24 bg-orange-50 rounded-full blur-2xl"></div>
+            <p className="relative z-10">
+              Der <strong>Autoankauf Wiesbaden</strong> mit Meinautoverkauf.de ist die unkomplizierte, sichere und faire Alternative zum privaten Verkauf. Ob Sie in der prachtvollen Innenstadt nahe dem Kurhaus wohnen, in Biebrich am Rhein, im grünen Dotzheim oder in Mainz-Kastel – wir kommen zu Ihnen! Sie sparen Zeit, vermeiden Stress mit unseriösen Käufern und erhalten einen marktgerechten Preis basierend auf aktuellen Wiesbadener Marktdaten.
             </p>
-            <p>
-              Starten Sie jetzt Ihre kostenlose Online-Bewertung und erleben Sie, wie einfach Autoverkauf in Wiesbaden sein kann!
+            <p className="relative z-10">
+              <strong>Auto verkaufen Wiesbaden</strong> war noch nie so einfach: Kostenlose Online-Bewertung, persönliche Besichtigung vor Ort, sofortige Auszahlung und kostenlose Abmeldung bei der Zulassungsstelle. Egal ob <strong>Gebrauchtwagen Ankauf Wiesbaden</strong>, <strong>Motorschaden Ankauf Wiesbaden</strong> oder <strong>Unfallwagen Ankauf Wiesbaden</strong> – wir sind Ihr vertrauensvoller Partner in der hessischen Landeshauptstadt.
+            </p>
+            <p className="font-bold text-brand-dark text-lg mt-6 relative z-10">
+              Starten Sie jetzt Ihre kostenlose Bewertung und erleben Sie, wie einfach <strong>Auto verkaufen Wiesbaden sofort</strong> sein kann!
             </p>
           </section>
         </div>
