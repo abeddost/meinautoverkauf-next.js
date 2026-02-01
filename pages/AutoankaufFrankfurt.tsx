@@ -156,31 +156,6 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
             <p className="font-medium leading-relaxed">
               Wer schon einmal versucht hat, einen Parkplatz im Bankenviertel, rund um den Römerberg oder in Sachsenhausen zu finden, weiß: Das kann Stunden dauern. Für einen Händlerbesuch müssten Sie durch den dichten Frankfurter Verkehr navigieren, einen teuren Parkplatz finden (falls überhaupt verfügbar) und wertvolle Zeit opfern. Bei unserem <strong>Gebrauchtwagen Ankauf Frankfurt</strong> Service entfällt das komplett – wir kommen zu Ihnen, egal ob ins Büro im Westend, nach Hause nach Bornheim oder direkt zum Frankfurter Flughafen vor Ihrem Abflug.
             </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-bold text-brand-orange mb-2">Frankfurt Stadtteile:</h4>
-                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
-                    <li>• Sachsenhausen & Sachsenhausen-Nord</li>
-                    <li>• Bockenheim & Westend</li>
-                    <li>• Nordend & Bornheim</li>
-                    <li>• Höchst & Rödelheim</li>
-                    <li>• Niederrad & Oberrad</li>
-                    <li>• Bergen-Enkheim & Fechenheim</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold text-brand-orange mb-2">Umland Frankfurt:</h4>
-                  <ul className="text-sm space-y-1 text-slate-600 font-medium">
-                    <li>• Offenbach am Main</li>
-                    <li>• Bad Homburg v.d. Höhe</li>
-                    <li>• Neu-Isenburg & Dreieich</li>
-                    <li>• Eschborn & Sulzbach</li>
-                    <li>• Kelkheim & Hofheim am Taunus</li>
-                    <li>• Maintal & Hanau</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
 
             <h2 className="text-2xl lg:text-3xl font-black text-brand-dark mt-16 mb-6">Auto verkaufen Frankfurt: Auch Umweltzonen-Probleme?</h2>
             
@@ -401,9 +376,9 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               Das pulsierende Herz der Stadt: EZB, Deutsche Bank, Commerzbank-Tower, Hauptwache und der historische Römerberg. Hier arbeiten täglich hunderttausende Menschen. Unser <strong>Autoankauf Frankfurt Innenstadt</strong> Service ist besonders gefragt bei Geschäftsleuten, die ihren Firmenwagen verkaufen oder auf Car-Sharing umsteigen. Wir kommen auch ins Parkhaus, zum Bürogebäude oder direkt zum Hauptbahnhof – maximale Flexibilität für Ihren vollen Terminkalender.
             </p>
             
-            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🍷 Sachsenhausen: Alt-Sachsenhausen & Museumsufer</h3>
+            <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏛️ Sachsenhausen: Alt-Sachsenhausen & Museumsufer</h3>
             <p className="font-medium leading-relaxed">
-              Das beliebte Sachsenhausen mit seinen Apfelweinlokalen, Museen und der einmaligen Skyline-Aussicht vom Mainufer ist eines der begehrtesten Wohngebiete Frankfurts. Viele unserer Kunden im <strong>Autoankauf Frankfurt Sachsenhausen</strong> verkaufen hochwertige Fahrzeuge, Cabrios oder Zweitwagen, die in den engen Altstadtgassen nicht mehr benötigt werden. Wir holen Ihr Auto direkt vor der Haustür ab – ohne dass Sie sich um Parkverbote oder Anwohner-Beschwerden kümmern müssen.
+              Das beliebte Sachsenhausen mit seinen Museen und der einmaligen Skyline-Aussicht vom Mainufer ist eines der begehrtesten Wohngebiete Frankfurts. Viele unserer Kunden im <strong>Autoankauf Frankfurt Sachsenhausen</strong> verkaufen hochwertige Fahrzeuge, Cabrios oder Zweitwagen, die in den engen Altstadtgassen nicht mehr benötigt werden. Wir holen Ihr Auto direkt vor der Haustür ab – ohne dass Sie sich um Parkverbote oder Anwohner-Beschwerden kümmern müssen.
             </p>
 
             <h3 className="text-xl font-bold text-brand-dark mt-8 mb-4">🏢 Westend & Nordend: Villen, Banken & Szene-Viertel</h3>
