@@ -131,13 +131,19 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
   const prevPageRef = useRef<FormPage>(currentPage);
+  const [contactInteracted, setContactInteracted] = useState(false);
+
+  const isContactField = (field: string) =>
+    field === 'firstName' ||
+    field === 'lastName' ||
+    field === 'email' ||
+    field === 'phone' ||
+    field === 'desiredPrice';
 
   useEffect(() => {
     if (prevPageRef.current === currentPage) return;
-    if (currentPage === 5) {
+    if (currentPage === 5 && !contactInteracted) {
       const contactFields = ['firstName', 'lastName', 'email', 'phone'] as const;
-      const anyFilled = contactFields.some((field) => Boolean(formData[field]));
-      if (!anyFilled) {
         setTouchedFields(prev => {
           const next = { ...prev };
           contactFields.forEach((field) => {
@@ -152,10 +158,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           });
           return next;
         });
-      }
+        setActiveTooltip(null);
     }
     prevPageRef.current = currentPage;
-  }, [currentPage]);
+  }, [currentPage, contactInteracted]);
 
   const isValueValid = (field: string, value: string) => {
     if (field === 'postalCode') return value.length === 5;
@@ -170,6 +176,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
       [name]: value,
       ...(name === 'brand' ? { model: '' } : {})
     }));
+    if (isContactField(name)) {
+      setContactInteracted(true);
+    }
     if (fieldErrors[name] && isValueValid(name, value)) {
       setFieldError(name, '');
     }
@@ -245,6 +254,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const setFieldError = (field: string, message: string) => {
     if (message) {
       setTouchedFields(prev => ({ ...prev, [field]: true }));
+      if (isContactField(field)) {
+        setContactInteracted(true);
+      }
     }
     setFieldErrors(prev => {
       const next = { ...prev };
@@ -262,6 +274,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
   const handleBlur = (field: string) => {
     setTouchedFields(prev => ({ ...prev, [field]: true }));
+    if (isContactField(field)) {
+      setContactInteracted(true);
+    }
     setFieldError(field, validateField(field));
   };
 
@@ -357,6 +372,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError('');
+
+    if (currentPage < 5) {
+      nextPage();
+      return;
+    }
     
     // Validate contact details and postal code before submission
     const required = [...requiredByPage[5], 'postalCode'];
@@ -518,7 +538,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[16px] lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
   const invalidFieldClass = "ring-1 ring-amber-300/60";
-  const shouldShowError = (field: string) => Boolean(fieldErrors[field] && touchedFields[field]);
+  const shouldShowError = (field: string) => {
+    if (isContactField(field) && !contactInteracted) return false;
+    return Boolean(fieldErrors[field] && touchedFields[field]);
+  };
 
   const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2 mt-1") => {
     if (!shouldShowError(field)) return null;
