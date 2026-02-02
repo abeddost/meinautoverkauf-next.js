@@ -410,8 +410,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
-      // Extra delay to show off the scanning animation
-      setTimeout(() => onValuationComplete(formData, result), 6000);
+      onValuationComplete(formData, result);
     } catch (error: any) {
       setSubmitError('Leider ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
       setLoading(false);
