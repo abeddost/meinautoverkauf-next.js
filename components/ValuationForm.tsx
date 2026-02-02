@@ -130,6 +130,32 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
+  const prevPageRef = useRef<FormPage>(currentPage);
+
+  useEffect(() => {
+    if (prevPageRef.current === currentPage) return;
+    if (currentPage === 5) {
+      const contactFields = ['firstName', 'lastName', 'email', 'phone'] as const;
+      const anyFilled = contactFields.some((field) => Boolean(formData[field]));
+      if (!anyFilled) {
+        setTouchedFields(prev => {
+          const next = { ...prev };
+          contactFields.forEach((field) => {
+            delete next[field];
+          });
+          return next;
+        });
+        setFieldErrors(prev => {
+          const next = { ...prev };
+          contactFields.forEach((field) => {
+            delete next[field];
+          });
+          return next;
+        });
+      }
+    }
+    prevPageRef.current = currentPage;
+  }, [currentPage]);
 
   const isValueValid = (field: string, value: string) => {
     if (field === 'postalCode') return value.length === 5;
