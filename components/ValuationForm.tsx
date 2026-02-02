@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
 
@@ -94,6 +94,7 @@ const CONDITIONS = [
 ];
 
 const MATRIX_CHARS = "010110010182736459ABCDEF";
+const SORTED_BRANDS = Object.keys(BRAND_DATA).sort((a, b) => a.localeCompare(b, 'de'));
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
   const [loading, setLoading] = useState(false);
@@ -123,8 +124,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
   const [fileError, setFileError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState('');
+  const brandTypeaheadRef = useRef('');
+  const brandTypeaheadTimeRef = useRef(0);
+  const brandTypeaheadTimerRef = useRef<number | null>(null);
 
   const isValueValid = (field: string, value: string) => {
     if (field === 'postalCode') return value.length === 5;
@@ -212,6 +217,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   };
 
   const setFieldError = (field: string, message: string) => {
+    if (message) {
+      setTouchedFields(prev => ({ ...prev, [field]: true }));
+    }
     setFieldErrors(prev => {
       const next = { ...prev };
       if (message) {
@@ -227,7 +235,50 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
   };
 
   const handleBlur = (field: string) => {
+    setTouchedFields(prev => ({ ...prev, [field]: true }));
     setFieldError(field, validateField(field));
+  };
+
+  const resetBrandTypeahead = () => {
+    brandTypeaheadRef.current = '';
+    brandTypeaheadTimeRef.current = 0;
+    if (brandTypeaheadTimerRef.current) {
+      window.clearTimeout(brandTypeaheadTimerRef.current);
+      brandTypeaheadTimerRef.current = null;
+    }
+  };
+
+  const handleBrandKeyDown = (e: React.KeyboardEvent<HTMLSelectElement>) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const { key } = e;
+    if (key.length !== 1) return;
+    if (!/[a-z0-9]/i.test(key)) return;
+
+    const now = Date.now();
+    const isSequential = now - brandTypeaheadTimeRef.current < 650;
+    const nextQuery = `${isSequential ? brandTypeaheadRef.current : ''}${key}`.toLowerCase();
+    brandTypeaheadRef.current = nextQuery;
+    brandTypeaheadTimeRef.current = now;
+
+    if (brandTypeaheadTimerRef.current) {
+      window.clearTimeout(brandTypeaheadTimerRef.current);
+    }
+    brandTypeaheadTimerRef.current = window.setTimeout(() => {
+      brandTypeaheadRef.current = '';
+    }, 700);
+
+    const match = SORTED_BRANDS.find((brand) => brand.toLowerCase().startsWith(nextQuery));
+    if (match) {
+      e.preventDefault();
+      setFormData(prev => ({
+        ...prev,
+        brand: match,
+        model: ''
+      }));
+      if (fieldErrors.brand) {
+        setFieldError('brand', '');
+      }
+    }
   };
 
   const requiredByPage: Record<number, string[]> = {
@@ -240,6 +291,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
   const nextPage = () => {
     const required = requiredByPage[currentPage] ?? [];
+    setTouchedFields(prev => {
+      const next = { ...prev };
+      required.forEach((field) => {
+        next[field] = true;
+      });
+      return next;
+    });
     const errors: Record<string, string> = {};
     required.forEach((field) => {
       const message = validateField(field);
@@ -276,6 +334,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     
     // Validate contact details and postal code before submission
     const required = [...requiredByPage[5], 'postalCode'];
+    setTouchedFields(prev => {
+      const next = { ...prev };
+      required.forEach((field) => {
+        next[field] = true;
+      });
+      return next;
+    });
     const errors: Record<string, string> = {};
     required.forEach((field) => {
       const message = validateField(field);
@@ -422,14 +487,15 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
     { label: 'Kontakt', iconSrc: `${formElementsBase}/details.png` }
   ];
 
-  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-3.5 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-xs lg:text-sm disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-3.5 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-[16px] lg:text-sm disabled:opacity-50 disabled:cursor-not-allowed";
   const selectClass = `${baseFieldClass} appearance-none cursor-pointer`;
   const inputClass = `${baseFieldClass} cursor-text`;
-  const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-sm lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
+  const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[16px] lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
   const invalidFieldClass = "ring-1 ring-amber-300/60";
+  const shouldShowError = (field: string) => Boolean(fieldErrors[field] && touchedFields[field]);
 
-  const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2") => {
-    if (!fieldErrors[field]) return null;
+  const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2 mt-1") => {
+    if (!shouldShowError(field)) return null;
     const errorMessage = fieldErrors[field] || message;
     const tooltipId = `err-${field}`;
     const isOpen = activeTooltip === field;
@@ -444,9 +510,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           onFocus={() => setActiveTooltip(field)}
           onBlur={() => setActiveTooltip(null)}
           onClick={() => setActiveTooltip(isOpen ? null : field)}
-          className="h-7 w-7 rounded-full text-amber-600/90 text-[16px] flex items-center justify-center bg-white/80 shadow-sm"
+          className="h-12 w-12 rounded-full text-red-500 flex items-center justify-center bg-white/80 shadow-sm"
         >
-          ⚠️
+          <svg className="h-8 w-8" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 3l9.5 16.5a1 1 0 0 1-.86 1.5H3.36a1 1 0 0 1-.86-1.5L12 3z"
+              fill="currentColor"
+            />
+            <path d="M11 9h2v6h-2z" fill="#fff" />
+            <path d="M11 17h2v2h-2z" fill="#fff" />
+          </svg>
         </button>
         {isOpen && (
           <div
@@ -476,9 +549,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
           onFocus={() => setActiveTooltip('submit')}
           onBlur={() => setActiveTooltip(null)}
           onClick={() => setActiveTooltip(isOpen ? null : 'submit')}
-          className="h-7 w-7 rounded-full text-amber-600/90 text-[16px] flex items-center justify-center bg-white/80 shadow-sm"
+          className="h-12 w-12 rounded-full text-red-500 flex items-center justify-center bg-white/80 shadow-sm"
         >
-          ⚠️
+          <svg className="h-8 w-8" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 3l9.5 16.5a1 1 0 0 1-.86 1.5H3.36a1 1 0 0 1-.86-1.5L12 3z"
+              fill="currentColor"
+            />
+            <path d="M11 9h2v6h-2z" fill="#fff" />
+            <path d="M11 17h2v2h-2z" fill="#fff" />
+          </svg>
         </button>
         {isOpen && (
           <div
@@ -567,12 +647,18 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   name="brand"
                   value={formData.brand}
                   onChange={handleSelectChange}
-                  onBlur={() => handleBlur('brand')}
+                  onBlur={() => {
+                    handleBlur('brand');
+                    resetBrandTypeahead();
+                  }}
+                  onFocus={resetBrandTypeahead}
+                  onClick={resetBrandTypeahead}
+                  onKeyDown={handleBrandKeyDown}
                   required
-                  className={`${selectClass} ${fieldErrors.brand ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('brand') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Bitte wählen...</option>
-                  {Object.keys(BRAND_DATA).sort().map(b => <option key={b} value={b}>{b}</option>)}
+                  {SORTED_BRANDS.map(b => <option key={b} value={b}>{b}</option>)}
                 </select>
                 {renderErrorIcon('brand', 'Bitte Marke wählen.')}
               </div>
@@ -585,7 +671,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onBlur={() => handleBlur('model')}
                   disabled={!formData.brand}
                   required
-                  className={`${selectClass} ${fieldErrors.model ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('model') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">{formData.brand ? "Modell wählen..." : "Wähle zuerst die Marke"}</option>
                   {formData.brand && BRAND_DATA[formData.brand].map(m => <option key={m} value={m}>{m}</option>)}
@@ -600,7 +686,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('year')}
                   required
-                  className={`${selectClass} ${fieldErrors.year ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('year') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Jahr wählen...</option>
                   {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
@@ -620,7 +706,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('power')}
                   required
-                  className={`${selectClass} ${fieldErrors.power ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('power') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Leistung wählen...</option>
                   {POWER_RANGES.map(p => <option key={p.val} value={p.val}>{p.label}</option>)}
@@ -635,7 +721,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('bodyType')}
                   required
-                  className={`${selectClass} ${fieldErrors.bodyType ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('bodyType') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Karosserieform wählen...</option>
                   {BODY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
@@ -650,7 +736,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('doors')}
                   required
-                  className={`${selectClass} ${fieldErrors.doors ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('doors') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Anzahl wählen...</option>
                   <option value="2/3">2/3 Türen</option>
@@ -667,7 +753,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('transmission')}
                   required
-                  className={`${selectClass} ${fieldErrors.transmission ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('transmission') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Getriebeart wählen...</option>
                   {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
@@ -687,7 +773,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('mileage')}
                   required
-                  className={`${selectClass} ${fieldErrors.mileage ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Laufleistung wählen...</option>
                   {MILEAGE_OPTIONS.map(o => <option key={o.val} value={o.val}>{o.label}</option>)}
@@ -702,7 +788,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('fuelType')}
                   required
-                  className={`${selectClass} ${fieldErrors.fuelType ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${selectClass} ${shouldShowError('fuelType') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">Kraftstoff wählen...</option>
                   {FUELS.map(f => <option key={f} value={f}>{f}</option>)}
@@ -749,7 +835,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onBlur={() => handleBlur('postalCode')}
                   placeholder="z.B. 10115"
                   maxLength={5}
-                  className={`${inputClass} ${fieldErrors.postalCode ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${inputClass} ${shouldShowError('postalCode') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
                 {renderErrorIcon('postalCode', 'Bitte 5-stellige PLZ eingeben.')}
@@ -799,7 +885,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                         setUploadedImages(fileNames);
                         setFormData(prev => ({ ...prev, images: fileNames }));
                       }}
-                      className={`${fileInputClass} ${fieldErrors.images ? `${invalidFieldClass} pr-10` : ''}`}
+                    className={`${fileInputClass} ${shouldShowError('images') ? `${invalidFieldClass} pr-14` : ''}`}
                     />
                     {renderErrorIcon('images', 'Maximal 5 Bilder erlaubt.')}
                   </div>
@@ -826,7 +912,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                     onChange={handleSelectChange}
                     onBlur={() => handleBlur('firstName')}
                     placeholder="Vorname"
-                    className={`${inputClass} ${fieldErrors.firstName ? `${invalidFieldClass} pr-10` : ''}`}
+                    className={`${inputClass} ${shouldShowError('firstName') ? `${invalidFieldClass} pr-14` : ''}`}
                     required
                   />
                   {renderErrorIcon('firstName', 'Bitte Vorname eingeben.')}
@@ -840,7 +926,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                     onChange={handleSelectChange}
                     onBlur={() => handleBlur('lastName')}
                     placeholder="Nachname"
-                    className={`${inputClass} ${fieldErrors.lastName ? `${invalidFieldClass} pr-10` : ''}`}
+                    className={`${inputClass} ${shouldShowError('lastName') ? `${invalidFieldClass} pr-14` : ''}`}
                     required
                   />
                   {renderErrorIcon('lastName', 'Bitte Nachname eingeben.')}
@@ -855,7 +941,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('email')}
                   placeholder="z.B. max@beispiel.de"
-                  className={`${inputClass} ${fieldErrors.email ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${inputClass} ${shouldShowError('email') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
                 {renderErrorIcon('email', 'Bitte E-Mail eingeben.')}
@@ -869,7 +955,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('phone')}
                   placeholder="z.B. 0176 12345678"
-                  className={`${inputClass} ${fieldErrors.phone ? `${invalidFieldClass} pr-10` : ''}`}
+                  className={`${inputClass} ${shouldShowError('phone') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
                 {renderErrorIcon('phone', 'Bitte Handynummer eingeben.')}
