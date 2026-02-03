@@ -33,22 +33,26 @@ const ValuationResultPage: React.FC = () => {
         description="Ihr persönliches Ankauf-Angebot – fair, transparent und sofort gültig."
         canonicalUrl="/bewertung-ergebnis"
       />
-      {/* Minimal top bar: logo link only */}
-      <header className="flex-shrink-0 border-b border-slate-200 bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+      {/* Logo area: matches homepage Header */}
+      <header className="flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
+        <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-brand-dark font-bold hover:text-brand-orange transition-colors"
-            aria-label="Zur Startseite"
+            className="flex items-center gap-2 hover:opacity-90 transition-opacity focus:outline-none"
+            aria-label="Meinautoverkauf Startseite"
           >
-            <img src="/logo.png" alt="Meinautoverkauf.de" className="h-8 w-auto" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-            <span>Meinautoverkauf.de</span>
+            <img
+              src="/logo.png"
+              alt="MeinAutoVerkauf.de"
+              className="h-20 lg:h-24 w-auto"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
           </Link>
         </div>
       </header>
 
       <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <ValuationResults
             valuation={valuation}
             carDetails={carDetails}

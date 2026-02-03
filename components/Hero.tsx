@@ -4,6 +4,8 @@ import { CarDetails, ValuationResult } from '../types';
 
 interface HeroProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
+  /** If provided, form submits to analyzing page instead of calling API inline. */
+  onValuationSubmit?: (formData: CarDetails) => void;
   headline?: string;
   subheadline?: string;
   accent?: 'home' | 'bewerten' | 'verkaufen' | 'vorteile' | 'ratgeber';
@@ -92,7 +94,7 @@ const ACCENTS = {
   }
 } as const;
 
-const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline, accent, headlineTag }) => {
+const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, headline, subheadline, accent, headlineTag }) => {
   const [carTransform, setCarTransform] = useState({ tiltX: 0, tiltY: 0, offsetY: 0 });
   const heroHeadline = headline ?? 'Auto verkaufen online – Einfach, schnell & stressfrei';
   const heroSubheadline = subheadline ?? 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis';
@@ -267,7 +269,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
 
             <div className="col-span-5 flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
               <div className="w-full max-w-[460px] lg:max-w-[640px] scale-[1] origin-top">
-                <ValuationForm onValuationComplete={onValuationComplete} />
+                <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
               </div>
             </div>
           </div>
@@ -303,7 +305,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, headline, subheadline,
           </div>
 
           <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <ValuationForm onValuationComplete={onValuationComplete} />
+            <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
           </div>
 
           <div className="mt-4 grid grid-cols-3 gap-2">

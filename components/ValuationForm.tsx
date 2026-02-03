@@ -5,6 +5,8 @@ import { getCarValuation } from '../geminiService';
 
 interface ValuationFormProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
+  /** If provided, form will navigate to analyzing page with formData instead of calling API inline. */
+  onValuationSubmit?: (formData: CarDetails) => void;
 }
 
 type FormPage = 1 | 2 | 3 | 4 | 5;
@@ -93,10 +95,9 @@ const CONDITIONS = [
   { val: 'Poor', label: 'Defekt / Unfall (Beschädigt)' }
 ];
 
-const MATRIX_CHARS = "010110010182736459ABCDEF";
 const SORTED_BRANDS = Object.keys(BRAND_DATA).sort((a, b) => a.localeCompare(b, 'de'));
 
-const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) => {
+const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onValuationSubmit }) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState<FormPage>(1);
   const [formData, setFormData] = useState<CarDetails>({
@@ -407,6 +408,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
       return;
     }
     
+    if (onValuationSubmit) {
+      onValuationSubmit(formData);
+      return;
+    }
     setLoading(true);
     try {
       const result = await getCarValuation(formData);
@@ -419,98 +424,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete }) =>
 
   if (loading) {
     return (
-      <div className="bg-[#0a0f1d] rounded-[1.5rem] lg:rounded-[2.5rem] p-6 lg:p-12 min-h-[450px] lg:min-h-[580px] flex flex-col items-center justify-center text-white shadow-2xl overflow-hidden relative border border-white/5 animate-in fade-in duration-500">
-        
-        {/* Matrix Rain Effect */}
-        <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none flex justify-around overflow-hidden">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <div key={i} className="flex flex-col animate-matrix-drop" style={{ animationDelay: `${Math.random() * 4}s`, animationDuration: `${3 + Math.random() * 4}s` }}>
-              {Array.from({ length: 40 }).map((_, j) => (
-                <span key={j} className="font-mono text-xs leading-none py-1 text-brand-orange">
-                  {MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Pulsing Central Node & Scanning Effect */}
-        <div className="relative z-10 mb-8 lg:mb-12 flex items-center justify-center">
-            {/* Concentric Pulsing Rings */}
-            <div className="absolute w-32 h-32 lg:w-40 lg:h-40 rounded-full border border-brand-orange/20 animate-ping opacity-30"></div>
-            <div className="absolute w-48 h-48 lg:w-56 lg:h-56 rounded-full border border-brand-orange/10 animate-pulse opacity-20"></div>
-            
-            <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center relative shadow-[0_0_40px_rgba(249,115,22,0.15)]">
-                {/* Laser scan line inside the node */}
-                <div className="absolute inset-2 border-t border-brand-orange animate-scan-line opacity-50 z-20"></div>
-                
-                {/* Dynamic Data Stream Icon */}
-                <div className="flex flex-col gap-1 items-center">
-                   <div className="w-8 lg:w-10 h-1 bg-brand-orange/40 rounded-full"></div>
-                   <div className="w-5 lg:w-6 h-1 bg-brand-orange/60 rounded-full"></div>
-                   <div className="w-10 lg:w-12 h-1 bg-brand-orange rounded-full shadow-[0_0_10px_#f97316]"></div>
-                   <div className="w-6 lg:w-8 h-1 bg-brand-orange/60 rounded-full"></div>
-                </div>
-            </div>
-        </div>
-
-        {/* Status Text Area */}
-        <div className="text-center z-10 space-y-3 lg:space-y-4 mb-8 lg:mb-10">
-          <h3 className="text-xl lg:text-2xl font-black tracking-tight text-white drop-shadow-md uppercase">Berechne Marktwert</h3>
-          <div className="flex flex-col items-center gap-1">
-             <div className="text-[9px] lg:text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] lg:tracking-[0.4em] animate-pulse">
-               Grounding Markt-Analyse
-             </div>
-             <div className="flex gap-1">
-                {[...Array(3)].map((_, i) => (
-                  <div key={i} className="w-1 h-1 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: `${i * 0.2}s` }}></div>
-                ))}
-             </div>
-          </div>
-        </div>
-
-        {/* Complex Progress Tracker */}
-        <div className="w-full max-w-xs lg:max-w-sm space-y-3 lg:space-y-4 z-10">
-          <div className="flex justify-between items-end mb-1">
-            <span className="text-[9px] lg:text-[10px] font-black text-slate-500 uppercase tracking-widest">Dauer: ca. 10-20 Sekunden</span>
-            <span className="text-[9px] lg:text-[10px] font-black text-brand-orange">ANALYSE...</span>
-          </div>
-          
-          <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5 p-0.5">
-            <div className="h-full bg-brand-orange rounded-full shadow-[0_0_10px_#f97316] animate-complex-progress transition-all duration-300 ease-out"></div>
-          </div>
-          
-          <div className="flex justify-center">
-            <p className="text-[10px] lg:text-[11px] text-slate-400 font-bold uppercase tracking-widest px-6 lg:px-8 py-2 bg-white/5 rounded-lg border border-white/10 text-center leading-relaxed">
-              Bitte haben Sie einen Moment Geduld. <br/> Wir ermitteln einen marktgerechten Preis.
-            </p>
-          </div>
-        </div>
-
-        <style>{`
-          @keyframes matrix-drop {
-            0% { transform: translateY(-100%); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(100%); opacity: 0; }
-          }
-          @keyframes scan-line {
-            0% { transform: translateY(-15px); lg:transform: translateY(-20px); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(15px); lg:transform: translateY(20px); opacity: 0; }
-          }
-          @keyframes complex-progress {
-            0% { width: 0%; }
-            15% { width: 10%; }
-            30% { width: 45%; }
-            45% { width: 48%; }
-            60% { width: 75%; }
-            85% { width: 92%; }
-            100% { width: 98%; }
-          }
-          .animate-matrix-drop { animation-name: matrix-drop; animation-timing-function: linear; animation-iteration-count: infinite; }
-          .animate-scan-line { animation-name: scan-line; animation-duration: 1.5s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
-          .animate-complex-progress { animation-name: complex-progress; animation-duration: 5.5s; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(0.1, 0, 0.4, 1); }
-        `}</style>
+      <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 lg:p-12 min-h-[280px] flex flex-col items-center justify-center text-center">
+        <div className="w-12 h-12 border-4 border-slate-200 border-t-brand-orange rounded-full animate-spin mb-4" aria-hidden="true" />
+        <p className="text-slate-600 font-medium">Berechnung läuft …</p>
       </div>
     );
   }

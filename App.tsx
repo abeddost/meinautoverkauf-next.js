@@ -16,12 +16,13 @@ import AutoankaufWiesbadenPage from './pages/AutoankaufWiesbaden';
 import AutoankaufMainzPage from './pages/AutoankaufMainz';
 import ImpressumPage from './pages/Impressum';
 import DatenschutzPage from './pages/Datenschutz';
+import AnalyzingPage from './pages/AnalyzingPage';
 import ValuationResultPage from './pages/ValuationResultPage';
 import BookingPage from './pages/BookingPage';
 import ConfirmationPage from './pages/ConfirmationPage';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
-const STANDALONE_PATHS = ['/bewertung-ergebnis', '/termin-buchen', '/vielen-dank'];
+const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank'];
 
 // Scroll: home + standalone pages → top; other pages → main content (below hero)
 const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) => {
@@ -118,6 +119,7 @@ const AppContent: React.FC = () => {
         {/* Global background pattern */}
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(148 163 184) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
         <Routes>
+          <Route path="/bewertung-laeuft" element={<AnalyzingPage />} />
           <Route path="/bewertung-ergebnis" element={<ValuationResultPage />} />
           <Route path="/termin-buchen" element={<BookingPage />} />
           <Route path="/vielen-dank" element={<ConfirmationPage />} />
@@ -129,7 +131,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Auto verkaufen online – Einfach, schnell & stressfrei"
                 subheadline="Autoankauf – Wir kaufen Ihr Auto zum fairen Preis"
                 accent="home"
@@ -472,7 +474,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/auto-bewerten"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Auto bewerten online – Kostenlos & präzise Wertermittlung"
                 subheadline="In 2 Minuten den realistischen Marktwert Ihres Fahrzeugs erhalten"
                 accent="bewerten"
@@ -490,7 +492,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/auto-verkaufen"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Auto verkaufen online – Schnell, fair & sicher"
                 subheadline="Kostenlose Bewertung und stressfreier Verkauf in ganz Deutschland"
                 accent="verkaufen"
@@ -507,7 +509,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/vorteile"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Ihre Vorteile beim Autoankauf – Transparent & zuverlässig"
                 subheadline="So einfach war Auto verkaufen noch nie"
                 accent="vorteile"
@@ -524,7 +526,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/ratgeber"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Auto Ratgeber – Tipps, Checklisten & Wissen"
                 subheadline="Alles rund um Bewertung, Verkauf und Marktpreise"
                 accent="ratgeber"
@@ -541,7 +543,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/autoankauf-frankfurt"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Autoankauf Frankfurt – Ihr lokaler Partner"
                 subheadline="Faire Preise, schnelle Abwicklung in Frankfurt am Main"
                 accent="verkaufen"
@@ -560,7 +562,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/autoankauf-wiesbaden"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Autoankauf Wiesbaden – Seriös & transparent"
                 subheadline="Auto verkaufen in der Landeshauptstadt Hessen"
                 accent="verkaufen"
@@ -579,7 +581,7 @@ const AppContent: React.FC = () => {
                 canonicalUrl="/autoankauf-mainz"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
                 headline="Autoankauf Mainz – Zuverlässiger Service"
                 subheadline="Ihr Auto-Partner in der Gutenberg-Stadt"
                 accent="verkaufen"
