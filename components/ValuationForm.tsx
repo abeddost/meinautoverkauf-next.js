@@ -432,10 +432,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   }
 
   const StepLabel = ({ label, required, optional }: { label: string; required?: boolean; optional?: boolean }) => (
-    <label className="text-[10px] lg:text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1 lg:mb-1.5 block ml-1">
+    <label className="text-xs lg:text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1 lg:mb-1.5 block ml-1">
       {label}
       {required && <span className="text-brand-orange ml-1 align-middle">*</span>}
-      {optional && <span className="ml-2 text-[10px] lg:text-[11px] font-semibold text-slate-400 normal-case tracking-normal">(optional)</span>}
+      {optional && <span className="ml-2 text-xs lg:text-[11px] font-semibold text-slate-400 normal-case tracking-normal">(optional)</span>}
     </label>
   );
 
@@ -591,7 +591,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                         />
                       )}
                     </div>
-                    <span className={`text-[10px] lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <span className={`text-xs lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] sm:max-w-[80px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
                       {step.label}
                     </span>
                   </div>

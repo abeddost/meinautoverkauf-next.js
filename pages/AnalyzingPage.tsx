@@ -53,7 +53,7 @@ const AnalyzingPage: React.FC = () => {
         description="Wir berechnen Ihren fairen Ankaufspreis – bitte einen Moment Geduld."
         canonicalUrl="/bewertung-laeuft"
       />
-      <header className="flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
+      <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
           <Link
             to="/"
@@ -126,7 +126,7 @@ const AnalyzingPage: React.FC = () => {
               <div className="text-center z-10 space-y-3 lg:space-y-4 mb-8 lg:mb-10">
                 <h3 className="text-xl lg:text-2xl font-black tracking-tight text-white drop-shadow-md uppercase">Berechne Marktwert</h3>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="text-[9px] lg:text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] lg:tracking-[0.4em] animate-pulse">
+                  <div className="text-xs lg:text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] lg:tracking-[0.4em] animate-pulse">
                     Grounding Markt-Analyse
                   </div>
                   <div className="flex gap-1">
@@ -140,14 +140,14 @@ const AnalyzingPage: React.FC = () => {
               {/* Progress Tracker */}
               <div className="w-full max-w-xs lg:max-w-sm space-y-3 lg:space-y-4 z-10">
                 <div className="flex justify-between items-end mb-1">
-                  <span className="text-[9px] lg:text-[10px] font-black text-slate-500 uppercase tracking-widest">Dauer: ca. 10-20 Sekunden</span>
-                  <span className="text-[9px] lg:text-[10px] font-black text-brand-orange">ANALYSE...</span>
+                  <span className="text-xs lg:text-[10px] font-black text-slate-500 uppercase tracking-widest">Dauer: ca. 10-20 Sekunden</span>
+                  <span className="text-xs lg:text-[10px] font-black text-brand-orange">ANALYSE...</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5 p-0.5">
                   <div className="h-full bg-brand-orange rounded-full shadow-[0_0_10px_#f97316] animate-complex-progress transition-all duration-300 ease-out" />
                 </div>
                 <div className="flex justify-center">
-                  <p className="text-[10px] lg:text-[11px] text-slate-400 font-bold uppercase tracking-widest px-6 lg:px-8 py-2 bg-white/5 rounded-lg border border-white/10 text-center leading-relaxed">
+                  <p className="text-xs lg:text-[11px] text-slate-400 font-bold uppercase tracking-widest px-6 lg:px-8 py-2 bg-white/5 rounded-lg border border-white/10 text-center leading-relaxed">
                     Bitte haben Sie einen Moment Geduld. <br /> Wir ermitteln einen marktgerechten Preis.
                   </p>
                 </div>

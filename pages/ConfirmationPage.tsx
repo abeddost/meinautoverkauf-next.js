@@ -18,7 +18,7 @@ const ConfirmationPage: React.FC = () => {
         description="Ihre Buchung war erfolgreich. Wir haben Ihnen eine Bestätigung per E-Mail gesendet."
         canonicalUrl="/vielen-dank"
       />
-      <header className="flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
+      <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
           <Link
             to="/"
@@ -35,8 +35,8 @@ const ConfirmationPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto px-4 py-16">
+      <main className="flex-grow py-4 sm:py-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-0 sm:px-4 py-6 sm:py-10 lg:py-16">
           <ConfirmationStep onReset={() => navigate('/')} />
         </div>
       </main>

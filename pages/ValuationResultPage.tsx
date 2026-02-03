@@ -34,7 +34,7 @@ const ValuationResultPage: React.FC = () => {
         canonicalUrl="/bewertung-ergebnis"
       />
       {/* Logo area: matches homepage Header */}
-      <header className="flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
+      <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
           <Link
             to="/"

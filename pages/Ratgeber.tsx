@@ -332,13 +332,13 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               Wenn Sie Unterstützung beim Verkauf benötigen oder einfach einen fairen Preis ohne Aufwand möchten – wir sind für Sie da. Starten Sie jetzt Ihre <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlose Bewertung</Link> oder erfahren Sie mehr über unsere <Link to="/vorteile" className="text-brand-orange font-bold hover:underline">Vorteile beim Autoankauf</Link>.
             </p>
             <div className="flex flex-wrap gap-3 justify-center pt-6 border-t border-slate-200">
-              <Link to="/auto-bewerten" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Kostenlos bewerten</Link>
-              <Link to="/auto-verkaufen" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Auto verkaufen</Link>
-              <Link to="/vorteile" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">Ihre Vorteile</Link>
+              <Link to="/auto-bewerten" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Kostenlos bewerten</Link>
+              <Link to="/auto-verkaufen" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Auto verkaufen</Link>
+              <Link to="/vorteile" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Ihre Vorteile</Link>
               <span className="text-slate-400 text-sm font-medium py-2">Standorte:</span>
-              <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Frankfurt</Link>
-              <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Wiesbaden</Link>
-              <Link to="/autoankauf-mainz" className="text-sm px-4 py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">Mainz</Link>
+              <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Frankfurt</Link>
+              <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Wiesbaden</Link>
+              <Link to="/autoankauf-mainz" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Mainz</Link>
             </div>
           </section>
         </div>

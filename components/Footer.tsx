@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
             <p className="max-w-md text-sm leading-relaxed text-slate-300">
               Wir vereinfachen den Autoverkauf für Privatpersonen – transparent, nachvollziehbar und mit marktgerechten Preisen.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-slate-400">
+            <div className="mt-6 flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
               <span>KI-Analyse</span>
               <span>Faire Preise</span>
               <span>Schnelle Auszahlung</span>
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 text-[11px] font-bold text-center tracking-[0.3em] uppercase text-slate-500">
+        <div className="mt-12 pt-8 border-t border-white/10 text-xs font-bold text-center tracking-[0.3em] uppercase text-slate-500">
           &copy; {currentYear} Meinautoverkauf.de — Echte Preise, echtes Vertrauen.
         </div>
       </div>

@@ -354,7 +354,36 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Autoankauf Mainz vs. Privatverkauf – Der direkte Vergleich</h2>
             
-            <div className="overflow-x-auto my-8">
+            {/* Mobile: card layout (no horizontal scroll) */}
+            <div className="md:hidden my-8 space-y-4">
+              {[
+                { aspekt: 'Verkaufsdauer', uns: '✓ 1-2 Tage komplett', privat: '✗ 2-6 Wochen oder länger' },
+                { aspekt: 'Ihr Aufwand', uns: '✓ Minimal (Online-Formular + Termin)', privat: '✗ Hoch (Anzeigen, Fotos, Besichtigungen, Verhandlungen)' },
+                { aspekt: 'Sicherheit', uns: '✓ 100% sicher, keine Betrüger', privat: '✗ Betrugsrisiko (gefälschte Überweisungen, Diebstahl)' },
+                { aspekt: 'Gewährleistung', uns: '✓ Keine – Händler übernimmt alles', privat: '✗ Haftungsrisiko bei Privatverkauf' },
+                { aspekt: 'Abmeldung', uns: '✓ Kostenlos durch uns übernommen', privat: '✗ Selbst zur Zulassungsstelle' },
+                { aspekt: 'Zahlung', uns: '✓ Am selben Tag (Express-Überweisung/Bar)', privat: '✗ Nach Käufersuche, Zahlungsrisiko' },
+              ].map((row, i) => (
+                <div key={i} className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                  <div className="p-3 bg-slate-50 border-b border-slate-100">
+                    <div className="font-black text-brand-dark text-sm">{row.aspekt}</div>
+                  </div>
+                  <div className="p-3 space-y-2 text-sm">
+                    <div className="flex justify-between gap-2">
+                      <span className="text-slate-500 font-semibold shrink-0">Autoankauf:</span>
+                      <span className="text-slate-600 text-right">{row.uns}</span>
+                    </div>
+                    <div className="flex justify-between gap-2">
+                      <span className="text-slate-500 font-semibold shrink-0">Privat:</span>
+                      <span className="text-slate-600 text-right">{row.privat}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: table */}
+            <div className="hidden md:block overflow-x-auto my-8">
               <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-sm">
                 <thead>
                   <tr className="bg-slate-100">
@@ -422,16 +451,16 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
                 Mehr Informationen und Tipps finden Sie in unserem Ratgeber:
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link to="/auto-bewerten" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                <Link to="/auto-bewerten" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">
                   Auto Bewerten
                 </Link>
-                <Link to="/auto-verkaufen" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                <Link to="/auto-verkaufen" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">
                   Auto Verkaufen
                 </Link>
-                <Link to="/vorteile" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                <Link to="/vorteile" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">
                   Ihre Vorteile
                 </Link>
-                <Link to="/ratgeber" className="text-sm px-4 py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors">
+                <Link to="/ratgeber" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">
                   Gebrauchtwagen Ratgeber
                 </Link>
               </div>

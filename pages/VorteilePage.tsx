@@ -69,10 +69,10 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="mt-6 flex items-end gap-8 justify-center scale-[0.95]">
               <div className="flex flex-col items-center">
                 <div className="relative w-24 h-64 rounded-t-3xl bg-gradient-to-t from-slate-200 to-slate-50 ring-1 ring-slate-200 shadow-sm bar-rise">
-                  <span className="absolute top-3 left-1/2 -translate-x-1/2 text-[11px] font-black text-slate-500">LANGSAM</span>
+                  <span className="absolute top-3 left-1/2 -translate-x-1/2 text-xs font-black text-slate-500">LANGSAM</span>
                 </div>
-                <span className="text-[11px] font-black text-slate-400 uppercase mt-2">Privat</span>
-                <span className="text-[10px] text-slate-400 font-bold">4–6 Wochen</span>
+                <span className="text-xs font-black text-slate-400 uppercase mt-2">Privat</span>
+                <span className="text-xs text-slate-400 font-bold">4–6 Wochen</span>
               </div>
               <div className="flex flex-col items-center">
                 <div className="relative w-24 h-24 rounded-t-3xl bg-gradient-to-t from-brand-orange to-brand-orange/85 ring-1 ring-orange-300/70 shadow-lg bar-rise bar-delay-200">
@@ -80,8 +80,8 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
                     SCHNELL
                   </span>
                 </div>
-                <span className="text-[11px] font-black text-brand-orange uppercase mt-2">BEI UNS</span>
-                <span className="text-[10px] text-brand-orange font-bold">24–48h</span>
+                <span className="text-xs font-black text-brand-orange uppercase mt-2">BEI UNS</span>
+                <span className="text-xs text-brand-orange font-bold">24–48h</span>
               </div>
             </div>
           </div>

@@ -33,23 +33,23 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
         <div className="bg-brand-dark text-white p-4 sm:p-6 lg:p-6 lg:w-[30%] flex flex-col justify-center items-center text-center relative">
           <div className="absolute top-0 left-0 w-full h-1 bg-brand-orange"></div>
           
-          <h2 className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-3">Ihr Ankauf-Angebot</h2>
+          <h2 className="text-xs sm:text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-3">Ihr Ankauf-Angebot</h2>
           <div className="text-2xl sm:text-4xl lg:text-3xl font-black text-brand-orange mb-3 tracking-tighter">
             {formatPrice(valuation.estimatedPrice)}
           </div>
           
           <div className="w-full p-2.5 sm:p-4 bg-white/5 rounded-xl border border-white/10 mb-3 lg:mb-5">
-            <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest block mb-1">Geprüfter Preiskorridor</span>
+            <span className="text-xs sm:text-[9px] font-black text-slate-500 uppercase tracking-widest block mb-1">Geprüfter Preiskorridor</span>
             <div className="text-sm sm:text-lg font-black text-slate-300">
               {formatPrice(valuation.priceRange.min)} — {formatPrice(valuation.priceRange.max)}
             </div>
           </div>
 
           <div className="flex flex-col gap-2.5 w-full">
-            <div className="flex items-center gap-3 text-[11px] sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
+            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
               <span className="text-green-400">●</span> Garantiert für 7 Tage
             </div>
-            <div className="flex items-center gap-3 text-[11px] sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
+            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
               <span className="text-brand-orange">●</span> Sofortige Auszahlung
             </div>
           </div>
@@ -65,7 +65,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
               Termin zur Übergabe buchen
             </button>
             
-            <div className="text-center text-[9px] sm:text-xs text-slate-400 font-bold uppercase tracking-[0.15em] px-2">
+            <div className="text-center text-xs text-slate-400 font-bold uppercase tracking-[0.15em] px-2">
               Sicherer Verkauf • Keine versteckten Gebühren • Inkl. Rechts-Service
             </div>
           </div>
@@ -83,7 +83,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
               
               <div className="relative mb-4 lg:mb-8">
                 <div className="absolute -left-3 top-0 bottom-0 w-1 bg-brand-orange/20 rounded-full"></div>
-                <p className="text-brand-dark text-sm sm:text-base font-bold leading-snug italic text-slate-700">
+                <p className="text-slate-700 text-sm sm:text-base font-normal leading-relaxed">
                   "{valuation.explanation}"
                 </p>
               </div>
@@ -95,13 +95,24 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                   { title: "Kostenlose Abmeldung", desc: "Wir übernehmen den Behörden-Service für Sie." },
                   { title: "Marktgerechter Preis", desc: "Transparenter Richtpreis ohne Verhandlungsdruck." }
                 ].map((benefit, i) => (
-                  <div key={i} className="flex gap-3 p-2.5 lg:p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:bg-orange-50 transition-colors">
+                  <div
+                    key={i}
+                    className={`flex gap-3 p-2.5 lg:p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:bg-orange-50 transition-colors ${
+                      i === 2
+                        ? 'order-1 sm:order-none'
+                        : i === 3
+                          ? 'order-2 sm:order-none'
+                          : i === 1
+                            ? 'order-3 sm:order-none'
+                            : ''
+                    }`}
+                  >
                     <div className="mt-1 flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 bg-green-500 rounded-full flex items-center justify-center text-white">
                       <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div>
-                      <div className="text-[11px] sm:text-sm font-black text-brand-dark uppercase tracking-wide">{benefit.title}</div>
-                      <div className="text-[11px] sm:text-xs text-slate-500 font-medium">{benefit.desc}</div>
+                      <div className="text-xs sm:text-sm font-black text-brand-dark uppercase tracking-wide">{benefit.title}</div>
+                      <div className="text-xs text-slate-500 font-medium">{benefit.desc}</div>
                     </div>
                   </div>
                 ))}
