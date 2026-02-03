@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
-import ValuationResults from './components/ValuationResults';
-import BookingStep from './components/BookingStep';
-import ConfirmationStep from './components/ConfirmationStep';
 import TrustElements from './components/TrustElements';
 import FAQSection from './components/FAQSection';
 import MetaTags from './components/MetaTags';
@@ -19,12 +16,18 @@ import AutoankaufWiesbadenPage from './pages/AutoankaufWiesbaden';
 import AutoankaufMainzPage from './pages/AutoankaufMainz';
 import ImpressumPage from './pages/Impressum';
 import DatenschutzPage from './pages/Datenschutz';
+import ValuationResultPage from './pages/ValuationResultPage';
+import BookingPage from './pages/BookingPage';
+import ConfirmationPage from './pages/ConfirmationPage';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
-// Scroll: home → hero (top); other pages → main content (below hero)
+const STANDALONE_PATHS = ['/bewertung-ergebnis', '/termin-buchen', '/vielen-dank'];
+
+// Scroll: home + standalone pages → top; other pages → main content (below hero)
 const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) => {
   const { pathname, hash } = useLocation();
   const prevPathRef = React.useRef<string | null>(null);
+  const scrollToTop = pathname === '/' || STANDALONE_PATHS.includes(pathname);
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -33,7 +36,7 @@ const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) =>
       onHomeEnter?.();
     }
     prevPathRef.current = pathname;
-    if (pathname === '/') {
+    if (scrollToTop) {
       window.scrollTo({ top: 0, behavior: 'auto' });
     } else {
       const timer = setTimeout(() => {
@@ -57,15 +60,18 @@ const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) =>
       }, 0);
       return () => clearTimeout(timer);
     }
-  }, [pathname, hash, onHomeEnter]);
+  }, [pathname, hash, scrollToTop, onHomeEnter]);
   return null;
 };
 
 const AppContent: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<AppStep>(AppStep.VALUATION_FORM);
   const [carDetails, setCarDetails] = useState<CarDetails | null>(null);
   const [valuation, setValuation] = useState<ValuationResult | null>(null);
   const [showMobileCta, setShowMobileCta] = useState(false);
+  const isStandalonePage = STANDALONE_PATHS.includes(location.pathname);
 
   useEffect(() => {
     let raf: number | null = null;
@@ -93,8 +99,9 @@ const AppContent: React.FC = () => {
   const handleStartValuation = (details: CarDetails, result: ValuationResult) => {
     setCarDetails(details);
     setValuation(result);
-    setCurrentStep(AppStep.RESULTS);
+    navigate('/bewertung-ergebnis', { state: { carDetails: details, valuation: result } });
   };
+
 
   const resetApp = useCallback(() => {
     setCurrentStep(AppStep.VALUATION_FORM);
@@ -105,12 +112,15 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
       <ScrollToTop onHomeEnter={resetApp} />
-      <Header onLogoClick={resetApp} />
+      {!isStandalonePage && <Header onLogoClick={resetApp} />}
       
       <main className="flex-grow pb-20 md:pb-0 bg-gray-50 relative">
         {/* Global background pattern */}
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(148 163 184) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
         <Routes>
+          <Route path="/bewertung-ergebnis" element={<ValuationResultPage />} />
+          <Route path="/termin-buchen" element={<BookingPage />} />
+          <Route path="/vielen-dank" element={<ConfirmationPage />} />
           <Route path="/" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
@@ -451,31 +461,6 @@ const AppContent: React.FC = () => {
                 </>
               )}
 
-              {currentStep === AppStep.RESULTS && valuation && carDetails && (
-                <div className="container mx-auto px-4 py-16">
-                  <ValuationResults 
-                    valuation={valuation} 
-                    carDetails={carDetails} 
-                    onNext={() => setCurrentStep(AppStep.BOOKING)}
-                    onBack={() => setCurrentStep(AppStep.VALUATION_FORM)}
-                  />
-                </div>
-              )}
-
-              {currentStep === AppStep.BOOKING && carDetails && (
-                <div className="container mx-auto px-4 py-16">
-                  <BookingStep 
-                    onComplete={() => setCurrentStep(AppStep.CONFIRMATION)} 
-                    onBack={() => setCurrentStep(AppStep.RESULTS)}
-                  />
-                </div>
-              )}
-
-              {currentStep === AppStep.CONFIRMATION && (
-                <div className="container mx-auto px-4 py-16">
-                  <ConfirmationStep onReset={resetApp} />
-                </div>
-              )}
             </div>
           } />
 
@@ -629,6 +614,7 @@ const AppContent: React.FC = () => {
         </Routes>
       </main>
 
+      {!isStandalonePage && (
       <div
         className={`md:hidden fixed left-0 right-0 bottom-0 px-4 pb-4 z-40 transition-transform duration-300 ease-in-out ${
           showMobileCta ? 'translate-y-0' : 'translate-y-full'
@@ -642,8 +628,9 @@ const AppContent: React.FC = () => {
           Jetzt Auto bewerten
         </button>
       </div>
+      )}
 
-      <Footer />
+      {!isStandalonePage && <Footer />}
     </div>
   );
 };

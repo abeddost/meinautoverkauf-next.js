@@ -17,7 +17,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
   }).format(val);
 
   return (
-    <div className="max-w-6xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="max-w-6xl lg:max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
       <button 
         onClick={onBack}
         className="flex items-center gap-2 text-slate-400 hover:text-brand-orange mb-8 transition-all font-bold group"
@@ -28,35 +28,35 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
         Angaben bearbeiten
       </button>
 
-      <div className="bg-white rounded-2xl lg:rounded-[3rem] shadow-xl lg:shadow-3xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row">
+      <div className="bg-white rounded-2xl lg:rounded-[2.5rem] shadow-xl lg:shadow-3xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row">
         {/* Main Price Display (Left/Top) */}
-        <div className="bg-brand-dark text-white p-8 sm:p-10 lg:p-12 lg:w-[35%] flex flex-col justify-center items-center text-center relative">
-          <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-orange"></div>
+        <div className="bg-brand-dark text-white p-6 sm:p-8 lg:p-8 lg:w-[30%] flex flex-col justify-center items-center text-center relative">
+          <div className="absolute top-0 left-0 w-full h-1 bg-brand-orange"></div>
           
           <h2 className="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-4">Ihr Ankauf-Angebot</h2>
-          <div className="text-5xl sm:text-6xl lg:text-5xl font-black text-brand-orange mb-6 tracking-tighter">
+          <div className="text-4xl sm:text-5xl lg:text-4xl font-black text-brand-orange mb-5 tracking-tighter">
             {formatPrice(valuation.estimatedPrice)}
           </div>
           
-          <div className="w-full p-4 sm:p-5 bg-white/5 rounded-xl lg:rounded-2xl border border-white/10 mb-6 lg:mb-8">
+          <div className="w-full p-3 sm:p-4 bg-white/5 rounded-xl lg:rounded-2xl border border-white/10 mb-5 lg:mb-6">
             <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-1">Geprüfter Preiskorridor</span>
-            <div className="text-lg sm:text-xl font-black text-slate-300">
+            <div className="text-base sm:text-lg font-black text-slate-300">
               {formatPrice(valuation.priceRange.min)} — {formatPrice(valuation.priceRange.max)}
             </div>
           </div>
 
           <div className="flex flex-col gap-3 w-full">
-            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-4 py-3 rounded-xl border border-white/5">
+            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2.5 rounded-xl border border-white/5">
               <span className="text-green-400">●</span> Garantiert für 7 Tage
             </div>
-            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-4 py-3 rounded-xl border border-white/5">
+            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2.5 rounded-xl border border-white/5">
               <span className="text-brand-orange">●</span> Sofortige Auszahlung
             </div>
           </div>
         </div>
 
         {/* Persuasive Content (Right/Bottom) */}
-        <div className="p-6 sm:p-8 lg:p-16 lg:w-[65%] bg-white flex flex-col justify-between">
+        <div className="p-6 sm:p-8 lg:p-10 lg:w-[70%] bg-white flex flex-col justify-between">
           <div className="mb-8 lg:mb-12">
             <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-xl sm:rounded-2xl flex items-center justify-center text-brand-orange shadow-inner flex-shrink-0">
@@ -64,12 +64,12 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04m18.236 0a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 21.359c-1.39-1.365-2.76-2.69-4.04-3.89m8.08 0c-1.28 1.2-2.65 2.525-4.04 3.89" />
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-black text-brand-dark tracking-tight">Ihr Rundum-Sorglos-Vorteil</h3>
+              <h3 className="text-lg sm:text-xl font-black text-brand-dark tracking-tight">Ihre Vorteile auf einen Blick</h3>
             </div>
             
             <div className="relative mb-8 lg:mb-10">
               <div className="absolute -left-4 top-0 bottom-0 w-1 bg-brand-orange/20 rounded-full"></div>
-              <p className="text-brand-dark text-base sm:text-lg lg:text-xl font-bold leading-snug italic text-slate-700">
+              <p className="text-brand-dark text-sm sm:text-base lg:text-lg font-bold leading-snug italic text-slate-700">
                 "{valuation.explanation}"
               </p>
             </div>

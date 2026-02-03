@@ -31,11 +31,11 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       BEWERTUNGS-LOGIK:
       1. Nutze Google Search Grounding für aktuelle Marktpreise (Mobile.de/Autoscout24).
       2. Berücksichtige Wertverlust für Getriebeart und Motorleistung.
-      3. Abzug Händlermarge & Risiko: Ca. 15-20% vom Marktwert.
+      3. Abzug Händlermarge & Risiko: Ca. 23-30% vom Marktwert.
       
       AUSGABE-FORMAT (JSON):
       - estimatedPrice: Finaler Preis (Zahl).
-      - priceRange: { min: Zahl, max: Zahl } (+/- 5%).
+      - priceRange: { min: Zahl, max: Zahl } (+/- 10%).
       - explanation: Ein Text (30 Wörter) an den Kunden, warum UNSER Angebot fair ist (Sofortankauf, keine Haftung, Bargeld).
       - marketTrend: (Up, Down, Stable).`;
 
