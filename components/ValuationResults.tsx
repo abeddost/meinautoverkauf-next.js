@@ -49,9 +49,6 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
             <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
               <span className="text-green-400">●</span> Garantiert für 7 Tage
             </div>
-            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
-              <span className="text-brand-orange">●</span> Sofortige Auszahlung
-            </div>
           </div>
         </div>
 
