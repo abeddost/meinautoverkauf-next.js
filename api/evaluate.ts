@@ -15,7 +15,7 @@ export default async function handler(req: Request) {
 
   try {
     const details = await req.json();
-    const apiKey = process.env.API_KEY;
+    const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'API key missing.' }), { 
@@ -26,10 +26,32 @@ export default async function handler(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
     
-    const prompt = `Berechne Händler-Ankaufspreis für: ${details.brand} ${details.model} (${details.year}).
-      Zustand: ${details.condition}.
-      Anforderung: Erstelle einen überzeugenden Marketing-Text (ca. 30 Wörter), der den stressfreien Verkauf ohne Haftung betont. 
-      Antworte als JSON mit 'estimatedPrice', 'priceRange' {min, max}, 'explanation' und 'marketTrend'.`;
+    const prompt = `Handel als KFZ-Einkaufsdirektor eines Premium-Ankaufportals.
+      ZIEL: Berechne den Händler-Ankaufspreis für ein Fahrzeug mit folgenden Daten:
+      
+      FAHRZEUG:
+      - Marke: ${details.brand}
+      - Modell: ${details.model}
+      - Karosserie: ${details.bodyType}
+      - Erstzulassung: ${details.year}
+      - Kilometerstand (maximal): ${details.mileage} km
+      - Kraftstoff: ${details.fuelType}
+      - Getriebe: ${details.transmission}
+      - Leistungsbereich: ${details.power}
+      - Zustand: ${details.condition}
+      
+      HINWEIS: Die FIN (Fahrzeug-Identifizierungsnummer) wird hier explizit NICHT zur Preisberechnung herangezogen.
+      
+      BEWERTUNGS-LOGIK:
+      1. Nutze Google Search Grounding für aktuelle Marktpreise (Mobile.de/Autoscout24).
+      2. Berücksichtige Wertverlust für Getriebeart und Motorleistung.
+      3. Abzug Händlermarge & Risiko: Ca. 23-30% vom Marktwert.
+      
+      AUSGABE-FORMAT (JSON):
+      - estimatedPrice: Finaler Preis (Zahl).
+      - priceRange: { min: Zahl, max: Zahl } (+/- 10%).
+      - explanation: Ein Text (30 Wörter) an den Kunden, warum unser Angebot fair ist (Sofortankauf, keine Haftung, Banküberweisung).
+      - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -61,7 +83,15 @@ export default async function handler(req: Request) {
       }
     });
 
-    return new Response(response.text, {
+    const responseText = response.text?.trim();
+    if (!responseText) {
+      return new Response(JSON.stringify({ error: 'Leere Antwort von der KI.' }), {
+        status: 502,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    return new Response(responseText, {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });

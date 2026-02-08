@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
@@ -7,22 +7,54 @@ import Hero from './components/Hero';
 import TrustElements from './components/TrustElements';
 import FAQSection from './components/FAQSection';
 import MetaTags from './components/MetaTags';
-import AutoBewertenPage from './pages/AutoBewerten';
-import AutoVerkaufenPage from './pages/AutoVerkaufen';
-import VorteilePage from './pages/VorteilePage';
-import RatgeberPage from './pages/Ratgeber';
-import AutoankaufFrankfurtPage from './pages/AutoankaufFrankfurt';
-import AutoankaufWiesbadenPage from './pages/AutoankaufWiesbaden';
-import AutoankaufMainzPage from './pages/AutoankaufMainz';
-import ImpressumPage from './pages/Impressum';
-import DatenschutzPage from './pages/Datenschutz';
-import AnalyzingPage from './pages/AnalyzingPage';
-import ValuationResultPage from './pages/ValuationResultPage';
-import BookingPage from './pages/BookingPage';
-import ConfirmationPage from './pages/ConfirmationPage';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank'];
+const loadAutoBewertenPage = () => import('./pages/AutoBewerten');
+const loadAutoVerkaufenPage = () => import('./pages/AutoVerkaufen');
+const loadVorteilePage = () => import('./pages/VorteilePage');
+const loadRatgeberPage = () => import('./pages/Ratgeber');
+const loadAutoankaufFrankfurtPage = () => import('./pages/AutoankaufFrankfurt');
+const loadAutoankaufWiesbadenPage = () => import('./pages/AutoankaufWiesbaden');
+const loadAutoankaufMainzPage = () => import('./pages/AutoankaufMainz');
+const loadImpressumPage = () => import('./pages/Impressum');
+const loadDatenschutzPage = () => import('./pages/Datenschutz');
+const loadAnalyzingPage = () => import('./pages/AnalyzingPage');
+const loadValuationResultPage = () => import('./pages/ValuationResultPage');
+const loadBookingPage = () => import('./pages/BookingPage');
+const loadConfirmationPage = () => import('./pages/ConfirmationPage');
+
+const AutoBewertenPage = lazy(loadAutoBewertenPage);
+const AutoVerkaufenPage = lazy(loadAutoVerkaufenPage);
+const VorteilePage = lazy(loadVorteilePage);
+const RatgeberPage = lazy(loadRatgeberPage);
+const AutoankaufFrankfurtPage = lazy(loadAutoankaufFrankfurtPage);
+const AutoankaufWiesbadenPage = lazy(loadAutoankaufWiesbadenPage);
+const AutoankaufMainzPage = lazy(loadAutoankaufMainzPage);
+const ImpressumPage = lazy(loadImpressumPage);
+const DatenschutzPage = lazy(loadDatenschutzPage);
+const AnalyzingPage = lazy(loadAnalyzingPage);
+const ValuationResultPage = lazy(loadValuationResultPage);
+const BookingPage = lazy(loadBookingPage);
+const ConfirmationPage = lazy(loadConfirmationPage);
+
+export const preloadRouteModules = async () => {
+  await Promise.all([
+    loadAutoBewertenPage(),
+    loadAutoVerkaufenPage(),
+    loadVorteilePage(),
+    loadRatgeberPage(),
+    loadAutoankaufFrankfurtPage(),
+    loadAutoankaufWiesbadenPage(),
+    loadAutoankaufMainzPage(),
+    loadImpressumPage(),
+    loadDatenschutzPage(),
+    loadAnalyzingPage(),
+    loadValuationResultPage(),
+    loadBookingPage(),
+    loadConfirmationPage(),
+  ]);
+};
 
 // Scroll: home + standalone pages → top; other pages → main content (below hero)
 const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) => {
@@ -65,7 +97,7 @@ const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) =>
   return null;
 };
 
-const AppContent: React.FC = () => {
+export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disableRouteSuspense = false }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState<AppStep>(AppStep.VALUATION_FORM);
@@ -118,6 +150,13 @@ const AppContent: React.FC = () => {
       <main className="flex-grow pb-20 md:pb-0 bg-gray-50 relative">
         {/* Global background pattern */}
         <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(148 163 184) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+        <Suspense
+          fallback={disableRouteSuspense ? null : (
+            <div className="container mx-auto px-4 py-12 text-center text-slate-500 font-semibold">
+              Seite wird geladen...
+            </div>
+          )}
+        >
         <Routes>
           <Route path="/bewertung-laeuft" element={<AnalyzingPage />} />
           <Route path="/bewertung-ergebnis" element={<ValuationResultPage />} />
@@ -614,6 +653,7 @@ const AppContent: React.FC = () => {
             </div>
           } />
         </Routes>
+        </Suspense>
       </main>
 
       {!isStandalonePage && (
