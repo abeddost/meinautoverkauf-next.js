@@ -1,17 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 import Footer from '../components/Footer';
 import { getCarValuation } from '../geminiService';
 import { CarDetails, ValuationResult } from '../types';
 
-const MATRIX_CHARS = '010110010182736459ABCDEF';
+const MATRIX_CHARS = '0123456789ABCDEF';
+const MATRIX_COLUMN_COUNT = 16;
+const MATRIX_ROWS_PER_COLUMN = 36;
+const PROGRESS_DURATION_SECONDS = 18;
+const STATUS_MESSAGES = [
+  '✔ Vergleich mit regionalen Marktpreisen',
+  '✔ Auswertung ähnlicher Fahrzeuge',
+  'Analyse läuft – fast abgeschlossen',
+];
 
 const AnalyzingPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const formData = (location.state as { formData?: CarDetails } | null)?.formData;
   const [error, setError] = useState<string | null>(null);
+  const [valuationResult, setValuationResult] = useState<ValuationResult | null>(null);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const progressDurationSeconds = PROGRESS_DURATION_SECONDS;
+  const matrixColumns = useMemo(
+    () =>
+      Array.from({ length: MATRIX_COLUMN_COUNT }).map(() => ({
+        delay: `${Math.random() * 3}s`,
+        duration: `${6 + Math.random() * 4}s`,
+        chars: Array.from({ length: MATRIX_ROWS_PER_COLUMN }).map(
+          () => MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]
+        ),
+      })),
+    []
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,14 +44,12 @@ const AnalyzingPage: React.FC = () => {
       navigate('/', { replace: true });
       return;
     }
+
     let cancelled = false;
     getCarValuation(formData)
       .then((result: ValuationResult) => {
         if (!cancelled) {
-          navigate('/bewertung-ergebnis', {
-            state: { carDetails: formData, valuation: result },
-            replace: true,
-          });
+          setValuationResult(result);
         }
       })
       .catch(() => {
@@ -42,9 +62,44 @@ const AnalyzingPage: React.FC = () => {
     };
   }, [formData, navigate]);
 
+  useEffect(() => {
+    if (error || !formData) {
+      return;
+    }
+
+    if (elapsedSeconds >= progressDurationSeconds) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setElapsedSeconds((prev) => Math.min(prev + 1, progressDurationSeconds));
+    }, 1000);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [elapsedSeconds, error, formData, progressDurationSeconds]);
+
+  useEffect(() => {
+    const progress = elapsedSeconds / progressDurationSeconds;
+    if (!formData || !valuationResult || progress < 1) {
+      return;
+    }
+
+    navigate('/bewertung-ergebnis', {
+      state: { carDetails: formData, valuation: valuationResult },
+      replace: true,
+    });
+  }, [elapsedSeconds, formData, navigate, progressDurationSeconds, valuationResult]);
+
   if (!formData) {
     return null;
   }
+
+  const progress = elapsedSeconds / progressDurationSeconds;
+  const activeStatus = progress >= 0.8
+    ? 'Letzte Prüfung…'
+    : STATUS_MESSAGES[Math.floor(elapsedSeconds / 4) % STATUS_MESSAGES.length];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -71,7 +126,7 @@ const AnalyzingPage: React.FC = () => {
       </header>
 
       <main className="flex-grow flex items-center justify-center py-8 px-4">
-        <div className="w-full max-w-lg">
+        <div className="w-full max-w-3xl">
           {error ? (
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 text-center">
               <p className="text-slate-700 font-medium mb-6">{error}</p>
@@ -93,89 +148,99 @@ const AnalyzingPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="bg-[#0a0f1d] rounded-[1.5rem] lg:rounded-[2.5rem] p-6 lg:p-12 min-h-[450px] lg:min-h-[580px] flex flex-col items-center justify-center text-white shadow-2xl overflow-hidden relative border border-white/5 animate-in fade-in duration-500">
+            <div className="bg-gradient-to-br from-[#081224] via-[#091a34] to-[#060f21] rounded-[1.5rem] lg:rounded-[2rem] p-6 sm:p-8 lg:p-8 min-h-[520px] lg:min-h-[540px] flex flex-col items-center justify-center text-white shadow-2xl overflow-hidden relative border border-[#253a67]/55 transition-opacity duration-500">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,rgba(249,115,22,0.15),rgba(8,14,24,0)_42%)] pointer-events-none" />
+
               {/* Matrix Rain Effect */}
-              <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none flex justify-around overflow-hidden">
-                {Array.from({ length: 15 }).map((_, i) => (
-                  <div key={i} className="flex flex-col animate-matrix-drop" style={{ animationDelay: `${Math.random() * 4}s`, animationDuration: `${3 + Math.random() * 4}s` }}>
-                    {Array.from({ length: 40 }).map((_, j) => (
-                      <span key={j} className="font-mono text-xs leading-none py-1 text-brand-orange">
-                        {MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]}
+              <div className="absolute inset-0 opacity-[0.1] pointer-events-none select-none flex justify-around overflow-hidden">
+                {matrixColumns.map((column, i) => (
+                  <div key={i} className="flex flex-col animate-matrix-drop" style={{ animationDelay: column.delay, animationDuration: column.duration }}>
+                    {column.chars.map((char, j) => (
+                      <span key={j} className="font-mono text-xs leading-none py-1 text-[#f97316]">
+                        {char}
                       </span>
                     ))}
                   </div>
                 ))}
               </div>
 
-              {/* Pulsing Central Node & Scanning Effect */}
-              <div className="relative z-10 mb-8 lg:mb-12 flex items-center justify-center">
-                <div className="absolute w-32 h-32 lg:w-40 lg:h-40 rounded-full border border-brand-orange/20 animate-ping opacity-30" />
-                <div className="absolute w-48 h-48 lg:w-56 lg:h-56 rounded-full border border-brand-orange/10 animate-pulse opacity-20" />
-                <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center relative shadow-[0_0_40px_rgba(249,115,22,0.15)]">
-                  <div className="absolute inset-2 border-t border-brand-orange animate-scan-line opacity-50 z-20" />
-                  <div className="flex flex-col gap-1 items-center">
-                    <div className="w-8 lg:w-10 h-1 bg-brand-orange/40 rounded-full" />
-                    <div className="w-5 lg:w-6 h-1 bg-brand-orange/60 rounded-full" />
-                    <div className="w-10 lg:w-12 h-1 bg-brand-orange rounded-full shadow-[0_0_10px_#f97316]" />
-                    <div className="w-6 lg:w-8 h-1 bg-brand-orange/60 rounded-full" />
-                  </div>
+              {/* Central Pulse Indicator */}
+              <div className="relative z-10 mb-7 lg:mb-8 flex items-center justify-center">
+                <div className="absolute w-44 h-44 lg:w-52 lg:h-52 rounded-full border border-[#2d4a78]/50" />
+                <div className="absolute w-64 h-64 lg:w-72 lg:h-72 rounded-full border border-[#2d4a78]/25" />
+                <div className="relative w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-[#0d1f3a] border border-[#30568c]/65 flex items-center justify-center animate-core-pulse shadow-[0_0_22px_rgba(249,115,22,0.2)]">
+                  <div className="absolute left-5 right-5 top-1/2 h-px bg-[#f97316]/30" />
+                  <div className="w-12 lg:w-14 h-1.5 rounded-full bg-gradient-to-r from-[#fb923c] to-[#f97316] shadow-[0_0_12px_rgba(249,115,22,0.55)]" />
                 </div>
               </div>
 
               {/* Status Text Area */}
-              <div className="text-center z-10 space-y-3 lg:space-y-4 mb-8 lg:mb-10">
-                <h3 className="text-xl lg:text-2xl font-black tracking-tight text-white drop-shadow-md uppercase">Berechne Marktwert</h3>
-                <div className="flex flex-col items-center gap-1">
-                  <div className="text-xs lg:text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] lg:tracking-[0.4em] animate-pulse">
-                    Grounding Markt-Analyse
-                  </div>
-                  <div className="flex gap-1">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="w-1 h-1 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: `${i * 0.2}s` }} />
-                    ))}
-                  </div>
-                </div>
+              <div className="text-center z-10 space-y-3 lg:space-y-4 mb-7 lg:mb-8 max-w-3xl transition-opacity duration-500">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-[#f3f7ff] leading-tight">
+                  Wir ermitteln einen fairen Marktpreis für Ihr Auto
+                </h3>
+                <p className="text-sm sm:text-base lg:text-lg text-[#c8d7f0] font-semibold leading-relaxed">
+                  Danke für Ihre Geduld.
+                  <br />
+                  Wir vergleichen Ihr Fahrzeug mit aktuellen Marktdaten aus Ihrer Region.
+                </p>
+                <p className="text-xs sm:text-sm lg:text-base font-semibold text-[#96add5]">
+                  Ihre Angaben → Marktvergleich → Marktpreis
+                </p>
+                <p key={activeStatus} className="text-sm sm:text-base lg:text-lg font-bold text-[#f97316] animate-status-fade">
+                  {activeStatus}
+                </p>
               </div>
 
               {/* Progress Tracker */}
-              <div className="w-full max-w-xs lg:max-w-sm space-y-3 lg:space-y-4 z-10">
-                <div className="flex justify-between items-end mb-1">
-                  <span className="text-xs lg:text-[10px] font-black text-slate-500 uppercase tracking-widest">Dauer: ca. 10-20 Sekunden</span>
-                  <span className="text-xs lg:text-[10px] font-black text-brand-orange">ANALYSE...</span>
+              <div className="w-full max-w-2xl z-10 space-y-3">
+                <div className="h-2.5 w-full bg-[#08172f] rounded-full overflow-hidden border border-[#2d4877]">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-[#fb923c] to-[#f97316] shadow-[0_0_14px_rgba(249,115,22,0.45)] transition-[width] duration-700 ease-in-out"
+                    style={{ width: `${progress * 100}%` }}
+                  />
                 </div>
-                <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5 p-0.5">
-                  <div className="h-full bg-brand-orange rounded-full shadow-[0_0_10px_#f97316] animate-complex-progress transition-all duration-300 ease-out" />
-                </div>
-                <div className="flex justify-center">
-                  <p className="text-xs lg:text-[11px] text-slate-400 font-bold uppercase tracking-widest px-6 lg:px-8 py-2 bg-white/5 rounded-lg border border-white/10 text-center leading-relaxed">
-                    Bitte haben Sie einen Moment Geduld. <br /> Wir ermitteln einen marktgerechten Preis.
-                  </p>
-                </div>
+                <p className="text-[11px] lg:text-xs text-[#94aad0] text-center">⏱️ Noch ca. 10–20 Sekunden</p>
+              </div>
+
+              <div className="mt-4 z-10 bg-[#162847]/78 border border-[#355482]/65 rounded-2xl px-5 py-4 lg:px-8 lg:py-5 text-center backdrop-blur-sm shadow-[0_12px_40px_rgba(4,8,16,0.35)]">
+                <p className="text-white text-base sm:text-lg lg:text-xl font-black mb-1">Fast geschafft.</p>
+                <p className="text-[#d8e4f5] text-sm sm:text-base lg:text-lg font-bold mb-1">Ihr Ergebnis erscheint automatisch.</p>
+                <p className="text-[#b6c7dd] text-sm sm:text-base lg:text-lg font-semibold">Kostenlos und unverbindlich.</p>
               </div>
 
               <style>{`
                 @keyframes matrix-drop {
-                  0% { transform: translateY(-100%); opacity: 0; }
-                  50% { opacity: 1; }
-                  100% { transform: translateY(100%); opacity: 0; }
+                  0% { transform: translateY(-105%); opacity: 0; }
+                  20% { opacity: 1; }
+                  100% { transform: translateY(105%); opacity: 0; }
                 }
-                @keyframes scan-line {
-                  0% { transform: translateY(-15px); opacity: 0; }
-                  50% { opacity: 1; }
-                  100% { transform: translateY(15px); opacity: 0; }
+
+                @keyframes core-pulse {
+                  0%, 100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 20px rgba(249, 115, 22, 0.14);
+                  }
+                  50% {
+                    transform: scale(1.03);
+                    box-shadow: 0 0 30px rgba(249, 115, 22, 0.24);
+                  }
                 }
-                @keyframes complex-progress {
-                  0% { width: 0%; }
-                  15% { width: 10%; }
-                  30% { width: 45%; }
-                  45% { width: 48%; }
-                  60% { width: 75%; }
-                  85% { width: 92%; }
-                  100% { width: 98%; }
+
+                @keyframes status-fade {
+                  0% {
+                    opacity: 0;
+                    transform: translateY(4px);
+                  }
+                  100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
                 }
+
                 .animate-matrix-drop { animation-name: matrix-drop; animation-timing-function: linear; animation-iteration-count: infinite; }
-                .animate-scan-line { animation-name: scan-line; animation-duration: 1.5s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
-                .animate-complex-progress { animation-name: complex-progress; animation-duration: 5.5s; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(0.1, 0, 0.4, 1); }
+                .animate-core-pulse { animation: core-pulse 2s ease-in-out infinite; }
+                .animate-status-fade { animation: status-fade 450ms ease-out; }
               `}</style>
             </div>
           )}

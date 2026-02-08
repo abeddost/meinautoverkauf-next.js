@@ -65,9 +65,6 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
               Termin zur Übergabe buchen
             </button>
             
-            <div className="text-center text-xs text-slate-400 font-bold uppercase tracking-[0.15em] px-2">
-              Sicherer Verkauf • Keine versteckten Gebühren • Inkl. Rechts-Service
-            </div>
           </div>
 
           <div className="order-2 lg:order-1">
