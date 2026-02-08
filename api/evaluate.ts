@@ -15,7 +15,7 @@ export default async function handler(req: Request) {
 
   try {
     const details = await req.json();
-    const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
+    const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
 
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'API key missing.' }), { 
