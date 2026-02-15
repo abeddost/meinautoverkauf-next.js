@@ -8,9 +8,14 @@ import { CarDetails, ValuationResult } from '../types';
 const BookingPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const state = location.state as { carDetails?: CarDetails; valuation?: ValuationResult } | null;
+  const state = location.state as {
+    carDetails?: CarDetails;
+    valuation?: ValuationResult;
+    estimationId?: string | null;
+  } | null;
   const carDetails = state?.carDetails;
   const valuation = state?.valuation;
+  const estimationId = state?.estimationId ?? null;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +39,7 @@ const BookingPage: React.FC = () => {
         canonicalUrl="/termin-buchen"
       />
       <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
-        <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-16 lg:h-[72px] flex items-center justify-between">
           <Link
             to="/"
             className="flex items-center gap-2 hover:opacity-90 transition-opacity focus:outline-none"
@@ -43,18 +48,19 @@ const BookingPage: React.FC = () => {
             <img
               src="/logo.png"
               alt="MeinAutoVerkauf.de"
-              className="h-20 lg:h-24 w-auto"
+              className="h-20 lg:h-20 w-auto"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </Link>
         </div>
       </header>
 
-      <main className="flex-grow py-4 sm:py-8 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto px-0 sm:px-4 py-6 sm:py-10 lg:py-16">
+      <main className="flex-grow py-3 sm:py-6 lg:py-5 px-4 sm:px-5 lg:px-6">
+        <div className="container mx-auto px-0 sm:px-2 py-3 sm:py-6 lg:py-7">
           <BookingStep
+            estimationId={estimationId}
             onComplete={() => navigate('/vielen-dank')}
-            onBack={() => navigate('/bewertung-ergebnis', { state: { carDetails, valuation } })}
+            onBack={() => navigate('/bewertung-ergebnis', { state: { carDetails, valuation, estimationId } })}
           />
         </div>
       </main>

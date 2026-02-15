@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -9,7 +10,7 @@ import FAQSection from './components/FAQSection';
 import MetaTags from './components/MetaTags';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
-const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank'];
+const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
 const loadAutoBewertenPage = () => import('./pages/AutoBewerten');
 const loadAutoVerkaufenPage = () => import('./pages/AutoVerkaufen');
 const loadVorteilePage = () => import('./pages/VorteilePage');
@@ -23,6 +24,8 @@ const loadAnalyzingPage = () => import('./pages/AnalyzingPage');
 const loadValuationResultPage = () => import('./pages/ValuationResultPage');
 const loadBookingPage = () => import('./pages/BookingPage');
 const loadConfirmationPage = () => import('./pages/ConfirmationPage');
+const loadAdminLoginPage = () => import('./pages/AdminLoginPage');
+const loadAdminDashboard = () => import('./pages/AdminDashboard');
 
 const AutoBewertenPage = lazy(loadAutoBewertenPage);
 const AutoVerkaufenPage = lazy(loadAutoVerkaufenPage);
@@ -37,6 +40,8 @@ const AnalyzingPage = lazy(loadAnalyzingPage);
 const ValuationResultPage = lazy(loadValuationResultPage);
 const BookingPage = lazy(loadBookingPage);
 const ConfirmationPage = lazy(loadConfirmationPage);
+const AdminLoginPage = lazy(loadAdminLoginPage);
+const AdminDashboard = lazy(loadAdminDashboard);
 
 export const preloadRouteModules = async () => {
   await Promise.all([
@@ -53,6 +58,8 @@ export const preloadRouteModules = async () => {
     loadValuationResultPage(),
     loadBookingPage(),
     loadConfirmationPage(),
+    loadAdminLoginPage(),
+    loadAdminDashboard(),
   ]);
 };
 
@@ -158,6 +165,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           )}
         >
         <Routes>
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/bewertung-laeuft" element={<AnalyzingPage />} />
           <Route path="/bewertung-ergebnis" element={<ValuationResultPage />} />
           <Route path="/termin-buchen" element={<BookingPage />} />
@@ -680,9 +689,11 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
 const App: React.FC = () => {
   return (
     <HelmetProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <AuthProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </AuthProvider>
     </HelmetProvider>
   );
 };

@@ -7,9 +7,10 @@ interface ValuationResultsProps {
   carDetails: CarDetails;
   onNext: () => void;
   onBack: () => void;
+  isSubmitting?: boolean;
 }
 
-const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetails, onNext, onBack }) => {
+const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetails, onNext, onBack, isSubmitting }) => {
   const formatPrice = (val: number) => new Intl.NumberFormat('de-DE', { 
     style: 'currency', 
     currency: 'EUR',
@@ -57,9 +58,10 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
           <div className="order-1 lg:order-2 space-y-3">
             <button 
               onClick={onNext}
-              className="w-full bg-brand-orange hover:bg-orange-600 text-white px-5 py-3 lg:py-4 rounded-xl font-bold text-sm sm:text-base shadow-lg transition-all transform active:scale-95 shadow-orange-900/20"
+              disabled={isSubmitting}
+              className="w-full bg-brand-orange hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white px-5 py-3 lg:py-4 rounded-xl font-bold text-sm sm:text-base shadow-lg transition-all transform active:scale-95 shadow-orange-900/20"
             >
-              Termin zur Übergabe buchen
+              {isSubmitting ? 'Wird gespeichert…' : 'Termin zur Übergabe buchen'}
             </button>
             
           </div>
