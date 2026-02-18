@@ -17,6 +17,7 @@ export interface CarDetails {
   desiredPrice: string;
   vin?: string;
   images?: string[];
+  pendingPhotoPaths?: { storagePath: string; originalFilename?: string; contentType?: string; sizeBytes?: number }[];
   doors?: string;
   postalCode?: string;
   color?: string;

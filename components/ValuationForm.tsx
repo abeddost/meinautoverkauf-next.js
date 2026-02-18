@@ -1,7 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
+import { supabase } from '../lib/supabase';
+import { optimizeImageFile } from '../lib/imageOptimization';
+import { setPendingPhotoPromise } from '../lib/pendingPhotoUpload';
 
 interface ValuationFormProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
@@ -99,6 +101,7 @@ const SORTED_BRANDS = Object.keys(BRAND_DATA).sort((a, b) => a.localeCompare(b, 
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onValuationSubmit }) => {
   const [loading, setLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState('Berechnung läuft …');
   const [currentPage, setCurrentPage] = useState<FormPage>(1);
   const [formData, setFormData] = useState<CarDetails>({
     brand: '',
@@ -123,6 +126,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     images: []
   });
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [fileError, setFileError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
@@ -409,10 +413,35 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     }
     
     if (onValuationSubmit) {
+      if (selectedFiles.length > 0) {
+        const uuid = crypto.randomUUID();
+        const bucket = 'car-photos';
+        const filesSnapshot = [...selectedFiles];
+        const uploadPromise: Promise<{ storagePath: string; originalFilename?: string; contentType?: string; sizeBytes?: number }[]> = (async () => {
+          const optimizedFiles = await Promise.all(filesSnapshot.map((f) => optimizeImageFile(f)));
+          const results = await Promise.all(
+            optimizedFiles.map((optimized, i) => {
+              const safeName = `${Date.now()}_${i}_${filesSnapshot[i].name.replace(/[^a-zA-Z0-9.-]/g, '_')}`.slice(0, 120);
+              const storagePath = `pending/${uuid}/${safeName}`;
+              return supabase.storage.from(bucket).upload(storagePath, optimized, { contentType: optimized.type, upsert: false })
+                .then(({ error: uploadError }) => {
+                  if (uploadError) throw new Error(`Upload fehlgeschlagen: ${uploadError.message}`);
+                  return { storagePath, originalFilename: filesSnapshot[i].name, contentType: optimized.type, sizeBytes: optimized.size };
+                });
+            })
+          );
+          return results;
+        })().catch((err) => {
+          console.error('Background photo upload failed:', err);
+          return [];
+        });
+        setPendingPhotoPromise(uploadPromise);
+      }
       onValuationSubmit(formData);
       return;
     }
     setLoading(true);
+    setLoadingMessage('Berechnung läuft …');
     try {
       const result = await getCarValuation(formData);
       onValuationComplete(formData, result);
@@ -426,7 +455,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     return (
       <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 lg:p-12 min-h-[280px] flex flex-col items-center justify-center text-center">
         <div className="w-12 h-12 border-4 border-slate-200 border-t-brand-orange rounded-full animate-spin mb-4" aria-hidden="true" />
-        <p className="text-slate-600 font-medium">Berechnung läuft …</p>
+        <p className="text-slate-600 font-medium">{loadingMessage}</p>
       </div>
     );
   }
@@ -836,18 +865,42 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                       accept="image/*"
                       multiple
                       onChange={(e) => {
-                        const files = Array.from(e.target.files || []);
-                        if (files.length > 5) {
+                        const newFiles = Array.from(e.target.files || []);
+                        e.target.value = '';
+                        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+                        const invalid = newFiles.filter((f) => !validTypes.includes(f.type));
+                        if (invalid.length > 0) {
                           setFileError(true);
-                          setFieldError('images', 'Maximal 5 Bilder erlaubt.');
+                          setFieldError('images', 'Nur JPEG, PNG oder WebP erlaubt.');
                           return;
                         }
-                        setFileError(false);
-                        setFieldError('images', '');
-                        // For now, just store file names (in production, you'd upload to Supabase Storage)
-                        const fileNames = files.map(f => f.name);
-                        setUploadedImages(fileNames);
-                        setFormData(prev => ({ ...prev, images: fileNames }));
+                        const oversized = newFiles.filter((f) => f.size > 5 * 1024 * 1024);
+                        if (oversized.length > 0) {
+                          setFileError(true);
+                          setFieldError('images', 'Max. 5 MB pro Foto.');
+                          return;
+                        }
+                        setSelectedFiles((prev) => {
+                          const combined = [...prev, ...newFiles];
+                          const seen = new Set<string>();
+                          const merged = combined.filter((f) => {
+                            const key = `${f.name}_${f.size}`;
+                            if (seen.has(key)) return false;
+                            seen.add(key);
+                            return true;
+                          }).slice(0, 5);
+                          if (merged.length >= 5) {
+                            setFileError(false);
+                            setFieldError('images', '');
+                          } else {
+                            setFileError(false);
+                            setFieldError('images', '');
+                          }
+                          const fileNames = merged.map((f) => f.name);
+                          setUploadedImages(fileNames);
+                          setFormData((fd) => ({ ...fd, images: fileNames }));
+                          return merged;
+                        });
                       }}
                     className={`${fileInputClass} ${shouldShowError('images') ? `${invalidFieldClass} pr-14` : ''}`}
                     />

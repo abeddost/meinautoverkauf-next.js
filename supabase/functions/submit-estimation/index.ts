@@ -212,17 +212,35 @@ Deno.serve(async (req: Request) => {
 
   const estimationId = estimation.id as string;
 
-  // ── Step 3: Insert photos ─────────────────────────────────────────
+  // ── Step 3: Process photos (copy pending to estimation folder, then insert) ─
+  const bucket = "car-photos";
   for (const p of photos) {
-    if (p?.storagePath) {
-      await supabase.from("estimation_photos").insert({
-        estimation_id: estimationId,
-        storage_path: p.storagePath,
-        original_filename: p.originalFilename ?? null,
-        content_type: p.contentType ?? null,
-        size_bytes: p.sizeBytes ?? null,
+    const storagePath = p?.storagePath as string | undefined;
+    if (!storagePath) continue;
+
+    let finalPath = storagePath;
+    if (storagePath.startsWith("pending/")) {
+      const segments = storagePath.split("/");
+      const filename = segments[segments.length - 1] || `photo_${Date.now()}.jpg`;
+      finalPath = `${estimationId}/${filename}`;
+
+      const { data: blob, error: downloadErr } = await supabase.storage.from(bucket).download(storagePath);
+      if (downloadErr || !blob) continue;
+      const { error: uploadErr } = await supabase.storage.from(bucket).upload(finalPath, blob, {
+        contentType: (p.contentType as string) || "image/jpeg",
+        upsert: true,
       });
+      if (uploadErr) continue;
+      await supabase.storage.from(bucket).remove([storagePath]);
     }
+
+    await supabase.from("estimation_photos").insert({
+      estimation_id: estimationId,
+      storage_path: finalPath,
+      original_filename: (p.originalFilename as string) ?? null,
+      content_type: (p.contentType as string) ?? null,
+      size_bytes: (p.sizeBytes as number) ?? null,
+    });
   }
 
   // ── Step 4: Send admin email via Resend ───────────────────────────

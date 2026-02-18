@@ -5,6 +5,7 @@ import MetaTags from '../components/MetaTags';
 import Footer from '../components/Footer';
 import { CarDetails, ValuationResult } from '../types';
 import { submitEstimation } from '../lib/supabaseFunctions';
+import { consumePendingPhotoPromise } from '../lib/pendingPhotoUpload';
 
 const ValuationResultPage: React.FC = () => {
   const location = useLocation();
@@ -32,42 +33,45 @@ const ValuationResultPage: React.FC = () => {
     submittedRef.current = true;
     setSubmitting(true);
     setSubmitError(null);
-    
-    const body = {
-      customer: {
-        firstName: carDetails.firstName,
-        lastName: carDetails.lastName,
-        email: carDetails.email,
-        phone: carDetails.phone,
-      },
-      car: {
-        brand: carDetails.brand,
-        model: carDetails.model,
-        variant: carDetails.variant || carDetails.model || undefined,
-        year: carDetails.year,
-        mileage: carDetails.mileage,
-        fuelType: carDetails.fuelType,
-        transmission: carDetails.transmission,
-        power: carDetails.power,
-        bodyType: carDetails.bodyType,
-        condition: carDetails.condition,
-        desiredPrice: carDetails.desiredPrice || undefined,
-        vin: carDetails.vin,
-        doors: carDetails.doors,
-        postalCode: carDetails.postalCode,
-        color: carDetails.color,
-      },
-      valuation: {
-        estimatedPrice: valuation.estimatedPrice,
-        priceRange: valuation.priceRange,
-        explanation: valuation.explanation,
-        marketTrend: valuation.marketTrend,
-        sources: valuation.sources,
-      },
-      photos: [],
-    };
-    
-    submitEstimation(body)
+
+    consumePendingPhotoPromise()
+      .then((pendingPhotoPaths) => {
+        const body = {
+          customer: {
+            firstName: carDetails.firstName,
+            lastName: carDetails.lastName,
+            email: carDetails.email,
+            phone: carDetails.phone,
+          },
+          car: {
+            brand: carDetails.brand,
+            model: carDetails.model,
+            variant: carDetails.variant || carDetails.model || undefined,
+            year: carDetails.year,
+            mileage: carDetails.mileage,
+            fuelType: carDetails.fuelType,
+            transmission: carDetails.transmission,
+            power: carDetails.power,
+            bodyType: carDetails.bodyType,
+            condition: carDetails.condition,
+            desiredPrice: carDetails.desiredPrice || undefined,
+            vin: carDetails.vin,
+            doors: carDetails.doors,
+            postalCode: carDetails.postalCode,
+            color: carDetails.color,
+          },
+          valuation: {
+            estimatedPrice: valuation.estimatedPrice,
+            priceRange: valuation.priceRange,
+            explanation: valuation.explanation,
+            marketTrend: valuation.marketTrend,
+            sources: valuation.sources,
+          },
+          photos: pendingPhotoPaths,
+        };
+
+        return submitEstimation(body);
+      })
       .then(({ data, error, status }) => {
         if (data?.estimationId) {
           setEstimationId(data.estimationId);
