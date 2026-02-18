@@ -127,6 +127,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   });
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [photoPreviewUrls, setPhotoPreviewUrls] = useState<string[]>([]);
   const [fileError, setFileError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
@@ -144,6 +145,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     field === 'email' ||
     field === 'phone' ||
     field === 'desiredPrice';
+
+  // Object URLs for photo preview thumbnails (revoke on cleanup)
+  useEffect(() => {
+    const urls = selectedFiles.map((f) => URL.createObjectURL(f));
+    setPhotoPreviewUrls(urls);
+    return () => urls.forEach((u) => URL.revokeObjectURL(u));
+  }, [selectedFiles]);
 
   useEffect(() => {
     if (prevPageRef.current === currentPage) return;
@@ -883,15 +891,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                         setSelectedFiles((prev) => {
                           const combined = [...prev, ...newFiles];
                           const seen = new Set<string>();
-                          const merged = combined.filter((f) => {
+                          const deduped = combined.filter((f) => {
                             const key = `${f.name}_${f.size}`;
                             if (seen.has(key)) return false;
                             seen.add(key);
                             return true;
-                          }).slice(0, 5);
-                          if (merged.length >= 5) {
-                            setFileError(false);
-                            setFieldError('images', '');
+                          });
+                          const merged = deduped.slice(0, 5);
+                          if (deduped.length > 5) {
+                            setFileError(true);
+                            setFieldError('images', 'Maximal 5 Bilder erlaubt. Es wurden nur die ersten 5 übernommen.');
                           } else {
                             setFileError(false);
                             setFieldError('images', '');
@@ -906,9 +915,31 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                     />
                     {renderErrorIcon('images', 'Maximal 5 Bilder erlaubt.')}
                   </div>
-                  {uploadedImages.length > 0 && (
-                    <div className="text-xs text-slate-500 font-medium">
-                      {uploadedImages.length} Bild(er) ausgewählt: {uploadedImages.join(', ')}
+                  {shouldShowError('images') && fieldErrors.images && (
+                    <p className="text-sm text-amber-600 font-medium mt-1 ml-1" role="alert">
+                      {fieldErrors.images}
+                    </p>
+                  )}
+                  {selectedFiles.length > 0 && (
+                    <div className="mt-2">
+                      <p className="text-xs text-slate-500 font-medium mb-2">
+                        {selectedFiles.length} Bild(er) ausgewählt
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {photoPreviewUrls.map((url, idx) => (
+                          <div
+                            key={`preview-${idx}`}
+                            className="w-12 h-12 rounded-lg overflow-hidden border border-slate-200 bg-slate-100 flex-shrink-0"
+                            title={selectedFiles[idx]?.name}
+                          >
+                            <img
+                              src={url}
+                              alt=""
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                   <p className="text-xs text-slate-400 mt-1 ml-1">Optional - max. 5 Bilder</p>

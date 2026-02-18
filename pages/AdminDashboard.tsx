@@ -67,10 +67,10 @@ const AdminDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'estimations' | 'appointments'>('estimations');
   const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>('active');
-  const [appointmentSubTab, setAppointmentSubTab] = useState<'pickup' | 'bodenheim' | 'ruesselsheim'>('pickup');
+  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>('all');
   const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>('active');
   const [selectedEstimation, setSelectedEstimation] = useState<Estimation | null>(null);
-  const [photoUrls, setPhotoUrls] = useState<{ url: string; filename: string; id: string }[]>([]);
+  const [photoUrls, setPhotoUrls] = useState<{ id: string; url: string; filename: string; storagePath: string }[]>([]);
   const [loadingPhotos, setLoadingPhotos] = useState(false);
   
   // New state for modals and actions
@@ -164,6 +164,7 @@ const AdminDashboard: React.FC = () => {
               id: row.id,
               url: urlData.publicUrl,
               filename: row.original_filename || row.storage_path.split('/').pop() || row.storage_path,
+              storagePath: row.storage_path,
             };
           })
         );
@@ -513,6 +514,22 @@ const AdminDashboard: React.FC = () => {
     await loadPhotos(selectedEstimation.id);
   };
 
+  const handleRemovePhoto = async (photoId: string, storagePath: string) => {
+    if (!selectedEstimation) return;
+    if (!window.confirm('Dieses Foto wirklich entfernen?')) return;
+    try {
+      const { error: dbError } = await supabase.from('estimation_photos').delete().eq('id', photoId);
+      if (dbError) throw dbError;
+      const { error: storageError } = await supabase.storage.from('car-photos').remove([storagePath]);
+      if (storageError) console.warn('Storage delete failed (file may already be gone):', storageError);
+      setPhotoUrls((prev) => prev.filter((p) => p.id !== photoId));
+      showSuccess('Foto entfernt.');
+    } catch (e: unknown) {
+      console.error('Error removing photo:', e);
+      showError('Foto konnte nicht entfernt werden.');
+    }
+  };
+
   const handleDownloadPDF = async () => {
     if (!selectedEstimation) return;
     try {
@@ -561,9 +578,10 @@ const AdminDashboard: React.FC = () => {
         const model = (est.model ?? '').toLowerCase();
         const variant = (est.variant ?? '').toLowerCase();
         const vin = (est.vin ?? '').toLowerCase();
+        const id = (est.id ?? '').toLowerCase();
         return first.includes(query) || last.includes(query) || email.includes(query) ||
           phone.includes(query) || brand.includes(query) || model.includes(query) ||
-          variant.includes(query) || vin.includes(query);
+          variant.includes(query) || vin.includes(query) || id.includes(query);
       });
     }
 
@@ -578,6 +596,7 @@ const AdminDashboard: React.FC = () => {
       if (appointmentSubTab === 'pickup') base = base.filter((apt) => apt.delivery_type === 'pickup');
       else if (appointmentSubTab === 'bodenheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'bodenheim');
       else if (appointmentSubTab === 'ruesselsheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'ruesselsheim');
+      // 'all' — no additional filter
 
       if (filters.dateFrom) {
         const fromDate = new Date(filters.dateFrom);
@@ -808,6 +827,9 @@ const AdminDashboard: React.FC = () => {
             </div>
             {appointmentListTab === 'active' && (
               <div className="flex gap-2">
+                <button onClick={() => setAppointmentSubTab('all')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'all' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                  Alle ({appointments.filter((a) => !a.archived_at && !a.deleted_at).length})
+                </button>
                 <button onClick={() => setAppointmentSubTab('pickup')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'pickup' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
                   Haus-Abholung ({appointments.filter((a) => !a.archived_at && !a.deleted_at && a.delivery_type === 'pickup').length})
                 </button>
@@ -842,10 +864,12 @@ const AdminDashboard: React.FC = () => {
                       <thead className="bg-slate-50 border-b border-gray-200">
                         <tr>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Datum</th>
+                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Bew.-ID</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Status</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Kunde</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Fahrzeug</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Preis</th>
+                          <th className="px-4 py-3 text-center text-xs font-bold text-slate-700 uppercase">Termine</th>
                           {estimationSubTab === 'active' && (
                             <>
                               <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Verkaufsstatus</th>
@@ -859,7 +883,7 @@ const AdminDashboard: React.FC = () => {
                       <tbody className="divide-y divide-gray-100">
                         {filteredEstimations.length === 0 ? (
                           <tr>
-                            <td colSpan={estimationSubTab === 'active' ? 9 : 6} className="px-4 py-8 text-center text-slate-500">
+                            <td colSpan={estimationSubTab === 'active' ? 11 : 8} className="px-4 py-8 text-center text-slate-500">
                               {estimationSubTab === 'active' ? 'Keine Bewertungen gefunden' : estimationSubTab === 'archived' ? 'Keine archivierten Bewertungen' : 'Keine gelöschten Bewertungen'}
                             </td>
                           </tr>
@@ -868,6 +892,9 @@ const AdminDashboard: React.FC = () => {
                             <tr key={est.id} className="hover:bg-slate-50 transition-colors">
                               <td className="px-4 py-3 text-sm text-slate-600">
                                 {new Date(est.created_at).toLocaleDateString('de-DE')}
+                              </td>
+                              <td className="px-4 py-3 text-xs font-mono text-slate-400" title={est.id}>
+                                {est.id.slice(0, 8)}…
                               </td>
                               <td className="px-4 py-3">
                                 <span
@@ -908,6 +935,14 @@ const AdminDashboard: React.FC = () => {
                               </td>
                               <td className="px-4 py-3 text-sm font-bold text-brand-orange">
                                 {formatPrice(est.estimated_price)}
+                              </td>
+                              <td className="px-4 py-3 text-center">
+                                {(() => {
+                                  const count = appointments.filter((a) => a.estimation_id === est.id).length;
+                                  return count > 0
+                                    ? <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">{count}</span>
+                                    : <span className="text-slate-300 text-sm">–</span>;
+                                })()}
                               </td>
                               {estimationSubTab === 'active' && (
                                 <>
@@ -1065,7 +1100,7 @@ const AdminDashboard: React.FC = () => {
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Erstellt</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Termin</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Übergabe</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Estimation ID</th>
+                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Bewertung</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Aktion</th>
                         </tr>
                       </thead>
@@ -1096,9 +1131,34 @@ const AdminDashboard: React.FC = () => {
                                   <div className="text-slate-500 text-xs capitalize">{appt.bring_location}</div>
                                 )}
                               </td>
-                              <td className="px-4 py-3 text-xs text-slate-500 font-mono">{appt.estimation_id}</td>
+                              <td className="px-4 py-3 text-sm">
+                                {(() => {
+                                  const linked = estimations.find((e) => e.id === appt.estimation_id);
+                                  return linked ? (
+                                    <div>
+                                      <div className="font-semibold text-slate-800">{linked.first_name} {linked.last_name}</div>
+                                      <div className="text-slate-500 text-xs">{linked.brand} {linked.model} ({linked.year})</div>
+                                      <div className="text-slate-400 text-xs font-mono" title={appt.estimation_id}>{appt.estimation_id.slice(0, 8)}…</div>
+                                    </div>
+                                  ) : (
+                                    <span className="text-slate-400 font-mono text-xs" title={appt.estimation_id}>{appt.estimation_id.slice(0, 8)}…</span>
+                                  );
+                                })()}
+                              </td>
                               <td className="px-4 py-3">
                                 <div className="flex items-center gap-2 flex-wrap">
+                                  {(() => {
+                                    const linked = estimations.find((e) => e.id === appt.estimation_id);
+                                    return linked ? (
+                                      <button
+                                        type="button"
+                                        onClick={() => handleViewDetails(linked)}
+                                        className="px-3 py-1 bg-brand-orange hover:bg-orange-600 text-white rounded-lg text-xs font-bold transition-colors"
+                                      >
+                                        Details
+                                      </button>
+                                    ) : null;
+                                  })()}
                                   {appointmentListTab === 'active' && (
                                     <>
                                       <button
@@ -1376,20 +1436,35 @@ const AdminDashboard: React.FC = () => {
                 ) : photoUrls.length > 0 ? (
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {photoUrls.map((photo, idx) => (
-                      <a
-                        key={idx}
-                        href={photo.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block aspect-video bg-slate-100 rounded-xl overflow-hidden hover:ring-2 hover:ring-brand-orange transition-all"
+                      <div
+                        key={photo.id}
+                        className="relative group aspect-video bg-slate-100 rounded-xl overflow-hidden"
                       >
-                        <img
-                          src={photo.url}
-                          alt={photo.filename}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </a>
+                        <a
+                          href={photo.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full h-full hover:ring-2 hover:ring-brand-orange transition-all rounded-xl"
+                        >
+                          <img
+                            src={photo.url}
+                            alt={photo.filename}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => handleRemovePhoto(photo.id, photo.storagePath)}
+                          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-lg opacity-90 hover:opacity-100 transition-opacity focus:opacity-100 focus:outline-none"
+                          title="Foto entfernen"
+                          aria-label="Foto entfernen"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
                     ))}
                   </div>
                 ) : (
@@ -1397,11 +1472,41 @@ const AdminDashboard: React.FC = () => {
                 )}
               </div>
 
+              {/* Verknüpfte Termine */}
+              {(() => {
+                const linkedAppointments = appointments.filter((a) => a.estimation_id === selectedEstimation.id);
+                if (linkedAppointments.length === 0) return null;
+                return (
+                  <div className="border-t border-gray-200 pt-4">
+                    <h3 className="text-lg font-bold text-brand-dark mb-3">Verknüpfte Termine</h3>
+                    <div className="space-y-2">
+                      {linkedAppointments.map((appt) => (
+                        <div key={appt.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-xl text-sm">
+                          <div>
+                            <div className="font-semibold text-slate-800">
+                              {new Date(appt.preferred_date).toLocaleDateString('de-DE')} • {appt.preferred_time} Uhr
+                            </div>
+                            <div className="text-slate-500 text-xs">
+                              {appt.delivery_type === 'bring_car'
+                                ? `Filial-Abgabe${appt.bring_location ? ` – ${appt.bring_location}` : ''}`
+                                : 'Haus-Abholung'}
+                            </div>
+                          </div>
+                          <span className={`px-2 py-1 rounded-full text-xs font-bold ${appt.archived_at ? 'bg-amber-100 text-amber-800' : appt.deleted_at ? 'bg-slate-200 text-slate-600' : 'bg-purple-100 text-purple-800'}`}>
+                            {appt.archived_at ? 'Archiviert' : appt.deleted_at ? 'Gelöscht' : 'Aktiv'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+
               {/* Metadata */}
               <div className="border-t border-gray-200 pt-4">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <div className="text-xs text-slate-500 mb-1">Estimation ID</div>
+                    <div className="text-xs text-slate-500 mb-1">Bewertungs-ID</div>
                     <div className="font-mono text-xs text-slate-700">{selectedEstimation.id}</div>
                   </div>
                   <div>

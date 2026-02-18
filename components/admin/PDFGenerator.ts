@@ -121,7 +121,7 @@ export const generateEstimationPDF = async (
   const vehicleData = [
     ['Marke', estimation.brand],
     ['Modell', estimation.model],
-    ...(estimation.variant ? [['Variante', estimation.variant]] : []),
+    ...(estimation.variant && estimation.variant.trim() !== (estimation.model || '').trim() ? [['Variante', estimation.variant]] : []),
     ['Baujahr', estimation.year],
     ['Kilometerstand', `${estimation.mileage} km`],
     ['Kraftstoff', estimation.fuel_type],
@@ -253,8 +253,10 @@ export const generateEstimationPDF = async (
     );
   }
 
-  // Generate filename
-  const fileName = `Bewertung_${estimation.brand}_${estimation.model}_${new Date(estimation.created_at).toISOString().split('T')[0]}.pdf`;
+  // Generate filename: Marke, Modell, Baujahr, km, Getriebe, Leistung (no prefix)
+  const safe = (s: string) => (s ?? '').replace(/[\s/\\]+/g, '_').slice(0, 25);
+  const mileageNum = (estimation.mileage ?? '').replace(/\D/g, '') || '0';
+  const fileName = `${safe(estimation.brand)}_${safe(estimation.model)}_${estimation.year}_${mileageNum}km_${safe(estimation.transmission)}_${safe(estimation.power)}.pdf`;
 
   // Save
   doc.save(fileName);
