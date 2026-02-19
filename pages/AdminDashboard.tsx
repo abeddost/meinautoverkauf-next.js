@@ -1634,8 +1634,11 @@ const AdminDashboard: React.FC = () => {
                           <img
                             src={photo.url}
                             alt={photo.filename}
+                            width={200}
+                            height={200}
                             className="w-full h-full object-cover"
                             loading="lazy"
+                            decoding="async"
                           />
                         </a>
                         <button

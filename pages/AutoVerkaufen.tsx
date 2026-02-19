@@ -28,6 +28,8 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
             <img
               src="/elements/auto-schnell-verkaufen.webp"
               alt=""
+              width={520}
+              height={347}
               className="w-full max-w-[520px] opacity-[0.24]"
               loading="lazy"
               decoding="async"
@@ -112,6 +114,8 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <img 
                 src="/elements/car-details.webp" 
                 alt="" 
+                width={176}
+                height={176}
                 className="absolute top-4 right-4 w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 opacity-[0.12] pointer-events-none"
                 loading="lazy"
                 decoding="async"
@@ -227,17 +231,17 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center py-12 my-12">
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">1</div>
-                <h4 className="font-black text-lg text-brand-dark">Online bewerten</h4>
+                <h3 className="font-black text-lg text-brand-dark">Online bewerten</h3>
                 <p className="text-sm text-slate-600 font-medium leading-relaxed">Geben Sie Fahrzeugdaten ein und erhalten Sie sofort eine <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link> – kostenlos und unverbindlich.</p>
               </div>
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">2</div>
-                <h4 className="font-black text-lg text-brand-dark">Termin vereinbaren</h4>
+                <h3 className="font-black text-lg text-brand-dark">Termin vereinbaren</h3>
                 <p className="text-sm text-slate-600 font-medium leading-relaxed">Wählen Sie einen passenden Termin für die Fahrzeugübergabe oder lassen Sie Ihr Auto bei sich abholen.</p>
               </div>
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">3</div>
-                <h4 className="font-black text-lg text-brand-dark">Geld erhalten</h4>
+                <h3 className="font-black text-lg text-brand-dark">Geld erhalten</h3>
                 <p className="text-sm text-slate-600 font-medium leading-relaxed">Nach Prüfung und Vertragsunterzeichnung erfolgt die sofortige Überweisung auf Ihr Konto.</p>
               </div>
             </div>

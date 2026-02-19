@@ -23,6 +23,8 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
         <img
           src="/elements/frankfurt-skyline.webp"
           alt=""
+          width={384}
+          height={384}
           className="absolute top-16 right-0 w-80 h-80 lg:w-96 lg:h-96 opacity-[0.08] pointer-events-none"
           loading="lazy"
           decoding="async"
@@ -31,6 +33,8 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
         <img
           src="/elements/ezb-frankfurt.webp"
           alt=""
+          width={320}
+          height={320}
           className="absolute bottom-32 left-0 w-72 h-72 lg:w-80 lg:h-80 opacity-[0.1] pointer-events-none"
           loading="lazy"
           decoding="async"
@@ -89,6 +93,8 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               <img
                 src="/elements/roemerberg-frankfurt.webp"
                 alt=""
+                width={288}
+                height={288}
                 className="absolute -top-6 right-0 w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 opacity-[0.06] pointer-events-none"
                 loading="lazy"
                 decoding="async"

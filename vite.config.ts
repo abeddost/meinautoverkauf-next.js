@@ -93,6 +93,16 @@ export default defineConfig(({ mode }) => {
     ],
     build: {
       outDir: 'dist',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            'vendor-pdf': ['jspdf', 'jspdf-autotable'],
+            'vendor-supabase': ['@supabase/supabase-js'],
+            'vendor-helmet': ['react-helmet-async'],
+          },
+        },
+      },
     },
   };
 });

@@ -217,9 +217,9 @@ const AnalyzingPage: React.FC = () => {
 
               {/* Status Text Area */}
               <div className="text-center z-10 space-y-3 lg:space-y-3 mb-7 lg:mb-6 max-w-3xl lg:max-w-2xl transition-opacity duration-500">
-                <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-black tracking-tight text-[#f3f7ff] leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-black tracking-tight text-[#f3f7ff] leading-tight">
                   Wir ermitteln einen fairen Marktpreis für Ihr Auto
-                </h3>
+                </h2>
                 <p className="text-sm sm:text-base lg:text-base text-[#c8d7f0] font-semibold leading-relaxed">
                   Danke für Ihre Geduld.
                   <br />

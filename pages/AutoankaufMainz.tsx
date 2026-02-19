@@ -23,6 +23,8 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
         <img
           src="/elements/mainzer-dom.webp"
           alt=""
+          width={320}
+          height={320}
           className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.08] pointer-events-none"
           loading="lazy"
           decoding="async"
@@ -31,6 +33,8 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
         <img
           src="/elements/gutenberg-mainz.webp"
           alt=""
+          width={288}
+          height={288}
           className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.1] pointer-events-none"
           loading="lazy"
           decoding="async"
@@ -90,6 +94,8 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               <img
                 src="/elements/rheinufer-mainz.webp"
                 alt=""
+                width={256}
+                height={256}
                 className="absolute -top-6 right-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 opacity-[0.06] pointer-events-none"
                 loading="lazy"
                 decoding="async"

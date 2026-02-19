@@ -472,11 +472,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     );
   }
 
-  const StepLabel = ({ label, required, optional }: { label: string; required?: boolean; optional?: boolean }) => (
-    <label className="text-xs lg:text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1 lg:mb-1.5 block ml-1">
+  const StepLabel = ({ label, required, optional, htmlFor }: { label: string; required?: boolean; optional?: boolean; htmlFor?: string }) => (
+    <label htmlFor={htmlFor} className="text-xs lg:text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1 lg:mb-1.5 block ml-1">
       {label}
       {required && <span className="text-brand-orange ml-1 align-middle">*</span>}
-      {optional && <span className="ml-2 text-xs lg:text-[11px] font-semibold text-slate-400 normal-case tracking-normal">(optional)</span>}
+      {optional && <span className="ml-2 text-xs lg:text-[11px] font-semibold text-slate-500 normal-case tracking-normal">(optional)</span>}
     </label>
   );
 
@@ -628,13 +628,15 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                         <img
                           src={step.iconSrc}
                           alt={step.label}
+                          width={32}
+                          height={32}
                           className={`w-full h-full object-contain ${isCurrent ? '' : 'opacity-80 saturate-75'}`}
                           loading="lazy"
                           decoding="async"
                         />
                       )}
                     </div>
-                    <span className={`text-xs lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] sm:max-w-[80px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-400'}`}>
+                    <span className={`text-xs lg:text-[11px] font-semibold text-center leading-tight max-w-[72px] sm:max-w-[80px] ${isCurrent ? 'text-slate-800' : isCompleted ? 'text-emerald-600' : 'text-slate-500'}`}>
                       {step.label}
                     </span>
                   </div>
@@ -649,8 +651,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
           {currentPage === 1 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div className="relative">
-                <StepLabel label="Automarke" required />
+                <StepLabel label="Automarke" required htmlFor="form-brand" />
                 <select
+                  id="form-brand"
                   name="brand"
                   value={formData.brand}
                   onChange={handleSelectChange}
@@ -670,8 +673,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('brand', 'Bitte Marke wählen.')}
               </div>
               <div className="relative">
-                <StepLabel label="Modellreihe" required />
+                <StepLabel label="Modellreihe" required htmlFor="form-model" />
                 <select
+                  id="form-model"
                   name="model"
                   value={formData.model}
                   onChange={handleSelectChange}
@@ -686,8 +690,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('model', 'Bitte Modell wählen.')}
               </div>
               <div className="relative">
-                <StepLabel label="Erstzulassung" required />
+                <StepLabel label="Erstzulassung" required htmlFor="form-year" />
                 <select
+                  id="form-year"
                   name="year"
                   value={formData.year}
                   onChange={handleSelectChange}
@@ -706,8 +711,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
           {currentPage === 2 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div className="relative">
-                <StepLabel label="Motorleistung" required />
+                <StepLabel label="Motorleistung" required htmlFor="form-power" />
                 <select
+                  id="form-power"
                   name="power"
                   value={formData.power}
                   onChange={handleSelectChange}
@@ -721,8 +727,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('power', 'Bitte Motorleistung wählen.')}
               </div>
               <div className="relative">
-                <StepLabel label="Karosserieform" required />
+                <StepLabel label="Karosserieform" required htmlFor="form-bodyType" />
                 <select
+                  id="form-bodyType"
                   name="bodyType"
                   value={formData.bodyType}
                   onChange={handleSelectChange}
@@ -736,8 +743,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('bodyType', 'Bitte Karosserieform wählen.')}
               </div>
               <div className="relative">
-                <StepLabel label="Anzahl der Türen" required />
+                <StepLabel label="Anzahl der Türen" required htmlFor="form-doors" />
                 <select
+                  id="form-doors"
                   name="doors"
                   value={formData.doors || ''}
                   onChange={handleSelectChange}
@@ -753,8 +761,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('doors', 'Bitte Türenanzahl wählen.')}
               </div>
               <div className="relative">
-                <StepLabel label="Getriebeart" required />
+                <StepLabel label="Getriebeart" required htmlFor="form-transmission" />
                 <select
+                  id="form-transmission"
                   name="transmission"
                   value={formData.transmission}
                   onChange={handleSelectChange}
@@ -792,8 +801,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('mileage', 'Bitte Laufleistung eingeben.')}
               </div>
               <div className="relative">
-                <StepLabel label="Antrieb / Kraftstoff" required />
+                <StepLabel label="Antrieb / Kraftstoff" required htmlFor="form-fuelType" />
                 <select
+                  id="form-fuelType"
                   name="fuelType"
                   value={formData.fuelType}
                   onChange={handleSelectChange}
@@ -956,6 +966,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                             <img
                               src={url}
                               alt=""
+                              width={48}
+                              height={48}
                               className="w-full h-full object-cover"
                               loading="lazy"
                               decoding="async"
@@ -965,7 +977,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                       </div>
                     </div>
                   )}
-                  <p className="text-xs text-slate-400 mt-1 ml-1">Optional - max. 5 Bilder</p>
+                  <p className="text-xs text-slate-500 mt-1 ml-1">Optional - max. 5 Bilder</p>
                 </div>
               </div>
             </div>
@@ -1076,7 +1088,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
             <button 
               type="button" 
               onClick={prevPage}
-              className="w-full text-slate-400 font-bold text-xs lg:text-sm hover:text-slate-600 transition-colors flex items-center justify-center gap-2"
+              className="w-full text-slate-500 font-bold text-xs lg:text-sm hover:text-slate-700 transition-colors flex items-center justify-center gap-2"
             >
               <svg className="w-3.5 h-3.5 lg:w-4 lg:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7" />

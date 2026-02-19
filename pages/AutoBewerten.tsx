@@ -29,6 +29,8 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           <img
             src="/elements/auto-wert-ermitteln.webp"
             alt=""
+            width={256}
+            height={256}
             className="absolute top-6 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.12]"
             loading="lazy"
             decoding="async"
@@ -50,6 +52,8 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           <img
             src="/elements/auto-bewerten.webp"
             alt=""
+            width={240}
+            height={240}
             className="absolute -top-8 right-6 w-36 h-36 sm:w-44 sm:h-44 lg:w-60 lg:h-60 opacity-[0.12] pointer-events-none"
             loading="lazy"
             decoding="async"
@@ -252,6 +256,8 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           <img
             src="/elements/auto-wert-ermitteln.webp"
             alt=""
+            width={256}
+            height={256}
             className="absolute -bottom-6 -right-6 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.08] pointer-events-none"
             loading="lazy"
             decoding="async"

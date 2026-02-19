@@ -215,6 +215,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                             <img
                               src={step.img}
                               alt={step.title}
+                              width={400}
+                              height={224}
                               className="w-full h-56 object-contain bg-slate-50/80 p-4"
                               loading="lazy"
                               decoding="async"
@@ -247,6 +249,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                           <img
                             src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.webp"
                             alt=""
+                            width={420}
+                            height={280}
                             className="w-full max-w-[420px] opacity-[0.22]"
                             loading="lazy"
                             decoding="async"
@@ -327,6 +331,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                           <img
                             src="/elements/autoankauf-neu-gedacht.webp"
                             alt=""
+                            width={460}
+                            height={307}
                             className="w-full max-w-[460px] opacity-[0.16]"
                             loading="lazy"
                             decoding="async"
@@ -375,6 +381,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                           <img
                             src="/elements/auto-verkaufen-mit-motorschaden.webp"
                             alt=""
+                            width={460}
+                            height={307}
                             className="w-full max-w-[460px] opacity-[0.4]"
                             loading="lazy"
                             decoding="async"
@@ -467,6 +475,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                           <img
                             src="/elements/car-valuation.webp"
                             alt=""
+                            width={460}
+                            height={307}
                             className="w-full max-w-[460px] opacity-[0.16]"
                             loading="lazy"
                             decoding="async"

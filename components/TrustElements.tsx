@@ -44,7 +44,7 @@ const TrustElements: React.FC = () => {
               <p className="text-slate-600 leading-relaxed mb-8 font-medium">"{t.comment}"</p>
               <div className="flex items-center justify-between">
                 <div className="font-black text-brand-dark uppercase tracking-wider">— {t.name}</div>
-                <div className="text-xs font-bold text-slate-300 uppercase">{t.date}</div>
+                <div className="text-xs font-bold text-slate-500 uppercase">{t.date}</div>
               </div>
             </div>
           ))}
