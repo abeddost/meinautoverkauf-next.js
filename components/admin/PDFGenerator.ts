@@ -55,7 +55,8 @@ interface Estimation {
 
 export const generateEstimationPDF = async (
   estimation: Estimation,
-  photoUrls: string[]
+  photoUrls: string[],
+  options?: { hideCustomer?: boolean }
 ): Promise<void> => {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -83,34 +84,36 @@ export const generateEstimationPDF = async (
   doc.setTextColor(0);
 
   // Customer Information
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text('Kundeninformationen', margin, yPos);
-  yPos += 7;
+  if (!options?.hideCustomer) {
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Kundeninformationen', margin, yPos);
+    yPos += 7;
 
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  const customerData = [
-    ['Name', `${estimation.first_name} ${estimation.last_name}`],
-    ['E-Mail', estimation.email],
-    ['Telefon', estimation.phone],
-    ...(estimation.postal_code ? [['PLZ', estimation.postal_code]] : []),
-  ];
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    const customerData = [
+      ['Name', `${estimation.first_name} ${estimation.last_name}`],
+      ['E-Mail', estimation.email],
+      ['Telefon', estimation.phone],
+      ...(estimation.postal_code ? [['PLZ', estimation.postal_code]] : []),
+    ];
 
-  autoTable(doc, {
-    startY: yPos,
-    head: [],
-    body: customerData,
-    theme: 'plain',
-    styles: { fontSize: 10, cellPadding: 2 },
-    columnStyles: {
-      0: { fontStyle: 'bold', cellWidth: 40 },
-      1: { cellWidth: 'auto' },
-    },
-    margin: { left: margin, right: margin },
-  });
+    autoTable(doc, {
+      startY: yPos,
+      head: [],
+      body: customerData,
+      theme: 'plain',
+      styles: { fontSize: 10, cellPadding: 2 },
+      columnStyles: {
+        0: { fontStyle: 'bold', cellWidth: 40 },
+        1: { cellWidth: 'auto' },
+      },
+      margin: { left: margin, right: margin },
+    });
 
-  yPos = (doc as any).lastAutoTable.finalY + 10;
+    yPos = (doc as any).lastAutoTable.finalY + 10;
+  }
 
   // Vehicle Information
   doc.setFontSize(14);

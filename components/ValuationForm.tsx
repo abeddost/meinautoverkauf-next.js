@@ -71,15 +71,18 @@ const BRAND_DATA: Record<string, string[]> = {
 };
 
 const BODY_TYPES = ['Limousine', 'Kombi', 'SUV / Geländewagen', 'Kleinwagen', 'Cabrio', 'Coupé', 'Van', 'Pick-up'];
-const FUELS = ['Benzin', 'Diesel', 'Elektro', 'Hybrid', 'LPG / Autogas'];
-const TRANSMISSIONS = ['Manuelles Getriebe', 'Automatikgetriebe'];
+const FUELS = [
+  'Benzin',
+  'Diesel',
+  'Elektro',
+  'Hybrid (Diesel/Elektro)',
+  'Hybrid (Benzin/Elektro)',
+  'Plug-in-Hybrid',
+  'LPG / Autogas',
+];
+const TRANSMISSIONS = ['Schaltung', 'Automatik', 'Halbautomatik'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
 
-const MILEAGE_OPTIONS = Array.from({ length: 26 }, (_, i) => {
-    const val = (i * 10000).toString();
-    const label = i === 0 ? "weniger als 5.000 km" : `bis zu ${new Intl.NumberFormat('de-DE').format(i * 10000)} km`;
-    return { val, label };
-});
 
 const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
     const start = 40 + (i * 5);
@@ -91,10 +94,10 @@ const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
 });
 
 const CONDITIONS = [
-  { val: 'Excellent', label: 'Neuwertig / Top (Keine Kratzer)' },
-  { val: 'Good', label: 'Gepflegt / Normal (Gebrauchspuren)' },
-  { val: 'Fair', label: 'Mängel / Gebraucht (Wartungsstau)' },
-  { val: 'Poor', label: 'Defekt / Unfall (Beschädigt)' }
+  { val: 'Excellent', label: 'Sehr gut' },
+  { val: 'Good', label: 'Gut' },
+  { val: 'Fair', label: 'Mittelmäßig' },
+  { val: 'Poor', label: 'Schlecht' },
 ];
 
 const SORTED_BRANDS = Object.keys(BRAND_DATA).sort((a, b) => a.localeCompare(b, 'de'));
@@ -123,6 +126,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     doors: '',
     postalCode: '',
     color: '',
+    knownDamages: '',
     images: []
   });
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
@@ -242,7 +246,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       case 'transmission':
         return 'Bitte Getriebeart wählen.';
       case 'mileage':
-        return 'Bitte Laufleistung wählen.';
+        return 'Bitte Laufleistung eingeben.';
       case 'fuelType':
         return 'Bitte Kraftstoff wählen.';
       case 'condition':
@@ -768,18 +772,22 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div className="relative">
                 <StepLabel label="Laufleistung" required />
-                <select
+                <input
+                  type="text"
+                  inputMode="numeric"
                   name="mileage"
                   value={formData.mileage}
-                  onChange={handleSelectChange}
+                  onChange={(e) => {
+                    const v = e.target.value.replace(/\D/g, '');
+                    setFormData(prev => ({ ...prev, mileage: v }));
+                    if (fieldErrors.mileage && v) setFieldError('mileage', '');
+                  }}
                   onBlur={() => handleBlur('mileage')}
+                  placeholder="z.B. 75000"
+                  className={`${inputClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
-                  className={`${selectClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
-                >
-                  <option value="">Laufleistung wählen...</option>
-                  {MILEAGE_OPTIONS.map(o => <option key={o.val} value={o.val}>{o.label}</option>)}
-                </select>
-                {renderErrorIcon('mileage', 'Bitte Laufleistung wählen.')}
+                />
+                {renderErrorIcon('mileage', 'Bitte Laufleistung eingeben.')}
               </div>
               <div className="relative">
                 <StepLabel label="Antrieb / Kraftstoff" required />
@@ -809,11 +817,22 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                       }}
                       className={`py-2.5 lg:py-3.5 rounded-xl font-bold text-xs lg:text-sm transition-all border-2 ${formData.condition === c.val ? 'bg-white border-brand-orange text-brand-orange shadow-[0_10px_20px_-14px_rgba(255,122,26,0.7)]' : 'bg-white/60 border-white/70 text-slate-500 hover:border-orange-200/70'}`}
                     >
-                      {c.label.split(' (')[0]}
+                      {c.label}
                     </button>
                   ))}
                 </div>
                 {renderErrorIcon('condition', 'Bitte Zustand auswählen.', 'right-2 top-2')}
+              </div>
+              <div>
+                <StepLabel label="Bekannte Schäden oder Mängel" optional />
+                <textarea
+                  name="knownDamages"
+                  value={formData.knownDamages || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, knownDamages: e.target.value }))}
+                  placeholder="z.B. kleiner Parkrempler vorne links, Klimaanlage defekt..."
+                  rows={3}
+                  className={`${inputClass} resize-none`}
+                />
               </div>
             </div>
           )}

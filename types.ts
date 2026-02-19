@@ -21,6 +21,7 @@ export interface CarDetails {
   doors?: string;
   postalCode?: string;
   color?: string;
+  knownDamages?: string;
 }
 
 export interface CarSpecs {
