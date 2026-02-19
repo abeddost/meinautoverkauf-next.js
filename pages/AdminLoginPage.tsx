@@ -33,6 +33,7 @@ const AdminLoginContent: React.FC = () => {
         title="Admin Login | Meinautoverkauf.de"
         description="Administrator login"
         canonicalUrl="/admin/login"
+        noindex
       />
       <div className="max-w-md w-full">
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">

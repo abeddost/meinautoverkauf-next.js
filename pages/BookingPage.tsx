@@ -37,6 +37,7 @@ const BookingPage: React.FC = () => {
         title="Termin zur Übergabe buchen | Meinautoverkauf.de"
         description="Wählen Sie Ihren Wunschtermin für die Fahrzeugübergabe – Filial-Abgabe oder Haus-Abholung."
         canonicalUrl="/termin-buchen"
+        noindex
       />
       <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-16 lg:h-[72px] flex items-center justify-between">

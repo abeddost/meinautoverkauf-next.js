@@ -684,6 +684,7 @@ const AdminDashboardContent: React.FC = () => {
         title="Admin Dashboard | Meinautoverkauf.de"
         description="Administrator dashboard"
         canonicalUrl="/admin"
+        noindex
       />
       {/* Notification toast */}
       {notification && (

@@ -17,6 +17,7 @@ const ConfirmationPage: React.FC = () => {
         title="Vielen Dank! | Meinautoverkauf.de"
         description="Ihre Buchung war erfolgreich. Wir haben Ihnen eine Bestätigung per E-Mail gesendet."
         canonicalUrl="/vielen-dank"
+        noindex
       />
       <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">

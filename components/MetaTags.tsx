@@ -5,9 +5,10 @@ interface MetaTagsProps {
   title: string;
   description: string;
   canonicalUrl?: string;
+  noindex?: boolean;
 }
 
-const MetaTags: React.FC<MetaTagsProps> = ({ title, description, canonicalUrl }) => {
+const MetaTags: React.FC<MetaTagsProps> = ({ title, description, canonicalUrl, noindex = false }) => {
   const fullUrl = `https://meinautoverkauf.de${canonicalUrl || ''}`;
   const defaultOgImage = 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200';
   const organizationSchema = {
@@ -29,6 +30,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({ title, description, canonicalUrl })
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullUrl} />
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
       
       {/* Open Graph */}
       <meta property="og:title" content={title} />

@@ -99,6 +99,7 @@ const ValuationResultPage: React.FC = () => {
         title="Ihr Ankauf-Angebot | Meinautoverkauf.de"
         description="Ihr persönliches Ankauf-Angebot – fair, transparent und sofort gültig."
         canonicalUrl="/bewertung-ergebnis"
+        noindex
       />
       {/* Logo area: matches homepage Header */}
       <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">

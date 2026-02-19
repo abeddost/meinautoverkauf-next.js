@@ -1,5 +1,18 @@
 {
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.meinautoverkauf.de"
+        }
+      ],
+      "destination": "https://meinautoverkauf.de/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

@@ -112,6 +112,7 @@ const AnalyzingPage: React.FC = () => {
           title="Bewertung starten | Meinautoverkauf.de"
           description="Bitte starten Sie die Fahrzeugbewertung neu."
           canonicalUrl="/bewertung-laeuft"
+          noindex
         />
         <main className="flex-grow flex items-center justify-center px-4 py-8">
           <div className="w-full max-w-lg bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
@@ -144,6 +145,7 @@ const AnalyzingPage: React.FC = () => {
         title="Angebot wird erstellt | Meinautoverkauf.de"
         description="Wir berechnen Ihren fairen Ankaufspreis – bitte einen Moment Geduld."
         canonicalUrl="/bewertung-laeuft"
+        noindex
       />
       <header className="hidden sm:block flex-shrink-0 border-b border-slate-200 bg-white shadow-sm">
         <div className="container mx-auto px-4 h-16 lg:h-[72px] flex items-center justify-between">

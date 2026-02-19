@@ -7,6 +7,7 @@ import { AppContent, preloadRouteModules } from './App';
 type HeadEntry = {
   type: string;
   props: Record<string, unknown>;
+  children?: string;
 };
 
 const collectHeadEntries = (helmet: any): Set<HeadEntry> => {
@@ -14,6 +15,7 @@ const collectHeadEntries = (helmet: any): Set<HeadEntry> => {
     helmet?.meta?.toComponent?.(),
     helmet?.link?.toComponent?.(),
     helmet?.base?.toComponent?.(),
+    helmet?.script?.toComponent?.(),
   ];
 
   const entries = groups
@@ -21,9 +23,24 @@ const collectHeadEntries = (helmet: any): Set<HeadEntry> => {
     .map((element: any) => {
       const rawProps = (element?.props ?? {}) as Record<string, unknown>;
       const safeProps: Record<string, unknown> = {};
+      let children: string | undefined;
 
       for (const [key, value] of Object.entries(rawProps)) {
-        if (key === 'children' || value === undefined || value === null || typeof value === 'boolean') {
+        if (value === undefined || value === null || typeof value === 'boolean') {
+          continue;
+        }
+
+        if (key === 'children') {
+          if (Array.isArray(value)) {
+            children = value.join('');
+          } else {
+            children = String(value);
+          }
+          continue;
+        }
+
+        if (key === 'dangerouslySetInnerHTML' && typeof value === 'object' && value && '__html' in value) {
+          children = String((value as { __html: unknown }).__html ?? '');
           continue;
         }
 
@@ -34,13 +51,24 @@ const collectHeadEntries = (helmet: any): Set<HeadEntry> => {
         }
       }
 
-      return {
+      const entry: HeadEntry = {
         type: typeof element.type === 'string' ? element.type : 'meta',
         props: safeProps,
       };
-    });
 
-  return new Set(entries);
+      if (children) {
+        entry.children = children;
+      }
+
+      return entry;
+    });
+  const deduped = new Map<string, HeadEntry>();
+  for (const entry of entries) {
+    const key = `${entry.type}|${JSON.stringify(entry.props)}|${entry.children ?? ''}`;
+    deduped.set(key, entry);
+  }
+
+  return new Set(deduped.values());
 };
 
 const extractTitle = (helmet: any): string | undefined => {

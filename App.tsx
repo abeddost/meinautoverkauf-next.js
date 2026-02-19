@@ -601,6 +601,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headline="Auto verkaufen online – Schnell, fair & sicher"
                 subheadline="Kostenlose Bewertung und stressfreier Verkauf in ganz Deutschland"
                 accent="verkaufen"
+                headlineTag="h2"
               />
               <AutoVerkaufenPage onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
             </div>
@@ -618,6 +619,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headline="Ihre Vorteile beim Autoankauf – Transparent & zuverlässig"
                 subheadline="So einfach war Auto verkaufen noch nie"
                 accent="vorteile"
+                headlineTag="h2"
               />
               <VorteilePage onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
             </div>
@@ -635,6 +637,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headline="Auto Ratgeber – Tipps, Checklisten & Wissen"
                 subheadline="Alles rund um Bewertung, Verkauf und Marktpreise"
                 accent="ratgeber"
+                headlineTag="h2"
               />
               <RatgeberPage onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
             </div>
@@ -652,6 +655,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headline="Autoankauf Frankfurt – Ihr lokaler Partner"
                 subheadline="Faire Preise, schnelle Abwicklung in Frankfurt am Main"
                 accent="verkaufen"
+                headlineTag="h2"
               />
               <AutoankaufFrankfurtPage 
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -671,6 +675,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headline="Autoankauf Wiesbaden – Seriös & transparent"
                 subheadline="Auto verkaufen in der Landeshauptstadt Hessen"
                 accent="verkaufen"
+                headlineTag="h2"
               />
               <AutoankaufWiesbadenPage 
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -690,6 +695,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headline="Autoankauf Mainz – Zuverlässiger Service"
                 subheadline="Ihr Auto-Partner in der Gutenberg-Stadt"
                 accent="verkaufen"
+                headlineTag="h2"
               />
               <AutoankaufMainzPage 
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

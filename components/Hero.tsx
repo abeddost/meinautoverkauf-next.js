@@ -100,6 +100,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
   const heroSubheadline = subheadline ?? 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis';
   const heroAccent = ACCENTS[accent ?? 'home'];
   const DesktopHeadlineTag = headlineTag ?? 'h1';
+  const MobileHeadlineTag = headlineTag ?? 'h2';
 
   useEffect(() => {
     const disableParallax =
@@ -302,9 +303,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
       <div className="lg:hidden flex flex-col pt-4 pb-6 min-h-[calc(100vh-64px)]">
         <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
           <div className="text-left mb-4">
-            <h1 className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
+            <MobileHeadlineTag className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
               {heroHeadline}
-            </h1>
+            </MobileHeadlineTag>
             <p className="mt-3 text-base text-slate-600 font-medium">
               {heroSubheadline}
             </p>
