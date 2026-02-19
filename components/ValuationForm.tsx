@@ -629,6 +629,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                           src={step.iconSrc}
                           alt={step.label}
                           className={`w-full h-full object-contain ${isCurrent ? '' : 'opacity-80 saturate-75'}`}
+                          loading="lazy"
+                          decoding="async"
                         />
                       )}
                     </div>
@@ -955,6 +957,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                               src={url}
                               alt=""
                               className="w-full h-full object-cover"
+                              loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         ))}

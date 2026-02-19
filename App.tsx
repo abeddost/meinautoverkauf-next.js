@@ -212,7 +212,13 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                         ].map((step, i) => (
                           <div key={i} className="relative bg-white rounded-[2rem] border border-slate-100 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)] overflow-hidden">
                             <div className="absolute top-4 right-5 text-3xl font-black text-orange-100">{step.num}</div>
-                            <img src={step.img} alt={step.title} className="w-full h-56 object-contain bg-slate-50/80 p-4" />
+                            <img
+                              src={step.img}
+                              alt={step.title}
+                              className="w-full h-56 object-contain bg-slate-50/80 p-4"
+                              loading="lazy"
+                              decoding="async"
+                            />
                             <div className="p-6">
                               <h3 className="text-base md:text-lg font-black text-brand-dark mb-3">{step.title}</h3>
                               <p className="text-slate-600 font-medium leading-relaxed">{step.desc}</p>
@@ -242,6 +248,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                             src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.webp"
                             alt=""
                             className="w-full max-w-[420px] opacity-[0.22]"
+                            loading="lazy"
+                            decoding="async"
                             onError={(e) => { e.currentTarget.style.display = 'none'; }}
                           />
                         </div>
@@ -316,7 +324,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     <div className="container mx-auto px-4 relative z-10">
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
-                          <img src="/elements/autoankauf-neu-gedacht.webp" alt="" className="w-full max-w-[460px] opacity-[0.16]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                          <img
+                            src="/elements/autoankauf-neu-gedacht.webp"
+                            alt=""
+                            className="w-full max-w-[460px] opacity-[0.16]"
+                            loading="lazy"
+                            decoding="async"
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                          />
                         </div>
                         <div className="relative z-10 text-left">
                           <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">
@@ -357,7 +372,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     <div className="container mx-auto px-4 relative z-10">
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-start pl-2 sm:pl-6 lg:pl-10 pointer-events-none">
-                          <img src="/elements/auto-verkaufen-mit-motorschaden.webp" alt="" className="w-full max-w-[460px] opacity-[0.4]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                          <img
+                            src="/elements/auto-verkaufen-mit-motorschaden.webp"
+                            alt=""
+                            className="w-full max-w-[460px] opacity-[0.4]"
+                            loading="lazy"
+                            decoding="async"
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                          />
                         </div>
                         <div className="relative z-10 text-left">
                           <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">
@@ -442,7 +464,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     <div className="container mx-auto px-4 relative z-10">
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
-                          <img src="/elements/car-valuation.webp" alt="" className="w-full max-w-[460px] opacity-[0.16]" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                          <img
+                            src="/elements/car-valuation.webp"
+                            alt=""
+                            className="w-full max-w-[460px] opacity-[0.16]"
+                            loading="lazy"
+                            decoding="async"
+                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                          />
                         </div>
                         <div className="relative z-10 text-left">
                           <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">

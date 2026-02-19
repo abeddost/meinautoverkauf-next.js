@@ -29,6 +29,10 @@ const ConfirmationPage: React.FC = () => {
               src="/logo.webp"
               alt="MeinAutoVerkauf.de"
               className="h-20 lg:h-24 w-auto"
+              width={1260}
+              height={410}
+              loading="eager"
+              decoding="async"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </Link>

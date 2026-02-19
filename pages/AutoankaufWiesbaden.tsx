@@ -24,12 +24,16 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           src="/elements/kurhaus-wiesbaden.webp"
           alt=""
           className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.08] pointer-events-none"
+          loading="lazy"
+          decoding="async"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
           src="/elements/auto-ankauf-wiesbaden.webp"
           alt=""
           className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.12] pointer-events-none"
+          loading="lazy"
+          decoding="async"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       </div>
@@ -87,6 +91,8 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
                 src="/elements/neroberg-wiesbaden.webp"
                 alt=""
                 className="absolute -top-4 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.07] pointer-events-none"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Wiesbaden – Unser Service vor Ort</h2>

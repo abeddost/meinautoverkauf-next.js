@@ -29,6 +29,8 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               src="/elements/auto-schnell-verkaufen.webp"
               alt=""
               className="w-full max-w-[520px] opacity-[0.24]"
+              loading="lazy"
+              decoding="async"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
@@ -111,6 +113,8 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
                 src="/elements/car-details.webp" 
                 alt="" 
                 className="absolute top-4 right-4 w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 opacity-[0.12] pointer-events-none"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <h3 className="text-lg md:text-xl font-black text-brand-dark mb-6">Wichtige Dokumente zum Auto verkaufen</h3>

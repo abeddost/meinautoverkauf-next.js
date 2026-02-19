@@ -35,6 +35,10 @@ const Footer: React.FC = () => {
                   src="/logo-white.webp"
                   alt="MeinAutoVerkauf.de"
                   className="h-12 w-auto"
+                  width={1260}
+                  height={410}
+                  loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}

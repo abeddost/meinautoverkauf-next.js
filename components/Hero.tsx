@@ -155,10 +155,17 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
       className={`relative bg-gradient-to-br ${heroAccent.gradientClass} overflow-hidden min-h-[100vh] -mt-16 lg:-mt-20 pt-16 lg:pt-20 flex flex-col`}
     >
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-100"
-          style={{ backgroundImage: "url('/hero%20section.webp')" }}
-        ></div>
+        <img
+          src="/hero%20section.webp"
+          alt=""
+          aria-hidden="true"
+          width={800}
+          height={533}
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className={`absolute -top-32 right-[-80px] h-[420px] w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>
         <div className={`absolute -bottom-40 left-[-120px] h-[520px] w-[520px] rounded-full ${heroAccent.blobBottomClass} blur-3xl opacity-85 animate-float-slower`}></div>
         <div
@@ -230,6 +237,11 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                     alt="BMW Car"
                     className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
+                    width={1536}
+                    height={768}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
@@ -243,6 +255,10 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                       WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
                       maskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)'
                     }}
+                    width={1536}
+                    height={768}
+                    loading="eager"
+                    decoding="async"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
@@ -294,6 +310,8 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                 src="/bmw.webp"
                 alt="BMW Car"
                 className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
+                width={1536}
+                height={768}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"

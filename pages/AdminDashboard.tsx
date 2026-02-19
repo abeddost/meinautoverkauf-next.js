@@ -707,7 +707,15 @@ const AdminDashboard: React.FC = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/">
-              <img src="/logo.webp" alt="MeinAutoVerkauf.de" className="h-16 w-auto" />
+              <img
+                src="/logo.webp"
+                alt="MeinAutoVerkauf.de"
+                className="h-16 w-auto"
+                width={1260}
+                height={410}
+                loading="eager"
+                decoding="async"
+              />
             </Link>
             <h1 className="text-2xl font-black text-brand-dark">Admin Dashboard</h1>
           </div>

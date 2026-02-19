@@ -24,12 +24,16 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
           src="/elements/frankfurt-skyline.webp"
           alt=""
           className="absolute top-16 right-0 w-80 h-80 lg:w-96 lg:h-96 opacity-[0.08] pointer-events-none"
+          loading="lazy"
+          decoding="async"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
           src="/elements/ezb-frankfurt.webp"
           alt=""
           className="absolute bottom-32 left-0 w-72 h-72 lg:w-80 lg:h-80 opacity-[0.1] pointer-events-none"
+          loading="lazy"
+          decoding="async"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
       </div>
@@ -86,6 +90,8 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
                 src="/elements/roemerberg-frankfurt.webp"
                 alt=""
                 className="absolute -top-6 right-0 w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 opacity-[0.06] pointer-events-none"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6 relative z-10">Autoankauf Frankfurt: Service in allen Stadtteilen</h2>
