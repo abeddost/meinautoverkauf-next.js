@@ -65,7 +65,7 @@ const AdminDashboard: React.FC = () => {
   const [estimations, setEstimations] = useState<Estimation[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'estimations' | 'appointments'>('estimations');
+  const [activeTab, setActiveTab] = useState<'estimations' | 'appointments' | 'provision'>('estimations');
   const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>('active');
   const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>('all');
   const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>('active');
@@ -77,12 +77,14 @@ const AdminDashboard: React.FC = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [showPhotoUploadModal, setShowPhotoUploadModal] = useState(false);
+  const [appointmentModalForEstimation, setAppointmentModalForEstimation] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterState>({});
   const [updatingVerkaufsstatusId, setUpdatingVerkaufsstatusId] = useState<string | null>(null);
   const [archivingEstimationId, setArchivingEstimationId] = useState<string | null>(null);
   const [deletingAppointmentId, setDeletingAppointmentId] = useState<string | null>(null);
   const [updatingProvisionId, setUpdatingProvisionId] = useState<string | null>(null);
   const [provisionDraft, setProvisionDraft] = useState<Record<string, string>>({});
+  const [provisionMonthFilter, setProvisionMonthFilter] = useState<string>('all');
   const [notification, setNotification] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
 
   const showError = (technicalMessage: string, context?: string) => {
@@ -623,27 +625,31 @@ const AdminDashboard: React.FC = () => {
   const stats = useMemo(() => {
     const activeEstimations = estimations.filter((e) => e.status !== 'archived' && e.status !== 'deleted');
     const totalEstimations = activeEstimations.length;
-    const soldCount = activeEstimations.filter((e) => e.status === 'sold').length;
-    const conversionRate = totalEstimations > 0 ? ((soldCount / totalEstimations) * 100).toFixed(1) : '0';
-    const totalRevenue = activeEstimations
-      .filter((e) => e.final_sale_price != null)
-      .reduce((sum, e) => sum + (e.final_sale_price ?? 0), 0);
-    const provisionAmount = (e: Estimation) => e.provision_euro ?? e.commission_amount ?? 0;
-    const pendingCommission = activeEstimations
-      .filter((e) => e.status === 'sold' && !e.commission_paid)
-      .reduce((sum, e) => sum + provisionAmount(e), 0);
-    const paidCommission = activeEstimations
-      .filter((e) => e.commission_paid)
-      .reduce((sum, e) => sum + provisionAmount(e), 0);
+    const acceptedCount = activeEstimations.filter((e) => e.verkaufsstatus === 'Accepted').length;
+    const pendingCount = activeEstimations.filter((e) => e.verkaufsstatus === 'Pending').length;
+    const rejectedCount = activeEstimations.filter((e) => e.verkaufsstatus === 'Rejected').length;
+    const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM
+    const acceptedThisMonth = activeEstimations.filter(
+      (e) => e.verkaufsstatus === 'Accepted' && e.created_at.startsWith(currentMonth)
+    ).length;
 
     return {
       totalEstimations,
-      soldCount,
-      conversionRate,
-      totalRevenue,
-      pendingCommission,
-      paidCommission,
+      acceptedCount,
+      pendingCount,
+      rejectedCount,
+      acceptedThisMonth,
     };
+  }, [estimations]);
+
+  // Provision tab stats (Accepted, non-deleted)
+  const provisionStats = useMemo(() => {
+    const accepted = estimations.filter((e) => e.verkaufsstatus === 'Accepted' && e.status !== 'deleted');
+    const provisionAmount = (e: Estimation) => e.provision_euro ?? e.commission_amount ?? 0;
+    const totalProvision = accepted.reduce((sum, e) => sum + provisionAmount(e), 0);
+    const openProvision = accepted.filter((e) => !e.commission_paid).reduce((sum, e) => sum + provisionAmount(e), 0);
+    const paidProvision = accepted.filter((e) => e.commission_paid).reduce((sum, e) => sum + provisionAmount(e), 0);
+    return { acceptedTotal: accepted.length, totalProvision, openProvision, paidProvision };
   }, [estimations]);
 
   const formatPrice = (val: number | null | undefined) =>
@@ -723,34 +729,33 @@ const AdminDashboard: React.FC = () => {
 
           <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm font-semibold text-slate-600">Verkaufte Fahrzeuge</div>
+              <div className="text-sm font-semibold text-slate-600">Angenommen</div>
               <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <div className="text-3xl font-black text-brand-dark">{stats.soldCount}</div>
-            <div className="text-xs text-slate-500 mt-1">Conversion: {stats.conversionRate}%</div>
+            <div className="text-3xl font-black text-brand-dark">{stats.acceptedCount}</div>
+            <div className="text-xs text-slate-500 mt-1">Diesen Monat: {stats.acceptedThisMonth}</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm font-semibold text-slate-600">Gesamtumsatz</div>
-              <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <div className="text-sm font-semibold text-slate-600">Ausstehend</div>
+              <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <div className="text-2xl font-black text-brand-dark">{formatPrice(stats.totalRevenue)}</div>
+            <div className="text-3xl font-black text-brand-dark">{stats.pendingCount}</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
-              <div className="text-sm font-semibold text-slate-600">Offene Provision</div>
-              <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+              <div className="text-sm font-semibold text-slate-600">Abgelehnt</div>
+              <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <div className="text-2xl font-black text-brand-orange">{formatPrice(stats.pendingCommission)}</div>
-            <div className="text-xs text-slate-500 mt-1">Bezahlt: {formatPrice(stats.paidCommission)}</div>
+            <div className="text-3xl font-black text-brand-dark">{stats.rejectedCount}</div>
           </div>
         </div>
 
@@ -775,6 +780,16 @@ const AdminDashboard: React.FC = () => {
             }`}
           >
             Termine ({appointments.filter((a) => !a.archived_at && !a.deleted_at).length})
+          </button>
+          <button
+            onClick={() => setActiveTab('provision')}
+            className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${
+              activeTab === 'provision'
+                ? 'bg-brand-orange text-white shadow-lg'
+                : 'bg-white text-slate-600 hover:bg-slate-50'
+            }`}
+          >
+            Provision ({estimations.filter((e) => e.verkaufsstatus === 'Accepted' && e.status !== 'deleted').length})
           </button>
         </div>
 
@@ -869,12 +884,9 @@ const AdminDashboard: React.FC = () => {
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Kunde</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Fahrzeug</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Preis</th>
-                          <th className="px-4 py-3 text-center text-xs font-bold text-slate-700 uppercase">Termine</th>
                           {estimationSubTab === 'active' && (
                             <>
                               <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Verkaufsstatus</th>
-                              <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Provision (€)</th>
-                              <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Bezahlt</th>
                             </>
                           )}
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Aktion</th>
@@ -883,7 +895,7 @@ const AdminDashboard: React.FC = () => {
                       <tbody className="divide-y divide-gray-100">
                         {filteredEstimations.length === 0 ? (
                           <tr>
-                            <td colSpan={estimationSubTab === 'active' ? 11 : 8} className="px-4 py-8 text-center text-slate-500">
+                            <td colSpan={estimationSubTab === 'active' ? 8 : 7} className="px-4 py-8 text-center text-slate-500">
                               {estimationSubTab === 'active' ? 'Keine Bewertungen gefunden' : estimationSubTab === 'archived' ? 'Keine archivierten Bewertungen' : 'Keine gelöschten Bewertungen'}
                             </td>
                           </tr>
@@ -897,27 +909,36 @@ const AdminDashboard: React.FC = () => {
                                 {est.id.slice(0, 8)}…
                               </td>
                               <td className="px-4 py-3">
-                                <span
-                                  className={`inline-block px-2 py-1 rounded-full text-xs font-bold ${
-                                    est.status === 'estimated'
-                                      ? 'bg-blue-100 text-blue-800'
-                                      : est.status === 'appointment_booked'
-                                      ? 'bg-purple-100 text-purple-800'
-                                      : est.status === 'converted_to_sale'
-                                      ? 'bg-yellow-100 text-yellow-800'
-                                      : est.status === 'sold'
-                                      ? 'bg-green-100 text-green-800'
-                                      : est.status === 'rejected'
-                                      ? 'bg-red-100 text-red-800'
-                                      : est.status === 'archived'
-                                      ? 'bg-amber-100 text-amber-800'
-                                      : est.status === 'deleted'
-                                      ? 'bg-slate-200 text-slate-700'
-                                      : 'bg-gray-100 text-gray-800'
-                                  }`}
-                                >
-                                  {est.status === 'archived' ? 'Archiv' : est.status === 'deleted' ? 'Gelöscht' : est.status}
-                                </span>
+                                {est.status === 'appointment_booked' ? (
+                                  <button
+                                    type="button"
+                                    onClick={() => setAppointmentModalForEstimation(est.id)}
+                                    className="inline-block px-2 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 transition-colors cursor-pointer underline-offset-2 hover:underline"
+                                    title="Termin anzeigen"
+                                  >
+                                    Termin gebucht
+                                  </button>
+                                ) : (
+                                  <span
+                                    className={`inline-block px-2 py-1 rounded-full text-xs font-bold ${
+                                      est.status === 'estimated'
+                                        ? 'bg-blue-100 text-blue-800'
+                                        : est.status === 'converted_to_sale'
+                                        ? 'bg-yellow-100 text-yellow-800'
+                                        : est.status === 'sold'
+                                        ? 'bg-green-100 text-green-800'
+                                        : est.status === 'rejected'
+                                        ? 'bg-red-100 text-red-800'
+                                        : est.status === 'archived'
+                                        ? 'bg-amber-100 text-amber-800'
+                                        : est.status === 'deleted'
+                                        ? 'bg-slate-200 text-slate-700'
+                                        : 'bg-gray-100 text-gray-800'
+                                    }`}
+                                  >
+                                    {est.status === 'archived' ? 'Archiv' : est.status === 'deleted' ? 'Gelöscht' : est.status}
+                                  </span>
+                                )}
                               </td>
                               <td className="px-4 py-3 text-sm">
                                 <div className="font-semibold text-slate-800">
@@ -935,14 +956,6 @@ const AdminDashboard: React.FC = () => {
                               </td>
                               <td className="px-4 py-3 text-sm font-bold text-brand-orange">
                                 {formatPrice(est.estimated_price)}
-                              </td>
-                              <td className="px-4 py-3 text-center">
-                                {(() => {
-                                  const count = appointments.filter((a) => a.estimation_id === est.id).length;
-                                  return count > 0
-                                    ? <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">{count}</span>
-                                    : <span className="text-slate-300 text-sm">–</span>;
-                                })()}
                               </td>
                               {estimationSubTab === 'active' && (
                                 <>
@@ -971,54 +984,6 @@ const AdminDashboard: React.FC = () => {
                                     {updatingVerkaufsstatusId === est.id && (
                                       <span className="ml-1 inline-block w-3 h-3 border-2 border-brand-orange border-t-transparent rounded-full animate-spin" />
                                     )}
-                                  </td>
-                                  <td className="px-4 py-3">
-                                    <input
-                                      type="text"
-                                      inputMode="decimal"
-                                      value={provisionDraft[est.id] !== undefined ? provisionDraft[est.id] : (est.provision_euro != null ? String(est.provision_euro) : '')}
-                                      onChange={(e) => {
-                                        const v = e.target.value;
-                                        if (v === '' || /^\d*[,.]?\d*$/.test(v)) {
-                                          setProvisionDraft((prev) => ({ ...prev, [est.id]: v }));
-                                        }
-                                      }}
-                                      onBlur={(e) => {
-                                        const v = e.target.value.trim().replace(',', '.');
-                                        setProvisionDraft((prev) => {
-                                          const next = { ...prev };
-                                          delete next[est.id];
-                                          return next;
-                                        });
-                                        const num = v === '' ? null : parseFloat(v);
-                                        if (v !== '' && (isNaN(num!) || num! < 0)) return;
-                                        const current = est.provision_euro;
-                                        if (v === '' && current === null) return;
-                                        if (num !== null && current !== null && Math.abs(num - current) < 0.01) return;
-                                        handleProvisionAmountChange(est.id, v === '' ? '' : String(num));
-                                      }}
-                                      onFocus={() => setProvisionDraft((prev) => ({ ...prev, [est.id]: est.provision_euro != null ? String(est.provision_euro) : '' }))}
-                                      disabled={updatingProvisionId === est.id}
-                                      placeholder="—"
-                                      className="w-20 px-2 py-1 text-sm rounded border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none disabled:opacity-50"
-                                    />
-                                    {updatingProvisionId === est.id && (
-                                      <span className="ml-1 inline-block w-3 h-3 border-2 border-brand-orange border-t-transparent rounded-full animate-spin" />
-                                    )}
-                                  </td>
-                                  <td className="px-4 py-3">
-                                    <label className="flex items-center gap-2 cursor-pointer">
-                                      <input
-                                        type="checkbox"
-                                        checked={est.commission_paid ?? false}
-                                        onChange={(e) => handleProvisionPaidChange(est.id, e.target.checked)}
-                                        disabled={updatingProvisionId === est.id}
-                                        className="w-4 h-4 rounded border-gray-300 text-brand-orange focus:ring-brand-orange"
-                                      />
-                                      <span className="text-xs font-medium text-slate-600">
-                                        {est.commission_paid ? 'Ja' : 'Nein'}
-                                      </span>
-                                    </label>
                                   </td>
                                 </>
                               )}
@@ -1085,6 +1050,192 @@ const AdminDashboard: React.FC = () => {
                 </div>
               </>
             )}
+
+            {/* Provision Tab */}
+            {activeTab === 'provision' && (() => {
+              const acceptedEstimations = estimations.filter(
+                (e) => e.verkaufsstatus === 'Accepted' && e.status !== 'deleted'
+              );
+              const distinctMonths = [...new Set(acceptedEstimations.map((e) => e.created_at.slice(0, 7)))]
+                .sort()
+                .reverse();
+              const filteredProvision =
+                provisionMonthFilter === 'all'
+                  ? acceptedEstimations
+                  : acceptedEstimations.filter((e) => e.created_at.startsWith(provisionMonthFilter));
+              const formatMonth = (ym: string) =>
+                new Date(ym + '-01').toLocaleDateString('de-DE', { year: 'numeric', month: 'long' });
+              return (
+                <>
+                  {/* Provision analytics */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-semibold text-slate-600">Angenommen Fahrzeuge</div>
+                        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div className="text-3xl font-black text-brand-dark">{provisionStats.acceptedTotal}</div>
+                    </div>
+                    <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-semibold text-slate-600">Gesamt Provision</div>
+                        <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div className="text-2xl font-black text-brand-dark">{formatPrice(provisionStats.totalProvision)}</div>
+                    </div>
+                    <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-semibold text-slate-600">Offene Provision</div>
+                        <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                      </div>
+                      <div className="text-2xl font-black text-brand-orange">{formatPrice(provisionStats.openProvision)}</div>
+                    </div>
+                    <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-semibold text-slate-600">Bezahlte Provision</div>
+                        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div className="text-2xl font-black text-green-700">{formatPrice(provisionStats.paidProvision)}</div>
+                    </div>
+                  </div>
+
+                  {/* Month filter */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <label className="text-sm font-semibold text-slate-600">Monat:</label>
+                    <select
+                      value={provisionMonthFilter}
+                      onChange={(e) => setProvisionMonthFilter(e.target.value)}
+                      className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none bg-white"
+                    >
+                      <option value="all">Alle Monate</option>
+                      {distinctMonths.map((ym) => (
+                        <option key={ym} value={ym}>{formatMonth(ym)}</option>
+                      ))}
+                    </select>
+                    {provisionMonthFilter !== 'all' && (
+                      <span className="text-xs text-slate-500">{filteredProvision.length} Einträge</span>
+                    )}
+                  </div>
+
+                  {/* Provision table */}
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <thead className="bg-slate-50 border-b border-gray-200">
+                          <tr>
+                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Datum</th>
+                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Fahrzeug</th>
+                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Baujahr</th>
+                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Kunde</th>
+                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Provision (€)</th>
+                            <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Bezahlt</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                          {filteredProvision.length === 0 ? (
+                            <tr>
+                              <td colSpan={6} className="px-4 py-8 text-center text-slate-500">
+                                {provisionMonthFilter === 'all'
+                                  ? 'Keine angenommenen Fahrzeuge'
+                                  : 'Keine Einträge für diesen Monat'}
+                              </td>
+                            </tr>
+                          ) : (
+                            filteredProvision.map((est) => (
+                              <tr key={est.id} className="hover:bg-slate-50 transition-colors">
+                                <td className="px-4 py-3 text-sm text-slate-600">
+                                  {new Date(est.created_at).toLocaleDateString('de-DE')}
+                                </td>
+                                <td className="px-4 py-3 text-sm">
+                                  <div className="font-semibold text-slate-800">{est.brand} {est.model}</div>
+                                  {est.variant && est.variant !== est.model && (
+                                    <div className="text-slate-500 text-xs">{est.variant}</div>
+                                  )}
+                                </td>
+                                <td className="px-4 py-3 text-sm text-slate-700">{est.year}</td>
+                                <td className="px-4 py-3 text-sm">
+                                  <div className="font-semibold text-slate-800">{est.first_name} {est.last_name}</div>
+                                  <div className="text-slate-500 text-xs">{est.email}</div>
+                                </td>
+                                <td className="px-4 py-3">
+                                  <div className="flex items-center gap-1">
+                                    <input
+                                      type="text"
+                                      inputMode="decimal"
+                                      value={
+                                        provisionDraft[est.id] !== undefined
+                                          ? provisionDraft[est.id]
+                                          : est.provision_euro != null
+                                          ? String(est.provision_euro)
+                                          : ''
+                                      }
+                                      onChange={(e) => {
+                                        const v = e.target.value;
+                                        if (v === '' || /^\d*[,.]?\d*$/.test(v)) {
+                                          setProvisionDraft((prev) => ({ ...prev, [est.id]: v }));
+                                        }
+                                      }}
+                                      onBlur={(e) => {
+                                        const v = e.target.value.trim().replace(',', '.');
+                                        setProvisionDraft((prev) => {
+                                          const next = { ...prev };
+                                          delete next[est.id];
+                                          return next;
+                                        });
+                                        const num = v === '' ? null : parseFloat(v);
+                                        if (v !== '' && (isNaN(num!) || num! < 0)) return;
+                                        const current = est.provision_euro;
+                                        if (v === '' && current === null) return;
+                                        if (num !== null && current !== null && Math.abs(num - current) < 0.01) return;
+                                        handleProvisionAmountChange(est.id, v === '' ? '' : String(num));
+                                      }}
+                                      onFocus={() =>
+                                        setProvisionDraft((prev) => ({
+                                          ...prev,
+                                          [est.id]: est.provision_euro != null ? String(est.provision_euro) : '',
+                                        }))
+                                      }
+                                      disabled={updatingProvisionId === est.id}
+                                      placeholder="—"
+                                      className="w-24 px-2 py-1 text-sm rounded border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none disabled:opacity-50"
+                                    />
+                                    {updatingProvisionId === est.id && (
+                                      <span className="inline-block w-3 h-3 border-2 border-brand-orange border-t-transparent rounded-full animate-spin" />
+                                    )}
+                                  </div>
+                                </td>
+                                <td className="px-4 py-3">
+                                  <label className="flex items-center gap-2 cursor-pointer">
+                                    <input
+                                      type="checkbox"
+                                      checked={est.commission_paid ?? false}
+                                      onChange={(e) => handleProvisionPaidChange(est.id, e.target.checked)}
+                                      disabled={updatingProvisionId === est.id}
+                                      className="w-4 h-4 rounded border-gray-300 text-brand-orange focus:ring-brand-orange"
+                                    />
+                                    <span className="text-xs font-medium text-slate-600">
+                                      {est.commission_paid ? 'Ja' : 'Nein'}
+                                    </span>
+                                  </label>
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
 
             {/* Appointments Tab */}
             {activeTab === 'appointments' && (
@@ -1547,6 +1698,110 @@ const AdminDashboard: React.FC = () => {
           onClose={() => setShowPhotoUploadModal(false)}
         />
       )}
+
+      {appointmentModalForEstimation && (() => {
+        const appts = appointments.filter((a) => a.estimation_id === appointmentModalForEstimation);
+        const estimation = estimations.find((e) => e.id === appointmentModalForEstimation);
+        const hasContent = estimation || appts.length > 0;
+        return (
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+            onClick={() => setAppointmentModalForEstimation(null)}
+          >
+            <div
+              className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 max-h-[80vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-black text-brand-dark">Termin-Details</h2>
+                <button
+                  type="button"
+                  onClick={() => setAppointmentModalForEstimation(null)}
+                  className="text-slate-400 hover:text-slate-700 text-xl font-bold leading-none"
+                >
+                  ✕
+                </button>
+              </div>
+              {!hasContent ? (
+                <p className="text-slate-500 text-sm">Kein Termin gefunden.</p>
+              ) : (
+                <div className="space-y-4 text-sm">
+                  {estimation && (
+                    <>
+                      <div>
+                        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Kundendaten</h3>
+                        <div className="space-y-1">
+                          <div><span className="font-bold">Name:</span> {estimation.first_name} {estimation.last_name}</div>
+                          <div><span className="font-bold">E-Mail:</span> {estimation.email}</div>
+                          <div><span className="font-bold">Telefon:</span> {estimation.phone || '–'}</div>
+                          {estimation.postal_code && (
+                            <div><span className="font-bold">PLZ:</span> {estimation.postal_code}</div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="border-t pt-3 mt-3">
+                        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Fahrzeug</h3>
+                        <div className="space-y-1">
+                          <div><span className="font-bold">Marke:</span> {estimation.brand}</div>
+                          <div><span className="font-bold">Modell:</span> {estimation.model}</div>
+                          {estimation.variant && estimation.variant !== estimation.model && (
+                            <div><span className="font-bold">Variante:</span> {estimation.variant}</div>
+                          )}
+                          <div><span className="font-bold">Baujahr:</span> {estimation.year}</div>
+                          <div><span className="font-bold">Laufleistung:</span> {estimation.mileage} km</div>
+                          <div><span className="font-bold">Kraftstoff:</span> {estimation.fuel_type || '–'}</div>
+                          <div><span className="font-bold">Getriebe:</span> {estimation.transmission || '–'}</div>
+                          <div><span className="font-bold">Leistung:</span> {estimation.power || '–'}</div>
+                          {estimation.body_type && (
+                            <div><span className="font-bold">Karosserie:</span> {estimation.body_type}</div>
+                          )}
+                          {estimation.condition && (
+                            <div><span className="font-bold">Zustand:</span> {estimation.condition}</div>
+                          )}
+                          {estimation.color && (
+                            <div><span className="font-bold">Farbe:</span> {estimation.color}</div>
+                          )}
+                          <div>
+                            <span className="font-bold">Geschätzter Preis:</span>{' '}
+                            {estimation.estimated_price != null
+                              ? formatPrice(estimation.estimated_price)
+                              : estimation.price_min != null && estimation.price_max != null
+                                ? `${formatPrice(estimation.price_min)} – ${formatPrice(estimation.price_max)}`
+                                : '–'}
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  {appts.length > 0 && (
+                    <div className="border-t pt-3 mt-3">
+                      <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-2">Termin(e)</h3>
+                      <div className="space-y-3">
+                        {appts.map((appt) => (
+                          <div key={appt.id} className="space-y-2">
+                            <div><span className="font-bold">Datum:</span> {new Date(appt.preferred_date).toLocaleDateString('de-DE')}</div>
+                            <div><span className="font-bold">Uhrzeit:</span> {appt.preferred_time} Uhr</div>
+                            <div>
+                              <span className="font-bold">Übergabe:</span>{' '}
+                              {appt.delivery_type === 'bring_car'
+                                ? `Filial-Abgabe${appt.bring_location ? ` – ${appt.bring_location}` : ''}`
+                                : 'Haus-Abholung'}
+                            </div>
+                            <div>
+                              <span className="font-bold">Status:</span>{' '}
+                              {appt.archived_at ? 'Archiviert' : appt.deleted_at ? 'Gelöscht' : 'Aktiv'}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 };
