@@ -78,19 +78,6 @@ export default defineConfig(({ mode }) => {
         prerenderScript: path.join(process.cwd(), 'prerender.tsx'),
         additionalPrerenderRoutes: prerenderRoutes,
       }),
-      // Defer main CSS to avoid render-blocking (PageSpeed)
-      {
-        name: 'async-css',
-        apply: 'build',
-        transformIndexHtml(html) {
-          return html.replace(
-            /<link([^>]*)\srel="stylesheet"([^>]*)href="([^"]+)"([^>]*)>/gi,
-            (_, before, mid, href, after) =>
-              `<link${before || ' '}rel="preload" as="style"${mid}href="${href}"${after} onload="this.onload=null;this.rel='stylesheet'">` +
-              `<noscript><link rel="stylesheet" href="${href}"></noscript>`
-          );
-        },
-      },
       ...(shouldAnalyze
         ? [
             visualizer({
@@ -106,15 +93,6 @@ export default defineConfig(({ mode }) => {
     ],
     build: {
       outDir: 'dist',
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-            'vendor-supabase': ['@supabase/supabase-js'],
-            'vendor-helmet': ['react-helmet-async'],
-          },
-        },
-      },
     },
   };
 });

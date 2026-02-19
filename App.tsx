@@ -82,7 +82,7 @@ const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) =>
           }
         }
 
-        const el = document.querySelector('[id$="-content"]') as HTMLElement | null;
+        const el = document.getElementById('content');
         if (el) {
           const headerOffset = 88;
           const target = (el.previousElementSibling as HTMLElement | null) ?? el;
@@ -218,16 +218,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
                         {[
-                          { num: "01", title: "Fahrzeugdaten eingeben", desc: "Gib online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.", img: "/3-steps/fahrzeugdaten-online-eingeben.webp", imgBase: "/3-steps/fahrzeugdaten-online-eingeben" },
-                          { num: "02", title: "Fairen Preis erhalten", desc: "Du erhältst eine transparente Preiseinschätzung auf Basis aktueller Marktdaten.", img: "/3-steps/preis-erhalten.webp", imgBase: "/3-steps/preis-erhalten" },
-                          { num: "03", title: "Termin wählen & Geld erhalten", desc: "Wähle einen passenden Übergabetermin und erhalte die Auszahlung bequem per Banküberweisung.", img: "/3-steps/abgabe-termin-buchen-geld-erhalten.webp", imgBase: "/3-steps/abgabe-termin-buchen-geld-erhalten" }
+                          { num: "01", title: "Fahrzeugdaten eingeben", desc: "Gib online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.", img: "/3-steps/fahrzeugdaten-online-eingeben.webp" },
+                          { num: "02", title: "Fairen Preis erhalten", desc: "Du erhältst eine transparente Preiseinschätzung auf Basis aktueller Marktdaten.", img: "/3-steps/preis-erhalten.webp" },
+                          { num: "03", title: "Termin wählen & Geld erhalten", desc: "Wähle einen passenden Übergabetermin und erhalte die Auszahlung bequem per Banküberweisung.", img: "/3-steps/abgabe-termin-buchen-geld-erhalten.webp" }
                         ].map((step, i) => (
                           <div key={i} className="relative bg-white rounded-[2rem] border border-slate-100 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)] overflow-hidden">
                             <div className="absolute top-4 right-5 text-3xl font-black text-orange-100">{step.num}</div>
                             <img
                               src={step.img}
-                              srcSet={`${step.imgBase}-512w.webp 512w, ${step.imgBase}-1024w.webp 1024w`}
-                              sizes="(max-width: 768px) 100vw, 33vw"
                               alt={step.title}
                               width={400}
                               height={224}
@@ -262,8 +260,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
                           <img
                             src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.webp"
-                            srcSet="/elements/auto-verkaufen-online-vorteile-auf-einen-blick-480w.webp 480w, /elements/auto-verkaufen-online-vorteile-auf-einen-blick-920w.webp 920w"
-                            sizes="(max-width: 768px) 100vw, 460px"
                             alt=""
                             width={420}
                             height={280}
@@ -346,8 +342,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
                           <img
                             src="/elements/autoankauf-neu-gedacht.webp"
-                            srcSet="/elements/autoankauf-neu-gedacht-480w.webp 480w, /elements/autoankauf-neu-gedacht-920w.webp 920w"
-                            sizes="(max-width: 768px) 100vw, 460px"
                             alt=""
                             width={460}
                             height={307}
@@ -398,8 +392,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                         <div className="absolute inset-0 flex items-center justify-start pl-2 sm:pl-6 lg:pl-10 pointer-events-none">
                           <img
                             src="/elements/auto-verkaufen-mit-motorschaden.webp"
-                            srcSet="/elements/auto-verkaufen-mit-motorschaden-480w.webp 480w, /elements/auto-verkaufen-mit-motorschaden-920w.webp 920w"
-                            sizes="(max-width: 768px) 100vw, 460px"
                             alt=""
                             width={460}
                             height={307}
@@ -494,8 +486,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
                           <img
                             src="/elements/car-valuation.webp"
-                            srcSet="/elements/car-valuation-480w.webp 480w, /elements/car-valuation-920w.webp 920w"
-                            sizes="(max-width: 768px) 100vw, 460px"
                             alt=""
                             width={460}
                             height={307}

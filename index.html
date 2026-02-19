@@ -51,9 +51,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="/hero%20section.webp" type="image/webp" fetchpriority="high">
-    <!-- BMW: desktop preload full size; mobile preload small variant for LCP -->
+    <!-- BMW car image is only used on desktop (lg:block in Hero) — skip preload on mobile -->
     <link rel="preload" as="image" href="/bmw.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
-    <link rel="preload" as="image" href="/bmw-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 1023px)">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">

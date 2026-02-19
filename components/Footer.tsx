@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             <p className="max-w-md text-sm leading-relaxed text-slate-300">
               Wir vereinfachen den Autoverkauf für Privatpersonen – transparent, nachvollziehbar und mit marktgerechten Preisen.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[0.25em] text-slate-300">
+            <div className="mt-6 flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
               <span>KI-Analyse</span>
               <span>Faire Preise</span>
               <span>Schnelle Auszahlung</span>
@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
               ))}
-              <li className="text-xs text-slate-300 font-semibold">+ viele weitere Orte in Deutschland</li>
+              <li className="text-xs text-slate-400 font-semibold">+ viele weitere Orte in Deutschland</li>
             </ul>
           </div>
 
@@ -97,13 +97,13 @@ const Footer: React.FC = () => {
                 <div className="flex items-center gap-3 text-slate-200">
                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange">☎</div>
                   <div>
-                    <div className="text-xs uppercase tracking-widest text-slate-300">Kostenlose Hotline</div>
+                    <div className="text-xs uppercase tracking-widest text-slate-400">Kostenlose Hotline</div>
                     <a href="tel:0800242424" className="text-base font-black text-white hover:text-brand-orange transition-colors">
                       0800 24 24 24
                     </a>
                   </div>
                 </div>
-                <div className="mt-3 text-xs text-slate-300">
+                <div className="mt-3 text-xs text-slate-400">
                   Alternativ per E-Mail: <a href="mailto:info@meinautoverkauf.de" className="text-slate-200 hover:text-brand-orange">info@meinautoverkauf.de</a>
                 </div>
               </div>
