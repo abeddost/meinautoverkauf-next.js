@@ -126,21 +126,19 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
   }, []);
 
   useEffect(() => {
-    if (window.matchMedia('(min-width: 768px)').matches) {
-      setShowMobileCta(false);
-      return;
-    }
-
     let raf: number | null = null;
     const updateCtaVisibility = () => {
       if (raf !== null) return;
       raf = window.requestAnimationFrame(() => {
-        const threshold = Math.max(120, Math.round(window.innerHeight * 0.2));
-        setShowMobileCta(window.scrollY >= threshold);
+        const scrollTop = window.scrollY;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const viewport = window.innerHeight;
+        const maxScroll = Math.max(1, scrollHeight - viewport);
+        const progress = scrollTop / maxScroll;
+        setShowMobileCta(progress >= 0.2);
         raf = null;
       });
     };
-    updateCtaVisibility();
     window.addEventListener('scroll', updateCtaVisibility, { passive: true });
     window.addEventListener('resize', updateCtaVisibility);
     return () => {
