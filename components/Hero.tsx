@@ -218,23 +218,23 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
         </div>
       </div>
 
-      <div className="hidden lg:flex flex-grow items-center relative py-6">
-        <div className="container mx-auto px-8 lg:px-16 z-10 max-w-7xl">
-          <div className="grid grid-cols-12 gap-10 items-center">
-            <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
-              <div className="max-w-2xl -mt-2">
-                <DesktopHeadlineTag className="text-[32px] sm:text-[36px] lg:text-[40px] font-black leading-[1.08] tracking-tight text-[#1e293b]">
+      <div className="flex flex-grow items-center relative py-4 lg:py-6 min-h-[calc(100vh-64px)] lg:min-h-0">
+        <div className="container mx-auto px-4 lg:px-16 z-10 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start lg:items-center">
+            <div className="lg:col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
+              <div className="max-w-2xl text-left lg:-mt-2">
+                <DesktopHeadlineTag className="text-[22px] sm:text-[24px] lg:text-[40px] font-black leading-[1.15] lg:leading-[1.08] tracking-tight text-[#1e293b]">
                   {heroHeadline}
                 </DesktopHeadlineTag>
-                <p className="mt-4 text-base lg:text-lg text-slate-600 font-medium max-w-xl">
+                <p className="mt-3 lg:mt-4 text-base lg:text-lg text-slate-600 font-medium max-w-xl">
                   {heroSubheadline}
                 </p>
               </div>
 
-              <div className="relative mt-6 overflow-visible">
-                <div className="absolute -bottom-12 left-28 right-0 h-32 rounded-full bg-orange-100/70 blur-3xl"></div>
+              <div className="relative mt-4 lg:mt-6 overflow-visible flex justify-center lg:justify-start">
+                <div className="absolute -bottom-2 lg:-bottom-12 left-10 right-10 lg:left-28 lg:right-0 h-12 lg:h-32 bg-orange-100/70 blur-2xl lg:blur-3xl rounded-full"></div>
                 <div
-                  className="relative overflow-visible"
+                  className="relative overflow-visible w-[95%] max-w-[440px] lg:w-auto lg:max-w-none"
                   style={{ perspective: '900px' }}
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
@@ -242,7 +242,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                   <img
                     src="/bmw.webp"
                     alt="BMW Car"
-                    className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
+                    className="hidden lg:block relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
                     width={1536}
                     height={768}
@@ -256,7 +256,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                   <img
                     src="/bmw.webp"
                     alt="BMW Car Reflection"
-                    className="absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
+                    className="hidden lg:block absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
                     style={{
                       ...reflectionStyle,
                       WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
@@ -270,10 +270,25 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                       e.currentTarget.style.display = 'none';
                     }}
                   />
+                  <img
+                    src="/bmw-mobile.webp"
+                    srcSet="/bmw-mobile.webp 480w, /bmw.webp 1536w"
+                    sizes="(max-width: 1023px) 85vw, 1536px"
+                    alt="BMW Car"
+                    className="relative lg:hidden w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
+                    width={480}
+                    height={240}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
                 </div>
               </div>
 
-              <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="hidden lg:grid mt-8 grid-cols-3 gap-3">
                 {BENEFITS.map((benefit, index) => (
                   <div
                     key={index}
@@ -290,65 +305,27 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
               </div>
             </div>
 
-            <div className="col-span-5 flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
-              <div className="w-full max-w-[460px] lg:max-w-[640px] scale-[1] origin-top">
+            <div className="lg:col-span-5 flex justify-center animate-in fade-in slide-in-from-bottom-4 lg:slide-in-from-right-8 duration-700 lg:duration-1000 relative z-20">
+              <div className="w-full max-w-[640px] scale-[1] origin-top">
                 <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="lg:hidden flex flex-col pt-4 pb-6 min-h-[calc(100vh-64px)]">
-        <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
-          <div className="text-left mb-4">
-            <h1 className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
-              {heroHeadline}
-            </h1>
-            <p className="mt-3 text-base text-slate-600 font-medium">
-              {heroSubheadline}
-            </p>
-          </div>
-
-          <div className="relative mb-4 flex justify-center">
-            <div className="relative w-[95%] max-w-[440px]">
-              <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
-              <img
-                src="/bmw-mobile.webp"
-                srcSet="/bmw-mobile.webp 480w, /bmw.webp 1536w"
-                sizes="(max-width: 1023px) 85vw, 1536px"
-                alt="BMW Car"
-                className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
-                width={480}
-                height={240}
-                loading="lazy"
-                fetchPriority="low"
-                decoding="async"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
-          </div>
-
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            {BENEFITS.map((benefit, index) => (
-              <div
-                key={index}
-                className="rounded-xl border border-white/80 bg-white/85 px-2 py-3 shadow-[0_8px_16px_-8px_rgba(15,23,42,0.25)] backdrop-blur"
-              >
-                <div className="flex flex-col items-center gap-1.5 text-center">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70 flex-shrink-0">
-                    {benefit.icon}
+            <div className="lg:hidden mt-0 grid grid-cols-3 gap-2">
+              {BENEFITS.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl border border-white/80 bg-white/85 px-2 py-3 shadow-[0_8px_16px_-8px_rgba(15,23,42,0.25)] backdrop-blur"
+                >
+                  <div className="flex flex-col items-center gap-1.5 text-center">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70 flex-shrink-0">
+                      {benefit.icon}
+                    </div>
+                    <div className="text-[10px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
                   </div>
-                  <div className="text-[10px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
