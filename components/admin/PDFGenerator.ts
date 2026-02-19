@@ -97,6 +97,7 @@ export const generateEstimationPDF = async (
       ['E-Mail', estimation.email],
       ['Telefon', estimation.phone],
       ...(estimation.postal_code ? [['PLZ', estimation.postal_code]] : []),
+      ...(estimation.desired_price ? [['Wunschpreis', `${estimation.desired_price} €`]] : []),
     ];
 
     autoTable(doc, {
@@ -250,7 +251,7 @@ export const generateEstimationPDF = async (
     const pageTextWidth = doc.getTextWidth(pageText);
     doc.text(pageText, (pageWidth - pageTextWidth) / 2, doc.internal.pageSize.getHeight() - 10);
     doc.text(
-      'MeinAutoPreis24 • www.meinautoverkauf.de',
+      'MeinAutoVerkauf.de • www.meinautoverkauf.de',
       margin,
       doc.internal.pageSize.getHeight() - 10
     );

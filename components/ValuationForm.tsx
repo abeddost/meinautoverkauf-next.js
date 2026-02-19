@@ -489,10 +489,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     { label: 'Kontakt', iconSrc: `${formElementsBase}/details.png` }
   ];
 
-  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-3.5 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-[16px] lg:text-sm disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-3.5 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-[15px] lg:text-sm placeholder:text-slate-400 placeholder:font-normal placeholder:text-[13px] disabled:opacity-50 disabled:cursor-not-allowed";
   const selectClass = `${baseFieldClass} appearance-none cursor-pointer`;
   const inputClass = `${baseFieldClass} cursor-text`;
-  const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[16px] lg:text-base file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
+  const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[15px] lg:text-base placeholder:text-slate-400 placeholder:font-normal placeholder:text-[13px] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
   const invalidFieldClass = "ring-1 ring-amber-300/60";
   const shouldShowError = (field: string) => {
     if (isContactField(field) && !contactInteracted) return false;
@@ -783,7 +783,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                     if (fieldErrors.mileage && v) setFieldError('mileage', '');
                   }}
                   onBlur={() => handleBlur('mileage')}
-                  placeholder="z.B. 75000"
+                  placeholder="Km eingeben, z.B. 75000"
                   className={`${inputClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
@@ -829,7 +829,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   name="knownDamages"
                   value={formData.knownDamages || ''}
                   onChange={(e) => setFormData(prev => ({ ...prev, knownDamages: e.target.value }))}
-                  placeholder="z.B. kleiner Parkrempler vorne links, Klimaanlage defekt..."
+                  placeholder="z.B. Kratzer, Delle, Klimaanlage defekt …"
                   rows={3}
                   className={`${inputClass} resize-none`}
                 />
@@ -853,7 +853,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                     }
                   }}
                   onBlur={() => handleBlur('postalCode')}
-                  placeholder="z.B. 10115"
+                  placeholder="5-stellige PLZ"
                   maxLength={5}
                   className={`${inputClass} ${shouldShowError('postalCode') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
@@ -867,7 +867,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   name="vin"
                   value={formData.vin || ''}
                   onChange={handleSelectChange}
-                  placeholder="17-stellige Nummer (z.B. WVWZZZ1KZBW123456)"
+                  placeholder="17-stellige FIN / VIN"
                   maxLength={17}
                   className={`${inputClass} uppercase`}
                 />
@@ -879,7 +879,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   name="color"
                   value={formData.color || ''}
                   onChange={handleSelectChange}
-                  placeholder="z.B. Schwarz, Weiß, Silber..."
+                  placeholder="z.B. Schwarz, Silber"
                   className={inputClass}
                 />
               </div>
@@ -1007,7 +1007,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.email}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('email')}
-                  placeholder="z.B. max@beispiel.de"
+                  placeholder="E-Mail-Adresse"
                   className={`${inputClass} ${shouldShowError('email') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
@@ -1021,7 +1021,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.phone}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('phone')}
-                  placeholder="z.B. 0176 12345678"
+                  placeholder="Handynummer"
                   className={`${inputClass} ${shouldShowError('phone') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
@@ -1037,7 +1037,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                     const value = e.target.value.replace(/[^\d]/g, '');
                     setFormData(prev => ({ ...prev, desiredPrice: value }));
                   }}
-                  placeholder="z.B. 12500"
+                  placeholder="Betrag in €"
                   min={0}
                   className={inputClass}
                 />

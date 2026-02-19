@@ -26,8 +26,8 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="max-w-4xl mx-auto mb-16">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight">
             Ratgeber: Verkauf Gebrauchtwagen – Alles was Sie wissen müssen
-          </h1>
-          
+        </h1>
+        
           <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
             Sie möchten Ihren <strong>Verkauf Gebrauchtwagen</strong> optimal vorbereiten? Oder fragen Sie sich, ob Sie ein <strong>motorschaden auto verkaufen</strong> können? In diesem umfassenden Ratgeber finden Sie alle wichtigen Informationen, Tipps und rechtliche Hinweise rund um den Autoverkauf – vom perfekten Zustand bis zum <strong>defektes auto verkaufen</strong>.
           </p>
@@ -295,8 +295,8 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <p className="font-medium leading-relaxed mt-6">
               <strong>Wichtig:</strong> Nach der Abmeldung endet automatisch Ihre Versicherungs- und Steuerpflicht. Informieren Sie trotzdem Ihre Versicherung über den Verkauf.
-            </p>
-          </section>
+          </p>
+        </section>
 
           {/* CTA Section */}
           <div className="my-20 bg-gradient-to-br from-[#0f172a] via-slate-800 to-[#0f172a] rounded-[3rem] p-16 text-center text-white shadow-2xl relative overflow-hidden">
@@ -307,13 +307,13 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <p className="text-slate-300 mb-12 max-w-2xl mx-auto font-semibold text-lg">
                 Nutzen Sie unser Wissen für Ihren Verkaufserfolg. Ob perfekter Zustand oder <strong>motorschaden auto verkaufen</strong> – wir machen Ihnen ein faires Angebot.
               </p>
-              <button 
-                onClick={onCtaClick}
+          <button 
+            onClick={onCtaClick}
                 className="bg-brand-orange text-white px-12 py-5 rounded-2xl font-bold text-base lg:text-lg hover:bg-orange-600 transition-all shadow-2xl transform hover:scale-105 duration-200"
-              >
+          >
                 Jetzt kostenlos Auto bewerten
-              </button>
-            </div>
+          </button>
+        </div>
           </div>
 
           {/* FAQ Section */}
@@ -339,8 +339,8 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Frankfurt</Link>
               <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Wiesbaden</Link>
               <Link to="/autoankauf-mainz" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Mainz</Link>
-            </div>
-          </section>
+          </div>
+        </section>
         </div>
       </div>
     </div>

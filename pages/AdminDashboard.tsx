@@ -1459,6 +1459,12 @@ const AdminDashboard: React.FC = () => {
                       <div className="font-semibold">{selectedEstimation.postal_code}</div>
                     </div>
                   )}
+                  {selectedEstimation.desired_price && (
+                    <div>
+                      <div className="text-xs text-slate-500 mb-1">Wunschpreis</div>
+                      <div className="font-semibold text-brand-orange">{selectedEstimation.desired_price} €</div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -1789,6 +1795,12 @@ const AdminDashboard: React.FC = () => {
                                 ? `${formatPrice(estimation.price_min)} – ${formatPrice(estimation.price_max)}`
                                 : '–'}
                           </div>
+                          {estimation.desired_price && (
+                            <div>
+                              <span className="font-bold">Wunschpreis:</span>{' '}
+                              <span className="text-brand-orange font-semibold">{estimation.desired_price} €</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </>
