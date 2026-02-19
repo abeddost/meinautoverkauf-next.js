@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /bewertung-laeuft
+Disallow: /bewertung-ergebnis
+Disallow: /termin-buchen
+Disallow: /vielen-dank
+Disallow: /debug-email.html
 Sitemap: https://meinautoverkauf.de/sitemap.xml

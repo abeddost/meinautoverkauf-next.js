@@ -57,6 +57,55 @@ export const preloadRouteModules = async () => {
   ]);
 };
 
+const buildCitySchemas = (
+  cityName: string,
+  routePath: string,
+): Array<Record<string, unknown>> => {
+  const pageUrl = `https://meinautoverkauf.de${routePath}`;
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "@id": `${pageUrl}#autodealer`,
+      name: "Meinautoverkauf.de",
+      url: pageUrl,
+      inLanguage: "de-DE",
+      areaServed: {
+        "@type": "City",
+        name: cityName,
+      },
+      makesOffer: {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: `Autoankauf ${cityName}`,
+          serviceType: "Autoankauf",
+        },
+      },
+      provider: {
+        "@id": "https://meinautoverkauf.de/#organization",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: `Autoankauf ${cityName}`,
+      serviceType: "Autoankauf",
+      areaServed: {
+        "@type": "City",
+        name: cityName,
+      },
+      provider: {
+        "@id": "https://meinautoverkauf.de/#organization",
+      },
+      url: pageUrl,
+      inLanguage: "de-DE",
+    },
+  ];
+};
+
 // Scroll: home + standalone pages → top; other pages → main content (below hero)
 const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) => {
   const { pathname, hash } = useLocation();
@@ -191,6 +240,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto verkaufen online | Faire Preise & Abholung | Meinautoverkauf.de" 
                 description="Auto verkaufen online in 24h ✓ Kostenlose KI-Bewertung ✓ Sicherer Autoankauf ✓ Sofortige Auszahlung ✓ Kostenlose Abholung vor Ort."
                 canonicalUrl="/"
+                pageType="WebPage"
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -577,6 +627,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto bewerten online | Kostenlose Wertermittlung | Meinautoverkauf.de" 
                 description="Was ist mein Auto wert? Erhalten Sie eine präzise Fahrzeugbewertung online ✓ Kostenlos ✓ In 2 Minuten ✓ Basis für den Autoankauf."
                 canonicalUrl="/auto-bewerten"
+                pageType="Service"
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -595,6 +646,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto verkaufen online | Sicherer Autoankauf | Meinautoverkauf.de" 
                 description="Auto online verkaufen zum Bestpreis ✓ Wir kaufen Ihren Gebrauchtwagen ✓ Sofortige Auszahlung ✓ Kostenlose Abmeldung ✓ Alle Marken."
                 canonicalUrl="/auto-verkaufen"
+                pageType="Service"
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -613,6 +665,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Vorteile beim Autoankauf | Warum Meinautoverkauf.de?" 
                 description="Entdecken Sie Ihre Vorteile beim Autoverkauf ✓ Sicherer Vertrag ✓ Keine Haftung ✓ Bestpreis-Garantie ✓ Home-Pickup Service."
                 canonicalUrl="/vorteile"
+                pageType="Service"
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -631,6 +684,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto-Ratgeber | Tipps zum Autoverkauf & Werterhalt" 
                 description="Profi-Tipps für den Autoverkauf ✓ Werterhalt maximieren ✓ Rechtssichere Verträge ✓ Motorschaden verkaufen ✓ Alles rund um PKW."
                 canonicalUrl="/ratgeber"
+                pageType="CollectionPage"
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -649,6 +703,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Frankfurt | Alle Stadtteile | Sofort-Auszahlung | Fair" 
                 description="Autoankauf Frankfurt ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Auch Diesel & Umweltzone ✓ Business-Service für Frankfurter."
                 canonicalUrl="/autoankauf-frankfurt"
+                pageType="Service"
+                extraSchemas={buildCitySchemas('Frankfurt am Main', '/autoankauf-frankfurt')}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -669,6 +725,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Wiesbaden | Auto verkaufen sofort | Kostenlose Abholung" 
                 description="Autoankauf Wiesbaden ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Motorschaden & Unfallwagen ✓ Faire Preise in der Kurstadt."
                 canonicalUrl="/autoankauf-wiesbaden"
+                pageType="Service"
+                extraSchemas={buildCitySchemas('Wiesbaden', '/autoankauf-wiesbaden')}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -689,6 +747,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Mainz | Alle Stadtteile | Kastel & Kostheim | Fair" 
                 description="Autoankauf Mainz ✓ Kostenlose Abholung in allen Stadtteilen ✓ Auch Mainz-Kastel & Kostheim ✓ Sofortige Zahlung ✓ Persönlich & vertrauensvoll."
                 canonicalUrl="/autoankauf-mainz"
+                pageType="Service"
+                extraSchemas={buildCitySchemas('Mainz', '/autoankauf-mainz')}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
