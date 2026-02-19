@@ -782,8 +782,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
           {currentPage === 3 && (
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div className="relative">
-                <StepLabel label="Laufleistung" required />
+                <StepLabel label="Laufleistung" required htmlFor="form-mileage" />
                 <input
+                  id="form-mileage"
                   type="text"
                   inputMode="numeric"
                   name="mileage"

@@ -34,7 +34,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Main Benefits Grid */}
-        <div id="content" className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 scale-[0.85] origin-top">
+        <div id="vorteile-content" className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 scale-[0.85] origin-top">
           {/* Security & Trust */}
           <div className="p-10 bg-brand-dark bg-gradient-to-br from-brand-dark to-slate-800 text-white rounded-[3rem] shadow-2xl relative overflow-hidden group border border-slate-800/40">
             <div className="relative z-10">
@@ -71,8 +71,8 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
                 <div className="relative w-24 h-64 rounded-t-3xl bg-gradient-to-t from-slate-200 to-slate-50 ring-1 ring-slate-200 shadow-sm bar-rise">
                   <span className="absolute top-3 left-1/2 -translate-x-1/2 text-xs font-black text-slate-500">LANGSAM</span>
                 </div>
-                <span className="text-xs font-black text-slate-400 uppercase mt-2">Privat</span>
-                <span className="text-xs text-slate-400 font-bold">4–6 Wochen</span>
+                <span className="text-xs font-black text-slate-600 uppercase mt-2">Privat</span>
+                <span className="text-xs text-slate-600 font-bold">4–6 Wochen</span>
               </div>
               <div className="flex flex-col items-center">
                 <div className="relative w-24 h-24 rounded-t-3xl bg-gradient-to-t from-brand-orange to-brand-orange/85 ring-1 ring-orange-300/70 shadow-lg bar-rise bar-delay-200">

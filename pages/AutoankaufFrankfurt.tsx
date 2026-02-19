@@ -87,7 +87,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Main Content */}
-        <div id="content" className="max-w-4xl mx-auto relative">
+        <div id="frankfurt-content" className="max-w-4xl mx-auto relative">
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <div className="relative">
               <img

@@ -34,7 +34,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
         </div>
 
         {/* Quick Tips Grid */}
-        <section id="content" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <section id="ratgeber-content" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {[
             {
               title: "Werterhalt durch richtige Pflege",
@@ -335,7 +335,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/auto-bewerten" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Kostenlos bewerten</Link>
               <Link to="/auto-verkaufen" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Auto verkaufen</Link>
               <Link to="/vorteile" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Ihre Vorteile</Link>
-              <span className="text-slate-400 text-sm font-medium py-2">Standorte:</span>
+              <span className="text-slate-600 text-sm font-medium py-2">Standorte:</span>
               <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Frankfurt</Link>
               <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Wiesbaden</Link>
               <Link to="/autoankauf-mainz" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Mainz</Link>

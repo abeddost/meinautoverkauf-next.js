@@ -295,9 +295,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
       <div className="lg:hidden flex flex-col pt-4 pb-6 min-h-[calc(100vh-64px)]">
         <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
           <div className="text-left mb-4">
-            <h2 className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
+            <h1 className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
               {heroHeadline}
-            </h2>
+            </h1>
             <p className="mt-3 text-base text-slate-600 font-medium">
               {heroSubheadline}
             </p>
@@ -308,10 +308,12 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
                 src="/bmw.webp"
+                srcSet="/bmw-mobile.webp 480w, /bmw.webp 1536w"
+                sizes="(max-width: 1023px) 480px, 1536px"
                 alt="BMW Car"
                 className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
-                width={1536}
-                height={768}
+                width={480}
+                height={240}
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
