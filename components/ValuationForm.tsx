@@ -591,7 +591,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
               <span className="text-sm font-bold text-slate-600">
                 Schritt <span className="text-brand-orange">{currentPage}</span> von 5
               </span>
-              <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
+              <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full">
                 {steps[currentPage - 1].label}
               </span>
             </div>

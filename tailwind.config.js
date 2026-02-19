@@ -16,7 +16,7 @@ export default {
     extend: {
       colors: {
         'brand-dark': '#0f172a',
-        'brand-orange': '#f97316',
+        'brand-orange': '#c2410c',
       },
     },
   },

@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-black uppercase text-sm tracking-widest mb-5">Service</h4>
+            <h3 className="text-white font-black uppercase text-sm tracking-widest mb-5">Service</h3>
             <ul className="space-y-3 text-sm font-bold">
               {serviceLinks.map((link) => (
                 <li key={link.to}>
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-black uppercase text-sm tracking-widest mb-5">Standorte</h4>
+            <h3 className="text-white font-black uppercase text-sm tracking-widest mb-5">Standorte</h3>
             <ul className="space-y-3 text-sm font-bold">
               {locationLinks.map((link) => (
                 <li key={link.to}>
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-black uppercase text-sm tracking-widest mb-5">Kontakt & Rechtliches</h4>
+            <h3 className="text-white font-black uppercase text-sm tracking-widest mb-5">Kontakt & Rechtliches</h3>
             <div className="space-y-4 text-sm font-bold">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <div className="flex items-center gap-3 text-slate-200">

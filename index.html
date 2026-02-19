@@ -50,8 +50,9 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="/hero%20section.webp" type="image/webp" fetchpriority="high">
-    <!-- BMW car image is only used on desktop (lg:block in Hero) — skip preload on mobile -->
+    <link rel="preload" as="image" href="/hero%20section.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
+    <link rel="preload" as="image" href="/bmw-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 1023px)">
+    <!-- BMW desktop car image is only used on desktop (lg:block in Hero). -->
     <link rel="preload" as="image" href="/bmw.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
     
     <!-- Open Graph / Facebook -->
@@ -64,10 +65,11 @@
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
+      media="(min-width: 1024px)"
       onload="this.onload=null;this.rel='stylesheet'"
     >
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="(min-width: 1024px)">
     </noscript>
     
     <style>
@@ -77,9 +79,9 @@
         }
         .bg-brand-dark { background-color: #0f172a; }
         .text-brand-dark { color: #0f172a; }
-        .bg-brand-orange { background-color: #f97316; }
-        .text-brand-orange { color: #f97316; }
-        .border-brand-orange { border-color: #f97316; }
+        .bg-brand-orange { background-color: #c2410c; }
+        .text-brand-orange { color: #c2410c; }
+        .border-brand-orange { border-color: #c2410c; }
         
     </style>
 </head>

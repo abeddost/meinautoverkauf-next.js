@@ -168,7 +168,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
           aria-hidden="true"
           width={800}
           height={533}
-          className="absolute inset-0 w-full h-full object-cover opacity-100"
+          className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-100"
           loading="eager"
           fetchPriority="high"
           decoding="async"
@@ -315,14 +315,12 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
                 src="/bmw-mobile.webp"
-                srcSet="/bmw-mobile.webp 480w, /bmw.webp 1536w"
-                sizes="(max-width: 1023px) 85vw, 1536px"
                 alt="BMW Car"
-                className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
+                className="relative w-full h-auto max-h-[200px] object-contain"
                 width={480}
                 height={240}
-                loading="lazy"
-                fetchPriority="low"
+                loading="eager"
+                fetchPriority="high"
                 decoding="async"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
