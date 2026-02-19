@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
-import { supabase } from '../lib/supabase';
-import { optimizeImageFile } from '../lib/imageOptimization';
 import { setPendingPhotoPromise } from '../lib/pendingPhotoUpload';
 
 interface ValuationFormProps {
@@ -430,6 +428,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
         const bucket = 'car-photos';
         const filesSnapshot = [...selectedFiles];
         const uploadPromise: Promise<{ storagePath: string; originalFilename?: string; contentType?: string; sizeBytes?: number }[]> = (async () => {
+          const [{ supabase }, { optimizeImageFile }] = await Promise.all([
+            import('../lib/supabase'),
+            import('../lib/imageOptimization'),
+          ]);
           const optimizedFiles = await Promise.all(filesSnapshot.map((f) => optimizeImageFile(f)));
           const results = await Promise.all(
             optimizedFiles.map((optimized, i) => {

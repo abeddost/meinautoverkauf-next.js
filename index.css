@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .defer-render {
+    content-visibility: auto;
+    contain-intrinsic-size: 1000px;
+  }
+}

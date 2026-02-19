@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { AuthProvider, useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import MetaTags from '../components/MetaTags';
 import EditEstimationModal from '../components/admin/EditEstimationModal';
@@ -59,7 +59,7 @@ interface Appointment {
   deleted_at: string | null;
 }
 
-const AdminDashboard: React.FC = () => {
+const AdminDashboardContent: React.FC = () => {
   const { user, isAdmin, loading: authLoading, signOut } = useAuth();
   const navigate = useNavigate();
   const [estimations, setEstimations] = useState<Estimation[]>([]);
@@ -1848,5 +1848,11 @@ const AdminDashboard: React.FC = () => {
     </div>
   );
 };
+
+const AdminDashboard: React.FC = () => (
+  <AuthProvider>
+    <AdminDashboardContent />
+  </AuthProvider>
+);
 
 export default AdminDashboard;

@@ -102,6 +102,13 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
   const DesktopHeadlineTag = headlineTag ?? 'h1';
 
   useEffect(() => {
+    const disableParallax =
+      window.matchMedia('(max-width: 1023px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (disableParallax) {
+      return;
+    }
+
     let raf: number | null = null;
 
     const handleScroll = () => {
@@ -166,24 +173,24 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
           fetchPriority="high"
           decoding="async"
         />
-        <div className={`absolute -top-32 right-[-80px] h-[420px] w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>
-        <div className={`absolute -bottom-40 left-[-120px] h-[520px] w-[520px] rounded-full ${heroAccent.blobBottomClass} blur-3xl opacity-85 animate-float-slower`}></div>
+        <div className={`hidden lg:block absolute -top-32 right-[-80px] h-[420px] w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>
+        <div className={`hidden lg:block absolute -bottom-40 left-[-120px] h-[520px] w-[520px] rounded-full ${heroAccent.blobBottomClass} blur-3xl opacity-85 animate-float-slower`}></div>
         <div
           className="absolute inset-0 opacity-70"
           style={{
             background: heroAccent.radial
           }}
         ></div>
-        <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="hidden lg:block absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 280 C 220 250 360 310 520 280 C 740 240 920 290 1100 260 C 1220 240 1340 270 1400 290" stroke="#b2c5e4" strokeWidth="2" strokeLinecap="round" />
           <path d="M0 340 C 220 310 360 370 520 340 C 740 300 920 350 1100 320 C 1220 300 1340 330 1400 350" stroke="#c6d5ec" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
-        <svg className="absolute inset-0 w-full h-full opacity-25" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="hidden lg:block absolute inset-0 w-full h-full opacity-25" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M120 640 C 420 600 720 610 1020 640" stroke="#97aed2" strokeWidth="2" strokeDasharray="8 14" strokeLinecap="round" />
           <path d="M220 700 C 500 680 900 680 1180 700" stroke="#97aed2" strokeWidth="1.5" strokeDasharray="6 10" strokeLinecap="round" />
         </svg>
-        <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-[#cdd8ef]/60 via-transparent to-transparent"></div>
-        <svg className="absolute bottom-0 right-0 w-[60%] h-[220px] opacity-35" viewBox="0 0 700 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-[#cdd8ef]/60 via-transparent to-transparent"></div>
+        <svg className="hidden lg:block absolute bottom-0 right-0 w-[60%] h-[220px] opacity-35" viewBox="0 0 700 220" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 160 L60 130 L120 150 L180 120 L240 140 L300 110 L360 130 L420 100 L480 120 L540 90 L600 110 L700 80 V220 H0 Z" fill="url(#skyline)" />
           <defs>
             <linearGradient id="skyline" x1="0" y1="80" x2="0" y2="220" gradientUnits="userSpaceOnUse">
@@ -192,7 +199,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
             </linearGradient>
           </defs>
         </svg>
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="hidden lg:block absolute inset-0 pointer-events-none">
           {PARTICLES.map((particle, index) => (
             <span
               key={index}
@@ -257,7 +264,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                     }}
                     width={1536}
                     height={768}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
@@ -307,15 +314,15 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
             <div className="relative w-[95%] max-w-[440px]">
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
-                src="/bmw.webp"
+                src="/bmw-mobile.webp"
                 srcSet="/bmw-mobile.webp 480w, /bmw.webp 1536w"
-                sizes="(max-width: 1023px) 480px, 1536px"
+                sizes="(max-width: 1023px) 85vw, 1536px"
                 alt="BMW Car"
                 className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
                 width={480}
                 height={240}
-                loading="eager"
-                fetchPriority="high"
+                loading="lazy"
+                fetchPriority="low"
                 decoding="async"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
@@ -365,6 +372,11 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
         .animate-float-slow { animation: floatSlow 16s ease-in-out infinite; }
         .animate-float-slower { animation: floatSlower 20s ease-in-out infinite; }
         .animate-particle-float { animation: particleFloat 14s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-float-slow, .animate-float-slower, .animate-particle-float {
+            animation: none !important;
+          }
+        }
       `}</style>
     </section>
   );

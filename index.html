@@ -2,15 +2,43 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- Google tag (gtag.js) — async so it never blocks rendering -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GX8B3LF4KZ"></script>
+    <!-- Google tag (gtag.js) - deferred to idle/interaction -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      window.addEventListener('load', function() {
-        gtag('config', 'G-GX8B3LF4KZ');
-      });
+      (function() {
+        var loaded = false;
+        var loadTag = function() {
+          if (loaded) return;
+          loaded = true;
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-GX8B3LF4KZ';
+          script.onload = function() {
+            gtag('config', 'G-GX8B3LF4KZ');
+          };
+          document.head.appendChild(script);
+        };
+
+        var scheduleLoad = function() {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadTag, { timeout: 2500 });
+          } else {
+            setTimeout(loadTag, 1500);
+          }
+        };
+
+        if (document.readyState === 'complete') {
+          scheduleLoad();
+        } else {
+          window.addEventListener('load', scheduleLoad, { once: true });
+        }
+
+        ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach(function(eventName) {
+          window.addEventListener(eventName, loadTag, { once: true, passive: true });
+        });
+      })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

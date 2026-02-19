@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -11,6 +10,7 @@ import MetaTags from './components/MetaTags';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
+const HOME_DEFER_CLASS = 'defer-render';
 const loadAutoBewertenPage = () => import('./pages/AutoBewerten');
 const loadAutoVerkaufenPage = () => import('./pages/AutoVerkaufen');
 const loadVorteilePage = () => import('./pages/VorteilePage');
@@ -54,12 +54,6 @@ export const preloadRouteModules = async () => {
     loadAutoankaufMainzPage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
-    loadAnalyzingPage(),
-    loadValuationResultPage(),
-    loadBookingPage(),
-    loadConfirmationPage(),
-    loadAdminLoginPage(),
-    loadAdminDashboard(),
   ]);
 };
 
@@ -156,7 +150,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
       
       <main className="flex-grow pb-20 md:pb-0 bg-gray-50 relative">
         {/* Global background pattern */}
-        <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(148 163 184) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+        <div className="hidden md:block absolute inset-0 opacity-[0.15] pointer-events-none" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(148 163 184) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
         <Suspense
           fallback={disableRouteSuspense ? null : (
             <div className="container mx-auto px-4 py-12 text-center text-slate-500 font-semibold">
@@ -189,7 +183,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 <>
                   <section id="evaluate" className="relative py-20 bg-white border-b border-slate-100 overflow-hidden">
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-100/60 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-100/50 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute top-1/2 left-1/2 w-80 h-80 border-4 border-orange-200/40 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -231,9 +225,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <section id="vorteile" className="relative py-20 bg-white border-b border-slate-100 overflow-hidden">
+                  <section id="vorteile" className={`relative py-20 bg-white border-b border-slate-100 overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-br from-orange-200/40 via-orange-100/30 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute top-0 right-1/4 w-[400px] h-[400px] border-4 border-orange-200/50 rounded-full"></div>
                       <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tl from-slate-200/60 to-transparent rounded-full blur-2xl"></div>
@@ -284,9 +278,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <section id="versprechen" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                  <section id="versprechen" className={`relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute -top-20 -right-20 w-80 h-80 bg-orange-300/30 rounded-full blur-3xl"></div>
                       <div className="absolute bottom-10 left-10 w-64 h-64 border-4 border-orange-200/40 rounded-full"></div>
                       <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-blue-200/30 rounded-full blur-2xl"></div>
@@ -317,9 +311,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <section id="warum" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                  <section id="warum" className={`relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-orange-200/50 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute -bottom-10 -right-10 w-96 h-96 border-4 border-slate-300/60 rounded-full"></div>
                       <div className="absolute top-1/3 right-20 w-40 h-40 bg-blue-200/40 rounded-full blur-xl"></div>
@@ -366,9 +360,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <section id="motorschaden" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                  <section id="motorschaden" className={`relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-br from-slate-200/70 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute bottom-1/4 right-1/4 w-72 h-72 border-4 border-orange-300/40 rounded-full"></div>
                       <div className="absolute top-1/3 right-10 w-56 h-56 bg-orange-200/40 rounded-full blur-3xl"></div>
@@ -427,9 +421,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <section id="transparenz" className="relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
+                  <section id="transparenz" className={`relative py-20 bg-slate-50 border-b border-slate-100 overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-200/50 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute bottom-10 left-20 w-80 h-80 border-4 border-slate-300/50 rounded-full"></div>
                       <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-orange-200/30 rounded-full blur-2xl"></div>
@@ -460,9 +454,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <section id="ki" className="relative py-20 bg-white border-b border-slate-100 overflow-hidden">
+                  <section id="ki" className={`relative py-20 bg-white border-b border-slate-100 overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-gradient-to-br from-orange-200/60 via-blue-200/40 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute bottom-0 right-1/4 w-96 h-96 border-4 border-orange-300/40 rounded-full"></div>
                       <div className="absolute top-1/2 right-10 w-64 h-64 bg-slate-200/70 rounded-full blur-2xl"></div>
@@ -507,12 +501,16 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <TrustElements />
-                  <FAQSection />
+                  <div className={HOME_DEFER_CLASS}>
+                    <TrustElements />
+                  </div>
+                  <div className={HOME_DEFER_CLASS}>
+                    <FAQSection />
+                  </div>
 
-                  <section id="zufriedenheit" className="relative py-20 bg-white overflow-hidden">
+                  <section id="zufriedenheit" className={`relative py-20 bg-white overflow-hidden ${HOME_DEFER_CLASS}`}>
                     {/* Background decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none">
+                    <div className="hidden md:block absolute inset-0 pointer-events-none">
                       <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-gradient-to-br from-orange-200/50 to-transparent rounded-full blur-3xl"></div>
                       <div className="absolute bottom-0 right-0 w-80 h-80 border-4 border-orange-300/40 rounded-full"></div>
                       <div className="absolute top-1/3 left-10 w-60 h-60 bg-blue-200/40 rounded-full blur-2xl"></div>
@@ -728,11 +726,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
 const App: React.FC = () => {
   return (
     <HelmetProvider>
-      <AuthProvider>
-        <Router>
-          <AppContent />
-        </Router>
-      </AuthProvider>
+      <Router>
+        <AppContent />
+      </Router>
     </HelmetProvider>
   );
 };

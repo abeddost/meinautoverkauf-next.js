@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { AuthProvider, useAuth } from '../contexts/AuthContext';
 import MetaTags from '../components/MetaTags';
 
-const AdminLoginPage: React.FC = () => {
+const AdminLoginContent: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -89,5 +89,11 @@ const AdminLoginPage: React.FC = () => {
     </div>
   );
 };
+
+const AdminLoginPage: React.FC = () => (
+  <AuthProvider>
+    <AdminLoginContent />
+  </AuthProvider>
+);
 
 export default AdminLoginPage;
