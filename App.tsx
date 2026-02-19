@@ -108,6 +108,24 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
   const isStandalonePage = STANDALONE_PATHS.includes(location.pathname);
 
   useEffect(() => {
+    const shouldForceTop = window.sessionStorage.getItem('force_home_scroll_top') === '1';
+    if (!shouldForceTop) return;
+
+    window.sessionStorage.removeItem('force_home_scroll_top');
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    };
+
+    scrollToTop();
+    window.requestAnimationFrame(scrollToTop);
+    setTimeout(scrollToTop, 0);
+  }, []);
+
+  useEffect(() => {
     let raf: number | null = null;
     const updateCtaVisibility = () => {
       if (raf !== null) return;

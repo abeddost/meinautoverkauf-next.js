@@ -10,6 +10,20 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    onLogoClick();
+    setIsMenuOpen(false);
+
+    // Preserve expected browser behavior for modified clicks (new tab/window).
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
+    event.preventDefault();
+    window.sessionStorage.setItem('force_home_scroll_top', '1');
+    window.location.assign('/');
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -35,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
         <Link 
           to="/"
-          onClick={onLogoClick}
+          onClick={handleLogoClick}
           className="flex items-center gap-2 hover:opacity-90 transition-opacity focus:outline-none"
           aria-label="Meinautoverkauf Startseite"
         >
