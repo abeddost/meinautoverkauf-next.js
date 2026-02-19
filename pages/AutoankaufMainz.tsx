@@ -501,7 +501,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               >
                 Jetzt kostenlos Auto bewerten
               </button>
-              <p className="text-slate-400 text-xs mt-4">Vertrauen Sie dem freundlichen Mainzer Autoankauf-Service</p>
+              <p className="text-slate-600 text-xs mt-4">Vertrauen Sie dem freundlichen Mainzer Autoankauf-Service</p>
             </div>
           </div>
 

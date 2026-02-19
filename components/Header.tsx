@@ -54,11 +54,13 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
           aria-label="Meinautoverkauf Startseite"
         >
           <img
-            src="/logo.webp"
+            src="/logo-430w.webp"
+            srcSet="/logo-430w.webp 430w, /logo-860w.webp 860w"
+            sizes="(max-width: 1024px) 200px, 240px"
             alt="MeinAutoVerkauf.de"
             className="h-20 lg:h-24 w-auto"
-            width={1260}
-            height={410}
+            width={430}
+            height={140}
             loading="eager"
             decoding="async"
             onError={(e) => {

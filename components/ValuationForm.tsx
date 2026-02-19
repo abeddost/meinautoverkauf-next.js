@@ -484,11 +484,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
 
   const formElementsBase = '/form-elements';
   const steps = [
-    { label: 'Fahrzeugwahl', iconSrc: `${formElementsBase}/fahrzeug.webp` },
-    { label: 'Technik', iconSrc: `${formElementsBase}/technik.webp` },
-    { label: 'Zustand', iconSrc: `${formElementsBase}/zustand.webp` },
-    { label: 'Details', iconSrc: `${formElementsBase}/details.webp` },
-    { label: 'Kontakt', iconSrc: `${formElementsBase}/details.webp` }
+    { label: 'Fahrzeugwahl', iconSrc: `${formElementsBase}/fahrzeug-140w.webp` },
+    { label: 'Technik', iconSrc: `${formElementsBase}/technik-140w.webp` },
+    { label: 'Zustand', iconSrc: `${formElementsBase}/zustand-140w.webp` },
+    { label: 'Details', iconSrc: `${formElementsBase}/details-140w.webp` },
+    { label: 'Kontakt', iconSrc: `${formElementsBase}/details-140w.webp` }
   ];
 
   const baseFieldClass = "w-full bg-white/90 border border-slate-200/80 rounded-xl px-3.5 py-2.5 lg:py-3 font-semibold text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 focus:bg-white transition-all shadow-[0_6px_16px_-12px_rgba(15,23,42,0.35)] text-[15px] lg:text-sm placeholder:text-slate-400 placeholder:font-normal placeholder:text-[13px] disabled:opacity-50 disabled:cursor-not-allowed";

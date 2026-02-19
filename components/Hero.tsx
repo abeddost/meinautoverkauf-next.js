@@ -315,14 +315,14 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
                 src="/bmw-mobile.webp"
-                srcSet="/bmw-mobile.webp 480w, /bmw.webp 1536w"
-                sizes="(max-width: 1023px) 85vw, 1536px"
+                srcSet="/bmw-mobile.webp 480w, /bmw-640w.webp 640w, /bmw.webp 1536w"
+                sizes="(max-width: 1023px) min(85vw, 640px), 1536px"
                 alt="BMW Car"
                 className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
                 width={480}
                 height={240}
-                loading="lazy"
-                fetchPriority="low"
+                loading="eager"
+                fetchPriority="high"
                 decoding="async"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';

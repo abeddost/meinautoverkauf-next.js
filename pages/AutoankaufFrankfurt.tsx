@@ -552,7 +552,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               >
                 Jetzt kostenlos Auto bewerten
               </button>
-              <p className="text-slate-400 text-xs mt-4">Über 2.500+ zufriedene Kunden in Frankfurt & Rhein-Main</p>
+              <p className="text-slate-600 text-xs mt-4">Über 2.500+ zufriedene Kunden in Frankfurt & Rhein-Main</p>
             </div>
           </div>
 
