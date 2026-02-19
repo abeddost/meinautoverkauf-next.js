@@ -27,7 +27,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="absolute top-40 -left-16 w-72 h-72 bg-blue-500/50 rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-8 w-56 h-56 bg-slate-200/70 rounded-full blur-3xl"></div>
           <img
-            src="/elements/auto-wert-ermitteln.png"
+            src="/elements/auto-wert-ermitteln.webp"
             alt=""
             className="absolute top-6 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.12]"
             onError={(e) => {
@@ -46,7 +46,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
 
           <section id="content" className="prose max-w-none text-slate-700 space-y-8 relative">
           <img
-            src="/elements/auto-bewerten.png"
+            src="/elements/auto-bewerten.webp"
             alt=""
             className="absolute -top-8 right-6 w-36 h-36 sm:w-44 sm:h-44 lg:w-60 lg:h-60 opacity-[0.12] pointer-events-none"
             onError={(e) => {
@@ -246,7 +246,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
 
         <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100 relative overflow-hidden">
           <img
-            src="/elements/auto-wert-ermitteln.png"
+            src="/elements/auto-wert-ermitteln.webp"
             alt=""
             className="absolute -bottom-6 -right-6 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.08] pointer-events-none"
             onError={(e) => {

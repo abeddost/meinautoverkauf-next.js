@@ -21,13 +21,13 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
         <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
         <img
-          src="/elements/kurhaus-wiesbaden.png"
+          src="/elements/kurhaus-wiesbaden.webp"
           alt=""
           className="absolute top-20 right-0 w-64 h-64 lg:w-80 lg:h-80 opacity-[0.08] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
-          src="/elements/auto-ankauf-wiesbaden.png"
+          src="/elements/auto-ankauf-wiesbaden.webp"
           alt=""
           className="absolute bottom-40 left-0 w-56 h-56 lg:w-72 lg:h-72 opacity-[0.12] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -84,7 +84,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <div className="relative">
               <img
-                src="/elements/neroberg-wiesbaden.png"
+                src="/elements/neroberg-wiesbaden.webp"
                 alt=""
                 className="absolute -top-4 right-0 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 opacity-[0.07] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}

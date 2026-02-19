@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
           aria-label="Meinautoverkauf Startseite"
         >
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="MeinAutoVerkauf.de"
             className="h-20 lg:h-24 w-auto"
             onError={(e) => {

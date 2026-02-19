@@ -15,7 +15,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({ title, description, canonicalUrl })
     "@type": "Organization",
     name: "Meinautoverkauf.de",
     url: "https://meinautoverkauf.de",
-    logo: "https://meinautoverkauf.de/logo.png"
+    logo: "https://meinautoverkauf.de/logo.webp"
   };
   const websiteSchema = {
     "@context": "https://schema.org",

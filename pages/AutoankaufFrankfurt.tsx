@@ -21,13 +21,13 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
         <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
         <img
-          src="/elements/frankfurt-skyline.png"
+          src="/elements/frankfurt-skyline.webp"
           alt=""
           className="absolute top-16 right-0 w-80 h-80 lg:w-96 lg:h-96 opacity-[0.08] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
-          src="/elements/ezb-frankfurt.png"
+          src="/elements/ezb-frankfurt.webp"
           alt=""
           className="absolute bottom-32 left-0 w-72 h-72 lg:w-80 lg:h-80 opacity-[0.1] pointer-events-none"
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -83,7 +83,7 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <div className="relative">
               <img
-                src="/elements/roemerberg-frankfurt.png"
+                src="/elements/roemerberg-frankfurt.webp"
                 alt=""
                 className="absolute -top-6 right-0 w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 opacity-[0.06] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}

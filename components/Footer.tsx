@@ -30,9 +30,9 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <Link to="/" aria-label="Zur Startseite">
+              <Link to="/" aria-label="Zur Startseite" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <img
-                  src="/logo-white.png"
+                  src="/logo-white.webp"
                   alt="MeinAutoVerkauf.de"
                   className="h-12 w-auto"
                   onError={(e) => {

@@ -171,7 +171,7 @@ All features are implemented and tested. The build succeeds with no errors.
 2. Test locally (Steps 3-4)
 3. Deploy to production (Step 5)
 
-For detailed documentation, see: `ADMIN_DASHBOARD_ENHANCEMENTS_COMPLETE.md`
+For admin dashboard details, see: `ADMIN_DASHBOARD_SETUP.md`
 
 ---
 

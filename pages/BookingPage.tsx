@@ -46,7 +46,7 @@ const BookingPage: React.FC = () => {
             aria-label="Meinautoverkauf Startseite"
           >
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="MeinAutoVerkauf.de"
               className="h-20 lg:h-20 w-auto"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}

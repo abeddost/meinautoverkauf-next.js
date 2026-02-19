@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:analyze": "ANALYZE=true tsc && ANALYZE=true vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "images:webp": "node scripts/convert-png-to-webp.mjs --quality 80",
+    "images:webp:dry-run": "node scripts/convert-png-to-webp.mjs --quality 80 --dry-run"
   },
   "dependencies": {
     "@google/genai": "^1.34.0",
@@ -25,6 +27,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "rollup-plugin-visualizer": "^6.0.5",
+    "sharp": "^0.34.5",
     "typescript": "^5.7.2",
     "vite": "^6.0.5",
     "vite-prerender-plugin": "^0.5.12"

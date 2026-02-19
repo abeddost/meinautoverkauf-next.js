@@ -59,10 +59,7 @@ supabase/migrations/006_*.sql      # Database setup
 
 ## 📖 Documentation
 
-- **`ADMIN_SETUP_INSTRUCTIONS.md`** - Quick setup guide
-- **`ADMIN_DASHBOARD_SETUP.md`** - Detailed documentation
-- **`ADMIN_QUICK_REFERENCE.md`** - Quick reference card
-- **`ADMIN_IMPLEMENTATION_COMPLETE.md`** - Full implementation details
+- **`ADMIN_DASHBOARD_SETUP.md`** - Detailed setup and usage guide
 
 ---
 
@@ -155,7 +152,7 @@ When deploying to production:
 
 ## 📞 Support
 
-For questions or issues, see the detailed documentation files listed above.
+For questions or issues, see `ADMIN_DASHBOARD_SETUP.md`.
 
 **Project Dashboard:** https://app.supabase.com/project/sfrqhzqhmqbgpbmyucph
 

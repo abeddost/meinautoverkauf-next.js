@@ -157,7 +157,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-100"
-          style={{ backgroundImage: "url('/hero%20section.png')" }}
+          style={{ backgroundImage: "url('/hero%20section.webp')" }}
         ></div>
         <div className={`absolute -top-32 right-[-80px] h-[420px] w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>
         <div className={`absolute -bottom-40 left-[-120px] h-[520px] w-[520px] rounded-full ${heroAccent.blobBottomClass} blur-3xl opacity-85 animate-float-slower`}></div>
@@ -226,7 +226,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                   onMouseLeave={handleMouseLeave}
                 >
                   <img
-                    src="/bmw.png"
+                    src="/bmw.webp"
                     alt="BMW Car"
                     className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
@@ -235,7 +235,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                     }}
                   />
                   <img
-                    src="/bmw.png"
+                    src="/bmw.webp"
                     alt="BMW Car Reflection"
                     className="absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
                     style={{
@@ -291,7 +291,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
             <div className="relative w-[95%] max-w-[440px]">
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
               <img
-                src="/bmw.png"
+                src="/bmw.webp"
                 alt="BMW Car"
                 className="relative w-full h-auto max-h-[200px] object-contain drop-shadow-[0_26px_40px_rgba(15,23,42,0.28)]"
                 loading="eager"

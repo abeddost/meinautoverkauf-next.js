@@ -26,7 +26,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         <section className="relative mb-16 max-w-5xl mx-auto">
           <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
             <img
-              src="/elements/auto-schnell-verkaufen.png"
+              src="/elements/auto-schnell-verkaufen.webp"
               alt=""
               className="w-full max-w-[520px] opacity-[0.24]"
               onError={(e) => {
@@ -108,7 +108,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="relative bg-gradient-to-br from-slate-50 to-white p-8 lg:p-12 rounded-[2.5rem] border border-slate-100 my-12">
               {/* Decorative element */}
               <img 
-                src="/elements/car-details.png" 
+                src="/elements/car-details.webp" 
                 alt="" 
                 className="absolute top-4 right-4 w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 opacity-[0.12] pointer-events-none"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
