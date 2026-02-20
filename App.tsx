@@ -111,29 +111,6 @@ const buildCitySchemas = (
   return [
     {
       "@context": "https://schema.org",
-      "@type": "AutoDealer",
-      "@id": `${pageUrl}#autodealer`,
-      name: "Meinautoverkauf.de",
-      url: pageUrl,
-      inLanguage: "de-DE",
-      areaServed: {
-        "@type": "City",
-        name: cityName,
-      },
-      makesOffer: {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: `Autoankauf ${cityName}`,
-          serviceType: "Autoankauf",
-        },
-      },
-      provider: {
-        "@id": `${SITE_URL}/#organization`,
-      },
-    },
-    {
-      "@context": "https://schema.org",
       "@type": "Service",
       "@id": `${pageUrl}#service`,
       name: `Autoankauf ${cityName}`,

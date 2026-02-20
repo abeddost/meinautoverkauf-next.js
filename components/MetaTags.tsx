@@ -132,8 +132,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
     "@id": `${SITE_URL}/#organization`,
     name: "Meinautoverkauf.de",
     url: `${SITE_URL}/`,
-    logo: `${SITE_URL}/logo.webp`,
-    inLanguage: "de-DE"
+    logo: `${SITE_URL}/logo.webp`
   };
 
   const websiteSchema: JsonLdObject = {

@@ -7,6 +7,14 @@ interface Props {
   onCtaClick: () => void;
 }
 
+const TOC_LINKS = [
+  { href: '#werterhalt', label: 'Werterhalt und Pflege' },
+  { href: '#rechtliche-anforderungen', label: 'Rechtssicher verkaufen' },
+  { href: '#motorschaden-optionen', label: 'Motorschaden und Defekte' },
+  { href: '#dokumente', label: 'Dokumente und Checkliste' },
+  { href: '#abmeldung-ummeldung', label: 'Abmeldung und Ummeldung' },
+];
+
 const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white relative overflow-hidden">
@@ -29,9 +37,39 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
         </h1>
         
           <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
-            Sie möchten Ihren <strong>Verkauf Gebrauchtwagen</strong> optimal vorbereiten? Oder fragen Sie sich, ob Sie ein <strong>motorschaden auto verkaufen</strong> können? In diesem umfassenden Ratgeber finden Sie alle wichtigen Informationen, Tipps und rechtliche Hinweise rund um den Autoverkauf – vom perfekten Zustand bis zum <strong>defektes auto verkaufen</strong>.
+            In diesem Ratgeber erhalten Sie die wichtigsten Tipps für den <strong>Verkauf Gebrauchtwagen</strong>: von Werterhalt und Unterlagen bis zu rechtlichen Pflichten bei <strong>motorschaden auto verkaufen</strong> oder <strong>defektes auto verkaufen</strong>.
           </p>
         </div>
+
+        <section className="max-w-4xl mx-auto mb-12 rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-8">
+          <h2 className="text-lg md:text-xl font-black text-brand-dark mb-4">Kurzfassung in 5 Punkten</h2>
+          <ul className="list-disc pl-5 space-y-2 text-slate-700 font-medium">
+            <li>Pflege, Wartung und Dokumentation erhöhen den Verkaufspreis deutlich.</li>
+            <li>Ein sauberer Kaufvertrag und vollständige Mängelangaben schützen rechtlich.</li>
+            <li>Auch Fahrzeuge mit Motorschaden oder Defekten haben oft relevanten Restwert.</li>
+            <li>Vollständige Unterlagen beschleunigen die Abwicklung und schaffen Vertrauen.</li>
+            <li>Abmeldung und Übergabe sollten vorab klar geregelt werden.</li>
+          </ul>
+        </section>
+
+        <nav
+          aria-label="Inhaltsverzeichnis Ratgeber"
+          className="max-w-4xl mx-auto mb-14 rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8"
+        >
+          <h2 className="text-lg md:text-xl font-black text-brand-dark mb-4">Inhaltsverzeichnis</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {TOC_LINKS.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className="inline-flex min-h-[44px] items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition-colors hover:border-brand-orange hover:text-brand-orange focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         {/* Quick Tips Grid */}
         <section id="ratgeber-content" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
@@ -75,7 +113,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Main Content */}
         <div className="max-w-4xl mx-auto">
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Werterhalt: So maximieren Sie den Preis beim Verkauf Gebrauchtwagen</h2>
+            <h2 id="werterhalt" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Werterhalt: So maximieren Sie den Preis beim Verkauf Gebrauchtwagen</h2>
             <p className="font-medium leading-relaxed">
               Der Wert eines Gebrauchtwagens hängt maßgeblich davon ab, wie gut er gepflegt wurde. Wenn Sie in ein paar Jahren Ihren <strong>Verkauf Gebrauchtwagen</strong> planen, sollten Sie schon heute auf diese Faktoren achten. Mit unserer <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlosen Bewertung</Link> erfahren Sie den aktuellen Marktwert.
             </p>
@@ -100,7 +138,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               Aggressives Fahren mit hohen Drehzahlen, abruptem Bremsen und harten Gangwechseln verschleißt Motor, Getriebe und Bremsen unnötig schnell. Ein schonender Fahrstil verlängert die Lebensdauer aller Komponenten und zahlt sich beim Verkauf aus.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Rechtliche Anforderungen für einen sicheren Autoverkauf</h2>
+            <h2 id="rechtliche-anforderungen" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Rechtliche Anforderungen für einen sicheren Autoverkauf</h2>
             <p className="font-medium leading-relaxed">
               Beim <strong>Verkauf Gebrauchtwagen</strong> gibt es wichtige rechtliche Aspekte zu beachten, um sich vor Haftungsansprüchen zu schützen:
             </p>
@@ -123,7 +161,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               Sie sind verpflichtet, alle Ihnen bekannten Mängel wahrheitsgemäß anzugeben. Verschweigen Sie Schäden, können Sie auch nach dem Verkauf noch haftbar gemacht werden. Ehrlichkeit ist die beste Strategie und schützt Sie rechtlich.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">TÜV und Hauptuntersuchung – Wichtig für den Verkauf?</h2>
+            <h2 id="tuev-hauptuntersuchung" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">TÜV und Hauptuntersuchung – Wichtig für den Verkauf?</h2>
             <p className="font-medium leading-relaxed">
               Ein gültiger TÜV ist kein Muss für den Verkauf, erhöht aber den Wert und die Verkaufschancen erheblich:
             </p>
@@ -136,7 +174,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <strong>Unser Tipp:</strong> Lohnt sich eine neue HU vor dem Verkauf? Nur wenn Sie sicher sind, dass das Fahrzeug ohne teure Reparaturen durch die Prüfung kommt. Ansonsten verkaufen Sie besser ohne TÜV und senken den Preis entsprechend.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Unfallfahrzeuge verkaufen – Was Sie wissen müssen</h2>
+            <h2 id="unfallfahrzeuge" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Unfallfahrzeuge verkaufen – Was Sie wissen müssen</h2>
             <p className="font-medium leading-relaxed">
               Nicht jeder Unfall macht ein Auto zum "Unfallwagen" im rechtlichen Sinne, aber Transparenz ist entscheidend:
             </p>
@@ -151,7 +189,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               Verschweigen Sie niemals Unfallschäden. Das kann als Betrug gewertet werden und zu Schadensersatzforderungen führen. Seien Sie ehrlich – es gibt genug Käufer, die auch Unfallfahrzeuge zu angemessenen Preisen kaufen.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Motorschaden Auto verkaufen – Ihre Optionen</h2>
+            <h2 id="motorschaden-optionen" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Motorschaden Auto verkaufen – Ihre Optionen</h2>
             <p className="font-medium leading-relaxed">
               Viele Autobesitzer glauben, ein <strong>motorschaden auto verkaufen</strong> sei unmöglich oder nicht lohnenswert. Das stimmt nicht! Auch Fahrzeuge mit schweren Defekten haben einen Restwert. Erfahren Sie mehr über den <Link to="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">Verkaufsprozess</Link> und unsere faire Bewertung.
             </p>
@@ -179,7 +217,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <li><strong>Privatpersonen:</strong> Bastler oder Hobbymechaniker suchen Projekte</li>
             </ul>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Defektes Auto verkaufen – Getriebeschaden, Elektronikprobleme & Co.</h2>
+            <h2 id="defektes-auto" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Defektes Auto verkaufen – Getriebeschaden, Elektronikprobleme & Co.</h2>
             <p className="font-medium leading-relaxed">
               Nicht nur Motorschäden, auch andere schwere Defekte müssen kein Verkaufshindernis sein:
             </p>
@@ -199,7 +237,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               Oberflächlicher Flugrost ist weniger problematisch als durchgerostete Karosserieteile. Struktureller Rost (Schweller, Rahmen) mindert den Wert erheblich und kann das Fahrzeug bei der HU durchfallen lassen.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Saisonale Markttrends beim Autoverkauf</h2>
+            <h2 id="saisonale-markttrends" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Saisonale Markttrends beim Autoverkauf</h2>
             <p className="font-medium leading-relaxed">
               Der richtige Verkaufszeitpunkt kann den Preis um 10-20% beeinflussen. Beachten Sie diese saisonalen Trends:
             </p>
@@ -211,7 +249,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <li><strong>Sportwagen:</strong> Im Frühjahr höhere Preise durch Saisonstart</li>
             </ul>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Elektro- und Hybridfahrzeuge – Besonderheiten</h2>
+            <h2 id="elektro-hybrid" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Elektro- und Hybridfahrzeuge – Besonderheiten</h2>
             <p className="font-medium leading-relaxed">
               Der Verkauf von Elektro- und Hybridfahrzeugen hat spezifische Aspekte:
             </p>
@@ -231,7 +269,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               Staatliche Förderungen beeinflussen den Gebrauchtwagenmarkt. Wenn neue E-Autos stark gefördert werden, sinkt die Nachfrage nach Gebrauchten. Beobachten Sie die Förderpolitik.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Ehrliche Offenlegung von Mängeln – Ihre Pflicht</h2>
+            <h2 id="maengel-offenlegung" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Ehrliche Offenlegung von Mängeln – Ihre Pflicht</h2>
             <p className="font-medium leading-relaxed">
               Beim <strong>Verkauf Gebrauchtwagen</strong> müssen Sie alle Ihnen bekannten Mängel wahrheitsgemäß angeben:
             </p>
@@ -246,7 +284,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <strong>Wichtig:</strong> Ein "Gekauft wie gesehen"-Klausel schützt Sie nur vor unbekannten Mängeln. Bekannte Mängel, die Sie verschweigen, können trotzdem zu Haftung führen.
             </p>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Erforderliche Dokumente für den Autoverkauf</h2>
+            <h2 id="dokumente" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Erforderliche Dokumente für den Autoverkauf</h2>
             <p className="font-medium leading-relaxed">
               Für einen reibungslosen <strong>Verkauf Gebrauchtwagen</strong> benötigen Sie folgende Unterlagen:
             </p>
@@ -273,7 +311,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               </ul>
             </div>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Abmeldung und Ummeldung – Der Prozess</h2>
+            <h2 id="abmeldung-ummeldung" className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Abmeldung und Ummeldung – Der Prozess</h2>
             <p className="font-medium leading-relaxed">
               Die Abmeldung Ihres Fahrzeugs nach dem Verkauf ist wichtig, um Haftung und weitere Kosten zu vermeiden:
             </p>
@@ -317,19 +355,18 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
 
           {/* FAQ Section */}
-          <FAQSection />
+          <section id="faq">
+            <FAQSection />
+          </section>
 
           {/* Conclusion */}
-          <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
+          <section id="fazit" className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Gut vorbereitet zum erfolgreichen Verkauf</h2>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              Der <strong>Verkauf Gebrauchtwagen</strong> erfordert Vorbereitung, Ehrlichkeit und das richtige Timing. Mit unserem Ratgeber sind Sie bestens informiert – egal ob Sie ein perfekt gepflegtes Fahrzeug, ein <strong>motorschaden auto verkaufen</strong> oder ein <strong>defektes auto verkaufen</strong> möchten.
-            </p>
-            <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              Werterhalt beginnt beim Kauf: Pflegen Sie Ihr Fahrzeug von Anfang an, dokumentieren Sie alle Wartungen und seien Sie beim Verkauf transparent über alle Mängel. Das schafft Vertrauen und maximiert den Preis.
+              Der <strong>Verkauf Gebrauchtwagen</strong> wird deutlich einfacher, wenn Sie Wartung, Unterlagen und Offenlegung frühzeitig vorbereiten. So reduzieren Sie Rückfragen, sparen Zeit und vermeiden rechtliche Risiken.
             </p>
             <p className="text-slate-700 font-medium leading-relaxed mb-6">
-              Wenn Sie Unterstützung beim Verkauf benötigen oder einfach einen fairen Preis ohne Aufwand möchten – wir sind für Sie da. Starten Sie jetzt Ihre <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlose Bewertung</Link> oder erfahren Sie mehr über unsere <Link to="/vorteile" className="text-brand-orange font-bold hover:underline">Vorteile beim Autoankauf</Link>.
+              Wenn Sie Unterstützung beim Verkauf benötigen, starten Sie direkt mit der <Link to="/auto-bewerten" className="text-brand-orange font-bold hover:underline">kostenlosen Bewertung</Link> oder informieren Sie sich über unsere <Link to="/vorteile" className="text-brand-orange font-bold hover:underline">Vorteile beim Autoankauf</Link>.
             </p>
             <div className="flex flex-wrap gap-3 justify-center pt-6 border-t border-slate-200">
               <Link to="/auto-bewerten" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Kostenlos bewerten</Link>
