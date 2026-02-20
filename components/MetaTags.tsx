@@ -19,7 +19,7 @@ interface MetaTagsProps {
   extraSchemas?: JsonLdObject | JsonLdObject[];
 }
 
-const SITE_URL = 'https://meinautoverkauf.de';
+const SITE_URL = 'https://www.meinautoverkauf.de';
 
 const ROUTE_NAME_MAP: Record<string, string> = {
   'auto-bewerten': 'Auto bewerten',

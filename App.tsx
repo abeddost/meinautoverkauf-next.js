@@ -788,20 +788,15 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
         </Suspense>
       </main>
 
-      {!isStandalonePage && (
-      <div
-        className={`md:hidden fixed left-0 right-0 bottom-0 px-4 pb-4 z-40 transition-transform duration-300 ease-in-out ${
-          showMobileCta ? 'translate-y-0' : 'translate-y-full'
-        }`}
-        aria-hidden={!showMobileCta}
-      >
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="mx-auto w-full max-w-[280px] rounded-full bg-brand-orange text-white text-sm font-bold py-3 shadow-[0_10px_20px_rgba(15,23,42,0.22)] active:scale-[0.99] transition-transform"
-        >
-          Jetzt Auto bewerten
-        </button>
-      </div>
+      {!isStandalonePage && showMobileCta && (
+        <div className="md:hidden fixed left-0 right-0 bottom-0 px-4 pb-4 z-40 transition-transform duration-300 ease-in-out translate-y-0">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="mx-auto w-full max-w-[280px] rounded-full bg-[#9a3412] text-white text-sm font-bold py-3 shadow-[0_10px_20px_rgba(15,23,42,0.22)] hover:bg-[#7c2d12] active:scale-[0.99] transition-transform"
+          >
+            Jetzt Auto bewerten
+          </button>
+        </div>
       )}
 
       {!isStandalonePage && <Footer />}

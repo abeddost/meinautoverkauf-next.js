@@ -100,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
                 document.getElementById('bewerten')?.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="bg-brand-orange text-white px-6 py-3 sm:py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 transition-all shadow-lg active:scale-95 min-h-[44px] sm:min-h-0 flex items-center justify-center"
+            className="bg-[#9a3412] text-white px-6 py-3 sm:py-2.5 rounded-full text-sm font-bold hover:bg-[#7c2d12] transition-all shadow-lg active:scale-95 min-h-[44px] sm:min-h-0 flex items-center justify-center"
           >
             Auto verkaufen
           </Link>
@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
                 document.getElementById('bewerten')?.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="bg-brand-orange text-white w-full py-3 rounded-xl text-base font-bold text-center shadow-lg active:scale-95 transition-transform mt-2"
+            className="bg-[#9a3412] text-white w-full py-3 rounded-xl text-base font-bold text-center shadow-lg hover:bg-[#7c2d12] active:scale-95 transition-transform mt-2"
           >
             JETZT BEWERTEN
           </Link>
