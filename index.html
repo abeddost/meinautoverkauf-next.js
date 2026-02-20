@@ -2,33 +2,6 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- Google tag (gtag.js) - deferred to interaction to protect CWV -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      (function() {
-        var loaded = false;
-        var loadTag = function() {
-          if (loaded) return;
-          loaded = true;
-          var script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-GX8B3LF4KZ';
-          script.onload = function() {
-            gtag('config', 'G-GX8B3LF4KZ');
-          };
-          document.head.appendChild(script);
-        };
-
-        ['pointerdown', 'touchstart', 'keydown'].forEach(function(eventName) {
-          window.addEventListener(eventName, loadTag, { once: true, passive: true });
-        });
-
-        // Fallback for extremely long passive sessions.
-        setTimeout(loadTag, 120000);
-      })();
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meinautoverkauf.de</title>

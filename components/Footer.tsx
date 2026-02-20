@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { COOKIE_SETTINGS_OPEN_EVENT } from '../lib/consent';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -111,6 +112,13 @@ const Footer: React.FC = () => {
               <div className="flex flex-col gap-2">
                 <Link to="/impressum" className="hover:text-brand-orange transition-colors">Impressum</Link>
                 <Link to="/datenschutz" className="hover:text-brand-orange transition-colors">Datenschutz</Link>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event(COOKIE_SETTINGS_OPEN_EVENT))}
+                  className="text-left hover:text-brand-orange transition-colors"
+                >
+                  Cookie-Einstellungen
+                </button>
               </div>
             </div>
           </div>

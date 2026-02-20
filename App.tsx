@@ -1,11 +1,23 @@
-import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useCallback, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import MetaTags from './components/MetaTags';
+import CookieConsentBanner from './components/CookieConsentBanner';
+import CookieSettingsModal from './components/CookieSettingsModal';
 import { AppStep, CarDetails, ValuationResult } from './types';
+import {
+  COOKIE_SETTINGS_OPEN_EVENT,
+  ConsentState,
+  getConsentState,
+  setConsentAccepted,
+  setConsentRejected,
+  subscribeConsent,
+  updateConsent,
+} from './lib/consent';
+import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
 
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
 const HOME_DEFER_CLASS = 'defer-render';
@@ -33,6 +45,14 @@ const ensureUwgSafeMetadataCopy = (...copyValues: string[]) => {
 };
 
 ensureUwgSafeMetadataCopy(HOME_META_TITLE, HOME_META_DESCRIPTION, HOME_OG_DESCRIPTION);
+
+const INITIAL_CONSENT_STATE: ConsentState = {
+  version: 'v1',
+  choice: 'unknown',
+  analytics: false,
+  updatedAt: '',
+  source: 'banner',
+};
 
 const loadAutoBewertenPage = () => import('./pages/AutoBewerten');
 const loadAutoVerkaufenPage = () => import('./pages/AutoVerkaufen');
@@ -204,7 +224,71 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
   const [carDetails, setCarDetails] = useState<CarDetails | null>(null);
   const [valuation, setValuation] = useState<ValuationResult | null>(null);
   const [showMobileCta, setShowMobileCta] = useState(false);
+  const [consentState, setConsentState] = useState<ConsentState>(INITIAL_CONSENT_STATE);
+  const [hasHydratedConsent, setHasHydratedConsent] = useState(false);
+  const [showConsentSettings, setShowConsentSettings] = useState(false);
+  const [consentToast, setConsentToast] = useState<string | null>(null);
+  const toastTimerRef = useRef<number | null>(null);
   const isStandalonePage = STANDALONE_PATHS.includes(location.pathname);
+
+  const showConsentFeedback = useCallback((message: string) => {
+    setConsentToast(message);
+    if (toastTimerRef.current !== null) {
+      window.clearTimeout(toastTimerRef.current);
+    }
+    toastTimerRef.current = window.setTimeout(() => {
+      setConsentToast(null);
+      toastTimerRef.current = null;
+    }, 2600);
+  }, []);
+
+  const handleAcceptAnalytics = useCallback((source: 'banner' | 'settings' = 'banner') => {
+    const nextState = setConsentAccepted(source);
+    setConsentState(nextState);
+    setShowConsentSettings(false);
+    showConsentFeedback('Analytics wurde aktiviert.');
+  }, [showConsentFeedback]);
+
+  const handleRejectAnalytics = useCallback((source: 'banner' | 'settings' = 'banner') => {
+    const nextState = setConsentRejected(source);
+    setConsentState(nextState);
+    setShowConsentSettings(false);
+    showConsentFeedback('Einstellung gespeichert.');
+  }, [showConsentFeedback]);
+
+  const handleSaveConsentSettings = useCallback((analyticsEnabled: boolean) => {
+    const nextState = updateConsent({ analytics: analyticsEnabled }, 'settings');
+    setConsentState(nextState);
+    setShowConsentSettings(false);
+    showConsentFeedback('Einstellung gespeichert.');
+  }, [showConsentFeedback]);
+
+  useEffect(() => {
+    applyConsentDefaults();
+
+    const initialConsent = getConsentState();
+    setConsentState(initialConsent);
+    void applyConsentUpdate(initialConsent);
+    setHasHydratedConsent(true);
+
+    const unsubscribe = subscribeConsent((nextState) => {
+      setConsentState(nextState);
+      void applyConsentUpdate(nextState);
+    });
+
+    return () => {
+      unsubscribe();
+      if (toastTimerRef.current !== null) {
+        window.clearTimeout(toastTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const openCookieSettings = () => setShowConsentSettings(true);
+    window.addEventListener(COOKIE_SETTINGS_OPEN_EVENT, openCookieSettings);
+    return () => window.removeEventListener(COOKIE_SETTINGS_OPEN_EVENT, openCookieSettings);
+  }, []);
 
   useEffect(() => {
     const shouldForceTop = window.sessionStorage.getItem('force_home_scroll_top') === '1';
@@ -866,6 +950,30 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
         </Routes>
         </Suspense>
       </main>
+
+      <CookieSettingsModal
+        isOpen={showConsentSettings}
+        initialAnalytics={consentState.analytics}
+        onClose={() => setShowConsentSettings(false)}
+        onRejectAll={() => handleRejectAnalytics('settings')}
+        onSave={handleSaveConsentSettings}
+      />
+
+      <CookieConsentBanner
+        isVisible={hasHydratedConsent && consentState.choice === 'unknown' && !showConsentSettings}
+        onAccept={() => handleAcceptAnalytics('banner')}
+        onReject={() => handleRejectAnalytics('banner')}
+        onOpenSettings={() => setShowConsentSettings(true)}
+      />
+
+      {consentToast && (
+        <div
+          aria-live="polite"
+          className="fixed left-1/2 z-[95] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-lg bottom-28 sm:bottom-6"
+        >
+          {consentToast}
+        </div>
+      )}
 
       {!isStandalonePage && showMobileCta && (
         <div className="md:hidden fixed left-0 right-0 bottom-0 px-4 pb-4 z-40 transition-transform duration-300 ease-in-out translate-y-0">

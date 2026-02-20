@@ -39,17 +39,16 @@ const DatenschutzPage: React.FC = () => {
             <section className="space-y-3">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">3. Rechtsgrundlagen der Verarbeitung</h2>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Art. 6 Abs. 1 lit. b DSGVO (Vertrag / vorvertragliche Maßnahmen)</li>
-                <li>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse, z. B. technische Stabilität und Sicherheit)</li>
-                <li>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung, sofern erteilt)</li>
-                <li>§ 25 TTDSG (Einsatz technisch notwendiger Cookies, sofern erforderlich)</li>
+                <li>Art. 6 Abs. 1 lit. b DSGVO (Vertrag / vorvertragliche Maßnahmen, z. B. Angebotsanfragen)</li>
+                <li>Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TTDSG (Einwilligung für optionale Analytics)</li>
+                <li>Art. 6 Abs. 1 lit. f DSGVO i. V. m. § 25 Abs. 2 TTDSG (technisch notwendige Speicherung)</li>
               </ul>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">4. Hosting</h2>
               <p>
-                Unsere Website wird bei Vercel gehostet. Der Hoster verarbeitet personenbezogene Daten (z. B. Server-Log-Dateien) in unserem Auftrag.
+                Unsere Website wird bei Vercel gehostet. Der Hoster verarbeitet personenbezogene Daten (z. B. Server-Log-Dateien) in unserem Auftrag.
                 Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
               </p>
               <p>
@@ -58,69 +57,92 @@ const DatenschutzPage: React.FC = () => {
                   https://vercel.com/legal/privacy-policy
                 </a>
               </p>
-              <p>
-                Es kann nicht ausgeschlossen werden, dass Daten in Drittländer (z. B. USA) übermittelt werden. Soweit erforderlich, erfolgt die Übermittlung
-                auf Grundlage geeigneter Garantien (z. B. Standardvertragsklauseln gemäß Art. 46 DSGVO), sofern diese vom Anbieter bereitgestellt werden.
-              </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">5. Server-Log-Dateien</h2>
               <p>
                 Der Provider erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt.
-                Dies sind z. B. Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage
-                sowie IP-Adresse.
+                Dazu gehören insbesondere Browsertyp, Betriebssystem, Referrer-URL, Uhrzeit der Anfrage und IP-Adresse.
               </p>
               <p>Diese Daten werden nicht mit anderen Datenquellen zusammengeführt.</p>
             </section>
 
-            <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">6. Kontakt- und Bewertungsformulare</h2>
+            <section className="space-y-3" id="cookie-einstellungen">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">6. Einwilligungsverwaltung (Cookie-Einstellungen)</h2>
               <p>
-                Wenn Sie uns über ein Formular kontaktieren oder Ihr Fahrzeug bewerten, verarbeiten wir die von Ihnen eingegebenen Daten (z. B. Name,
-                E-Mail-Adresse, Telefonnummer, Fahrzeugdaten, Zustand, Laufleistung, Standort). Zweck ist die Bearbeitung Ihrer Anfrage und ggf. die Erstellung
-                eines Angebots.
+                Beim ersten Besuch unserer Website können Sie entscheiden, ob optionale Analytics aktiviert werden sollen. Ihre Auswahl wird lokal auf Ihrem
+                Endgerät gespeichert, damit wir Ihre Präferenz bei zukünftigen Besuchen berücksichtigen können.
+              </p>
+              <p>
+                Sie können Ihre Entscheidung jederzeit über den Link <strong>„Cookie-Einstellungen“</strong> im Footer ändern oder widerrufen.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">7. Google Analytics 4 (nur mit Einwilligung)</h2>
+              <p>
+                Soweit Sie eingewilligt haben, nutzen wir Google Analytics 4, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street,
+                Dublin 4, Irland.
+              </p>
+              <p>
+                Google Analytics hilft uns zu verstehen, wie unsere Website genutzt wird (z. B. Seitenaufrufe, Interaktionen, technische Nutzungsmuster), um
+                Inhalte und Bedienung zu verbessern.
+              </p>
+              <p>
+                Die Verarbeitung erfolgt nur auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TTDSG.
+              </p>
+              <p>
+                Wir haben Google Analytics so konfiguriert, dass keine Werbe-Personalisierung aktiviert wird. Eine Einwilligung ist dennoch erforderlich, da
+                Analytics-Technologien eingesetzt werden.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">8. Drittlandtransfer</h2>
+              <p>
+                Bei Nutzung von Google Analytics kann eine Übermittlung personenbezogener Daten in Drittländer (insbesondere die USA) nicht ausgeschlossen
+                werden. Für solche Übermittlungen stützt sich Google auf geeignete Garantien, insbesondere Standardvertragsklauseln.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">9. Kontakt- und Bewertungsformulare</h2>
+              <p>
+                Wenn Sie unser Formular zur Fahrzeugbewertung oder Kontaktaufnahme nutzen, verarbeiten wir Ihre Angaben (z. B. Name, E-Mail, Telefonnummer,
+                Fahrzeugdaten) zur Bearbeitung Ihrer Anfrage und zur Angebotserstellung.
               </p>
               <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">7. Dateiuploads</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">10. Dateiuploads</h2>
               <p>
-                Sofern Sie Dateien (z. B. Fahrzeugfotos) hochladen, werden diese ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist
-                Art. 6 Abs. 1 lit. b DSGVO.
-              </p>
-            </section>
-
-            <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">8. E-Mail- und Telefonkontakt</h2>
-              <p>
-                Wenn Sie uns per E-Mail oder Telefon kontaktieren, speichern wir Ihre Angaben zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1
+                Hochgeladene Dateien (z. B. Fahrzeugfotos) werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist Art. 6 Abs. 1
                 lit. b DSGVO.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">9. Cookies</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">11. Speicherdauer</h2>
               <p>
-                Wir verwenden keine Tracking- oder Marketing-Cookies. Soweit technisch notwendige Cookies eingesetzt werden, erfolgt dies auf Grundlage von
-                Art. 6 Abs. 1 lit. f DSGVO i. V. m. § 25 Abs. 2 TTDSG.
+                Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Zwecke erforderlich ist oder gesetzliche Aufbewahrungsfristen
+                bestehen. Ihre Analytics-Einwilligung können Sie jederzeit widerrufen.
               </p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">10. Ihre Rechte</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">12. Ihre Rechte</h2>
               <p>
-                Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch
-                gegen die Verarbeitung Ihrer personenbezogenen Daten. Außerdem haben Sie das Recht, eine erteilte Einwilligung jederzeit zu widerrufen.
+                Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen
+                die Verarbeitung Ihrer personenbezogenen Daten. Außerdem haben Sie das Recht, eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft zu
+                widerrufen.
               </p>
-              <p>
-                Ihnen steht zudem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
-              </p>
+              <p>Ihnen steht zudem ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde zu.</p>
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">11. SSL-/TLS-Verschlüsselung</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">13. SSL-/TLS-Verschlüsselung</h2>
               <p>
                 Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung.
               </p>
@@ -128,7 +150,7 @@ const DatenschutzPage: React.FC = () => {
 
             <section className="space-y-3">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">Stand der Datenschutzerklärung</h2>
-              <p>01.02.2026</p>
+              <p>20.02.2026</p>
             </section>
           </div>
         </div>
