@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- Google tag (gtag.js) - deferred to idle/interaction -->
+    <!-- Google tag (gtag.js) - deferred to interaction to protect CWV -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -21,23 +21,12 @@
           document.head.appendChild(script);
         };
 
-        var scheduleLoad = function() {
-          if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(loadTag, { timeout: 2500 });
-          } else {
-            setTimeout(loadTag, 1500);
-          }
-        };
-
-        if (document.readyState === 'complete') {
-          scheduleLoad();
-        } else {
-          window.addEventListener('load', scheduleLoad, { once: true });
-        }
-
-        ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach(function(eventName) {
+        ['pointerdown', 'touchstart', 'keydown'].forEach(function(eventName) {
           window.addEventListener(eventName, loadTag, { once: true, passive: true });
         });
+
+        // Fallback for extremely long passive sessions.
+        setTimeout(loadTag, 120000);
       })();
     </script>
     <meta charset="UTF-8">
@@ -50,7 +39,7 @@
     <link rel="preload" as="image" href="/hero%20section.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
     <link rel="preload" as="image" href="/bmw-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 1023px)">
     <!-- BMW desktop car image is only used on desktop (lg:block in Hero). -->
-    <link rel="preload" as="image" href="/bmw.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
+    <link rel="preload" as="image" href="/bmw-560.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
     
     <link
       rel="preload"

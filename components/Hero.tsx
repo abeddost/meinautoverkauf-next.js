@@ -241,12 +241,14 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                   onMouseLeave={handleMouseLeave}
                 >
                   <img
-                    src="/bmw.webp"
+                    src="/bmw-560.webp"
+                    srcSet="/bmw-560.webp 560w, /bmw.webp 1024w"
+                    sizes="560px"
                     alt="BMW Car"
                     className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
-                    width={1536}
-                    height={768}
+                    width={1024}
+                    height={512}
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
@@ -255,7 +257,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                     }}
                   />
                   <img
-                    src="/bmw.webp"
+                    src="/bmw-560.webp"
+                    srcSet="/bmw-560.webp 560w, /bmw.webp 1024w"
+                    sizes="560px"
                     alt="BMW Car Reflection"
                     className="absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
                     style={{
@@ -263,8 +267,8 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                       WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
                       maskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)'
                     }}
-                    width={1536}
-                    height={768}
+                    width={1024}
+                    height={512}
                     loading="lazy"
                     decoding="async"
                     onError={(e) => {

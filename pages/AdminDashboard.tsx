@@ -710,6 +710,8 @@ const AdminDashboardContent: React.FC = () => {
             <Link to="/">
               <img
                 src="/logo.webp"
+                srcSet="/logo-295.webp 295w, /logo.webp 700w"
+                sizes="220px"
                 alt="MeinAutoVerkauf.de"
                 className="h-16 w-auto"
                 width={1260}

@@ -4,8 +4,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
-import TrustElements from './components/TrustElements';
-import FAQSection from './components/FAQSection';
 import MetaTags from './components/MetaTags';
 import { AppStep, CarDetails, ValuationResult } from './types';
 
@@ -34,6 +32,8 @@ const RatgeberPage = lazy(loadRatgeberPage);
 const AutoankaufFrankfurtPage = lazy(loadAutoankaufFrankfurtPage);
 const AutoankaufWiesbadenPage = lazy(loadAutoankaufWiesbadenPage);
 const AutoankaufMainzPage = lazy(loadAutoankaufMainzPage);
+const TrustElements = lazy(() => import('./components/TrustElements'));
+const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
 const DatenschutzPage = lazy(loadDatenschutzPage);
 const AnalyzingPage = lazy(loadAnalyzingPage);
@@ -270,14 +270,34 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
                         {[
-                          { num: "01", title: "Fahrzeugdaten eingeben", desc: "Gib online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.", img: "/3-steps/fahrzeugdaten-online-eingeben.webp" },
-                          { num: "02", title: "Fairen Preis erhalten", desc: "Du erhältst eine transparente Preiseinschätzung auf Basis aktueller Marktdaten.", img: "/3-steps/preis-erhalten.webp" },
-                          { num: "03", title: "Termin wählen & Geld erhalten", desc: "Wähle einen passenden Übergabetermin und erhalte die Auszahlung bequem per Banküberweisung.", img: "/3-steps/abgabe-termin-buchen-geld-erhalten.webp" }
+                          {
+                            num: "01",
+                            title: "Fahrzeugdaten eingeben",
+                            desc: "Gib online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.",
+                            img: "/3-steps/fahrzeugdaten-online-eingeben.webp",
+                            imgSmall: "/3-steps/fahrzeugdaten-online-eingeben-288.webp",
+                          },
+                          {
+                            num: "02",
+                            title: "Fairen Preis erhalten",
+                            desc: "Du erhältst eine transparente Preiseinschätzung auf Basis aktueller Marktdaten.",
+                            img: "/3-steps/preis-erhalten.webp",
+                            imgSmall: "/3-steps/preis-erhalten-288.webp",
+                          },
+                          {
+                            num: "03",
+                            title: "Termin wählen & Geld erhalten",
+                            desc: "Wähle einen passenden Übergabetermin und erhalte die Auszahlung bequem per Banküberweisung.",
+                            img: "/3-steps/abgabe-termin-buchen-geld-erhalten.webp",
+                            imgSmall: "/3-steps/abgabe-termin-buchen-geld-erhalten-288.webp",
+                          }
                         ].map((step, i) => (
                           <div key={i} className="relative bg-white rounded-[2rem] border border-slate-100 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)] overflow-hidden">
                             <div className="absolute top-4 right-5 text-3xl font-black text-orange-100">{step.num}</div>
                             <img
-                              src={step.img}
+                              src={step.imgSmall}
+                              srcSet={`${step.imgSmall} 288w, ${step.img} 640w`}
+                              sizes="(max-width: 767px) 100vw, 288px"
                               alt={step.title}
                               width={400}
                               height={224}
@@ -311,7 +331,9 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                       <div className="relative max-w-4xl mx-auto">
                         <div className="absolute inset-0 flex items-center justify-end pr-2 sm:pr-6 lg:pr-10 pointer-events-none">
                           <img
-                            src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick.webp"
+                            src="/elements/auto-verkaufen-online-vorteile-auf-einen-blick-420.webp"
+                            srcSet="/elements/auto-verkaufen-online-vorteile-auf-einen-blick-420.webp 420w, /elements/auto-verkaufen-online-vorteile-auf-einen-blick.webp 768w"
+                            sizes="420px"
                             alt=""
                             width={420}
                             height={280}
@@ -572,10 +594,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                   </section>
 
                   <div className={HOME_DEFER_CLASS}>
-                    <TrustElements />
+                    <Suspense fallback={null}>
+                      <TrustElements />
+                    </Suspense>
                   </div>
                   <div className={HOME_DEFER_CLASS}>
-                    <FAQSection />
+                    <Suspense fallback={null}>
+                      <FAQSection />
+                    </Suspense>
                   </div>
 
                   <section id="zufriedenheit" className={`relative py-20 bg-white overflow-hidden ${HOME_DEFER_CLASS}`}>

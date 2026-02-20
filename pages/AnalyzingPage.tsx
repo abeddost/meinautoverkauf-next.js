@@ -156,6 +156,8 @@ const AnalyzingPage: React.FC = () => {
           >
             <img
               src="/logo.webp"
+              srcSet="/logo-295.webp 295w, /logo.webp 700w"
+              sizes="220px"
               alt="MeinAutoVerkauf.de"
               className="h-20 lg:h-20 w-auto"
               width={1260}
