@@ -67,6 +67,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick }) => {
               e.currentTarget.style.display = 'none';
             }}
           />
+          <span className="sr-only">Zur Startseite</span>
         </Link>
 
         {/* Mobile Menu Toggle Button */}

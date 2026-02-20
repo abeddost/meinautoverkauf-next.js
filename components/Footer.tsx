@@ -43,6 +43,7 @@ const Footer: React.FC = () => {
                     e.currentTarget.style.display = 'none';
                   }}
                 />
+                <span className="sr-only">Zur Startseite</span>
               </Link>
             </div>
             <p className="max-w-md text-sm leading-relaxed text-slate-300">
@@ -98,8 +99,8 @@ const Footer: React.FC = () => {
                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange">☎</div>
                   <div>
                     <div className="text-xs uppercase tracking-widest text-slate-400">Kostenlose Hotline</div>
-                    <a href="tel:0800242424" className="text-base font-black text-white hover:text-brand-orange transition-colors">
-                      0800 24 24 24
+                    <a href="tel:+4917662878366" className="text-base font-black text-white hover:text-brand-orange transition-colors">
+                      0176 62878366
                     </a>
                   </div>
                 </div>

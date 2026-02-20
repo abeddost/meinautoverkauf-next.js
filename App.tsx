@@ -9,6 +9,31 @@ import { AppStep, CarDetails, ValuationResult } from './types';
 
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
 const HOME_DEFER_CLASS = 'defer-render';
+const SITE_URL = 'https://www.meinautoverkauf.de';
+const HOME_META_TITLE = 'Auto schnell & unkompliziert verkaufen | Meinautoverkauf.de';
+const HOME_META_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und unkompliziert. Kostenlose Online-Bewertung und Verkaufspreis online erhalten – bequemer Service für Sie.';
+const HOME_OG_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und unkompliziert. Kostenlose Online-Bewertung und Verkaufspreis online erhalten.';
+const FORBIDDEN_METADATA_PHRASES = [
+  'Garantiert',
+  'Bester Preis',
+  'Marktführer',
+  'Nr. 1',
+  'Testsieger',
+  '100% sicher',
+  'Ohne Risiko',
+];
+
+const ensureUwgSafeMetadataCopy = (...copyValues: string[]) => {
+  for (const phrase of FORBIDDEN_METADATA_PHRASES) {
+    const forbiddenMatch = copyValues.some((value) => value.toLowerCase().includes(phrase.toLowerCase()));
+    if (forbiddenMatch) {
+      throw new Error(`Homepage metadata contains forbidden phrase: "${phrase}"`);
+    }
+  }
+};
+
+ensureUwgSafeMetadataCopy(HOME_META_TITLE, HOME_META_DESCRIPTION, HOME_OG_DESCRIPTION);
+
 const loadAutoBewertenPage = () => import('./pages/AutoBewerten');
 const loadAutoVerkaufenPage = () => import('./pages/AutoVerkaufen');
 const loadVorteilePage = () => import('./pages/VorteilePage');
@@ -61,7 +86,7 @@ const buildCitySchemas = (
   cityName: string,
   routePath: string,
 ): Array<Record<string, unknown>> => {
-  const pageUrl = `https://meinautoverkauf.de${routePath}`;
+  const pageUrl = `${SITE_URL}${routePath}`;
 
   return [
     {
@@ -84,7 +109,7 @@ const buildCitySchemas = (
         },
       },
       provider: {
-        "@id": "https://meinautoverkauf.de/#organization",
+        "@id": `${SITE_URL}/#organization`,
       },
     },
     {
@@ -98,12 +123,37 @@ const buildCitySchemas = (
         name: cityName,
       },
       provider: {
-        "@id": "https://meinautoverkauf.de/#organization",
+        "@id": `${SITE_URL}/#organization`,
       },
       url: pageUrl,
       inLanguage: "de-DE",
     },
   ];
+};
+
+const buildCoreServiceSchema = (
+  serviceName: string,
+  routePath: string,
+  serviceType: string,
+): Record<string, unknown> => {
+  const pageUrl = `${SITE_URL}${routePath}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${pageUrl}#service`,
+    name: serviceName,
+    serviceType,
+    url: pageUrl,
+    inLanguage: "de-DE",
+    areaServed: {
+      "@type": "Country",
+      name: "Deutschland",
+    },
+    provider: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+  };
 };
 
 // Scroll: home + standalone pages → top; other pages → main content (below hero)
@@ -237,10 +287,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Auto verkaufen online | Faire Preise & Abholung | Meinautoverkauf.de" 
-                description="Auto verkaufen online in 24h ✓ Kostenlose KI-Bewertung ✓ Sicherer Autoankauf ✓ Sofortige Auszahlung ✓ Kostenlose Abholung vor Ort."
+                title={HOME_META_TITLE}
+                description={HOME_META_DESCRIPTION}
                 canonicalUrl="/"
                 pageType="WebPage"
+                ogTitle={HOME_META_TITLE}
+                ogDescription={HOME_OG_DESCRIPTION}
+                twitterTitle={HOME_META_TITLE}
+                twitterDescription={HOME_OG_DESCRIPTION}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -653,7 +707,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto bewerten online | Kostenlose Wertermittlung | Meinautoverkauf.de" 
                 description="Was ist mein Auto wert? Erhalten Sie eine präzise Fahrzeugbewertung online ✓ Kostenlos ✓ In 2 Minuten ✓ Basis für den Autoankauf."
                 canonicalUrl="/auto-bewerten"
-                pageType="Service"
+                extraSchemas={buildCoreServiceSchema('Auto bewerten online', '/auto-bewerten', 'Fahrzeugbewertung')}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -672,7 +726,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto verkaufen online | Sicherer Autoankauf | Meinautoverkauf.de" 
                 description="Auto online verkaufen zum Bestpreis ✓ Wir kaufen Ihren Gebrauchtwagen ✓ Sofortige Auszahlung ✓ Kostenlose Abmeldung ✓ Alle Marken."
                 canonicalUrl="/auto-verkaufen"
-                pageType="Service"
+                extraSchemas={buildCoreServiceSchema('Auto verkaufen online', '/auto-verkaufen', 'Autoankauf')}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -691,7 +745,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Vorteile beim Autoankauf | Warum Meinautoverkauf.de?" 
                 description="Entdecken Sie Ihre Vorteile beim Autoverkauf ✓ Sicherer Vertrag ✓ Keine Haftung ✓ Bestpreis-Garantie ✓ Home-Pickup Service."
                 canonicalUrl="/vorteile"
-                pageType="Service"
+                extraSchemas={buildCoreServiceSchema('Vorteile beim Autoankauf', '/vorteile', 'Autoankauf-Service')}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
@@ -729,7 +783,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Frankfurt | Alle Stadtteile | Sofort-Auszahlung | Fair" 
                 description="Autoankauf Frankfurt ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Auch Diesel & Umweltzone ✓ Business-Service für Frankfurter."
                 canonicalUrl="/autoankauf-frankfurt"
-                pageType="Service"
                 extraSchemas={buildCitySchemas('Frankfurt am Main', '/autoankauf-frankfurt')}
               />
               <Hero 
@@ -751,7 +804,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Wiesbaden | Auto verkaufen sofort | Kostenlose Abholung" 
                 description="Autoankauf Wiesbaden ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Motorschaden & Unfallwagen ✓ Faire Preise in der Kurstadt."
                 canonicalUrl="/autoankauf-wiesbaden"
-                pageType="Service"
                 extraSchemas={buildCitySchemas('Wiesbaden', '/autoankauf-wiesbaden')}
               />
               <Hero 
@@ -773,7 +825,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Mainz | Alle Stadtteile | Kastel & Kostheim | Fair" 
                 description="Autoankauf Mainz ✓ Kostenlose Abholung in allen Stadtteilen ✓ Auch Mainz-Kastel & Kostheim ✓ Sofortige Zahlung ✓ Persönlich & vertrauensvoll."
                 canonicalUrl="/autoankauf-mainz"
-                pageType="Service"
                 extraSchemas={buildCitySchemas('Mainz', '/autoankauf-mainz')}
               />
               <Hero 
@@ -795,6 +846,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Impressum | Meinautoverkauf.de"
                 description="Impressum von Meinautoverkauf.de – Anbieterkennzeichnung, Kontakt und rechtliche Hinweise."
                 canonicalUrl="/impressum"
+                noindex
               />
               <ImpressumPage />
             </div>
@@ -806,6 +858,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Datenschutzerklärung | Meinautoverkauf.de"
                 description="Datenschutzerklärung von Meinautoverkauf.de – Informationen zur Verarbeitung personenbezogener Daten."
                 canonicalUrl="/datenschutz"
+                noindex
               />
               <DatenschutzPage />
             </div>

@@ -14,7 +14,12 @@ interface MetaTagsProps {
   canonicalUrl?: string;
   noindex?: boolean;
   ogImage?: string;
-  pageType?: 'WebPage' | 'CollectionPage' | 'Service' | 'AboutPage' | 'ContactPage';
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  pageType?: 'WebPage' | 'CollectionPage' | 'AboutPage' | 'ContactPage';
   breadcrumbs?: BreadcrumbItem[];
   extraSchemas?: JsonLdObject | JsonLdObject[];
 }
@@ -101,6 +106,11 @@ const MetaTags: React.FC<MetaTagsProps> = ({
   canonicalUrl,
   noindex = false,
   ogImage,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
   pageType = 'WebPage',
   breadcrumbs,
   extraSchemas,
@@ -109,6 +119,11 @@ const MetaTags: React.FC<MetaTagsProps> = ({
   const fullUrl = canonicalUrl ? toAbsoluteUrl(canonicalUrl) : `${SITE_URL}${canonicalPath}`;
   const defaultOgImage = `${SITE_URL}/og-image.webp`;
   const resolvedOgImage = ogImage ? toAbsoluteUrl(ogImage) : defaultOgImage;
+  const resolvedOgTitle = ogTitle ?? title;
+  const resolvedOgDescription = ogDescription ?? description;
+  const resolvedTwitterTitle = twitterTitle ?? resolvedOgTitle;
+  const resolvedTwitterDescription = twitterDescription ?? resolvedOgDescription;
+  const resolvedTwitterImage = twitterImage ? toAbsoluteUrl(twitterImage) : resolvedOgImage;
   const resolvedBreadcrumbs = breadcrumbs ?? buildBreadcrumbs(canonicalPath);
 
   const organizationSchema: JsonLdObject = {
@@ -116,7 +131,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: "Meinautoverkauf.de",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     logo: `${SITE_URL}/logo.webp`,
     inLanguage: "de-DE"
   };
@@ -126,7 +141,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     name: "Meinautoverkauf.de",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     inLanguage: "de-DE",
     publisher: {
       "@id": `${SITE_URL}/#organization`
@@ -190,8 +205,8 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <link rel="alternate" hrefLang="x-default" href={fullUrl} />
       
       {/* Open Graph */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={resolvedOgTitle} />
+      <meta property="og:description" content={resolvedOgDescription} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="de_DE" />
@@ -205,9 +220,9 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={fullUrl} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={resolvedOgImage} />
+      <meta name="twitter:title" content={resolvedTwitterTitle} />
+      <meta name="twitter:description" content={resolvedTwitterDescription} />
+      <meta name="twitter:image" content={resolvedTwitterImage} />
       <meta name="twitter:image:alt" content="Auto verkaufen online bei Meinautoverkauf.de" />
 
       {schemaBlocks.map((schema, index) => (

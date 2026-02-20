@@ -719,6 +719,7 @@ const AdminDashboardContent: React.FC = () => {
                 loading="eager"
                 decoding="async"
               />
+              <span className="sr-only">Zur Startseite</span>
             </Link>
             <h1 className="text-2xl font-black text-brand-dark">Admin Dashboard</h1>
           </div>

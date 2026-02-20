@@ -8,6 +8,8 @@
     "build": "tsc && vite build",
     "build:analyze": "ANALYZE=true tsc && ANALYZE=true vite build",
     "preview": "vite preview",
+    "og:image": "node scripts/generate-og-image.mjs",
+    "check:pagespeed": "node scripts/check-pagespeed-gate.mjs",
     "images:webp": "node scripts/convert-png-to-webp.mjs --quality 80",
     "images:webp:dry-run": "node scripts/convert-png-to-webp.mjs --quality 80 --dry-run"
   },

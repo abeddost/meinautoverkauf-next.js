@@ -121,6 +121,7 @@ const ValuationResultPage: React.FC = () => {
               decoding="async"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
+            <span className="sr-only">Zur Startseite</span>
           </Link>
         </div>
       </header>
