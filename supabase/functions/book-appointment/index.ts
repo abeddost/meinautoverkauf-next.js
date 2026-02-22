@@ -49,7 +49,6 @@ async function checkRateLimit(
   endpoint: string,
   ipHash: string,
 ): Promise<{ limited: boolean; window?: RateWindow; retryAfter?: number }> {
-  // Opportunistic cleanup
   supabase.from("rate_limit_events").delete().lt("expires_at", new Date().toISOString());
 
   for (const w of RATE_WINDOWS) {
@@ -84,6 +83,256 @@ async function recordRateHits(
   await supabase.from("rate_limit_events").insert(rows);
 }
 
+// ── Email helpers ─────────────────────────────────────────────────────
+
+function emailShell(bodyContent: string): string {
+  return `<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meinautoverkauf.de</title>
+</head>
+<body style="margin:0;padding:0;background:#f1f5f9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(15,23,42,0.10);">
+
+          <!-- Header -->
+          <tr>
+            <td style="background:#0f172a;padding:28px 36px;border-bottom:3px solid #f97316;">
+              <img src="https://www.meinautoverkauf.de/logo-white.webp"
+                   alt="Meinautoverkauf.de"
+                   width="200"
+                   style="display:block;height:auto;max-width:200px;" />
+            </td>
+          </tr>
+
+          <!-- Orange accent line -->
+          <tr>
+            <td style="height:4px;background:linear-gradient(90deg,#f97316,#fb923c);"></td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:36px 36px 28px;">
+              ${bodyContent}
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:#0f172a;padding:24px 36px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="color:#94a3b8;font-size:13px;line-height:1.8;">
+                    <strong style="color:#ffffff;font-size:14px;">Meinautoverkauf.de</strong><br/>
+                    <a href="https://www.meinautoverkauf.de" style="color:#f97316;text-decoration:none;">www.meinautoverkauf.de</a><br/>
+                    Tel: <a href="tel:+4917662878366" style="color:#f97316;text-decoration:none;">0176 62878366</a><br/>
+                    E-Mail: <a href="mailto:info@meinautoverkauf.de" style="color:#f97316;text-decoration:none;">info@meinautoverkauf.de</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top:16px;border-top:1px solid #1e293b;margin-top:16px;">
+                    <p style="color:#475569;font-size:11px;margin:0;line-height:1.6;">
+                      Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht direkt auf diese Nachricht.
+                      Meinautoverkauf.de ist ein Dienst für den Ankauf von Kraftfahrzeugen in Deutschland.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+function infoRow(label: string, value: string): string {
+  return `<tr>
+    <td style="padding:10px 14px;font-size:13px;font-weight:bold;color:#475569;background:#f8fafc;border-bottom:1px solid #e2e8f0;width:40%;">${label}</td>
+    <td style="padding:10px 14px;font-size:13px;color:#0f172a;background:#ffffff;border-bottom:1px solid #e2e8f0;">${value}</td>
+  </tr>`;
+}
+
+function buildCustomerAppointmentEmail(params: {
+  firstName: string;
+  lastName: string;
+  brand: string;
+  model: string;
+  year: string;
+  mileage: string;
+  estimatedPrice: number;
+  priceMin: number;
+  priceMax: number;
+  preferredDate: string;
+  preferredTime: string;
+  deliveryLabel: string;
+  estimationId: string;
+  appointmentId: string;
+}): string {
+  const {
+    firstName, lastName, brand, model, year, mileage,
+    estimatedPrice, priceMin, priceMax,
+    preferredDate, preferredTime, deliveryLabel,
+  } = params;
+
+  const bodyContent = `
+    <h1 style="font-size:22px;font-weight:900;color:#0f172a;margin:0 0 8px;">Ihr Termin ist bestätigt</h1>
+    <p style="font-size:15px;color:#f97316;font-weight:700;margin:0 0 24px;letter-spacing:0.02em;">Übergabetermin gebucht</p>
+
+    <p style="font-size:15px;color:#334155;margin:0 0 8px;">
+      Sehr geehrte(r) ${firstName} ${lastName},
+    </p>
+    <p style="font-size:15px;color:#334155;line-height:1.7;margin:0 0 28px;">
+      Ihr Übergabetermin wurde erfolgreich gebucht. Wir freuen uns auf Sie und stehen für Fragen jederzeit zur Verfügung.
+    </p>
+
+    <!-- Appointment highlight box -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:2px solid #f97316;margin-bottom:28px;background:#fff7ed;">
+      <tr>
+        <td style="padding:16px 20px;">
+          <p style="margin:0 0 6px;font-size:12px;font-weight:900;color:#f97316;letter-spacing:0.1em;text-transform:uppercase;">Ihr Termin</p>
+          <p style="margin:0;font-size:20px;font-weight:900;color:#0f172a;">${preferredDate} um ${preferredTime} Uhr</p>
+          <p style="margin:6px 0 0;font-size:14px;color:#64748b;">${deliveryLabel}</p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Info card -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;margin-bottom:28px;">
+      <tr>
+        <td colspan="2" style="background:#f97316;padding:10px 14px;">
+          <span style="color:#ffffff;font-size:13px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">Ihr Fahrzeug</span>
+        </td>
+      </tr>
+      ${infoRow("Marke", brand)}
+      ${infoRow("Modell", model)}
+      ${infoRow("Baujahr", year)}
+      ${infoRow("Kilometerstand", mileage + " km")}
+      ${infoRow("Geschätzter Preis", estimatedPrice.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
+    </table>
+
+    <!-- CTA -->
+    <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+      <tr>
+        <td style="background:#f97316;border-radius:50px;padding:0;">
+          <a href="https://www.meinautoverkauf.de"
+             style="display:inline-block;padding:14px 32px;font-size:14px;font-weight:900;color:#ffffff;text-decoration:none;letter-spacing:0.03em;border-radius:50px;">
+            Zur Website
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <p style="font-size:14px;color:#64748b;line-height:1.7;margin:0;">
+      Bei Fragen erreichen Sie uns unter <a href="mailto:info@meinautoverkauf.de" style="color:#f97316;font-weight:bold;">info@meinautoverkauf.de</a> oder
+      <a href="tel:+4917662878366" style="color:#f97316;font-weight:bold;">0176 62878366</a>.
+    </p>
+  `;
+
+  return emailShell(bodyContent);
+}
+
+function buildAdminAppointmentEmail(params: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  brand: string;
+  model: string;
+  variant: string;
+  year: string;
+  mileage: string;
+  fuelType: string;
+  transmission: string;
+  power: string;
+  bodyType: string;
+  condition: string;
+  color: string;
+  doors: string;
+  postalCode: string;
+  vin: string;
+  desiredPrice: string;
+  estimatedPrice: number;
+  priceMin: number;
+  priceMax: number;
+  marketTrend: string;
+  explanation: string;
+  preferredDate: string;
+  preferredTime: string;
+  deliveryLabel: string;
+  photoLinksHtml: string;
+  estimationId: string;
+  appointmentId: string;
+}): string {
+  const p = params;
+
+  const bodyContent = `
+    <h1 style="font-size:20px;font-weight:900;color:#0f172a;margin:0 0 6px;">Neuer Übergabetermin</h1>
+    <p style="font-size:13px;color:#64748b;margin:0 0 24px;">Estimation ID: ${p.estimationId} | Appointment ID: ${p.appointmentId}</p>
+
+    <!-- Termin -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:2px solid #f97316;margin-bottom:20px;background:#fff7ed;">
+      <tr>
+        <td style="padding:16px 20px;">
+          <p style="margin:0 0 4px;font-size:12px;font-weight:900;color:#f97316;letter-spacing:0.1em;text-transform:uppercase;">Termin</p>
+          <p style="margin:0;font-size:18px;font-weight:900;color:#0f172a;">${p.preferredDate} um ${p.preferredTime} Uhr</p>
+          <p style="margin:4px 0 0;font-size:14px;color:#64748b;">${p.deliveryLabel}</p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Kunde -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;margin-bottom:20px;">
+      <tr><td colspan="2" style="background:#0f172a;padding:8px 14px;"><span style="color:#f97316;font-size:12px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">Kunde</span></td></tr>
+      ${infoRow("Name", p.firstName + " " + p.lastName)}
+      ${infoRow("E-Mail", p.email)}
+      ${infoRow("Telefon", p.phone)}
+    </table>
+
+    <!-- Fahrzeug -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;margin-bottom:20px;">
+      <tr><td colspan="2" style="background:#0f172a;padding:8px 14px;"><span style="color:#f97316;font-size:12px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">Fahrzeug</span></td></tr>
+      ${infoRow("Marke", p.brand)}
+      ${infoRow("Modell", p.model)}
+      ${p.variant ? infoRow("Variante", p.variant) : ""}
+      ${infoRow("Baujahr", p.year)}
+      ${infoRow("Kilometerstand", p.mileage)}
+      ${infoRow("Kraftstoff", p.fuelType)}
+      ${infoRow("Getriebe", p.transmission)}
+      ${infoRow("Leistung", p.power)}
+      ${infoRow("Karosserie", p.bodyType)}
+      ${infoRow("Zustand", p.condition)}
+      ${p.color ? infoRow("Farbe", p.color) : ""}
+      ${p.doors ? infoRow("Türen", p.doors) : ""}
+      ${p.postalCode ? infoRow("PLZ", p.postalCode) : ""}
+      ${p.vin ? infoRow("FIN", p.vin) : ""}
+      ${p.desiredPrice ? infoRow("Wunschpreis", p.desiredPrice) : ""}
+    </table>
+
+    <!-- Bewertung -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;margin-bottom:20px;">
+      <tr><td colspan="2" style="background:#0f172a;padding:8px 14px;"><span style="color:#f97316;font-size:12px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">Bewertung</span></td></tr>
+      ${infoRow("Geschätzter Preis", p.estimatedPrice.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Preisspanne", p.priceMin.toLocaleString("de-DE") + " – " + p.priceMax.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Markttrend", p.marketTrend)}
+    </table>
+
+    <p style="font-size:13px;color:#334155;line-height:1.6;margin:0 0 20px;">${p.explanation}</p>
+
+    ${p.photoLinksHtml}
+  `;
+
+  return emailShell(bodyContent);
+}
+
 // ── Main handler ──────────────────────────────────────────────────────
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS")
@@ -103,7 +352,7 @@ Deno.serve(async (req: Request) => {
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   );
 
-  // ── Step 0: Rate limiting (IP only) ───────────────────────────────
+  // ── Step 0: Rate limiting ─────────────────────────────────────────
   const clientIp = getClientIp(req);
   const ipHash = await sha256(clientIp);
 
@@ -182,21 +431,18 @@ Deno.serve(async (req: Request) => {
     .update({ status: "appointment_booked" })
     .eq("id", estimationId);
 
-  // ── Step 4: Send email via Resend ─────────────────────────────────
+  // ── Step 4: Send emails ───────────────────────────────────────────
   const resendKey = Deno.env.get("RESEND_API_KEY");
-  const from =
-    Deno.env.get("RESEND_FROM") ||
-    "Meinautoverkauf <no-reply@meinautoverkauf.de>";
+  const adminEmail = Deno.env.get("ADMIN_EMAIL") || "info@meinautoverkauf.de";
+  const from = `Meinautoverkauf <${adminEmail}>`;
 
   if (resendKey) {
-    // Build recipient list
-    const toList: string[] = ["abdulqaderdost@yahoo.com"];
-    if (deliveryType === "bring_car" && bringLocation === "bodenheim")
-      toList.push("abdulqaderdost@gmail.com");
-    if (deliveryType === "bring_car" && bringLocation === "ruesselsheim")
-      toList.push("abdulqader.abed.dost@gmail.com");
+    // Delivery label for both emails
+    const deliveryLabel = deliveryType === "bring_car"
+      ? `Filial-Abgabe – ${bringLocation === "bodenheim" ? "Bodenheim" : "Rüsselsheim"}`
+      : "Abholung (wir kommen zu Ihnen)";
 
-    // Generate signed photo URLs (30 days)
+    // Signed photo URLs for admin email
     let photoLinksHtml = "";
     const { data: photoRows } = await supabase
       .from("estimation_photos")
@@ -211,92 +457,126 @@ Deno.serve(async (req: Request) => {
           .createSignedUrl(pr.storage_path, 2592000);
         if (signedData?.signedUrl) {
           links.push(
-            `<li><a href="${signedData.signedUrl}">${pr.original_filename || pr.storage_path}</a></li>`,
+            `<li><a href="${signedData.signedUrl}" style="color:#f97316;">${pr.original_filename || pr.storage_path}</a></li>`,
           );
         }
       }
       if (links.length > 0) {
-        photoLinksHtml = `<h3>Fotos</h3><ul>${links.join("")}</ul>`;
+        photoLinksHtml = `
+          <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;margin-bottom:20px;">
+            <tr><td style="background:#0f172a;padding:8px 14px;"><span style="color:#f97316;font-size:12px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">Fotos</span></td></tr>
+            <tr><td style="padding:14px;background:#ffffff;"><ul style="margin:0;padding-left:20px;">${links.join("")}</ul></td></tr>
+          </table>`;
       }
     }
 
-    const deliveryLabel = deliveryType === "bring_car"
-      ? `Auto bringen (${bringLocation})`
-      : "Abholung";
-
-    const subject = `Neuer Übergabetermin: ${est.brand} ${est.model} am ${preferredDate} (${deliveryType})`;
-    const html = `
-      <h2>Neuer Übergabetermin</h2>
-      <h3>Termin</h3>
-      <p><strong>Datum:</strong> ${preferredDate}<br/>
-      <strong>Uhrzeit:</strong> ${preferredTime}<br/>
-      <strong>Übergabe:</strong> ${deliveryLabel}</p>
-      <h3>Kunde</h3>
-      <p><strong>${est.first_name} ${est.last_name}</strong><br/>
-      E-Mail: ${est.email}<br/>
-      Telefon: ${est.phone}</p>
-      <h3>Fahrzeug</h3>
-      <table border="1" cellpadding="4" cellspacing="0" style="border-collapse:collapse;">
-        <tr><td>Marke</td><td>${est.brand}</td></tr>
-        <tr><td>Modell</td><td>${est.model}</td></tr>
-        <tr><td>Variante</td><td>${est.variant}</td></tr>
-        <tr><td>Baujahr</td><td>${est.year}</td></tr>
-        <tr><td>Kilometerstand</td><td>${est.mileage}</td></tr>
-        <tr><td>Kraftstoff</td><td>${est.fuel_type}</td></tr>
-        <tr><td>Getriebe</td><td>${est.transmission}</td></tr>
-        <tr><td>Leistung</td><td>${est.power}</td></tr>
-        <tr><td>Karosserie</td><td>${est.body_type}</td></tr>
-        <tr><td>Zustand</td><td>${est.condition}</td></tr>
-        ${est.color ? `<tr><td>Farbe</td><td>${est.color}</td></tr>` : ""}
-        ${est.doors ? `<tr><td>Türen</td><td>${est.doors}</td></tr>` : ""}
-        ${est.postal_code ? `<tr><td>PLZ</td><td>${est.postal_code}</td></tr>` : ""}
-        ${est.vin ? `<tr><td>FIN</td><td>${est.vin}</td></tr>` : ""}
-        ${est.desired_price ? `<tr><td>Wunschpreis</td><td>${est.desired_price}</td></tr>` : ""}
-      </table>
-      <h3>Bewertung</h3>
-      <p><strong>Geschätzter Preis: ${est.estimated_price} EUR</strong><br/>
-      Preisspanne: ${est.price_min} – ${est.price_max} EUR<br/>
-      Markttrend: ${est.market_trend}</p>
-      <p>${est.explanation}</p>
-      ${photoLinksHtml}
-      <hr/>
-      <p style="color:#888;font-size:12px;">Estimation ID: ${estimationId} | Appointment ID: ${appt.id}</p>
-    `;
+    // ── Admin notification ────────────────────────────────────────
+    const adminSubject = `Neuer Übergabetermin: ${est.brand} ${est.model} am ${preferredDate}`;
+    const adminHtml = buildAdminAppointmentEmail({
+      firstName: est.first_name,
+      lastName: est.last_name,
+      email: est.email,
+      phone: est.phone,
+      brand: est.brand,
+      model: est.model,
+      variant: est.variant || "",
+      year: est.year,
+      mileage: est.mileage,
+      fuelType: est.fuel_type,
+      transmission: est.transmission,
+      power: est.power,
+      bodyType: est.body_type,
+      condition: est.condition,
+      color: est.color || "",
+      doors: est.doors || "",
+      postalCode: est.postal_code || "",
+      vin: est.vin || "",
+      desiredPrice: est.desired_price || "",
+      estimatedPrice: est.estimated_price,
+      priceMin: est.price_min,
+      priceMax: est.price_max,
+      marketTrend: est.market_trend,
+      explanation: est.explanation,
+      preferredDate,
+      preferredTime,
+      deliveryLabel,
+      photoLinksHtml,
+      estimationId,
+      appointmentId: appt.id,
+    });
 
     try {
-      const resendResp = await fetch("https://api.resend.com/emails", {
+      const adminResp = await fetch("https://api.resend.com/emails", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ from, to: toList, subject, html }),
+        headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ from, to: adminEmail, subject: adminSubject, html: adminHtml }),
       });
-
-      const resendBody = await resendResp.json().catch(() => null);
+      const adminBody = await adminResp.json().catch(() => null);
       await supabase.from("email_log").insert({
-        kind: "appointment_booked",
+        kind: "admin_notification",
         estimation_id: estimationId,
         appointment_id: appt.id,
-        recipients: toList,
-        resend_message_id: resendBody?.id ?? null,
-        error: resendResp.ok ? null : JSON.stringify(resendBody),
+        recipients: [adminEmail],
+        resend_message_id: adminBody?.id ?? null,
+        error: adminResp.ok ? null : JSON.stringify(adminBody),
       });
     } catch (e) {
       await supabase.from("email_log").insert({
-        kind: "appointment_booked",
+        kind: "admin_notification",
         estimation_id: estimationId,
         appointment_id: appt.id,
-        recipients: toList,
+        recipients: [adminEmail],
+        error: String(e),
+      });
+    }
+
+    // ── Customer confirmation ─────────────────────────────────────
+    const customerSubject = "Ihr Termin bei Meinautoverkauf.de ist bestätigt";
+    const customerHtml = buildCustomerAppointmentEmail({
+      firstName: est.first_name,
+      lastName: est.last_name,
+      brand: est.brand,
+      model: est.model,
+      year: est.year,
+      mileage: est.mileage,
+      estimatedPrice: est.estimated_price,
+      priceMin: est.price_min,
+      priceMax: est.price_max,
+      preferredDate,
+      preferredTime,
+      deliveryLabel,
+      estimationId,
+      appointmentId: appt.id,
+    });
+
+    try {
+      const custResp = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ from, to: est.email, subject: customerSubject, html: customerHtml }),
+      });
+      const custBody = await custResp.json().catch(() => null);
+      await supabase.from("email_log").insert({
+        kind: "customer_confirmation",
+        estimation_id: estimationId,
+        appointment_id: appt.id,
+        recipients: [est.email],
+        resend_message_id: custBody?.id ?? null,
+        error: custResp.ok ? null : JSON.stringify(custBody),
+      });
+    } catch (e) {
+      await supabase.from("email_log").insert({
+        kind: "customer_confirmation",
+        estimation_id: estimationId,
+        appointment_id: appt.id,
+        recipients: [est.email],
         error: String(e),
       });
     }
   }
 
-  // Record rate limit hits
+  // ── Step 5: Rate limit record + return ────────────────────────────
   await recordRateHits(supabase, "book-appointment", ipHash);
-
-  // ── Step 5: Return response ───────────────────────────────────────
   return jsonResp(
     { appointmentId: appt.id, estimationId, status: "appointment_booked" },
     200,
