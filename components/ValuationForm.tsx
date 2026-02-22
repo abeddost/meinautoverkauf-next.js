@@ -80,7 +80,29 @@ const FUELS = [
 ];
 const TRANSMISSIONS = ['Schaltung', 'Automatik', 'Halbautomatik'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
+const mileageFormatter = new Intl.NumberFormat('de-DE');
 
+const formatMileageForDisplay = (raw: string): string => {
+  const digitsOnly = raw.replace(/\D/g, '');
+  if (!digitsOnly) return '';
+  return mileageFormatter.format(Number(digitsOnly));
+};
+
+const countDigitsBeforeCursor = (value: string, caret: number): number => {
+  return (value.slice(0, caret).match(/\d/g) || []).length;
+};
+
+const caretFromDigitIndex = (formatted: string, digitIndex: number): number => {
+  if (digitIndex <= 0) return 0;
+  let seen = 0;
+  for (let i = 0; i < formatted.length; i += 1) {
+    if (/\d/.test(formatted[i])) {
+      seen += 1;
+      if (seen === digitIndex) return i + 1;
+    }
+  }
+  return formatted.length;
+};
 
 const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
     const start = 40 + (i * 5);
@@ -138,6 +160,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
+  const mileageInputRef = useRef<HTMLInputElement | null>(null);
+  const pendingMileageDigitCursorRef = useRef<number | null>(null);
   const prevPageRef = useRef<FormPage>(currentPage);
   const [contactInteracted, setContactInteracted] = useState(false);
 
@@ -177,6 +201,27 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     }
     prevPageRef.current = currentPage;
   }, [currentPage, contactInteracted]);
+
+  useEffect(() => {
+    const digitIndex = pendingMileageDigitCursorRef.current;
+    if (digitIndex === null) return;
+
+    const input = mileageInputRef.current;
+    if (!input) {
+      pendingMileageDigitCursorRef.current = null;
+      return;
+    }
+
+    const formatted = formatMileageForDisplay(formData.mileage);
+    const caretPosition = caretFromDigitIndex(formatted, digitIndex);
+
+    const frameId = window.requestAnimationFrame(() => {
+      input.setSelectionRange(caretPosition, caretPosition);
+      pendingMileageDigitCursorRef.current = null;
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [formData.mileage]);
 
   const isValueValid = (field: string, value: string) => {
     if (field === 'postalCode') return value.length === 5;
@@ -786,18 +831,22 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
               <div className="relative">
                 <StepLabel label="Laufleistung" required htmlFor="form-mileage" />
                 <input
+                  ref={mileageInputRef}
                   id="form-mileage"
                   type="text"
                   inputMode="numeric"
                   name="mileage"
-                  value={formData.mileage}
+                  value={formatMileageForDisplay(formData.mileage)}
                   onChange={(e) => {
-                    const v = e.target.value.replace(/\D/g, '');
-                    setFormData(prev => ({ ...prev, mileage: v }));
-                    if (fieldErrors.mileage && v) setFieldError('mileage', '');
+                    const rawTyped = e.target.value;
+                    const caret = e.target.selectionStart ?? rawTyped.length;
+                    const nextDigits = rawTyped.replace(/\D/g, '');
+                    pendingMileageDigitCursorRef.current = countDigitsBeforeCursor(rawTyped, caret);
+                    setFormData(prev => ({ ...prev, mileage: nextDigits }));
+                    if (fieldErrors.mileage && nextDigits) setFieldError('mileage', '');
                   }}
                   onBlur={() => handleBlur('mileage')}
-                  placeholder="Km eingeben, z.B. 75000"
+                  placeholder="Km eingeben, z. B. 200.000"
                   className={`${inputClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 />
