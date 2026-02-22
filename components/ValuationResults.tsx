@@ -59,9 +59,10 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
             <button 
               onClick={onNext}
               disabled={isSubmitting}
+              aria-busy={isSubmitting}
               className="w-full bg-brand-orange hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white px-5 py-3 lg:py-4 rounded-xl font-bold text-sm sm:text-base shadow-lg transition-all transform active:scale-95 shadow-orange-900/20"
             >
-              {isSubmitting ? 'Wird gespeichert…' : 'Termin zur Übergabe buchen'}
+              Termin zur Übergabe buchen
             </button>
             
           </div>
