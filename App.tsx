@@ -22,9 +22,9 @@ import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
 const HOME_DEFER_CLASS = 'defer-render';
 const SITE_URL = 'https://www.meinautoverkauf.de';
-const HOME_META_TITLE = 'Auto schnell & unkompliziert verkaufen | Meinautoverkauf.de';
-const HOME_META_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und unkompliziert. Kostenlose Online-Bewertung und Verkaufspreis online erhalten – bequemer Service für Sie.';
-const HOME_OG_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und unkompliziert. Kostenlose Online-Bewertung und Verkaufspreis online erhalten.';
+const HOME_META_TITLE = 'Auto online verkaufen | Fairer Ankauf mit Abholung';
+const HOME_META_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und transparent: online bewerten, unverbindliches Angebot erhalten und auf Wunsch abholen lassen. Sicher, bequem und ohne Inserat.';
+const HOME_OG_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und transparent: online bewerten, unverbindliches Angebot erhalten und auf Wunsch abholen lassen. Sicher, bequem und ohne Inserat.';
 const FORBIDDEN_METADATA_PHRASES = [
   'Garantiert',
   'Bester Preis',
@@ -765,8 +765,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/auto-bewerten" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Auto bewerten online | Kostenlose Wertermittlung | Meinautoverkauf.de" 
-                description="Was ist mein Auto wert? Erhalten Sie eine präzise Fahrzeugbewertung online ✓ Kostenlos ✓ In 2 Minuten ✓ Basis für den Autoankauf."
+                title="Auto bewerten online | Kostenlose Wertermittlung" 
+                description="Ermitteln Sie den aktuellen Wert Ihres Fahrzeugs online in wenigen Schritten. Die Bewertung ist kostenlos, unverbindlich und Grundlage für Ihr Ankaufangebot."
                 canonicalUrl="/auto-bewerten"
                 extraSchemas={buildCoreServiceSchema('Auto bewerten online', '/auto-bewerten', 'Fahrzeugbewertung')}
               />
@@ -784,8 +784,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/auto-verkaufen" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Auto verkaufen online | Sicherer Autoankauf | Meinautoverkauf.de" 
-                description="Auto online verkaufen zum Bestpreis ✓ Wir kaufen Ihren Gebrauchtwagen ✓ Sofortige Auszahlung ✓ Kostenlose Abmeldung ✓ Alle Marken."
+                title="Auto verkaufen online | Sicherer Ankauf mit Auszahlung" 
+                description="Verkaufen Sie Ihren Gebrauchtwagen ohne Inserat und ohne Verhandlungsstress. Sie erhalten ein transparentes Angebot, einen Termin und zeitnahe Auszahlung."
                 canonicalUrl="/auto-verkaufen"
                 extraSchemas={buildCoreServiceSchema('Auto verkaufen online', '/auto-verkaufen', 'Autoankauf')}
               />
@@ -803,8 +803,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/vorteile" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Vorteile beim Autoankauf | Warum Meinautoverkauf.de?" 
-                description="Entdecken Sie Ihre Vorteile beim Autoverkauf ✓ Sicherer Vertrag ✓ Keine Haftung ✓ Bestpreis-Garantie ✓ Home-Pickup Service."
+                title="Ihre Vorteile beim Autoankauf | Schnell, transparent, sicher" 
+                description="Erfahren Sie, wie Sie beim Verkauf Zeit sparen und Risiken reduzieren: transparenter Ablauf, Vertragsprozesse, optionale Abholung und persönliche Begleitung."
                 canonicalUrl="/vorteile"
                 extraSchemas={buildCoreServiceSchema('Vorteile beim Autoankauf', '/vorteile', 'Autoankauf-Service')}
               />
@@ -822,8 +822,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/ratgeber" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Auto-Ratgeber | Tipps zum Autoverkauf & Werterhalt" 
-                description="Profi-Tipps für den Autoverkauf ✓ Werterhalt maximieren ✓ Rechtssichere Verträge ✓ Motorschaden verkaufen ✓ Alles rund um PKW."
+                title="Ratgeber Autoverkauf | Tipps zu Preis, Vertrag und Ablauf" 
+                description="Nutzen Sie praxisnahe Tipps für einen sicheren Autoverkauf: Wertermittlung, Unterlagen, Vertragsfragen und der richtige Umgang mit Schäden oder Motordefekten."
                 canonicalUrl="/ratgeber"
                 pageType="CollectionPage"
               />
@@ -841,8 +841,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/autoankauf-frankfurt" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Autoankauf Frankfurt | Alle Stadtteile | Sofort-Auszahlung | Fair" 
-                description="Autoankauf Frankfurt ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Auch Diesel & Umweltzone ✓ Business-Service für Frankfurter."
+                title="Autoankauf Frankfurt | Online bewerten, fair verkaufen" 
+                description="Verkaufen Sie Ihr Auto in Frankfurt schnell und unkompliziert. Nach der Online-Bewertung erhalten Sie ein Angebot sowie auf Wunsch Abholung und Auszahlung."
                 canonicalUrl="/autoankauf-frankfurt"
                 extraSchemas={buildCitySchemas('Frankfurt am Main', '/autoankauf-frankfurt')}
               />
@@ -862,8 +862,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/autoankauf-wiesbaden" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Autoankauf Wiesbaden | Auto verkaufen sofort | Kostenlose Abholung" 
-                description="Autoankauf Wiesbaden ✓ Kostenlose Abholung in allen Stadtteilen ✓ Sofortige Zahlung ✓ Motorschaden & Unfallwagen ✓ Faire Preise in der Kurstadt."
+                title="Autoankauf Wiesbaden | Online bewerten, fair verkaufen" 
+                description="Verkaufen Sie Ihr Auto in Wiesbaden mit klarem Ablauf: online bewerten, Angebot erhalten und Fahrzeug auf Wunsch abholen lassen. Transparent und ohne Inserat."
                 canonicalUrl="/autoankauf-wiesbaden"
                 extraSchemas={buildCitySchemas('Wiesbaden', '/autoankauf-wiesbaden')}
               />
@@ -883,8 +883,8 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/autoankauf-mainz" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
-                title="Autoankauf Mainz | Alle Stadtteile | Kastel & Kostheim | Fair" 
-                description="Autoankauf Mainz ✓ Kostenlose Abholung in allen Stadtteilen ✓ Auch Mainz-Kastel & Kostheim ✓ Sofortige Zahlung ✓ Persönlich & vertrauensvoll."
+                title="Autoankauf Mainz | Online bewerten, fair verkaufen" 
+                description="Verkaufen Sie Ihr Auto in Mainz schnell und nachvollziehbar. Nach der Online-Bewertung erhalten Sie ein Angebot sowie auf Wunsch Abholung und Auszahlung."
                 canonicalUrl="/autoankauf-mainz"
                 extraSchemas={buildCitySchemas('Mainz', '/autoankauf-mainz')}
               />
