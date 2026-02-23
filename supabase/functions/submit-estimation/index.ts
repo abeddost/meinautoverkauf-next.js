@@ -174,6 +174,21 @@ function infoRow(label: string, value: string): string {
   </tr>`;
 }
 
+function formatMileageDisplay(rawMileage: string): string {
+  const value = String(rawMileage || "").trim();
+  if (!value) return "-";
+
+  if (/^\d+$/.test(value)) {
+    return `${Number(value).toLocaleString("de-DE")} km`;
+  }
+
+  if (/^\d{1,3}(?:\.\d{3})*–\d{1,3}(?:\.\d{3})*$/.test(value) || /^Mehr als \d{1,3}(?:\.\d{3})*$/.test(value)) {
+    return `${value} km`;
+  }
+
+  return value;
+}
+
 function buildCustomerEstimationEmail(params: {
   firstName: string;
   lastName: string;
@@ -211,7 +226,7 @@ function buildCustomerEstimationEmail(params: {
       ${infoRow("Marke", brand)}
       ${infoRow("Modell", model)}
       ${infoRow("Baujahr", year)}
-      ${infoRow("Kilometerstand", mileage + " km")}
+      ${infoRow("Kilometerstand", formatMileageDisplay(mileage))}
       ${infoRow("Geschätzter Preis", estimatedPrice.toLocaleString("de-DE") + " EUR")}
       ${infoRow("Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
     </table>
@@ -274,7 +289,7 @@ function buildAdminEstimationEmail(params: {
       ${infoRow("Modell", p.model)}
       ${p.variant ? infoRow("Variante", p.variant) : ""}
       ${infoRow("Baujahr", p.year)}
-      ${infoRow("Kilometerstand", p.mileage)}
+      ${infoRow("Kilometerstand", formatMileageDisplay(p.mileage))}
       ${infoRow("Kraftstoff", p.fuelType)}
       ${infoRow("Getriebe", p.transmission)}
       ${infoRow("Leistung", p.power)}
@@ -484,7 +499,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // ── Admin notification ────────────────────────────────────────
-    const adminSubject = `${car.brand} ${car.model}, Bj. ${car.year}, ${String(car.mileage).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} km, ${car.power}`;
+    const adminSubject = `${car.brand} ${car.model}, Bj. ${car.year}, ${formatMileageDisplay(String(car.mileage))}, ${car.power}`;
     const adminHtml = buildAdminEstimationEmail({
       firstName: c.firstName,
       lastName: c.lastName,

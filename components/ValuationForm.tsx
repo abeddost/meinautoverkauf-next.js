@@ -80,29 +80,17 @@ const FUELS = [
 ];
 const TRANSMISSIONS = ['Schaltung', 'Automatik', 'Halbautomatik'];
 const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
-const mileageFormatter = new Intl.NumberFormat('de-DE');
-
-const formatMileageForDisplay = (raw: string): string => {
-  const digitsOnly = raw.replace(/\D/g, '');
-  if (!digitsOnly) return '';
-  return mileageFormatter.format(Number(digitsOnly));
-};
-
-const countDigitsBeforeCursor = (value: string, caret: number): number => {
-  return (value.slice(0, caret).match(/\d/g) || []).length;
-};
-
-const caretFromDigitIndex = (formatted: string, digitIndex: number): number => {
-  if (digitIndex <= 0) return 0;
-  let seen = 0;
-  for (let i = 0; i < formatted.length; i += 1) {
-    if (/\d/.test(formatted[i])) {
-      seen += 1;
-      if (seen === digitIndex) return i + 1;
-    }
-  }
-  return formatted.length;
-};
+const MILEAGE_RANGES = [
+  ...Array.from({ length: 25 }, (_, i) => {
+    const start = i * 10000;
+    const end = start + 10000;
+    const startLabel = start.toLocaleString('de-DE');
+    const endLabel = end.toLocaleString('de-DE');
+    const label = `${startLabel}–${endLabel}`;
+    return { val: label, label };
+  }),
+  { val: 'Mehr als 250.000', label: 'Mehr als 250.000' },
+];
 
 const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
     const start = 40 + (i * 5);
@@ -160,8 +148,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
-  const mileageInputRef = useRef<HTMLInputElement | null>(null);
-  const pendingMileageDigitCursorRef = useRef<number | null>(null);
   const prevPageRef = useRef<FormPage>(currentPage);
   const [contactInteracted, setContactInteracted] = useState(false);
 
@@ -201,27 +187,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     }
     prevPageRef.current = currentPage;
   }, [currentPage, contactInteracted]);
-
-  useEffect(() => {
-    const digitIndex = pendingMileageDigitCursorRef.current;
-    if (digitIndex === null) return;
-
-    const input = mileageInputRef.current;
-    if (!input) {
-      pendingMileageDigitCursorRef.current = null;
-      return;
-    }
-
-    const formatted = formatMileageForDisplay(formData.mileage);
-    const caretPosition = caretFromDigitIndex(formatted, digitIndex);
-
-    const frameId = window.requestAnimationFrame(() => {
-      input.setSelectionRange(caretPosition, caretPosition);
-      pendingMileageDigitCursorRef.current = null;
-    });
-
-    return () => window.cancelAnimationFrame(frameId);
-  }, [formData.mileage]);
 
   const isValueValid = (field: string, value: string) => {
     if (field === 'postalCode') return value.length === 5;
@@ -289,7 +254,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       case 'transmission':
         return 'Bitte Getriebeart wählen.';
       case 'mileage':
-        return 'Bitte Laufleistung eingeben.';
+        return 'Bitte Laufleistung wählen.';
       case 'fuelType':
         return 'Bitte Kraftstoff wählen.';
       case 'condition':
@@ -830,27 +795,23 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
             <div className="grid grid-cols-1 gap-3 lg:gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
               <div className="relative">
                 <StepLabel label="Laufleistung" required htmlFor="form-mileage" />
-                <input
-                  ref={mileageInputRef}
+                <select
                   id="form-mileage"
-                  type="text"
-                  inputMode="numeric"
                   name="mileage"
-                  value={formatMileageForDisplay(formData.mileage)}
-                  onChange={(e) => {
-                    const rawTyped = e.target.value;
-                    const caret = e.target.selectionStart ?? rawTyped.length;
-                    const nextDigits = rawTyped.replace(/\D/g, '');
-                    pendingMileageDigitCursorRef.current = countDigitsBeforeCursor(rawTyped, caret);
-                    setFormData(prev => ({ ...prev, mileage: nextDigits }));
-                    if (fieldErrors.mileage && nextDigits) setFieldError('mileage', '');
-                  }}
+                  value={formData.mileage}
+                  onChange={handleSelectChange}
                   onBlur={() => handleBlur('mileage')}
-                  placeholder="Km eingeben, z. B. 200.000"
-                  className={`${inputClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
+                  className={`${selectClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
-                />
-                {renderErrorIcon('mileage', 'Bitte Laufleistung eingeben.')}
+                >
+                  <option value="">Laufleistung wählen...</option>
+                  {MILEAGE_RANGES.map((range) => (
+                    <option key={range.val} value={range.val}>
+                      {range.label}
+                    </option>
+                  ))}
+                </select>
+                {renderErrorIcon('mileage', 'Bitte Laufleistung wählen.')}
               </div>
               <div className="relative">
                 <StepLabel label="Antrieb / Kraftstoff" required htmlFor="form-fuelType" />

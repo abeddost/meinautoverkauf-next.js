@@ -34,7 +34,7 @@ export default async function handler(req: Request) {
       - Modell: ${details.model}
       - Karosserie: ${details.bodyType}
       - Erstzulassung: ${details.year}
-      - Kilometerstand (maximal): ${details.mileage} km
+      - Kilometerstand (Bereich): ${details.mileage}
       - Kraftstoff: ${details.fuelType}
       - Getriebe: ${details.transmission}
       - Leistungsbereich: ${details.power}

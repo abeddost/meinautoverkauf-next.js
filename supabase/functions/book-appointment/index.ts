@@ -160,6 +160,36 @@ function infoRow(label: string, value: string): string {
   </tr>`;
 }
 
+const BRANCH_LOCATIONS = {
+  bodenheim: {
+    name: "Bodenheim",
+    address: "Am Kümmerling 41a, 55294 Bodenheim",
+  },
+  ruesselsheim: {
+    name: "Rüsselsheim",
+    address: "Wormser Str. 8b, 65428 Rüsselsheim am Main",
+  },
+} as const;
+
+type BranchLocationId = keyof typeof BRANCH_LOCATIONS;
+
+const BRANCH_LOCATION_IDS = Object.keys(BRANCH_LOCATIONS) as BranchLocationId[];
+
+function formatMileageDisplay(rawMileage: string): string {
+  const value = String(rawMileage || "").trim();
+  if (!value) return "-";
+
+  if (/^\d+$/.test(value)) {
+    return `${Number(value).toLocaleString("de-DE")} km`;
+  }
+
+  if (/^\d{1,3}(?:\.\d{3})*–\d{1,3}(?:\.\d{3})*$/.test(value) || /^Mehr als \d{1,3}(?:\.\d{3})*$/.test(value)) {
+    return `${value} km`;
+  }
+
+  return value;
+}
+
 function buildCustomerAppointmentEmail(params: {
   firstName: string;
   lastName: string;
@@ -173,13 +203,14 @@ function buildCustomerAppointmentEmail(params: {
   preferredDate: string;
   preferredTime: string;
   deliveryLabel: string;
+  appointmentAddress?: string;
   estimationId: string;
   appointmentId: string;
 }): string {
   const {
     firstName, lastName, brand, model, year, mileage,
     estimatedPrice, priceMin, priceMax,
-    preferredDate, preferredTime, deliveryLabel,
+    preferredDate, preferredTime, deliveryLabel, appointmentAddress,
   } = params;
 
   const bodyContent = `
@@ -202,6 +233,7 @@ function buildCustomerAppointmentEmail(params: {
           <p style="margin:0 0 6px;font-size:12px;font-weight:900;color:#f97316;letter-spacing:0.1em;text-transform:uppercase;">Ihr Termin</p>
           <p style="margin:0;font-size:20px;font-weight:900;color:#0f172a;">${preferredDate} um ${preferredTime} Uhr</p>
           <p style="margin:6px 0 0;font-size:14px;color:#64748b;">${deliveryLabel}</p>
+          ${appointmentAddress ? `<p style="margin:6px 0 0;font-size:14px;color:#334155;"><strong>Adresse:</strong> ${appointmentAddress}</p>` : ""}
         </td>
       </tr>
     </table>
@@ -216,7 +248,7 @@ function buildCustomerAppointmentEmail(params: {
       ${infoRow("Marke", brand)}
       ${infoRow("Modell", model)}
       ${infoRow("Baujahr", year)}
-      ${infoRow("Kilometerstand", mileage + " km")}
+      ${infoRow("Kilometerstand", formatMileageDisplay(mileage))}
       ${infoRow("Geschätzter Preis", estimatedPrice.toLocaleString("de-DE") + " EUR")}
       ${infoRow("Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
     </table>
@@ -306,7 +338,7 @@ function buildAdminAppointmentEmail(params: {
       ${infoRow("Modell", p.model)}
       ${p.variant ? infoRow("Variante", p.variant) : ""}
       ${infoRow("Baujahr", p.year)}
-      ${infoRow("Kilometerstand", p.mileage)}
+      ${infoRow("Kilometerstand", formatMileageDisplay(p.mileage))}
       ${infoRow("Kraftstoff", p.fuelType)}
       ${infoRow("Getriebe", p.transmission)}
       ${infoRow("Leistung", p.power)}
@@ -391,7 +423,7 @@ Deno.serve(async (req: Request) => {
   if (!deliveryType || !["bring_car", "pickup"].includes(deliveryType))
     return jsonResp({ error: "Invalid deliveryType", code: "validation_error" }, 400);
   if (deliveryType === "bring_car") {
-    if (!bringLocation || !["bodenheim", "ruesselsheim"].includes(bringLocation))
+    if (!bringLocation || !BRANCH_LOCATION_IDS.includes(bringLocation as BranchLocationId))
       return jsonResp({
         error: "bring_car requires bringLocation bodenheim or ruesselsheim",
         code: "validation_error",
@@ -439,10 +471,16 @@ Deno.serve(async (req: Request) => {
   const from = `Meinautoverkauf.de <${adminEmail}>`;
 
   if (resendKey) {
+    const locationInfo =
+      deliveryType === "bring_car" && bringLocation
+        ? BRANCH_LOCATIONS[bringLocation as BranchLocationId]
+        : null;
+
     // Delivery label for both emails
-    const deliveryLabel = deliveryType === "bring_car"
-      ? `Filial-Abgabe – ${bringLocation === "bodenheim" ? "Bodenheim" : "Rüsselsheim"}`
+    const deliveryLabel = locationInfo
+      ? `Filial-Abgabe – ${locationInfo.name}`
       : "Abholung (wir kommen zu Ihnen)";
+    const appointmentAddress = locationInfo?.address;
 
     // Signed photo URLs for admin email
     let photoLinksHtml = "";
@@ -473,7 +511,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // ── Admin notification ────────────────────────────────────────
-    const adminSubject = `Neuer Übergabetermin: ${est.brand} ${est.model}, Bj. ${est.year}, ${String(est.mileage).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} km, ${est.power} – ${preferredDate}`;
+    const adminSubject = `Neuer Übergabetermin: ${est.brand} ${est.model}, Bj. ${est.year}, ${formatMileageDisplay(String(est.mileage))}, ${est.power} – ${preferredDate}`;
     const adminHtml = buildAdminAppointmentEmail({
       firstName: est.first_name,
       lastName: est.last_name,
@@ -547,6 +585,7 @@ Deno.serve(async (req: Request) => {
       preferredDate,
       preferredTime,
       deliveryLabel,
+      appointmentAddress,
       estimationId,
       appointmentId: appt.id,
     });
