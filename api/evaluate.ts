@@ -1,8 +1,51 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
+import { buildValuationEventParams } from "../lib/analytics";
 
 export const config = {
   runtime: 'edge',
+};
+
+const DEFAULT_GA4_MEASUREMENT_ID = "G-GX8B3LF4KZ";
+
+const normalizePathFromReferer = (referer: string | null): string | undefined => {
+  if (!referer) return undefined;
+  try {
+    return new URL(referer).pathname;
+  } catch {
+    return undefined;
+  }
+};
+
+const sendGa4Event = async (params: {
+  measurementId: string;
+  apiSecret: string;
+  clientId: string;
+  name: string;
+  eventParams: Record<string, unknown>;
+}): Promise<void> => {
+  const { measurementId, apiSecret, clientId, name, eventParams } = params;
+
+  const response = await fetch(
+    `https://www.google-analytics.com/mp/collect?measurement_id=${encodeURIComponent(measurementId)}&api_secret=${encodeURIComponent(apiSecret)}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        client_id: clientId,
+        events: [
+          {
+            name,
+            params: eventParams,
+          },
+        ],
+      }),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`GA4 MP request failed with status ${response.status}`);
+  }
 };
 
 export default async function handler(req: Request) {
@@ -16,6 +59,19 @@ export default async function handler(req: Request) {
   try {
     const details = await req.json();
     const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
+    const measurementId = process.env.GA4_MEASUREMENT_ID || DEFAULT_GA4_MEASUREMENT_ID;
+    const gaApiSecret = process.env.GA4_API_SECRET;
+    const analyticsRequestId =
+      typeof details.analyticsRequestId === "string" && details.analyticsRequestId.trim()
+        ? details.analyticsRequestId.trim()
+        : (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+            ? crypto.randomUUID()
+            : `${Date.now()}_${Math.random().toString(16).slice(2)}`);
+    const pagePath = normalizePathFromReferer(req.headers.get("referer"));
+    const hasImages = Boolean(
+      (Array.isArray(details.images) && details.images.length > 0) ||
+      (Array.isArray(details.pendingPhotoPaths) && details.pendingPhotoPaths.length > 0)
+    );
 
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'API key missing.' }), { 
@@ -89,6 +145,37 @@ export default async function handler(req: Request) {
         status: 502,
         headers: { 'Content-Type': 'application/json' }
       });
+    }
+
+    let result: { estimatedPrice?: number; marketTrend?: string } | null = null;
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      result = null;
+    }
+
+    if (gaApiSecret) {
+      try {
+        await sendGa4Event({
+          measurementId,
+          apiSecret: gaApiSecret,
+          clientId: analyticsRequestId,
+          name: "ai_valuation_form_success",
+          eventParams: buildValuationEventParams("ai_valuation_form_success", {
+            requestId: analyticsRequestId,
+            brand: typeof details.brand === "string" ? details.brand : undefined,
+            fuelType: typeof details.fuelType === "string" ? details.fuelType : undefined,
+            condition: typeof details.condition === "string" ? details.condition : undefined,
+            hasImages,
+            pagePath,
+            source: "server",
+            estimatedPrice: typeof result?.estimatedPrice === "number" ? result.estimatedPrice : undefined,
+            marketTrend: typeof result?.marketTrend === "string" ? result.marketTrend : undefined,
+          }),
+        });
+      } catch (measurementError) {
+        console.warn("GA4 Measurement Protocol send failed:", measurementError);
+      }
     }
 
     return new Response(responseText, {

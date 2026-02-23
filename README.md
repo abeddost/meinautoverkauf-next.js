@@ -16,5 +16,8 @@ View your app in AI Studio: https://ai.studio/apps/drive/1ND2WSgY7S4WwO8YQzGYoB7
 1. Install dependencies:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+3. Optional analytics reliability env vars:
+   - `GA4_API_SECRET` (recommended for server-side valuation success tracking)
+   - `GA4_MEASUREMENT_ID` (optional override, defaults to `G-GX8B3LF4KZ`)
+4. Run the app:
    `npm run dev`

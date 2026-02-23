@@ -19,6 +19,24 @@ let analyticsGranted = false;
 let gaScriptPromise: Promise<void> | null = null;
 let gaConfigured = false;
 
+type ValuationEventName =
+  | 'ai_valuation_form_submitted'
+  | 'ai_valuation_form_success'
+  | 'ai_valuation_form_success_client'
+  | 'ai_valuation_form_failed';
+
+interface ValuationAnalyticsContext {
+  requestId: string;
+  brand?: string;
+  fuelType?: string;
+  condition?: string;
+  hasImages?: boolean;
+  pagePath?: string;
+  source?: 'client' | 'server';
+  estimatedPrice?: number;
+  marketTrend?: string;
+}
+
 const getRootDomain = (hostname: string): string | null => {
   const normalized = hostname.trim().toLowerCase();
   if (!normalized || normalized === 'localhost' || normalized.includes(':')) return null;
@@ -86,6 +104,41 @@ const loadGaScript = async (): Promise<void> => {
   return gaScriptPromise;
 };
 
+const configureGa = (): void => {
+  if (typeof window === 'undefined') return;
+  if (gaConfigured) return;
+
+  window.gtag?.('js', new Date());
+  window.gtag?.('config', GA_MEASUREMENT_ID, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    anonymize_ip: true,
+  });
+  gaConfigured = true;
+};
+
+export const createAnalyticsEventId = (eventName: string, requestId: string): string => {
+  return `${eventName}_${requestId}`.slice(0, 100);
+};
+
+export const buildValuationEventParams = (
+  eventName: ValuationEventName,
+  context: ValuationAnalyticsContext,
+): GtagParams => {
+  return {
+    event_id: createAnalyticsEventId(eventName, context.requestId),
+    request_id: context.requestId,
+    car_brand: toSafeEventValue(context.brand),
+    fuel_type: toSafeEventValue(context.fuelType),
+    condition: toSafeEventValue(context.condition),
+    has_images: context.hasImages,
+    page_path: context.pagePath,
+    source: context.source,
+    estimated_price: context.estimatedPrice,
+    market_trend: toSafeEventValue(context.marketTrend),
+  };
+};
+
 export const applyConsentDefaults = (): void => {
   if (typeof window === 'undefined') return;
   ensureGtagBootstrap();
@@ -95,6 +148,8 @@ export const applyConsentDefaults = (): void => {
     ad_user_data: 'denied' satisfies ConsentModeValue,
     ad_personalization: 'denied' satisfies ConsentModeValue,
   });
+  configureGa();
+  void loadGaScript().catch(() => undefined);
 };
 
 export const applyConsentUpdate = async (consentState: ConsentState): Promise<void> => {
@@ -121,18 +176,12 @@ export const applyConsentUpdate = async (consentState: ConsentState): Promise<vo
     ad_personalization: 'denied' satisfies ConsentModeValue,
   });
 
+  configureGa();
+
   try {
     await loadGaScript();
   } catch {
     return;
-  }
-
-  if (!gaConfigured) {
-    window.gtag?.('config', GA_MEASUREMENT_ID, {
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-    });
-    gaConfigured = true;
   }
 };
 

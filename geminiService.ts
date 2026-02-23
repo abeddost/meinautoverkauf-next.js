@@ -1,5 +1,5 @@
 import { CarDetails, ValuationResult } from "./types";
-import { trackGoogleEvent, toSafeEventValue } from "./lib/analytics";
+import { buildValuationEventParams, trackGoogleEvent, toSafeEventValue } from "./lib/analytics";
 
 export async function getCarValuation(details: CarDetails): Promise<ValuationResult> {
   const requestId =
@@ -10,19 +10,22 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
     (details.images && details.images.length > 0) ||
       (details.pendingPhotoPaths && details.pendingPhotoPaths.length > 0)
   );
+  const pagePath = typeof window !== "undefined" ? window.location.pathname : undefined;
+  const baseEventParams = {
+    requestId,
+    brand: details.brand,
+    fuelType: details.fuelType,
+    condition: details.condition || undefined,
+    hasImages,
+    pagePath,
+    source: "client" as const,
+  };
 
-  trackGoogleEvent("ai_valuation_form_submitted", {
-    request_id: requestId,
-    car_brand: toSafeEventValue(details.brand),
-    fuel_type: toSafeEventValue(details.fuelType),
-    condition: toSafeEventValue(details.condition || undefined),
-    has_images: hasImages,
-    page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
-  });
+  trackGoogleEvent("ai_valuation_form_submitted", buildValuationEventParams("ai_valuation_form_submitted", baseEventParams));
   trackGoogleEvent("generate_lead", {
     request_id: requestId,
     form_name: "ai_valuation_form",
-    page_path: typeof window !== "undefined" ? window.location.pathname : undefined,
+    page_path: pagePath,
   });
 
   let failureTracked = false;
@@ -32,12 +35,15 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(details),
+      body: JSON.stringify({
+        ...details,
+        analyticsRequestId: requestId,
+      }),
     });
 
     if (!response.ok) {
       trackGoogleEvent("ai_valuation_form_failed", {
-        request_id: requestId,
+        ...buildValuationEventParams("ai_valuation_form_failed", baseEventParams),
         http_status: response.status,
       });
       failureTracked = true;
@@ -45,16 +51,19 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
     }
 
     const result = (await response.json()) as ValuationResult;
-    trackGoogleEvent("ai_valuation_form_success", {
-      request_id: requestId,
-      estimated_price: result.estimatedPrice,
-      market_trend: toSafeEventValue(result.marketTrend),
-    });
+    trackGoogleEvent(
+      "ai_valuation_form_success_client",
+      buildValuationEventParams("ai_valuation_form_success_client", {
+        ...baseEventParams,
+        estimatedPrice: result.estimatedPrice,
+        marketTrend: result.marketTrend,
+      }),
+    );
     return result;
   } catch (error: unknown) {
     if (!failureTracked) {
       trackGoogleEvent("ai_valuation_form_failed", {
-        request_id: requestId,
+        ...buildValuationEventParams("ai_valuation_form_failed", baseEventParams),
         error_name: error instanceof Error ? toSafeEventValue(error.name) : "unknown_error",
       });
     }
