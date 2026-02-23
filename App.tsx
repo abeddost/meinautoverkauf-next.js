@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState, useEffect, useCallback, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link, useNavigationType } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -153,10 +153,12 @@ const buildCoreServiceSchema = (
   };
 };
 
-// Scroll: home + standalone pages → top; other pages → main content (below hero)
+// Scroll: direct initial opens always start at top; internal navigation keeps existing behavior.
 const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) => {
   const { pathname, hash } = useLocation();
+  const navigationType = useNavigationType();
   const prevPathRef = React.useRef<string | null>(null);
+  const hasInitializedScrollRef = React.useRef(false);
   const scrollToTop = pathname === '/' || STANDALONE_PATHS.includes(pathname);
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -166,6 +168,24 @@ const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) =>
       onHomeEnter?.();
     }
     prevPathRef.current = pathname;
+
+    const isDirectInitialOpen = !hasInitializedScrollRef.current && navigationType === 'POP';
+    hasInitializedScrollRef.current = true;
+    if (isDirectInitialOpen) {
+      if (hash) {
+        const hashedEl = document.querySelector(hash);
+        if (hashedEl) {
+          hashedEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+          return;
+        }
+      }
+
+      const scrollToPageTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      scrollToPageTop();
+      const rafId = window.requestAnimationFrame(scrollToPageTop);
+      return () => window.cancelAnimationFrame(rafId);
+    }
+
     if (scrollToTop) {
       window.scrollTo({ top: 0, behavior: 'auto' });
     } else {
@@ -190,7 +210,7 @@ const ScrollToTop: React.FC<{ onHomeEnter?: () => void }> = ({ onHomeEnter }) =>
       }, 0);
       return () => clearTimeout(timer);
     }
-  }, [pathname, hash, scrollToTop, onHomeEnter]);
+  }, [pathname, hash, scrollToTop, onHomeEnter, navigationType]);
   return null;
 };
 
