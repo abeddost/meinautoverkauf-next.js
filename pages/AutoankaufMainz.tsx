@@ -6,6 +6,29 @@ interface Props {
   onCtaClick: () => void;
 }
 
+const MAINZ_FAQS = [
+  {
+    q: 'Holen Sie Fahrzeuge in allen Mainzer Stadtteilen ab?',
+    a: 'Ja. Wir holen Fahrzeuge in allen Mainzer Stadtteilen ab, inklusive Altstadt, Neustadt, Gonsenheim, Bretzenheim, Weisenau, Lerchenberg sowie im Umland.'
+  },
+  {
+    q: 'Ist Autoankauf auch in Mainz-Kastel und Mainz-Kostheim möglich?',
+    a: 'Ja. Auch in Mainz-Kastel und Mainz-Kostheim bieten wir Abholung und Ankauf an.'
+  },
+  {
+    q: 'Kaufen Sie auch Studentenautos oder Fahrzeuge mit hoher Laufleistung?',
+    a: 'Ja. Gerade in Mainz bewerten wir häufig Kleinwagen mit hoher Laufleistung fair, wenn Zustand und Historie nachvollziehbar sind.'
+  },
+  {
+    q: 'Wie schnell läuft der Verkauf in Mainz ab?',
+    a: 'Von der Online-Bewertung bis zur Übergabe sind in vielen Fällen 1 bis 2 Tage möglich. Die genaue Dauer hängt von Terminverfügbarkeit und Fahrzeugprüfung ab.'
+  },
+  {
+    q: 'Übernehmen Sie die Abmeldung bei der Zulassungsstelle Mainz-Bingen?',
+    a: 'Ja. Wir übernehmen die Abmeldung für Sie, damit der Verkauf für Sie möglichst unkompliziert bleibt.'
+  }
+] as const;
+
 const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white relative overflow-hidden">
@@ -442,7 +465,11 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
           </section>
 
           {/* FAQ Section */}
-          <FAQSection title="Häufige Fragen zum Autoankauf in Mainz" />
+          <FAQSection
+            title="Häufige Fragen zum Autoankauf in Mainz"
+            faqs={[...MAINZ_FAQS]}
+            sectionId="faq-mainz"
+          />
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">

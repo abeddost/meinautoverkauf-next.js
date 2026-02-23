@@ -6,6 +6,29 @@ interface Props {
   onCtaClick: () => void;
 }
 
+const WIESBADEN_FAQS = [
+  {
+    q: 'Bieten Sie Autoankauf auch in Mainz-Kastel und Mainz-Kostheim an?',
+    a: 'Ja. Unser Service umfasst auch Mainz-Kastel und Mainz-Kostheim sowie weitere Stadtteile auf beiden Rheinseiten.'
+  },
+  {
+    q: 'Kaufen Sie auch Premiumfahrzeuge in Wiesbaden an?',
+    a: 'Ja. In Wiesbaden kaufen wir regelmäßig Premiumfahrzeuge wie Mercedes, BMW, Audi oder Porsche an und berücksichtigen bei der Bewertung Ausstattung, Pflegezustand und regionale Nachfrage.'
+  },
+  {
+    q: 'Wie läuft die Besichtigung in Wiesbaden ab?',
+    a: 'Nach der Online-Bewertung vereinbaren wir einen Termin vor Ort. Die Besichtigung dauert meist 15 bis 20 Minuten. Danach erhalten Sie ein finales Angebot.'
+  },
+  {
+    q: 'Was passiert mit Fahrzeugen ohne TÜV oder mit Motorschaden?',
+    a: 'Auch Fahrzeuge ohne gültige HU oder mit technischen Schäden kaufen wir an. Der Preis richtet sich nachvollziehbar nach Zustand, Reparaturbedarf und Marktwert.'
+  },
+  {
+    q: 'Übernehmen Sie die Abmeldung in Wiesbaden?',
+    a: 'Ja. Wir kümmern uns um die Abmeldung, damit Sie keine zusätzlichen Wege zur Zulassungsstelle einplanen müssen.'
+  }
+] as const;
+
 const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white relative overflow-hidden">
@@ -336,7 +359,11 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           </section>
 
           {/* FAQ Section */}
-          <FAQSection title="Häufige Fragen zum Autoankauf in Wiesbaden" />
+          <FAQSection
+            title="Häufige Fragen zum Autoankauf in Wiesbaden"
+            faqs={[...WIESBADEN_FAQS]}
+            sectionId="faq-wiesbaden"
+          />
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">

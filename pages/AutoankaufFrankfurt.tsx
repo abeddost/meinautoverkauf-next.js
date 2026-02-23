@@ -6,6 +6,29 @@ interface Props {
   onCtaClick: () => void;
 }
 
+const FRANKFURT_FAQS = [
+  {
+    q: 'Kaufen Sie auch Firmenwagen im Bankenviertel oder Westend an?',
+    a: 'Ja. Wir kaufen Firmen- und Dienstwagen in ganz Frankfurt an, auch direkt an Bürostandorten im Bankenviertel, Westend oder Europaviertel. Auf Wunsch mit flexiblen Abendterminen.'
+  },
+  {
+    q: 'Ist eine Abholung am Flughafen Frankfurt möglich?',
+    a: 'Ja, wir organisieren auch Übergaben im Umfeld des Frankfurter Flughafens, wenn Sie beruflich viel reisen oder kurzfristig umziehen. Termin und Übergabepunkt stimmen wir individuell mit Ihnen ab.'
+  },
+  {
+    q: 'Kaufen Sie Fahrzeuge mit Umweltzonen-Problemen oder ältere Diesel?',
+    a: 'Ja. Auch Diesel mit eingeschränkter Umweltzonen-Tauglichkeit können noch einen fairen Restwert haben. Wir bewerten transparent auf Basis Zustand, Nachfrage und Verwertungsoptionen.'
+  },
+  {
+    q: 'Wie schnell ist die Auszahlung beim Autoankauf Frankfurt?',
+    a: 'Nach Fahrzeugprüfung und Vertragsabschluss erfolgt die Auszahlung in der Regel noch am selben Tag per Überweisung. Die genaue Dauer hängt von Banklaufzeiten und Uhrzeit ab.'
+  },
+  {
+    q: 'Übernehmen Sie die Abmeldung bei der Zulassungsstelle Frankfurt?',
+    a: 'Ja. Wir übernehmen die Abmeldung für Sie, damit Sie keine zusätzlichen Behördentermine planen müssen.'
+  }
+] as const;
+
 const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white relative overflow-hidden">
@@ -493,7 +516,11 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
           </section>
 
           {/* FAQ Section */}
-          <FAQSection title="Häufige Fragen zum Autoankauf in Frankfurt" />
+          <FAQSection
+            title="Häufige Fragen zum Autoankauf in Frankfurt"
+            faqs={[...FRANKFURT_FAQS]}
+            sectionId="faq-frankfurt"
+          />
 
           {/* Related Pages Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">

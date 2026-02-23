@@ -183,6 +183,8 @@ function buildCustomerAppointmentEmail(params: {
   } = params;
 
   const bodyContent = `
+    <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Am ${preferredDate} um ${preferredTime} – ${deliveryLabel}.</div>
+
     <h1 style="font-size:22px;font-weight:900;color:#0f172a;margin:0 0 8px;">Ihr Termin ist bestätigt</h1>
     <p style="font-size:15px;color:#f97316;font-weight:700;margin:0 0 24px;letter-spacing:0.02em;">Übergabetermin gebucht</p>
 
@@ -434,7 +436,7 @@ Deno.serve(async (req: Request) => {
   // ── Step 4: Send emails ───────────────────────────────────────────
   const resendKey = Deno.env.get("RESEND_API_KEY");
   const adminEmail = Deno.env.get("ADMIN_EMAIL") || "info@meinautoverkauf.de";
-  const from = `Meinautoverkauf <${adminEmail}>`;
+  const from = `Meinautoverkauf.de <${adminEmail}>`;
 
   if (resendKey) {
     // Delivery label for both emails
@@ -471,7 +473,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // ── Admin notification ────────────────────────────────────────
-    const adminSubject = `Neuer Übergabetermin: ${est.brand} ${est.model} am ${preferredDate}`;
+    const adminSubject = `Neuer Übergabetermin: ${est.brand} ${est.model}, Bj. ${est.year}, ${String(est.mileage).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} km, ${est.power} – ${preferredDate}`;
     const adminHtml = buildAdminAppointmentEmail({
       firstName: est.first_name,
       lastName: est.last_name,
@@ -531,7 +533,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // ── Customer confirmation ─────────────────────────────────────
-    const customerSubject = "Ihr Termin bei Meinautoverkauf.de ist bestätigt";
+    const customerSubject = "Ihr Termin ist bestätigt – Meinautoverkauf.de";
     const customerHtml = buildCustomerAppointmentEmail({
       firstName: est.first_name,
       lastName: est.last_name,

@@ -189,6 +189,8 @@ function buildCustomerEstimationEmail(params: {
   const { firstName, lastName, brand, model, year, mileage, estimatedPrice, priceMin, priceMax } = params;
 
   const bodyContent = `
+    <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Ihre Fahrzeugbewertung wurde erfasst. Wir melden uns in Kürze.</div>
+
     <h1 style="font-size:22px;font-weight:900;color:#0f172a;margin:0 0 8px;">Ihre Anfrage ist eingegangen</h1>
     <p style="font-size:15px;color:#f97316;font-weight:700;margin:0 0 24px;letter-spacing:0.02em;">Fahrzeugbewertung erhalten</p>
 
@@ -448,7 +450,7 @@ Deno.serve(async (req: Request) => {
   // ── Step 4: Send emails ───────────────────────────────────────────
   const resendKey = Deno.env.get("RESEND_API_KEY");
   const adminEmail = Deno.env.get("ADMIN_EMAIL") || "info@meinautoverkauf.de";
-  const from = `Meinautoverkauf <${adminEmail}>`;
+  const from = `Meinautoverkauf.de <${adminEmail}>`;
 
   if (resendKey) {
     // Build signed photo URLs for admin email
@@ -482,7 +484,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // ── Admin notification ────────────────────────────────────────
-    const adminSubject = `Neue Fahrzeugbewertung: ${car.brand} ${car.model}${car.variant ? " " + car.variant : ""} (${car.postalCode || car.year})`;
+    const adminSubject = `${car.brand} ${car.model}, Bj. ${car.year}, ${String(car.mileage).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} km, ${car.power}`;
     const adminHtml = buildAdminEstimationEmail({
       firstName: c.firstName,
       lastName: c.lastName,
@@ -536,7 +538,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // ── Customer confirmation ─────────────────────────────────────
-    const customerSubject = "Ihre Anfrage bei Meinautoverkauf.de – Bewertung erhalten";
+    const customerSubject = "Ihre Bewertung ist da – Meinautoverkauf.de";
     const customerHtml = buildCustomerEstimationEmail({
       firstName: c.firstName,
       lastName: c.lastName,
