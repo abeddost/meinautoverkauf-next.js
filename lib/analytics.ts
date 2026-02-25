@@ -7,6 +7,7 @@ type ConsentModeValue = 'granted' | 'denied';
 const GA_MEASUREMENT_ID = 'G-GX8B3LF4KZ';
 const GA_SCRIPT_SELECTOR = `script[data-ga4-id="${GA_MEASUREMENT_ID}"]`;
 const GA_COOKIE_PREFIX = '_ga';
+const GOOGLE_ADS_CONVERSION_SEND_TO = 'AW-17751494498/hMJ7CLuf7_4bEOKeyZBC';
 
 declare global {
   interface Window {
@@ -191,13 +192,27 @@ const hasGrantedAnalyticsConsent = (): boolean => {
   return consentState.choice === 'accepted' && consentState.analytics;
 };
 
+const hasTrackingConsent = (): boolean => {
+  return analyticsGranted || hasGrantedAnalyticsConsent();
+};
+
 export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): void => {
   if (typeof window === 'undefined') return;
-  const consentGranted = analyticsGranted || hasGrantedAnalyticsConsent();
-  if (!consentGranted) return;
+  if (!hasTrackingConsent()) return;
   if (!analyticsGranted) analyticsGranted = true;
   if (typeof window.gtag !== 'function') return;
   window.gtag('event', eventName, params);
+};
+
+export const trackGoogleAdsConversion = (transactionId: string): void => {
+  if (typeof window === 'undefined') return;
+  if (!hasTrackingConsent()) return;
+  if (typeof window.gtag !== 'function') return;
+
+  window.gtag('event', 'conversion', {
+    send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
+    transaction_id: transactionId,
+  });
 };
 
 export const toSafeEventValue = (value: string | undefined): string | undefined => {

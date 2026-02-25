@@ -1,5 +1,5 @@
 import { CarDetails, ValuationResult } from "./types";
-import { buildValuationEventParams, trackGoogleEvent, toSafeEventValue } from "./lib/analytics";
+import { buildValuationEventParams, trackGoogleAdsConversion, trackGoogleEvent, toSafeEventValue } from "./lib/analytics";
 import { getConsentState } from "./lib/consent";
 
 export async function getCarValuation(details: CarDetails): Promise<ValuationResult> {
@@ -25,6 +25,7 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
   const analyticsConsentGranted = consentState.choice === "accepted" && consentState.analytics;
 
   trackGoogleEvent("ai_valuation_form_submitted", buildValuationEventParams("ai_valuation_form_submitted", baseEventParams));
+  trackGoogleAdsConversion(requestId);
   trackGoogleEvent("generate_lead", {
     request_id: requestId,
     form_name: "ai_valuation_form",
