@@ -61,6 +61,7 @@ export default async function handler(req: Request) {
     const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
     const measurementId = process.env.GA4_MEASUREMENT_ID || DEFAULT_GA4_MEASUREMENT_ID;
     const gaApiSecret = process.env.GA4_API_SECRET;
+    const analyticsConsentGranted = details?.analyticsConsentGranted === true;
     const analyticsRequestId =
       typeof details.analyticsRequestId === "string" && details.analyticsRequestId.trim()
         ? details.analyticsRequestId.trim()
@@ -154,7 +155,7 @@ export default async function handler(req: Request) {
       result = null;
     }
 
-    if (gaApiSecret) {
+    if (gaApiSecret && analyticsConsentGranted) {
       try {
         await sendGa4Event({
           measurementId,

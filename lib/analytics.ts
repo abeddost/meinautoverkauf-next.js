@@ -1,4 +1,4 @@
-import type { ConsentState } from './consent';
+import { getConsentState, type ConsentState } from './consent';
 
 type GtagPrimitive = string | number | boolean;
 type GtagParams = Record<string, GtagPrimitive | undefined>;
@@ -185,9 +185,17 @@ export const applyConsentUpdate = async (consentState: ConsentState): Promise<vo
   }
 };
 
+const hasGrantedAnalyticsConsent = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  const consentState = getConsentState();
+  return consentState.choice === 'accepted' && consentState.analytics;
+};
+
 export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): void => {
   if (typeof window === 'undefined') return;
-  if (!analyticsGranted) return;
+  const consentGranted = analyticsGranted || hasGrantedAnalyticsConsent();
+  if (!consentGranted) return;
+  if (!analyticsGranted) analyticsGranted = true;
   if (typeof window.gtag !== 'function') return;
   window.gtag('event', eventName, params);
 };
