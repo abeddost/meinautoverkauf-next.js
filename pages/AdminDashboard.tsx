@@ -28,11 +28,11 @@ export interface Estimation {
   power: string;
   body_type: string;
   condition: string;
-  estimated_price: number;
-  price_min: number;
-  price_max: number;
-  market_trend: string;
-  price_explanation: string;
+  estimated_price: number | null;
+  price_min: number | null;
+  price_max: number | null;
+  market_trend: string | null;
+  price_explanation: string | null;
   postal_code: string | null;
   color: string | null;
   doors: string | null;
@@ -943,7 +943,9 @@ const AdminDashboardContent: React.FC = () => {
                                 ) : (
                                   <span
                                     className={`inline-block px-2 py-1 rounded-full text-xs font-bold ${
-                                      est.status === 'estimated'
+                                      est.status === 'incomplete'
+                                        ? 'bg-slate-100 text-slate-500'
+                                        : est.status === 'estimated'
                                         ? 'bg-blue-100 text-blue-800'
                                         : est.status === 'converted_to_sale'
                                         ? 'bg-yellow-100 text-yellow-800'
@@ -958,7 +960,7 @@ const AdminDashboardContent: React.FC = () => {
                                         : 'bg-gray-100 text-gray-800'
                                     }`}
                                   >
-                                    {est.status === 'archived' ? 'Archiv' : est.status === 'deleted' ? 'Gelöscht' : est.status}
+                                    {est.status === 'incomplete' ? 'Unvollständig' : est.status === 'archived' ? 'Archiv' : est.status === 'deleted' ? 'Gelöscht' : est.status}
                                   </span>
                                 )}
                               </td>
@@ -977,7 +979,9 @@ const AdminDashboardContent: React.FC = () => {
                                 </div>
                               </td>
                               <td className="px-4 py-3 text-sm font-bold text-brand-orange">
-                                {formatPrice(est.estimated_price)}
+                                {est.status === 'incomplete'
+                                  ? <span className="text-slate-400 font-semibold">Ausstehend</span>
+                                  : formatPrice(est.estimated_price)}
                               </td>
                               {estimationSubTab === 'active' && (
                                 <>
@@ -1546,32 +1550,39 @@ const AdminDashboardContent: React.FC = () => {
               {/* Valuation Info */}
               <div>
                 <h3 className="text-lg font-bold text-brand-dark mb-3">Bewertung</h3>
-                <div className="bg-orange-50 border-2 border-brand-orange p-6 rounded-xl">
-                  <div className="text-center mb-4">
-                    <div className="text-sm text-slate-600 mb-1">Geschätzter Preis</div>
-                    <div className="text-4xl font-black text-brand-orange">
-                      {formatPrice(selectedEstimation.estimated_price)}
-                    </div>
+                {selectedEstimation.status === 'incomplete' ? (
+                  <div className="bg-slate-50 border-2 border-slate-200 p-6 rounded-xl text-center">
+                    <span className="inline-block px-3 py-1 bg-slate-100 text-slate-500 rounded-full text-sm font-semibold mb-2">Unvollständig</span>
+                    <p className="text-slate-500 text-sm">Die KI-Bewertung wurde nicht abgeschlossen. Der Kunde hat die Seite verlassen, bevor das Ergebnis vorlag.</p>
                   </div>
-                  <div className="flex justify-center gap-8 mb-4">
-                    <div className="text-center">
-                      <div className="text-xs text-slate-500 mb-1">Minimum</div>
-                      <div className="font-bold text-slate-700">{formatPrice(selectedEstimation.price_min)}</div>
+                ) : (
+                  <div className="bg-orange-50 border-2 border-brand-orange p-6 rounded-xl">
+                    <div className="text-center mb-4">
+                      <div className="text-sm text-slate-600 mb-1">Geschätzter Preis</div>
+                      <div className="text-4xl font-black text-brand-orange">
+                        {formatPrice(selectedEstimation.estimated_price)}
+                      </div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-xs text-slate-500 mb-1">Maximum</div>
-                      <div className="font-bold text-slate-700">{formatPrice(selectedEstimation.price_max)}</div>
+                    <div className="flex justify-center gap-8 mb-4">
+                      <div className="text-center">
+                        <div className="text-xs text-slate-500 mb-1">Minimum</div>
+                        <div className="font-bold text-slate-700">{formatPrice(selectedEstimation.price_min)}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-xs text-slate-500 mb-1">Maximum</div>
+                        <div className="font-bold text-slate-700">{formatPrice(selectedEstimation.price_max)}</div>
+                      </div>
                     </div>
+                    <div className="text-center mb-4">
+                      <span className="inline-block px-3 py-1 bg-white rounded-full text-sm font-bold text-slate-700">
+                        Markttrend: {selectedEstimation.market_trend}
+                      </span>
+                    </div>
+                    {selectedEstimation.price_explanation && (
+                      <div className="text-sm text-slate-700 leading-relaxed">{selectedEstimation.price_explanation}</div>
+                    )}
                   </div>
-                  <div className="text-center mb-4">
-                    <span className="inline-block px-3 py-1 bg-white rounded-full text-sm font-bold text-slate-700">
-                      Markttrend: {selectedEstimation.market_trend}
-                    </span>
-                  </div>
-                  {selectedEstimation.price_explanation && (
-                    <div className="text-sm text-slate-700 leading-relaxed">{selectedEstimation.price_explanation}</div>
-                  )}
-                </div>
+                )}
               </div>
 
               {/* Commission Info (if sold) */}

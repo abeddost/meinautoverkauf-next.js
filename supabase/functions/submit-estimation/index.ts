@@ -370,6 +370,8 @@ Deno.serve(async (req: Request) => {
   const photos = Array.isArray(body.photos)
     ? (body.photos as Record<string, unknown>[])
     : [];
+  // Optional: update an existing incomplete record instead of inserting
+  const incomingEstimationId = (body.estimationId as string) || null;
 
   if (!c?.firstName || !c?.lastName || !c?.email || !c?.phone)
     return jsonResp({ error: "Missing customer fields", code: "validation_error" }, 400);
@@ -391,8 +393,8 @@ Deno.serve(async (req: Request) => {
   )
     return jsonResp({ error: "Missing or invalid valuation", code: "validation_error" }, 400);
 
-  // ── Step 2: Insert estimation ─────────────────────────────────────
-  const estRow = {
+  // ── Step 2: Insert or update estimation ───────────────────────────
+  const estFields = {
     status: "estimated",
     first_name: c.firstName,
     last_name: c.lastName,
@@ -421,15 +423,29 @@ Deno.serve(async (req: Request) => {
     sources: val.sources ?? null,
   };
 
-  const { data: estimation, error: insertErr } = await supabase
-    .from("estimations")
-    .insert(estRow)
-    .select("id")
-    .single();
-  if (insertErr)
-    return jsonResp({ error: "Failed to save estimation", code: "db_error" }, 500);
+  let estimationId: string;
 
-  const estimationId = estimation.id as string;
+  if (incomingEstimationId) {
+    // UPDATE existing incomplete record
+    const { error: updateErr } = await supabase
+      .from("estimations")
+      .update(estFields)
+      .eq("id", incomingEstimationId)
+      .eq("status", "incomplete");
+    if (updateErr)
+      return jsonResp({ error: "Failed to update estimation", code: "db_error" }, 500);
+    estimationId = incomingEstimationId;
+  } else {
+    // INSERT new record (backwards-compatible)
+    const { data: estimation, error: insertErr } = await supabase
+      .from("estimations")
+      .insert(estFields)
+      .select("id")
+      .single();
+    if (insertErr || !estimation)
+      return jsonResp({ error: "Failed to save estimation", code: "db_error" }, 500);
+    estimationId = estimation.id as string;
+  }
 
   // ── Step 3: Process photos ────────────────────────────────────────
   const bucket = "car-photos";

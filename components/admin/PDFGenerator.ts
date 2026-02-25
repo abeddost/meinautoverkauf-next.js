@@ -36,10 +36,10 @@ interface Estimation {
   power: string;
   body_type: string;
   condition: string;
-  estimated_price: number;
-  price_min: number;
-  price_max: number;
-  market_trend: string;
+  estimated_price: number | null;
+  price_min: number | null;
+  price_max: number | null;
+  market_trend: string | null;
   price_explanation: string;
   postal_code: string | null;
   color: string | null;
@@ -170,13 +170,21 @@ export const generateEstimationPDF = async (
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(234, 88, 12); // brand orange
-  doc.text(`€ ${estimation.estimated_price.toLocaleString('de-DE')}`, margin + 5, yPos + 22);
+  doc.text(
+    estimation.estimated_price != null
+      ? `€ ${estimation.estimated_price.toLocaleString('de-DE')}`
+      : 'Preis ausstehend',
+    margin + 5,
+    yPos + 22
+  );
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100);
   doc.text(
-    `Preisspanne: € ${estimation.price_min.toLocaleString('de-DE')} - € ${estimation.price_max.toLocaleString('de-DE')}`,
+    estimation.price_min != null && estimation.price_max != null
+      ? `Preisspanne: € ${estimation.price_min.toLocaleString('de-DE')} - € ${estimation.price_max.toLocaleString('de-DE')}`
+      : 'Preisspanne: ausstehend',
     margin + 5,
     yPos + 32
   );

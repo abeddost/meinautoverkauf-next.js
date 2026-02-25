@@ -29,12 +29,18 @@ const ValuationResultPage: React.FC = () => {
   }, [carDetails, valuation, navigate]);
 
   useEffect(() => {
-    if (!carDetails || !valuation || submittedRef.current || estimationId) return;
+    if (!carDetails || !valuation || submittedRef.current) return;
     submittedRef.current = true;
     setSubmitting(true);
     setSubmitError(null);
 
-    consumePendingPhotoPromise()
+    // If estimationId was passed from AnalyzingPage (partial save), photos were
+    // already consumed there — pass an empty array so we don't double-upload.
+    const photoPromise = estimationId
+      ? Promise.resolve([] as { storagePath: string }[])
+      : consumePendingPhotoPromise();
+
+    photoPromise
       .then((pendingPhotoPaths) => {
         const body = {
           customer: {
@@ -68,6 +74,8 @@ const ValuationResultPage: React.FC = () => {
             sources: valuation.sources,
           },
           photos: pendingPhotoPaths,
+          // If we already saved a partial lead, update it instead of inserting
+          ...(estimationId ? { estimationId } : {}),
         };
 
         return submitEstimation(body);

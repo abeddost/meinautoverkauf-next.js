@@ -1,9 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 import Footer from '../components/Footer';
 import { getCarValuation } from '../geminiService';
 import { CarDetails, ValuationResult } from '../types';
+import { savePartialLead } from '../lib/supabaseFunctions';
+import { consumePendingPhotoPromise } from '../lib/pendingPhotoUpload';
 
 const MATRIX_CHARS = '0123456789ABCDEF';
 const MATRIX_COLUMN_COUNT = 16;
@@ -21,6 +23,8 @@ const AnalyzingPage: React.FC = () => {
   const formData = (location.state as { formData?: CarDetails } | null)?.formData;
   const [error, setError] = useState<string | null>(null);
   const [valuationResult, setValuationResult] = useState<ValuationResult | null>(null);
+  const [partialEstimationId, setPartialEstimationId] = useState<string | null>(null);
+  const partialSavedRef = useRef(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const progressDurationSeconds = PROGRESS_DURATION_SECONDS;
   const matrixColumns = useMemo(
@@ -56,6 +60,48 @@ const AnalyzingPage: React.FC = () => {
   useEffect(() => {
     if (!formData) {
       return;
+    }
+
+    // Fire-and-forget: save partial lead immediately so we capture the lead
+    // even if the user navigates away before the AI finishes.
+    if (!partialSavedRef.current) {
+      partialSavedRef.current = true;
+      consumePendingPhotoPromise().then((pendingPhotoPaths) => {
+        savePartialLead({
+          customer: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+          },
+          car: {
+            brand: formData.brand,
+            model: formData.model,
+            variant: formData.variant || formData.model || undefined,
+            year: formData.year,
+            mileage: formData.mileage,
+            fuelType: formData.fuelType,
+            transmission: formData.transmission,
+            power: formData.power,
+            bodyType: formData.bodyType,
+            condition: formData.condition,
+            desiredPrice: formData.desiredPrice || undefined,
+            vin: formData.vin,
+            doors: formData.doors,
+            postalCode: formData.postalCode,
+            color: formData.color,
+          },
+          photos: pendingPhotoPaths,
+        }).then(({ data }) => {
+          if (data?.estimationId) {
+            setPartialEstimationId(data.estimationId);
+          }
+        }).catch(() => {
+          // Partial save failed — lead will still be captured when AI completes
+        });
+      }).catch(() => {
+        // Photo promise failed — proceed without photos
+      });
     }
 
     let cancelled = false;
@@ -100,10 +146,10 @@ const AnalyzingPage: React.FC = () => {
     }
 
     navigate('/bewertung-ergebnis', {
-      state: { carDetails: formData, valuation: valuationResult },
+      state: { carDetails: formData, valuation: valuationResult, estimationId: partialEstimationId },
       replace: true,
     });
-  }, [elapsedSeconds, formData, navigate, progressDurationSeconds, valuationResult]);
+  }, [elapsedSeconds, formData, navigate, partialEstimationId, progressDurationSeconds, valuationResult]);
 
   if (!formData) {
     return (

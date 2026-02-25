@@ -12,6 +12,17 @@ const getSupabaseConfig = () => {
   return { url, key };
 };
 
+export interface SavePartialLeadBody {
+  customer: { firstName: string; lastName: string; email: string; phone: string };
+  car: Record<string, unknown>;
+  photos?: { storagePath: string; originalFilename?: string; contentType?: string; sizeBytes?: number }[];
+}
+
+export interface SavePartialLeadResponse {
+  estimationId: string;
+  status: 'incomplete';
+}
+
 export interface SubmitEstimationBody {
   customer: { firstName: string; lastName: string; email: string; phone: string };
   car: Record<string, unknown>;
@@ -23,6 +34,8 @@ export interface SubmitEstimationBody {
     sources?: { title: string; uri: string }[];
   };
   photos?: { storagePath: string; originalFilename?: string; contentType?: string; sizeBytes?: number }[];
+  /** If set, UPDATE this incomplete record instead of INSERTing a new one. */
+  estimationId?: string;
 }
 
 export interface SubmitEstimationResponse {
@@ -72,6 +85,12 @@ async function invokeEdgeFunction<T>(
     };
   }
   return { data: json as T, status: res.status };
+}
+
+export async function savePartialLead(
+  body: SavePartialLeadBody
+): Promise<{ data?: SavePartialLeadResponse; error?: EdgeFunctionError; status: number }> {
+  return invokeEdgeFunction<SavePartialLeadResponse>('save-partial-lead', body);
 }
 
 export async function submitEstimation(
