@@ -125,14 +125,14 @@ Deno.serve(async (req: Request) => {
     phone: c.phone,
     brand: car.brand,
     model: car.model,
-    variant: car.variant ?? null,
+    variant: (car.variant as string) || '',
     year: car.year,
     mileage: car.mileage,
-    fuel_type: car.fuelType ?? null,
-    transmission: car.transmission ?? null,
-    power: car.power ?? null,
-    body_type: car.bodyType ?? null,
-    condition: car.condition ?? null,
+    fuel_type: (car.fuelType as string) || '',
+    transmission: (car.transmission as string) || '',
+    power: (car.power as string) || '',
+    body_type: (car.bodyType as string) || '',
+    condition: (car.condition as string) || '',
     desired_price: car.desiredPrice ?? null,
     vin: car.vin ?? null,
     doors: car.doors ?? null,
@@ -153,8 +153,10 @@ Deno.serve(async (req: Request) => {
     .select("id")
     .single();
 
-  if (insertErr || !estimation)
-    return jsonResp({ error: "Failed to save partial lead", code: "db_error" }, 500);
+  if (insertErr || !estimation) {
+    console.error('[save-partial-lead] DB insert error:', JSON.stringify(insertErr), 'row keys:', Object.keys(estRow).join(','));
+    return jsonResp({ error: "Failed to save partial lead", code: "db_error", details: { message: insertErr?.message, code: insertErr?.code } }, 500);
+  }
 
   const estimationId = estimation.id as string;
 
