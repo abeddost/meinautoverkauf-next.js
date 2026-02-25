@@ -341,9 +341,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
 
 
   const handleValuationSubmit = useCallback((formData: CarDetails) => {
-    // #region agent log
-    fetch('http://127.0.0.1:7293/ingest/59f18017-5643-49d5-845e-517f968fc055',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'App.tsx:handleValuationSubmit',message:'handleValuationSubmit fired',data:{brand:formData.brand,bodyType:formData.bodyType,fuelType:formData.fuelType,transmission:formData.transmission,power:formData.power,condition:formData.condition,variant:formData.variant},timestamp:Date.now(),hypothesisId:'E'})}).catch(()=>{});
-    // #endregion
     const partialPromise = consumePendingPhotoPromise().then((photos) =>
       savePartialLead({
         customer: {

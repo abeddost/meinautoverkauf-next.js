@@ -153,10 +153,8 @@ Deno.serve(async (req: Request) => {
     .select("id")
     .single();
 
-  if (insertErr || !estimation) {
-    console.error('[save-partial-lead] DB insert error:', JSON.stringify(insertErr), 'row keys:', Object.keys(estRow).join(','));
-    return jsonResp({ error: "Failed to save partial lead", code: "db_error", details: { message: insertErr?.message, code: insertErr?.code } }, 500);
-  }
+  if (insertErr || !estimation)
+    return jsonResp({ error: "Failed to save partial lead", code: "db_error" }, 500);
 
   const estimationId = estimation.id as string;
 
