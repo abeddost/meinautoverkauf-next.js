@@ -230,6 +230,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       case 'lastName':
       case 'email':
       case 'phone':
+      case 'desiredPrice':
         return Boolean((formData as any)[field]);
       default:
         return true;
@@ -269,6 +270,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
         return 'Bitte E-Mail eingeben.';
       case 'phone':
         return 'Bitte Handynummer eingeben.';
+      case 'desiredPrice':
+        return 'Bitte Wunschpreis eingeben.';
       case 'images':
         return 'Maximal 5 Bilder erlaubt.';
       default:
@@ -352,7 +355,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     2: ['power', 'bodyType', 'transmission', 'doors'],
     3: ['mileage', 'condition', 'fuelType'],
     4: ['postalCode'],
-    5: ['firstName', 'lastName', 'email', 'phone']
+    5: ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'],
   };
 
   const nextPage = () => {
@@ -1057,7 +1060,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('phone', 'Bitte Handynummer eingeben.')}
               </div>
               <div>
-                <StepLabel label="Dein Wunschpreis (€)" optional />
+                <StepLabel label="Dein Wunschpreis (€)" />
                 <input
                   type="number"
                   name="desiredPrice"
