@@ -40,7 +40,7 @@ interface Estimation {
   price_min: number | null;
   price_max: number | null;
   market_trend: string | null;
-  price_explanation: string;
+  price_explanation: string | null;
   postal_code: string | null;
   color: string | null;
   doors: string | null;

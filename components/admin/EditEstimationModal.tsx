@@ -19,11 +19,11 @@ interface Estimation {
   power: string;
   body_type: string;
   condition: string;
-  estimated_price: number;
-  price_min: number;
-  price_max: number;
-  market_trend: string;
-  price_explanation: string;
+  estimated_price: number | null;
+  price_min: number | null;
+  price_max: number | null;
+  market_trend: string | null;
+  price_explanation: string | null;
   postal_code: string | null;
   color: string | null;
   doors: string | null;
@@ -67,9 +67,9 @@ const EditEstimationModal: React.FC<EditEstimationModalProps> = ({
     doors: estimation.doors || '',
     vin: estimation.vin || '',
     desired_price: estimation.desired_price || '',
-    estimated_price: estimation.estimated_price,
-    price_min: estimation.price_min,
-    price_max: estimation.price_max,
+    estimated_price: estimation.estimated_price ?? 0,
+    price_min: estimation.price_min ?? 0,
+    price_max: estimation.price_max ?? 0,
   });
 
   const [saving, setSaving] = useState(false);
