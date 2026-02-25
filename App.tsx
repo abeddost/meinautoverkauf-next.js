@@ -18,6 +18,9 @@ import {
   updateConsent,
 } from './lib/consent';
 import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
+import { savePartialLead } from './lib/supabaseFunctions';
+import { consumePendingPhotoPromise } from './lib/pendingPhotoUpload';
+import { setPendingPartialSavePromise } from './lib/pendingPartialSave';
 
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
 const HOME_DEFER_CLASS = 'defer-render';
@@ -337,6 +340,36 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
   };
 
 
+  const handleValuationSubmit = useCallback((formData: CarDetails) => {
+    const partialPromise = consumePendingPhotoPromise().then((photos) =>
+      savePartialLead({
+        customer: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+        },
+        car: {
+          brand: formData.brand,
+          model: formData.model,
+          variant: formData.variant,
+          year: formData.year,
+          mileage: formData.mileage,
+          power: formData.power,
+          fuelType: formData.fuelType,
+          transmission: formData.transmission,
+          condition: formData.condition,
+          postalCode: formData.postalCode,
+        },
+        photos: photos ?? [],
+      })
+        .then((r) => r.data?.estimationId ?? null)
+        .catch(() => null)
+    );
+    setPendingPartialSavePromise(partialPromise);
+    navigate('/bewertung-laeuft', { state: { formData } });
+  }, [navigate]);
+
   const resetApp = useCallback(() => {
     setCurrentStep(AppStep.VALUATION_FORM);
     setCarDetails(null);
@@ -378,7 +411,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 twitterDescription={HOME_OG_DESCRIPTION}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Auto verkaufen online – Einfach, schnell & stressfrei"
                 subheadline="Autoankauf – Wir kaufen Ihr Auto zum fairen Preis"
                 accent="home"
@@ -791,7 +824,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 extraSchemas={buildCoreServiceSchema('Auto bewerten online', '/auto-bewerten', 'Fahrzeugbewertung')}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Auto bewerten online – Kostenlos & präzise Wertermittlung"
                 subheadline="In 2 Minuten den realistischen Marktwert Ihres Fahrzeugs erhalten"
                 accent="bewerten"
@@ -810,7 +843,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 extraSchemas={buildCoreServiceSchema('Auto verkaufen online', '/auto-verkaufen', 'Autoankauf')}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Auto verkaufen online – Schnell, fair & sicher"
                 subheadline="Kostenlose Bewertung und stressfreier Verkauf in ganz Deutschland"
                 accent="verkaufen"
@@ -829,7 +862,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 extraSchemas={buildCoreServiceSchema('Vorteile beim Autoankauf', '/vorteile', 'Autoankauf-Service')}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Ihre Vorteile beim Autoankauf – Transparent & zuverlässig"
                 subheadline="So einfach war Auto verkaufen noch nie"
                 accent="vorteile"
@@ -848,7 +881,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 pageType="CollectionPage"
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Auto Ratgeber – Tipps, Checklisten & Wissen"
                 subheadline="Alles rund um Bewertung, Verkauf und Marktpreise"
                 accent="ratgeber"
@@ -867,7 +900,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 extraSchemas={buildCitySchemas('Frankfurt am Main', '/autoankauf-frankfurt')}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Autoankauf Frankfurt – Ihr lokaler Partner"
                 subheadline="Faire Preise, schnelle Abwicklung in Frankfurt am Main"
                 accent="verkaufen"
@@ -888,7 +921,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 extraSchemas={buildCitySchemas('Wiesbaden', '/autoankauf-wiesbaden')}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Autoankauf Wiesbaden – Seriös & transparent"
                 subheadline="Auto verkaufen in der Landeshauptstadt Hessen"
                 accent="verkaufen"
@@ -909,7 +942,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 extraSchemas={buildCitySchemas('Mainz', '/autoankauf-mainz')}
               />
               <Hero 
-                onValuationComplete={handleStartValuation} onValuationSubmit={(formData) => navigate('/bewertung-laeuft', { state: { formData } })} 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
                 headline="Autoankauf Mainz – Zuverlässiger Service"
                 subheadline="Ihr Auto-Partner in der Gutenberg-Stadt"
                 accent="verkaufen"

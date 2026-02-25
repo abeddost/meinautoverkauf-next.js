@@ -66,7 +66,8 @@ export interface EdgeFunctionError {
 
 async function invokeEdgeFunction<T>(
   name: string,
-  body: unknown
+  body: unknown,
+  options?: { keepalive?: boolean }
 ): Promise<{ data?: T; error?: EdgeFunctionError; status: number }> {
   const { url, key } = getSupabaseConfig();
   const res = await fetch(`${url}/functions/v1/${name}`, {
@@ -76,6 +77,7 @@ async function invokeEdgeFunction<T>(
       Authorization: `Bearer ${key}`,
     },
     body: JSON.stringify(body),
+    keepalive: options?.keepalive ?? false,
   });
   const json = await res.json().catch(() => ({}));
   if (!res.ok) {
@@ -90,7 +92,7 @@ async function invokeEdgeFunction<T>(
 export async function savePartialLead(
   body: SavePartialLeadBody
 ): Promise<{ data?: SavePartialLeadResponse; error?: EdgeFunctionError; status: number }> {
-  return invokeEdgeFunction<SavePartialLeadResponse>('save-partial-lead', body);
+  return invokeEdgeFunction<SavePartialLeadResponse>('save-partial-lead', body, { keepalive: true });
 }
 
 export async function submitEstimation(
