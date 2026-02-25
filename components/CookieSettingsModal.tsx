@@ -101,8 +101,8 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
                 Datenschutz nach Ihrer Wahl
               </h2>
               <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-600">
-                Notwendige Speicherungen sind für den Betrieb erforderlich. Analytics helfen uns, Inhalte und
-                Bedienung zu verbessern.
+                Notwendige Speicherungen sind für den Betrieb erforderlich. Optionale Analytics und Google Ads
+                Conversion-Tracking helfen uns, Inhalte und Bedienung zu verbessern.
               </p>
             </div>
           </div>
@@ -150,7 +150,7 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <label htmlFor="analytics-consent" className="cursor-pointer text-sm font-black text-slate-900">
-                  Analytics (Google Analytics 4)
+                  Analytics & Google Ads (GA4 + Conversion-Tracking)
                 </label>
                 {/* Toggle switch */}
                 <button
@@ -174,8 +174,8 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
                 </button>
               </div>
               <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600">
-                Hilft uns zu verstehen, welche Inhalte genutzt werden, damit wir die Website benutzerfreundlich
-                weiterentwickeln können.
+                Hilft uns zu verstehen, welche Inhalte genutzt werden und ermöglicht Google Ads Conversion- und
+                Ereignis-Tracking. Werbe-Personalisierung bleibt deaktiviert.
               </p>
             </div>
           </div>

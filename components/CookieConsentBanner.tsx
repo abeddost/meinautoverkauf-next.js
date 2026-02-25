@@ -46,7 +46,8 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
 
           {/* Description */}
           <p className="mt-4 text-sm font-medium leading-relaxed text-slate-600">
-            Wir nutzen optionale Analytics nur mit Ihrer Einwilligung, um unseren Service zu verbessern.
+            Wir nutzen optionale Analytics sowie Google Ads Conversion- und Ereignis-Tracking nur mit Ihrer
+            Einwilligung, um unseren Service zu verbessern.
             Sie können Ihre Wahl jederzeit ändern.{' '}
             <Link
               to="/datenschutz"
@@ -80,7 +81,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
               onClick={onAccept}
               className="min-h-[44px] rounded-full bg-brand-orange px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-orange-200/60 transition hover:brightness-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
             >
-              Analytics akzeptieren
+              Analytics & Ads akzeptieren
             </button>
           </div>
         </div>

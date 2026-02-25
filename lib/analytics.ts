@@ -171,8 +171,8 @@ export const applyConsentUpdate = async (consentState: ConsentState): Promise<vo
 
   window.gtag?.('consent', 'update', {
     analytics_storage: 'granted' satisfies ConsentModeValue,
-    ad_storage: 'denied' satisfies ConsentModeValue,
-    ad_user_data: 'denied' satisfies ConsentModeValue,
+    ad_storage: 'granted' satisfies ConsentModeValue,
+    ad_user_data: 'granted' satisfies ConsentModeValue,
     ad_personalization: 'denied' satisfies ConsentModeValue,
   });
 

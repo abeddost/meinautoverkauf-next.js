@@ -71,8 +71,9 @@ const DatenschutzPage: React.FC = () => {
             <section className="space-y-3" id="cookie-einstellungen">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">6. Einwilligungsverwaltung (Cookie-Einstellungen)</h2>
               <p>
-                Beim ersten Besuch unserer Website können Sie entscheiden, ob optionale Analytics aktiviert werden sollen. Ihre Auswahl wird lokal auf Ihrem
-                Endgerät gespeichert, damit wir Ihre Präferenz bei zukünftigen Besuchen berücksichtigen können.
+                Beim ersten Besuch unserer Website können Sie entscheiden, ob optionale Analytics sowie Google Ads Conversion- und Ereignis-Tracking
+                aktiviert werden sollen. Ihre Auswahl wird lokal auf Ihrem Endgerät gespeichert, damit wir Ihre Präferenz bei zukünftigen Besuchen
+                berücksichtigen können.
               </p>
               <p>
                 Sie können Ihre Entscheidung jederzeit über den Link <strong>„Cookie-Einstellungen“</strong> im Footer ändern oder widerrufen.
@@ -80,7 +81,7 @@ const DatenschutzPage: React.FC = () => {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">7. Google Analytics 4 (nur mit Einwilligung)</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark">7. Google Analytics 4 und Google Ads Conversion-Tracking (nur mit Einwilligung)</h2>
               <p>
                 Soweit Sie eingewilligt haben, nutzen wir Google Analytics 4, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street,
                 Dublin 4, Irland.
@@ -90,19 +91,24 @@ const DatenschutzPage: React.FC = () => {
                 Inhalte und Bedienung zu verbessern.
               </p>
               <p>
+                Mit derselben Einwilligung aktivieren wir außerdem Google Ads Conversion- und Ereignis-Tracking, damit wir die Wirksamkeit unserer Anzeigen
+                messen können.
+              </p>
+              <p>
                 Die Verarbeitung erfolgt nur auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TTDSG.
               </p>
               <p>
-                Wir haben Google Analytics so konfiguriert, dass keine Werbe-Personalisierung aktiviert wird. Eine Einwilligung ist dennoch erforderlich, da
-                Analytics-Technologien eingesetzt werden.
+                Wir setzen Google Consent Mode so ein, dass Google Ads-Daten erst nach Einwilligung übermittelt werden
+                (ad_storage und ad_user_data). Werbe-Personalisierung (ad_personalization) bleibt deaktiviert.
               </p>
             </section>
 
             <section className="space-y-3">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">8. Drittlandtransfer</h2>
               <p>
-                Bei Nutzung von Google Analytics kann eine Übermittlung personenbezogener Daten in Drittländer (insbesondere die USA) nicht ausgeschlossen
-                werden. Für solche Übermittlungen stützt sich Google auf geeignete Garantien, insbesondere Standardvertragsklauseln.
+                Bei Nutzung von Google Analytics und Google Ads Conversion-Tracking kann eine Übermittlung personenbezogener Daten in Drittländer
+                (insbesondere die USA) nicht ausgeschlossen werden. Für solche Übermittlungen stützt sich Google auf geeignete Garantien, insbesondere
+                Standardvertragsklauseln.
               </p>
             </section>
 
@@ -150,7 +156,7 @@ const DatenschutzPage: React.FC = () => {
 
             <section className="space-y-3">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark">Stand der Datenschutzerklärung</h2>
-              <p>20.02.2026</p>
+              <p>25.02.2026</p>
             </section>
           </div>
         </div>
