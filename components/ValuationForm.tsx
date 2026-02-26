@@ -427,15 +427,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     setCurrentPage(prev => (prev > 1 ? (prev - 1) as FormPage : prev));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const submitFinalStep = async () => {
     setSubmitError('');
 
-    if (currentPage < 5) {
-      nextPage();
-      return;
-    }
-    
     // Validate contact details and postal code before submission
     const required = [...requiredByPage[5], 'postalCode'];
     setSubmitAttempted(true);
@@ -508,6 +502,15 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       setSubmitError('Leider ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
       setLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (currentPage < 5) {
+      nextPage();
+      return;
+    }
+    await submitFinalStep();
   };
 
   if (loading) {
@@ -1132,9 +1135,15 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
         </div>
 
         <div className="pt-3 lg:pt-4 flex flex-col gap-2 lg:gap-3">
-          <button 
-            type={currentPage === 5 ? "submit" : "button"} 
-            onClick={currentPage === 5 ? undefined : nextPage}
+          <button
+            type="button"
+            onClick={() => {
+              if (currentPage === 5) {
+                void submitFinalStep();
+                return;
+              }
+              nextPage();
+            }}
             disabled={currentPage === 1 && (!formData.brand || !formData.model || !formData.year)}
             className="group w-full bg-gradient-to-r from-[#ffb347] via-[#ff8f2d] to-[#ff7a1a] text-white py-3.5 lg:py-4 rounded-2xl font-black text-sm lg:text-base shadow-[0_14px_30px_-14px_rgba(255,130,50,0.7)] hover:shadow-[0_20px_40px_-16px_rgba(255,130,50,0.9)] hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
