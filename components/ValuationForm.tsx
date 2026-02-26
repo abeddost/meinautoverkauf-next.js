@@ -148,20 +148,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
-  const prevPageRef = useRef<FormPage>(currentPage);
-  const [contactInteracted, setContactInteracted] = useState(false);
 
   const createSafeId = () =>
     typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
       ? crypto.randomUUID()
       : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
-
-  const isContactField = (field: string) =>
-    field === 'firstName' ||
-    field === 'lastName' ||
-    field === 'email' ||
-    field === 'phone' ||
-    field === 'desiredPrice';
 
   // Object URLs for photo preview thumbnails (revoke on cleanup)
   useEffect(() => {
@@ -169,29 +160,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     setPhotoPreviewUrls(urls);
     return () => urls.forEach((u) => URL.revokeObjectURL(u));
   }, [selectedFiles]);
-
-  useEffect(() => {
-    if (prevPageRef.current === currentPage) return;
-    if (currentPage === 5 && !contactInteracted) {
-      const contactFields = ['firstName', 'lastName', 'email', 'phone'] as const;
-        setTouchedFields(prev => {
-          const next = { ...prev };
-          contactFields.forEach((field) => {
-            delete next[field];
-          });
-          return next;
-        });
-        setFieldErrors(prev => {
-          const next = { ...prev };
-          contactFields.forEach((field) => {
-            delete next[field];
-          });
-          return next;
-        });
-        setActiveTooltip(null);
-    }
-    prevPageRef.current = currentPage;
-  }, [currentPage, contactInteracted]);
 
   const isValueValid = (field: string, value: string) => {
     if (field === 'postalCode') return value.length === 5;
@@ -206,9 +174,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       [name]: value,
       ...(name === 'brand' ? { model: '' } : {})
     }));
-    if (isContactField(name)) {
-      setContactInteracted(true);
-    }
     if (fieldErrors[name] && isValueValid(name, value)) {
       setFieldError(name, '');
     }
@@ -287,9 +252,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const setFieldError = (field: string, message: string) => {
     if (message) {
       setTouchedFields(prev => ({ ...prev, [field]: true }));
-      if (isContactField(field)) {
-        setContactInteracted(true);
-      }
     }
     setFieldErrors(prev => {
       const next = { ...prev };
@@ -307,9 +269,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
 
   const handleBlur = (field: string) => {
     setTouchedFields(prev => ({ ...prev, [field]: true }));
-    if (isContactField(field)) {
-      setContactInteracted(true);
-    }
     setFieldError(field, validateField(field));
   };
 
@@ -362,14 +321,24 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     4: ['postalCode'],
     5: ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'],
   };
+  const CONTACT_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'] as const;
 
   const nextPage = () => {
     const required = requiredByPage[currentPage] ?? [];
+    const movingToPage5 = currentPage === 4;
+    if (movingToPage5) {
+      setActiveTooltip(null);
+    }
     setTouchedFields(prev => {
       const next = { ...prev };
       required.forEach((field) => {
         next[field] = true;
       });
+      if (movingToPage5) {
+        CONTACT_FIELDS.forEach((field) => {
+          delete next[field];
+        });
+      }
       return next;
     });
     const errors: Record<string, string> = {};
@@ -386,6 +355,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
           delete next[field];
         }
       });
+      if (movingToPage5) {
+        CONTACT_FIELDS.forEach((field) => {
+          delete next[field];
+        });
+      }
       return next;
     });
     if (Object.keys(errors).length > 0) {
@@ -514,10 +488,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[15px] lg:text-base placeholder:text-slate-400 placeholder:font-normal placeholder:text-[13px] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
   const invalidFieldClass = "ring-1 ring-amber-300/60";
-  const shouldShowError = (field: string) => {
-    if (isContactField(field) && !contactInteracted) return false;
-    return Boolean(fieldErrors[field] && touchedFields[field]);
-  };
+  const shouldShowError = (field: string) => Boolean(fieldErrors[field] && touchedFields[field]);
 
   const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2 mt-1") => {
     if (!shouldShowError(field)) return null;
@@ -1064,8 +1035,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 />
                 {renderErrorIcon('phone', 'Bitte Handynummer eingeben.')}
               </div>
-              <div>
-                <StepLabel label="Dein Wunschpreis (€)" />
+              <div className="relative">
+                <StepLabel label="Dein Wunschpreis (€)" required />
                 <input
                   type="number"
                   name="desiredPrice"
@@ -1073,11 +1044,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   onChange={(e) => {
                     const value = e.target.value.replace(/[^\d]/g, '');
                     setFormData(prev => ({ ...prev, desiredPrice: value }));
+                    if (fieldErrors.desiredPrice && isValueValid('desiredPrice', value)) {
+                      setFieldError('desiredPrice', '');
+                    }
                   }}
+                  onBlur={() => handleBlur('desiredPrice')}
                   placeholder="Betrag in €"
                   min={0}
-                  className={inputClass}
+                  className={`${inputClass} ${shouldShowError('desiredPrice') ? `${invalidFieldClass} pr-14` : ''}`}
                 />
+                {renderErrorIcon('desiredPrice', 'Bitte Wunschpreis eingeben.')}
               </div>
             </div>
           )}
