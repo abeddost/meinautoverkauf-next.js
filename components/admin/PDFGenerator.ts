@@ -233,7 +233,19 @@ export const generateEstimationPDF = async (
       const b64 = base64Images[i];
       if (b64) {
         try {
-          doc.addImage(b64, x, y, photoWidth, photoHeight);
+          const imgProps = doc.getImageProperties(b64);
+          const imgW = Number(imgProps.width) || photoWidth;
+          const imgH = Number(imgProps.height) || photoHeight;
+          const scale = Math.min(photoWidth / imgW, photoHeight / imgH);
+          const drawW = Math.max(1, imgW * scale);
+          const drawH = Math.max(1, imgH * scale);
+          const drawX = x + (photoWidth - drawW) / 2;
+          const drawY = y + (photoHeight - drawH) / 2;
+
+          // Preserve aspect ratio to avoid stretched photos.
+          doc.setFillColor(245, 245, 245);
+          doc.rect(x, y, photoWidth, photoHeight, 'F');
+          doc.addImage(b64, imgProps.fileType || 'JPEG', drawX, drawY, drawW, drawH);
         } catch {
           doc.setDrawColor(200, 200, 200);
           doc.setFillColor(245, 245, 245);
