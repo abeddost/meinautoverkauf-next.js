@@ -7,6 +7,7 @@ type ConsentModeValue = 'granted' | 'denied';
 const GA_MEASUREMENT_ID = 'G-GX8B3LF4KZ';
 const GA_SCRIPT_SELECTOR = `script[data-ga4-id="${GA_MEASUREMENT_ID}"]`;
 const GA_COOKIE_PREFIX = '_ga';
+const GOOGLE_ADS_DESTINATION_ID = 'AW-17751494498';
 const GOOGLE_ADS_CONVERSION_SEND_TO = 'AW-17751494498/hMJ7CLuf7_4bEOKeyZBC';
 
 declare global {
@@ -19,6 +20,7 @@ declare global {
 let analyticsGranted = false;
 let gaScriptPromise: Promise<void> | null = null;
 let gaConfigured = false;
+let adsConfigured = false;
 
 type ValuationEventName =
   | 'ai_valuation_form_submitted'
@@ -118,6 +120,16 @@ const configureGa = (): void => {
   gaConfigured = true;
 };
 
+const configureAds = (): void => {
+  if (typeof window === 'undefined') return;
+  if (adsConfigured) return;
+
+  window.gtag?.('config', GOOGLE_ADS_DESTINATION_ID, {
+    allow_ad_personalization_signals: false,
+  });
+  adsConfigured = true;
+};
+
 export const createAnalyticsEventId = (eventName: string, requestId: string): string => {
   return `${eventName}_${requestId}`.slice(0, 100);
 };
@@ -178,6 +190,7 @@ export const applyConsentUpdate = async (consentState: ConsentState): Promise<vo
   });
 
   configureGa();
+  configureAds();
 
   try {
     await loadGaScript();
@@ -208,6 +221,7 @@ export const trackGoogleAdsConversion = (transactionId: string): void => {
   if (typeof window === 'undefined') return;
   if (!hasTrackingConsent()) return;
   if (typeof window.gtag !== 'function') return;
+  configureAds();
 
   window.gtag('event', 'conversion', {
     send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
