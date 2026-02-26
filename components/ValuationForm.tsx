@@ -151,6 +151,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const prevPageRef = useRef<FormPage>(currentPage);
   const [contactInteracted, setContactInteracted] = useState(false);
 
+  const createSafeId = () =>
+    typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+
   const isContactField = (field: string) =>
     field === 'firstName' ||
     field === 'lastName' ||
@@ -230,7 +235,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       case 'lastName':
       case 'email':
       case 'phone':
-      case 'desiredPrice':
         return Boolean((formData as any)[field]);
       default:
         return true;
@@ -270,8 +274,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
         return 'Bitte E-Mail eingeben.';
       case 'phone':
         return 'Bitte Handynummer eingeben.';
-      case 'desiredPrice':
-        return 'Bitte Wunschpreis eingeben.';
       case 'images':
         return 'Maximal 5 Bilder erlaubt.';
       default:
@@ -355,7 +357,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     2: ['power', 'bodyType', 'transmission', 'doors'],
     3: ['mileage', 'condition', 'fuelType'],
     4: ['postalCode'],
-    5: ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'],
+    5: ['firstName', 'lastName', 'email', 'phone'],
   };
 
   const nextPage = () => {
@@ -437,7 +439,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     
     if (onValuationSubmit) {
       if (selectedFiles.length > 0) {
-        const uuid = crypto.randomUUID();
+        const uuid = createSafeId();
         const bucket = 'car-photos';
         const filesSnapshot = [...selectedFiles];
         const uploadPromise: Promise<{ storagePath: string; originalFilename?: string; contentType?: string; sizeBytes?: number }[]> = (async () => {
