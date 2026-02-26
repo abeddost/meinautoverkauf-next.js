@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
 import { setPendingPhotoPromise } from '../lib/pendingPhotoUpload';
@@ -10,6 +10,9 @@ interface ValuationFormProps {
 }
 
 type FormPage = 1 | 2 | 3 | 4 | 5;
+const CONTACT_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'] as const;
+type ContactField = (typeof CONTACT_FIELDS)[number];
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const BRAND_DATA: Record<string, string[]> = {
   'Abarth': ['500', '595', '695', '124 Spider', 'Punto', 'Grande Punto'],
@@ -145,6 +148,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
   const [dirtyFields, setDirtyFields] = useState<Record<string, boolean>>({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
+  const [contactValidationEnabled, setContactValidationEnabled] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState('');
   const brandTypeaheadRef = useRef('');
@@ -162,6 +166,39 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     setPhotoPreviewUrls(urls);
     return () => urls.forEach((u) => URL.revokeObjectURL(u));
   }, [selectedFiles]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (currentPage !== 5) {
+      return;
+    }
+    setSubmitAttempted(false);
+    setContactValidationEnabled(false);
+    setActiveTooltip(null);
+    setTouchedFields((prev) => {
+      const next = { ...prev };
+      CONTACT_FIELDS.forEach((field) => {
+        delete next[field];
+      });
+      return next;
+    });
+    setDirtyFields((prev) => {
+      const next = { ...prev };
+      CONTACT_FIELDS.forEach((field) => {
+        delete next[field];
+      });
+      return next;
+    });
+    setFieldErrors((prev) => {
+      const next = { ...prev };
+      CONTACT_FIELDS.forEach((field) => {
+        delete next[field];
+      });
+      return next;
+    });
+  }, [currentPage]);
+
+  const isContactField = (field: string): field is ContactField =>
+    CONTACT_FIELDS.includes(field as ContactField);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -266,6 +303,9 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const handleBlur = (field: string) => {
     setTouchedFields(prev => ({ ...prev, [field]: true }));
     setDirtyFields(prev => ({ ...prev, [field]: true }));
+    if (isContactField(field)) {
+      setContactValidationEnabled(true);
+    }
     setFieldError(field, validateField(field));
   };
 
@@ -316,14 +356,16 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     2: ['power', 'bodyType', 'transmission', 'doors'],
     3: ['mileage', 'condition', 'fuelType'],
     4: ['postalCode'],
-    5: ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'],
+    5: [...CONTACT_FIELDS],
   };
-  const CONTACT_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'] as const;
 
   const nextPage = () => {
     const required = requiredByPage[currentPage] ?? [];
     const movingToPage5 = currentPage === 4;
     setSubmitAttempted(false);
+    if (movingToPage5) {
+      setContactValidationEnabled(false);
+    }
     if (movingToPage5) {
       setActiveTooltip(null);
     }
@@ -381,6 +423,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     setActiveTooltip(null);
     setSubmitError('');
     setSubmitAttempted(false);
+    setContactValidationEnabled(false);
     setCurrentPage(prev => (prev > 1 ? (prev - 1) as FormPage : prev));
   };
 
@@ -396,6 +439,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     // Validate contact details and postal code before submission
     const required = [...requiredByPage[5], 'postalCode'];
     setSubmitAttempted(true);
+    setContactValidationEnabled(true);
     setTouchedFields(prev => {
       const next = { ...prev };
       required.forEach((field) => {
@@ -497,7 +541,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[15px] lg:text-base placeholder:text-slate-400 placeholder:font-normal placeholder:text-[13px] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
   const invalidFieldClass = "ring-1 ring-amber-300/60";
-  const shouldShowError = (field: string) => Boolean(fieldErrors[field] && (submitAttempted || touchedFields[field]));
+  const shouldShowError = (field: string) => {
+    const base = Boolean(fieldErrors[field] && (submitAttempted || touchedFields[field]));
+    if (!base) return false;
+    if (!isContactField(field)) return true;
+    return contactValidationEnabled;
+  };
 
   const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2 mt-1") => {
     if (!shouldShowError(field)) return null;
