@@ -143,6 +143,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const [fileError, setFileError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({});
+  const [dirtyFields, setDirtyFields] = useState<Record<string, boolean>>({});
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState('');
   const brandTypeaheadRef = useRef('');
@@ -161,12 +163,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     return () => urls.forEach((u) => URL.revokeObjectURL(u));
   }, [selectedFiles]);
 
-  const isValueValid = (field: string, value: string) => {
-    if (field === 'postalCode') return value.length === 5;
-    if (field === 'images') return !fileError;
-    return Boolean(value);
-  };
-
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -174,17 +170,20 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       [name]: value,
       ...(name === 'brand' ? { model: '' } : {})
     }));
-    if (fieldErrors[name] && isValueValid(name, value)) {
-      setFieldError(name, '');
+    setDirtyFields(prev => ({ ...prev, [name]: true }));
+    const shouldValidateLive = submitAttempted || touchedFields[name] || dirtyFields[name];
+    if (shouldValidateLive || fieldErrors[name]) {
+      setFieldError(name, validateField(name, value));
     }
   };
 
-  const isFieldValid = (field: string) => {
+  const isFieldValid = (field: string, value?: string) => {
+    const fieldValue = value ?? ((formData as any)[field] as string | undefined) ?? '';
     switch (field) {
       case 'postalCode':
-        return !!formData.postalCode && formData.postalCode.length === 5;
+        return !!fieldValue && fieldValue.length === 5;
       case 'condition':
-        return !!formData.condition;
+        return !!fieldValue;
       case 'images':
         return !fileError;
       case 'brand':
@@ -201,14 +200,14 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       case 'email':
       case 'phone':
       case 'desiredPrice':
-        return Boolean((formData as any)[field]);
+        return Boolean(fieldValue);
       default:
         return true;
     }
   };
 
-  const validateField = (field: string) => {
-    if (isFieldValid(field)) return '';
+  const validateField = (field: string, value?: string) => {
+    if (isFieldValid(field, value)) return '';
     switch (field) {
       case 'brand':
         return 'Bitte Marke wählen.';
@@ -250,9 +249,6 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   };
 
   const setFieldError = (field: string, message: string) => {
-    if (message) {
-      setTouchedFields(prev => ({ ...prev, [field]: true }));
-    }
     setFieldErrors(prev => {
       const next = { ...prev };
       if (message) {
@@ -269,6 +265,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
 
   const handleBlur = (field: string) => {
     setTouchedFields(prev => ({ ...prev, [field]: true }));
+    setDirtyFields(prev => ({ ...prev, [field]: true }));
     setFieldError(field, validateField(field));
   };
 
@@ -326,6 +323,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const nextPage = () => {
     const required = requiredByPage[currentPage] ?? [];
     const movingToPage5 = currentPage === 4;
+    setSubmitAttempted(false);
     if (movingToPage5) {
       setActiveTooltip(null);
     }
@@ -334,6 +332,15 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       required.forEach((field) => {
         next[field] = true;
       });
+      if (movingToPage5) {
+        CONTACT_FIELDS.forEach((field) => {
+          delete next[field];
+        });
+      }
+      return next;
+    });
+    setDirtyFields(prev => {
+      const next = { ...prev };
       if (movingToPage5) {
         CONTACT_FIELDS.forEach((field) => {
           delete next[field];
@@ -373,6 +380,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const prevPage = () => {
     setActiveTooltip(null);
     setSubmitError('');
+    setSubmitAttempted(false);
     setCurrentPage(prev => (prev > 1 ? (prev - 1) as FormPage : prev));
   };
 
@@ -387,6 +395,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     
     // Validate contact details and postal code before submission
     const required = [...requiredByPage[5], 'postalCode'];
+    setSubmitAttempted(true);
     setTouchedFields(prev => {
       const next = { ...prev };
       required.forEach((field) => {
@@ -488,7 +497,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const inputClass = `${baseFieldClass} cursor-text`;
   const fileInputClass = "w-full bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 lg:py-3 text-[#004d7c] outline-none focus:border-brand-orange focus:ring-2 focus:ring-orange-200/70 transition-all text-[15px] lg:text-base placeholder:text-slate-400 placeholder:font-normal placeholder:text-[13px] file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gradient-to-r file:from-[#ffb347] file:to-[#ff7a1a] file:text-white hover:file:brightness-105";
   const invalidFieldClass = "ring-1 ring-amber-300/60";
-  const shouldShowError = (field: string) => Boolean(fieldErrors[field] && touchedFields[field]);
+  const shouldShowError = (field: string) => Boolean(fieldErrors[field] && (submitAttempted || touchedFields[field]));
 
   const renderErrorIcon = (field: string, message: string, positionClass = "right-3 top-1/2 -translate-y-1/2 mt-1") => {
     if (!shouldShowError(field)) return null;
@@ -816,7 +825,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                       key={c.val}
                       type="button"
                       onClick={() => {
-                        setFieldError('condition', '');
+                        setDirtyFields(prev => ({ ...prev, condition: true }));
+                        const shouldValidateLive = submitAttempted || touchedFields.condition || dirtyFields.condition;
+                        if (shouldValidateLive || fieldErrors.condition) {
+                          setFieldError('condition', validateField('condition', c.val));
+                        } else {
+                          setFieldError('condition', '');
+                        }
                         setFormData(p => ({ ...p, condition: c.val as any }));
                       }}
                       className={`py-2.5 lg:py-3.5 rounded-xl font-bold text-xs lg:text-sm transition-all border-2 ${formData.condition === c.val ? 'bg-white border-brand-orange text-brand-orange shadow-[0_10px_20px_-14px_rgba(255,122,26,0.7)]' : 'bg-white/60 border-white/70 text-slate-500 hover:border-orange-200/70'}`}
@@ -852,8 +867,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   onChange={(e) => {
                     const value = e.target.value.replace(/\D/g, '').slice(0, 5);
                     setFormData(prev => ({ ...prev, postalCode: value }));
-                    if (fieldErrors.postalCode && value.length === 5) {
-                      setFieldError('postalCode', '');
+                    setDirtyFields(prev => ({ ...prev, postalCode: true }));
+                    const shouldValidateLive = submitAttempted || touchedFields.postalCode || dirtyFields.postalCode;
+                    if (shouldValidateLive || fieldErrors.postalCode) {
+                      setFieldError('postalCode', validateField('postalCode', value));
                     }
                   }}
                   onBlur={() => handleBlur('postalCode')}
@@ -898,16 +915,19 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                       onChange={(e) => {
                         const newFiles = Array.from(e.target.files || []);
                         e.target.value = '';
+                        setDirtyFields((prev) => ({ ...prev, images: true }));
                         const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
                         const invalid = newFiles.filter((f) => !validTypes.includes(f.type));
                         if (invalid.length > 0) {
                           setFileError(true);
+                          setTouchedFields((prev) => ({ ...prev, images: true }));
                           setFieldError('images', 'Nur JPEG, PNG oder WebP erlaubt.');
                           return;
                         }
                         const oversized = newFiles.filter((f) => f.size > 5 * 1024 * 1024);
                         if (oversized.length > 0) {
                           setFileError(true);
+                          setTouchedFields((prev) => ({ ...prev, images: true }));
                           setFieldError('images', 'Max. 5 MB pro Foto.');
                           return;
                         }
@@ -923,6 +943,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                           const merged = deduped.slice(0, 5);
                           if (deduped.length > 5) {
                             setFileError(true);
+                            setTouchedFields((prevTouched) => ({ ...prevTouched, images: true }));
                             setFieldError('images', 'Maximal 5 Bilder erlaubt. Es wurden nur die ersten 5 übernommen.');
                           } else {
                             setFileError(false);
@@ -1044,8 +1065,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   onChange={(e) => {
                     const value = e.target.value.replace(/[^\d]/g, '');
                     setFormData(prev => ({ ...prev, desiredPrice: value }));
-                    if (fieldErrors.desiredPrice && isValueValid('desiredPrice', value)) {
-                      setFieldError('desiredPrice', '');
+                    setDirtyFields(prev => ({ ...prev, desiredPrice: true }));
+                    const shouldValidateLive = submitAttempted || touchedFields.desiredPrice || dirtyFields.desiredPrice;
+                    if (shouldValidateLive || fieldErrors.desiredPrice) {
+                      setFieldError('desiredPrice', validateField('desiredPrice', value));
                     }
                   }}
                   onBlur={() => handleBlur('desiredPrice')}
