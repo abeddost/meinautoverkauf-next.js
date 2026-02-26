@@ -25,7 +25,7 @@ import { setPendingPartialSavePromise } from './lib/pendingPartialSave';
 const STANDALONE_PATHS = ['/bewertung-laeuft', '/bewertung-ergebnis', '/termin-buchen', '/vielen-dank', '/admin', '/admin/login'];
 const HOME_DEFER_CLASS = 'defer-render';
 const SITE_URL = 'https://www.meinautoverkauf.de';
-const HOME_META_TITLE = 'Auto online verkaufen | Fairer Ankauf mit Abholung';
+const HOME_META_TITLE = 'Autoankauf online | Fahrzeug bewerten und bequem verkaufen';
 const HOME_META_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und transparent: online bewerten, unverbindliches Angebot erhalten und auf Wunsch abholen lassen. Sicher, bequem und ohne Inserat.';
 const HOME_OG_DESCRIPTION = 'Verkaufen Sie Ihr Auto schnell und transparent: online bewerten, unverbindliches Angebot erhalten und auf Wunsch abholen lassen. Sicher, bequem und ohne Inserat.';
 const FORBIDDEN_METADATA_PHRASES = [
