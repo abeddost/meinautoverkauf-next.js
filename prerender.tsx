@@ -26,7 +26,14 @@ const collectHeadEntries = (helmet: any): Set<HeadEntry> => {
       let children: string | undefined;
 
       for (const [key, value] of Object.entries(rawProps)) {
-        if (value === undefined || value === null || typeof value === 'boolean') {
+        if (value === undefined || value === null) {
+          continue;
+        }
+
+        if (typeof value === 'boolean') {
+          if (value) {
+            safeProps[key] = 'true';
+          }
           continue;
         }
 
