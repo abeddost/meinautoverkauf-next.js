@@ -96,11 +96,30 @@ const ACCENTS = {
 
 const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, headline, subheadline, accent, headlineTag }) => {
   const [carTransform, setCarTransform] = useState({ tiltX: 0, tiltY: 0, offsetY: 0 });
+  const [isDesktopViewport, setIsDesktopViewport] = useState<boolean | null>(() => {
+    if (typeof window === 'undefined') return null;
+    return window.matchMedia('(min-width: 1024px)').matches;
+  });
   const heroHeadline = headline ?? 'Auto verkaufen online – Einfach, schnell & stressfrei';
   const heroSubheadline = subheadline ?? 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis';
   const heroAccent = ACCENTS[accent ?? 'home'];
   const DesktopHeadlineTag = headlineTag ?? 'h1';
   const MobileHeadlineTag = headlineTag ?? 'h2';
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    const updateViewport = () => setIsDesktopViewport(mediaQuery.matches);
+    updateViewport();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', updateViewport);
+      return () => mediaQuery.removeEventListener('change', updateViewport);
+    }
+
+    mediaQuery.addListener(updateViewport);
+    return () => mediaQuery.removeListener(updateViewport);
+  }, []);
 
   useEffect(() => {
     const disableParallax =
@@ -297,7 +316,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
 
             <div className="col-span-5 flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
               <div className="w-full max-w-[460px] lg:max-w-[640px] scale-[1] origin-top">
-                <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
+                {isDesktopViewport !== false && (
+                  <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
+                )}
               </div>
             </div>
           </div>
@@ -335,7 +356,9 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
           </div>
 
           <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
+            {isDesktopViewport !== true && (
+              <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
+            )}
           </div>
 
           <div className="mt-4 grid grid-cols-3 gap-2">

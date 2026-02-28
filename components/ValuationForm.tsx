@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
 import { CarDetails, ValuationResult } from '../types';
 import { getCarValuation } from '../geminiService';
 import { setPendingPhotoPromise } from '../lib/pendingPhotoUpload';
+import type { ValuationOptionsData } from '../lib/valuationOptionsData';
 
 interface ValuationFormProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
@@ -14,104 +15,19 @@ const CONTACT_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'desiredPrice
 type ContactField = (typeof CONTACT_FIELDS)[number];
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-const BRAND_DATA: Record<string, string[]> = {
-  'Abarth': ['500', '595', '695', '124 Spider', 'Punto', 'Grande Punto'],
-  'Alfa Romeo': ['Giulia', 'Stelvio', 'Tonale', 'Giulietta', 'Mito', 'Brera', 'Spider', '159', '147', '156', 'GT', '4C', '8C'],
-  'Aston Martin': ['DB11', 'Vantage', 'DBS', 'DBX', 'Rapide', 'Vanquish', 'DB9'],
-  'Audi': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q2', 'Q3', 'Q4 e-tron', 'Q5', 'Q7', 'Q8', 'TT', 'e-tron', 'R8', 'S1', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'RS3', 'RS4', 'RS5', 'RS6', 'RS7', 'RS Q3', 'RS Q8'],
-  'Bentley': ['Continental GT', 'Bentayga', 'Flying Spur', 'Mulsanne', 'Arnage'],
-  'BMW': ['1er', '2er', '3er', '4er', '5er', '6er', '7er', '8er', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X7', 'Z1', 'Z3', 'Z4', 'Z8', 'i3', 'i4', 'i7', 'i8', 'iX', 'iX1', 'iX3', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M8'],
-  'Cadillac': ['XT4', 'XT5', 'Escalade', 'CT4', 'CT5', 'CTS', 'SRX'],
-  'Chevrolet': ['Camaro', 'Corvette', 'Spark', 'Cruze', 'Captiva', 'Aveo', 'Orlando', 'Matiz', 'Volt'],
-  'Chrysler': ['300C', 'Voyager', 'Grand Voyager', 'Crossfire', 'PT Cruiser'],
-  'Citroën': ['C1', 'C2', 'C3', 'C3 Aircross', 'C4', 'C4 Cactus', 'C4 Picasso', 'C5', 'C5 Aircross', 'C5 X', 'C6', 'C8', 'Berlingo', 'Jumpy', 'Spacetourer', 'Nemo', 'Xsara', 'Saxo'],
-  'Cupra': ['Formentor', 'Leon', 'Born', 'Ateca', 'Tavascan'],
-  'Dacia': ['Sandero', 'Duster', 'Jogger', 'Spring', 'Lodgy', 'Logan', 'Dokker'],
-  'Daihatsu': ['Sirion', 'Cuore', 'Terios', 'Materia', 'Copen', 'Charade'],
-  'Dodge': ['Challenger', 'Charger', 'RAM', 'Durango', 'Nitro', 'Caliber', 'Journey'],
-  'DS Automobiles': ['DS 3', 'DS 3 Crossback', 'DS 4', 'DS 5', 'DS 7 Crossback', 'DS 9'],
-  'Ferrari': ['488', 'F8 Tributo', 'Roma', 'Portofino', 'SF90', 'Purosangue', '812 Superfast', '458 Italia', 'California', 'FF'],
-  'Fiat': ['500', '500X', '500L', 'Panda', 'Tipo', 'Ducato', 'Punto', 'Grande Punto', 'Evo', 'Bravo', 'Stilo', 'Sedici', 'Fullback', 'Talento', 'Croma', 'Multipla', 'Barchetta', 'Coupe'],
-  'Ford': ['Ka', 'Ka+', 'Fiesta', 'Focus', 'Mondeo', 'Mustang', 'Mustang Mach-E', 'Kuga', 'Puma', 'Ranger', 'Transit', 'Tourneo Custom', 'EcoSport', 'S-Max', 'Galaxy', 'C-Max', 'B-Max', 'Edge', 'Explorer', 'Fusion'],
-  'Genesis': ['G70', 'G80', 'G90', 'GV60', 'GV70', 'GV80'],
-  'Honda': ['Civic', 'Jazz', 'CR-V', 'HR-V', 'ZR-V', 'e', 'Accord', 'Insight', 'S2000', 'FR-V', 'Legend', 'Prelude'],
-  'Hyundai': ['i10', 'i20', 'i30', 'Kona', 'Tucson', 'Ioniq', 'Ioniq 5', 'Ioniq 6', 'Santa Fe', 'Bayon', 'Staria', 'Veloster', 'ix20', 'ix35', 'ix55', 'Genesis', 'Getz', 'Accent', 'Matrix', 'Coupe'],
-  'Infiniti': ['Q30', 'Q50', 'Q60', 'Q70', 'QX30', 'QX50', 'QX70'],
-  'Jaguar': ['XE', 'XF', 'XJ', 'E-Pace', 'F-Pace', 'I-Pace', 'F-Type', 'S-Type', 'X-Type', 'XK'],
-  'Jeep': ['Renegade', 'Compass', 'Cherokee', 'Grand Cherokee', 'Wrangler', 'Gladiator', 'Avenger', 'Patriot', 'Commander'],
-  'Kia': ['Picanto', 'Rio', 'Ceed', 'Sportage', 'Niro', 'EV6', 'EV9', 'Sorento', 'Stinger', 'XCeed', 'Stonic', 'Soul', 'Venga', 'Carens', 'Optima', 'Carnival', 'Magentis'],
-  'Lamborghini': ['Urus', 'Huracán', 'Aventador', 'Revuelto', 'Gallardo', 'Murciélago'],
-  'Lancia': ['Ypsilon', 'Delta', 'Thema', 'Voyager', 'Musa', 'Phedra', 'Lybra', 'Kappa', 'Thesis'],
-  'Land Rover': ['Defender', 'Discovery', 'Discovery Sport', 'Range Rover', 'Range Rover Sport', 'Range Rover Velar', 'Range Rover Evoque', 'Freelander'],
-  'Lexus': ['UX', 'NX', 'RX', 'RZ', 'ES', 'LS', 'LC', 'IS', 'CT', 'GS', 'SC'],
-  'Lotus': ['Emira', 'Evija', 'Eletre', 'Elise', 'Exige', 'Evora'],
-  'Maserati': ['Ghibli', 'Levante', 'Quattroporte', 'Grecale', 'MC20', 'GranTurismo', 'GranCabrio'],
-  'Mazda': ['2', '3', '6', 'CX-3', 'CX-30', 'CX-5', 'CX-60', 'CX-80', 'MX-30', 'MX-5', 'RX-8', '5', 'Premacy', 'MPV', 'Tribute'],
-  'McLaren': ['720S', 'Artura', 'GT', '570S', '650S', 'MP4-12C'],
-  'Mercedes-Benz': ['A-Klasse', 'B-Klasse', 'C-Klasse', 'E-Klasse', 'S-Klasse', 'CLA', 'CLS', 'GLA', 'GLB', 'GLC', 'GLE', 'GLS', 'G-Klasse', 'EQA', 'EQB', 'EQC', 'EQE', 'EQS', 'EQV', 'V-Klasse', 'Vito', 'Sprinter', 'Citan', 'X-Klasse', 'SL', 'SLC', 'SLK', 'SLS', 'AMG GT', 'R-Klasse', 'CLK'],
-  'MG': ['MG4', 'MG5', 'ZS', 'HS', 'EHS', 'Marvel R', 'Cyberster', 'MG3', 'TF'],
-  'Mini': ['One', 'Cooper', 'Cooper S', 'Cooper D', 'Cooper SD', 'John Cooper Works', 'Countryman', 'Clubman', 'Cabrio', 'Coupe', 'Roadster', 'Paceman'],
-  'Mitsubishi': ['Space Star', 'Colt', 'ASX', 'Eclipse Cross', 'Outlander', 'L200', 'Pajero', 'Lancer', 'Galant', 'Grandis', 'I-MiEV'],
-  'Nissan': ['Micra', 'Qashqai', 'Juke', 'X-Trail', 'Leaf', 'Ariya', 'GT-R', 'Z', '370Z', '350Z', 'Navara', 'Note', 'Pulsar', 'Tiida', 'Primera', 'Almera', 'Pathfinder', 'Murano', 'Terrano', 'Pixo', 'NV200'],
-  'Opel': ['Corsa', 'Astra', 'Insignia', 'Mokka', 'Grandland', 'Crossland', 'Combo', 'Zafira Life', 'Adam', 'Karl', 'Agila', 'Antara', 'Meriva', 'Zafira', 'Vectra', 'Signum', 'Omega', 'Tigra', 'Speedster', 'Casca', 'Ampera'],
-  'Peugeot': ['107', '108', '206', '207', '208', '307', '308', '407', '408', '508', '607', '807', '1007', '2008', '3008', '4007', '4008', '5008', 'RCZ', 'Partner', 'Rifter', 'Expert', 'Traveller', 'Bipper', 'Ion'],
-  'Polestar': ['Polestar 1', 'Polestar 2', 'Polestar 3', 'Polestar 4'],
-  'Porsche': ['911', 'Cayenne', 'Macan', 'Panamera', 'Taycan', '718 Boxster', '718 Cayman', '918 Spyder', 'Carrera GT'],
-  'Renault': ['Twingo', 'Clio', 'Megane', 'Megane E-Tech', 'Captur', 'Zoe', 'Scenic', 'Grand Scenic', 'Austral', 'Arkana', 'Kadjar', 'Koleos', 'Kangoo', 'Trafic', 'Espace', 'Rafale', 'Laguna', 'Modus', 'Fluence', 'Latitude', 'Wind', 'Twizy'],
-  'Saab': ['9-3', '9-5', '900', '9000'],
-  'Seat': ['Ibiza', 'Leon', 'Arona', 'Ateca', 'Tarraco', 'Alhambra', 'Mii', 'Toledo', 'Altea', 'Exeo', 'Cordoba', 'Arosa'],
-  'Skoda': ['Fabia', 'Scala', 'Octavia', 'Superb', 'Kamiq', 'Karoq', 'Kodiaq', 'Enyaq', 'Citigo', 'Yeti', 'Roomster', 'Rapid', 'Felicia'],
-  'Smart': ['Fortwo', 'Forfour', 'Roadster', 'Crossblade', '#1', '#3'],
-  'SsangYong': ['Korando', 'Tivoli', 'Rexton', 'Musso', 'Torres', 'Kyron', 'Actyon', 'Rodius'],
-  'Subaru': ['Impreza', 'XV', 'Forester', 'Outback', 'Solterra', 'BRZ', 'WRX STI', 'Legacy', 'Justy', 'Levorg', 'Trezia'],
-  'Suzuki': ['Swift', 'Ignis', 'Vitara', 'S-Cross', 'Jimny', 'Across', 'Swace', 'Baleno', 'Alto', 'Splash', 'SX4', 'Celerio', 'Grand Vitara', 'Kizashi', 'Liana', 'Wagon R'],
-  'Tesla': ['Model 3', 'Model Y', 'Model S', 'Model X', 'Roadster', 'Cybertruck'],
-  'Toyota': ['Aygo', 'Aygo X', 'Yaris', 'Yaris Cross', 'Corolla', 'Auris', 'Avensis', 'RAV4', 'C-HR', 'Prius', 'Hilux', 'Land Cruiser', 'Supra', 'Proace City', 'Proace', 'Verso', 'IQ', 'Urban Cruiser', 'GT86', 'GR86', 'Celica', 'MR2', 'bZ4X'],
-  'Volvo': ['XC40', 'XC60', 'XC90', 'V40', 'V50', 'V60', 'V70', 'V90', 'S40', 'S60', 'S80', 'S90', 'C30', 'C40', 'C70', 'EX30', 'EX90'],
-  'VW': ['up!', 'Polo', 'Golf', 'ID.3', 'ID.4', 'ID.5', 'ID.7', 'ID.Buzz', 'Passat', 'Arteon', 'T-Cross', 'Taigo', 'T-Roc', 'Tiguan', 'Touareg', 'Touran', 'Sharan', 'Caddy', 'Multivan', 'Transporter', 'Caravelle', 'California', 'Amarok', 'Beetle', 'Scirocco', 'Eos', 'Jetta', 'Bora', 'Lupo', 'Fox', 'Phaeton', 'Corrado']
+let valuationOptionsPromise: Promise<ValuationOptionsData> | null = null;
+
+const loadValuationOptions = async (): Promise<ValuationOptionsData> => {
+  if (!valuationOptionsPromise) {
+    valuationOptionsPromise = import('../lib/valuationOptionsData')
+      .then((module) => module.VALUATION_OPTIONS_DATA)
+      .catch((error) => {
+        valuationOptionsPromise = null;
+        throw error;
+      });
+  }
+  return valuationOptionsPromise;
 };
-
-const BODY_TYPES = ['Limousine', 'Kombi', 'SUV / Geländewagen', 'Kleinwagen', 'Cabrio', 'Coupé', 'Van', 'Pick-up'];
-const FUELS = [
-  'Benzin',
-  'Diesel',
-  'Elektro',
-  'Hybrid (Diesel/Elektro)',
-  'Hybrid (Benzin/Elektro)',
-  'Plug-in-Hybrid',
-  'LPG / Autogas',
-];
-const TRANSMISSIONS = ['Schaltung', 'Automatik', 'Halbautomatik'];
-const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
-const MILEAGE_RANGES = [
-  ...Array.from({ length: 25 }, (_, i) => {
-    const start = i * 10000;
-    const end = start + 10000;
-    const startLabel = start.toLocaleString('de-DE');
-    const endLabel = end.toLocaleString('de-DE');
-    const label = `${startLabel}–${endLabel}`;
-    return { val: label, label };
-  }),
-  { val: 'Mehr als 250.000', label: 'Mehr als 250.000' },
-];
-
-const POWER_RANGES = Array.from({ length: 113 }, (_, i) => {
-    const start = 40 + (i * 5);
-    const end = start + 5;
-    const kwStart = Math.round(start / 1.35962);
-    const kwEnd = Math.round(end / 1.35962);
-    const label = `${start} - ${end} PS (${kwStart} - ${kwEnd} kW)`;
-    return { val: label, label };
-});
-
-const CONDITIONS = [
-  { val: 'Excellent', label: 'Sehr gut' },
-  { val: 'Good', label: 'Gut' },
-  { val: 'Fair', label: 'Mittelmäßig' },
-  { val: 'Poor', label: 'Schlecht' },
-];
-
-const SORTED_BRANDS = Object.keys(BRAND_DATA).sort((a, b) => a.localeCompare(b, 'de'));
 
 const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onValuationSubmit }) => {
   const [loading, setLoading] = useState(false);
@@ -151,6 +67,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const [contactValidationEnabled, setContactValidationEnabled] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState('');
+  const [optionsData, setOptionsData] = useState<ValuationOptionsData | null>(null);
+  const [optionsLoading, setOptionsLoading] = useState(false);
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
@@ -159,6 +77,23 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
       ? crypto.randomUUID()
       : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+
+  const ensureOptionsLoaded = useCallback(async (): Promise<ValuationOptionsData> => {
+    if (optionsData) return optionsData;
+    setOptionsLoading(true);
+    try {
+      const loaded = await loadValuationOptions();
+      setOptionsData(loaded);
+      return loaded;
+    } finally {
+      setOptionsLoading(false);
+    }
+  }, [optionsData]);
+
+  const handleOptionsIntent = useCallback(() => {
+    if (optionsData || optionsLoading) return;
+    void ensureOptionsLoaded();
+  }, [ensureOptionsLoaded, optionsData, optionsLoading]);
 
   // Object URLs for photo preview thumbnails (revoke on cleanup)
   useEffect(() => {
@@ -196,6 +131,39 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       return next;
     });
   }, [currentPage]);
+
+  useEffect(() => {
+    if (optionsData) return;
+
+    let timeoutId: number | null = null;
+    let idleId: number | null = null;
+    const w = window as Window & {
+      requestIdleCallback?: (
+        callback: (deadline: { didTimeout: boolean; timeRemaining: () => number }) => void,
+        options?: { timeout: number }
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    if (typeof w.requestIdleCallback === 'function') {
+      idleId = w.requestIdleCallback(() => {
+        void ensureOptionsLoaded();
+      }, { timeout: 1500 });
+    } else {
+      timeoutId = window.setTimeout(() => {
+        void ensureOptionsLoaded();
+      }, 600);
+    }
+
+    return () => {
+      if (idleId !== null && typeof w.cancelIdleCallback === 'function') {
+        w.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [ensureOptionsLoaded, optionsData]);
 
   const isContactField = (field: string): field is ContactField =>
     CONTACT_FIELDS.includes(field as ContactField);
@@ -319,6 +287,10 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   };
 
   const handleBrandKeyDown = (e: React.KeyboardEvent<HTMLSelectElement>) => {
+    if (!optionsData) {
+      handleOptionsIntent();
+      return;
+    }
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     const { key } = e;
     if (key.length !== 1) return;
@@ -337,7 +309,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       brandTypeaheadRef.current = '';
     }, 700);
 
-    const match = SORTED_BRANDS.find((brand) => brand.toLowerCase().startsWith(nextQuery));
+    const match = optionsData.sortedBrands.find((brand) => brand.toLowerCase().startsWith(nextQuery));
     if (match) {
       e.preventDefault();
       setFormData(prev => ({
@@ -630,6 +602,17 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     );
   };
 
+  const optionsReady = optionsData !== null;
+  const sortedBrands = optionsData?.sortedBrands ?? [];
+  const availableModels = formData.brand ? optionsData?.brandData[formData.brand] ?? [] : [];
+  const years = optionsData?.years ?? [];
+  const powerRanges = optionsData?.powerRanges ?? [];
+  const bodyTypes = optionsData?.bodyTypes ?? [];
+  const transmissions = optionsData?.transmissions ?? [];
+  const mileageRanges = optionsData?.mileageRanges ?? [];
+  const fuels = optionsData?.fuels ?? [];
+  const conditions = optionsData?.conditions ?? [];
+
   return (
     <div className="relative bg-white/70 backdrop-blur-xl rounded-[1.5rem] lg:rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(15,23,42,0.45)] overflow-hidden text-brand-dark flex flex-col w-full border border-white/60">
       <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/40 to-orange-50/50 pointer-events-none"></div>
@@ -713,14 +696,22 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                     handleBlur('brand');
                     resetBrandTypeahead();
                   }}
-                  onFocus={resetBrandTypeahead}
-                  onClick={resetBrandTypeahead}
+                  onFocus={() => {
+                    resetBrandTypeahead();
+                    handleOptionsIntent();
+                  }}
+                  onClick={() => {
+                    resetBrandTypeahead();
+                    handleOptionsIntent();
+                  }}
+                  onTouchStart={handleOptionsIntent}
                   onKeyDown={handleBrandKeyDown}
                   required
+                  aria-busy={!optionsReady}
                   className={`${selectClass} ${shouldShowError('brand') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">Bitte wählen...</option>
-                  {SORTED_BRANDS.map(b => <option key={b} value={b}>{b}</option>)}
+                  <option value="">{optionsReady ? 'Bitte wählen...' : 'Optionen werden geladen...'}</option>
+                  {sortedBrands.map((b) => <option key={b} value={b}>{b}</option>)}
                 </select>
                 {renderErrorIcon('brand', 'Bitte Marke wählen.')}
               </div>
@@ -732,12 +723,14 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.model}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('model')}
-                  disabled={!formData.brand}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
+                  disabled={!formData.brand || !optionsReady}
                   required
                   className={`${selectClass} ${shouldShowError('model') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">{formData.brand ? "Modell wählen..." : "Wähle zuerst die Marke"}</option>
-                  {formData.brand && BRAND_DATA[formData.brand].map(m => <option key={m} value={m}>{m}</option>)}
+                  <option value="">{!optionsReady ? 'Optionen werden geladen...' : formData.brand ? 'Modell wählen...' : 'Wähle zuerst die Marke'}</option>
+                  {formData.brand && availableModels.map((m) => <option key={m} value={m}>{m}</option>)}
                 </select>
                 {renderErrorIcon('model', 'Bitte Modell wählen.')}
               </div>
@@ -749,11 +742,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.year}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('year')}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
                   required
                   className={`${selectClass} ${shouldShowError('year') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">Jahr wählen...</option>
-                  {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                  <option value="">{optionsReady ? 'Jahr wählen...' : 'Optionen werden geladen...'}</option>
+                  {years.map((y) => <option key={y} value={y}>{y}</option>)}
                 </select>
                 {renderErrorIcon('year', 'Bitte Erstzulassung wählen.')}
               </div>
@@ -770,11 +765,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.power}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('power')}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
                   required
                   className={`${selectClass} ${shouldShowError('power') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">Leistung wählen...</option>
-                  {POWER_RANGES.map(p => <option key={p.val} value={p.val}>{p.label}</option>)}
+                  <option value="">{optionsReady ? 'Leistung wählen...' : 'Optionen werden geladen...'}</option>
+                  {powerRanges.map((p) => <option key={p.val} value={p.val}>{p.label}</option>)}
                 </select>
                 {renderErrorIcon('power', 'Bitte Motorleistung wählen.')}
               </div>
@@ -786,11 +783,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.bodyType}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('bodyType')}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
                   required
                   className={`${selectClass} ${shouldShowError('bodyType') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">Karosserieform wählen...</option>
-                  {BODY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+                  <option value="">{optionsReady ? 'Karosserieform wählen...' : 'Optionen werden geladen...'}</option>
+                  {bodyTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
                 {renderErrorIcon('bodyType', 'Bitte Karosserieform wählen.')}
               </div>
@@ -820,11 +819,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.transmission}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('transmission')}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
                   required
                   className={`${selectClass} ${shouldShowError('transmission') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">Getriebeart wählen...</option>
-                  {TRANSMISSIONS.map(t => <option key={t} value={t}>{t}</option>)}
+                  <option value="">{optionsReady ? 'Getriebeart wählen...' : 'Optionen werden geladen...'}</option>
+                  {transmissions.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
                 {renderErrorIcon('transmission', 'Bitte Getriebeart wählen.')}
               </div>
@@ -841,11 +842,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.mileage}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('mileage')}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
                   className={`${selectClass} ${shouldShowError('mileage') ? `${invalidFieldClass} pr-14` : ''}`}
                   required
                 >
-                  <option value="">Laufleistung wählen...</option>
-                  {MILEAGE_RANGES.map((range) => (
+                  <option value="">{optionsReady ? 'Laufleistung wählen...' : 'Optionen werden geladen...'}</option>
+                  {mileageRanges.map((range) => (
                     <option key={range.val} value={range.val}>
                       {range.label}
                     </option>
@@ -861,19 +864,24 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   value={formData.fuelType}
                   onChange={handleSelectChange}
                   onBlur={() => handleBlur('fuelType')}
+                  onFocus={handleOptionsIntent}
+                  onTouchStart={handleOptionsIntent}
                   required
                   className={`${selectClass} ${shouldShowError('fuelType') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
-                  <option value="">Kraftstoff wählen...</option>
-                  {FUELS.map(f => <option key={f} value={f}>{f}</option>)}
+                  <option value="">{optionsReady ? 'Kraftstoff wählen...' : 'Optionen werden geladen...'}</option>
+                  {fuels.map((f) => <option key={f} value={f}>{f}</option>)}
                 </select>
                 {renderErrorIcon('fuelType', 'Bitte Kraftstoff wählen.')}
               </div>
               <div className="relative">
                 <StepLabel label="Fahrzeugzustand" required />
+                {!optionsReady && (
+                  <p className="text-xs text-slate-500 ml-1">Optionen werden geladen...</p>
+                )}
                 <div className="grid grid-cols-2 gap-2.5 lg:gap-3">
-                  {CONDITIONS.map(c => (
-                    <button 
+                  {conditions.map((c) => (
+                    <button
                       key={c.val}
                       type="button"
                       onClick={() => {

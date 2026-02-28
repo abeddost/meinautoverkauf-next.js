@@ -4,11 +4,9 @@ type GtagPrimitive = string | number | boolean;
 type GtagParams = Record<string, GtagPrimitive | undefined>;
 type ConsentModeValue = 'granted' | 'denied';
 
-const GA_MEASUREMENT_ID = 'G-GX8B3LF4KZ';
-const GA_SCRIPT_SELECTOR = `script[data-ga4-id="${GA_MEASUREMENT_ID}"]`;
+const GTM_CONTAINER_ID = 'GTM-W4MPTL8K';
+const GTM_SCRIPT_SELECTOR = `script[data-gtm-id="${GTM_CONTAINER_ID}"]`;
 const GA_COOKIE_PREFIX = '_ga';
-const GOOGLE_ADS_DESTINATION_ID = 'AW-17751494498';
-const GOOGLE_ADS_CONVERSION_SEND_TO = 'AW-17751494498/hMJ7CLuf7_4bEOKeyZBC';
 
 declare global {
   interface Window {
@@ -18,9 +16,7 @@ declare global {
 }
 
 let analyticsGranted = false;
-let gaScriptPromise: Promise<void> | null = null;
-let gaConfigured = false;
-let adsConfigured = false;
+let gtmScriptPromise: Promise<void> | null = null;
 
 type ValuationEventName =
   | 'ai_valuation_form_submitted'
@@ -84,50 +80,33 @@ const ensureGtagBootstrap = (): void => {
   }
 };
 
-const loadGaScript = async (): Promise<void> => {
+const loadGtmScriptOnce = async (): Promise<void> => {
   if (typeof window === 'undefined') return;
-  if (gaScriptPromise) return gaScriptPromise;
+  if (gtmScriptPromise) return gtmScriptPromise;
 
-  const existingScript = document.querySelector<HTMLScriptElement>(GA_SCRIPT_SELECTOR);
+  const existingScript = document.querySelector<HTMLScriptElement>(GTM_SCRIPT_SELECTOR);
   if (existingScript) {
-    gaScriptPromise = Promise.resolve();
-    return gaScriptPromise;
+    gtmScriptPromise = Promise.resolve();
+    return gtmScriptPromise;
   }
 
-  gaScriptPromise = new Promise<void>((resolve, reject) => {
+  gtmScriptPromise = new Promise<void>((resolve, reject) => {
+    window.dataLayer?.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+
     const script = document.createElement('script');
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    script.dataset.ga4Id = GA_MEASUREMENT_ID;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_CONTAINER_ID}`;
+    script.dataset.gtmId = GTM_CONTAINER_ID;
     script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load Google Analytics script.'));
+    script.onerror = () => {
+      gtmScriptPromise = null;
+      reject(new Error('Failed to load Google Tag Manager script.'));
+    };
+
     document.head.appendChild(script);
   });
 
-  return gaScriptPromise;
-};
-
-const configureGa = (): void => {
-  if (typeof window === 'undefined') return;
-  if (gaConfigured) return;
-
-  window.gtag?.('js', new Date());
-  window.gtag?.('config', GA_MEASUREMENT_ID, {
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false,
-    anonymize_ip: true,
-  });
-  gaConfigured = true;
-};
-
-const configureAds = (): void => {
-  if (typeof window === 'undefined') return;
-  if (adsConfigured) return;
-
-  window.gtag?.('config', GOOGLE_ADS_DESTINATION_ID, {
-    allow_ad_personalization_signals: false,
-  });
-  adsConfigured = true;
+  return gtmScriptPromise;
 };
 
 export const createAnalyticsEventId = (eventName: string, requestId: string): string => {
@@ -161,8 +140,6 @@ export const applyConsentDefaults = (): void => {
     ad_user_data: 'denied' satisfies ConsentModeValue,
     ad_personalization: 'denied' satisfies ConsentModeValue,
   });
-  configureGa();
-  void loadGaScript().catch(() => undefined);
 };
 
 export const applyConsentUpdate = async (consentState: ConsentState): Promise<void> => {
@@ -189,11 +166,8 @@ export const applyConsentUpdate = async (consentState: ConsentState): Promise<vo
     ad_personalization: 'denied' satisfies ConsentModeValue,
   });
 
-  configureGa();
-  configureAds();
-
   try {
-    await loadGaScript();
+    await loadGtmScriptOnce();
   } catch {
     return;
   }
@@ -213,20 +187,9 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   if (typeof window === 'undefined') return;
   if (!hasTrackingConsent()) return;
   if (!analyticsGranted) analyticsGranted = true;
+  ensureGtagBootstrap();
   if (typeof window.gtag !== 'function') return;
   window.gtag('event', eventName, params);
-};
-
-export const trackGoogleAdsConversion = (transactionId: string): void => {
-  if (typeof window === 'undefined') return;
-  if (!hasTrackingConsent()) return;
-  if (typeof window.gtag !== 'function') return;
-  configureAds();
-
-  window.gtag('event', 'conversion', {
-    send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
-    transaction_id: transactionId,
-  });
 };
 
 export const toSafeEventValue = (value: string | undefined): string | undefined => {
