@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
+import { AUTO_BEWERTEN_FAQS } from '../lib/faqContent';
 
 interface Props {
   onCtaClick: () => void;
@@ -216,40 +217,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           title="Häufig gestellte Fragen zur Autobewertung"
           sectionId="faq-autobewertung"
           className="mt-12"
-          faqs={[
-            {
-              q: "Was ist mein Auto wert – wie genau ist die Online-Bewertung?",
-              a: "Unsere KI-gestützte Bewertung liefert eine fundierte Einschätzung auf Basis vieler aktueller Transaktionen und relevanter Faktoren. Der tatsächliche Verkaufspreis kann je nach Ausstattung, Zustand und Nachfrage abweichen."
-            },
-            {
-              q: "Warum weicht mein Online-Wert vom Händlerangebot ab?",
-              a: "Der Händler-Ankaufspreis liegt meist unter dem Privatverkaufspreis. Ein Händler muss Kosten für Aufbereitung, Garantie, Standzeit und seine eigene Marge einplanen. Dafür erhalten Sie eine schnelle und bequeme Abwicklung."
-            },
-            {
-              q: "Wie lange ist die Bewertung gültig?",
-              a: "Der Gebrauchtwagenmarkt ist dynamisch. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Danach empfehlen wir eine erneute Bewertung, um aktuelle Marktveränderungen zu berücksichtigen."
-            },
-            {
-              q: "Kostet es etwas, mein Auto schätzen zu lassen?",
-              a: "Nein, bei Meinautoverkauf.de ist die Wertermittlung ein reiner Service und bleibt kostenfrei. Es entstehen keine versteckten Kosten oder Verpflichtungen."
-            },
-            {
-              q: "Werden Unfallschäden berücksichtigt?",
-              a: "Ja, im Rahmen der detaillierten Zustandsbeschreibung können Sie Schäden, Vorschäden und Unfallhistorie angeben. Wir fließen diese fair in die Berechnung ein, sodass Sie einen realistischen Wert erhalten."
-            },
-            {
-              q: "Kann ich auch Fahrzeuge mit Motorschaden bewerten lassen?",
-              a: "Absolut. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV haben einen Restwert. Unsere KI berücksichtigt den Zustand und ermittelt einen fairen Preis für Ihr Fahrzeug – auch für den Export oder als Teilespender."
-            },
-            {
-              q: "Wie viel ist mein Auto wert, wenn es getunt oder umgebaut ist?",
-              a: "Die KI ist auf Serienmodelle optimiert. Bei speziellen Umbauten, Tuning oder seltenen Fahrzeugen empfehlen wir nach der Online-Einschätzung ein persönliches Gespräch mit unseren Experten für eine individuelle Bewertung."
-            },
-            {
-              q: "Muss ich mein Auto nach der Bewertung verkaufen?",
-              a: "Nein, die Bewertung ist völlig unverbindlich. Sie können den Wert Ihres Autos ermitteln, ohne jegliche Verkaufsverpflichtung einzugehen. Nutzen Sie unseren Service einfach zur Information."
-            }
-          ]}
+          faqs={AUTO_BEWERTEN_FAQS}
         />
 
         <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100 relative overflow-hidden">

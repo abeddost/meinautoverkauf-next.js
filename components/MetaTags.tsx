@@ -100,6 +100,72 @@ const buildBreadcrumbs = (canonicalPath: string): BreadcrumbItem[] => {
   return crumbs;
 };
 
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null;
+
+const isFaqPageSchema = (schema: JsonLdObject): boolean => schema['@type'] === 'FAQPage';
+
+const mergeAndDedupeFaqSchemas = (schemas: JsonLdObject[]): JsonLdObject[] => {
+  const faqSchemas = schemas.filter(isFaqPageSchema);
+  if (faqSchemas.length <= 1) {
+    return schemas;
+  }
+
+  const mergedMainEntity: Record<string, unknown>[] = [];
+  const seenQuestions = new Set<string>();
+
+  for (const faqSchema of faqSchemas) {
+    const mainEntity = faqSchema.mainEntity;
+    if (!Array.isArray(mainEntity)) {
+      continue;
+    }
+
+    for (const entity of mainEntity) {
+      if (!isRecord(entity)) {
+        continue;
+      }
+
+      const questionName = typeof entity.name === 'string' ? entity.name.trim().toLowerCase() : '';
+      const dedupeKey = questionName || JSON.stringify(entity);
+      if (seenQuestions.has(dedupeKey)) {
+        continue;
+      }
+
+      seenQuestions.add(dedupeKey);
+      mergedMainEntity.push(entity);
+    }
+  }
+
+  const firstFaq = faqSchemas[0];
+  const mergedFaqSchema: JsonLdObject = {
+    ...firstFaq,
+    mainEntity: mergedMainEntity,
+  };
+
+  if (import.meta.env.DEV) {
+    console.warn(
+      `Merged ${faqSchemas.length} FAQPage schemas into one to prevent duplicate rich-result markup.`,
+    );
+  }
+
+  const mergedSchemas: JsonLdObject[] = [];
+  let faqInserted = false;
+
+  for (const schema of schemas) {
+    if (!isFaqPageSchema(schema)) {
+      mergedSchemas.push(schema);
+      continue;
+    }
+
+    if (!faqInserted) {
+      mergedSchemas.push(mergedFaqSchema);
+      faqInserted = true;
+    }
+  }
+
+  return mergedSchemas;
+};
+
 const MetaTags: React.FC<MetaTagsProps> = ({
   title,
   description,
@@ -185,13 +251,13 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       ? [extraSchemas]
       : [];
 
-  const schemaBlocks: JsonLdObject[] = [
+  const schemaBlocks: JsonLdObject[] = mergeAndDedupeFaqSchemas([
     organizationSchema,
     websiteSchema,
     webpageSchema,
     ...(breadcrumbSchema ? [breadcrumbSchema] : []),
     ...resolvedExtraSchemas,
-  ];
+  ]);
 
   return (
     <Helmet>

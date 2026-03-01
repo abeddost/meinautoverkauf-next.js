@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
+import { RATGEBER_FAQS } from '../lib/faqContent';
 
 interface Props {
   onCtaClick: () => void;
@@ -356,7 +357,7 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* FAQ Section */}
           <section id="faq">
-            <FAQSection />
+            <FAQSection faqs={RATGEBER_FAQS} />
           </section>
 
           {/* Conclusion */}

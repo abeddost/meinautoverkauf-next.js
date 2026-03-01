@@ -18,6 +18,17 @@ import {
   updateConsent,
 } from './lib/consent';
 import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
+import {
+  AUTO_BEWERTEN_FAQS,
+  AUTO_VERKAUFEN_FAQS,
+  FRANKFURT_FAQS,
+  HOME_FAQS,
+  MAINZ_FAQS,
+  RATGEBER_FAQS,
+  VORTEILE_FAQS,
+  WIESBADEN_FAQS,
+} from './lib/faqContent';
+import { buildFaqPageSchema } from './lib/structuredData';
 import { savePartialLead } from './lib/supabaseFunctions';
 import { consumePendingPhotoPromise } from './lib/pendingPhotoUpload';
 import { setPendingPartialSavePromise } from './lib/pendingPartialSave';
@@ -414,6 +425,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 ogDescription={HOME_OG_DESCRIPTION}
                 twitterTitle={HOME_META_TITLE}
                 twitterDescription={HOME_OG_DESCRIPTION}
+                extraSchemas={buildFaqPageSchema(SITE_URL, '/', HOME_FAQS)}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -826,7 +838,10 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto bewerten online | Kostenlose Wertermittlung" 
                 description="Ermitteln Sie den aktuellen Wert Ihres Fahrzeugs online in wenigen Schritten. Die Bewertung ist kostenlos, unverbindlich und Grundlage für Ihr Ankaufangebot."
                 canonicalUrl="/auto-bewerten"
-                extraSchemas={buildCoreServiceSchema('Auto bewerten online', '/auto-bewerten', 'Fahrzeugbewertung')}
+                extraSchemas={[
+                  buildCoreServiceSchema('Auto bewerten online', '/auto-bewerten', 'Fahrzeugbewertung'),
+                  buildFaqPageSchema(SITE_URL, '/auto-bewerten', AUTO_BEWERTEN_FAQS),
+                ]}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -845,7 +860,10 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Auto verkaufen online | Sicherer Ankauf mit Auszahlung" 
                 description="Verkaufen Sie Ihren Gebrauchtwagen ohne Inserat und ohne Verhandlungsstress. Sie erhalten ein transparentes Angebot, einen Termin und zeitnahe Auszahlung."
                 canonicalUrl="/auto-verkaufen"
-                extraSchemas={buildCoreServiceSchema('Auto verkaufen online', '/auto-verkaufen', 'Autoankauf')}
+                extraSchemas={[
+                  buildCoreServiceSchema('Auto verkaufen online', '/auto-verkaufen', 'Autoankauf'),
+                  buildFaqPageSchema(SITE_URL, '/auto-verkaufen', AUTO_VERKAUFEN_FAQS),
+                ]}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -864,7 +882,10 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Ihre Vorteile beim Autoankauf | Schnell, transparent, sicher" 
                 description="Erfahren Sie, wie Sie beim Verkauf Zeit sparen und Risiken reduzieren: transparenter Ablauf, Vertragsprozesse, optionale Abholung und persönliche Begleitung."
                 canonicalUrl="/vorteile"
-                extraSchemas={buildCoreServiceSchema('Vorteile beim Autoankauf', '/vorteile', 'Autoankauf-Service')}
+                extraSchemas={[
+                  buildCoreServiceSchema('Vorteile beim Autoankauf', '/vorteile', 'Autoankauf-Service'),
+                  buildFaqPageSchema(SITE_URL, '/vorteile', VORTEILE_FAQS),
+                ]}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -884,6 +905,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 description="Nutzen Sie praxisnahe Tipps für einen sicheren Autoverkauf: Wertermittlung, Unterlagen, Vertragsfragen und der richtige Umgang mit Schäden oder Motordefekten."
                 canonicalUrl="/ratgeber"
                 pageType="CollectionPage"
+                extraSchemas={buildFaqPageSchema(SITE_URL, '/ratgeber', RATGEBER_FAQS)}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -902,7 +924,10 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Frankfurt | Online bewerten, fair verkaufen" 
                 description="Verkaufen Sie Ihr Auto in Frankfurt schnell und unkompliziert. Nach der Online-Bewertung erhalten Sie ein Angebot sowie auf Wunsch Abholung und Auszahlung."
                 canonicalUrl="/autoankauf-frankfurt"
-                extraSchemas={buildCitySchemas('Frankfurt am Main', '/autoankauf-frankfurt')}
+                extraSchemas={[
+                  ...buildCitySchemas('Frankfurt am Main', '/autoankauf-frankfurt'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-frankfurt', FRANKFURT_FAQS),
+                ]}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -923,7 +948,10 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Wiesbaden | Online bewerten, fair verkaufen" 
                 description="Verkaufen Sie Ihr Auto in Wiesbaden mit klarem Ablauf: online bewerten, Angebot erhalten und Fahrzeug auf Wunsch abholen lassen. Transparent und ohne Inserat."
                 canonicalUrl="/autoankauf-wiesbaden"
-                extraSchemas={buildCitySchemas('Wiesbaden', '/autoankauf-wiesbaden')}
+                extraSchemas={[
+                  ...buildCitySchemas('Wiesbaden', '/autoankauf-wiesbaden'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-wiesbaden', WIESBADEN_FAQS),
+                ]}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
@@ -944,7 +972,10 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 title="Autoankauf Mainz | Online bewerten, fair verkaufen" 
                 description="Verkaufen Sie Ihr Auto in Mainz schnell und nachvollziehbar. Nach der Online-Bewertung erhalten Sie ein Angebot sowie auf Wunsch Abholung und Auszahlung."
                 canonicalUrl="/autoankauf-mainz"
-                extraSchemas={buildCitySchemas('Mainz', '/autoankauf-mainz')}
+                extraSchemas={[
+                  ...buildCitySchemas('Mainz', '/autoankauf-mainz'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-mainz', MAINZ_FAQS),
+                ]}
               />
               <Hero 
                 onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 

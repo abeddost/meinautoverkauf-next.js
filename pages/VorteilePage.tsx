@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
+import { VORTEILE_FAQS } from '../lib/faqContent';
 
 interface Props {
   onCtaClick: () => void;
@@ -262,48 +263,7 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
             title="Häufig gestellte Fragen zu unseren Vorteilen"
             sectionId="faq-vorteile"
             className="mt-24"
-            faqs={[
-              {
-                q: "Warum ist Ihr Autoankauf besser als der Privatverkauf?",
-                a: "Beim Privatverkauf investieren Sie Wochen in Inserate, Besichtigungen und Verhandlungen – mit Haftungsrisiken und Betrugsgefahr. Bei uns verkaufen Sie Ihr Auto in 24-48 Stunden, erhalten sofort Geld, haben keine Haftung und sparen enorm viel Zeit und Nerven. Wir übernehmen alle Risiken und den gesamten Papierkram."
-              },
-              {
-                q: "Ist die Hausabholung wirklich kostenlos?",
-                a: "Ja, absolut. Innerhalb unseres Einzugsgebiets berechnen wir keinen Cent für die Abholung. Der Preis, den wir Ihnen anbieten, kommt ohne Abzüge bei Ihnen an. Keine Kilometer-Pauschalen, keine Logistikgebühren – komplett kostenfrei."
-              },
-              {
-                q: "Wie schnell erhalte ich mein Geld?",
-                a: "Die Auszahlung erfolgt sofort nach Vertragsunterzeichnung per Banküberweisung. In den meisten Fällen ist das Geld noch am selben Tag auf Ihrem Konto. Keine Wartezeiten, keine verzögerten Zahlungen."
-              },
-              {
-                q: "Was passiert, wenn mein Auto noch finanziert ist?",
-                a: "Kein Problem! Wir kontaktieren Ihre finanzierende Bank, begleichen die Restschuld direkt und zahlen Ihnen den Differenzbetrag aus. Dieser Service ist kostenlos und erspart Ihnen jegliche Kommunikation mit der Bank."
-              },
-              {
-                q: "Muss ich das Auto vorher putzen oder reparieren?",
-                a: "Ein sauberer, gepflegter Wagen macht immer einen besseren Eindruck und kann die Bewertung positiv beeinflussen. Größere Reparaturen vor dem Verkauf lohnen sich jedoch meist nicht finanziell. Wir kaufen Fahrzeuge in jedem Zustand – auch mit Mängeln."
-              },
-              {
-                q: "Gibt es versteckte Gebühren oder Kosten?",
-                a: "Nein, absolut nicht. Unser gesamtes Geschäftsmodell basiert auf Transparenz. Es gibt keine Servicepauschalen, Bearbeitungsgebühren, Logistikkosten oder sonstige versteckte Kosten. Der genannte Preis ist der Preis, den Sie erhalten."
-              },
-              {
-                q: "Was passiert, wenn ich den Termin absagen muss?",
-                a: "Kein Problem. Rufen Sie uns einfach kurz an oder nutzen Sie den Link in Ihrer Bestätigungsmail. Wir finden flexibel einen neuen Termin, der Ihnen besser passt. Es gibt keine Stornierungsgebühren oder Ähnliches."
-              },
-              {
-                q: "Kaufen Sie auch Autos mit Motorschaden oder Unfallschäden?",
-                a: "Ja, wir kaufen Fahrzeuge in jedem Zustand – ob Motorschaden, Getriebeschaden, Unfallschaden oder ohne TÜV. Auch defekte Autos haben einen Restwert."
-              },
-              {
-                q: "Wie funktioniert die Abmeldung des Fahrzeugs?",
-                a: "Wir übernehmen die komplette Abmeldung bei der Zulassungsstelle für Sie. Sie müssen sich um nichts kümmern. Nach der Abmeldung endet automatisch auch Ihre Versicherungs- und Steuerpflicht. Wir stellen Ihnen alle nötigen Unterlagen zur Verfügung."
-              },
-              {
-                q: "Warum sollte ich mich für Meinautoverkauf.de entscheiden?",
-                a: "Wir kombinieren die Vorteile eines schnellen Händlerankaufs mit fairer Preisermittlung. Sie erhalten einen marktgerechten Preis, eine schnelle Auszahlung, kostenlose Abholung und kompletten Service – alles aus einer Hand."
-              }
-            ]}
+            faqs={VORTEILE_FAQS}
           />
 
         <div className="max-w-4xl mx-auto">
