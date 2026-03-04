@@ -168,9 +168,9 @@ const VorteilePage: React.FC<Props> = ({ onCtaClick }) => {
               <li><strong>Flexible Stornierung:</strong> Termin ändern oder absagen ohne Gebühren</li>
             </ul>
 
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Kundenzufriedenheit: Was unsere Kunden sagen</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Kundenerlebnis: Was Sie von uns erwarten können</h2>
             <p className="font-medium leading-relaxed">
-              Über 95% unserer Kunden würden uns weiterempfehlen. Das ist kein Zufall – es ist das Ergebnis unseres kundenorientierten Ansatzes. Wenn Sie Ihren <strong>Gebrauchtwagen verkaufen</strong> möchten, erwarten Sie:
+              Unser Ziel ist, dass der Verkauf Ihres <strong>Gebrauchtwagens</strong> sich fair, transparent und gut organisiert anfühlt. Deshalb legen wir den Fokus auf:
             </p>
             <ul className="list-disc pl-6 space-y-3 font-medium">
               <li><strong>Ehrliche Kommunikation:</strong> Keine falschen Versprechungen oder Lockangebote</li>

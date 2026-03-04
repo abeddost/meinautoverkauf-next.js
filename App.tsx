@@ -91,7 +91,6 @@ const RatgeberPage = lazy(loadRatgeberPage);
 const AutoankaufFrankfurtPage = lazy(loadAutoankaufFrankfurtPage);
 const AutoankaufWiesbadenPage = lazy(loadAutoankaufWiesbadenPage);
 const AutoankaufMainzPage = lazy(loadAutoankaufMainzPage);
-const TrustElements = lazy(() => import('./components/TrustElements'));
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
 const DatenschutzPage = lazy(loadDatenschutzPage);
@@ -778,11 +777,6 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                     </div>
                   </section>
 
-                  <div className={HOME_DEFER_CLASS}>
-                    <Suspense fallback={null}>
-                      <TrustElements />
-                    </Suspense>
-                  </div>
                   <div className={HOME_DEFER_CLASS}>
                     <Suspense fallback={null}>
                       <FAQSection />
