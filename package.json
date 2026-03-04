@@ -11,6 +11,7 @@
     "og:image": "node scripts/generate-og-image.mjs",
     "check:pagespeed": "node scripts/check-pagespeed-gate.mjs",
     "check:pagespeed:regression": "node scripts/check-pagespeed-regression.mjs",
+    "icons:favicon": "node scripts/generate-favicons.mjs",
     "images:webp": "node scripts/convert-png-to-webp.mjs --quality 80",
     "images:webp:dry-run": "node scripts/convert-png-to-webp.mjs --quality 80 --dry-run"
   },
@@ -31,6 +32,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.24",
     "postcss": "^8.5.6",
+    "png-to-ico": "^3.0.1",
     "rollup-plugin-visualizer": "^6.0.5",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.19",
