@@ -18,12 +18,13 @@ const PNG_OPTIONS = {
   effort: 10,
 };
 
+const SMALL_PADDING = 0.02;
 const STANDARD_PADDING = 0.06;
 const MASKABLE_PADDING = 0.1;
 
 const standardOutputs = [
-  { name: "favicon-48x48.png", size: 48 },
-  { name: "favicon-96x96.png", size: 96 },
+  { name: "favicon-48x48.png", size: 48, paddingRatio: SMALL_PADDING },
+  { name: "favicon-96x96.png", size: 96, paddingRatio: SMALL_PADDING },
   { name: "favicon-192x192.png", size: 192 },
   { name: "favicon-512x512.png", size: 512 },
   { name: "apple-touch-icon.png", size: 180 },
@@ -82,7 +83,7 @@ async function createIco({ sourceBuffer, outputPath }) {
       await createPngIcon({
         sourceBuffer,
         size,
-        paddingRatio: STANDARD_PADDING,
+        paddingRatio: SMALL_PADDING,
         outputPath: layerPath,
       });
       layerPaths.push(layerPath);
@@ -123,7 +124,7 @@ async function main() {
     await createPngIcon({
       sourceBuffer: trimmedSource,
       size: output.size,
-      paddingRatio: STANDARD_PADDING,
+      paddingRatio: output.paddingRatio ?? STANDARD_PADDING,
       outputPath,
     });
     await logFileSize(outputPath);
