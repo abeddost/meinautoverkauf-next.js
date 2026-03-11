@@ -352,7 +352,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
     const updateCtaVisibility = () => {
       if (raf !== null) return;
       raf = window.requestAnimationFrame(() => {
-        const threshold = Math.max(120, Math.round(window.innerHeight * 0.2));
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollableHeight <= 0) {
+          setShowMobileCta(false);
+          raf = null;
+          return;
+        }
+
+        const threshold = scrollableHeight * 0.2;
         setShowMobileCta(window.scrollY >= threshold);
         raf = null;
       });
@@ -365,7 +372,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
       window.removeEventListener('scroll', updateCtaVisibility);
       window.removeEventListener('resize', updateCtaVisibility);
     };
-  }, []);
+  }, [location.pathname]);
 
   const handleStartValuation = (details: CarDetails, result: ValuationResult) => {
     setCarDetails(details);
