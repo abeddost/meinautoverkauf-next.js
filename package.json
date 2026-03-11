@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:analyze": "ANALYZE=true tsc && ANALYZE=true vite build",
+    "check:guide-similarity": "node scripts/check-guide-similarity.mjs",
     "preview": "vite preview",
     "og:image": "node scripts/generate-og-image.mjs",
     "check:pagespeed": "node scripts/check-pagespeed-gate.mjs",

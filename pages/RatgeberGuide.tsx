@@ -233,18 +233,23 @@ const RatgeberGuidePage: React.FC<Props> = ({
   const topicContext = TOPIC_CONTEXT_MAP[guide.slug];
 
   const checklistItems = guide.quickFacts.map((fact, index) => ({
-    title: `Prüfpunkt ${index + 1}`,
-    text: `${fact} Verbinden Sie diesen Punkt konkret mit dem Abschnitt "${guide.sections[index % guide.sections.length]?.heading ?? 'Ablauf'}", damit Bewertung und Übergabe auf derselben Datenbasis erfolgen.`,
+    title: guide.sections[index % guide.sections.length]?.heading ?? `Prüfpunkt ${index + 1}`,
+    text: fact,
   }));
 
   const mistakeItems = guide.sections.slice(0, 4).map((section, index) => {
     const source = section.paragraphs[0] ?? '';
     const normalizedSource = source.endsWith('.') ? source : `${source}.`;
     return {
-    title: `Fehler ${index + 1}: ${section.heading}`,
-    text: `${normalizedSource} Dieser Punkt sollte vor dem finalen Termin anhand konkreter Unterlagen oder Zustandsnachweise abgesichert werden.`,
-  };
+      title: `Risiko ${index + 1}: ${section.heading}`,
+      text: normalizedSource,
+    };
   });
+
+  const checklistHeading = `Checkliste: ${guide.sections[0]?.heading ?? 'Vorgehen'}`;
+  const checklistIntro = `Diese Punkte sind auf den Fokus "${guide.h1}" ausgerichtet und helfen bei einer sauberen Vorbereitung.`;
+  const riskHeading = `Stolperfallen bei ${guide.sections[1]?.heading ?? 'der Umsetzung'}`;
+  const riskIntro = `Diese Risikofelder tauchen in diesem Themenfeld am häufigsten auf und sollten vor dem Abschluss geklärt sein.`;
 
   const articleSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -380,9 +385,9 @@ const RatgeberGuidePage: React.FC<Props> = ({
             )}
 
             <section className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Praxis-Checkliste vor der finalen Zusage</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">{checklistHeading}</h2>
               <p className="text-slate-600 font-medium leading-relaxed mb-6">
-                Nutzen Sie diese komprimierte Prüfstruktur, um den Verkauf ohne operative Lücken abzuschließen. Die Punkte sind auf den konkreten Seitenfokus zugeschnitten und helfen, Preis- und Ablaufstabilität zu sichern.
+                {checklistIntro}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {checklistItems.map((item) => (
@@ -395,9 +400,9 @@ const RatgeberGuidePage: React.FC<Props> = ({
             </section>
 
             <section className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
-              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Typische Fehlentscheidungen vermeiden</h2>
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">{riskHeading}</h2>
               <p className="text-slate-600 font-medium leading-relaxed mb-6">
-                In der Praxis scheitern Verkäufe selten am Grundpreis, sondern an unklaren Prozesspunkten. Diese vier Fehler treten am häufigsten auf und lassen sich mit guter Vorbereitung zuverlässig vermeiden.
+                {riskIntro}
               </p>
               <ul className="space-y-4">
                 {mistakeItems.map((item) => (
@@ -407,9 +412,6 @@ const RatgeberGuidePage: React.FC<Props> = ({
                   </li>
                 ))}
               </ul>
-              <p className="text-slate-600 font-medium leading-relaxed mt-6">
-                Wenn diese Punkte vorab geklärt sind, bleibt der finale Termin deutlich effizienter: weniger Rückfragen, weniger Nachsteuerung und ein klarer Abschluss mit dokumentierter Übergabe.
-              </p>
             </section>
 
             <FAQSection
