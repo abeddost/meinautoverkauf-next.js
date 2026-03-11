@@ -237,3 +237,141 @@ export const MAINZ_FAQS: FAQItem[] = [
     a: "Ja. Wir übernehmen die Abmeldung für Sie, damit der Verkauf für Sie möglichst unkompliziert bleibt."
   }
 ];
+
+export const RUESSELSHEIM_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie Opel-Fahrzeuge und Stellantis-Flottenwagen in Rüsselsheim an?",
+    a: "Ja. In Rüsselsheim bewerten wir täglich Opel-, Peugeot- und Citroën-Fahrzeuge, häufig mit Flottenhistorie. Gerade bei gut gepflegten Firmenfahrzeugen erzielen Sie oft einen besseren Preis als erwartet."
+  },
+  {
+    q: "Ist eine Fahrzeugübergabe in der Nähe des Frankfurter Flughafens möglich?",
+    a: "Ja. Rüsselsheim liegt direkt an der A60 – der Frankfurter Flughafen ist in ca. 10 bis 15 Minuten erreichbar. Wir stimmen Übergabepunkt und Termin individuell ab, auch bei kurzfristiger Abreise."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Rüsselsheim zuständig?",
+    a: "Fahrzeuge mit Rüsselsheimer Kennzeichen (GG – Kreis Groß-Gerau) werden bei der Zulassungsbehörde des Landkreises Groß-Gerau abgemeldet. Wir übernehmen diesen Schritt vollständig für Sie."
+  },
+  {
+    q: "Kaufen Sie auch ältere Dieselfahrzeuge oder Autos mit hoher Laufleistung?",
+    a: "Ja. Hochkilometrige Dieselfahrzeuge und ältere Modelle haben oft noch einen soliden Restwert – besonders wenn sie für den Export geeignet sind. Wir bewerten transparent auf Basis aktueller Marktdaten."
+  },
+  {
+    q: "Holen Sie Fahrzeuge aus allen Rüsselsheimer Stadtteilen ab?",
+    a: "Ja. Wir holen in der Kernstadt sowie in Bauschheim, Königstädten, Haßloch, Crumstadt, Goddelau, Leeheim und Nauheim ab – ohne zusätzliche Anfahrtskosten."
+  }
+];
+
+export const DARMSTADT_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie auch Fahrzeuge von Studierenden der TU Darmstadt?",
+    a: "Ja. Gerade beim Studienabschluss oder einem Umzug ins Ausland ist ein schneller, unkomplizierter Verkauf ideal. Wir bewerten alle Fahrzeugtypen fair – auch Kleinwagen und ältere Erstfahrzeuge."
+  },
+  {
+    q: "Können internationale Mitarbeitende (z. B. von ESA/ESOC oder Merck) ihr Fahrzeug verkaufen?",
+    a: "Ja. Wir kaufen auch Fahrzeuge von internationalen Beschäftigten an, einschließlich Fahrzeuge mit ausländischer Zulassung oder kurzem deutschen Zulassungszeitraum. Sprechen Sie uns einfach an."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Darmstadt zuständig?",
+    a: "Fahrzeuge mit Darmstädter Kennzeichen (DA) werden beim Straßenverkehrsamt der Stadt Darmstadt abgemeldet. Wir übernehmen die Abmeldung vollständig für Sie – kein Behördengang nötig."
+  },
+  {
+    q: "Holen Sie Fahrzeuge auch in Griesheim, Weiterstadt oder Pfungstadt ab?",
+    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Darmstadt sowie den Landkreis Darmstadt-Dieburg, inklusive Griesheim, Weiterstadt, Pfungstadt, Langen und Mörfelden-Walldorf."
+  },
+  {
+    q: "Kaufen Sie auch zurückgegebene Firmenwagen oder Leasingfahrzeuge?",
+    a: "Ja. Leasingrückläufer und Firmenfahrzeuge aus dem Merck- oder Technologiepark-Umfeld bewerten wir gerne. Voraussetzung ist ein klarer Eigentümernachweis – bei Fragen helfen wir Ihnen weiter."
+  }
+];
+
+export const KOBLENZ_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie auch Dienstwagen und Behördenfahrzeuge in Koblenz an?",
+    a: "Ja. In Koblenz bewerten wir regelmäßig Fahrzeuge aus Behörden-, Dienst- und Fuhrparkumfeld. Entscheidend sind Zustand, Laufleistung und nachvollziehbare Historie."
+  },
+  {
+    q: "Holen Sie Fahrzeuge auch im Rhein-Mosel-Umland wie Lahnstein oder Neuwied ab?",
+    a: "Ja. Unser Einzugsgebiet umfasst Koblenz sowie angrenzende Orte wie Lahnstein, Neuwied, Andernach, Bendorf und Mülheim-Kärlich. Die Abholung ist für Sie kostenlos."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Fahrzeuge in Koblenz zuständig?",
+    a: "Für Fahrzeuge mit Koblenzer Kennzeichen ist die Zulassungsbehörde der Stadt Koblenz zuständig. Wir übernehmen die Abmeldung vollständig für Sie."
+  },
+  {
+    q: "Kaufen Sie auch ältere Diesel oder Fahrzeuge mit hoher Laufleistung?",
+    a: "Ja. Gerade Pendler- und Langstreckenfahrzeuge mit hoher Laufleistung haben oft noch einen soliden Restwert. Wir bewerten transparent auf Basis aktueller Marktdaten."
+  },
+  {
+    q: "Ist der Ankauf auch bei Exportfahrzeugen oder Autos ohne HU möglich?",
+    a: "Ja. Auch Fahrzeuge für den Export sowie Autos ohne gültige HU können angekauft werden. Voraussetzung ist ein klarer Eigentumsnachweis und vollständige Unterlagen."
+  }
+];
+
+export const OFFENBACH_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie typische Pendlerfahrzeuge aus Offenbach an?",
+    a: "Ja. Offenbach ist ein starker Pendlerstandort. Wir bewerten regelmäßig Fahrzeuge mit höherer Laufleistung fair, wenn Wartung und Zustand nachvollziehbar sind."
+  },
+  {
+    q: "Was ist der Unterschied zwischen Zulassungsstelle Stadt Offenbach und Kreis Offenbach?",
+    a: "In der Region gibt es unterschiedliche Zuständigkeiten. Wir prüfen vor dem Ankauf, welche Behörde für Ihr Fahrzeug zuständig ist, und übernehmen die korrekte Abmeldung für Sie."
+  },
+  {
+    q: "Ist eine Abholung in Kaiserlei, Hafen Offenbach oder im Gewerbegebiet möglich?",
+    a: "Ja. Wir holen Fahrzeuge auch an Firmenstandorten und Gewerbeadressen ab, z. B. im Bereich Kaiserlei oder Hafen Offenbach. Termin und Übergabepunkt stimmen wir individuell ab."
+  },
+  {
+    q: "Kaufen Sie auch Fahrzeuge von internationalen Eigentümern an?",
+    a: "Ja. Wir kaufen auch Fahrzeuge von internationalen Eigentümern an. Bei ausländischen Dokumenten prüfen wir die Unterlagen vorab, damit die Abwicklung reibungslos bleibt."
+  },
+  {
+    q: "Nehmen Sie Firmenwagen und Leasingrückläufer in Offenbach an?",
+    a: "Ja. Firmenfahrzeuge und Leasingrückläufer bewerten wir regelmäßig. Wichtig sind ein eindeutiger Eigentümernachweis und vollständige Fahrzeugunterlagen."
+  }
+];
+
+export const MANNHEIM_FAQS: FAQItem[] = [
+  {
+    q: "Holen Sie Fahrzeuge in allen Mannheimer Stadtteilen ab?",
+    a: "Ja. Wir holen in der gesamten Quadratestadt ab – inklusive Neckarstadt-Ost, Neckarstadt-West, Lindenhof, Rheinau, Sandhofen, Käfertal, Vogelstang und Innenstadt. Keine Anfahrtskosten."
+  },
+  {
+    q: "Kaufen Sie auch Fahrzeuge aus dem Raum Ludwigshafen und Rhein-Neckar-Kreis?",
+    a: "Ja. Unser Einzugsgebiet umfasst Mannheim und die gesamte Metropolregion Rhein-Neckar – inklusive Ludwigshafen, Viernheim, Weinheim, Schwetzingen, Hockenheim, Eppelheim und Walldorf."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Mannheimer Fahrzeuge zuständig?",
+    a: "Mannheimer Fahrzeuge (Kennzeichen MA) werden beim Straßenverkehrsamt der Stadt Mannheim abgemeldet. Wir übernehmen die Abmeldung vollständig für Sie – kein eigener Behördengang nötig."
+  },
+  {
+    q: "Kaufen Sie auch hochkilometrige Pendlerfahrzeuge an?",
+    a: "Ja. Mannheim ist ein starker Pendlerstandort. Gut gewartete Pendlerfahrzeuge mit hoher Laufleistung haben oft noch einen soliden Marktwert – besonders bei nachvollziehbarer Servicehistorie. Wir bewerten transparent."
+  },
+  {
+    q: "Ist ein Ankauf auch bei Fahrzeugen mit rheinland-pfälzischem Kennzeichen möglich?",
+    a: "Ja. Da Mannheim direkt an der Grenze zu Rheinland-Pfalz liegt, kaufen wir regelmäßig Fahrzeuge mit LU-, NW- oder FT-Kennzeichen an. Entscheidend ist der Wohnsitz des Eigentümers, nicht das Kennzeichen."
+  }
+];
+
+export const HEIDELBERG_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie auch Fahrzeuge von Studierenden der Universität Heidelberg?",
+    a: "Ja. Gerade beim Studienabschluss, Umzug oder Auslandsaufenthalt ist ein schneller Verkauf ideal. Wir bewerten alle Fahrzeugtypen fair – auch ältere Erstfahrzeuge mit hoher Laufleistung."
+  },
+  {
+    q: "Können internationale Mitarbeitende (z. B. von DKFZ, EMBL oder SAP) ihr Fahrzeug verkaufen?",
+    a: "Ja. Wir kaufen Fahrzeuge von internationalen Beschäftigten an – einschließlich Fahrzeuge mit ausländischer Zulassung oder kurzem deutschen Zulassungszeitraum. Sprechen Sie uns gerne an."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Heidelberg zuständig?",
+    a: "Heidelberger Fahrzeuge (Kennzeichen HD) werden beim Straßenverkehrsamt der Stadt Heidelberg abgemeldet. Wir übernehmen die Abmeldung vollständig für Sie."
+  },
+  {
+    q: "Holen Sie Fahrzeuge auch aus Leimen, Wiesloch, Walldorf oder Schwetzingen ab?",
+    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Heidelberg sowie den Rhein-Neckar-Kreis, inklusive Leimen, Wiesloch, Walldorf, Schwetzingen, Dossenheim, Eppelheim und Sandhausen."
+  },
+  {
+    q: "Kaufen Sie auch Leasingfahrzeuge oder Dienstwagen aus dem SAP-Umfeld an?",
+    a: "Ja. Leasingrückläufer und Firmenfahrzeuge aus dem SAP-Campus Walldorf oder dem Technologiepark Heidelberg bewerten wir gerne. Voraussetzung ist ein klarer Eigentümernachweis."
+  }
+];

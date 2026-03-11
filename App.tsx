@@ -21,10 +21,16 @@ import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
 import {
   AUTO_BEWERTEN_FAQS,
   AUTO_VERKAUFEN_FAQS,
+  DARMSTADT_FAQS,
   FRANKFURT_FAQS,
+  HEIDELBERG_FAQS,
   HOME_FAQS,
+  KOBLENZ_FAQS,
   MAINZ_FAQS,
+  MANNHEIM_FAQS,
+  OFFENBACH_FAQS,
   RATGEBER_FAQS,
+  RUESSELSHEIM_FAQS,
   VORTEILE_FAQS,
   WIESBADEN_FAQS,
 } from './lib/faqContent';
@@ -75,6 +81,12 @@ const loadRatgeberPage = () => import('./pages/Ratgeber');
 const loadAutoankaufFrankfurtPage = () => import('./pages/AutoankaufFrankfurt');
 const loadAutoankaufWiesbadenPage = () => import('./pages/AutoankaufWiesbaden');
 const loadAutoankaufMainzPage = () => import('./pages/AutoankaufMainz');
+const loadAutoankaufRuesselsheimPage = () => import('./pages/AutoankaufRuesselsheim');
+const loadAutoankaufDarmstadtPage = () => import('./pages/AutoankaufDarmstadt');
+const loadAutoankaufKoblenzPage = () => import('./pages/AutoankaufKoblenz');
+const loadAutoankaufOffenbachPage = () => import('./pages/AutoankaufOffenbach');
+const loadAutoankaufMannheimPage = () => import('./pages/AutoankaufMannheim');
+const loadAutoankaufHeidelbergPage = () => import('./pages/AutoankaufHeidelberg');
 const loadImpressumPage = () => import('./pages/Impressum');
 const loadDatenschutzPage = () => import('./pages/Datenschutz');
 const loadAnalyzingPage = () => import('./pages/AnalyzingPage');
@@ -91,6 +103,12 @@ const RatgeberPage = lazy(loadRatgeberPage);
 const AutoankaufFrankfurtPage = lazy(loadAutoankaufFrankfurtPage);
 const AutoankaufWiesbadenPage = lazy(loadAutoankaufWiesbadenPage);
 const AutoankaufMainzPage = lazy(loadAutoankaufMainzPage);
+const AutoankaufRuesselsheimPage = lazy(loadAutoankaufRuesselsheimPage);
+const AutoankaufDarmstadtPage = lazy(loadAutoankaufDarmstadtPage);
+const AutoankaufKoblenzPage = lazy(loadAutoankaufKoblenzPage);
+const AutoankaufOffenbachPage = lazy(loadAutoankaufOffenbachPage);
+const AutoankaufMannheimPage = lazy(loadAutoankaufMannheimPage);
+const AutoankaufHeidelbergPage = lazy(loadAutoankaufHeidelbergPage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
 const DatenschutzPage = lazy(loadDatenschutzPage);
@@ -110,6 +128,12 @@ export const preloadRouteModules = async () => {
     loadAutoankaufFrankfurtPage(),
     loadAutoankaufWiesbadenPage(),
     loadAutoankaufMainzPage(),
+    loadAutoankaufRuesselsheimPage(),
+    loadAutoankaufDarmstadtPage(),
+    loadAutoankaufKoblenzPage(),
+    loadAutoankaufOffenbachPage(),
+    loadAutoankaufMannheimPage(),
+    loadAutoankaufHeidelbergPage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
   ]);
@@ -979,6 +1003,150 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufMainzPage 
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-ruesselsheim" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags 
+                title="Autoankauf Rüsselsheim | Sofort Geld, kostenlose Abholung"
+                description="Auto verkaufen in Rüsselsheim: Online bewerten, faire Preisermittlung, kostenlose Abholung und Auszahlung noch am selben Tag."
+                canonicalUrl="/autoankauf-ruesselsheim"
+                extraSchemas={[
+                  ...buildCitySchemas('Rüsselsheim am Main', '/autoankauf-ruesselsheim'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-ruesselsheim', RUESSELSHEIM_FAQS),
+                ]}
+              />
+              <Hero 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
+                headline="Autoankauf Rüsselsheim – Sofort Geld für Ihr Fahrzeug"
+                subheadline="Kostenlose Abholung im Kreis Groß-Gerau & direkt am Flughafen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufRuesselsheimPage 
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-darmstadt" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags 
+                title="Autoankauf Darmstadt | Fairer Preis & Express-Auszahlung"
+                description="Auto verkaufen in Darmstadt: Schnelle Online-Bewertung, transparentes Angebot und Auszahlung am Tag der Übergabe – ohne Inserat."
+                canonicalUrl="/autoankauf-darmstadt"
+                extraSchemas={[
+                  ...buildCitySchemas('Darmstadt', '/autoankauf-darmstadt'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-darmstadt', DARMSTADT_FAQS),
+                ]}
+              />
+              <Hero 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
+                headline="Autoankauf Darmstadt – Fairer Preis, schnelle Abwicklung"
+                subheadline="Ihr Autoankauf-Partner in der Wissenschaftsstadt Darmstadt"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufDarmstadtPage 
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-koblenz" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Koblenz | Sofort Geld & kostenlose Abholung"
+                description="Auto verkaufen in Koblenz: online bewerten, faires Angebot erhalten, kostenlos abholen lassen und Auszahlung am Übergabetag sichern."
+                canonicalUrl="/autoankauf-koblenz"
+                extraSchemas={[
+                  ...buildCitySchemas('Koblenz', '/autoankauf-koblenz'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-koblenz', KOBLENZ_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Koblenz – Sofort Geld für Ihr Fahrzeug"
+                subheadline="Kostenlose Abholung in Koblenz & im Rhein-Mosel-Umland"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufKoblenzPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-offenbach" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Offenbach | Express-Auszahlung ohne Inserat"
+                description="Auto verkaufen in Offenbach: schnelle Online-Bewertung, transparentes Angebot, kostenlose Abholung und Auszahlung am selben Tag."
+                canonicalUrl="/autoankauf-offenbach"
+                extraSchemas={[
+                  ...buildCitySchemas('Offenbach am Main', '/autoankauf-offenbach'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-offenbach', OFFENBACH_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Offenbach – Fairer Preis, schnelle Auszahlung"
+                subheadline="Direkt in Offenbach und im gesamten OF-Umland"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufOffenbachPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-mannheim" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags 
+                title="Autoankauf Mannheim | Sofort Geld & kostenlose Abholung"
+                description="Auto verkaufen in Mannheim: Schnelle Online-Bewertung, fairer Preis, kostenlose Abholung im gesamten Rhein-Neckar-Raum – ohne Inserat und mit klarer Abwicklung."
+                canonicalUrl="/autoankauf-mannheim"
+                extraSchemas={[
+                  ...buildCitySchemas('Mannheim', '/autoankauf-mannheim'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-mannheim', MANNHEIM_FAQS),
+                ]}
+              />
+              <Hero 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
+                headline="Autoankauf Mannheim – Sofort Geld für Ihr Fahrzeug"
+                subheadline="Kostenlose Abholung im gesamten Rhein-Neckar-Raum"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufMannheimPage 
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-heidelberg" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags 
+                title="Autoankauf Heidelberg | Fairer Preis & Express-Auszahlung"
+                description="Auto verkaufen in Heidelberg: Online bewerten, transparentes Angebot und Auszahlung am Tag der Übergabe – ideal für Studierende und Berufspendler."
+                canonicalUrl="/autoankauf-heidelberg"
+                extraSchemas={[
+                  ...buildCitySchemas('Heidelberg', '/autoankauf-heidelberg'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-heidelberg', HEIDELBERG_FAQS),
+                ]}
+              />
+              <Hero 
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit} 
+                headline="Autoankauf Heidelberg – Fairer Preis, schnelle Abwicklung"
+                subheadline="Ihr Autoankauf-Partner in der Universitätsstadt Heidelberg"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufHeidelbergPage 
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>

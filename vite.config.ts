@@ -15,6 +15,12 @@ const prerenderRoutes = [
   '/autoankauf-frankfurt',
   '/autoankauf-wiesbaden',
   '/autoankauf-mainz',
+  '/autoankauf-ruesselsheim',
+  '/autoankauf-darmstadt',
+  '/autoankauf-koblenz',
+  '/autoankauf-offenbach',
+  '/autoankauf-mannheim',
+  '/autoankauf-heidelberg',
   '/impressum',
   '/datenschutz',
 ];
