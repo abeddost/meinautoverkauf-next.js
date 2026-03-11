@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Hero from '../components/Hero';
 import MetaTags from '../components/MetaTags';
 import FAQSection from '../components/FAQSection';
@@ -26,6 +26,167 @@ const CORE_LINK_COPY: Record<'/auto-bewerten' | '/auto-verkaufen', { label: stri
   },
 };
 
+const INTENT_BOUNDARY_MAP: Record<
+  string,
+  { title: string; description: string; otherSlug: string; otherLabel: string }
+> = {
+  'auto-mit-motorschaden-verkaufen': {
+    title: 'Intent-Abgrenzung: Entscheidung statt Direktankauf',
+    description:
+      'Dieser Ratgeber beantwortet die strategische Frage Reparatur oder Verkauf. Er ist bewusst als Entscheidungsleitfaden aufgebaut. Wenn Sie bereits sicher sind, dass ein Direktankauf gewünscht ist, ist die spezialisierte Service-Seite passender.',
+    otherSlug: 'autoankauf-mit-motorschaden',
+    otherLabel: 'Autoankauf mit Motorschaden',
+  },
+  'autoankauf-mit-motorschaden': {
+    title: 'Intent-Abgrenzung: Serviceprozess statt Grundsatzentscheidung',
+    description:
+      'Diese Seite fokussiert den operativen Ankaufprozess mit Abholung, Vertragsablauf und Auszahlung. Für die wirtschaftliche Vorentscheidung Reparatur versus Verkauf nutzen Sie den separaten Entscheidungsratgeber.',
+    otherSlug: 'auto-mit-motorschaden-verkaufen',
+    otherLabel: 'Auto mit Motorschaden verkaufen',
+  },
+  'unfallwagen-verkaufen': {
+    title: 'Intent-Abgrenzung: rechtssicherer Verkauf im Mittelpunkt',
+    description:
+      'Hier liegt der Schwerpunkt auf Offenlegungspflichten, Vertragsklarheit und Haftungsrisiken beim Verkauf eines Unfallwagens. Für den konkreten Ankaufprozess mit schneller Übergabe nutzen Sie die dedizierte Ankaufseite.',
+    otherSlug: 'unfallwagen-ankauf',
+    otherLabel: 'Unfallwagen Ankauf',
+  },
+  'unfallwagen-ankauf': {
+    title: 'Intent-Abgrenzung: Ankaufabwicklung statt Rechtsgrundlagen',
+    description:
+      'Diese Seite ist auf die praktische Ankaufabwicklung ausgerichtet. Wenn Sie primär die rechtlichen Pflichten und Offenlegungsgrenzen beim Unfallfahrzeug prüfen möchten, ist der Verkaufsratgeber die bessere Ergänzung.',
+    otherSlug: 'unfallwagen-verkaufen',
+    otherLabel: 'Unfallwagen verkaufen',
+  },
+  'autoexport-ankauf': {
+    title: 'Intent-Abgrenzung: Exportankauf als Service',
+    description:
+      'Der Fokus liegt auf dem Serviceprozess für exportgeeignete Fahrzeuge inklusive Dokumenten- und Abmeldelogik. Für die Marktentscheidung, ob Exporthändler wirtschaftlich sinnvoll sind, ist die Vergleichsseite präziser.',
+    otherSlug: 'autoverkauf-an-exporthaendler',
+    otherLabel: 'Autoverkauf an Exporthändler',
+  },
+  'autoverkauf-an-exporthaendler': {
+    title: 'Intent-Abgrenzung: Wirtschaftsvergleich statt Prozessseite',
+    description:
+      'Hier vergleichen Sie, wann Export wirklich lohnt und wann andere Vermarktungswege sinnvoller sind. Für die konkrete Exportankauf-Abwicklung mit Ablaufdetails wechseln Sie zur Service-orientierten Exportseite.',
+    otherSlug: 'autoexport-ankauf',
+    otherLabel: 'Autoexport Ankauf',
+  },
+  'auto-online-verkaufen-sofort-auszahlung': {
+    title: 'Intent-Abgrenzung: Auszahlung und Zahlungslogik im Fokus',
+    description:
+      'Diese Seite vertieft vor allem die sichere Auszahlung, Zahlungsnachweise und den geldseitigen Abschluss. Für die komplette Prozesssicht vom Erstkontakt bis zur Abmeldung nutzen Sie den 7-Schritte-Ablauf.',
+    otherSlug: 'online-autoankauf-ablauf-7-schritte',
+    otherLabel: 'Online-Autoankauf Ablauf in 7 Schritten',
+  },
+  'online-autoankauf-ablauf-7-schritte': {
+    title: 'Intent-Abgrenzung: Gesamtprozess statt Zahlungsdetail',
+    description:
+      'Der Leitfaden strukturiert den gesamten Ablauf in klaren Etappen. Für den vertieften Blick auf Sofort-Auszahlung, Überweisungslogik und sichere Zahlungsfreigabe lesen Sie die spezialisierte Auszahlungsseite.',
+    otherSlug: 'auto-online-verkaufen-sofort-auszahlung',
+    otherLabel: 'Auto online verkaufen mit Sofort-Auszahlung',
+  },
+};
+
+const TOPIC_CONTEXT_MAP: Record<string, { title: string; paragraphs: string[]; bullets?: string[] }> = {
+  'auto-mit-motorschaden-verkaufen': {
+    title: 'Wirtschaftliche Perspektive bei Motorschaden',
+    paragraphs: [
+      'Bei diesem Thema geht es primär um Break-even-Logik: Reparaturkosten, Werkstatt-Risiko und erwarteter Verkaufserlös müssen in einer realistischen Gesamtrechnung zusammengeführt werden.',
+      'Der größte Fehler ist eine rein emotionale Reparaturentscheidung ohne belastbare Kostenbasis. Je klarer die Kalkulation, desto stabiler wird die finale Entscheidung.',
+    ],
+    bullets: [
+      'Kernfrage: Reparaturbudget gegen erwarteten Mehrerlös rechnen',
+      'Relevante Daten: Diagnosebericht, Folgeschaden-Risiko, Standzeitkosten',
+      'Ziel: belastbare Entscheidung vor jedem Verkaufsschritt',
+    ],
+  },
+  'autoankauf-mit-motorschaden': {
+    title: 'Operative Perspektive beim Motorschaden-Ankauf',
+    paragraphs: [
+      'Hier steht der Ablauf im Vordergrund: Abholung, Vertragsstruktur, Zahlungsnachweis und Eigentumsübergang bei nicht fahrbereiten Fahrzeugen.',
+      'Ziel ist weniger die Grundsatzfrage Reparatur ja/nein, sondern ein sauberer Abschluss ohne zusätzliche Stand- und Transportkosten.',
+    ],
+    bullets: [
+      'Kernfrage: Wie wird ein nicht fahrbereites Fahrzeug sicher übergeben?',
+      'Relevante Daten: Standort, Transportfähigkeit, vollständige Fahrzeugpapiere',
+      'Ziel: kurzer, dokumentierter Abschluss ohne Nachtermine',
+    ],
+  },
+  'unfallwagen-verkaufen': {
+    title: 'Rechtliche Perspektive bei Unfallhistorie',
+    paragraphs: [
+      'Diese Seite ist besonders relevant für Verkäufer, die Offenlegungspflichten und Haftungsgrenzen korrekt einhalten möchten. Der Fokus liegt auf belastbarer Dokumentation.',
+      'Wer Schadenumfang und Reparaturstatus präzise beschreibt, reduziert Streitpotenzial und verbessert gleichzeitig die Abschlussqualität.',
+    ],
+    bullets: [
+      'Kernfrage: Welche Vorschäden müssen wie offengelegt werden?',
+      'Relevante Daten: Gutachten, Reparaturrechnungen, Unfallhistorie im Vertrag',
+      'Ziel: rechtssicherer Verkauf mit klarer Haftungsgrenze',
+    ],
+  },
+  'unfallwagen-ankauf': {
+    title: 'Bewertungs- und Verwertungsperspektive beim Unfallwagen-Ankauf',
+    paragraphs: [
+      'Im Ankauf zählen vor allem Verwertbarkeit, struktureller Zustand und Teilelogik. Genau daraus ergibt sich der realistische Restwert trotz Schadenbild.',
+      'Der Mehrwert dieser Seite liegt im Prozessverständnis: Wie aus einem beschädigten Fahrzeug ein planbarer, dokumentierter Verkauf wird.',
+    ],
+    bullets: [
+      'Kernfrage: Welcher Restwert ist trotz Schaden technisch realistisch?',
+      'Relevante Daten: Schadenzone, Reparaturqualität, Marktgängigkeit des Modells',
+      'Ziel: ankaufsfähige Bewertung und schnelle Verwertung',
+    ],
+  },
+  'autoexport-ankauf': {
+    title: 'Serviceperspektive für exportgeeignete Fahrzeuge',
+    paragraphs: [
+      'Dieser Leitfaden adressiert den konkreten Ankaufprozess von Exportfahrzeugen inklusive Dokumentenlogik, Zahlungsfluss und sauberer Abmeldung.',
+      'Relevant ist insbesondere für Fahrzeuge mit schwacher Inlandsnachfrage, bei denen Exportkanäle den wirtschaftlich stabileren Abschluss ermöglichen.',
+    ],
+    bullets: [
+      'Kernfrage: Wie läuft Exportankauf inklusive Formalitäten praktisch ab?',
+      'Relevante Daten: Exportdokumente, Abmeldeweg, Zahlungsfreigabe',
+      'Ziel: operativ sauberer Exportabschluss statt Inseratprozess',
+    ],
+  },
+  'autoverkauf-an-exporthaendler': {
+    title: 'Entscheidungsperspektive: Lohnt Export wirklich?',
+    paragraphs: [
+      'Die Kernfrage ist hier nicht nur \"wie\", sondern \"ob\" Export sinnvoll ist. Bewertet werden Opportunitätskosten, Zeitaufwand und Nettoerlös im Vergleich zu Alternativen.',
+      'Damit dient die Seite als strategischer Filter, bevor ein konkreter Exportankauf-Prozess gestartet wird.',
+    ],
+    bullets: [
+      'Kernfrage: Bringt Export netto mehr als Inlandsverkauf oder Direktankauf?',
+      'Relevante Daten: Preisabschläge, Zeitaufwand, Risiko aus Nachverhandlungen',
+      'Ziel: belastbarer Kanalentscheid vor operativer Umsetzung',
+    ],
+  },
+  'auto-online-verkaufen-sofort-auszahlung': {
+    title: 'Zahlungsperspektive: Auszahlung, Nachweis und Sicherheit',
+    paragraphs: [
+      'Im Zentrum stehen Zahlungswege, Wertstellung und Nachvollziehbarkeit. Die Seite beantwortet vor allem die Frage, wie eine schnelle Auszahlung gleichzeitig sicher bleibt.',
+      'Damit ist sie besonders für Verkäufer relevant, die finanzielle Planbarkeit unmittelbar nach der Übergabe benötigen.',
+    ],
+    bullets: [
+      'Kernfrage: Wann ist Geld rechtssicher verfügbar und dokumentiert?',
+      'Relevante Daten: Zahlungsbeleg, Verwendungszweck, Freigabezeitpunkt',
+      'Ziel: liquide Mittel am Übergabetag mit nachvollziehbarer Spur',
+    ],
+  },
+  'online-autoankauf-ablauf-7-schritte': {
+    title: 'Prozessperspektive: Gesamtworkflow in klaren Stufen',
+    paragraphs: [
+      'Diese Seite strukturiert den Gesamtprozess vom Erstkontakt bis zur Abmeldung und schafft damit operative Orientierung über den gesamten Verkauf hinweg.',
+      'Sie eignet sich besonders für Verkäufer, die nicht nur den Preis, sondern alle zeitlichen und organisatorischen Schritte vorab transparent sehen wollen.',
+    ],
+    bullets: [
+      'Kernfrage: Welche Reihenfolge verhindert Verzögerungen im Verkaufsprozess?',
+      'Relevante Daten: Terminlogik, Unterlagenstatus, Verantwortlichkeiten pro Schritt',
+      'Ziel: durchgängig planbarer Ablauf vom Start bis zur Abmeldung',
+    ],
+  },
+};
+
 const RatgeberGuidePage: React.FC<Props> = ({
   onValuationComplete,
   onValuationSubmit,
@@ -35,13 +196,55 @@ const RatgeberGuidePage: React.FC<Props> = ({
   const guide = getGuideBySlug(slug);
 
   if (!guide) {
-    return <Navigate to="/ratgeber" replace />;
+    return (
+      <div className="animate-in fade-in duration-700">
+        <MetaTags
+          title="Ratgeber-Seite nicht gefunden | Meinautoverkauf.de"
+          description="Die angeforderte Ratgeber-Seite existiert nicht oder wurde verschoben. Nutzen Sie die Ratgeber-Übersicht für alle aktuellen Inhalte."
+          canonicalUrl="/ratgeber"
+          noindex
+        />
+        <div className="container mx-auto px-4 py-20 max-w-3xl">
+          <div className="bg-white rounded-3xl border border-slate-100 p-10 text-center shadow-sm">
+            <h1 className="text-2xl font-black text-brand-dark mb-4">Ratgeber-Seite nicht gefunden</h1>
+            <p className="text-slate-600 font-medium leading-relaxed mb-6">
+              Die URL ist nicht mehr verfügbar oder wurde falsch aufgerufen. In der Ratgeber-Übersicht finden Sie alle aktuellen Leitfäden zum Autoverkauf.
+            </p>
+            <Link
+              to="/ratgeber"
+              className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-xl font-bold hover:bg-orange-600 transition-colors"
+            >
+              Zur Ratgeber-Übersicht
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const guidePath = getGuidePath(guide.slug);
   const relatedGuides = guide.relatedSlugs
     .map((relatedSlug) => GUIDE_CONTENT_BY_SLUG[relatedSlug])
     .filter(Boolean);
+  const intentBoundary = INTENT_BOUNDARY_MAP[guide.slug];
+  const intentBoundaryGuide = intentBoundary
+    ? GUIDE_CONTENT_BY_SLUG[intentBoundary.otherSlug]
+    : undefined;
+  const topicContext = TOPIC_CONTEXT_MAP[guide.slug];
+
+  const checklistItems = guide.quickFacts.map((fact, index) => ({
+    title: `Prüfpunkt ${index + 1}`,
+    text: `${fact} Verbinden Sie diesen Punkt konkret mit dem Abschnitt "${guide.sections[index % guide.sections.length]?.heading ?? 'Ablauf'}", damit Bewertung und Übergabe auf derselben Datenbasis erfolgen.`,
+  }));
+
+  const mistakeItems = guide.sections.slice(0, 4).map((section, index) => {
+    const source = section.paragraphs[0] ?? '';
+    const normalizedSource = source.endsWith('.') ? source : `${source}.`;
+    return {
+    title: `Fehler ${index + 1}: ${section.heading}`,
+    text: `${normalizedSource} Dieser Punkt sollte vor dem finalen Termin anhand konkreter Unterlagen oder Zustandsnachweise abgesichert werden.`,
+  };
+  });
 
   const articleSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -140,6 +343,74 @@ const RatgeberGuidePage: React.FC<Props> = ({
                 )}
               </section>
             ))}
+
+            {topicContext && (
+              <section className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+                <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">{topicContext.title}</h2>
+                {topicContext.paragraphs.map((paragraph, paragraphIndex) => (
+                  <p key={`${topicContext.title}-${paragraphIndex}`} className="text-slate-600 font-medium leading-relaxed mb-4 last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+                {topicContext.bullets && topicContext.bullets.length > 0 && (
+                  <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {topicContext.bullets.map((bullet, bulletIndex) => (
+                      <li key={`${topicContext.title}-bullet-${bulletIndex}`} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            )}
+
+            {intentBoundary && intentBoundaryGuide && (
+              <section className="bg-gradient-to-br from-blue-50 to-white rounded-3xl border border-blue-100 p-8">
+                <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">{intentBoundary.title}</h2>
+                <p className="text-slate-600 font-medium leading-relaxed mb-4">{intentBoundary.description}</p>
+                <p className="text-slate-600 font-medium leading-relaxed">
+                  Verwandter Fokus:
+                  {' '}
+                  <Link to={getGuidePath(intentBoundaryGuide.slug)} className="text-brand-orange font-bold hover:underline">
+                    {intentBoundary.otherLabel}
+                  </Link>
+                  . So bleiben Informations- und Conversion-Intent klar getrennt und Sie landen schneller auf der passenden Seite.
+                </p>
+              </section>
+            )}
+
+            <section className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Praxis-Checkliste vor der finalen Zusage</h2>
+              <p className="text-slate-600 font-medium leading-relaxed mb-6">
+                Nutzen Sie diese komprimierte Prüfstruktur, um den Verkauf ohne operative Lücken abzuschließen. Die Punkte sind auf den konkreten Seitenfokus zugeschnitten und helfen, Preis- und Ablaufstabilität zu sichern.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {checklistItems.map((item) => (
+                  <article key={item.title} className="rounded-2xl bg-slate-50 border border-slate-100 p-5">
+                    <h3 className="font-black text-brand-dark mb-2 text-base">{item.title}</h3>
+                    <p className="text-sm text-slate-600 font-medium leading-relaxed">{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Typische Fehlentscheidungen vermeiden</h2>
+              <p className="text-slate-600 font-medium leading-relaxed mb-6">
+                In der Praxis scheitern Verkäufe selten am Grundpreis, sondern an unklaren Prozesspunkten. Diese vier Fehler treten am häufigsten auf und lassen sich mit guter Vorbereitung zuverlässig vermeiden.
+              </p>
+              <ul className="space-y-4">
+                {mistakeItems.map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-slate-100 bg-white p-5">
+                    <h3 className="font-black text-brand-dark mb-2 text-base">{item.title}</h3>
+                    <p className="text-sm text-slate-600 font-medium leading-relaxed">{item.text}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-slate-600 font-medium leading-relaxed mt-6">
+                Wenn diese Punkte vorab geklärt sind, bleibt der finale Termin deutlich effizienter: weniger Rückfragen, weniger Nachsteuerung und ein klarer Abschluss mit dokumentierter Übergabe.
+              </p>
+            </section>
 
             <FAQSection
               title={`Häufige Fragen: ${guide.h1}`}

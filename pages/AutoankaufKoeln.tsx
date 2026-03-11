@@ -170,6 +170,64 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </section>
 
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Welche Fahrzeuge in Köln besonders häufig angekauft werden
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-6">
+            Im Kölner Markt sehen wir regelmäßig drei Profile: Pendlerfahrzeuge mit solider Laufleistung,
+            Firmen- und Leasingrückläufer sowie klassische Stadtfahrzeuge. Entscheidend ist dabei weniger das
+            Segment an sich, sondern die Nachvollziehbarkeit von Zustand, Wartung und Eigentumslage.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              {
+                title: 'Pendlerfahrzeuge aus dem Rheinland',
+                desc: 'Auch Fahrzeuge mit höherer Laufleistung können stabile Restwerte erzielen, wenn Servicehistorie und technischer Zustand konsistent dokumentiert sind.',
+              },
+              {
+                title: 'Firmenwagen und Leasingrückläufer',
+                desc: 'Gut gepflegte Dienstwagen mit klarer Historie sind oft schnell vermittelbar. Gerade in Köln ist dieses Segment stark vertreten.',
+              },
+              {
+                title: 'Fahrzeuge mit Reparaturthemen',
+                desc: 'Motorschaden, Unfallschaden oder fehlende HU schließen den Ankauf nicht aus. Wichtig ist eine transparente Zustandsbeschreibung ohne Beschönigung.',
+              },
+              {
+                title: 'Kurzstrecken- und Stadtfahrzeuge',
+                desc: 'Kompaktfahrzeuge aus Innenstadtlagen sind nach wie vor gefragt. Eine saubere Dokumentation reduziert Preisabschläge bei der Übergabe.',
+              },
+            ].map((item) => (
+              <article key={item.title} className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                <h3 className="font-black text-brand-dark mb-2 text-sm">{item.title}</h3>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">Autoankauf Köln vs. Privatverkauf</h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Beim Privatverkauf sind theoretisch hohe Erlöse möglich, praktisch entstehen jedoch häufig Wartezeiten,
+            Sicherheitsfragen und operative Reibung. Der Direktankauf priorisiert Planbarkeit und klare Dokumentation.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { label: 'Zeit bis Abschluss', ankauf: 'Planbar, oft 1-2 Tage', privat: 'Häufig mehrere Wochen' },
+              { label: 'Terminaufwand', ankauf: 'Ein koordinierter Übergabetermin', privat: 'Mehrere Besichtigungen/Probefahrten' },
+              { label: 'Zahlungssicherheit', ankauf: 'Dokumentierte Auszahlung', privat: 'Abhängig vom Käuferverhalten' },
+              { label: 'Abmeldung', ankauf: 'Auf Wunsch inklusive', privat: 'Selbst zu organisieren' },
+            ].map((row) => (
+              <div key={row.label} className="bg-white border border-slate-100 rounded-2xl p-4">
+                <div className="text-xs uppercase tracking-wide font-black text-slate-500 mb-2">{row.label}</div>
+                <div className="text-sm font-semibold text-green-700">Ankauf: {row.ankauf}</div>
+                <div className="text-sm font-medium text-slate-500 mt-1">Privat: {row.privat}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-16 max-w-4xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="relative z-10">
@@ -186,6 +244,34 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
               über Kreisgrenzen hinweg sauber bleibt.
             </p>
           </div>
+        </section>
+
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Übergabeszenarien in Köln: so bleibt der Termin realistisch
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-4">
+            In der Praxis entstehen Verzögerungen selten beim Preis, sondern bei Terminlogistik und Unterlagen.
+            Gerade in Köln mit dichtem Verkehr und begrenzten Parkflächen ist ein sauber geplanter Übergabepunkt
+            entscheidend für einen schnellen Abschluss.
+          </p>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Bewährt hat sich ein klarer Ablauf: Unterlagen vorab prüfen, Erreichbarkeit des Standorts abstimmen,
+            Schlüssel und Nachweise vollständig bereitlegen und offene Mängelpunkte bereits vor dem Termin
+            transparent benennen. Dadurch sinkt die Wahrscheinlichkeit von Nachverhandlungen deutlich.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              'Terminfenster außerhalb der Hauptverkehrszeit wählen',
+              'Fahrzeugdokumente und Schlüssel am Vortag komplett prüfen',
+              'Bekannte Schäden vorab mit kurzen Fotos dokumentieren',
+              'Zahlungs- und Abmeldeablauf vor Ort eindeutig bestätigen',
+            ].map((point) => (
+              <li key={point} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
+                {point}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <div className="max-w-4xl mx-auto">
@@ -206,6 +292,12 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
               </Link>
               <Link to="/autoankauf-frankfurt" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Autoankauf Frankfurt
+              </Link>
+              <Link to="/ratgeber/autoankauf-trotz-finanzierung" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Ratgeber Finanzierung
+              </Link>
+              <Link to="/ratgeber/unterlagen-autoverkauf-checkliste" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Ratgeber Unterlagen
               </Link>
               <Link to="/auto-verkaufen" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Auto verkaufen

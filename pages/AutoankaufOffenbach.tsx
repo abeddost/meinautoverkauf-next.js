@@ -221,6 +221,34 @@ const AutoankaufOffenbachPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </section>
 
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Kaiserlei, Hafen und Pendlerachsen: so bleibt die Übergabe planbar
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-4">
+            Offenbach ist eng mit den Verkehrsachsen rund um Kaiserlei, Frankfurter Osten und Hanau
+            verbunden. Für den Fahrzeugverkauf bedeutet das: Terminfenster und Übergabeorte sollten
+            vorab realistisch gewählt werden, damit der Ablauf nicht durch Verkehrsspitzen ausgebremst wird.
+          </p>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Besonders bei Firmenwagen, Leasingrückläufern oder Fahrzeugen aus Schichtbetrieb hilft eine
+            strukturierte Vorbereitung mit klarer Dokumentenlage. So bleiben Preis, Zahlungsabwicklung und
+            Abmeldung auch bei engem Zeitplan stabil und nachvollziehbar.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              'Übergabeort mit sicherer Stellfläche und guter Erreichbarkeit definieren',
+              'Fahrzeugpapiere, Ausweis, Schlüssel und Vollmachten vollständig bereitlegen',
+              'Mängel und Vorschäden schriftlich sowie mit Fotos dokumentieren',
+              'Zuständigkeit Stadt Offenbach vs. Kreis Offenbach vor Termin klären',
+            ].map((point) => (
+              <div key={point} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
+                {point}
+              </div>
+            ))}
+          </div>
+        </section>
+
         <div className="max-w-4xl mx-auto">
           <FAQSection
             title="Häufige Fragen zum Autoankauf in Offenbach"

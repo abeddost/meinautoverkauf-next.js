@@ -516,7 +516,7 @@ export const GUIDE_CONTENT: GuidePageContent[] = [
   },
   {
     slug: 'autoankauf-mit-motorschaden',
-    title: 'Autoankauf mit Motorschaden | Abholung und sichere Abwicklung',
+    title: 'Autoankauf Motorschaden | Abholung und sichere Abwicklung',
     description:
       'Direkter Autoankauf mit Motorschaden: kostenlos abholen lassen, Restwert fair bewerten und sicher per Vertrag verkaufen.',
     h1: 'Autoankauf mit Motorschaden – kostenlos abholen lassen und sicher verkaufen',
@@ -705,7 +705,7 @@ export const GUIDE_CONTENT: GuidePageContent[] = [
   },
   {
     slug: 'autoankauf-firmenwagen-gewerbe',
-    title: 'Autoankauf Firmenwagen und Gewerbe | Schnelle Flottenabwicklung',
+    title: 'Autoankauf Firmenwagen | Schnelle Gewerbeabwicklung',
     description:
       'Autoankauf für Firmenwagen und Gewerbe: transparente Preise, Rechnung, klare Eigentumsnachweise und schnelle Abwicklung auch bei mehreren Fahrzeugen.',
     h1: 'Autoankauf für Firmenwagen und Gewerbe – inkl. Rechnung und schneller Abwicklung',
@@ -837,7 +837,7 @@ export const GUIDE_CONTENT: GuidePageContent[] = [
   },
   {
     slug: 'kilometerstand-scheckheft-vorbesitzer-preis',
-    title: 'Kilometerstand, Scheckheft, Vorbesitzer | Was den Preis treibt',
+    title: 'Kilometerstand & Scheckheft | Was den Autopreis bestimmt',
     description:
       'Welche Faktoren beeinflussen den Autopreis am stärksten? Kilometerstand, Scheckheft, Vorbesitzer und Zustand praxisnah erklärt.',
     h1: 'Kilometerstand, Scheckheft, Vorbesitzer: Was zählt am meisten beim Preis?',
@@ -906,7 +906,7 @@ export const GUIDE_CONTENT: GuidePageContent[] = [
   },
   {
     slug: 'rechtssicherer-kaufvertrag-auto',
-    title: 'Rechtssicherer Kaufvertrag Auto | Klauseln und Übergabeprotokoll',
+    title: 'Kaufvertrag Auto rechtssicher | Klauseln & Übergabeprotokoll',
     description:
       'Rechtssicherer Kaufvertrag fürs Auto: Muss-Klauseln, Gewährleistung, bekannte Mängel und ein sauberes Übergabeprotokoll.',
     h1: 'Der rechtssichere Kaufvertrag fürs Auto – Must-Klauseln und Übergabeprotokoll',

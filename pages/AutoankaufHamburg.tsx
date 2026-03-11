@@ -169,6 +169,65 @@ const AutoankaufHamburgPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </section>
 
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Typische Fahrzeugprofile im Hamburger Ankauf
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-6">
+            Hamburg zeigt eine breite Mischung aus Stadtfahrzeugen, Vielfahrer-Modellen und gewerblichen
+            Fahrzeugen. Für die Bewertung ist deshalb ein differenzierter Blick auf Nutzung und Zustand wichtig,
+            statt pauschaler Vergleich mit Listenwerten.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              {
+                title: 'Pendler- und Vielfahrerfahrzeuge',
+                desc: 'Fahrzeuge mit höherer Laufleistung bleiben attraktiv, wenn Wartung und Historie klar belegbar sind.',
+              },
+              {
+                title: 'Firmenfahrzeuge aus Gewerbe- und Hafenumfeld',
+                desc: 'Dienstwagen und Leasingrückläufer lassen sich bei sauberer Dokumentation effizient abwickeln.',
+              },
+              {
+                title: 'Stadtfahrzeuge mit Kurzstreckenprofil',
+                desc: 'Kompaktfahrzeuge aus urbaner Nutzung sind weiterhin stark gefragt, sofern Technik und Pflegezustand plausibel sind.',
+              },
+              {
+                title: 'Fahrzeuge mit Mängeln oder ohne HU',
+                desc: 'Auch bei Defekten bleibt der Verkauf möglich. Wichtig ist eine ehrliche Zustandsangabe ohne spätere Überraschungen.',
+              },
+            ].map((item) => (
+              <article key={item.title} className="bg-slate-50 rounded-2xl p-5 border border-slate-100">
+                <h3 className="font-black text-brand-dark mb-2 text-sm">{item.title}</h3>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">{item.desc}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">Autoankauf Hamburg vs. Privatverkauf</h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            In einer Metropole wie Hamburg ist der Unterschied vor allem organisatorisch spürbar: Der Direktankauf
+            priorisiert Termin- und Prozesssicherheit, während der Privatverkauf häufig mehr Abstimmung und Risiko
+            mitbringt.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { label: 'Abwicklungsdauer', ankauf: 'Oft 1-2 Tage', privat: 'Mehrere Wochen möglich' },
+              { label: 'Koordinationsaufwand', ankauf: 'Ein klarer Termin', privat: 'Viele Einzeltermine' },
+              { label: 'Zahlung und Nachweise', ankauf: 'Strukturiert dokumentiert', privat: 'Stark abhängig vom Käufer' },
+              { label: 'Formalitäten', ankauf: 'Abmeldung mit übernehmbar', privat: 'Eigenorganisation nötig' },
+            ].map((row) => (
+              <div key={row.label} className="bg-white border border-slate-100 rounded-2xl p-4">
+                <div className="text-xs uppercase tracking-wide font-black text-slate-500 mb-2">{row.label}</div>
+                <div className="text-sm font-semibold text-green-700">Ankauf: {row.ankauf}</div>
+                <div className="text-sm font-medium text-slate-500 mt-1">Privat: {row.privat}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-16 max-w-4xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="relative z-10">
@@ -181,6 +240,64 @@ const AutoankaufHamburgPage: React.FC<Props> = ({ onCtaClick }) => {
               Bei Fahrzeugen aus der Metropolregion klären wir die zuständige Stelle vorab, damit der Ablauf auch
               über Bundeslandgrenzen hinweg sauber bleibt.
             </p>
+          </div>
+        </section>
+
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Übergabe in Hamburg: Planung zwischen Innenstadt und Metropolregion
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-4">
+            In Hamburg entscheidet die Terminvorbereitung besonders stark über die Prozessqualität. Unterschiedliche
+            Verkehrsachsen, Parkplatzsituationen und Arbeitszeiten führen schnell zu Verzögerungen, wenn der Ablauf
+            nicht vorab strukturiert ist.
+          </p>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Für einen stabilen Abschluss empfehlen sich klare Vorabpunkte: Dokumentencheck am Vortag, abgestimmter
+            Übergabestandort, transparente Zustandsangaben und bestätigte Zahlungslogik. Damit bleibt der Termin
+            auch bei engem Zeitfenster planbar und konfliktarm.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              'Übergabeort mit guter Erreichbarkeit und Stellfläche festlegen',
+              'Fahrzeugpapiere, Ausweis und Schlüssel vollständig vorbereiten',
+              'Bekannte Mängel schriftlich und fotografisch vorab festhalten',
+              'Abmeldung und Zahlungsnachweis im Abschluss klar dokumentieren',
+            ].map((point) => (
+              <li key={point} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
+                {point}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Hafennahe Abwicklung und Firmenfahrzeuge in Hamburg
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-4">
+            Ein relevanter Teil des Hamburger Fahrzeugangebots stammt aus gewerblichen Kontexten: Dienstwagen,
+            Leasingrückläufer und Fuhrparkfahrzeuge aus Logistik, Handel und hafenbezogenen Betrieben. Bei diesen
+            Fahrzeugen zählen nachvollziehbare Servicehistorien, dokumentierte Nutzung und klare Übergabeprozesse
+            besonders stark für die Preisstabilität.
+          </p>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Gleichzeitig ist die operative Umgebung anspruchsvoll. Zeitfenster, Verkehrsachsen und Parkplatzsituation
+            rund um Gewerbegebiete oder innenstadtnahe Standorte beeinflussen den Termin direkt. Eine strukturierte
+            Vorbereitung mit festen Ansprechpartnern und vollständigen Unterlagen reduziert Reibungsverluste und
+            beschleunigt den Abschluss messbar.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              'Fuhrparkfahrzeuge mit Leasinghistorie vorab vollständig dokumentieren',
+              'Anzahl der Schlüssel, Wartungsnachweise und Halterdaten vor Termin prüfen',
+              'Übergabezeit außerhalb stark belasteter Verkehrsfenster abstimmen',
+              'Zahlungs- und Abmeldeweg vor Ort eindeutig protokollieren',
+            ].map((point) => (
+              <div key={point} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
+                {point}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -202,6 +319,9 @@ const AutoankaufHamburgPage: React.FC<Props> = ({ onCtaClick }) => {
               </Link>
               <Link to="/ratgeber/autoabmeldung-nach-verkauf" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Ratgeber Autoabmeldung
+              </Link>
+              <Link to="/ratgeber/autoankauf-firmenwagen-gewerbe" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Ratgeber Firmenwagen
               </Link>
               <Link to="/auto-bewerten" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Auto bewerten

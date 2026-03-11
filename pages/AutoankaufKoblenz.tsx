@@ -224,6 +224,35 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </section>
 
+        <section className="mb-16 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
+            Dienstwagen, Behördenfahrzeuge und Exportprofile in Koblenz
+          </h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-4">
+            In Koblenz sehen wir regelmäßig Fahrzeuge aus behördlichem Umfeld, Dienstwagen mit klaren
+            Wartungsintervallen und Pendlerfahrzeuge mit höherer Laufleistung. Diese Konstellation ist
+            für den Ankauf gut planbar, wenn Unterlagen und Halterdaten vollständig vorliegen.
+          </p>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Zusätzlich treten in der Region häufiger Exportprofile auf, etwa ältere Diesel oder Fahrzeuge
+            mit geringerer Inlandsnachfrage. Entscheidend ist dann eine transparente Bewertung nach
+            Verwertbarkeit statt pauschaler Listenwerte. So bleibt der Verkauf auch bei Sonderfällen
+            wirtschaftlich nachvollziehbar und rechtssicher.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              'Wartungs- und Nutzungshistorie vor Termin strukturiert vorbereiten',
+              'Schlüsselanzahl, Zulassungsbescheinigung und Halterdaten vollständig prüfen',
+              'Bekannte Mängel vorab dokumentieren, um Nachverhandlungen zu vermeiden',
+              'Abmeldung und Zahlungsnachweis im Übergabeprotokoll klar festhalten',
+            ].map((point) => (
+              <div key={point} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
+                {point}
+              </div>
+            ))}
+          </div>
+        </section>
+
         <div className="max-w-4xl mx-auto">
           <FAQSection
             title="Häufige Fragen zum Autoankauf in Koblenz"

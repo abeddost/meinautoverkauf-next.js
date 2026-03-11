@@ -1157,7 +1157,7 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
           <Route path="/autoankauf-hamburg" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags
-                title="Autoankauf Hamburg | Express-Auszahlung und kostenlose Abholung"
+                title="Autoankauf Hamburg | Express-Auszahlung mit Abholung"
                 description="Auto verkaufen in Hamburg: schnelle Online-Bewertung, faires Angebot, kostenlose Abholung und Auszahlung am Übergabetag."
                 canonicalUrl="/autoankauf-hamburg"
                 extraSchemas={[
