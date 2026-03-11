@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
 import { RATGEBER_FAQS } from '../lib/faqContent';
+import { GUIDE_CONTENT, getGuidePath } from '../lib/guideContent';
 
 interface Props {
   onCtaClick: () => void;
@@ -71,6 +72,24 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
             ))}
           </ul>
         </nav>
+
+        <section className="max-w-4xl mx-auto mb-16 rounded-3xl border border-slate-200 bg-white/90 p-6 sm:p-8">
+          <h2 className="text-lg md:text-xl font-black text-brand-dark mb-3">Ratgeber-Übersicht nach Thema</h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Alle vertiefenden Leitfäden mit Checklisten, Preisfaktoren und rechtssicheren Ablaufhinweisen:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {GUIDE_CONTENT.map((guide) => (
+              <Link
+                key={guide.slug}
+                to={getGuidePath(guide.slug)}
+                className="inline-flex min-h-[44px] items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition-colors hover:border-brand-orange hover:text-brand-orange"
+              >
+                {guide.h1}
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* Quick Tips Grid */}
         <section id="ratgeber-content" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
@@ -377,6 +396,8 @@ const RatgeberPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Frankfurt</Link>
               <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Wiesbaden</Link>
               <Link to="/autoankauf-mainz" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Mainz</Link>
+              <Link to="/autoankauf-koeln" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Köln</Link>
+              <Link to="/autoankauf-hamburg" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Hamburg</Link>
           </div>
         </section>
         </div>

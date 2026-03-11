@@ -330,6 +330,52 @@ export const OFFENBACH_FAQS: FAQItem[] = [
   }
 ];
 
+export const KOELN_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie Fahrzeuge in allen Kölner Stadtteilen an?",
+    a: "Ja. Wir holen Fahrzeuge in allen Kölner Stadtteilen ab, unter anderem in Ehrenfeld, Nippes, Lindenthal, Porz, Mülheim, Kalk und Rodenkirchen."
+  },
+  {
+    q: "Ist der Ankauf auch bei typischen Pendlerfahrzeugen mit hoher Laufleistung möglich?",
+    a: "Ja. Gerade in Köln bewerten wir viele Pendlerfahrzeuge mit höherer Laufleistung. Entscheidend sind Zustand, Wartungshistorie und nachvollziehbare Unterlagen."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Kölner Fahrzeuge zuständig?",
+    a: "Für Fahrzeuge mit Kölner Kennzeichen ist die Zulassungsbehörde der Stadt Köln zuständig. Wir übernehmen die Abmeldung auf Wunsch vollständig für Sie."
+  },
+  {
+    q: "Kaufen Sie auch Unfallwagen oder Fahrzeuge ohne TÜV in Köln an?",
+    a: "Ja. Auch Fahrzeuge mit Unfallschäden, Motordefekten oder abgelaufener HU können angekauft werden. Die Bewertung erfolgt transparent nach Zustand und Verwertbarkeit."
+  },
+  {
+    q: "Wie schnell erfolgt die Auszahlung beim Autoankauf Köln?",
+    a: "Nach Vertragsabschluss wird die Auszahlung in der Regel umgehend per Überweisung veranlasst, häufig noch am selben Tag."
+  }
+];
+
+export const HAMBURG_FAQS: FAQItem[] = [
+  {
+    q: "Holen Sie Fahrzeuge in ganz Hamburg und der Metropolregion ab?",
+    a: "Ja. Wir holen in allen Hamburger Bezirken sowie in Teilen der Metropolregion ab, zum Beispiel in Norderstedt, Ahrensburg, Seevetal oder Pinneberg."
+  },
+  {
+    q: "Ist Autoankauf auch bei hoher Laufleistung oder Pendlerprofil möglich?",
+    a: "Ja. In Hamburg bewerten wir regelmäßig Fahrzeuge mit hoher Laufleistung fair, sofern Zustand, Historie und Unterlagen nachvollziehbar sind."
+  },
+  {
+    q: "Welche Stelle ist für die Abmeldung in Hamburg zuständig?",
+    a: "Für Hamburger Fahrzeuge ist der Landesbetrieb Verkehr (LBV) zuständig. Wir übernehmen die Abmeldung auf Wunsch für Sie."
+  },
+  {
+    q: "Kaufen Sie auch Firmenwagen oder Leasingrückläufer in Hamburg an?",
+    a: "Ja. Firmenfahrzeuge und Leasingrückläufer können angekauft werden. Wichtig sind ein klarer Eigentumsnachweis und vollständige Fahrzeugdokumente."
+  },
+  {
+    q: "Ist eine schnelle Auszahlung in Hamburg möglich?",
+    a: "Ja. Nach Vertragsabschluss wird die Auszahlung in der Regel direkt veranlasst, oft noch am Tag der Übergabe."
+  }
+];
+
 export const MANNHEIM_FAQS: FAQItem[] = [
   {
     q: "Holen Sie Fahrzeuge in allen Mannheimer Stadtteilen ab?",

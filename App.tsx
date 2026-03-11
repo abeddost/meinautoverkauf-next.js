@@ -23,8 +23,10 @@ import {
   AUTO_VERKAUFEN_FAQS,
   DARMSTADT_FAQS,
   FRANKFURT_FAQS,
+  HAMBURG_FAQS,
   HEIDELBERG_FAQS,
   HOME_FAQS,
+  KOELN_FAQS,
   KOBLENZ_FAQS,
   MAINZ_FAQS,
   MANNHEIM_FAQS,
@@ -85,8 +87,11 @@ const loadAutoankaufRuesselsheimPage = () => import('./pages/AutoankaufRuesselsh
 const loadAutoankaufDarmstadtPage = () => import('./pages/AutoankaufDarmstadt');
 const loadAutoankaufKoblenzPage = () => import('./pages/AutoankaufKoblenz');
 const loadAutoankaufOffenbachPage = () => import('./pages/AutoankaufOffenbach');
+const loadAutoankaufKoelnPage = () => import('./pages/AutoankaufKoeln');
+const loadAutoankaufHamburgPage = () => import('./pages/AutoankaufHamburg');
 const loadAutoankaufMannheimPage = () => import('./pages/AutoankaufMannheim');
 const loadAutoankaufHeidelbergPage = () => import('./pages/AutoankaufHeidelberg');
+const loadRatgeberGuidePage = () => import('./pages/RatgeberGuide');
 const loadImpressumPage = () => import('./pages/Impressum');
 const loadDatenschutzPage = () => import('./pages/Datenschutz');
 const loadAnalyzingPage = () => import('./pages/AnalyzingPage');
@@ -107,8 +112,11 @@ const AutoankaufRuesselsheimPage = lazy(loadAutoankaufRuesselsheimPage);
 const AutoankaufDarmstadtPage = lazy(loadAutoankaufDarmstadtPage);
 const AutoankaufKoblenzPage = lazy(loadAutoankaufKoblenzPage);
 const AutoankaufOffenbachPage = lazy(loadAutoankaufOffenbachPage);
+const AutoankaufKoelnPage = lazy(loadAutoankaufKoelnPage);
+const AutoankaufHamburgPage = lazy(loadAutoankaufHamburgPage);
 const AutoankaufMannheimPage = lazy(loadAutoankaufMannheimPage);
 const AutoankaufHeidelbergPage = lazy(loadAutoankaufHeidelbergPage);
+const RatgeberGuidePage = lazy(loadRatgeberGuidePage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
 const DatenschutzPage = lazy(loadDatenschutzPage);
@@ -132,8 +140,11 @@ export const preloadRouteModules = async () => {
     loadAutoankaufDarmstadtPage(),
     loadAutoankaufKoblenzPage(),
     loadAutoankaufOffenbachPage(),
+    loadAutoankaufKoelnPage(),
+    loadAutoankaufHamburgPage(),
     loadAutoankaufMannheimPage(),
     loadAutoankaufHeidelbergPage(),
+    loadRatgeberGuidePage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
   ]);
@@ -943,6 +954,14 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
             </div>
           } />
 
+          <Route path="/ratgeber/:slug" element={
+            <RatgeberGuidePage
+              onValuationComplete={handleStartValuation}
+              onValuationSubmit={handleValuationSubmit}
+              onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            />
+          } />
+
           <Route path="/autoankauf-frankfurt" element={
             <div className="animate-in fade-in duration-1000">
               <MetaTags 
@@ -1106,6 +1125,54 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufOffenbachPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-koeln" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Köln | Sicher verkaufen mit kostenloser Abholung"
+                description="Auto verkaufen in Köln: online bewerten, transparentes Angebot erhalten, kostenlos abholen lassen und schnell ausgezahlt werden."
+                canonicalUrl="/autoankauf-koeln"
+                extraSchemas={[
+                  ...buildCitySchemas('Köln', '/autoankauf-koeln'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-koeln', KOELN_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Köln – Sofort Geld für Ihr Fahrzeug"
+                subheadline="Direkt in Köln und im gesamten Rheinland schnell verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufKoelnPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-hamburg" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Hamburg | Express-Auszahlung und kostenlose Abholung"
+                description="Auto verkaufen in Hamburg: schnelle Online-Bewertung, faires Angebot, kostenlose Abholung und Auszahlung am Übergabetag."
+                canonicalUrl="/autoankauf-hamburg"
+                extraSchemas={[
+                  ...buildCitySchemas('Hamburg', '/autoankauf-hamburg'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-hamburg', HAMBURG_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Hamburg – Fairer Preis, schnelle Auszahlung"
+                subheadline="Ihr Autoankauf-Partner in der Hansestadt Hamburg"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufHamburgPage
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>

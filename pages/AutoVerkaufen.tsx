@@ -296,6 +296,28 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         />
 
         <div className="max-w-4xl mx-auto">
+          <section className="mt-14 bg-white rounded-3xl border border-slate-100 p-8">
+            <h2 className="text-lg md:text-xl font-black text-brand-dark mb-4">Passende Ratgeber für den nächsten Schritt</h2>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { href: '/ratgeber/online-autoankauf-ablauf-7-schritte', label: 'Ablauf in 7 Schritten' },
+                { href: '/ratgeber/unterlagen-autoverkauf-checkliste', label: 'Unterlagen-Checkliste' },
+                { href: '/ratgeber/rechtssicherer-kaufvertrag-auto', label: 'Rechtssicherer Kaufvertrag' },
+                { href: '/ratgeber/autoankauf-trotz-finanzierung', label: 'Verkauf trotz Finanzierung' },
+                { href: '/ratgeber/auto-online-verkaufen-sofort-auszahlung', label: 'Online verkaufen & Auszahlung' },
+                { href: '/ratgeber/autoabmeldung-nach-verkauf', label: 'Autoabmeldung nach Verkauf' },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 text-slate-700 font-semibold px-4 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm"
+                >
+                  → {item.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+
           {/* Conclusion Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Auto verkaufen leicht gemacht</h2>
@@ -316,6 +338,8 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-frankfurt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Frankfurt</Link>
               <Link to="/autoankauf-wiesbaden" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Wiesbaden</Link>
               <Link to="/autoankauf-mainz" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Mainz</Link>
+              <Link to="/autoankauf-koeln" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Köln</Link>
+              <Link to="/autoankauf-hamburg" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Hamburg</Link>
             </div>
           </section>
         </div>

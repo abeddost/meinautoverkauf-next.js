@@ -220,6 +220,27 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           faqs={AUTO_BEWERTEN_FAQS}
         />
 
+        <section className="mt-14 bg-white rounded-3xl border border-slate-100 p-8 max-w-4xl mx-auto">
+          <h2 className="text-lg md:text-xl font-black text-brand-dark mb-4">Ratgeber zu Preisfaktoren und Wertermittlung</h2>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { href: '/ratgeber/kilometerstand-scheckheft-vorbesitzer-preis', label: 'Preisfaktoren im Vergleich' },
+              { href: '/ratgeber/auto-online-inserieren-tipps-bilder', label: 'Inserat und Bilder optimieren' },
+              { href: '/ratgeber/auto-mit-motorschaden-verkaufen', label: 'Motorschaden richtig bewerten' },
+              { href: '/ratgeber/unfallwagen-verkaufen', label: 'Unfallwagen fair einordnen' },
+              { href: '/ratgeber/autoankauf-ohne-tuev', label: 'Preis ohne TÜV verstehen' },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 text-slate-700 font-semibold px-4 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm"
+              >
+                → {item.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100 relative overflow-hidden">
           <img
             src="/elements/auto-wert-ermitteln.webp"
