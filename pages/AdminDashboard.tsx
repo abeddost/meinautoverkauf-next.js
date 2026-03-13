@@ -45,6 +45,8 @@ export interface Estimation {
   commission_paid: boolean;
   rejection_reason: string | null;
   deleted_at: string | null;
+  assigned_to: string | null;
+  call_status: string;
 }
 
 interface Appointment {
@@ -86,6 +88,32 @@ const AdminDashboardContent: React.FC = () => {
   const [provisionDraft, setProvisionDraft] = useState<Record<string, string>>({});
   const [provisionMonthFilter, setProvisionMonthFilter] = useState<string>('all');
   const [notification, setNotification] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
+
+  const ASSIGNEES = [
+    'Nicht zugewiesen',
+    'Akin Yasar',
+    'Idris Sarwari',
+    'Hamza Sarwari',
+    'Bilal Sarwari',
+    'Other',
+  ] as const;
+
+  const ASSIGNEE_COLORS: Record<string, string> = {
+    'Nicht zugewiesen': 'bg-slate-200 text-slate-700',
+    'Akin Yasar':       'bg-blue-100 text-blue-700',
+    'Idris Sarwari':    'bg-green-100 text-green-700',
+    'Hamza Sarwari':    'bg-purple-100 text-purple-700',
+    'Bilal Sarwari':    'bg-orange-100 text-orange-700',
+    'Other':            'bg-slate-100 text-slate-700',
+  };
+
+  const EMAIL_TO_WORKER: Record<string, string> = {
+    'info@meinautoverkauf.de':  'Akin Yasar',
+    'akin@meinautoverkauf.de':  'Akin Yasar',
+    'idris@meinautoverkauf.de': 'Idris Sarwari',
+    'hamza@meinautoverkauf.de': 'Hamza Sarwari',
+    'bilal@meinautoverkauf.de': 'Bilal Sarwari',
+  };
 
   const showError = (technicalMessage: string, context?: string) => {
     const friendly: Record<string, string> = {
@@ -321,6 +349,73 @@ const AdminDashboardContent: React.FC = () => {
       }
     } finally {
       setUpdatingVerkaufsstatusId(null);
+    }
+  };
+
+  const handleCallStatusChange = async (estimationId: string, newStatus: string) => {
+    if (!estimationId) return;
+    setEstimations((prev) =>
+      prev.map((e) => (e.id === estimationId ? { ...e, call_status: newStatus } : e))
+    );
+    const { error } = await supabase
+      .from('estimations')
+      .update({ call_status: newStatus })
+      .eq('id', estimationId);
+    if (error) {
+      showError(error.message, 'Anrufstatus');
+      return;
+    }
+    if (selectedEstimation?.id === estimationId) {
+      setSelectedEstimation({ ...selectedEstimation, call_status: newStatus });
+    }
+  };
+
+  const handleAssignedToChange = async (estimationId: string, newAssignee: string) => {
+    if (!estimationId) return;
+    const value = newAssignee === 'Nicht zugewiesen' ? null : newAssignee;
+    setEstimations((prev) =>
+      prev.map((e) => (e.id === estimationId ? { ...e, assigned_to: value } : e))
+    );
+    const { error } = await supabase
+      .from('estimations')
+      .update({ assigned_to: value })
+      .eq('id', estimationId);
+    if (error) {
+      showError(error.message, 'Zugewiesen an');
+    }
+    if (selectedEstimation?.id === estimationId) {
+      setSelectedEstimation({ ...selectedEstimation, assigned_to: value });
+    }
+  };
+
+  const handleClaimLead = async (estimationId: string) => {
+    if (!estimationId || !user?.email) return;
+    const workerName = EMAIL_TO_WORKER[user.email] ?? user.email;
+    const { data, error } = await supabase
+      .from('estimations')
+      .update({ assigned_to: workerName, call_status: 'Zugewiesen' })
+      .eq('id', estimationId)
+      .is('assigned_to', null)
+      .select('id, assigned_to, call_status');
+    if (error) {
+      showError(error.message, 'Lead übernehmen');
+      return;
+    }
+    const row = Array.isArray(data) ? data[0] : data;
+    if (!row) {
+      setNotification({ type: 'error', message: 'Lead wurde bereits von jemand anderem übernommen.' });
+      setTimeout(() => setNotification(null), 4000);
+      return;
+    }
+    setEstimations((prev) =>
+      prev.map((e) =>
+        e.id === estimationId
+          ? { ...e, assigned_to: row.assigned_to, call_status: row.call_status }
+          : e
+      )
+    );
+    if (selectedEstimation?.id === estimationId) {
+      setSelectedEstimation({ ...selectedEstimation, assigned_to: row.assigned_to, call_status: row.call_status });
     }
   };
 
@@ -901,14 +996,14 @@ const AdminDashboardContent: React.FC = () => {
                       <thead className="bg-slate-50 border-b border-gray-200">
                         <tr>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Datum</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Bew.-ID</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Status</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Kunde</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Fahrzeug</th>
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Preis</th>
+                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Zugewiesen an</th>
                           {estimationSubTab === 'active' && (
                             <>
-                              <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Verkaufsstatus</th>
+                              <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Anrufstatus</th>
                             </>
                           )}
                           <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Aktion</th>
@@ -925,10 +1020,10 @@ const AdminDashboardContent: React.FC = () => {
                           filteredEstimations.map((est) => (
                             <tr key={est.id} className="hover:bg-slate-50 transition-colors">
                               <td className="px-4 py-3 text-sm text-slate-600">
-                                {new Date(est.created_at).toLocaleDateString('de-DE')}
-                              </td>
-                              <td className="px-4 py-3 text-xs font-mono text-slate-400" title={est.id}>
-                                {est.id.slice(0, 8)}…
+                                <div>{new Date(est.created_at).toLocaleDateString('de-DE')}</div>
+                                <div className="text-xs text-slate-400">
+                                  {new Date(est.created_at).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
+                                </div>
                               </td>
                               <td className="px-4 py-3">
                                 {est.status === 'appointment_booked' ? (
@@ -983,33 +1078,49 @@ const AdminDashboardContent: React.FC = () => {
                                   ? <span className="text-slate-400 font-semibold">Ausstehend</span>
                                   : formatPrice(est.estimated_price)}
                               </td>
+                              <td className="px-4 py-3">
+                                <select
+                                  value={est.assigned_to ?? 'Nicht zugewiesen'}
+                                  onChange={(e) => handleAssignedToChange(est.id, e.target.value)}
+                                  className={`min-w-[130px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${ASSIGNEE_COLORS[est.assigned_to ?? 'Nicht zugewiesen'] ?? ASSIGNEE_COLORS['Other']} border-current`}
+                                >
+                                  {ASSIGNEES.map((name) => (
+                                    <option key={name} value={name}>{name}</option>
+                                  ))}
+                                </select>
+                              </td>
                               {estimationSubTab === 'active' && (
                                 <>
                                   <td className="px-4 py-3">
                                     <select
-                                      value={est.verkaufsstatus ?? 'Pending'}
-                                      onChange={(e) =>
-                                        handleVerkaufsstatusChangeFromTable(
-                                          est.id,
-                                          e.target.value as 'Pending' | 'Accepted' | 'Rejected'
-                                        )
-                                      }
-                                      disabled={updatingVerkaufsstatusId === est.id}
-                                      className={`min-w-[100px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${
-                                        est.verkaufsstatus === 'Pending'
-                                          ? 'bg-yellow-100 text-yellow-800 border-yellow-300'
-                                          : est.verkaufsstatus === 'Accepted'
+                                      value={est.call_status ?? 'Neu'}
+                                      onChange={(e) => handleCallStatusChange(est.id, e.target.value)}
+                                      className={`min-w-[120px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${
+                                        (est.call_status ?? 'Neu') === 'Neu'
+                                          ? 'bg-slate-100 text-slate-700 border-slate-300'
+                                          : est.call_status === 'Zugewiesen'
+                                          ? 'bg-blue-100 text-blue-800 border-blue-300'
+                                          : est.call_status === 'Angerufen'
+                                          ? 'bg-sky-100 text-sky-800 border-sky-300'
+                                          : est.call_status === 'Keine Antwort'
+                                          ? 'bg-amber-100 text-amber-800 border-amber-300'
+                                          : est.call_status === 'Interessiert'
                                           ? 'bg-green-100 text-green-800 border-green-300'
-                                          : 'bg-red-100 text-red-800 border-red-300'
+                                          : est.call_status === 'Nicht interessiert'
+                                          ? 'bg-red-100 text-red-800 border-red-300'
+                                          : est.call_status === 'Gekauft'
+                                          ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                                          : 'bg-slate-100 text-slate-700 border-slate-300'
                                       }`}
                                     >
-                                      <option value="Pending">Pending</option>
-                                      <option value="Accepted">Accepted</option>
-                                      <option value="Rejected">Rejected</option>
+                                      <option value="Neu">Neu</option>
+                                      <option value="Zugewiesen">Zugewiesen</option>
+                                      <option value="Angerufen">Angerufen</option>
+                                      <option value="Keine Antwort">Keine Antwort</option>
+                                      <option value="Interessiert">Interessiert</option>
+                                      <option value="Nicht interessiert">Nicht interessiert</option>
+                                      <option value="Gekauft">Gekauft</option>
                                     </select>
-                                    {updatingVerkaufsstatusId === est.id && (
-                                      <span className="ml-1 inline-block w-3 h-3 border-2 border-brand-orange border-t-transparent rounded-full animate-spin" />
-                                    )}
                                   </td>
                                 </>
                               )}

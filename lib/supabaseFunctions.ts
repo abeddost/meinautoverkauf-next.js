@@ -1,15 +1,13 @@
 /**
  * Call Supabase Edge Functions (submit-estimation, book-appointment).
- * Uses VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY.
+ * Uses VITE_SUPABASE_URL and either
+ * VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY or VITE_SUPABASE_ANON_KEY.
  */
+import { getSupabaseConfig } from './supabaseConfig';
 
-const getSupabaseConfig = () => {
-  const url = import.meta.env.VITE_SUPABASE_URL;
-  const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
-  if (!url || !key) {
-    throw new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY');
-  }
-  return { url, key };
+const getEdgeFunctionConfig = () => {
+  const { url, anonKey } = getSupabaseConfig();
+  return { url, key: anonKey };
 };
 
 export interface SavePartialLeadBody {
@@ -69,7 +67,7 @@ async function invokeEdgeFunction<T>(
   body: unknown,
   options?: { keepalive?: boolean }
 ): Promise<{ data?: T; error?: EdgeFunctionError; status: number }> {
-  const { url, key } = getSupabaseConfig();
+  const { url, key } = getEdgeFunctionConfig();
   const res = await fetch(`${url}/functions/v1/${name}`, {
     method: 'POST',
     headers: {
