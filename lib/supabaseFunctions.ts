@@ -1,7 +1,7 @@
 /**
  * Call Supabase Edge Functions (submit-estimation, book-appointment).
  * Uses VITE_SUPABASE_URL and either
- * VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY or VITE_SUPABASE_ANON_KEY.
+ * VITE_SUPABASE_ANON_KEY or VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY.
  */
 import { getSupabaseConfig } from './supabaseConfig';
 
@@ -62,18 +62,27 @@ export interface EdgeFunctionError {
   retryAfterSeconds?: number;
 }
 
+const isJwtLikeKey = (key: string): boolean => key.split('.').length === 3;
+
 async function invokeEdgeFunction<T>(
   name: string,
   body: unknown,
   options?: { keepalive?: boolean }
 ): Promise<{ data?: T; error?: EdgeFunctionError; status: number }> {
   const { url, key } = getEdgeFunctionConfig();
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    apikey: key,
+  };
+
+  // Bearer auth must be a JWT. sb_publishable_* keys are not JWTs.
+  if (isJwtLikeKey(key)) {
+    headers.Authorization = `Bearer ${key}`;
+  }
+
   const res = await fetch(`${url}/functions/v1/${name}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${key}`,
-    },
+    headers,
     body: JSON.stringify(body),
     keepalive: options?.keepalive ?? false,
   });
