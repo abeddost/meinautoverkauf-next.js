@@ -266,6 +266,9 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
               Unser Service ist auch in angrenzenden Städten verfügbar:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/autoankauf-neuwied" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Auch in Neuwied verfügbar
+              </Link>
               <Link to="/autoankauf-mainz" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Autoankauf Mainz
               </Link>

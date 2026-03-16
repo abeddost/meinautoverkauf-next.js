@@ -33,12 +33,16 @@ import {
   MAINZ_FAQS,
   KAISERSLAUTERN_FAQS,
   MANNHEIM_FAQS,
+  NEUWIED_FAQS,
   OFFENBACH_FAQS,
   RATGEBER_FAQS,
   RUESSELSHEIM_FAQS,
   VORTEILE_FAQS,
+  WETZLAR_FAQS,
   WIESBADEN_FAQS,
   WORMS_FAQS,
+  GIESSEN_FAQS,
+  ASCHAFFENBURG_FAQS,
 } from './lib/faqContent';
 import { buildFaqPageSchema } from './lib/structuredData';
 import { savePartialLead } from './lib/supabaseFunctions';
@@ -99,6 +103,10 @@ const loadAutoankaufWormsPage = () => import('./pages/AutoankaufWorms');
 const loadAutoankaufKaiserslauternPage = () => import('./pages/AutoankaufKaiserslautern');
 const loadAutoankaufLudwigshafenPage = () => import('./pages/AutoankaufLudwigshafen');
 const loadAutoankaufHanauPage = () => import('./pages/AutoankaufHanau');
+const loadAutoankaufGiessenPage = () => import('./pages/AutoankaufGiessen');
+const loadAutoankaufAschaffenburgPage = () => import('./pages/AutoankaufAschaffenburg');
+const loadAutoankaufNeuwiedPage = () => import('./pages/AutoankaufNeuwied');
+const loadAutoankaufWetzlarPage = () => import('./pages/AutoankaufWetzlar');
 const loadRatgeberGuidePage = () => import('./pages/RatgeberGuide');
 const loadImpressumPage = () => import('./pages/Impressum');
 const loadDatenschutzPage = () => import('./pages/Datenschutz');
@@ -128,6 +136,10 @@ const AutoankaufWormsPage = lazy(loadAutoankaufWormsPage);
 const AutoankaufKaiserslauternPage = lazy(loadAutoankaufKaiserslauternPage);
 const AutoankaufLudwigshafenPage = lazy(loadAutoankaufLudwigshafenPage);
 const AutoankaufHanauPage = lazy(loadAutoankaufHanauPage);
+const AutoankaufGiessenPage = lazy(loadAutoankaufGiessenPage);
+const AutoankaufAschaffenburgPage = lazy(loadAutoankaufAschaffenburgPage);
+const AutoankaufNeuwiedPage = lazy(loadAutoankaufNeuwiedPage);
+const AutoankaufWetzlarPage = lazy(loadAutoankaufWetzlarPage);
 const RatgeberGuidePage = lazy(loadRatgeberGuidePage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
@@ -160,6 +172,10 @@ export const preloadRouteModules = async () => {
     loadAutoankaufKaiserslauternPage(),
     loadAutoankaufLudwigshafenPage(),
     loadAutoankaufHanauPage(),
+    loadAutoankaufGiessenPage(),
+    loadAutoankaufAschaffenburgPage(),
+    loadAutoankaufNeuwiedPage(),
+    loadAutoankaufWetzlarPage(),
     loadRatgeberGuidePage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
@@ -1361,6 +1377,126 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufHanauPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-giessen" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Gießen – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Auto verkaufen in Gießen: Kostenlose Online-Bewertung, faire Preisermittlung, Abholung in Mittelhessen und Auszahlung am Tag der Übergabe – JLU & THM."
+                canonicalUrl="/autoankauf-giessen"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Gießen',
+                    '/autoankauf-giessen',
+                    'Hessen',
+                    'Autoankauf in Gießen für Studierende, Pendler und Familien – faire Bewertung, Abholung in Stadt und Umland, Auszahlung am Übergabetag.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-giessen', GIESSEN_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Gießen – Fairer Preis, schnelle Abwicklung"
+                subheadline="Ihr Autoankauf-Partner in der Universitätsstadt Gießen & Mittelhessen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufGiessenPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-aschaffenburg" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Aschaffenburg – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Auto verkaufen in Aschaffenburg: Online bewerten, faires Angebot, kostenlose Abholung und Auszahlung am Tag der Übergabe – A3/A45, Straßenverkehrsamt inklusive."
+                canonicalUrl="/autoankauf-aschaffenburg"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Aschaffenburg',
+                    '/autoankauf-aschaffenburg',
+                    'Bayern',
+                    'Autoankauf in Aschaffenburg zwischen Frankfurt und Würzburg – faire Bewertung, Abholung im Landkreis, Abmeldung inklusive.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-aschaffenburg', ASCHAFFENBURG_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Aschaffenburg – Schnell verkaufen, sofort auszahlen"
+                subheadline="Ihr Autoankauf-Partner in Aschaffenburg & Landkreis – direkt an A3 und A45"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufAschaffenburgPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-neuwied" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Neuwied – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Neuwied: Auto schnell verkaufen mit kostenloser Online-Bewertung, fairer Preisermittlung, optionaler Abholung und zügiger Auszahlung vor Ort."
+                canonicalUrl="/autoankauf-neuwied"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Neuwied',
+                    '/autoankauf-neuwied',
+                    'Rheinland-Pfalz',
+                    'Autoankauf in Neuwied mit strukturierter Bewertung, klaren Terminen und schneller Auszahlung für Pendler- und Alltagsfahrzeuge.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-neuwied', NEUWIED_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Neuwied – Planbar verkaufen im Mittelrhein-Raum"
+                subheadline="Online bewerten, Termin sichern und Fahrzeug in Neuwied transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufNeuwiedPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-wetzlar" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Wetzlar – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Wetzlar: Auto schnell verkaufen mit transparenter Bewertung, flexiblen Terminen im Lahn-Dill-Kreis und schneller Auszahlung ohne Inseratstress."
+                canonicalUrl="/autoankauf-wetzlar"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Wetzlar',
+                    '/autoankauf-wetzlar',
+                    'Hessen',
+                    'Autoankauf in Wetzlar für Pendler-, Familien- und Dienstwagen mit transparenter Bewertung und zügiger Auszahlung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-wetzlar', WETZLAR_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Wetzlar – Schnell verkaufen im Lahn-Dill-Korridor"
+                subheadline="Faire Bewertung und klare Abwicklung für Fahrzeuge in Wetzlar"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufWetzlarPage
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>

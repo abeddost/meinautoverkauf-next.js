@@ -378,47 +378,93 @@ export const HAMBURG_FAQS: FAQItem[] = [
 
 export const LUDWIGSHAFEN_FAQS: FAQItem[] = [
   {
-    q: "Kaufen Sie auch BASF-nahe Pendler- und Dienstfahrzeuge in Ludwigshafen an?",
-    a: "Ja. Im Raum Ludwigshafen bewerten wir regelmäßig Fahrzeuge aus Schicht- und Pendlerbetrieb, auch mit höherer Laufleistung. Entscheidend sind Zustand, Wartung und nachvollziehbare Unterlagen."
+    q: "Ich arbeite im BASF-Schichtsystem: Sind frühe oder späte Übergabetermine in Ludwigshafen möglich?",
+    a: "Ja. Gerade im BASF-Umfeld koordinieren wir regelmäßig Termine außerhalb klassischer Bürozeiten. Teilen Sie uns Ihr Schichtfenster mit, dann planen wir die Fahrzeugübergabe entsprechend."
   },
   {
-    q: "Ist eine Abholung in Oggersheim, Friesenheim, Mundenheim oder Oppau möglich?",
-    a: "Ja. Wir holen in allen Ludwigshafener Stadtteilen ab, darunter Oggersheim, Friesenheim, Mundenheim, Oppau, Gartenstadt und Rheingönheim. Die Terminabstimmung erfolgt flexibel."
+    q: "Kaufen Sie auch Fahrzeuge mit typischer Pendlerlaufleistung über A650, B9 oder Richtung Mannheim an?",
+    a: "Ja. Hohe Laufleistung ist im Rhein-Neckar-Pendelverkehr normal. Wir bewerten nicht nur den Kilometerstand, sondern auch Wartungshistorie, Zustand und Ausstattung."
   },
   {
-    q: "Welche Zulassungsstelle ist für Fahrzeuge mit LU-Kennzeichen zuständig?",
-    a: "Für Fahrzeuge mit LU-Kennzeichen ist die Zulassungsbehörde der Stadt Ludwigshafen zuständig. Auf Wunsch übernehmen wir die Abmeldung im Rahmen der Abwicklung."
+    q: "Ist die Abholung in Oggersheim, Friesenheim, Mundenheim und Oppau ohne Aufpreis möglich?",
+    a: "Ja. Wir holen in allen großen Ludwigshafener Stadtteilen ab, darunter Oggersheim, Friesenheim, Mundenheim, Oppau, Gartenstadt und Rheingönheim."
   },
   {
-    q: "Kaufen Sie Fahrzeuge, die überwiegend über A650 und B9 genutzt wurden?",
-    a: "Ja. Gerade im Pendlerkorridor zwischen Ludwigshafen und Mannheim sind hohe Laufleistungen üblich. Wir berücksichtigen Kilometerstand und Wartungshistorie transparent bei der Bewertung."
+    q: "Was benötige ich bei einem LU-Fahrzeug mit laufender Finanzierung oder Leasingablöse?",
+    a: "Sie benötigen die üblichen Fahrzeugunterlagen sowie die Daten der finanzierenden Bank oder Leasinggesellschaft. Wir prüfen mit Ihnen die Ablöse und klären die nächsten Schritte transparent."
   },
   {
-    q: "Ist der Ankauf auch möglich, wenn das Auto häufig in Mannheim genutzt wird?",
-    a: "Ja. Viele Eigentümer bewegen ihr Fahrzeug täglich zwischen Ludwigshafen und Mannheim. Die Nutzung über Stadtgrenzen ist kein Problem, solange Eigentumsnachweis und Fahrzeugunterlagen vorliegen."
+    q: "Übernehmen Sie die Abmeldung bei der Zulassungsstelle Ludwigshafen und erhalte ich einen Nachweis?",
+    a: "Ja. Auf Wunsch übernehmen wir die Abmeldung für Ihr LU-Kennzeichen bei der zuständigen Behörde. Sie erhalten anschließend eine Bestätigung für Ihre Unterlagen."
   }
 ];
 
 export const HANAU_FAQS: FAQItem[] = [
   {
-    q: "Kaufen Sie Fahrzeuge aus dem Umfeld Hanau-Wolfgang und Heraeus an?",
-    a: "Ja. In Hanau-Wolfgang und den angrenzenden Gewerbegebieten kaufen wir regelmäßig Dienst- und Alltagsfahrzeuge an, einschließlich Fahrzeugen mit dokumentierter Flottenhistorie."
+    q: "Ich pendle täglich über die A66 nach Frankfurt: Kaufen Sie auch Hanauer Pendlerautos mit hoher Laufleistung?",
+    a: "Ja. Fahrzeuge aus dem täglichen Pendelverkehr rund um Hanau werden regelmäßig angekauft. Hohe Kilometerstände sind möglich, wenn Pflege- und Wartungszustand nachvollziehbar sind."
   },
   {
-    q: "Bieten Sie Abholung in Kesselstadt, Steinheim und Großauheim an?",
-    a: "Ja. Unser Service deckt alle großen Hanauer Stadtteile ab, unter anderem Kesselstadt, Steinheim, Großauheim, Lamboy, Mittelbuchen und Wolfgang."
+    q: "Sind Abholungen in Kesselstadt, Steinheim, Großauheim und Wolfgang ohne Zusatzkosten möglich?",
+    a: "Ja. Wir bieten die Abholung im gesamten Hanauer Stadtgebiet an, inklusive Kesselstadt, Steinheim, Großauheim, Lamboy, Mittelbuchen und Wolfgang."
   },
   {
-    q: "Welche Zulassungsstelle ist für Hanauer Fahrzeuge zuständig?",
-    a: "Für viele Fahrzeuge im Raum Hanau ist die Zulassungsbehörde des Main-Kinzig-Kreises zuständig. Wir klären die konkrete Zuständigkeit im Einzelfall und übernehmen auf Wunsch die Abmeldung."
+    q: "Kann die Übergabe in Hanau auch nach Feierabend in der Nähe vom Hanau Hauptbahnhof stattfinden?",
+    a: "In vielen Fällen ja. Gerade für Berufspendler stimmen wir die Übergabe flexibel ab, damit Sie den Verkauf ohne zusätzlichen Arbeitstag erledigen können."
   },
   {
-    q: "Kann die Übergabe auch in der Nähe von Hanau Hauptbahnhof stattfinden?",
-    a: "Ja. Bei passender Terminlage sind Übergaben im Stadtgebiet und in Bahnhofsnähe möglich. Gerade für Pendler Richtung Frankfurt ist das oft die praktischste Lösung."
+    q: "Kaufen Sie Firmenwagen aus dem Umfeld Heraeus oder dem Industriepark Hanau-Wolfgang an?",
+    a: "Ja. Wir bewerten regelmäßig Firmen- und Flottenfahrzeuge aus dem Hanauer Industriebereich. Wichtig sind ein klarer Eigentümernachweis und vollständige Fahrzeugdokumente."
   },
   {
-    q: "Kaufen Sie auch Pendlerfahrzeuge mit hoher Laufleistung aus dem A66/A45-Korridor?",
-    a: "Ja. Fahrzeuge aus dem täglichen Verkehr rund um das Hanauer Kreuz bewerten wir regelmäßig. Ein höherer Kilometerstand ist kein Ausschlusskriterium, wenn Zustand und Historie stimmig sind."
+    q: "Wer übernimmt die Abmeldung im Main-Kinzig-Kreis und wie bekomme ich den Nachweis?",
+    a: "Auf Wunsch übernehmen wir die Abmeldung bei der zuständigen Zulassungsstelle im Main-Kinzig-Kreis. Nach Abschluss erhalten Sie eine Bestätigung für Versicherung und Unterlagen."
+  }
+];
+
+export const NEUWIED_FAQS: FAQItem[] = [
+  {
+    q: "Ich fahre täglich über B42 und B256: Kaufen Sie in Neuwied auch Pendlerautos mit hoher Laufleistung?",
+    a: "Ja. Bei typischen Pendlerfahrzeugen aus Neuwied ist hohe Laufleistung normal. Wir bewerten deshalb immer Wartung, Zustand und Nachweise statt nur den Kilometerstand."
+  },
+  {
+    q: "Ist die Abholung in Heddesdorf, Engers, Niederbieber und Irlich ohne Zusatzkosten möglich?",
+    a: "Ja. Wir organisieren die Abholung im gesamten Stadtgebiet Neuwied, einschliesslich Heddesdorf, Engers, Niederbieber, Irlich und den angrenzenden Ortsteilen."
+  },
+  {
+    q: "Kann ich mein NR-Fahrzeug verkaufen, wenn noch eine Finanzierung läuft?",
+    a: "Ja. Auch bei laufender Finanzierung ist ein Verkauf möglich. Wir klären mit Ihnen die nötigen Unterlagen und den Ablauf mit der Bank transparent vor dem Termin."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung für Fahrzeuge aus dem Landkreis Neuwied?",
+    a: "Auf Wunsch ja. Wir unterstützen beim Abmeldeprozess bei der zuständigen Zulassungsbehörde des Landkreises Neuwied und stellen die Nachweise für Ihre Unterlagen bereit."
+  },
+  {
+    q: "Sind in Neuwied auch Termine möglich, die zu Schicht- oder Pendelzeiten passen?",
+    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeitsalltag und typischen Pendelzeiten im Raum Neuwied vereinbar sind."
+  }
+];
+
+export const WETZLAR_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie in Wetzlar auch Fahrzeuge an, die regelmäßig über A45 und A480 genutzt wurden?",
+    a: "Ja. Gerade im Bereich Wetzlar sind solche Laufprofile häufig. Wir berücksichtigen Wartungshistorie, Verschleiß und Ausstattung für eine realistische Bewertung."
+  },
+  {
+    q: "Ist die Abholung in Dalheim, Nauborn, Hermannstein und gar nicht zentralen Lagen möglich?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Wetzlar ab, auch in Dalheim, Nauborn, Hermannstein und weiteren Ortsteilen ohne Zusatzkosten."
+  },
+  {
+    q: "Kaufen Sie auch Firmen- oder Dienstwagen aus dem Wetzlarer Industrie- und Optikumfeld an?",
+    a: "Ja. Dienst- und Firmenfahrzeuge aus dem Wirtschaftsraum Wetzlar können angekauft werden, sofern Eigentumsnachweis und Fahrzeugunterlagen vollständig sind."
+  },
+  {
+    q: "Kann die Übergabe in Wetzlar zeitlich auf Bahnpendler am Bahnhof abgestimmt werden?",
+    a: "In vielen Fällen ja. Wir versuchen Terminfenster so zu legen, dass sie mit Ihren Arbeits- und Pendelzeiten rund um Wetzlar kompatibel sind."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung über die zuständige Stelle im Lahn-Dill-Kreis?",
+    a: "Ja, auf Wunsch begleiten wir den Abmeldeprozess und dokumentieren die Abwicklung transparent, damit Sie die Bestätigung für Versicherung und Unterlagen erhalten."
   }
 ];
 
@@ -470,46 +516,92 @@ export const HEIDELBERG_FAQS: FAQItem[] = [
 
 export const WORMS_FAQS: FAQItem[] = [
   {
-    q: "Kaufen Sie Fahrzeuge aus allen Wormser Stadtteilen ab – auch aus Herrnsheim oder Pfeddersheim?",
-    a: "Ja. Wir holen in der Innenstadt, in Hochheim, Pfeddersheim, Herrnsheim, Abenheim, Horchheim und Rheindürkheim ab – ohne zusätzliche Anfahrtskosten. Einfach online bewerten und Termin wählen."
+    q: "Wie schnell bekomme ich Geld, wenn ich mein Auto in Worms verkaufe?",
+    a: "Bei uns erhalten Sie die Auszahlung per Banküberweisung noch am selben Tag der Fahrzeugübergabe. Es gibt keine Wartezeit: Fahrzeug übergeben, Kaufvertrag unterschreiben, Geld erhalten – fertig. Online-Bewertung dauert ca. 2 Minuten."
   },
   {
-    q: "Welche Zulassungsstelle ist für Worms zuständig und übernehmen Sie die Abmeldung?",
-    a: "Wormser Fahrzeuge tragen das Kennzeichen WO und werden bei der Zulassungsstelle der Stadt Worms abgemeldet. Wir übernehmen diesen Behördengang vollständig für Sie – kein zusätzlicher Aufwand nötig."
+    q: "Kauft ihr auch Autos mit hoher Laufleistung oder ohne TÜV in Worms an?",
+    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand – mit hoher Laufleistung, abgelaufener HU, Unfallschäden oder Motorproblemen. Vollständige Fahrzeugpapiere und Eigentumsnachweis genügen. Den Preis ermitteln wir transparent auf Basis des aktuellen Marktwerts."
   },
   {
-    q: "Bieten Sie auch einen fairen Preis für ältere Weinbaufahrzeuge oder gewerblich genutzte Transporter?",
-    a: "Ja. In der Wormser Weinregion sind Transporter, Kleintransporter und ältere Nutzfahrzeuge weit verbreitet. Wir bewerten alle Fahrzeugtypen transparent – auch mit hoher Laufleistung oder gewerblicher Nutzungshistorie."
+    q: "Muss ich mein Auto selbst zur Übergabe bringen oder holt ihr es ab?",
+    a: "Wir kommen zu Ihnen – kostenlos, in ganz Worms und Umgebung. Einfach online bewerten, Termin auswählen und wir erscheinen an Ihrer Adresse. Abholung ist auch abends oder am Wochenende möglich."
   },
   {
-    q: "Ist ein Ankauf auch für Pendler zwischen Worms und Mannheim oder Mainz möglich?",
-    a: "Ja. Worms liegt zentral an der A61 zwischen Mannheim (ca. 30 Minuten) und Mainz (ca. 40 Minuten). Wir bieten flexible Übergabetermine – auch abends oder am Wochenende – und holen Ihr Fahrzeug bei Bedarf direkt ab."
+    q: "Was brauche ich für den Autoverkauf in Worms – welche Unterlagen?",
+    a: "Sie benötigen: Fahrzeugschein (Zulassungsbescheinigung Teil I), Fahrzeugbrief (Zulassungsbescheinigung Teil II), gültigen Personalausweis oder Reisepass sowie beide Fahrzeugschlüssel. Die Abmeldung bei der Zulassungsstelle Worms übernehmen wir für Sie."
   },
   {
-    q: "Können BASF-Mitarbeitende oder Beschäftigte aus dem Industriepark Worms ihr Fahrzeug schnell verkaufen?",
-    a: "Ja. Wir sind auf schnelle, unkomplizierte Abwicklungen spezialisiert – ideal für Beschäftigte mit engem Zeitplan. Online-Bewertung, verbindliches Angebot und Auszahlung bei Übergabe – alles an einem Termin."
+    q: "Bekomme ich in Worms einen fairen Preis oder wird das Angebot vor Ort stark gedrückt?",
+    a: "Unser Online-Angebot basiert auf aktuellen Marktdaten und ist verbindlich – es wird vor Ort nicht ohne Grund geändert. Eine Anpassung erfolgt nur, wenn bei der persönlichen Besichtigung ein zuvor nicht genannter Schaden festgestellt wird."
+  }
+];
+
+export const GIESSEN_FAQS: FAQItem[] = [
+  {
+    q: "Wie schnell kann ich mein Auto in Gießen verkaufen?",
+    a: "In der Regel ist alles innerhalb von 1–2 Tagen erledigt. Online-Bewertung dauert ca. 2 Minuten, danach wählen Sie einen Termin. Wir kommen zu Ihnen – egal ob Innenstadt, Wieseck oder Kleinlinden – und zahlen noch am selben Tag per Banküberweisung aus."
+  },
+  {
+    q: "Kauft ihr in Gießen auch Autos ohne TÜV oder mit hoher Laufleistung an?",
+    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand: ohne gültige HU, mit Unfallschäden, hoher Laufleistung oder technischen Mängeln. Entscheidend sind vollständige Fahrzeugpapiere und ein klarer Eigentumsnachweis – den Rest regeln wir."
+  },
+  {
+    q: "Übernehmt ihr die Abmeldung des Fahrzeugs in Gießen?",
+    a: "Ja, die Abmeldung bei der Zulassungsstelle Gießen (GI-Kennzeichen) übernehmen wir vollständig für Sie. Sie müssen keine Behörde aufsuchen und keine Wartezeit einplanen – das erledigen wir als kostenloser Bestandteil des Verkaufsprozesses."
+  },
+  {
+    q: "Ich bin Student an der JLU Gießen – verkauft ihr auch kleinere Erstfahrzeuge?",
+    a: "Ja, gerade Studierende verkaufen bei uns häufig kompakte Erstfahrzeuge oder ältere Modelle – z. B. beim Studienabschluss, einem Auslandspraktikum oder dem Wechsel in eine andere Stadt. Wir bewerten alle Fahrzeugtypen fair, unabhängig von Marke oder Baujahr."
+  },
+  {
+    q: "Holt ihr das Auto in Gießen kostenlos ab oder muss ich es irgendwo bringen?",
+    a: "Wir kommen zu Ihnen – kostenlos, im gesamten Stadtgebiet Gießen und Umgebung (Lahn-Dill-Kreis, Marburg-Biedenkopf, Wetteraukreis). Abendtermine und Samstage sind auf Anfrage möglich."
+  }
+];
+
+export const ASCHAFFENBURG_FAQS: FAQItem[] = [
+  {
+    q: "Wie läuft der Autoverkauf in Aschaffenburg bei euch ab?",
+    a: "Ganz einfach in drei Schritten: Fahrzeugdaten online eingeben und kostenloses Angebot erhalten, Abholtermin auswählen und wir kommen zu Ihnen. Bei der Übergabe prüfen wir das Fahrzeug kurz, Sie unterschreiben den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Banküberweisung."
+  },
+  {
+    q: "Kauft ihr in Aschaffenburg auch Fahrzeuge mit Unfallschäden oder ohne TÜV an?",
+    a: "Ja. Wir kaufen Autos in jedem Zustand – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorschäden. Sie benötigen vollständige Fahrzeugpapiere und einen gültigen Ausweis – alles andere klären wir vor Ort."
+  },
+  {
+    q: "Was kostet die Abholung in Aschaffenburg?",
+    a: "Die Abholung ist kostenlos – egal ob Sie in der Innenstadt, in Damm, Schweinheim, Obernau oder im Landkreis Aschaffenburg (z. B. Alzenau, Großostheim, Stockstadt) wohnen. Wir kommen zu Ihrem Fahrzeug, nicht umgekehrt."
+  },
+  {
+    q: "Übernehmt ihr die Kfz-Abmeldung auch in Bayern (Aschaffenburg)?",
+    a: "Ja. Die Abmeldung beim Straßenverkehrsamt Aschaffenburg (AB-Kennzeichen) übernehmen wir vollständig. Obwohl Aschaffenburg in Bayern liegt, funktioniert unser Service bayernweit – Sie müssen kein Amt aufsuchen."
+  },
+  {
+    q: "Bekomme ich in Aschaffenburg einen vergleichbaren Preis wie in Frankfurt?",
+    a: "Ja. Unser Angebot basiert auf aktuellen bundesweiten Marktdaten, nicht auf dem Standort des Verkäufers. Ein Fahrzeug aus Aschaffenburg wird identisch bewertet wie dasselbe Fahrzeug aus Frankfurt – transparent und datenbasiert."
   }
 ];
 
 export const KAISERSLAUTERN_FAQS: FAQItem[] = [
   {
-    q: "Kaufen Sie Fahrzeuge von Studierenden oder Beschäftigten der RPTU Kaiserslautern-Landau?",
-    a: "Ja. Gerade beim Studienabschluss, einem Umzug oder dem Beginn des Berufslebens ist ein schneller Fahrzeugverkauf ideal. Wir bewerten alle Fahrzeugtypen fair und unkompliziert – auch kompakte Erstfahrzeuge."
+    q: "Wie läuft der Autoverkauf in Kaiserslautern bei euch ab?",
+    a: "Ganz einfach: Fahrzeugdaten online eingeben, kostenloses Angebot erhalten, Termin vereinbaren. Wir kommen zu Ihnen – egal ob Innenstadt, Siegelbach oder Umland. Bei der Übergabe prüfen wir das Fahrzeug kurz, Sie unterschreiben den Kaufvertrag und erhalten noch am selben Tag die Zahlung per Überweisung."
   },
   {
-    q: "Kaufen Sie auch Fahrzeuge von US-Militärangehörigen aus der Region Ramstein-Kaiserslautern?",
-    a: "Ja. Wir kaufen regelmäßig Fahrzeuge von internationalen Verkäufern an, einschließlich amerikanischer oder importierter Modelle. Entscheidend ist ein klarer Eigentumsnachweis – bei Fragen helfen wir Ihnen weiter."
+    q: "Kauft ihr in Kaiserslautern auch ältere oder beschädigte Fahrzeuge an?",
+    a: "Ja. Wir kaufen Autos in jedem Zustand – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorproblemen. Auch Fahrzeuge ohne Hauptuntersuchung sind willkommen, solange vollständige Papiere vorliegen."
   },
   {
-    q: "Welche Zulassungsstelle ist für Kaiserslautern zuständig und übernehmen Sie die Abmeldung?",
-    a: "Fahrzeuge mit KL-Kennzeichen werden bei der Zulassungsstelle der Stadt Kaiserslautern abgemeldet. Wir übernehmen diesen Schritt vollständig – kein Behördengang, kein zusätzlicher Aufwand für Sie."
+    q: "Was passiert mit der Abmeldung meines Autos nach dem Verkauf in Kaiserslautern?",
+    a: "Die Abmeldung bei der Zulassungsstelle Kaiserslautern (KL-Kennzeichen) übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen und keine Wartezeit einplanen – wir erledigen das als Teil unseres Services, kostenlos."
   },
   {
-    q: "Holen Sie Fahrzeuge auch aus Siegelbach, Erfenbach, Morlautern oder Einsiedlerhof ab?",
-    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Kaiserslautern sowie umliegende Ortschaften wie Siegelbach, Erfenbach, Morlautern, Einsiedlerhof, Otterbach und Enkenbach-Alsenborn – ohne zusätzliche Kosten."
+    q: "Wie lange dauert es, bis ich mein Geld bekomme?",
+    a: "Die Auszahlung erfolgt per Banküberweisung am Tag der Fahrzeugübergabe. Es gibt keine Verzögerung, keinen Teilzahlungsplan – Sie erhalten den vollen vereinbarten Betrag sofort nach Übergabe und Unterzeichnung des Kaufvertrags."
   },
   {
-    q: "Ist ein Verkauf auch für Pendler auf der A6 oder A63 Richtung Mannheim oder Saarbrücken möglich?",
-    a: "Ja. Kaiserslautern liegt direkt an der A6 (Richtung Mannheim und Saarbrücken) und der A63 (Richtung Mainz). Wir bieten flexible Übergabetermine und holen Ihr Fahrzeug auch auf dem Weg zur Arbeit oder nach Feierabend ab."
+    q: "Kann ich mein Auto auch verkaufen, wenn ich noch einen laufenden Kredit darauf habe?",
+    a: "Das ist möglich, erfordert aber etwas Vorbereitung. Sie benötigen entweder die Zustimmung der finanzierenden Bank oder eine Ablösesumme, die bei der Übergabe verrechnet werden kann. Kontaktieren Sie uns – wir beraten Sie gerne, wie das in Ihrer Situation am einfachsten funktioniert."
   }
 ];
