@@ -36,7 +36,9 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
   const [time, setTime] = useState('');
   const [bookingError, setBookingError] = useState<string | null>(null);
   const [bookingLoading, setBookingLoading] = useState(false);
-  const minDate = new Date().toISOString().split('T')[0];
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDate = tomorrow.toISOString().split('T')[0];
 
   const selectedLocation = dropOffLocations.find((location) => location.id === dropOffLocation) ?? null;
   const isSubmitDisabled =
