@@ -376,6 +376,52 @@ export const HAMBURG_FAQS: FAQItem[] = [
   }
 ];
 
+export const LUDWIGSHAFEN_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie auch BASF-nahe Pendler- und Dienstfahrzeuge in Ludwigshafen an?",
+    a: "Ja. Im Raum Ludwigshafen bewerten wir regelmäßig Fahrzeuge aus Schicht- und Pendlerbetrieb, auch mit höherer Laufleistung. Entscheidend sind Zustand, Wartung und nachvollziehbare Unterlagen."
+  },
+  {
+    q: "Ist eine Abholung in Oggersheim, Friesenheim, Mundenheim oder Oppau möglich?",
+    a: "Ja. Wir holen in allen Ludwigshafener Stadtteilen ab, darunter Oggersheim, Friesenheim, Mundenheim, Oppau, Gartenstadt und Rheingönheim. Die Terminabstimmung erfolgt flexibel."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Fahrzeuge mit LU-Kennzeichen zuständig?",
+    a: "Für Fahrzeuge mit LU-Kennzeichen ist die Zulassungsbehörde der Stadt Ludwigshafen zuständig. Auf Wunsch übernehmen wir die Abmeldung im Rahmen der Abwicklung."
+  },
+  {
+    q: "Kaufen Sie Fahrzeuge, die überwiegend über A650 und B9 genutzt wurden?",
+    a: "Ja. Gerade im Pendlerkorridor zwischen Ludwigshafen und Mannheim sind hohe Laufleistungen üblich. Wir berücksichtigen Kilometerstand und Wartungshistorie transparent bei der Bewertung."
+  },
+  {
+    q: "Ist der Ankauf auch möglich, wenn das Auto häufig in Mannheim genutzt wird?",
+    a: "Ja. Viele Eigentümer bewegen ihr Fahrzeug täglich zwischen Ludwigshafen und Mannheim. Die Nutzung über Stadtgrenzen ist kein Problem, solange Eigentumsnachweis und Fahrzeugunterlagen vorliegen."
+  }
+];
+
+export const HANAU_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie Fahrzeuge aus dem Umfeld Hanau-Wolfgang und Heraeus an?",
+    a: "Ja. In Hanau-Wolfgang und den angrenzenden Gewerbegebieten kaufen wir regelmäßig Dienst- und Alltagsfahrzeuge an, einschließlich Fahrzeugen mit dokumentierter Flottenhistorie."
+  },
+  {
+    q: "Bieten Sie Abholung in Kesselstadt, Steinheim und Großauheim an?",
+    a: "Ja. Unser Service deckt alle großen Hanauer Stadtteile ab, unter anderem Kesselstadt, Steinheim, Großauheim, Lamboy, Mittelbuchen und Wolfgang."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Hanauer Fahrzeuge zuständig?",
+    a: "Für viele Fahrzeuge im Raum Hanau ist die Zulassungsbehörde des Main-Kinzig-Kreises zuständig. Wir klären die konkrete Zuständigkeit im Einzelfall und übernehmen auf Wunsch die Abmeldung."
+  },
+  {
+    q: "Kann die Übergabe auch in der Nähe von Hanau Hauptbahnhof stattfinden?",
+    a: "Ja. Bei passender Terminlage sind Übergaben im Stadtgebiet und in Bahnhofsnähe möglich. Gerade für Pendler Richtung Frankfurt ist das oft die praktischste Lösung."
+  },
+  {
+    q: "Kaufen Sie auch Pendlerfahrzeuge mit hoher Laufleistung aus dem A66/A45-Korridor?",
+    a: "Ja. Fahrzeuge aus dem täglichen Verkehr rund um das Hanauer Kreuz bewerten wir regelmäßig. Ein höherer Kilometerstand ist kein Ausschlusskriterium, wenn Zustand und Historie stimmig sind."
+  }
+];
+
 export const MANNHEIM_FAQS: FAQItem[] = [
   {
     q: "Holen Sie Fahrzeuge in allen Mannheimer Stadtteilen ab?",
@@ -419,5 +465,51 @@ export const HEIDELBERG_FAQS: FAQItem[] = [
   {
     q: "Kaufen Sie auch Leasingfahrzeuge oder Dienstwagen aus dem SAP-Umfeld an?",
     a: "Ja. Leasingrückläufer und Firmenfahrzeuge aus dem SAP-Campus Walldorf oder dem Technologiepark Heidelberg bewerten wir gerne. Voraussetzung ist ein klarer Eigentümernachweis."
+  }
+];
+
+export const WORMS_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie Fahrzeuge aus allen Wormser Stadtteilen ab – auch aus Herrnsheim oder Pfeddersheim?",
+    a: "Ja. Wir holen in der Innenstadt, in Hochheim, Pfeddersheim, Herrnsheim, Abenheim, Horchheim und Rheindürkheim ab – ohne zusätzliche Anfahrtskosten. Einfach online bewerten und Termin wählen."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Worms zuständig und übernehmen Sie die Abmeldung?",
+    a: "Wormser Fahrzeuge tragen das Kennzeichen WO und werden bei der Zulassungsstelle der Stadt Worms abgemeldet. Wir übernehmen diesen Behördengang vollständig für Sie – kein zusätzlicher Aufwand nötig."
+  },
+  {
+    q: "Bieten Sie auch einen fairen Preis für ältere Weinbaufahrzeuge oder gewerblich genutzte Transporter?",
+    a: "Ja. In der Wormser Weinregion sind Transporter, Kleintransporter und ältere Nutzfahrzeuge weit verbreitet. Wir bewerten alle Fahrzeugtypen transparent – auch mit hoher Laufleistung oder gewerblicher Nutzungshistorie."
+  },
+  {
+    q: "Ist ein Ankauf auch für Pendler zwischen Worms und Mannheim oder Mainz möglich?",
+    a: "Ja. Worms liegt zentral an der A61 zwischen Mannheim (ca. 30 Minuten) und Mainz (ca. 40 Minuten). Wir bieten flexible Übergabetermine – auch abends oder am Wochenende – und holen Ihr Fahrzeug bei Bedarf direkt ab."
+  },
+  {
+    q: "Können BASF-Mitarbeitende oder Beschäftigte aus dem Industriepark Worms ihr Fahrzeug schnell verkaufen?",
+    a: "Ja. Wir sind auf schnelle, unkomplizierte Abwicklungen spezialisiert – ideal für Beschäftigte mit engem Zeitplan. Online-Bewertung, verbindliches Angebot und Auszahlung bei Übergabe – alles an einem Termin."
+  }
+];
+
+export const KAISERSLAUTERN_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie Fahrzeuge von Studierenden oder Beschäftigten der RPTU Kaiserslautern-Landau?",
+    a: "Ja. Gerade beim Studienabschluss, einem Umzug oder dem Beginn des Berufslebens ist ein schneller Fahrzeugverkauf ideal. Wir bewerten alle Fahrzeugtypen fair und unkompliziert – auch kompakte Erstfahrzeuge."
+  },
+  {
+    q: "Kaufen Sie auch Fahrzeuge von US-Militärangehörigen aus der Region Ramstein-Kaiserslautern?",
+    a: "Ja. Wir kaufen regelmäßig Fahrzeuge von internationalen Verkäufern an, einschließlich amerikanischer oder importierter Modelle. Entscheidend ist ein klarer Eigentumsnachweis – bei Fragen helfen wir Ihnen weiter."
+  },
+  {
+    q: "Welche Zulassungsstelle ist für Kaiserslautern zuständig und übernehmen Sie die Abmeldung?",
+    a: "Fahrzeuge mit KL-Kennzeichen werden bei der Zulassungsstelle der Stadt Kaiserslautern abgemeldet. Wir übernehmen diesen Schritt vollständig – kein Behördengang, kein zusätzlicher Aufwand für Sie."
+  },
+  {
+    q: "Holen Sie Fahrzeuge auch aus Siegelbach, Erfenbach, Morlautern oder Einsiedlerhof ab?",
+    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Kaiserslautern sowie umliegende Ortschaften wie Siegelbach, Erfenbach, Morlautern, Einsiedlerhof, Otterbach und Enkenbach-Alsenborn – ohne zusätzliche Kosten."
+  },
+  {
+    q: "Ist ein Verkauf auch für Pendler auf der A6 oder A63 Richtung Mannheim oder Saarbrücken möglich?",
+    a: "Ja. Kaiserslautern liegt direkt an der A6 (Richtung Mannheim und Saarbrücken) und der A63 (Richtung Mainz). Wir bieten flexible Übergabetermine und holen Ihr Fahrzeug auch auf dem Weg zur Arbeit oder nach Feierabend ab."
   }
 ];

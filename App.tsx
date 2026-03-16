@@ -24,17 +24,21 @@ import {
   DARMSTADT_FAQS,
   FRANKFURT_FAQS,
   HAMBURG_FAQS,
+  HANAU_FAQS,
   HEIDELBERG_FAQS,
   HOME_FAQS,
   KOELN_FAQS,
   KOBLENZ_FAQS,
+  LUDWIGSHAFEN_FAQS,
   MAINZ_FAQS,
+  KAISERSLAUTERN_FAQS,
   MANNHEIM_FAQS,
   OFFENBACH_FAQS,
   RATGEBER_FAQS,
   RUESSELSHEIM_FAQS,
   VORTEILE_FAQS,
   WIESBADEN_FAQS,
+  WORMS_FAQS,
 } from './lib/faqContent';
 import { buildFaqPageSchema } from './lib/structuredData';
 import { savePartialLead } from './lib/supabaseFunctions';
@@ -91,6 +95,10 @@ const loadAutoankaufKoelnPage = () => import('./pages/AutoankaufKoeln');
 const loadAutoankaufHamburgPage = () => import('./pages/AutoankaufHamburg');
 const loadAutoankaufMannheimPage = () => import('./pages/AutoankaufMannheim');
 const loadAutoankaufHeidelbergPage = () => import('./pages/AutoankaufHeidelberg');
+const loadAutoankaufWormsPage = () => import('./pages/AutoankaufWorms');
+const loadAutoankaufKaiserslauternPage = () => import('./pages/AutoankaufKaiserslautern');
+const loadAutoankaufLudwigshafenPage = () => import('./pages/AutoankaufLudwigshafen');
+const loadAutoankaufHanauPage = () => import('./pages/AutoankaufHanau');
 const loadRatgeberGuidePage = () => import('./pages/RatgeberGuide');
 const loadImpressumPage = () => import('./pages/Impressum');
 const loadDatenschutzPage = () => import('./pages/Datenschutz');
@@ -116,6 +124,10 @@ const AutoankaufKoelnPage = lazy(loadAutoankaufKoelnPage);
 const AutoankaufHamburgPage = lazy(loadAutoankaufHamburgPage);
 const AutoankaufMannheimPage = lazy(loadAutoankaufMannheimPage);
 const AutoankaufHeidelbergPage = lazy(loadAutoankaufHeidelbergPage);
+const AutoankaufWormsPage = lazy(loadAutoankaufWormsPage);
+const AutoankaufKaiserslauternPage = lazy(loadAutoankaufKaiserslauternPage);
+const AutoankaufLudwigshafenPage = lazy(loadAutoankaufLudwigshafenPage);
+const AutoankaufHanauPage = lazy(loadAutoankaufHanauPage);
 const RatgeberGuidePage = lazy(loadRatgeberGuidePage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
@@ -144,6 +156,10 @@ export const preloadRouteModules = async () => {
     loadAutoankaufHamburgPage(),
     loadAutoankaufMannheimPage(),
     loadAutoankaufHeidelbergPage(),
+    loadAutoankaufWormsPage(),
+    loadAutoankaufKaiserslauternPage(),
+    loadAutoankaufLudwigshafenPage(),
+    loadAutoankaufHanauPage(),
     loadRatgeberGuidePage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
@@ -153,26 +169,40 @@ export const preloadRouteModules = async () => {
 const buildCitySchemas = (
   cityName: string,
   routePath: string,
+  region?: string,
+  description?: string,
 ): Array<Record<string, unknown>> => {
   const pageUrl = `${SITE_URL}${routePath}`;
+  const areaServed: Record<string, unknown> = {
+    "@type": "City",
+    name: cityName,
+  };
+
+  if (region) {
+    areaServed.addressRegion = region;
+    areaServed.addressCountry = "DE";
+  }
+
+  const serviceSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${pageUrl}#service`,
+    name: `Autoankauf ${cityName}`,
+    serviceType: "Autoankauf",
+    areaServed,
+    provider: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    url: pageUrl,
+    inLanguage: "de-DE",
+  };
+
+  if (description) {
+    serviceSchema.description = description;
+  }
 
   return [
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "@id": `${pageUrl}#service`,
-      name: `Autoankauf ${cityName}`,
-      serviceType: "Autoankauf",
-      areaServed: {
-        "@type": "City",
-        name: cityName,
-      },
-      provider: {
-        "@id": `${SITE_URL}/#organization`,
-      },
-      url: pageUrl,
-      inLanguage: "de-DE",
-    },
+    serviceSchema,
   ];
 };
 
@@ -1221,6 +1251,116 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufHeidelbergPage 
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-worms" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Worms – Fairer Preis & Sofortige Auszahlung | Meinautoverkauf.de"
+                description="Auto verkaufen in Worms: faire Bewertung, kostenlose Abholung in der Nibelungenstadt und schnelle Auszahlung. Jetzt Preis berechnen."
+                canonicalUrl="/autoankauf-worms"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas('Worms', '/autoankauf-worms'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-worms', WORMS_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Worms – Sofort Geld für Ihr Fahrzeug"
+                subheadline="Kostenlose Abholung in der Nibelungenstadt & dem Landkreis Alzey-Worms"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufWormsPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-kaiserslautern" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Kaiserslautern – Schnell & Fair in der Pfalz | Meinautoverkauf.de"
+                description="Auto verkaufen in Kaiserslautern: faire Bewertung, kostenlose Abholung in der Westpfalz und sofortige Auszahlung. Jetzt Preis berechnen."
+                canonicalUrl="/autoankauf-kaiserslautern"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas('Kaiserslautern', '/autoankauf-kaiserslautern'),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-kaiserslautern', KAISERSLAUTERN_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Kaiserslautern – Schnell & Fair in der Pfalz"
+                subheadline="Kostenlose Abholung im gesamten Stadtgebiet & Landkreis Kaiserslautern"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufKaiserslauternPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-ludwigshafen" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Ludwigshafen am Rhein – Schnelle Auszahlung & fairer Ankaufpreis | Meinautoverkauf.de"
+                description="Autoankauf Ludwigshafen: Jetzt Fahrzeug online bewerten, transparentes Angebot erhalten und auf Wunsch kostenlos abholen lassen – mit schneller Auszahlung."
+                canonicalUrl="/autoankauf-ludwigshafen"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Ludwigshafen am Rhein',
+                    '/autoankauf-ludwigshafen',
+                    'Rheinland-Pfalz',
+                    'Autoankauf in Ludwigshafen am Rhein mit datenbasierter Bewertung, schneller Auszahlung und auf Wunsch inklusive Abmeldung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-ludwigshafen', LUDWIGSHAFEN_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Ludwigshafen – Schnell verkaufen im Rhein-Neckar-Raum"
+                subheadline="Faire Bewertung, feste Termine und zügige Auszahlung in Ludwigshafen am Rhein"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufLudwigshafenPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-hanau" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Hanau am Main – Direkte Auszahlung & transparenter Verkauf | Meinautoverkauf.de"
+                description="Autoankauf Hanau: Fahrzeug online bewerten, faires Angebot erhalten und verkaufen – mit optionaler Abholung, schneller Auszahlung und klarer Abwicklung."
+                canonicalUrl="/autoankauf-hanau"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Hanau am Main',
+                    '/autoankauf-hanau',
+                    'Hessen',
+                    'Autoankauf in Hanau am Main für Pendler- und Dienstwagen mit transparenter Bewertung, schneller Auszahlung und optionaler Abholung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-hanau', HANAU_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Hanau – Klarer Ablauf für Pendler und Familien"
+                subheadline="Online bewerten, vor Ort verkaufen und in Hanau am Main zügig auszahlen lassen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufHanauPage
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
