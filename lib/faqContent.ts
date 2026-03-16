@@ -429,7 +429,7 @@ export const NEUWIED_FAQS: FAQItem[] = [
   },
   {
     q: "Ist die Abholung in Heddesdorf, Engers, Niederbieber und Irlich ohne Zusatzkosten möglich?",
-    a: "Ja. Wir organisieren die Abholung im gesamten Stadtgebiet Neuwied, einschliesslich Heddesdorf, Engers, Niederbieber, Irlich und den angrenzenden Ortsteilen."
+    a: "Ja. Wir organisieren die Abholung im gesamten Stadtgebiet Neuwied, einschließlich Heddesdorf, Engers, Niederbieber, Irlich und den angrenzenden Ortsteilen."
   },
   {
     q: "Kann ich mein NR-Fahrzeug verkaufen, wenn noch eine Finanzierung läuft?",
@@ -465,6 +465,52 @@ export const WETZLAR_FAQS: FAQItem[] = [
   {
     q: "Unterstützen Sie bei der Abmeldung über die zuständige Stelle im Lahn-Dill-Kreis?",
     a: "Ja, auf Wunsch begleiten wir den Abmeldeprozess und dokumentieren die Abwicklung transparent, damit Sie die Bestätigung für Versicherung und Unterlagen erhalten."
+  }
+];
+
+export const BAD_HOMBURG_FAQS: FAQItem[] = [
+  {
+    q: "Ist die Abholung in Kirdorf, Gonzenheim, Dornholzhausen und Ober-Erlenbach möglich?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Bad Homburg vor der Höhe ab, einschließlich Kirdorf, Gonzenheim, Dornholzhausen, Ober-Erlenbach und den angrenzenden Wohnlagen."
+  },
+  {
+    q: "Kaufen Sie in Bad Homburg auch Pendlerfahrzeuge mit hoher Laufleistung aus dem A5/A661-Korridor an?",
+    a: "Ja. Gerade im Raum Bad Homburg sind solche Laufprofile üblich. Wir berücksichtigen Wartungshistorie, Zustand und Ausstattung für eine realistische Bewertung."
+  },
+  {
+    q: "Kann die Übergabe in Bad Homburg nach Feierabend oder nahe Bahnhof abgestimmt werden?",
+    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeits- und Pendelalltag in Bad Homburg vor der Höhe vereinbar sind."
+  },
+  {
+    q: "Ist ein Verkauf möglich, wenn mein Fahrzeug noch finanziert ist oder als ehemaliger Dienstwagen lief?",
+    a: "Ja. Auch finanzierte oder ehemalige Dienstfahrzeuge können angekauft werden. Wichtig sind vollständige Unterlagen und die transparente Klärung einer möglichen Ablöse."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung von HG-Kennzeichen im Hochtaunuskreis?",
+    a: "Ja, auf Wunsch unterstützen wir beim Abmeldeprozess für Fahrzeuge aus dem Hochtaunuskreis und dokumentieren die Abwicklung mit den nötigen Nachweisen."
+  }
+];
+
+export const OBERURSEL_FAQS: FAQItem[] = [
+  {
+    q: "Bieten Sie Abholung in Oberstedten, Bommersheim, Weißkirchen und Stierstadt an?",
+    a: "Ja. Wir holen Fahrzeuge in allen Oberurseler Stadtteilen ab, darunter Oberstedten, Bommersheim, Weißkirchen, Stierstadt und den angrenzenden Bereichen."
+  },
+  {
+    q: "Kaufen Sie in Oberursel auch Fahrzeuge mit täglicher Nutzung über B455 oder Richtung A661 an?",
+    a: "Ja. Solche Pendlerfahrzeuge sind in Oberursel häufig. Wir bewerten sie nicht pauschal, sondern anhand von Zustand, Wartung und dokumentierter Historie."
+  },
+  {
+    q: "Sind Übergabetermine in Oberursel mit Blick auf U3- oder S-Bahn-Pendelzeiten möglich?",
+    a: "In vielen Fällen ja. Wir stimmen Termine so ab, dass sie zu Ihrem Tagesablauf und typischen Pendelzeiten im Raum Oberursel passen."
+  },
+  {
+    q: "Kaufen Sie auch ältere Zweitwagen oder Elektrofahrzeuge in Oberursel an?",
+    a: "Ja. Wir kaufen sowohl ältere Alltagsfahrzeuge als auch Elektro- und Hybridmodelle an, sofern Unterlagen und Eigentumsnachweis vollständig vorliegen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung für Fahrzeuge aus Oberursel im Hochtaunuskreis?",
+    a: "Ja. Auf Wunsch unterstützen wir die Abmeldung bei der zuständigen Stelle im Hochtaunuskreis und stellen die Bestätigung für Ihre Unterlagen bereit."
   }
 ];
 
@@ -603,5 +649,51 @@ export const KAISERSLAUTERN_FAQS: FAQItem[] = [
   {
     q: "Kann ich mein Auto auch verkaufen, wenn ich noch einen laufenden Kredit darauf habe?",
     a: "Das ist möglich, erfordert aber etwas Vorbereitung. Sie benötigen entweder die Zustimmung der finanzierenden Bank oder eine Ablösesumme, die bei der Übergabe verrechnet werden kann. Kontaktieren Sie uns – wir beraten Sie gerne, wie das in Ihrer Situation am einfachsten funktioniert."
+  }
+];
+
+export const SPEYER_FAQS: FAQItem[] = [
+  {
+    q: "Wie schnell bekomme ich mein Geld beim Autoverkauf in Speyer?",
+    a: "Die Auszahlung erfolgt per Banküberweisung noch am selben Tag der Fahrzeugübergabe. Online-Bewertung dauert ca. 2 Minuten, danach Termin wählen – wir kommen zu Ihnen in Speyer oder Umgebung und zahlen am Übergabetag aus."
+  },
+  {
+    q: "Kauft ihr in Speyer auch Autos ohne TÜV oder mit Unfallschaden an?",
+    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand – ohne gültige HU, mit Unfallschäden, hoher Laufleistung oder technischen Mängeln. Vollständige Fahrzeugpapiere und Eigentumsnachweis genügen. Den Preis ermitteln wir transparent nach Marktwert."
+  },
+  {
+    q: "Übernehmt ihr die Abmeldung beim Straßenverkehrsamt Speyer?",
+    a: "Ja. Die Abmeldung für Fahrzeuge mit SP-Kennzeichen (Straßenverkehrsbehörde Speyer) übernehmen wir vollständig für Sie. Kein Behördengang, keine Wartezeit – das ist Teil unseres Services, kostenlos."
+  },
+  {
+    q: "Holt ihr das Auto in Speyer und Umgebung kostenlos ab?",
+    a: "Ja. Wir kommen zu Ihnen – kostenlos in der Domstadt, in den Stadtteilen und im Umland (Rhein-Pfalz-Kreis, Ludwigshafen-Nähe). Abholung auch abends oder am Wochenende auf Anfrage möglich."
+  },
+  {
+    q: "Bekomme ich in Speyer einen fairen Preis oder wird vor Ort nachverhandelt?",
+    a: "Unser Online-Angebot basiert auf aktuellen Marktdaten und ist verbindlich. Eine Anpassung erfolgt nur, wenn bei der Besichtigung ein zuvor nicht genannter Schaden festgestellt wird – sonst zahlen wir den vereinbarten Betrag."
+  }
+];
+
+export const NEUSTADT_WEINSTRASSE_FAQS: FAQItem[] = [
+  {
+    q: "Wie läuft der Autoverkauf in Neustadt an der Weinstraße bei euch ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und kostenloses Angebot erhalten, Abholtermin wählen – wir kommen zu Ihnen. Bei der Übergabe prüfen wir das Fahrzeug kurz, Sie unterschreiben den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Überweisung."
+  },
+  {
+    q: "Kauft ihr in Neustadt auch ältere oder beschädigte Fahrzeuge an?",
+    a: "Ja. Wir kaufen Autos in jedem Zustand – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorschäden. Vollständige Papiere und Eigentumsnachweis vorausgesetzt. Wir bewerten transparent nach aktuellem Marktwert."
+  },
+  {
+    q: "Was passiert mit der Abmeldung meines Autos in Neustadt (NW-Kennzeichen)?",
+    a: "Die Abmeldung bei der Zulassungsstelle Neustadt an der Weinstraße übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen – wir erledigen das als Teil unseres Services, kostenlos."
+  },
+  {
+    q: "Holt ihr auch in den Ortsbezirken und an der Weinstraße ab?",
+    a: "Ja. Unser Einzugsgebiet umfasst die gesamte Stadt Neustadt an der Weinstraße inklusive aller Ortsbezirke sowie die Region Deutsche Weinstraße. Abholung ist kostenlos; Termine auch abends oder am Wochenende möglich."
+  },
+  {
+    q: "Wie lange dauert es bis zur Auszahlung?",
+    a: "Die Auszahlung erfolgt am Tag der Fahrzeugübergabe per Banküberweisung. Es gibt keine Verzögerung – Sie erhalten den vereinbarten Betrag nach Übergabe und Unterzeichnung des Kaufvertrags."
   }
 ];

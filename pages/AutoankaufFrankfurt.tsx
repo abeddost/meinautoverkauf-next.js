@@ -525,6 +525,12 @@ const AutoankaufFrankfurtPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-wetzlar" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
                 Auch in Wetzlar verfügbar →
               </Link>
+              <Link to="/autoankauf-bad-homburg-vor-der-hoehe" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
+                Auch in Bad Homburg verfügbar →
+              </Link>
+              <Link to="/autoankauf-oberursel" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
+                Auch in Oberursel verfügbar →
+              </Link>
             </div>
             <div className="mt-8 text-center">
               <p className="text-slate-600 font-medium mb-4">

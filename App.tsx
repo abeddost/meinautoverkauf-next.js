@@ -21,6 +21,8 @@ import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
 import {
   AUTO_BEWERTEN_FAQS,
   AUTO_VERKAUFEN_FAQS,
+  BAD_HOMBURG_FAQS,
+  OBERURSEL_FAQS,
   DARMSTADT_FAQS,
   FRANKFURT_FAQS,
   HAMBURG_FAQS,
@@ -43,6 +45,8 @@ import {
   WORMS_FAQS,
   GIESSEN_FAQS,
   ASCHAFFENBURG_FAQS,
+  SPEYER_FAQS,
+  NEUSTADT_WEINSTRASSE_FAQS,
 } from './lib/faqContent';
 import { buildFaqPageSchema } from './lib/structuredData';
 import { savePartialLead } from './lib/supabaseFunctions';
@@ -107,6 +111,10 @@ const loadAutoankaufGiessenPage = () => import('./pages/AutoankaufGiessen');
 const loadAutoankaufAschaffenburgPage = () => import('./pages/AutoankaufAschaffenburg');
 const loadAutoankaufNeuwiedPage = () => import('./pages/AutoankaufNeuwied');
 const loadAutoankaufWetzlarPage = () => import('./pages/AutoankaufWetzlar');
+const loadAutoankaufSpeyerPage = () => import('./pages/AutoankaufSpeyer');
+const loadAutoankaufNeustadtWeinstrassePage = () => import('./pages/AutoankaufNeustadtWeinstrasse');
+const loadAutoankaufBadHomburgPage = () => import('./pages/AutoankaufBadHomburg');
+const loadAutoankaufOberurselPage = () => import('./pages/AutoankaufOberursel');
 const loadRatgeberGuidePage = () => import('./pages/RatgeberGuide');
 const loadImpressumPage = () => import('./pages/Impressum');
 const loadDatenschutzPage = () => import('./pages/Datenschutz');
@@ -140,6 +148,10 @@ const AutoankaufGiessenPage = lazy(loadAutoankaufGiessenPage);
 const AutoankaufAschaffenburgPage = lazy(loadAutoankaufAschaffenburgPage);
 const AutoankaufNeuwiedPage = lazy(loadAutoankaufNeuwiedPage);
 const AutoankaufWetzlarPage = lazy(loadAutoankaufWetzlarPage);
+const AutoankaufSpeyerPage = lazy(loadAutoankaufSpeyerPage);
+const AutoankaufNeustadtWeinstrassePage = lazy(loadAutoankaufNeustadtWeinstrassePage);
+const AutoankaufBadHomburgPage = lazy(loadAutoankaufBadHomburgPage);
+const AutoankaufOberurselPage = lazy(loadAutoankaufOberurselPage);
 const RatgeberGuidePage = lazy(loadRatgeberGuidePage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
@@ -176,6 +188,10 @@ export const preloadRouteModules = async () => {
     loadAutoankaufAschaffenburgPage(),
     loadAutoankaufNeuwiedPage(),
     loadAutoankaufWetzlarPage(),
+    loadAutoankaufSpeyerPage(),
+    loadAutoankaufNeustadtWeinstrassePage(),
+    loadAutoankaufBadHomburgPage(),
+    loadAutoankaufOberurselPage(),
     loadRatgeberGuidePage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
@@ -1497,6 +1513,126 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufWetzlarPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-speyer" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Speyer – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Auto verkaufen in Speyer: Kostenlose Online-Bewertung, faire Preisermittlung, Abholung in der Domstadt und Rhein-Pfalz-Kreis, Auszahlung am Tag der Übergabe."
+                canonicalUrl="/autoankauf-speyer"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Speyer',
+                    '/autoankauf-speyer',
+                    'Rheinland-Pfalz',
+                    'Autoankauf in Speyer für Pendler und Familien – faire Bewertung, Abholung in Domstadt und Umland, Abmeldung inklusive.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-speyer', SPEYER_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Speyer – Fairer Preis, schnelle Abwicklung"
+                subheadline="Ihr Autoankauf-Partner in der Domstadt am Rhein & Rhein-Pfalz-Kreis"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufSpeyerPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-neustadt-weinstrasse" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Neustadt an der Weinstraße – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Auto verkaufen in Neustadt an der Weinstraße: Online bewerten, faires Angebot, Abholung in allen Ortsbezirken und Auszahlung am Tag der Übergabe – Deutsche Weinstraße."
+                canonicalUrl="/autoankauf-neustadt-weinstrasse"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Neustadt an der Weinstraße',
+                    '/autoankauf-neustadt-weinstrasse',
+                    'Rheinland-Pfalz',
+                    'Autoankauf in Neustadt an der Weinstraße für Pendler und Weinstraßen-Region – faire Bewertung, Abholung, Abmeldung inklusive.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-neustadt-weinstrasse', NEUSTADT_WEINSTRASSE_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Neustadt an der Weinstraße – Schnell verkaufen, sofort auszahlen"
+                subheadline="Ihr Autoankauf-Partner an der Deutschen Weinstraße & in der Pfalz"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufNeustadtWeinstrassePage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-bad-homburg-vor-der-hoehe" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Bad Homburg vor der Höhe – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Bad Homburg vor der Höhe: Auto schnell verkaufen mit fairer Online-Bewertung, Abholung im Hochtaunuskreis und schneller Auszahlung vor Ort."
+                canonicalUrl="/autoankauf-bad-homburg-vor-der-hoehe"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Bad Homburg vor der Höhe',
+                    '/autoankauf-bad-homburg-vor-der-hoehe',
+                    'Hessen',
+                    'Autoankauf in Bad Homburg vor der Höhe für Pendler-, Familien- und Dienstwagen mit transparenter Bewertung und zügiger Auszahlung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-bad-homburg-vor-der-hoehe', BAD_HOMBURG_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Bad Homburg – Schnell verkaufen im Hochtaunuskreis"
+                subheadline="Faire Bewertung, planbare Termine und zügige Auszahlung in Bad Homburg vor der Höhe"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufBadHomburgPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-oberursel" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Oberursel – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Oberursel: Auto schnell verkaufen mit transparenter Online-Bewertung, Abholung im Hochtaunuskreis und schneller Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-oberursel"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Oberursel (Taunus)',
+                    '/autoankauf-oberursel',
+                    'Hessen',
+                    'Autoankauf in Oberursel für Pendler und Familien im Taunus mit transparenter Bewertung und schneller Auszahlung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-oberursel', OBERURSEL_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Oberursel – Schnell verkaufen im Taunus"
+                subheadline="Online bewerten, Termin sichern und Fahrzeug in Oberursel transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufOberurselPage
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>
