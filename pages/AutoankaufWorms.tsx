@@ -349,6 +349,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-frankfurt', label: '→ Autoankauf Frankfurt' },
               { href: '/autoankauf-mainz', label: '→ Autoankauf Mainz' },
               { href: '/autoankauf-darmstadt', label: '→ Autoankauf Darmstadt' },
+              { href: '/autoankauf-frankenthal', label: '→ Auch in Frankenthal verfügbar' },
             ].map((link) => (
               <Link
                 key={link.href}

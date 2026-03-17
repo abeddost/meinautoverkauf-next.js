@@ -465,6 +465,9 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-koblenz" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
                 Autoankauf Koblenz →
               </Link>
+              <Link to="/autoankauf-bad-kreuznach" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
+                Auch in Bad Kreuznach verfügbar →
+              </Link>
             </div>
             <div className="mt-8 text-center">
               <p className="text-slate-600 font-medium mb-4">

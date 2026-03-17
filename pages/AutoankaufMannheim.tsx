@@ -318,6 +318,7 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-kaiserslautern', label: '→ Auch in Kaiserslautern verfügbar' },
               { href: '/autoankauf-speyer', label: '→ Auch in Speyer verfügbar' },
               { href: '/autoankauf-neustadt-weinstrasse', label: '→ Auch in Neustadt an der Weinstraße verfügbar' },
+              { href: '/autoankauf-frankenthal', label: '→ Auch in Frankenthal verfügbar' },
             ].map((link) => (
               <Link
                 key={link.href}

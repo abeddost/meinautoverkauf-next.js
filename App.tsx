@@ -21,7 +21,9 @@ import { applyConsentDefaults, applyConsentUpdate } from './lib/analytics';
 import {
   AUTO_BEWERTEN_FAQS,
   AUTO_VERKAUFEN_FAQS,
+  BAD_KREUZNACH_FAQS,
   BAD_HOMBURG_FAQS,
+  DREIEICH_FAQS,
   OBERURSEL_FAQS,
   DARMSTADT_FAQS,
   FRANKFURT_FAQS,
@@ -47,6 +49,8 @@ import {
   ASCHAFFENBURG_FAQS,
   SPEYER_FAQS,
   NEUSTADT_WEINSTRASSE_FAQS,
+  FRANKENTHAL_FAQS,
+  RODGAU_FAQS,
 } from './lib/faqContent';
 import { buildFaqPageSchema } from './lib/structuredData';
 import { savePartialLead } from './lib/supabaseFunctions';
@@ -116,6 +120,10 @@ const loadAutoankaufSpeyerPage = () => import('./pages/AutoankaufSpeyer');
 const loadAutoankaufNeustadtWeinstrassePage = () => import('./pages/AutoankaufNeustadtWeinstrasse');
 const loadAutoankaufBadHomburgPage = () => import('./pages/AutoankaufBadHomburg');
 const loadAutoankaufOberurselPage = () => import('./pages/AutoankaufOberursel');
+const loadAutoankaufBadKreuznachPage = () => import('./pages/AutoankaufBadKreuznach');
+const loadAutoankaufDreieichPage = () => import('./pages/AutoankaufDreieich');
+const loadAutoankaufFrankenthalPage = () => import('./pages/AutoankaufFrankenthal');
+const loadAutoankaufRodgauPage = () => import('./pages/AutoankaufRodgau');
 const loadRatgeberGuidePage = () => import('./pages/RatgeberGuide');
 const loadImpressumPage = () => import('./pages/Impressum');
 const loadDatenschutzPage = () => import('./pages/Datenschutz');
@@ -154,6 +162,10 @@ const AutoankaufSpeyerPage = lazy(loadAutoankaufSpeyerPage);
 const AutoankaufNeustadtWeinstrassePage = lazy(loadAutoankaufNeustadtWeinstrassePage);
 const AutoankaufBadHomburgPage = lazy(loadAutoankaufBadHomburgPage);
 const AutoankaufOberurselPage = lazy(loadAutoankaufOberurselPage);
+const AutoankaufBadKreuznachPage = lazy(loadAutoankaufBadKreuznachPage);
+const AutoankaufDreieichPage = lazy(loadAutoankaufDreieichPage);
+const AutoankaufFrankenthalPage = lazy(loadAutoankaufFrankenthalPage);
+const AutoankaufRodgauPage = lazy(loadAutoankaufRodgauPage);
 const RatgeberGuidePage = lazy(loadRatgeberGuidePage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
 const ImpressumPage = lazy(loadImpressumPage);
@@ -195,6 +207,10 @@ export const preloadRouteModules = async () => {
     loadAutoankaufNeustadtWeinstrassePage(),
     loadAutoankaufBadHomburgPage(),
     loadAutoankaufOberurselPage(),
+    loadAutoankaufBadKreuznachPage(),
+    loadAutoankaufDreieichPage(),
+    loadAutoankaufFrankenthalPage(),
+    loadAutoankaufRodgauPage(),
     loadRatgeberGuidePage(),
     loadImpressumPage(),
     loadDatenschutzPage(),
@@ -1647,6 +1663,126 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufOberurselPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-bad-kreuznach" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Bad Kreuznach – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Bad Kreuznach: Auto schnell verkaufen mit transparenter Online-Bewertung, Abholung im Kreis Bad Kreuznach und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-bad-kreuznach"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Bad Kreuznach',
+                    '/autoankauf-bad-kreuznach',
+                    'Rheinland-Pfalz',
+                    'Autoankauf in Bad Kreuznach für Pendler und Familien mit transparenter Bewertung und zügiger Auszahlung im Naheland.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-bad-kreuznach', BAD_KREUZNACH_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Bad Kreuznach – Schnell verkaufen im Naheland"
+                subheadline="Faire Bewertung, planbare Termine und zügige Auszahlung in Bad Kreuznach"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufBadKreuznachPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-dreieich" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Dreieich – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Dreieich: Auto schnell verkaufen mit transparenter Bewertung, flexiblen Terminen im Kreis Offenbach und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-dreieich"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Dreieich',
+                    '/autoankauf-dreieich',
+                    'Hessen',
+                    'Autoankauf in Dreieich für Pendler und Familien mit transparenter Bewertung und schneller Auszahlung im Kreis Offenbach.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-dreieich', DREIEICH_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Dreieich – Schnell verkaufen im Kreis Offenbach"
+                subheadline="Online bewerten, Termin sichern und Fahrzeug in Dreieich transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufDreieichPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-frankenthal" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Frankenthal – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Frankenthal (Pfalz): Auto schnell verkaufen mit fairer Online-Bewertung, Abholung im Rhein-Pfalz-Kreis und schneller Auszahlung – ohne Inserat."
+                canonicalUrl="/autoankauf-frankenthal"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Frankenthal (Pfalz)',
+                    '/autoankauf-frankenthal',
+                    'Rheinland-Pfalz',
+                    'Autoankauf in Frankenthal für Pendler, Familien und Gewerbefahrzeuge mit transparenter Bewertung und schneller Auszahlung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-frankenthal', FRANKENTHAL_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Frankenthal – Schnell verkaufen in der Pfalz"
+                subheadline="Online bewerten, Termin sichern und Fahrzeug in Frankenthal transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufFrankenthalPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-rodgau" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Rodgau – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Rodgau: Auto schnell verkaufen mit transparenter Online-Bewertung, Abholung im Landkreis Offenbach und schneller Auszahlung – ohne Inseratsstress."
+                canonicalUrl="/autoankauf-rodgau"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Rodgau',
+                    '/autoankauf-rodgau',
+                    'Hessen',
+                    'Autoankauf in Rodgau für Pendler und Familien im Landkreis Offenbach mit transparenter Bewertung und schneller Auszahlung.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-rodgau', RODGAU_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Rodgau – Schnell verkaufen im Landkreis Offenbach"
+                subheadline="Online bewerten, Termin sichern und Fahrzeug in Rodgau transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufRodgauPage
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>

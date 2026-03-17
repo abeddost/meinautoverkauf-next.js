@@ -514,6 +514,52 @@ export const OBERURSEL_FAQS: FAQItem[] = [
   }
 ];
 
+export const BAD_KREUZNACH_FAQS: FAQItem[] = [
+  {
+    q: "Ist die Abholung in Winzenheim, Planig und Bad Münster am Stein-Ebernburg möglich?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Bad Kreuznach ab, einschließlich Winzenheim, Planig, Bad Münster am Stein-Ebernburg und angrenzender Ortsteile."
+  },
+  {
+    q: "Kaufen Sie in Bad Kreuznach auch Pendlerfahrzeuge mit Laufleistung aus dem B41- und A61-Korridor an?",
+    a: "Ja. Gerade im Raum Bad Kreuznach sind solche Fahrprofile üblich. Wir bewerten sie auf Basis von Zustand, Wartung und Ausstattung statt nur nach Kilometerstand."
+  },
+  {
+    q: "Sind Übergabetermine in Bad Kreuznach auch nach Feierabend oder nahe Bahnhof möglich?",
+    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeitsalltag und typischen Pendelzeiten im Raum Bad Kreuznach vereinbar sind."
+  },
+  {
+    q: "Ist ein Verkauf möglich, wenn mein Fahrzeug noch finanziert ist?",
+    a: "Ja. Auch bei laufender Finanzierung ist ein Ankauf möglich. Wichtig sind vollständige Unterlagen und die transparente Klärung einer möglichen Ablöse vor dem Termin."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung im Kreis Bad Kreuznach?",
+    a: "Ja, auf Wunsch unterstützen wir beim Abmeldeprozess bei der zuständigen Stelle im Kreis Bad Kreuznach und stellen die notwendigen Nachweise bereit."
+  }
+];
+
+export const DREIEICH_FAQS: FAQItem[] = [
+  {
+    q: "Bieten Sie Abholung in Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal an?",
+    a: "Ja. Wir holen Fahrzeuge in allen Dreieicher Stadtteilen ab, darunter Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal."
+  },
+  {
+    q: "Kaufen Sie in Dreieich auch Pendlerfahrzeuge mit täglicher Nutzung über A661 und B486 an?",
+    a: "Ja. Solche Fahrzeuge sind in Dreieich sehr häufig. Wir bewerten sie auf Basis von Wartung, Zustand und nachvollziehbarer Nutzungshistorie."
+  },
+  {
+    q: "Kann die Übergabe zeitlich auf Pendelzeiten rund um Dreieich-Buchschlag abgestimmt werden?",
+    a: "In vielen Fällen ja. Wir stimmen Terminfenster so ab, dass sie mit Ihrem Arbeitsweg und den typischen Pendelzeiten im Rhein-Main-Korridor passen."
+  },
+  {
+    q: "Kaufen Sie auch ältere Zweitwagen oder Elektrofahrzeuge in Dreieich an?",
+    a: "Ja. Wir kaufen sowohl ältere Alltagsfahrzeuge als auch Elektro- und Hybridmodelle an, sofern Unterlagen und Eigentumsnachweis vollständig vorliegen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung von Fahrzeugen im Kreis Offenbach?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle im Kreis Offenbach und dokumentieren die Abwicklung transparent."
+  }
+];
+
 export const MANNHEIM_FAQS: FAQItem[] = [
   {
     q: "Holen Sie Fahrzeuge in allen Mannheimer Stadtteilen ab?",
@@ -695,5 +741,51 @@ export const NEUSTADT_WEINSTRASSE_FAQS: FAQItem[] = [
   {
     q: "Wie lange dauert es bis zur Auszahlung?",
     a: "Die Auszahlung erfolgt am Tag der Fahrzeugübergabe per Banküberweisung. Es gibt keine Verzögerung – Sie erhalten den vereinbarten Betrag nach Übergabe und Unterzeichnung des Kaufvertrags."
+  }
+];
+
+export const FRANKENTHAL_FAQS: FAQItem[] = [
+  {
+    q: "Wie läuft der Autoverkauf in Frankenthal bei euch ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und ein kostenloses Angebot erhalten, Übergabetermin wählen – wir kommen zu Ihnen nach Frankenthal. Bei der Besichtigung prüfen wir das Fahrzeug kurz, Sie unterzeichnen den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Überweisung."
+  },
+  {
+    q: "Kauft ihr in Frankenthal auch Autos ohne TÜV oder mit Schäden?",
+    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand an – mit abgelaufenem TÜV, Unfallschäden, Motorschäden oder hoher Laufleistung. Voraussetzung sind vollständige Fahrzeugpapiere und ein klarer Eigentumsnachweis."
+  },
+  {
+    q: "Was passiert mit der Abmeldung meines Autos in Frankenthal (FT-Kennzeichen)?",
+    a: "Die Abmeldung bei der Zulassungsstelle Frankenthal übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen – wir erledigen das als Teil unseres kostenlosen Services."
+  },
+  {
+    q: "Holt ihr auch in den Stadtteilen und entlang der A61 ab?",
+    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Frankenthal – Kernstadt, Mörsch, Studernheim, Eppstein – sowie das Umland entlang der A61 und im Rhein-Pfalz-Kreis. Abholung ist kostenlos, auch abends oder am Wochenende."
+  },
+  {
+    q: "Bekomme ich in Frankenthal einen fairen Preis oder wird nachverhandelt?",
+    a: "Unser Angebot basiert auf aktuellen Marktdaten und ist verbindlich. Eine Anpassung erfolgt nur, wenn bei der Besichtigung ein zuvor nicht genannter Schaden festgestellt wird – ansonsten zahlen wir den vereinbarten Betrag ohne Abzüge."
+  }
+];
+
+export const RODGAU_FAQS: FAQItem[] = [
+  {
+    q: "Wie läuft der Autoverkauf in Rodgau bei euch ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und ein kostenloses Angebot erhalten, Termin vereinbaren – wir kommen zu Ihnen nach Rodgau. Bei der Übergabe prüfen wir das Fahrzeug, Sie unterzeichnen den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Überweisung."
+  },
+  {
+    q: "Kauft ihr in Rodgau auch Autos ohne TÜV oder mit Unfallschäden?",
+    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand an – mit abgelaufenem TÜV, Unfallschäden, Motorschäden oder hoher Laufleistung. Vollständige Fahrzeugpapiere und Eigentumsnachweis sind Voraussetzung."
+  },
+  {
+    q: "Was passiert mit der Abmeldung meines Autos in Rodgau (OF-Kennzeichen)?",
+    a: "Die Abmeldung bei der Zulassungsstelle des Landkreises Offenbach übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen – wir erledigen das als Teil unseres Services, kostenlos."
+  },
+  {
+    q: "Holt ihr auch in allen Rodgauer Stadtteilen und im Umland ab?",
+    a: "Ja. Wir holen in allen Stadtteilen ab: Nieder-Roden, Dudenhofen, Jügesheim, Hainhausen und Weiskirchen. Auch im Umland – Heusenstamm, Dietzenbach, Obertshausen – ist die Abholung kostenlos. Termine auch abends oder am Wochenende möglich."
+  },
+  {
+    q: "Wie lange dauert es bis zur Auszahlung in Rodgau?",
+    a: "Die Auszahlung erfolgt am Tag der Fahrzeugübergabe per Banküberweisung. Es gibt keine Verzögerung – Sie erhalten den vereinbarten Betrag direkt nach Übergabe und Unterzeichnung des Kaufvertrags."
   }
 ];

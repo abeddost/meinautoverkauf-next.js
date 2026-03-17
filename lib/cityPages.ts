@@ -31,4 +31,6 @@ export const CITY_PAGES: CityPage[] = [
   { path: '/autoankauf-neustadt-weinstrasse', label: 'Autoankauf Neustadt an der Weinstraße' },
   { path: '/autoankauf-bad-homburg-vor-der-hoehe', label: 'Autoankauf Bad Homburg' },
   { path: '/autoankauf-oberursel', label: 'Autoankauf Oberursel' },
+  { path: '/autoankauf-frankenthal', label: 'Autoankauf Frankenthal' },
+  { path: '/autoankauf-rodgau', label: 'Autoankauf Rodgau' },
 ];

@@ -1,62 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQSection';
-import { DARMSTADT_FAQS } from '../lib/faqContent';
+import { RODGAU_FAQS } from '../lib/faqContent';
 
 interface Props {
   onCtaClick: () => void;
 }
 
-const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
+const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
   return (
     <div className="bg-white relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-gradient-to-br from-violet-200/40 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-gradient-to-br from-emerald-200/50 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute top-[25%] -left-40 w-[520px] h-[520px] bg-gradient-to-tr from-orange-200/60 to-transparent rounded-full blur-3xl"></div>
         <div className="absolute bottom-[12%] right-[8%] w-80 h-80 bg-orange-300/30 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-24 left-[12%] w-24 h-24 bg-violet-200/40 rounded-full blur-xl"></div>
+        <div className="absolute bottom-24 left-[12%] w-24 h-24 bg-emerald-200/40 rounded-full blur-xl"></div>
         <div className="absolute top-28 right-[18%] w-72 h-72 border-4 border-orange-200/40 rounded-full"></div>
         <div className="absolute top-24 left-20 w-4 h-4 bg-orange-300 rounded-full"></div>
-        <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-violet-200 rounded-full"></div>
+        <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-emerald-200 rounded-full"></div>
         <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
-        <img
-          src="/elements/mathildenhoehe-darmstadt.webp"
-          alt=""
-          width={384}
-          height={384}
-          className="absolute top-16 right-0 w-80 h-80 lg:w-96 lg:h-96 opacity-[0.07] pointer-events-none"
-          loading="lazy"
-          decoding="async"
-          onError={(e) => { e.currentTarget.style.display = 'none'; }}
-        />
       </div>
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
-          <div className="absolute -top-12 -left-12 w-24 h-24 bg-violet-200/40 rounded-full blur-2xl"></div>
+          <div className="absolute -top-12 -left-12 w-24 h-24 bg-emerald-200/50 rounded-full blur-2xl"></div>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
-            Autoankauf Darmstadt –{' '}
-            <span className="text-brand-orange">Fairer Preis & Express-Auszahlung</span>{' '}
-            in der Wissenschaftsstadt
+            Autoankauf Rodgau –{' '}
+            <span className="text-brand-orange">Schnell verkaufen im Landkreis Offenbach</span>
           </h1>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
-            Sie möchten Ihr Auto in Darmstadt verkaufen – schnell, sicher und ohne langen Aufwand? Wir kaufen
-            Ihr Fahrzeug direkt an: Online bewerten, Angebot erhalten, Übergabe vereinbaren. Die Auszahlung
-            erfolgt noch am selben Tag.
+            Sie möchten Ihr Auto in Rodgau verkaufen – ohne Inserat, ohne Zeitverlust und zu einem fairen
+            Preis? Rodgau liegt im Landkreis Offenbach und zählt zu den bevölkerungsreichsten Gemeinden
+            Hessens. Mit Anbindung an die A3, die B45 und die S-Bahn-Linie S1 (Frankfurt–Darmstadt) ist die
+            Stadt ein typischer Pendlerstandort: Viele Einwohner fahren täglich nach Frankfurt oder Darmstadt
+            zur Arbeit. Das sorgt für einen aktiven, vielseitigen Fahrzeugmarkt. Wir kaufen Ihr Fahrzeug
+            direkt an: Online bewerten, Termin vereinbaren, Geld erhalten – alles noch am selben Tag.
           </p>
 
           {/* Advantages box */}
           <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-lg font-black text-brand-dark mb-5">Ihre Vorteile beim Autoankauf in Darmstadt</h2>
+            <h2 className="text-lg font-black text-brand-dark mb-5">Ihre Vorteile beim Autoankauf in Rodgau</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Express-Auszahlung per Banküberweisung am Übergabetag',
-                'Kostenlose Abholung in ganz Darmstadt & Landkreis DA-DI',
-                'Abmeldung beim Straßenverkehrsamt Darmstadt inklusive',
-                'Ankauf aller Marken und Fahrzeugtypen',
+                'Sofortige Auszahlung nach Vertragsunterzeichnung',
+                'Kostenlose Abholung in allen Rodgauer Stadtteilen',
+                'Abmeldung bei der Zulassungsstelle Landkreis Offenbach inklusive',
+                'Ankauf aller Marken & Zustände – auch ohne TÜV',
                 'Flexible Abend- und Wochenendtermine verfügbar',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
@@ -72,43 +64,44 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </div>
 
-        {/* Wissenschaftsstadt section */}
+        {/* City context section */}
         <section className="mb-16">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
-            Darmstadt – Wissenschaftsstadt mit einem besonderen Automarkt
+            Rodgau – Pendlerstadt zwischen Frankfurt und Darmstadt
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
-            Darmstadt trägt nicht umsonst den Titel „Wissenschaftsstadt". TU Darmstadt, Hochschule Darmstadt,
-            Merck KGaA, das Europäische Raumfahrtzentrum ESOC/ESA und das GSI Helmholtzzentrum machen die
-            Stadt zu einem Knotenpunkt für Forschung, Technologie und internationale Fachkräfte. Das prägt
-            auch den lokalen Fahrzeugmarkt.
+            Rodgau ist mit rund 45.000 Einwohnern eine der größten Gemeinden im Landkreis Offenbach. Die
+            Stadt besteht aus fünf Stadtteilen – Nieder-Roden, Dudenhofen, Jügesheim, Hainhausen und
+            Weiskirchen – und bietet trotz suburbaner Lage eine sehr gute Verkehrsanbindung: Die S-Bahn-Linie
+            S1 verbindet Rodgau direkt mit Frankfurt und Darmstadt, die A3 und B45 gewährleisten schnelle
+            Straßenverbindungen Richtung Offenbach, Hanau und Aschaffenburg.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
-            Studierende, die nach dem Abschluss umziehen. Forscher, die ins Ausland wechseln. Merck-Mitarbeitende,
-            die ihren Firmenwagen nach der Leasingrückgabe ablösen – in Darmstadt gibt es einen konstanten
-            Strom an gut gepflegten Fahrzeugen, die schnell und unkompliziert verkauft werden müssen.
+            Dieser Pendlercharakter prägt den lokalen Fahrzeugmarkt: Gut gepflegte Kompaktwagen, Kombis und
+            SUVs wechseln regelmäßig den Besitzer – sei es weil das Homeoffice den zweiten Wagen überflüssig
+            macht, ein Leasingvertrag ausläuft oder eine jüngere Generation auf Elektromobilität umsteigt.
+            Wir kennen diese Dynamik und bewerten Ihr Fahrzeug auf Basis aktueller Transaktionsdaten.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            Wir kennen diesen Markt. Unsere KI-gestützte Preisermittlung basiert auf realen Transaktionen
-            und berücksichtigt den Darmstädter Markt spezifisch. Ob Opel Corsa aus dem ersten Studienjahr
-            oder geleastes Merck-Dienstfahrzeug – wir zahlen faire Preise ohne Umwege.
+            Wir kommen zu Ihnen – ob in Nieder-Roden, Dudenhofen oder Jügesheim. Ein Termin ist auch abends
+            nach Feierabend oder am Wochenende möglich, damit der Fahrzeugverkauf in Ihren Alltag passt.
           </p>
         </section>
 
         {/* Districts */}
         <section className="mb-16">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
-            Autoankauf in allen Darmstädter Stadtteilen & Landkreis DA-DI
+            Autoankauf in allen Rodgauer Stadtteilen & Umland
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos bei Ihnen ab – im gesamten Stadtgebiet und im Landkreis
-            Darmstadt-Dieburg:
+            Wir holen Ihr Fahrzeug kostenlos ab – egal in welchem Stadtteil oder in welcher Nachbargemeinde
+            Sie sich befinden:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Darmstadt Stadtteile</h3>
+              <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Rodgau Stadtteile</h3>
               <ul className="space-y-1.5 text-slate-600 font-medium text-sm">
-                {['Mitte (Stadtmitte)', 'Bessungen', 'Eberstadt', 'Arheilgen', 'Kranichstein', 'Wixhausen', 'Martinsviertel', 'Paulusviertel'].map(d => (
+                {['Nieder-Roden', 'Dudenhofen', 'Jügesheim', 'Hainhausen', 'Weiskirchen'].map(d => (
                   <li key={d} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>
                     {d}
@@ -117,9 +110,9 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
               </ul>
             </div>
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Landkreis DA-DI</h3>
+              <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Landkreis Offenbach</h3>
               <ul className="space-y-1.5 text-slate-600 font-medium text-sm">
-                {['Griesheim', 'Weiterstadt', 'Pfungstadt', 'Langen', 'Mühltal', 'Groß-Zimmern', 'Dieburg', 'Reinheim'].map(d => (
+                {['Heusenstamm', 'Dietzenbach', 'Obertshausen', 'Mühlheim am Main', 'Seligenstadt', 'Langen', 'Dreieich', 'Neu-Isenburg'].map(d => (
                   <li key={d} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>
                     {d}
@@ -128,9 +121,9 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
               </ul>
             </div>
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Südhessen Umland</h3>
+              <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Rhein-Main Umland</h3>
               <ul className="space-y-1.5 text-slate-600 font-medium text-sm">
-                {['Mörfelden-Walldorf', 'Rüsselsheim', 'Frankfurt Süd', 'Bensheim', 'Heppenheim', 'Erzhausen', 'Egelsbach', 'Roßdorf'].map(d => (
+                {['Frankfurt Süd', 'Offenbach am Main', 'Darmstadt', 'Hanau', 'Aschaffenburg', 'Rüsselsheim', 'Weiterstadt', 'Reinheim'].map(d => (
                   <li key={d} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>
                     {d}
@@ -144,24 +137,24 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* 3-step process */}
         <section className="mb-16">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-8">
-            So einfach läuft der Autoverkauf in Darmstadt ab
+            Unser Ablauf in Rodgau: 3 klare Schritte
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 step: '01',
                 title: 'Online bewerten',
-                desc: 'Fahrzeugdaten eingeben, in 2 Minuten ein KI-gestütztes Angebot erhalten – vollständig kostenlos und ohne Verpflichtung.',
+                desc: 'Fahrzeugdaten eingeben und in 2 Minuten eine KI-gestützte Preiseinschätzung erhalten – kostenlos und unverbindlich.',
               },
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen nach Darmstadt oder in den Landkreis. Auch Abendtermine und Samstage sind möglich.',
+                desc: 'Wir kommen zu Ihnen nach Rodgau oder in den Landkreis Offenbach. Abholung auch abends oder am Wochenende möglich.',
               },
               {
                 step: '03',
-                title: 'Übergabe & sofortige Zahlung',
-                desc: 'Fahrzeugprüfung, Kaufvertrag, Übergabe. Das Geld ist noch am selben Tag auf Ihrem Konto. Abmeldung beim Stadtamt Darmstadt übernehmen wir.',
+                title: 'Übergabe & Auszahlung',
+                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld kommt per Überweisung noch am selben Tag. Abmeldung bei der Zulassungsstelle Landkreis Offenbach übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -176,29 +169,29 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Vehicle categories */}
         <section className="mb-16">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
-            Welche Fahrzeuge kaufen wir in Darmstadt an?
+            Fahrzeugtypen in Rodgau
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir kaufen alle Fahrzeuge – unabhängig von Marke, Baujahr oder Zustand. In Darmstadt bewerten
-            wir besonders häufig:
+            Wir kaufen alle Fahrzeuge – unabhängig von Marke, Alter oder Zustand. Besonders häufig bewerten
+            wir in Rodgau:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
               {
-                title: 'Studierenden-Fahrzeuge & Erstfahrzeuge',
-                desc: 'Kleinwagen, ältere Modelle, hohe Laufleistung – kein Problem. Wir bewerten fair und unkompliziert, ideal beim Studienabschluss oder Umzug.',
+                title: 'Pendlerfahrzeuge & Kompaktwagen',
+                desc: 'Zuverlässige Alltagsautos für den täglichen Weg nach Frankfurt oder Darmstadt – oft gut gepflegt, mit mittlerer Laufleistung. Wir bewerten transparent nach aktuellem Marktwert.',
               },
               {
-                title: 'Firmenwagen & Leasingrückläufer',
-                desc: 'Gepflegte Dienstwagen aus dem Merck- oder ESA-Umfeld erzielen oft sehr gute Preise. Wir kaufen mit oder ohne Scheckheft.',
+                title: 'Familien-SUVs & Kombis',
+                desc: 'In den ruhigen Wohngebieten Rodgaus sind größere Familienfahrzeuge sehr verbreitet. Wir zahlen faire, datenbasierte Preise für gepflegte Modelle aller Marken.',
               },
               {
-                title: 'Premium & Mittelklasse',
-                desc: 'Darmstadt hat einen großen Anteil an BMW-, Mercedes- und Audi-Fahrern. Wir kennen den lokalen Premium-Markt und zahlen datenbasierte Preise.',
+                title: 'Zweitwagen & ältere Fahrzeuge',
+                desc: 'Wenn die S-Bahn den zweiten Wagen ersetzt oder ein älteres Fahrzeug gewechselt wird: Auch Autos mit höherer Laufleistung haben noch einen soliden Restwert.',
               },
               {
-                title: 'Defekte Fahrzeuge & ohne HU',
-                desc: 'Auch nicht fahrbereite Autos, Unfallwagen und Fahrzeuge ohne gültige Hauptuntersuchung kaufen wir an. Vollständige Unterlagen vorausgesetzt.',
+                title: 'Unfallwagen & Fahrzeuge ohne TÜV',
+                desc: 'Wir kaufen auch nicht fahrbereite Fahrzeuge, Unfallwagen oder Autos ohne gültige HU. Vollständige Unterlagen und Eigentumsnachweis vorausgesetzt.',
               },
             ].map((cat) => (
               <div key={cat.title} className="flex gap-4 bg-slate-50 rounded-2xl p-5 border border-slate-100">
@@ -217,49 +210,41 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </section>
 
-        {/* Science city highlight */}
+        {/* Dark highlight: S-Bahn / A3 angle */}
         <section className="mb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="relative z-10">
             <h2 className="text-lg lg:text-xl font-black mb-4">
-              Für Studierende, Forschende & internationale Fachkräfte
+              Idealer Standort: A3, B45 und S-Bahn S1 direkt vor der Tür
             </h2>
-            <p className="text-slate-300 font-medium leading-relaxed mb-5">
-              Darmstadt ist eine Stadt im Wandel. Wer an der TU studiert, bei Merck arbeitet oder am ESOC
-              forscht, hat oft ein besonderes Verhältnis zu seinem Fahrzeug – und manchmal wenig Zeit für
-              einen langwierigen Verkaufsprozess. Genau da setzen wir an.
+            <p className="text-slate-300 font-medium leading-relaxed mb-4">
+              Rodgau punktet mit einer der besten Verkehrslagen im Landkreis Offenbach. Die S-Bahn-Linie S1
+              verbindet alle Stadtteile direkt mit Frankfurt Hauptbahnhof und Darmstadt. Viele Haushalte
+              organisieren ihre Mobilität neu, wenn die Bahn das Auto ersetzt oder ein Leasingvertrag ausläuft.
+              Wir sind Ihr direkter Ansprechpartner – ohne Umwege, ohne Wartezeit.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300 font-medium">
-              <div>
-                <div className="font-black text-white mb-1.5">Studierende & Absolventen</div>
-                <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Schneller Verkauf vor Abschluss oder Auslandspraktikum</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Faire Preise auch für ältere Erstfahrzeuge</li>
-                </ul>
-              </div>
-              <div>
-                <div className="font-black text-white mb-1.5">Internationale Fachkräfte</div>
-                <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Ankauf auch mit ausländischer Zulassung</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Klarer, rechtssicherer Kaufvertrag auf Deutsch</li>
-                </ul>
-              </div>
-            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300 font-medium">
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Abholung in allen fünf Stadtteilen</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>A3-Nähe: schnelle Erreichbarkeit auch aus Umlandgemeinden</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Flexible Termine nach Feierabend oder am Wochenende</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Auszahlung am Tag der Übergabe per Überweisung</li>
+            </ul>
           </div>
         </section>
 
-        {/* Comparison */}
+        {/* Comparison table */}
         <section className="mb-16">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
-            Autoankauf Darmstadt vs. Privatverkauf im Vergleich
+            Autoankauf Rodgau im Vergleich: Direktankauf vs. Privatverkauf vs. Händler
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
+          {/* Mobile cards */}
+          <div className="grid grid-cols-1 md:hidden gap-4">
             {[
-              { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
-              { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung trotz Ausschluss möglich' },
-              { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig' },
+              { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen', handler: 'Schnell, aber Preisabzüge' },
+              { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Fahrt zur Filiale nötig' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
+              { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig', handler: 'Meist selbst zuständig' },
+              { label: 'Rodgau-Vorteil', ankauf: 'Abmeldung OF-Kennzeichen inklusive', privat: 'Amt selbst aufsuchen', handler: 'Kein lokaler Vorteil' },
             ].map((row) => (
               <div key={row.label} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
                 <div className="text-xs font-black text-slate-500 uppercase tracking-wider mb-2">{row.label}</div>
@@ -276,27 +261,30 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             ))}
           </div>
+          {/* Desktop table */}
           <div className="hidden md:block rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-slate-900 text-white">
                   <th className="text-left px-6 py-4 font-black">Kriterium</th>
-                  <th className="text-left px-6 py-4 font-black text-brand-orange">Autoankauf</th>
+                  <th className="text-left px-6 py-4 font-black text-brand-orange">Meinautoverkauf.de</th>
                   <th className="text-left px-6 py-4 font-black">Privatverkauf</th>
+                  <th className="text-left px-6 py-4 font-black">Händler</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
-                  { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
-                  { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig' },
+                  { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen', handler: 'Schnell, aber Preisabzüge' },
+                  { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Fahrt zur Filiale nötig' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
+                  { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig', handler: 'Meist selbst zuständig' },
+                  { label: 'Rodgau-Vorteil', ankauf: 'Abmeldung OF-Kennzeichen inklusive', privat: 'Amt selbst aufsuchen', handler: 'Kein lokaler Vorteil' },
                 ].map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
                     <td className="px-6 py-3.5 font-semibold text-slate-700">{row.label}</td>
                     <td className="px-6 py-3.5 font-semibold text-green-700">{row.ankauf}</td>
                     <td className="px-6 py-3.5 font-medium text-slate-500">{row.privat}</td>
+                    <td className="px-6 py-3.5 font-medium text-slate-500">{row.handler}</td>
                   </tr>
                 ))}
               </tbody>
@@ -306,25 +294,25 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
 
         {/* FAQ */}
         <FAQSection
-          title="Häufige Fragen zum Autoankauf in Darmstadt"
-          faqs={[...DARMSTADT_FAQS]}
-          sectionId="faq-darmstadt"
+          title="Häufige Fragen zum Autoankauf in Rodgau"
+          faqs={[...RODGAU_FAQS]}
+          sectionId="faq-rodgau"
         />
 
         {/* Related pages */}
         <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
           <h2 className="text-xl font-black text-brand-dark mb-6 text-center">Weitere Standorte in der Region</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6 text-center">
-            Unser Autoankauf-Service ist im gesamten Rhein-Main-Raum und Südhessen verfügbar:
+            Unser Autoankauf-Service steht Ihnen im gesamten Rhein-Main-Raum und Südhessen zur Verfügung:
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              { href: '/autoankauf-ruesselsheim', label: '→ Autoankauf Rüsselsheim' },
-              { href: '/autoankauf-frankfurt', label: '→ Autoankauf Frankfurt' },
-              { href: '/autoankauf-wiesbaden', label: '→ Autoankauf Wiesbaden' },
-              { href: '/autoankauf-mainz', label: '→ Autoankauf Mainz' },
+              { href: '/auto-bewerten', label: '→ Jetzt Auto bewerten' },
               { href: '/autoankauf-offenbach', label: '→ Autoankauf Offenbach' },
-              { href: '/autoankauf-rodgau', label: '→ Auch in Rodgau verfügbar' },
+              { href: '/autoankauf-darmstadt', label: '→ Autoankauf Darmstadt' },
+              { href: '/autoankauf-frankfurt', label: '→ Autoankauf Frankfurt' },
+              { href: '/autoankauf-hanau', label: '→ Autoankauf Hanau' },
+              { href: '/autoankauf-ruesselsheim', label: '→ Autoankauf Rüsselsheim' },
             ].map((link) => (
               <Link
                 key={link.href}
@@ -342,10 +330,10 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="absolute -top-16 -right-16 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
           <div className="relative z-10">
-            <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Darmstadt verkaufen</h2>
+            <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Rodgau verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung direkt
-              bei Ihnen – egal ob Bessungen, Arheilgen oder Griesheim.
+              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung in Nieder-Roden,
+              Dudenhofen, Jügesheim und allen weiteren Stadtteilen.
             </p>
             <button
               onClick={onCtaClick}
@@ -354,7 +342,7 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Alle Stadtteile', 'Landkreis DA-DI', 'Express-Auszahlung'].map((badge) => (
+              {['Alle Stadtteile', 'Landkreis Offenbach', 'Sofort Geld'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>
@@ -367,4 +355,4 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
   );
 };
 
-export default AutoankaufDarmstadtPage;
+export default AutoankaufRodgauPage;

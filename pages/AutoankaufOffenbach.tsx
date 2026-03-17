@@ -271,6 +271,12 @@ const AutoankaufOffenbachPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-ruesselsheim" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Autoankauf Rüsselsheim
               </Link>
+              <Link to="/autoankauf-dreieich" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Auch in Dreieich verfügbar
+              </Link>
+              <Link to="/autoankauf-rodgau" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Auch in Rodgau verfügbar
+              </Link>
             </div>
           </section>
 
