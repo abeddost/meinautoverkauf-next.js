@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import MetaTags from '../components/MetaTags';
 import Footer from '../components/Footer';
-import { getCarValuation } from '../geminiService';
+import { getCarValuation, getValuationErrorMessage } from '../geminiService';
 import { CarDetails, ValuationResult } from '../types';
 import { consumePendingPartialSavePromise } from '../lib/pendingPartialSave';
 
@@ -75,9 +75,9 @@ const AnalyzingPage: React.FC = () => {
           setValuationResult(result);
         }
       })
-      .catch(() => {
+      .catch((err: unknown) => {
         if (!cancelled) {
-          setError('Die Bewertung konnte nicht erstellt werden. Bitte versuchen Sie es später erneut.');
+          setError(getValuationErrorMessage(err));
         }
       });
     return () => {

@@ -11,6 +11,7 @@ const prerenderRoutes = [
   '/auto-bewerten',
   '/auto-verkaufen',
   '/vorteile',
+  '/standorte',
   '/ratgeber',
   '/autoankauf-frankfurt',
   '/autoankauf-wiesbaden',

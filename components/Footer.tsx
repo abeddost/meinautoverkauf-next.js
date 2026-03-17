@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { COOKIE_SETTINGS_OPEN_EVENT } from '../lib/consent';
+import { CITY_PAGES } from '../lib/cityPages';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -13,11 +14,7 @@ const Footer: React.FC = () => {
     { to: "/ratgeber", label: "Verkaufs-Ratgeber" },
   ];
 
-  const locationLinks = [
-    { to: "/autoankauf-frankfurt", label: "Autoankauf Frankfurt" },
-    { to: "/autoankauf-wiesbaden", label: "Autoankauf Wiesbaden" },
-    { to: "/autoankauf-mainz", label: "Autoankauf Mainz" },
-  ];
+  const locationLinks = CITY_PAGES.slice(0, 3);
 
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#0b1328] via-[#0f172a] to-[#0b1328] text-slate-300">
@@ -78,9 +75,9 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-black uppercase text-sm tracking-widest mb-5">Standorte</h3>
             <ul className="space-y-3 text-sm font-bold">
               {locationLinks.map((link) => (
-                <li key={link.to}>
+                <li key={link.path}>
                   <Link
-                    to={link.to}
+                    to={link.path}
                     className="inline-flex items-center gap-2 transition-all hover:text-brand-orange hover:translate-x-1"
                   >
                     <span className="text-brand-orange">→</span>
@@ -88,7 +85,14 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
               ))}
-              <li className="text-xs text-slate-400 font-semibold">+ viele weitere Orte in Deutschland</li>
+              <li>
+                <Link
+                  to="/standorte"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-500/50 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300 transition-all hover:border-brand-orange hover:bg-white/10 hover:text-brand-orange mt-1"
+                >
+                  + viele weitere Orte in Deutschland
+                </Link>
+              </li>
             </ul>
           </div>
 

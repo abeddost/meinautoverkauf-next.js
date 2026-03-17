@@ -91,6 +91,7 @@ const INITIAL_CONSENT_STATE: ConsentState = {
 const loadAutoBewertenPage = () => import('./pages/AutoBewerten');
 const loadAutoVerkaufenPage = () => import('./pages/AutoVerkaufen');
 const loadVorteilePage = () => import('./pages/VorteilePage');
+const loadStandortePage = () => import('./pages/StandortePage');
 const loadRatgeberPage = () => import('./pages/Ratgeber');
 const loadAutoankaufFrankfurtPage = () => import('./pages/AutoankaufFrankfurt');
 const loadAutoankaufWiesbadenPage = () => import('./pages/AutoankaufWiesbaden');
@@ -128,6 +129,7 @@ const loadAdminDashboard = () => import('./pages/AdminDashboard');
 const AutoBewertenPage = lazy(loadAutoBewertenPage);
 const AutoVerkaufenPage = lazy(loadAutoVerkaufenPage);
 const VorteilePage = lazy(loadVorteilePage);
+const StandortePage = lazy(loadStandortePage);
 const RatgeberPage = lazy(loadRatgeberPage);
 const AutoankaufFrankfurtPage = lazy(loadAutoankaufFrankfurtPage);
 const AutoankaufWiesbadenPage = lazy(loadAutoankaufWiesbadenPage);
@@ -168,6 +170,7 @@ export const preloadRouteModules = async () => {
     loadAutoBewertenPage(),
     loadAutoVerkaufenPage(),
     loadVorteilePage(),
+    loadStandortePage(),
     loadRatgeberPage(),
     loadAutoankaufFrankfurtPage(),
     loadAutoankaufWiesbadenPage(),
@@ -993,6 +996,17 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <VorteilePage onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+            </div>
+          } />
+
+          <Route path="/standorte" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Alle Standorte | Autoankauf in ganz Deutschland"
+                description="Übersicht aller Standorte: Autoankauf in Frankfurt, Wiesbaden, Mainz, Köln, Hamburg und vielen weiteren Städten. Gleicher Ablauf überall: Bewertung, Angebot, Termin."
+                canonicalUrl="/standorte"
+              />
+              <StandortePage />
             </div>
           } />
 

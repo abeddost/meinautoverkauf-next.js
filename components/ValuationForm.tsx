@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
 import { CarDetails, ValuationResult } from '../types';
-import { getCarValuation } from '../geminiService';
+import { getCarValuation, getValuationErrorMessage } from '../geminiService';
 import { setPendingPhotoPromise } from '../lib/pendingPhotoUpload';
 import type { ValuationOptionsData } from '../lib/valuationOptionsData';
 
@@ -470,8 +470,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     try {
       const result = await getCarValuation(formData);
       onValuationComplete(formData, result);
-    } catch (error: any) {
-      setSubmitError('Leider ist ein Fehler aufgetreten. Bitte später erneut versuchen.');
+    } catch (error: unknown) {
+      setSubmitError(getValuationErrorMessage(error));
       setLoading(false);
     }
   };

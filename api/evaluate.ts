@@ -48,6 +48,34 @@ const sendGa4Event = async (params: {
   }
 };
 
+const extractUpstreamStatus = (error: unknown): number | undefined => {
+  if (!error || typeof error !== "object") return undefined;
+  const candidate = error as {
+    status?: unknown;
+    statusCode?: unknown;
+    code?: unknown;
+  };
+
+  if (typeof candidate.status === "number") return candidate.status;
+  if (typeof candidate.statusCode === "number") return candidate.statusCode;
+  if (typeof candidate.code === "number") return candidate.code;
+  return undefined;
+};
+
+const normalizeHttpStatus = (status: number | undefined): number => {
+  if (typeof status !== "number") return 500;
+  if (status === 429) return 429;
+  if (status >= 500 && status <= 599) return status;
+  return 500;
+};
+
+const getSafeErrorMessage = (status: number, error: unknown): string => {
+  if (status === 429) return "Zu viele Anfragen beim Bewertungsdienst.";
+  if (status === 503) return "Bewertungsdienst vorübergehend nicht verfügbar.";
+  if (error instanceof Error && error.message.trim()) return error.message.trim();
+  return "Bewertung fehlgeschlagen";
+};
+
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { 
@@ -183,9 +211,13 @@ export default async function handler(req: Request) {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
-  } catch (error: any) {
-    return new Response(JSON.stringify({ error: 'Bewertung fehlgeschlagen' }), { 
-      status: 500,
+  } catch (error: unknown) {
+    const status = normalizeHttpStatus(extractUpstreamStatus(error));
+    const safeErrorMessage = getSafeErrorMessage(status, error);
+    const errorCode = status === 429 ? "rate_limit_exceeded" : "valuation_failed";
+
+    return new Response(JSON.stringify({ error: safeErrorMessage, code: errorCode }), {
+      status,
       headers: { 'Content-Type': 'application/json' }
     });
   }
