@@ -236,6 +236,7 @@ const AutoankaufHanauPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-frankfurt', label: '→ Autoankauf Frankfurt' },
               { href: '/autoankauf-giessen', label: '→ Auch in Gießen verfügbar' },
               { href: '/autoankauf-aschaffenburg', label: '→ Auch in Aschaffenburg verfügbar' },
+              { href: '/autoankauf-maintal', label: '→ Auch in Maintal verfügbar' },
               { href: '/autoankauf-darmstadt', label: '→ Autoankauf Darmstadt' },
               { href: '/autoankauf-wiesbaden', label: '→ Autoankauf Wiesbaden' },
             ].map((link) => (

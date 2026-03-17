@@ -560,6 +560,190 @@ export const DREIEICH_FAQS: FAQItem[] = [
   }
 ];
 
+export const BENSHEIM_FAQS: FAQItem[] = [
+  {
+    q: "Bieten Sie Abholung in Auerbach, Fehlheim und Schwanheim an?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Bensheim ab, einschließlich Auerbach, Fehlheim, Schwanheim und weiterer Ortsteile an der Bergstraße."
+  },
+  {
+    q: "Kaufen Sie in Bensheim auch Pendlerfahrzeuge mit Laufleistung über A5 und A67 an?",
+    a: "Ja. Solche Fahrprofile sind in Bensheim üblich. Wir bewerten diese Fahrzeuge anhand von Zustand, Wartung und Ausstattung statt nur nach Kilometerstand."
+  },
+  {
+    q: "Sind Übergabetermine in Bensheim auch nahe Bahnhof oder nach Feierabend möglich?",
+    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeitsalltag und den typischen Pendelzeiten im Raum Bergstraße vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie in Bensheim auch Familien-SUVs, Kombis und Elektrofahrzeuge an?",
+    a: "Ja. Wir kaufen unterschiedliche Fahrzeugtypen an, darunter Familienfahrzeuge, ältere Alltagsmodelle sowie Elektro- und Hybridfahrzeuge mit vollständigen Unterlagen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung im Kreis Bergstraße?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle im Kreis Bergstraße und dokumentieren die Abwicklung nachvollziehbar."
+  }
+];
+
+export const MAINTAL_FAQS: FAQItem[] = [
+  {
+    q: "Ist die Abholung in Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen möglich?",
+    a: "Ja. Wir holen Fahrzeuge in allen Maintaler Stadtteilen ab, darunter Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen."
+  },
+  {
+    q: "Kaufen Sie in Maintal auch Pendlerfahrzeuge mit täglicher Nutzung über A66 und B8 an?",
+    a: "Ja. Diese Nutzung ist im Maintaler Raum sehr häufig. Wir bewerten transparent auf Basis von Wartung, Zustand und nachvollziehbarer Nutzung."
+  },
+  {
+    q: "Kann die Übergabe zeitlich auf Pendelzeiten rund um Maintal Ost und Maintal West abgestimmt werden?",
+    a: "In vielen Fällen ja. Wir koordinieren Termine so, dass sie mit Ihrem Arbeitsweg und den typischen Verkehrszeiten zwischen Frankfurt und Hanau vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie auch ältere Zweitwagen oder Elektrofahrzeuge in Maintal an?",
+    a: "Ja. Wir kaufen sowohl ältere Alltags- und Zweitwagen als auch Elektro- und Hybridmodelle an, sofern Unterlagen und Eigentumsnachweis vollständig vorliegen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung von Fahrzeugen im Main-Kinzig-Kreis?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle im Main-Kinzig-Kreis und halten die Abwicklung transparent fest."
+  }
+];
+
+export const HOFHEIM_AM_TAUNUS_FAQS: FAQItem[] = [
+  {
+    q: "Ist die Abholung in Marxheim, Diedenbergen, Wallau und Lorsbach möglich?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Hofheim am Taunus ab, einschließlich Marxheim, Diedenbergen, Wallau, Lorsbach und weiterer Ortsteile."
+  },
+  {
+    q: "Kaufen Sie in Hofheim auch Pendlerfahrzeuge mit täglicher Nutzung über A66 und A3 an?",
+    a: "Ja. Solche Fahrprofile sind im Main-Taunus-Kreis sehr typisch. Wir bewerten diese Fahrzeuge anhand von Zustand, Wartung und Ausstattung statt nur nach Laufleistung."
+  },
+  {
+    q: "Können Übergabetermine in Hofheim auf Pendelzeiten Richtung Frankfurt abgestimmt werden?",
+    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeitsweg und typischen Verkehrszeiten im Rhein-Main-Korridor vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie in Hofheim auch Familien-SUVs sowie Hybrid- und Elektrofahrzeuge an?",
+    a: "Ja. Wir kaufen unterschiedliche Fahrzeugklassen an, darunter Familienfahrzeuge, ältere Alltagsmodelle sowie Hybrid- und Elektrofahrzeuge mit vollständigen Unterlagen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung im Main-Taunus-Kreis?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle im Main-Taunus-Kreis und dokumentieren die Abwicklung transparent."
+  }
+];
+
+export const WEINHEIM_FAQS: FAQItem[] = [
+  {
+    q: "Bieten Sie Abholung in Sulzbach, Lützelsachsen und Oberflockenbach an?",
+    a: "Ja. Wir holen Fahrzeuge in allen Weinheimer Stadtteilen ab, darunter Sulzbach, Lützelsachsen, Oberflockenbach und angrenzende Bereiche."
+  },
+  {
+    q: "Kaufen Sie in Weinheim auch Pendlerfahrzeuge mit regelmäßiger Nutzung über A5 und A659 an?",
+    a: "Ja. Solche Nutzungsprofile sind in Weinheim häufig. Wir bewerten auf Basis von Wartung, Zustand, Ausstattung und nachvollziehbarer Nutzungshistorie."
+  },
+  {
+    q: "Sind in Weinheim Übergabetermine nahe Bahnhof und im RNV-Korridor möglich?",
+    a: "In vielen Fällen ja. Wir stimmen Termine so ab, dass sie mit Ihrem Tagesablauf und den üblichen Pendelzeiten im Rhein-Neckar-Raum zusammenpassen."
+  },
+  {
+    q: "Kaufen Sie in Weinheim auch ältere Zweitwagen oder elektrifizierte Fahrzeuge an?",
+    a: "Ja. Wir kaufen sowohl ältere Alltags- und Zweitwagen als auch Hybrid- und Elektrofahrzeuge an, sofern Unterlagen und Eigentumsnachweis vollständig sind."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung im Rhein-Neckar-Kreis?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle im Rhein-Neckar-Kreis und halten die Abwicklung nachvollziehbar fest."
+  }
+];
+
+export const KASSEL_FAQS: FAQItem[] = [
+  {
+    q: "Ist die Abholung in Kassel auch in Bad Wilhelmshöhe, Vorderer Westen und Niederzwehren möglich?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Kassel ab, einschließlich Bad Wilhelmshöhe, Vorderer Westen, Niederzwehren und angrenzender Stadtteile."
+  },
+  {
+    q: "Kaufen Sie in Kassel auch Pendlerfahrzeuge mit Nutzung über A7, A44 und A49 an?",
+    a: "Ja. Solche Fahrprofile sind in Kassel sehr häufig. Wir bewerten transparent auf Basis von Zustand, Wartung, Ausstattung und nachvollziehbarer Nutzungshistorie."
+  },
+  {
+    q: "Sind in Kassel Termine auch nahe Bahnhof Kassel-Wilhelmshöhe oder nach Feierabend möglich?",
+    a: "In vielen Fällen ja. Wir stimmen Termine so ab, dass sie mit Ihrem Arbeitsalltag und den typischen Pendelzeiten im Raum Kassel vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie in Kassel auch ältere Zweitwagen oder Elektrofahrzeuge an?",
+    a: "Ja. Wir kaufen sowohl ältere Alltags- und Zweitwagen als auch Elektro- und Hybridmodelle an, sofern Unterlagen und Eigentumsnachweis vollständig vorliegen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung von Fahrzeugen in Kassel?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle in Kassel und dokumentieren die Abwicklung nachvollziehbar."
+  }
+];
+
+export const STUTTGART_FAQS: FAQItem[] = [
+  {
+    q: "Bieten Sie Abholung in Bad Cannstatt, Vaihingen und Zuffenhausen an?",
+    a: "Ja. Wir holen Fahrzeuge in allen Stuttgarter Stadtbezirken ab, darunter Bad Cannstatt, Vaihingen, Zuffenhausen und angrenzende Bereiche."
+  },
+  {
+    q: "Kaufen Sie in Stuttgart auch Pendlerfahrzeuge mit täglicher Nutzung über A8 und A81 an?",
+    a: "Ja. Solche Fahrprofile sind im Großraum Stuttgart typisch. Wir bewerten auf Basis von Zustand, Wartung und dokumentierter Nutzung statt nur nach Laufleistung."
+  },
+  {
+    q: "Sind Übergabetermine in Stuttgart auch in Abstimmung mit Berufsverkehr und Arbeitszeiten möglich?",
+    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Tagesablauf und den typischen Verkehrszeiten in Stuttgart möglichst gut vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie in Stuttgart auch Leasingrückläufer, Firmenwagen und Elektrofahrzeuge an?",
+    a: "Ja. Wir kaufen unterschiedliche Fahrzeugtypen an, darunter Leasingrückläufer, Firmenfahrzeuge sowie Elektro- und Hybridmodelle mit vollständigen Unterlagen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung bei der Zulassungsstelle Stuttgart?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle in Stuttgart und halten die Abwicklung transparent fest."
+  }
+];
+
+export const BONN_FAQS: FAQItem[] = [
+  {
+    q: "Ist die Abholung in Beuel, Bad Godesberg und Duisdorf möglich?",
+    a: "Ja. Wir holen Fahrzeuge im gesamten Bonner Stadtgebiet ab, einschließlich Beuel, Bad Godesberg, Duisdorf und angrenzender Stadtteile."
+  },
+  {
+    q: "Kaufen Sie in Bonn auch Pendlerfahrzeuge mit täglicher Nutzung über A565, A59 und A555 an?",
+    a: "Ja. Solche Fahrprofile sind in Bonn typisch. Wir bewerten diese Fahrzeuge auf Basis von Zustand, Wartung, Ausstattung und nachvollziehbarer Nutzung."
+  },
+  {
+    q: "Sind Übergabetermine in Bonn auch in Abstimmung mit Arbeitszeiten und Verkehrsspitzen möglich?",
+    a: "In vielen Fällen ja. Wir planen Termine so, dass sie mit Ihrem Tagesablauf und den üblichen Pendelzeiten in der Region Bonn/Köln vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie in Bonn auch ältere Zweitwagen und Elektrofahrzeuge an?",
+    a: "Ja. Wir kaufen sowohl ältere Alltags- und Zweitfahrzeuge als auch Elektro- und Hybridmodelle an, sofern Unterlagen und Eigentumsnachweis vollständig sind."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung bei der Zulassungsstelle Bonn?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Stelle in Bonn und dokumentieren die Abwicklung transparent."
+  }
+];
+
+export const KARLSRUHE_FAQS: FAQItem[] = [
+  {
+    q: "Bieten Sie Abholung in Durlach, Mühlburg und Knielingen an?",
+    a: "Ja. Wir holen Fahrzeuge in allen Karlsruher Stadtteilen ab, darunter Durlach, Mühlburg, Knielingen und angrenzende Bereiche."
+  },
+  {
+    q: "Kaufen Sie in Karlsruhe auch Pendlerfahrzeuge mit Nutzung über A5 und Karlsruher Dreieck an?",
+    a: "Ja. Diese Fahrprofile sind in Karlsruhe sehr häufig. Wir bewerten transparent auf Basis von Wartung, Zustand und dokumentierter Nutzungshistorie."
+  },
+  {
+    q: "Sind in Karlsruhe Termine auch nahe Hauptbahnhof oder nach Feierabend möglich?",
+    a: "In vielen Fällen ja. Wir stimmen Terminfenster so ab, dass sie mit Ihrem Arbeitsalltag und den typischen Verkehrszeiten im Raum Karlsruhe vereinbar sind."
+  },
+  {
+    q: "Kaufen Sie in Karlsruhe auch Firmenwagen, Leasingrückläufer und Elektrofahrzeuge an?",
+    a: "Ja. Wir kaufen unterschiedliche Fahrzeugklassen an, darunter Firmenfahrzeuge, Leasingrückläufer sowie Elektro- und Hybridmodelle mit vollständigen Unterlagen."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung bei der Zulassungsstelle Karlsruhe?",
+    a: "Ja. Auf Wunsch unterstützen wir den Abmeldeprozess bei der zuständigen Zulassungsstelle in Karlsruhe und halten den Ablauf nachvollziehbar fest."
+  }
+];
+
 export const MANNHEIM_FAQS: FAQItem[] = [
   {
     q: "Holen Sie Fahrzeuge in allen Mannheimer Stadtteilen ab?",

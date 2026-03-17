@@ -67,26 +67,29 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* City context section */}
         <section className="mb-16">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">
-            Frankenthal – Industriestandort und Pendlerstadt an der A61
+            Frankenthal – Industriestadt, Pendlerstandort und Tor zur Pfalz
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
-            Frankenthal (Pfalz) ist eine der wenigen kreisfreien Städte Rheinland-Pfalz' mit direktem
-            Autobahnanschluss an die A61 und S-Bahn-Anbindung (RheinNeckar-Netz). Die Stadt liegt zwischen
-            Ludwigshafen, Worms und Mannheim – ein zentraler Knotenpunkt in der Metropolregion Rhein-Neckar.
-            Diese Lage zieht Pendler an, die täglich in Richtung BASF-Werk Ludwigshafen, in die Mannheimer
-            Innenstadt oder über die A61 nach Frankfurt fahren.
+            Frankenthal (Pfalz) ist weit mehr als eine Durchgangsstation zwischen Mannheim und Worms.
+            Die kreisfreie Stadt hat eine eigenständige Industriegeschichte: Unternehmen aus den Bereichen
+            Maschinenbau, Chemie und Logistik sind seit Jahrzehnten in Frankenthal ansässig. Gleichzeitig
+            ist die Stadt ein bevorzugter Wohnort für Beschäftigte des unmittelbar benachbarten BASF-Werks
+            in Ludwigshafen – Europas größtem Chemiewerk. Wer dort arbeitet, lebt häufig im ruhigeren,
+            erschwinglicheren Frankenthal und pendelt täglich über die A61 oder mit der S-Bahn RheinNeckar.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
-            Der lokale Fahrzeugmarkt spiegelt diese Dynamik wider: Viele gut gepflegte Pendlerfahrzeuge mit
-            mittlerer bis hoher Laufleistung, Familien-SUVs aus den ruhigen Wohngebieten rund um Mörsch und
-            Eppstein sowie ältere Fahrzeuge, die durch neuere Mobilität ersetzt werden. Wir kennen diesen
-            Markt und bewerten Ihr Fahrzeug auf Basis aktueller Transaktionsdaten – kein Bauchgefühl, kein
-            veralteter Listenpreis.
+            Diese Kombination aus eigenem Industriestandort und Pendlercharakter prägt den lokalen
+            Fahrzeugmarkt konkret: Es gibt überdurchschnittlich viele Dienstwagen und Firmenfahrzeuge
+            mit dokumentierter Scheckheft-Historie, gut gepflegte Kompaktwagen mit mittlerer Laufleistung
+            sowie Familien-SUVs aus den ruhigen Wohnlagen rund um Mörsch und Eppstein. Wenn Arbeitsverträge
+            enden, Leasinglaufzeiten auslaufen oder Haushalte auf ein Auto reduziert werden, entsteht
+            schnell ein Fahrzeug, das unkompliziert verkauft werden soll. Genau das ist unser Spezialgebiet.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            Dank der A61 (Anschlussstelle Frankenthal) erreichen wir Sie schnell und unkompliziert.
-            Übergabetermine lassen sich flexibel vor oder nach dem Arbeitsalltag einplanen. Wir kommen
-            direkt zu Ihnen – ob Kernstadt, Studernheim oder Mörsch.
+            Wir bewerten Ihr Fahrzeug auf Basis aktueller Transaktionsdaten – kein Bauchgefühl,
+            kein veralteter Listenpreis. Dank der A61 (Anschlussstelle Frankenthal) sind wir schnell
+            bei Ihnen, ob in der Kernstadt, in Studernheim oder in Mörsch. Termine auch abends
+            oder am Wochenende.
           </p>
         </section>
 
@@ -125,7 +128,7 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
               <h3 className="font-black text-brand-dark mb-3 text-sm uppercase tracking-wide">Metropolregion Umland</h3>
               <ul className="space-y-1.5 text-slate-600 font-medium text-sm">
-                {['Mannheim', 'Worms', 'Speyer', 'Heidelberg', 'Neustadt a.d.W.', 'Grünstadt', 'Bad Dürkheim', 'Kaiserslautern'].map(d => (
+                {['Mannheim', 'Worms', 'Speyer', 'Heidelberg', 'Neustadt a.d.W.', 'Grünstadt', 'Bad Dürkheim', 'Lambrecht (Pfalz)'].map(d => (
                   <li key={d} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>
                     {d}
@@ -212,23 +215,26 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
           </div>
         </section>
 
-        {/* Dark highlight: BASF / A61 angle */}
+        {/* Dark highlight: Frankenthal industrial identity */}
         <section className="mb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="relative z-10">
             <h2 className="text-lg lg:text-xl font-black mb-4">
-              Für BASF-Pendler und Berufspendler entlang der A61
+              Frankenthal: Industriestadt mit aktivem Fahrzeugmarkt
             </h2>
             <p className="text-slate-300 font-medium leading-relaxed mb-4">
-              Frankenthal ist ein wichtiger Wohnstandort für BASF-Mitarbeitende und Berufspendler, die täglich
-              über die A61 oder mit der S-Bahn RheinNeckar in Richtung Ludwigshafen, Mannheim oder Heidelberg
-              fahren. Wenn Ihr Fahrzeug gewechselt wird, ein Dienstwagen ausläuft oder der zweite Wagen im
-              Haushalt nicht mehr gebraucht wird, sind wir Ihr direkter Ansprechpartner.
+              Frankenthal hat eine der dichtesten Industrieflächen unter den kreisfreien Städten in
+              Rheinland-Pfalz. Neben ansässigen Maschinenbau- und Logistikunternehmen prägt die unmittelbare
+              Nachbarschaft zum BASF-Werk Ludwigshafen den Alltag vieler Einwohner. Typisch für solche
+              Standorte: Dienstwagen mit Scheckheft-Historie, Zweitwagen, die nach einem Stellenwechsel
+              nicht mehr benötigt werden, und Fahrzeuge, die nach Jahren täglichen Pendlerbetriebs
+              effizient und ohne Aufwand verkauft werden sollen. Wir kennen diese Situation und handeln
+              entsprechend – schnell, transparent, mit einem Angebot das auf echten Marktdaten basiert.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300 font-medium">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Ankauf entlang A61 und im Rhein-Pfalz-Kreis</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Abholung auch an Firmenstandorten auf Anfrage</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Flexible Termine – auch abends nach Feierabend</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Ankauf von Firmenwagen mit Scheckheft-Historie</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Abholung entlang A61 und im gesamten Rhein-Pfalz-Kreis</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Flexible Termine auch abends nach Feierabend</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Auszahlung am Tag der Übergabe per Überweisung</li>
             </ul>
           </div>

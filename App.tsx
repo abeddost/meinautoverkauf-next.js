@@ -23,6 +23,8 @@ import {
   AUTO_VERKAUFEN_FAQS,
   BAD_KREUZNACH_FAQS,
   BAD_HOMBURG_FAQS,
+  BENSHEIM_FAQS,
+  BONN_FAQS,
   DREIEICH_FAQS,
   OBERURSEL_FAQS,
   DARMSTADT_FAQS,
@@ -50,7 +52,13 @@ import {
   SPEYER_FAQS,
   NEUSTADT_WEINSTRASSE_FAQS,
   FRANKENTHAL_FAQS,
+  HOFHEIM_AM_TAUNUS_FAQS,
+  KASSEL_FAQS,
+  KARLSRUHE_FAQS,
+  MAINTAL_FAQS,
   RODGAU_FAQS,
+  STUTTGART_FAQS,
+  WEINHEIM_FAQS,
 } from './lib/faqContent';
 import { buildFaqPageSchema } from './lib/structuredData';
 import { savePartialLead } from './lib/supabaseFunctions';
@@ -123,6 +131,14 @@ const loadAutoankaufOberurselPage = () => import('./pages/AutoankaufOberursel');
 const loadAutoankaufBadKreuznachPage = () => import('./pages/AutoankaufBadKreuznach');
 const loadAutoankaufDreieichPage = () => import('./pages/AutoankaufDreieich');
 const loadAutoankaufFrankenthalPage = () => import('./pages/AutoankaufFrankenthal');
+const loadAutoankaufBensheimPage = () => import('./pages/AutoankaufBensheim');
+const loadAutoankaufMaintalPage = () => import('./pages/AutoankaufMaintal');
+const loadAutoankaufHofheimAmTaunusPage = () => import('./pages/AutoankaufHofheimAmTaunus');
+const loadAutoankaufWeinheimPage = () => import('./pages/AutoankaufWeinheim');
+const loadAutoankaufKasselPage = () => import('./pages/AutoankaufKassel');
+const loadAutoankaufStuttgartPage = () => import('./pages/AutoankaufStuttgart');
+const loadAutoankaufBonnPage = () => import('./pages/AutoankaufBonn');
+const loadAutoankaufKarlsruhePage = () => import('./pages/AutoankaufKarlsruhe');
 const loadAutoankaufRodgauPage = () => import('./pages/AutoankaufRodgau');
 const loadRatgeberGuidePage = () => import('./pages/RatgeberGuide');
 const loadImpressumPage = () => import('./pages/Impressum');
@@ -165,6 +181,14 @@ const AutoankaufOberurselPage = lazy(loadAutoankaufOberurselPage);
 const AutoankaufBadKreuznachPage = lazy(loadAutoankaufBadKreuznachPage);
 const AutoankaufDreieichPage = lazy(loadAutoankaufDreieichPage);
 const AutoankaufFrankenthalPage = lazy(loadAutoankaufFrankenthalPage);
+const AutoankaufBensheimPage = lazy(loadAutoankaufBensheimPage);
+const AutoankaufMaintalPage = lazy(loadAutoankaufMaintalPage);
+const AutoankaufHofheimAmTaunusPage = lazy(loadAutoankaufHofheimAmTaunusPage);
+const AutoankaufWeinheimPage = lazy(loadAutoankaufWeinheimPage);
+const AutoankaufKasselPage = lazy(loadAutoankaufKasselPage);
+const AutoankaufStuttgartPage = lazy(loadAutoankaufStuttgartPage);
+const AutoankaufBonnPage = lazy(loadAutoankaufBonnPage);
+const AutoankaufKarlsruhePage = lazy(loadAutoankaufKarlsruhePage);
 const AutoankaufRodgauPage = lazy(loadAutoankaufRodgauPage);
 const RatgeberGuidePage = lazy(loadRatgeberGuidePage);
 const FAQSection = lazy(() => import('./components/FAQSection'));
@@ -210,6 +234,14 @@ export const preloadRouteModules = async () => {
     loadAutoankaufBadKreuznachPage(),
     loadAutoankaufDreieichPage(),
     loadAutoankaufFrankenthalPage(),
+    loadAutoankaufBensheimPage(),
+    loadAutoankaufMaintalPage(),
+    loadAutoankaufHofheimAmTaunusPage(),
+    loadAutoankaufWeinheimPage(),
+    loadAutoankaufKasselPage(),
+    loadAutoankaufStuttgartPage(),
+    loadAutoankaufBonnPage(),
+    loadAutoankaufKarlsruhePage(),
     loadAutoankaufRodgauPage(),
     loadRatgeberGuidePage(),
     loadImpressumPage(),
@@ -1723,6 +1755,246 @@ export const AppContent: React.FC<{ disableRouteSuspense?: boolean }> = ({ disab
                 headlineTag="h2"
               />
               <AutoankaufDreieichPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-bensheim" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Bensheim – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Bensheim: Auto schnell verkaufen mit transparenter Online-Bewertung, flexibler Abholung an der Bergstraße und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-bensheim"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Bensheim',
+                    '/autoankauf-bensheim',
+                    'Hessen',
+                    'Autoankauf in Bensheim mit transparenter Bewertung und zügiger Auszahlung für Pendler und Familien an der Bergstraße.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-bensheim', BENSHEIM_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Bensheim – Schnell verkaufen an der Bergstraße"
+                subheadline="Online bewerten, Termin abstimmen und Fahrzeug in Bensheim transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufBensheimPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-maintal" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Maintal – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Maintal: Auto schnell verkaufen mit fairer Bewertung, flexiblen Terminen zwischen Frankfurt und Hanau und schneller Auszahlung ohne Umwege."
+                canonicalUrl="/autoankauf-maintal"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Maintal',
+                    '/autoankauf-maintal',
+                    'Hessen',
+                    'Autoankauf in Maintal mit transparenter Bewertung und schneller Auszahlung für Pendler im Main-Kinzig-Korridor.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-maintal', MAINTAL_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Maintal – Schnell verkaufen zwischen Frankfurt und Hanau"
+                subheadline="Faire Bewertung, flexible Termine und zügige Auszahlung in Maintal"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufMaintalPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-hofheim-am-taunus" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Hofheim am Taunus – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Hofheim am Taunus: Auto schnell verkaufen mit transparenter Bewertung, Terminen im Main-Taunus-Kreis und schneller Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-hofheim-am-taunus"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Hofheim am Taunus',
+                    '/autoankauf-hofheim-am-taunus',
+                    'Hessen',
+                    'Autoankauf in Hofheim am Taunus mit transparenter Bewertung und schneller Auszahlung für Pendler im Main-Taunus-Kreis.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-hofheim-am-taunus', HOFHEIM_AM_TAUNUS_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Hofheim am Taunus – Schnell verkaufen im Main-Taunus-Kreis"
+                subheadline="Online bewerten, Termin abstimmen und Fahrzeug in Hofheim transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufHofheimAmTaunusPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-weinheim" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Weinheim – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Weinheim: Auto schnell verkaufen mit fairer Online-Bewertung, flexibler Abholung im Rhein-Neckar-Raum und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-weinheim"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Weinheim',
+                    '/autoankauf-weinheim',
+                    'Baden-Württemberg',
+                    'Autoankauf in Weinheim mit fairer Bewertung und zügiger Auszahlung für Pendler und Familien im Rhein-Neckar-Raum.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-weinheim', WEINHEIM_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Weinheim – Schnell verkaufen im Rhein-Neckar-Raum"
+                subheadline="Faire Bewertung, planbare Termine und zügige Auszahlung in Weinheim"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufWeinheimPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-kassel" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Kassel – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Kassel: Auto schnell verkaufen mit transparenter Online-Bewertung, flexiblen Terminen zwischen A7 und A44 und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-kassel"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Kassel',
+                    '/autoankauf-kassel',
+                    'Hessen',
+                    'Autoankauf in Kassel mit transparenter Bewertung und zügiger Auszahlung für Pendler und Familien in Nordhessen.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-kassel', KASSEL_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Kassel – Schnell verkaufen in Nordhessen"
+                subheadline="Faire Bewertung, planbare Termine und zügige Auszahlung in Kassel"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufKasselPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-stuttgart" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Stuttgart – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Stuttgart: Auto schnell verkaufen mit fairer Online-Bewertung, flexibler Abholung im Großraum Stuttgart und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-stuttgart"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Stuttgart',
+                    '/autoankauf-stuttgart',
+                    'Baden-Württemberg',
+                    'Autoankauf in Stuttgart mit transparenter Bewertung und zügiger Auszahlung für Pendler und Familien im Großraum.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-stuttgart', STUTTGART_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Stuttgart – Schnell verkaufen im Großraum"
+                subheadline="Online bewerten, Termin sichern und Fahrzeug in Stuttgart transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufStuttgartPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-bonn" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Bonn – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Bonn: Auto schnell verkaufen mit transparenter Online-Bewertung, flexiblen Terminen in der Bundesstadt und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-bonn"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Bonn',
+                    '/autoankauf-bonn',
+                    'Nordrhein-Westfalen',
+                    'Autoankauf in Bonn mit transparenter Bewertung und zügiger Auszahlung für Pendler und Familien in der Bundesstadt.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-bonn', BONN_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Bonn – Schnell verkaufen in der Bundesstadt"
+                subheadline="Online bewerten, Termin abstimmen und Fahrzeug in Bonn transparent verkaufen"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufBonnPage
+                onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              />
+            </div>
+          } />
+
+          <Route path="/autoankauf-karlsruhe" element={
+            <div className="animate-in fade-in duration-1000">
+              <MetaTags
+                title="Autoankauf Karlsruhe – Auto schnell verkaufen | Meinautoverkauf.de"
+                description="Autoankauf Karlsruhe: Auto schnell verkaufen mit fairer Online-Bewertung, flexibler Abholung im Raum Karlsruhe und zügiger Auszahlung ohne Inseratsstress."
+                canonicalUrl="/autoankauf-karlsruhe"
+                noindex={false}
+                extraSchemas={[
+                  ...buildCitySchemas(
+                    'Karlsruhe',
+                    '/autoankauf-karlsruhe',
+                    'Baden-Württemberg',
+                    'Autoankauf in Karlsruhe mit transparenter Bewertung und zügiger Auszahlung für Pendler und Familien in der Technologieregion.',
+                  ),
+                  buildFaqPageSchema(SITE_URL, '/autoankauf-karlsruhe', KARLSRUHE_FAQS),
+                ]}
+              />
+              <Hero
+                onValuationComplete={handleStartValuation} onValuationSubmit={handleValuationSubmit}
+                headline="Autoankauf Karlsruhe – Schnell verkaufen in der Technologieregion"
+                subheadline="Faire Bewertung, planbare Termine und zügige Auszahlung in Karlsruhe"
+                accent="verkaufen"
+                headlineTag="h2"
+              />
+              <AutoankaufKarlsruhePage
                 onCtaClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />
             </div>

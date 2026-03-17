@@ -353,6 +353,9 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link to="/autoankauf-frankfurt" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
                 Autoankauf Frankfurt →
               </Link>
+              <Link to="/autoankauf-hofheim-am-taunus" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
+                Auch in Hofheim am Taunus verfügbar →
+              </Link>
               <Link to="/autoankauf-mainz" className="px-6 py-3 bg-white border-2 border-slate-200 rounded-2xl font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-all">
                 Autoankauf Mainz →
               </Link>

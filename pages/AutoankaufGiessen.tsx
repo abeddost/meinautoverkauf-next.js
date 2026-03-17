@@ -315,6 +315,7 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/auto-bewerten', label: '→ Jetzt Auto kostenlos bewerten' },
               { href: '/autoankauf-frankfurt', label: '→ Autoankauf Frankfurt' },
               { href: '/autoankauf-hanau', label: '→ Autoankauf Hanau' },
+              { href: '/autoankauf-kassel', label: '→ Auch in Kassel verfügbar' },
               { href: '/autoankauf-darmstadt', label: '→ Autoankauf Darmstadt' },
               { href: '/autoankauf-wiesbaden', label: '→ Autoankauf Wiesbaden' },
             ].map((link) => (

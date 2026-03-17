@@ -311,6 +311,8 @@ const AutoankaufHeidelbergPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="flex flex-wrap justify-center gap-4">
             {[
               { href: '/autoankauf-mannheim', label: '→ Autoankauf Mannheim' },
+              { href: '/autoankauf-stuttgart', label: '→ Auch in Stuttgart verfügbar' },
+              { href: '/autoankauf-karlsruhe', label: '→ Auch in Karlsruhe verfügbar' },
               { href: '/autoankauf-frankfurt', label: '→ Autoankauf Frankfurt' },
               { href: '/autoankauf-darmstadt', label: '→ Autoankauf Darmstadt' },
               { href: '/autoankauf-wiesbaden', label: '→ Autoankauf Wiesbaden' },
