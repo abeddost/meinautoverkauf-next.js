@@ -207,10 +207,7 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
     ...cleanParams,
   });
 
-  // Keep a fallback for non-GTM setups.
-  if (!window.google_tag_manager && typeof window.gtag === 'function') {
-    window.gtag('event', eventName, cleanParams);
-  }
+  // GTM-first setup: route browser events through dataLayer only.
 };
 
 export const toSafeEventValue = (value: string | undefined): string | undefined => {
