@@ -15,10 +15,6 @@
     content-visibility: auto;
     contain-intrinsic-size: 1000px;
   }
-  /* Raise contrast for orange text on light backgrounds (links, labels, nav states). */
-  .text-brand-orange {
-    color: #c2410c !important;
-  }
 }
 
 @keyframes fadeIn {
