@@ -12,6 +12,7 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
+    google_tag_manager?: Record<string, unknown>;
   }
 }
 
@@ -183,13 +184,33 @@ const hasTrackingConsent = (): boolean => {
   return analyticsGranted || hasGrantedAnalyticsConsent();
 };
 
+const normalizeEventParams = (params: GtagParams): Record<string, GtagPrimitive> => {
+  const cleanParams: Record<string, GtagPrimitive> = {};
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined) continue;
+    cleanParams[key] = value;
+  }
+  return cleanParams;
+};
+
 export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): void => {
   if (typeof window === 'undefined') return;
   if (!hasTrackingConsent()) return;
   if (!analyticsGranted) analyticsGranted = true;
   ensureGtagBootstrap();
-  if (typeof window.gtag !== 'function') return;
-  window.gtag('event', eventName, params);
+
+  const cleanParams = normalizeEventParams(params);
+
+  // GTM custom-event triggers depend on `dataLayer` object pushes with an `event` key.
+  window.dataLayer?.push({
+    event: eventName,
+    ...cleanParams,
+  });
+
+  // Keep a fallback for non-GTM setups.
+  if (!window.google_tag_manager && typeof window.gtag === 'function') {
+    window.gtag('event', eventName, cleanParams);
+  }
 };
 
 export const toSafeEventValue = (value: string | undefined): string | undefined => {
