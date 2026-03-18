@@ -24,7 +24,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
         <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
         <img
-          src="/elements/kurhaus-wiesbaden.webp"
+          src="/elements/autoankauf-neu-gedacht.webp"
           alt=""
           width={320}
           height={320}
@@ -34,7 +34,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           onError={(e) => { e.currentTarget.style.display = 'none'; }}
         />
         <img
-          src="/elements/auto-ankauf-wiesbaden.webp"
+          src="/elements/car-valuation.webp"
           alt=""
           width={288}
           height={288}
@@ -95,7 +95,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
             <div className="relative">
               <img
-                src="/elements/neroberg-wiesbaden.webp"
+                src="/elements/auto-schnell-verkaufen.webp"
                 alt=""
                 width={256}
                 height={256}

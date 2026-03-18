@@ -22,7 +22,7 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="absolute top-[40%] right-[32%] w-3 h-3 bg-blue-200 rounded-full"></div>
         <div className="absolute bottom-16 right-16 w-5 h-5 bg-orange-200 rounded-full"></div>
         <img
-          src="/elements/deutsches-eck-koblenz.webp"
+          src="/elements/autoankauf-neu-gedacht.webp"
           alt=""
           width={384}
           height={384}

@@ -19,7 +19,7 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
         <div className="absolute bottom-24 left-[12%] w-24 h-24 bg-red-200/40 rounded-full blur-xl"></div>
         <div className="absolute top-28 right-[18%] w-72 h-72 border-4 border-orange-200/40 rounded-full"></div>
         <img
-          src="/elements/koeln-dom.webp"
+          src="/elements/autoankauf-neu-gedacht.webp"
           alt=""
           width={384}
           height={384}
