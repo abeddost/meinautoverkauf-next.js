@@ -2,22 +2,45 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# MeinAutoPreis24 Monorepo
 
-This contains everything you need to run your app locally.
+## Primary App
 
-View your app in AI Studio: https://ai.studio/apps/drive/1ND2WSgY7S4WwO8YQzGYoB7QVQD3Pwsxo
+The default app is now **Next.js** in `next-app/`.
 
-## Run Locally
+Root npm commands are wired to Next.js:
 
-**Prerequisites:**  Node.js
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run lint`
+- `npm run type-check`
 
+## Legacy Vite App (temporary rollback)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Optional analytics reliability env vars:
-   - `GA4_API_SECRET` (recommended for server-side valuation success tracking)
-   - `GA4_MEASUREMENT_ID` (optional override, defaults to `G-GX8B3LF4KZ`)
-4. Run the app:
-   `npm run dev`
+The former Vite React app remains in the repo for short-term rollback only.
+
+Legacy commands:
+
+- `npm run vite:dev`
+- `npm run vite:build`
+- `npm run vite:build:analyze`
+- `npm run vite:preview`
+
+## Local Setup (Next.js)
+
+1. Install dependencies for both roots if needed:
+   - `npm install`
+   - `cd next-app && npm install`
+2. Copy `next-app/.env.example` to `next-app/.env.local` and fill values.
+3. Run Next.js from repo root:
+   - `npm run dev`
+
+## Deployment
+
+Deploy `next-app` on Vercel with:
+
+- Root Directory: `next-app`
+- Production branch: `main`
+
+See the full checklist in `next-app/DEPLOYMENT.md`.

@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+next-app/.next*
+next-app/.lighthouse
+next-app/.vercel
 
 # Editor directories and files
 .vscode/*

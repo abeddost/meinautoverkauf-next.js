@@ -1,7 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ConsentManager from '@/components/ConsentManager';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 import ScrollToContent from '@/components/ScrollToContent';
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
@@ -22,7 +21,6 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <main className="flex-1 relative z-10 pb-20 md:pb-0">{children}</main>
       <Footer />
       <ConsentManager />
-      <GoogleAnalytics />
     </div>
     </>
   );

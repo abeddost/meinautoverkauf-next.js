@@ -5,11 +5,14 @@ import CookieConsentBanner from './CookieConsentBanner';
 import CookieSettingsModal from './CookieSettingsModal';
 import {
   COOKIE_SETTINGS_OPEN_EVENT,
+  type ConsentState,
   getConsentState,
   setConsentAccepted,
   setConsentRejected,
+  subscribeConsent,
   updateConsent,
 } from '@/lib/consent';
+import { applyConsentDefaults, applyConsentUpdate } from '@/lib/analytics';
 
 const ConsentManager: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
@@ -17,19 +20,32 @@ const ConsentManager: React.FC = () => {
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
 
   useEffect(() => {
+    const syncConsentState = (state: ConsentState) => {
+      setAnalyticsEnabled(state.analytics);
+      if (state.choice !== 'unknown') {
+        setShowBanner(false);
+      }
+      void applyConsentUpdate(state);
+    };
+
+    applyConsentDefaults();
     const state = getConsentState();
     if (state.choice === 'unknown') {
       setShowBanner(true);
     }
-    setAnalyticsEnabled(state.analytics);
+    syncConsentState(state);
 
     const onOpenSettings = () => {
       setShowBanner(false);
       setShowModal(true);
     };
 
+    const unsubscribe = subscribeConsent(syncConsentState);
     window.addEventListener(COOKIE_SETTINGS_OPEN_EVENT, onOpenSettings);
-    return () => window.removeEventListener(COOKIE_SETTINGS_OPEN_EVENT, onOpenSettings);
+    return () => {
+      unsubscribe();
+      window.removeEventListener(COOKIE_SETTINGS_OPEN_EVENT, onOpenSettings);
+    };
   }, []);
 
   const handleAccept = () => {

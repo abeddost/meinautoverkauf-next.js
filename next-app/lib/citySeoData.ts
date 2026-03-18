@@ -188,7 +188,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-worms',
     cityName: 'Worms',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Worms – Fairer Preis & Sofortige Auszahlung | Meinautoverkauf.de',
+    title: 'Autoankauf Worms – Fairer Preis & Sofortige Auszahlung',
     description:
       'Auto verkaufen in Worms: faire Bewertung, kostenlose Abholung in der Nibelungenstadt und schnelle Auszahlung. Jetzt Preis berechnen.',
     heroHeadline: 'Autoankauf Worms – Sofort Geld für Ihr Fahrzeug',
@@ -202,7 +202,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-kaiserslautern',
     cityName: 'Kaiserslautern',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Kaiserslautern – Schnell & Fair in der Pfalz | Meinautoverkauf.de',
+    title: 'Autoankauf Kaiserslautern – Schnell & Fair in der Pfalz',
     description:
       'Auto verkaufen in Kaiserslautern: faire Bewertung, kostenlose Abholung in der Westpfalz und sofortige Auszahlung. Jetzt Preis berechnen.',
     heroHeadline: 'Autoankauf Kaiserslautern – Schnell & Fair in der Pfalz',
@@ -216,7 +216,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-ludwigshafen',
     cityName: 'Ludwigshafen am Rhein',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Ludwigshafen am Rhein – Schnelle Auszahlung & fairer Ankaufpreis | Meinautoverkauf.de',
+    title: 'Autoankauf Ludwigshafen am Rhein – Schnelle Auszahlung & fairer Ankaufpreis',
     description:
       'Autoankauf Ludwigshafen: Jetzt Fahrzeug online bewerten, transparentes Angebot erhalten und auf Wunsch kostenlos abholen lassen – mit schneller Auszahlung.',
     heroHeadline: 'Autoankauf Ludwigshafen – Schnell verkaufen im Rhein-Neckar-Raum',
@@ -230,7 +230,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-hanau',
     cityName: 'Hanau am Main',
     state: 'Hessen',
-    title: 'Autoankauf Hanau am Main – Direkte Auszahlung & transparenter Verkauf | Meinautoverkauf.de',
+    title: 'Autoankauf Hanau am Main – Direkte Auszahlung & transparenter Verkauf',
     description:
       'Autoankauf Hanau: Fahrzeug online bewerten, faires Angebot erhalten und verkaufen – mit optionaler Abholung, schneller Auszahlung und klarer Abwicklung.',
     heroHeadline: 'Autoankauf Hanau – Klarer Ablauf für Pendler und Familien',
@@ -244,7 +244,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-giessen',
     cityName: 'Gießen',
     state: 'Hessen',
-    title: 'Autoankauf Gießen – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Gießen – Auto schnell verkaufen',
     description:
       'Auto verkaufen in Gießen: Kostenlose Online-Bewertung, faire Preisermittlung, Abholung in Mittelhessen und Auszahlung am Tag der Übergabe – JLU & THM.',
     heroHeadline: 'Autoankauf Gießen – Fairer Preis, schnelle Abwicklung',
@@ -258,7 +258,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-aschaffenburg',
     cityName: 'Aschaffenburg',
     state: 'Bayern',
-    title: 'Autoankauf Aschaffenburg – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Aschaffenburg – Auto schnell verkaufen',
     description:
       'Auto verkaufen in Aschaffenburg: Online bewerten, faires Angebot, kostenlose Abholung und Auszahlung am Tag der Übergabe – A3/A45, Straßenverkehrsamt inklusive.',
     heroHeadline: 'Autoankauf Aschaffenburg – Schnell verkaufen, sofort auszahlen',
@@ -272,7 +272,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-neuwied',
     cityName: 'Neuwied',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Neuwied – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Neuwied – Auto schnell verkaufen',
     description:
       'Autoankauf Neuwied: Auto schnell verkaufen mit kostenloser Online-Bewertung, fairer Preisermittlung, optionaler Abholung und zügiger Auszahlung vor Ort.',
     heroHeadline: 'Autoankauf Neuwied – Planbar verkaufen im Mittelrhein-Raum',
@@ -286,7 +286,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-wetzlar',
     cityName: 'Wetzlar',
     state: 'Hessen',
-    title: 'Autoankauf Wetzlar – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Wetzlar – Auto schnell verkaufen',
     description:
       'Autoankauf Wetzlar: Auto schnell verkaufen mit transparenter Bewertung, flexiblen Terminen im Lahn-Dill-Kreis und schneller Auszahlung ohne Inseratstress.',
     heroHeadline: 'Autoankauf Wetzlar – Schnell verkaufen im Lahn-Dill-Korridor',
@@ -300,7 +300,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-speyer',
     cityName: 'Speyer',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Speyer – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Speyer – Auto schnell verkaufen',
     description:
       'Auto verkaufen in Speyer: Kostenlose Online-Bewertung, faire Preisermittlung, Abholung in der Domstadt und Rhein-Pfalz-Kreis, Auszahlung am Tag der Übergabe.',
     heroHeadline: 'Autoankauf Speyer – Fairer Preis, schnelle Abwicklung',
@@ -314,7 +314,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-neustadt-weinstrasse',
     cityName: 'Neustadt an der Weinstraße',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Neustadt an der Weinstraße – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Neustadt an der Weinstraße – Auto schnell verkaufen',
     description:
       'Auto verkaufen in Neustadt an der Weinstraße: Online bewerten, faires Angebot, Abholung in allen Ortsbezirken und Auszahlung am Tag der Übergabe – Deutsche Weinstraße.',
     heroHeadline: 'Autoankauf Neustadt an der Weinstraße – Schnell verkaufen, sofort auszahlen',
@@ -329,7 +329,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-bad-homburg-vor-der-hoehe',
     cityName: 'Bad Homburg vor der Höhe',
     state: 'Hessen',
-    title: 'Autoankauf Bad Homburg vor der Höhe – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Bad Homburg vor der Höhe – Auto schnell verkaufen',
     description:
       'Autoankauf Bad Homburg vor der Höhe: Auto schnell verkaufen mit fairer Online-Bewertung, Abholung im Hochtaunuskreis und schneller Auszahlung vor Ort.',
     heroHeadline: 'Autoankauf Bad Homburg – Schnell verkaufen im Hochtaunuskreis',
@@ -344,7 +344,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-oberursel',
     cityName: 'Oberursel (Taunus)',
     state: 'Hessen',
-    title: 'Autoankauf Oberursel – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Oberursel – Auto schnell verkaufen',
     description:
       'Autoankauf Oberursel: Auto schnell verkaufen mit transparenter Online-Bewertung, Abholung im Hochtaunuskreis und schneller Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Oberursel – Schnell verkaufen im Taunus',
@@ -358,7 +358,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-bad-kreuznach',
     cityName: 'Bad Kreuznach',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Bad Kreuznach – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Bad Kreuznach – Auto schnell verkaufen',
     description:
       'Autoankauf Bad Kreuznach: Auto schnell verkaufen mit transparenter Online-Bewertung, Abholung im Kreis Bad Kreuznach und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Bad Kreuznach – Schnell verkaufen im Naheland',
@@ -372,7 +372,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-dreieich',
     cityName: 'Dreieich',
     state: 'Hessen',
-    title: 'Autoankauf Dreieich – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Dreieich – Auto schnell verkaufen',
     description:
       'Autoankauf Dreieich: Auto schnell verkaufen mit transparenter Bewertung, flexiblen Terminen im Kreis Offenbach und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Dreieich – Schnell verkaufen im Kreis Offenbach',
@@ -386,7 +386,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-bensheim',
     cityName: 'Bensheim',
     state: 'Hessen',
-    title: 'Autoankauf Bensheim – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Bensheim – Auto schnell verkaufen',
     description:
       'Autoankauf Bensheim: Auto schnell verkaufen mit transparenter Online-Bewertung, flexibler Abholung an der Bergstraße und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Bensheim – Schnell verkaufen an der Bergstraße',
@@ -400,7 +400,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-maintal',
     cityName: 'Maintal',
     state: 'Hessen',
-    title: 'Autoankauf Maintal – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Maintal – Auto schnell verkaufen',
     description:
       'Autoankauf Maintal: Auto schnell verkaufen mit fairer Bewertung, flexiblen Terminen zwischen Frankfurt und Hanau und schneller Auszahlung ohne Umwege.',
     heroHeadline: 'Autoankauf Maintal – Schnell verkaufen zwischen Frankfurt und Hanau',
@@ -414,7 +414,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-hofheim-am-taunus',
     cityName: 'Hofheim am Taunus',
     state: 'Hessen',
-    title: 'Autoankauf Hofheim am Taunus – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Hofheim am Taunus – Auto schnell verkaufen',
     description:
       'Autoankauf Hofheim am Taunus: Auto schnell verkaufen mit transparenter Bewertung, Terminen im Main-Taunus-Kreis und schneller Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Hofheim am Taunus – Schnell verkaufen im Main-Taunus-Kreis',
@@ -428,7 +428,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-weinheim',
     cityName: 'Weinheim',
     state: 'Baden-Württemberg',
-    title: 'Autoankauf Weinheim – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Weinheim – Auto schnell verkaufen',
     description:
       'Autoankauf Weinheim: Auto schnell verkaufen mit fairer Online-Bewertung, flexibler Abholung im Rhein-Neckar-Raum und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Weinheim – Schnell verkaufen im Rhein-Neckar-Raum',
@@ -442,7 +442,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-kassel',
     cityName: 'Kassel',
     state: 'Hessen',
-    title: 'Autoankauf Kassel – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Kassel – Auto schnell verkaufen',
     description:
       'Autoankauf Kassel: Auto schnell verkaufen mit transparenter Online-Bewertung, flexiblen Terminen zwischen A7 und A44 und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Kassel – Schnell verkaufen in Nordhessen',
@@ -456,7 +456,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-stuttgart',
     cityName: 'Stuttgart',
     state: 'Baden-Württemberg',
-    title: 'Autoankauf Stuttgart – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Stuttgart – Auto schnell verkaufen',
     description:
       'Autoankauf Stuttgart: Auto schnell verkaufen mit fairer Online-Bewertung, flexibler Abholung im Großraum Stuttgart und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Stuttgart – Schnell verkaufen im Großraum',
@@ -470,7 +470,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-bonn',
     cityName: 'Bonn',
     state: 'Nordrhein-Westfalen',
-    title: 'Autoankauf Bonn – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Bonn – Auto schnell verkaufen',
     description:
       'Autoankauf Bonn: Auto schnell verkaufen mit transparenter Online-Bewertung, flexiblen Terminen in der Bundesstadt und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Bonn – Schnell verkaufen in der Bundesstadt',
@@ -484,7 +484,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-karlsruhe',
     cityName: 'Karlsruhe',
     state: 'Baden-Württemberg',
-    title: 'Autoankauf Karlsruhe – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Karlsruhe – Auto schnell verkaufen',
     description:
       'Autoankauf Karlsruhe: Auto schnell verkaufen mit fairer Online-Bewertung, flexibler Abholung im Raum Karlsruhe und zügiger Auszahlung ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Karlsruhe – Schnell verkaufen in der Technologieregion',
@@ -498,7 +498,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-frankenthal',
     cityName: 'Frankenthal (Pfalz)',
     state: 'Rheinland-Pfalz',
-    title: 'Autoankauf Frankenthal – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Frankenthal – Auto schnell verkaufen',
     description:
       'Autoankauf Frankenthal (Pfalz): Auto schnell verkaufen mit fairer Online-Bewertung, Abholung im Rhein-Pfalz-Kreis und schneller Auszahlung – ohne Inserat.',
     heroHeadline: 'Autoankauf Frankenthal – Schnell verkaufen in der Pfalz',
@@ -513,7 +513,7 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     path: '/autoankauf-rodgau',
     cityName: 'Rodgau',
     state: 'Hessen',
-    title: 'Autoankauf Rodgau – Auto schnell verkaufen | Meinautoverkauf.de',
+    title: 'Autoankauf Rodgau – Auto schnell verkaufen',
     description:
       'Autoankauf Rodgau: Auto schnell verkaufen mit transparenter Online-Bewertung, Abholung im Landkreis Offenbach und schneller Auszahlung – ohne Inseratsstress.',
     heroHeadline: 'Autoankauf Rodgau – Schnell verkaufen im Landkreis Offenbach',
