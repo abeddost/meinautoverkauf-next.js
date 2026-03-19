@@ -25,3 +25,4 @@ next-app/.vercel
 *.njsproj
 *.sln
 *.sw?
+.vercel
