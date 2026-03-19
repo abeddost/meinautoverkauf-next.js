@@ -16,6 +16,7 @@ type FormPage = 1 | 2 | 3 | 4 | 5;
 const CONTACT_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'desiredPrice'] as const;
 type ContactField = (typeof CONTACT_FIELDS)[number];
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+const VALUATION_REQUEST_ID_STORAGE_KEY = 'valuation_request_id';
 
 let valuationOptionsPromise: Promise<ValuationOptionsData> | null = null;
 
@@ -74,11 +75,39 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
+  const submitInFlightRef = useRef(false);
+  const journeyRequestIdRef = useRef<string | null>(null);
 
   const createSafeId = () =>
     typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
       ? crypto.randomUUID()
       : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+
+  const clearJourneyRequestId = () => {
+    journeyRequestIdRef.current = null;
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.removeItem(VALUATION_REQUEST_ID_STORAGE_KEY);
+    }
+  };
+
+  const getOrCreateJourneyRequestId = () => {
+    if (journeyRequestIdRef.current) return journeyRequestIdRef.current;
+
+    if (typeof window !== 'undefined') {
+      const fromSession = window.sessionStorage.getItem(VALUATION_REQUEST_ID_STORAGE_KEY);
+      if (fromSession?.trim()) {
+        journeyRequestIdRef.current = fromSession.trim();
+        return journeyRequestIdRef.current;
+      }
+    }
+
+    const nextId = createSafeId();
+    journeyRequestIdRef.current = nextId;
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem(VALUATION_REQUEST_ID_STORAGE_KEY, nextId);
+    }
+    return nextId;
+  };
 
   const ensureOptionsLoaded = useCallback(async (): Promise<ValuationOptionsData> => {
     if (optionsData) return optionsData;
@@ -132,6 +161,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       });
       return next;
     });
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (currentPage === 5) return;
+    submitInFlightRef.current = false;
+    clearJourneyRequestId();
   }, [currentPage]);
 
   useEffect(() => {
@@ -434,7 +469,11 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     if (Object.keys(errors).length > 0) {
       return;
     }
-    
+
+    if (submitInFlightRef.current) return;
+    submitInFlightRef.current = true;
+    const analyticsRequestId = getOrCreateJourneyRequestId();
+
     if (onValuationSubmit) {
       if (selectedFiles.length > 0) {
         const uuid = createSafeId();
@@ -464,17 +503,23 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
         });
         setPendingPhotoPromise(uploadPromise);
       }
-      onValuationSubmit(formData);
+      try {
+        onValuationSubmit(formData);
+      } catch (error) {
+        submitInFlightRef.current = false;
+        throw error;
+      }
       return;
     }
     setLoading(true);
     setLoadingMessage('Berechnung läuft …');
     try {
-      const result = await getCarValuation(formData);
+      const result = await getCarValuation(formData, analyticsRequestId);
       onValuationComplete(formData, result);
     } catch (error: unknown) {
       setSubmitError(getValuationErrorMessage(error));
       setLoading(false);
+      submitInFlightRef.current = false;
     }
   };
 

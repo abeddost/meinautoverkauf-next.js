@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/Footer';
@@ -12,6 +12,7 @@ const MATRIX_CHARS = '0123456789ABCDEF';
 const MATRIX_COLUMN_COUNT = 16;
 const MATRIX_ROWS_PER_COLUMN = 36;
 const MAX_PROGRESS_SECONDS = 18;
+const VALUATION_REQUEST_ID_STORAGE_KEY = 'valuation_request_id';
 // Navigate to result as soon as API returns AND at least this many seconds have elapsed.
 // Keeps the animation meaningful for fast responses without forcing an 18s wait.
 const MIN_UX_SECONDS = 4;
@@ -33,6 +34,7 @@ const AnalyzingPage: React.FC = () => {
   const [valuationResult, setValuationResult] = useState<ValuationResult | null>(null);
   const [partialEstimationId, setPartialEstimationId] = useState<string | null>(null);
   const partialSavedRef = useRef(false);
+  const valuationStartRequestIdRef = useRef<string | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
   const matrixColumns = useMemo(
@@ -46,6 +48,28 @@ const AnalyzingPage: React.FC = () => {
       })),
     [],
   );
+
+  const createSafeId = useCallback(
+    () =>
+    typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : `${Date.now()}_${Math.random().toString(16).slice(2)}`,
+    [],
+  );
+
+  const getOrCreateRequestId = useCallback((): string => {
+    const existing = typeof window !== 'undefined'
+      ? window.sessionStorage.getItem(VALUATION_REQUEST_ID_STORAGE_KEY)
+      : null;
+
+    if (existing?.trim()) return existing.trim();
+
+    const nextId = createSafeId();
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem(VALUATION_REQUEST_ID_STORAGE_KEY, nextId);
+    }
+    return nextId;
+  }, [createSafeId]);
 
   // Mount gate: read sessionStorage only on the client after first paint
   useEffect(() => {
@@ -73,6 +97,10 @@ const AnalyzingPage: React.FC = () => {
   useEffect(() => {
     if (!formData) return;
 
+    const requestId = getOrCreateRequestId();
+    if (valuationStartRequestIdRef.current === requestId) return;
+    valuationStartRequestIdRef.current = requestId;
+
     if (!partialSavedRef.current) {
       partialSavedRef.current = true;
       consumePendingPartialSavePromise()
@@ -81,7 +109,7 @@ const AnalyzingPage: React.FC = () => {
     }
 
     let cancelled = false;
-    getCarValuation(formData)
+    getCarValuation(formData, requestId)
       .then((result: ValuationResult) => { if (!cancelled) setValuationResult(result); })
       .catch((err: unknown) => { if (!cancelled) setError(getValuationErrorMessage(err)); });
 

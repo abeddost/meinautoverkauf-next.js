@@ -122,11 +122,16 @@ export function getValuationErrorMessage(error: unknown): string {
   return "Die Bewertung konnte nicht erstellt werden. Bitte versuchen Sie es später erneut.";
 }
 
-export async function getCarValuation(details: CarDetails): Promise<ValuationResult> {
+export async function getCarValuation(
+  details: CarDetails,
+  requestIdOverride?: string,
+): Promise<ValuationResult> {
   const requestId =
-    typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
-      ? crypto.randomUUID()
-      : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+    typeof requestIdOverride === "string" && requestIdOverride.trim()
+      ? requestIdOverride.trim()
+      : typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
   const hasImages = Boolean(
     (details.images && details.images.length > 0) ||
       (details.pendingPhotoPaths && details.pendingPhotoPaths.length > 0)

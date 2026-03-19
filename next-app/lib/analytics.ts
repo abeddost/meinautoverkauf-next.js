@@ -7,6 +7,9 @@ type ConsentModeValue = 'granted' | 'denied';
 const GTM_CONTAINER_ID = 'GTM-W4MPTL8K';
 const GTM_SCRIPT_SELECTOR = `script[data-gtm-id="${GTM_CONTAINER_ID}"]`;
 const GA_COOKIE_PREFIX = '_ga';
+const EVENT_DEDUPE_STORAGE_KEY = 'mav_analytics_sent_events_v1';
+const EVENT_DEDUPE_TTL_MS = 1000 * 60 * 60 * 6;
+const EVENT_DEDUPE_MAX_ENTRIES = 200;
 
 declare global {
   interface Window {
@@ -18,6 +21,8 @@ declare global {
 
 let analyticsGranted = false;
 let gtmScriptPromise: Promise<void> | null = null;
+let dedupeRegistryLoaded = false;
+const dedupeRegistry = new Map<string, number>();
 
 type ValuationEventName =
   | 'ai_valuation_form_submitted'
@@ -184,6 +189,76 @@ const hasTrackingConsent = (): boolean => {
   return analyticsGranted || hasGrantedAnalyticsConsent();
 };
 
+const loadDedupeRegistry = (): void => {
+  if (dedupeRegistryLoaded) return;
+  dedupeRegistryLoaded = true;
+  if (typeof window === 'undefined') return;
+
+  try {
+    const raw = window.sessionStorage.getItem(EVENT_DEDUPE_STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== 'object') return;
+    const now = Date.now();
+    for (const [key, value] of Object.entries(parsed as Record<string, unknown>)) {
+      if (typeof value !== 'number' || !Number.isFinite(value)) continue;
+      if (now - value > EVENT_DEDUPE_TTL_MS) continue;
+      dedupeRegistry.set(key, value);
+    }
+  } catch {
+    // Ignore session-storage read/parse issues.
+  }
+};
+
+const persistDedupeRegistry = (): void => {
+  if (typeof window === 'undefined') return;
+  try {
+    const payload = Object.fromEntries(dedupeRegistry.entries());
+    window.sessionStorage.setItem(EVENT_DEDUPE_STORAGE_KEY, JSON.stringify(payload));
+  } catch {
+    // Ignore session-storage write issues.
+  }
+};
+
+const pruneDedupeRegistry = (): void => {
+  const now = Date.now();
+  for (const [key, timestamp] of dedupeRegistry.entries()) {
+    if (now - timestamp > EVENT_DEDUPE_TTL_MS) {
+      dedupeRegistry.delete(key);
+    }
+  }
+
+  if (dedupeRegistry.size <= EVENT_DEDUPE_MAX_ENTRIES) return;
+  const sortedByAge = [...dedupeRegistry.entries()].sort((a, b) => a[1] - b[1]);
+  const overflow = dedupeRegistry.size - EVENT_DEDUPE_MAX_ENTRIES;
+  for (let index = 0; index < overflow; index += 1) {
+    const key = sortedByAge[index]?.[0];
+    if (key) dedupeRegistry.delete(key);
+  }
+};
+
+const getRequestIdFromParams = (params: Record<string, GtagPrimitive>): string | null => {
+  const rawRequestId = params.request_id;
+  if (rawRequestId === undefined) return null;
+  const normalized = String(rawRequestId).trim();
+  return normalized ? normalized : null;
+};
+
+const isDuplicateDispatch = (eventName: string, params: Record<string, GtagPrimitive>): boolean => {
+  const requestId = getRequestIdFromParams(params);
+  if (!requestId) return false;
+
+  loadDedupeRegistry();
+  pruneDedupeRegistry();
+
+  const dedupeKey = `${eventName}:${requestId}`;
+  if (dedupeRegistry.has(dedupeKey)) return true;
+
+  dedupeRegistry.set(dedupeKey, Date.now());
+  persistDedupeRegistry();
+  return false;
+};
+
 const normalizeEventParams = (params: GtagParams): Record<string, GtagPrimitive> => {
   const cleanParams: Record<string, GtagPrimitive> = {};
   for (const [key, value] of Object.entries(params)) {
@@ -200,6 +275,7 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   ensureGtagBootstrap();
 
   const cleanParams = normalizeEventParams(params);
+  if (isDuplicateDispatch(eventName, cleanParams)) return;
 
   // GTM custom-event triggers depend on `dataLayer` object pushes with an `event` key.
   window.dataLayer?.push({
