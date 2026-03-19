@@ -277,13 +277,8 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   const cleanParams = normalizeEventParams(params);
   if (isDuplicateDispatch(eventName, cleanParams)) return;
 
-  // GTM custom-event triggers depend on `dataLayer` object pushes with an `event` key.
-  window.dataLayer?.push({
-    event: eventName,
-    ...cleanParams,
-  });
-
-  // GTM-first setup: route browser events through dataLayer only.
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, cleanParams);
 };
 
 export const toSafeEventValue = (value: string | undefined): string | undefined => {
