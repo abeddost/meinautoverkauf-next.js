@@ -80,8 +80,11 @@ const ensureGtagBootstrap = (): void => {
     window.dataLayer = [];
   }
   if (typeof window.gtag !== 'function') {
-    window.gtag = (...args: unknown[]) => {
-      window.dataLayer?.push(args);
+    // Must use a regular function so `arguments` is available.
+    // GTM only recognizes Arguments objects as gtag commands, not plain Arrays.
+    window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments);
     };
   }
 };
