@@ -273,13 +273,24 @@ const normalizeEventParams = (params: GtagParams): Record<string, GtagPrimitive>
 
 export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): void => {
   if (typeof window === 'undefined') return;
-  if (!hasTrackingConsent()) return;
+  // #region agent log
+  const _tge_consent = hasTrackingConsent();
+  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'analytics.ts:trackGoogleEvent:entry',message:'trackGoogleEvent called',data:{eventName,hasConsent:_tge_consent,analyticsGranted,requestId:(params as Record<string,unknown>).request_id,stackSnippet:new Error().stack?.split('\n').slice(1,4).join('|')},timestamp:Date.now(),hypothesisId:'A-B'})}).catch(()=>{});
+  // #endregion
+  if (!_tge_consent) return;
   if (!analyticsGranted) analyticsGranted = true;
   ensureGtagBootstrap();
 
   const cleanParams = normalizeEventParams(params);
-  if (isDuplicateDispatch(eventName, cleanParams)) return;
+  const isDupe = isDuplicateDispatch(eventName, cleanParams);
+  // #region agent log
+  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'analytics.ts:trackGoogleEvent:dedup',message:'isDuplicateDispatch result',data:{eventName,isDupe,dedupeKey:`${eventName}:${(cleanParams as Record<string,unknown>).request_id}`},timestamp:Date.now(),hypothesisId:'B'})}).catch(()=>{});
+  // #endregion
+  if (isDupe) return;
 
+  // #region agent log
+  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'analytics.ts:trackGoogleEvent:push',message:'PUSHING to dataLayer',data:{eventName,requestId:(cleanParams as Record<string,unknown>).request_id},timestamp:Date.now(),hypothesisId:'A-B'})}).catch(()=>{});
+  // #endregion
   // Push as a plain object so only the GTM Custom Event trigger path fires.
   // Using window.gtag('event', ...) triggers BOTH the Google Tag (GA4 path)
   // AND the Custom Event trigger, causing every conversion to count twice.

@@ -149,6 +149,9 @@ export async function getCarValuation(
   const consentState = getConsentState();
   const analyticsConsentGranted = consentState.choice === "accepted" && consentState.analytics;
 
+  // #region agent log
+  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'geminiService.ts:getCarValuation:start',message:'getCarValuation called',data:{requestId,brand:details.brand,stack:new Error().stack?.split('\n').slice(1,4).join('|')},timestamp:Date.now(),hypothesisId:'A'})}).catch(()=>{});
+  // #endregion
   trackGoogleEvent("ai_valuation_form_submitted", buildValuationEventParams("ai_valuation_form_submitted", baseEventParams));
   trackGoogleEvent("generate_lead", {
     request_id: requestId,
@@ -199,6 +202,9 @@ export async function getCarValuation(
         );
       }
 
+      // #region agent log
+      fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'geminiService.ts:success',message:'About to fire ai_valuation_form_success_client',data:{requestId,attempt},timestamp:Date.now(),hypothesisId:'A'})}).catch(()=>{});
+      // #endregion
       trackGoogleEvent(
         "ai_valuation_form_success_client",
         buildValuationEventParams("ai_valuation_form_success_client", {
