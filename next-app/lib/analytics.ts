@@ -275,7 +275,7 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   if (typeof window === 'undefined') return;
   // #region agent log
   const _tge_consent = hasTrackingConsent();
-  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'analytics.ts:trackGoogleEvent:entry',message:'trackGoogleEvent called',data:{eventName,hasConsent:_tge_consent,analyticsGranted,requestId:(params as Record<string,unknown>).request_id,stackSnippet:new Error().stack?.split('\n').slice(1,4).join('|')},timestamp:Date.now(),hypothesisId:'A-B'})}).catch(()=>{});
+  console.log('[DBG:e32eb1] trackGoogleEvent:entry', {eventName, hasConsent:_tge_consent, analyticsGranted, requestId:(params as Record<string,unknown>).request_id, stack:new Error().stack?.split('\n').slice(1,4).join(' | ')});
   // #endregion
   if (!_tge_consent) return;
   if (!analyticsGranted) analyticsGranted = true;
@@ -284,12 +284,12 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   const cleanParams = normalizeEventParams(params);
   const isDupe = isDuplicateDispatch(eventName, cleanParams);
   // #region agent log
-  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'analytics.ts:trackGoogleEvent:dedup',message:'isDuplicateDispatch result',data:{eventName,isDupe,dedupeKey:`${eventName}:${(cleanParams as Record<string,unknown>).request_id}`},timestamp:Date.now(),hypothesisId:'B'})}).catch(()=>{});
+  console.log('[DBG:e32eb1] trackGoogleEvent:dedup', {eventName, isDupe, dedupeKey:`${eventName}:${(cleanParams as Record<string,unknown>).request_id}`});
   // #endregion
   if (isDupe) return;
 
   // #region agent log
-  fetch('http://127.0.0.1:7293/ingest/f72a6a9c-8c43-4ba5-9205-e2635a76374f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'e32eb1'},body:JSON.stringify({sessionId:'e32eb1',location:'analytics.ts:trackGoogleEvent:push',message:'PUSHING to dataLayer',data:{eventName,requestId:(cleanParams as Record<string,unknown>).request_id},timestamp:Date.now(),hypothesisId:'A-B'})}).catch(()=>{});
+  console.log('[DBG:e32eb1] trackGoogleEvent:PUSH', {eventName, requestId:(cleanParams as Record<string,unknown>).request_id});
   // #endregion
   // Push as a plain object so only the GTM Custom Event trigger path fires.
   // Using window.gtag('event', ...) triggers BOTH the Google Tag (GA4 path)
