@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         'brand-dark': '#0f172a',
         'brand-orange': '#ff7a1a',
+        'brand-orange-contrast': '#b53e00',
       },
       animation: {
         'in': 'fadeIn 0.3s ease-in-out',

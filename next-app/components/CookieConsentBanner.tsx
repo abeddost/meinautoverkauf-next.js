@@ -28,13 +28,13 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
 
         <div className="p-6 sm:p-8">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-brand-orange">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-brand-orange-contrast">
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
                 <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-5a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm-3-3a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm7-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
               </svg>
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-orange">Datenschutz</p>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-orange-contrast">Datenschutz</p>
               <h2 className="mt-0.5 text-lg font-black text-slate-900">Ihre Privatsphäre zählt</h2>
             </div>
           </div>
@@ -44,7 +44,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
             Einwilligung, um unseren Service zu verbessern. Sie können Ihre Wahl jederzeit ändern.{' '}
             <Link
               href="/datenschutz"
-              className="font-bold text-brand-orange underline underline-offset-2 hover:opacity-80 transition-opacity"
+              className="font-bold text-brand-orange-contrast underline underline-offset-2 hover:opacity-80 transition-opacity"
             >
               Datenschutzerklärung lesen
             </Link>
@@ -70,7 +70,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
             <button
               type="button"
               onClick={onAccept}
-              className="min-h-[44px] rounded-full bg-brand-orange px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-orange-200/60 transition hover:brightness-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+              className="min-h-[44px] rounded-full bg-brand-orange-contrast px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-orange-200/60 transition hover:brightness-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
             >
               Analytics & Ads akzeptieren
             </button>

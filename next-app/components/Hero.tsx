@@ -184,25 +184,15 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
       <div className="absolute inset-0">
         <img
           src="/hero%20section.webp"
-          alt=""
-          aria-hidden="true"
-          width={800}
-          height={533}
-          className="hidden lg:block absolute inset-0 w-full h-full object-cover opacity-100"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
-        <img
-          src="/hero%20section.webp"
           srcSet="/hero%20section.webp 800w"
           sizes="100vw"
           alt=""
           aria-hidden="true"
           width={800}
           height={533}
-          className="lg:hidden absolute inset-0 w-full h-full object-cover opacity-45"
-          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover opacity-45 lg:opacity-100"
+          loading="eager"
+          fetchPriority="high"
           decoding="async"
         />
         <div className={`absolute -top-24 right-[-60px] h-[320px] w-[320px] lg:-top-32 lg:right-[-80px] lg:h-[420px] lg:w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>

@@ -182,7 +182,7 @@ export default function HomePageClient() {
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-xl md:text-2xl font-black text-center text-brand-dark mb-12">
             Auto verkaufen online:{' '}
-            <Link href="/vorteile" className="text-brand-orange hover:underline">
+            <Link href="/vorteile" className="text-brand-orange-contrast hover:underline">
               Die Vorteile
             </Link>{' '}
             auf einen Blick
@@ -206,9 +206,9 @@ export default function HomePageClient() {
               <ul className="space-y-3 text-slate-600 font-medium max-w-3xl mx-auto text-left">
                 {VORTEILE.map((item, index) => (
                   <li key={index} className="flex items-start justify-start gap-3">
-                    <span className="mt-1 h-5 w-5 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-xs font-black">✓</span>
+                    <span className="mt-1 h-5 w-5 rounded-full bg-orange-100 text-brand-orange-contrast flex items-center justify-center text-xs font-black">✓</span>
                     <span className="max-w-2xl">
-                      <span className="font-bold text-brand-orange">{item.label}</span> – {item.text}
+                      <span className="font-bold text-brand-orange-contrast">{item.label}</span> – {item.text}
                     </span>
                   </li>
                 ))}
@@ -244,7 +244,7 @@ export default function HomePageClient() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {VERSPRECHEN.map((item, index) => (
               <div key={index} className="bg-white rounded-[2rem] border border-slate-100 p-6 shadow-sm">
-                <div className="text-brand-orange font-black text-lg mb-2">{item.title}</div>
+                <div className="text-brand-orange-contrast font-black text-lg mb-2">{item.title}</div>
                 <p className="text-slate-600 font-medium leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -294,9 +294,9 @@ export default function HomePageClient() {
               <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
                 <p className="text-slate-600 leading-relaxed font-semibold">
                   Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von{' '}
-                  <Link href="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Frankfurt</Link> über{' '}
-                  <Link href="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Wiesbaden</Link> und{' '}
-                  <Link href="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Mainz</Link> bis Köln und darüber hinaus. Unser Service ist überall verfügbar.
+                  <Link href="/autoankauf-frankfurt" className="text-brand-orange-contrast font-bold hover:underline">Frankfurt</Link> über{' '}
+                  <Link href="/autoankauf-wiesbaden" className="text-brand-orange-contrast font-bold hover:underline">Wiesbaden</Link> und{' '}
+                  <Link href="/autoankauf-mainz" className="text-brand-orange-contrast font-bold hover:underline">Mainz</Link> bis Köln und darüber hinaus. Unser Service ist überall verfügbar.
                 </p>
               </div>
             </div>
@@ -344,7 +344,7 @@ export default function HomePageClient() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-600 font-medium">
                   {MOTORSCHADEN_TYPES.map((item, index) => (
                     <li key={index} className="flex gap-2 items-start">
-                      <span className="mt-1 h-4 w-4 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center text-[10px] font-black">✓</span>
+                      <span className="mt-1 h-4 w-4 rounded-full bg-orange-100 text-brand-orange-contrast flex items-center justify-center text-[10px] font-black">✓</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -491,16 +491,16 @@ export default function HomePageClient() {
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-6">
             Egal ob Sie Ihren{' '}
-            <Link href="/auto-verkaufen" className="text-brand-orange font-bold hover:underline">
+            <Link href="/auto-verkaufen" className="text-brand-orange-contrast font-bold hover:underline">
               Gebrauchtwagen verkaufen
             </Link>
             , ein Fahrzeug mit Motorschaden loswerden oder einen PKW für den Export anbieten möchten – wir sind Ihr zuverlässiger
             Partner für den Autoankauf in ganz Deutschland. Mehr über unsere{' '}
-            <Link href="/vorteile" className="text-brand-orange font-bold hover:underline">
+            <Link href="/vorteile" className="text-brand-orange-contrast font-bold hover:underline">
               Vorteile
             </Link>{' '}
             und den{' '}
-            <Link href="/ratgeber" className="text-brand-orange font-bold hover:underline">
+            <Link href="/ratgeber" className="text-brand-orange-contrast font-bold hover:underline">
               Verkaufs-Ratgeber
             </Link>
             .

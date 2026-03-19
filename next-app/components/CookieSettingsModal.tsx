@@ -84,13 +84,13 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
 
         <div className="px-5 py-5 sm:px-6">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-brand-orange">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-brand-orange-contrast">
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
                 <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V8.65l7-3.89v8.23z" />
               </svg>
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-brand-orange">Cookie-Einstellungen</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-brand-orange-contrast">Cookie-Einstellungen</p>
               <h2 className="mt-0.5 text-xl font-black text-slate-900">Datenschutz nach Ihrer Wahl</h2>
               <p className="mt-1.5 text-sm font-medium leading-relaxed text-slate-600">
                 Notwendige Speicherungen sind für den Betrieb erforderlich. Optionale Analytics und Google Ads
@@ -128,7 +128,7 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
             analyticsEnabled ? 'border-orange-200 bg-orange-50/50' : 'border-slate-200 bg-white'
           }`}>
             <div className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
-              analyticsEnabled ? 'bg-orange-100 text-brand-orange' : 'bg-slate-100 text-slate-500'
+              analyticsEnabled ? 'bg-orange-100 text-brand-orange-contrast' : 'bg-slate-100 text-slate-500'
             }`}>
               <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
                 <path d="M5 9.2h3V19H5V9.2zM10.6 5h2.8v14h-2.8V5zm5.6 8H19v6h-2.8v-6z" />
@@ -146,7 +146,7 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
                   aria-checked={analyticsEnabled}
                   onClick={() => setAnalyticsEnabled((prev) => !prev)}
                   className={`relative mt-0.5 inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 ${
-                    analyticsEnabled ? 'border-brand-orange bg-brand-orange' : 'border-slate-300 bg-slate-200'
+                    analyticsEnabled ? 'border-brand-orange bg-brand-orange-contrast' : 'border-slate-300 bg-slate-200'
                   }`}
                 >
                   <span className="sr-only">Analytics aktivieren</span>
@@ -165,7 +165,7 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
           <div className="pt-1">
             <Link
               href="/datenschutz"
-              className="inline-flex items-center gap-1 text-xs font-bold text-brand-orange underline underline-offset-2 hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-1 text-xs font-bold text-brand-orange-contrast underline underline-offset-2 hover:opacity-80 transition-opacity"
             >
               <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
@@ -196,7 +196,7 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
             <button
               type="button"
               onClick={() => onSave(analyticsEnabled)}
-              className="min-h-[44px] rounded-full bg-brand-orange px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-orange-200/60 transition hover:brightness-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+              className="min-h-[44px] rounded-full bg-brand-orange-contrast px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-orange-200/60 transition hover:brightness-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
             >
               Auswahl speichern
             </button>
