@@ -280,8 +280,13 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   const cleanParams = normalizeEventParams(params);
   if (isDuplicateDispatch(eventName, cleanParams)) return;
 
-  if (typeof window.gtag !== 'function') return;
-  window.gtag('event', eventName, cleanParams);
+  // Push as a plain object so only the GTM Custom Event trigger path fires.
+  // Using window.gtag('event', ...) triggers BOTH the Google Tag (GA4 path)
+  // AND the Custom Event trigger, causing every conversion to count twice.
+  window.dataLayer?.push({
+    event: eventName,
+    ...cleanParams,
+  });
 };
 
 export const toSafeEventValue = (value: string | undefined): string | undefined => {
