@@ -44,8 +44,8 @@ Replace `PASTE_USER_UUID_HERE` with the UUID from step 2.
 
 Ensure `.env.local` has:
 ```
-VITE_SUPABASE_URL=https://sfrqhzqhmqbgpbmyucph.supabase.co
-VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY=sb_publishable_qJclYwBBKbLKd1fKk4wbsA_OOzReNCE
+NEXT_PUBLIC_SUPABASE_URL=https://sfrqhzqhmqbgpbmyucph.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_qJclYwBBKbLKd1fKk4wbsA_OOzReNCE
 ```
 
 ### 5. Start Development Server
@@ -57,8 +57,8 @@ npm run dev
 ## Accessing the Dashboard
 
 ### URLs
-- **Login:** `http://localhost:5173/admin/login`
-- **Dashboard:** `http://localhost:5173/admin`
+- **Login:** `http://localhost:3000/admin/login`
+- **Dashboard:** `http://localhost:3000/admin`
 
 ### Login Process
 1. Navigate to `/admin/login`

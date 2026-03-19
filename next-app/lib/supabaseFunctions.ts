@@ -1,7 +1,6 @@
 /**
  * Call Supabase Edge Functions (submit-estimation, book-appointment).
- * Uses VITE_SUPABASE_URL and either
- * VITE_SUPABASE_ANON_KEY or VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY.
+ * Uses NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.
  */
 import { getSupabaseConfig } from './supabaseConfig';
 

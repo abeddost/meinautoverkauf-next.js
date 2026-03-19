@@ -70,7 +70,7 @@ npx supabase db execute --project-ref sfrqhzqhmqbgpbmyucph < migrations/006_crea
 ## 🧪 Debug Tools
 
 ### Tool 1: Interactive Debug Page
-Open in browser: http://localhost:5174/debug-email.html
+Open in browser: http://localhost:3000/debug-email.html
 
 This page lets you:
 - Test Edge Functions directly
@@ -127,7 +127,7 @@ npx supabase db execute --project-ref sfrqhzqhmqbgpbmyucph < migrations/006_crea
    - `SUPABASE_ANON_KEY` = `sb_publishable_qJclYwBBKbLKd1fKk4wbsA_OOzReNCE`
 
 ### ☐ Step 5: Test the Form
-1. Go to: http://localhost:5174/
+1. Go to: http://localhost:3000/
 2. Fill out the valuation form
 3. Submit
 4. Check browser console for errors
@@ -154,7 +154,7 @@ npx supabase db execute --project-ref sfrqhzqhmqbgpbmyucph < migrations/006_crea
 
 After completing the checklist, run this quick test:
 
-1. Open: http://localhost:5174/debug-email.html
+1. Open: http://localhost:3000/debug-email.html
 2. Click "Test submit-estimation Function"
 3. Check the result:
    - ✅ Success = Everything works!
@@ -226,7 +226,7 @@ When everything works:
 ## 📞 Next Steps
 
 1. **Complete the checklist above** (Steps 1-8)
-2. **Test with debug-email.html** at http://localhost:5174/debug-email.html
+2. **Test with debug-email.html** at http://localhost:3000/debug-email.html
 3. **Check email_log table** for error messages
 4. **If still stuck,** check Edge Function logs in Supabase Dashboard
 

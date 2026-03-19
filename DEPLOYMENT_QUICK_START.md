@@ -71,11 +71,13 @@ npm run dev
 
 ### Step 5: Deploy to Production
 ```bash
-# Build production bundle
-npm run build
+# Build production bundle from Next.js app
+npm --prefix next-app run build
 
-# Deploy dist/ folder to your hosting provider
-# (Netlify, Vercel, or your current host)
+# Deploy via Vercel project configured with:
+# - Root Directory: next-app
+# - Framework Preset: Next.js
+# - Node.js Version: 20.x
 ```
 
 ---
@@ -83,7 +85,7 @@ npm run build
 ## 📋 New Components Created
 
 ```
-components/admin/
+next-app/components/admin/
   ├── EditEstimationModal.tsx      # Edit form
   ├── DeleteConfirmDialog.tsx      # Delete confirmation
   ├── StatusWorkflow.tsx           # Status transition buttons
@@ -176,4 +178,4 @@ For admin dashboard details, see: `ADMIN_DASHBOARD_SETUP.md`
 ---
 
 **Questions?**
-All code is documented with inline comments. Check the plan file for architectural details.
+All code is documented with inline comments. Check the setup guides for architectural details.

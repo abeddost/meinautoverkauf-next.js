@@ -1,10 +1,6 @@
-import path from 'path';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Silence the "multiple lockfiles" warning in monorepo-like setups
-  outputFileTracingRoot: path.join(__dirname, '..'),
-
   async headers() {
     return [
       {

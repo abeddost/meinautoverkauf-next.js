@@ -1,6 +1,6 @@
 # 🎯 Admin Dashboard
 
-**Status:** ✅ Fully Functional | **Access:** http://localhost:5174/admin/login
+**Status:** ✅ Fully Functional | **Access:** http://localhost:3000/admin/login
 
 ---
 
@@ -41,17 +41,17 @@ INSERT INTO admin_users (user_id, email) VALUES ('YOUR_UUID', 'admin@example.com
 ```
 
 ### 4️⃣ Login & Use! ✨
-Visit: http://localhost:5174/admin/login
+Visit: http://localhost:3000/admin/login
 
 ---
 
-## 📁 Files Created
+## 📁 Main Files
 
 ```
-lib/supabase.ts                    # Supabase client
-contexts/AuthContext.tsx           # Auth management
-pages/AdminLoginPage.tsx           # Login page
-pages/AdminDashboard.tsx           # Main dashboard
+next-app/lib/supabase.ts           # Supabase client
+next-app/contexts/AuthContext.tsx  # Auth management
+next-app/app/(funnel)/admin/login/page.tsx # Login route
+next-app/app/(funnel)/admin/page.tsx       # Dashboard route
 supabase/migrations/006_*.sql      # Database setup
 ```
 
@@ -91,11 +91,11 @@ Clean, minimal login with email/password authentication.
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React 18 + TypeScript + Tailwind CSS
+- **Frontend:** Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS
 - **Auth:** Supabase Auth (JWT)
 - **Database:** PostgreSQL with RLS
 - **Storage:** Supabase Storage with signed URLs
-- **Routing:** React Router v6
+- **Routing:** Next.js App Router
 
 ---
 
@@ -106,10 +106,10 @@ Clean, minimal login with email/password authentication.
 npm run build
 
 # Dev server running on
-http://localhost:5174
+http://localhost:3000
 
 # Access admin at
-http://localhost:5174/admin/login
+http://localhost:3000/admin/login
 ```
 
 ---
@@ -158,4 +158,4 @@ For questions or issues, see `ADMIN_DASHBOARD_SETUP.md`.
 
 ---
 
-Built with ❤️ using React, Supabase, and TypeScript
+Built with Next.js, Supabase, and TypeScript

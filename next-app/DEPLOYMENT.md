@@ -78,11 +78,12 @@ Verify each URL returns `200` (or expected redirect):
 - [ ] GTM events fire only after consent acceptance (Tag Assistant / GTM Preview)
 
 ### 5. DNS / Domain Cutover
-1. Deploy `next-app` in Vercel as a separate project
-2. Verify all checks above on preview
-3. Assign custom domain `www.meinautoverkauf.de`
-4. Keep apex redirect `meinautoverkauf.de -> https://www.meinautoverkauf.de`
-5. Monitor logs and Search Console for 24h
+1. Use the existing Vercel project with Root Directory set to `next-app`
+2. In Vercel project settings, pin Node.js version to `20.x`
+3. Verify all checks above on preview
+4. Assign custom domain `www.meinautoverkauf.de`
+5. Keep apex redirect `meinautoverkauf.de -> https://www.meinautoverkauf.de`
+6. Monitor logs and Search Console for 24h
 
 ## Runtime + Performance Notes
 - All city and ratgeber pages are statically generated (SSG) at build time.
