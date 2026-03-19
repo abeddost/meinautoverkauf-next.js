@@ -271,42 +271,15 @@ const normalizeEventParams = (params: GtagParams): Record<string, GtagPrimitive>
   return cleanParams;
 };
 
-// #region agent log
-const _dbgLog = (msg: string, data: Record<string, unknown>): void => {
-  if (typeof window === 'undefined') return;
-  try {
-    const key = 'dbg_e32eb1';
-    const existing = JSON.parse(window.sessionStorage.getItem(key) ?? '[]') as unknown[];
-    existing.push({ t: Date.now(), msg, ...data });
-    window.sessionStorage.setItem(key, JSON.stringify((existing as unknown[]).slice(-30)));
-  } catch { /* ignore */ }
-  console.log(`[DBG:e32eb1] ${msg}`, data);
-};
-// #endregion
-
 export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): void => {
   if (typeof window === 'undefined') return;
-  // #region agent log
-  const _tge_consent = hasTrackingConsent();
-  _dbgLog('trackGoogleEvent:entry', {eventName, hasConsent:_tge_consent, analyticsGranted, requestId:(params as Record<string,unknown>).request_id});
-  // #endregion
-  if (!_tge_consent) return;
+  if (!hasTrackingConsent()) return;
   if (!analyticsGranted) analyticsGranted = true;
   ensureGtagBootstrap();
 
   const cleanParams = normalizeEventParams(params);
-  const isDupe = isDuplicateDispatch(eventName, cleanParams);
-  // #region agent log
-  _dbgLog('trackGoogleEvent:dedup', {eventName, isDupe, dedupeKey:`${eventName}:${(cleanParams as Record<string,unknown>).request_id}`});
-  // #endregion
-  if (isDupe) return;
+  if (isDuplicateDispatch(eventName, cleanParams)) return;
 
-  // #region agent log
-  _dbgLog('trackGoogleEvent:PUSH', {eventName, requestId:(cleanParams as Record<string,unknown>).request_id});
-  // #endregion
-  // Push as a plain object so only the GTM Custom Event trigger path fires.
-  // Using window.gtag('event', ...) triggers BOTH the Google Tag (GA4 path)
-  // AND the Custom Event trigger, causing every conversion to count twice.
   window.dataLayer?.push({
     event: eventName,
     ...cleanParams,
