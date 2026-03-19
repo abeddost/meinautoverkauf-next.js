@@ -150,7 +150,8 @@ export async function getCarValuation(
   const analyticsConsentGranted = consentState.choice === "accepted" && consentState.analytics;
 
   // #region agent log
-  console.log('[DBG:e32eb1] getCarValuation:START', {requestId, brand:details.brand, stack:new Error().stack?.split('\n').slice(1,4).join(' | ')});
+  try { const k='dbg_e32eb1'; const e=JSON.parse(window.sessionStorage.getItem(k)?? '[]') as unknown[]; e.push({t:Date.now(),msg:'getCarValuation:START',requestId,brand:details.brand}); window.sessionStorage.setItem(k,JSON.stringify((e).slice(-30))); } catch { /* ignore */ }
+  console.log('[DBG:e32eb1] getCarValuation:START', {requestId, brand:details.brand});
   // #endregion
   trackGoogleEvent("ai_valuation_form_submitted", buildValuationEventParams("ai_valuation_form_submitted", baseEventParams));
   trackGoogleEvent("generate_lead", {
@@ -203,6 +204,7 @@ export async function getCarValuation(
       }
 
       // #region agent log
+      try { const k='dbg_e32eb1'; const e=JSON.parse(window.sessionStorage.getItem(k)?? '[]') as unknown[]; e.push({t:Date.now(),msg:'getCarValuation:SUCCESS',requestId,attempt}); window.sessionStorage.setItem(k,JSON.stringify((e).slice(-30))); } catch { /* ignore */ }
       console.log('[DBG:e32eb1] geminiService:SUCCESS', {requestId, attempt});
       // #endregion
       trackGoogleEvent(

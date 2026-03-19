@@ -271,11 +271,24 @@ const normalizeEventParams = (params: GtagParams): Record<string, GtagPrimitive>
   return cleanParams;
 };
 
+// #region agent log
+const _dbgLog = (msg: string, data: Record<string, unknown>): void => {
+  if (typeof window === 'undefined') return;
+  try {
+    const key = 'dbg_e32eb1';
+    const existing = JSON.parse(window.sessionStorage.getItem(key) ?? '[]') as unknown[];
+    existing.push({ t: Date.now(), msg, ...data });
+    window.sessionStorage.setItem(key, JSON.stringify((existing as unknown[]).slice(-30)));
+  } catch { /* ignore */ }
+  console.log(`[DBG:e32eb1] ${msg}`, data);
+};
+// #endregion
+
 export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): void => {
   if (typeof window === 'undefined') return;
   // #region agent log
   const _tge_consent = hasTrackingConsent();
-  console.log('[DBG:e32eb1] trackGoogleEvent:entry', {eventName, hasConsent:_tge_consent, analyticsGranted, requestId:(params as Record<string,unknown>).request_id, stack:new Error().stack?.split('\n').slice(1,4).join(' | ')});
+  _dbgLog('trackGoogleEvent:entry', {eventName, hasConsent:_tge_consent, analyticsGranted, requestId:(params as Record<string,unknown>).request_id});
   // #endregion
   if (!_tge_consent) return;
   if (!analyticsGranted) analyticsGranted = true;
@@ -284,12 +297,12 @@ export const trackGoogleEvent = (eventName: string, params: GtagParams = {}): vo
   const cleanParams = normalizeEventParams(params);
   const isDupe = isDuplicateDispatch(eventName, cleanParams);
   // #region agent log
-  console.log('[DBG:e32eb1] trackGoogleEvent:dedup', {eventName, isDupe, dedupeKey:`${eventName}:${(cleanParams as Record<string,unknown>).request_id}`});
+  _dbgLog('trackGoogleEvent:dedup', {eventName, isDupe, dedupeKey:`${eventName}:${(cleanParams as Record<string,unknown>).request_id}`});
   // #endregion
   if (isDupe) return;
 
   // #region agent log
-  console.log('[DBG:e32eb1] trackGoogleEvent:PUSH', {eventName, requestId:(cleanParams as Record<string,unknown>).request_id});
+  _dbgLog('trackGoogleEvent:PUSH', {eventName, requestId:(cleanParams as Record<string,unknown>).request_id});
   // #endregion
   // Push as a plain object so only the GTM Custom Event trigger path fires.
   // Using window.gtag('event', ...) triggers BOTH the Google Tag (GA4 path)
