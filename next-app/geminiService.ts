@@ -144,8 +144,12 @@ export async function getCarValuation(details: CarDetails): Promise<ValuationRes
   const consentState = getConsentState();
   const analyticsConsentGranted = consentState.choice === "accepted" && consentState.analytics;
 
-  // Keep browser-side tracking focused on outcome events to avoid multi-trigger
-  // conversion inflation when GTM has submit-level conversion rules.
+  trackGoogleEvent("ai_valuation_form_submitted", buildValuationEventParams("ai_valuation_form_submitted", baseEventParams));
+  trackGoogleEvent("generate_lead", {
+    request_id: requestId,
+    form_name: "ai_valuation_form",
+    page_path: pagePath,
+  });
 
   let finalError: unknown = null;
 
