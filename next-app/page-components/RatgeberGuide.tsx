@@ -419,6 +419,21 @@ const RatgeberGuidePage: React.FC<Props> = ({
                 <p className="text-sm text-slate-600 font-medium mt-1">{coreLink.hint}</p>
               </div>
 
+              {guide.ctaBridge && (
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5">
+                  <h3 className="text-base font-black text-brand-dark mb-2">{guide.ctaBridge.heading}</h3>
+                  <p className="text-sm text-slate-600 font-medium leading-relaxed mb-3">
+                    {guide.ctaBridge.text}
+                  </p>
+                  <Link
+                    href={guide.ctaBridge.href}
+                    className="inline-flex items-center gap-2 text-brand-orange font-black hover:underline"
+                  >
+                    {guide.ctaBridge.label}
+                  </Link>
+                </div>
+              )}
+
               <div className="mt-4">
                 <Link href="/ratgeber" className="text-sm font-semibold text-slate-600 hover:text-brand-orange transition-colors">
                   Zurück zur Ratgeber-Übersicht

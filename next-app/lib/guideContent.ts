@@ -1,4 +1,5 @@
 import type { FAQItem } from './faqContent';
+import { BRAND_SEO_CONTENT } from './brandSeoContent';
 
 export interface GuideSection {
   heading: string;
@@ -17,6 +18,12 @@ export interface GuidePageContent {
   faqs: FAQItem[];
   relatedSlugs: string[];
   coreLink: '/auto-bewerten' | '/auto-verkaufen';
+  ctaBridge?: {
+    heading: string;
+    text: string;
+    href: string;
+    label: string;
+  };
 }
 
 const SLUG_EVALUATION_FAQ: Record<string, FAQItem> = {
@@ -269,7 +276,7 @@ const withBaseFaqs = (slug: string, topicFaqs: FAQItem[]): FAQItem[] => [
   SLUG_EVALUATION_FAQ[slug],
 ].slice(0, 5);
 
-export const GUIDE_CONTENT: GuidePageContent[] = [
+const BASE_GUIDE_CONTENT: GuidePageContent[] = [
   {
     slug: 'autoankauf-trotz-finanzierung',
     title: 'Autoankauf trotz Finanzierung | Kredit sicher ablösen',
@@ -1402,6 +1409,22 @@ export const GUIDE_CONTENT: GuidePageContent[] = [
     coreLink: '/auto-verkaufen',
   },
 ];
+
+const BRAND_GUIDE_CONTENT: GuidePageContent[] = Object.values(BRAND_SEO_CONTENT).map((brand) => ({
+  slug: brand.guide.slug,
+  title: brand.guide.seoTitle,
+  description: brand.guide.seoDescription,
+  h1: brand.guide.h1,
+  intro: brand.guide.intro,
+  quickFacts: brand.guide.quickFacts,
+  sections: brand.guide.sections,
+  faqs: brand.guide.faqs,
+  relatedSlugs: brand.guide.relatedSlugs,
+  coreLink: brand.guide.coreLink,
+  ctaBridge: brand.guide.ctaBridge,
+}));
+
+export const GUIDE_CONTENT: GuidePageContent[] = [...BASE_GUIDE_CONTENT, ...BRAND_GUIDE_CONTENT];
 
 export const GUIDE_CONTENT_BY_SLUG: Record<string, GuidePageContent> = Object.fromEntries(
   GUIDE_CONTENT.map((guide) => [guide.slug, guide]),
