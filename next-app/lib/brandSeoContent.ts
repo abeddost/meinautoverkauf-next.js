@@ -485,6 +485,810 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       },
     },
   },
+  mercedes: {
+    slug: 'mercedes',
+    displayName: 'Mercedes-Benz',
+    keywordMap: {
+      primary: ['Mercedes verkaufen', 'Mercedes Ankauf', 'Mercedes Autoankauf'],
+      secondary: [
+        'Mercedes schnell verkaufen',
+        'Mercedes Ankauf Deutschland',
+        'Autoankauf Mercedes Unfallwagen',
+        'Mercedes Motorschaden verkaufen',
+        'Mercedes gebraucht verkaufen',
+        'Mercedes Export Ankauf',
+      ],
+      semantic: [
+        'Mercedes-Benz Ankauf',
+        'Mercedes Restwert',
+        'Mercedes Fahrzeugbewertung',
+        'Mercedes Premium Ankauf',
+        'Mercedes AMG verkaufen',
+        'Mercedes E-Klasse verkaufen',
+        'Mercedes S-Klasse verkaufen',
+        'Mercedes ohne TUV verkaufen',
+      ],
+      longTail: [
+        'Mercedes mit hoher Laufleistung verkaufen',
+        'Mercedes 7G-Tronic Probleme verkaufen',
+        'Mercedes AIRMATIC Defekt verkaufen',
+        'Wann Mercedes vor teurer Reparatur verkaufen',
+        'Mercedes Reparatur oder Verkauf Entscheidung',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Der Mercedes-Fokus startet mit Werterhalt im Premiumsegment: nicht nur Defekte, sondern Timing vor hoher Abschreibung und teuren Komfortsystem-Reparaturen.',
+      requiredInsights: [
+        'AIRMATIC- und Elektronikrisiken bei alternden Premiummodellen',
+        '7G-Tronic und Motornebenkosten im Kontext von Restwert und Haltedauer',
+        'Preislogik fur AMG-, E-Klasse- und S-Klasse-Fahrzeuge im Direktankauf',
+      ],
+      bannedPatterns: [
+        'identische Einleitung wie BMW oder Stadtseiten',
+        'pauschale Aussagen zur Zuverlassigkeit ohne Modellkontext',
+        'gleiche FAQ-Fragen zwischen Mercedes Landing und Mercedes Guide',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/mercedes-verkaufen',
+      seoTitle: 'Mercedes verkaufen | Mercedes Ankauf Deutschland',
+      seoDescription:
+        'Mercedes verkaufen mit Premium-Abwicklung: faire Bewertung, schnelle Auszahlung, kostenlose Abholung in Deutschland. Auch AMG, Unfallwagen und Motorschaden.',
+      canonicalPath: '/mercedes-verkaufen',
+      heroHeadline: 'Mercedes verkaufen mit Premium-Service und klarer Bewertung',
+      heroSubheadline:
+        'Mercedes Ankauf Deutschland fur gepflegte Modelle, AMG, Firmenwagen und Fahrzeuge mit Defekten',
+      h1: 'Mercedes Autoankauf: Ihren Mercedes schnell, sicher und professionell verkaufen',
+      intro: [
+        'Ein Mercedes-Benz ist fur viele Halter mehr als ein Alltagsfahrzeug. Gerade deshalb ist der Verkauf oft anspruchsvoller: Der Markt erwartet bei Premiumfahrzeugen eine saubere Historie, technische Transparenz und eine realistische Preislogik. Gleichzeitig steigen bei alternden Modellen die Risiken durch teure Komfort- und Antriebstechnik. Wer zu spat entscheidet, verliert nicht nur Zeit, sondern haufig auch spurbare Werte.',
+        'Wenn Sie Ihren Mercedes verkaufen mochten, zahlen zwei Faktoren besonders: ein fairer Ankaufpreis und ein professioneller Ablauf ohne Unsicherheit. Genau hier setzen wir an. Unser Mercedes Ankauf bewertet nicht pauschal nach Listenwert, sondern differenziert nach Modellreihe, Ausstattung, Wartung, Laufleistung und technischem Zustand. So erhalten Sie ein Angebot, das zur realen Marktsituation passt.',
+        'Ob C-Klasse mit hoher Laufleistung, E-Klasse als Firmenfahrzeug, S-Klasse mit bevorstehenden Reparaturen oder AMG mit besonderer Ausstattung: Wir kaufen Mercedes in nahezu jedem Zustand. Unser Ziel ist ein Abschluss, der wirtschaftlich sinnvoll, rechtssicher und planbar ist.',
+        'Viele Privatverkaufer unterschatzen den Aufwand im Premiumsegment. Mehrere Besichtigungen, aggressive Nachverhandlungen und Zweifel an Zahlungsseriositat kosten Nerven und Zeit. Mit unserem Mercedes Autoankauf umgehen Sie diese Reibung und erhalten eine klare Struktur vom Erstkontakt bis zur Auszahlung.',
+      ],
+      benefitHeading: 'Warum Mercedes-Halter unseren Ankauf wahlen',
+      benefits: [
+        'Premiumgerechte Bewertung: Wir berucksichtigen Baureihe, Ausstattungslinie, Antrieb, Wartungshistorie und bekannte Kostenrisiken statt pauschaler Abschlage.',
+        'Spezialisierung auf hochwertige Fahrzeuge: Auch Mercedes AMG sowie E-Klasse und S-Klasse werden differenziert bewertet.',
+        'Ankauf bei Defekten: Wir kaufen auch Mercedes Unfallwagen, Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TUV.',
+        'Schneller Prozess: Nach vollstandigen Daten ist ein strukturierter Abschluss oft in 24 bis 48 Stunden moglich.',
+        'Bundesweiter Service: Mercedes Ankauf Deutschland mit optionaler Abholung und klarer Terminabstimmung.',
+        'Rechtssichere Abwicklung: Vertrag, Fahrzeugstatus, Schlusselanzahl und Auszahlung werden transparent dokumentiert.',
+      ],
+      processHeading: 'Mercedes schnell verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Mercedes-Daten strukturiert ubermitteln',
+          text: 'Sie senden Modell, Baujahr, Laufleistung, Motorisierung, Ausstattungsumfang und bekannte Mangel. Bei Premiumfahrzeugen helfen Servicebelege und Rechnungen besonders fur eine belastbare Bewertung.',
+        },
+        {
+          title: '2. Realistische Bewertung und Angebot erhalten',
+          text: 'Wir bewerten Ihren Mercedes auf Basis aktueller Nachfrage, technischer Risiken und Restwertlogik im Premiumsegment. Sie erhalten ein nachvollziehbares Angebot statt eines Lockpreises mit spateren Abschlagen.',
+        },
+        {
+          title: '3. Ubergabe, Vertrag und Auszahlung',
+          text: 'Nach Terminabstimmung erfolgt die Ubergabe mit sauberer Dokumentation. Die Auszahlung wird sicher und nachvollziehbar abgewickelt, auf Wunsch inklusive Abholung.',
+        },
+      ],
+      buyTypesHeading: 'Welche Mercedes wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Mercedes Unfallwagen verkaufen',
+          text: 'Auch bei dokumentierten Unfallschaden prufen wir den Restwert fair und transparent - entscheidend sind Schadenbild, Reparaturstand und Gesamtzustand.',
+        },
+        {
+          title: 'Mercedes Motorschaden verkaufen',
+          text: 'Wenn teure Motorinstandsetzungen drohen, ist der Direktverkauf oft wirtschaftlicher als unklare Reparaturketten.',
+        },
+        {
+          title: 'Mercedes mit Getriebeschaden',
+          text: 'Probleme mit Schaltqualitat, Notlauf oder Verzogerungen - auch Fahrzeuge mit 7G-Tronic-Themen konnen wir ankaufen.',
+        },
+        {
+          title: 'Mercedes mit hoher Laufleistung',
+          text: 'Hohe Kilometer sind kein Ausschluss. Entscheidend sind Pflegezustand, Historie, Modellreihe und technisches Risiko im nachsten Nutzungsjahr.',
+        },
+        {
+          title: 'Mercedes ohne TUV',
+          text: 'Abgelaufene HU/AU fuhrt oft zu zusatzlichen Kosten. Wir bewerten den Zustand transparent und kaufen auch ohne neuen TUV.',
+        },
+        {
+          title: 'Leasingrucklaufer und Firmenwagen',
+          text: 'Wir begleiten gewerbliche Mercedes-Verkaufe mit klaren Prozessen fur Unterlagen, Termine und Zahlungsdokumentation.',
+        },
+      ],
+      comparisonHeading: 'Warum unser Mercedes Ankauf oft die bessere Wahl ist',
+      comparisonRows: [
+        {
+          criterion: 'Bewertung hochwertiger Fahrzeuge',
+          us: 'Premium-orientierte Bewertung mit Modell- und Ausstattungsbezug',
+          privateSale: 'Haufig Diskussionen uber Zustand und Ausstattung',
+          traditionalDealer: 'Oft pauschale Inzahlungnahme mit konservativen Abschlagen',
+        },
+        {
+          criterion: 'Zeit bis zum Abschluss',
+          us: 'Meist 24 bis 48 Stunden nach Datenklarung',
+          privateSale: 'Tage bis Wochen mit unsicherem Ergebnis',
+          traditionalDealer: 'Abhangig von Terminlage und interner Freigabe',
+        },
+        {
+          criterion: 'Defekte Premiumtechnik',
+          us: 'Ankauf auch bei AIRMATIC-, Motor- oder Getriebeproblemen',
+          privateSale: 'Hohe Skepsis und starke Nachverhandlungen',
+          traditionalDealer: 'Haufig restriktiv bei Risiko-Fahrzeugen',
+        },
+        {
+          criterion: 'Abwicklungssicherheit',
+          us: 'Klare Vertrags- und Zahlungsdokumentation',
+          privateSale: 'Erhohtes Risiko bei Zahlung und Haftungsfragen',
+          traditionalDealer: 'Formal sicher, aber weniger flexibel in Sonderfallen',
+        },
+      ],
+      trustHeading: 'Vertrauen durch professionelle Premium-Abwicklung',
+      trustPoints: [
+        'Sichere Auszahlung mit nachvollziehbarem Zahlungsnachweis',
+        'Kostenlose Abholung in vielen Regionen Deutschlands',
+        'Faire Preisfindung ohne versteckte Zusatzkosten',
+        'Transparente Kommunikation zu Zustand, Angebot und Ablauf',
+        'Erreichbarer Support fur Ruckfragen vor und nach dem Termin',
+      ],
+      ctas: [
+        {
+          heading: 'Mercedes jetzt kostenlos bewerten',
+          text: 'Starten Sie mit einer unverbindlichen Ersteinschatzung und prufen Sie Ihren aktuellen Mercedes Restwert.',
+          label: 'Jetzt Mercedes bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Verkauf direkt professionell starten',
+          text: 'Wenn Sie bereits bereit sind, begleiten wir Sie strukturiert durch Termin, Ubergabe und Auszahlung.',
+          label: 'Mercedes Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Erst Reparatur oder Verkauf klaren',
+          text: 'Unser Mercedes Guide hilft bei der Entscheidung vor hohen Reparaturkosten.',
+          label: 'Zum Mercedes Guide',
+          href: '/ratgeber/mercedes-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Mercedes verkaufen, Ankauf und Premium-Abwicklung',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen Mercedes verkaufen?',
+          a: 'Nach vollstandigen Fahrzeugdaten ist ein Abschluss oft innerhalb von 24 bis 48 Stunden moglich. Die genaue Dauer hangt von Zustand, Unterlagen und Terminverfugbarkeit ab.',
+        },
+        {
+          q: 'Kaufen Sie auch Mercedes AMG Modelle an?',
+          a: 'Ja. AMG-Modelle werden differenziert nach Zustand, Ausstattung, Historie und Marktnachfrage bewertet.',
+        },
+        {
+          q: 'Ist Mercedes Ankauf auch bei Motorschaden oder Getriebeschaden moglich?',
+          a: 'Ja. Wir kaufen auch Fahrzeuge mit groesseren technischen Defekten, wenn der Zustand transparent dokumentiert ist.',
+        },
+        {
+          q: 'Kann ich eine E-Klasse oder S-Klasse mit hoher Laufleistung verkaufen?',
+          a: 'Ja. Entscheidend sind Wartung, technischer Zustand und die wirtschaftliche Gesamtbetrachtung, nicht nur der Kilometerstand.',
+        },
+        {
+          q: 'Ist der Verkauf ohne TUV moglich?',
+          a: 'Ja. Ein fehlender TUV schliesst den Verkauf nicht aus. Wir kalkulieren den Zustand und voraussichtliche Folgekosten nachvollziehbar ein.',
+        },
+        {
+          q: 'Wie lauft die Auszahlung beim Mercedes Verkauf?',
+          a: 'Die Auszahlung erfolgt sicher und dokumentiert, in der Regel per Bankuberweisung. Ablauf und Zeitpunkt werden vor Ubergabe klar abgestimmt.',
+        },
+        {
+          q: 'Bieten Sie eine Abholung fur meinen Mercedes an?',
+          a: 'Ja, in vielen Regionen Deutschlands ist eine Abholung moglich. Die Details werden in der Terminplanung festgelegt.',
+        },
+        {
+          q: 'Ist die Ersteinschatzung kostenlos und unverbindlich?',
+          a: 'Ja. Die erste Bewertung ist kostenlos und unverbindlich. Ein konkretes Angebot basiert auf den ubermittelten Fahrzeugdaten.',
+        },
+      ],
+      internalLinksHeading: 'Weiterfuhrende Seiten rund um Ihren Mercedes-Verkauf',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Mercedes kostenlos bewerten',
+          context: 'Fur eine schnelle Preisorientierung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Ablauf beim Autoverkauf',
+          context: 'Wenn Sie den Verkauf direkt strukturiert starten mochten.',
+        },
+        {
+          href: '/ratgeber/mercedes-probleme-verkauf',
+          label: 'Mercedes Guide: Probleme und Verkaufszeitpunkt',
+          context: 'Fur die Entscheidung zwischen Reparatur und Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'mercedes-probleme-verkauf',
+      seoTitle: 'Mercedes Probleme & Verkauf: Praxis-Guide 2026',
+      seoDescription:
+        'Mercedes Probleme verstehen, Reparaturkosten einordnen und den besten Verkaufszeitpunkt finden - mit AIRMATIC, 7G-Tronic und Modellbeispielen.',
+      h1: 'Mercedes Guide: Haufige Probleme erkennen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'Mercedes-Benz steht fur Komfort, Praezision und Premium-Anspruch. Gleichzeitig fragen sich viele Halter nach einigen Jahren: Weiterfahren, teuer reparieren oder jetzt verkaufen? Dieser Guide verbindet technische Schwachstellen, Kostenrealitat und Markttiming, damit Sie eine wirtschaftlich klare Entscheidung treffen konnen.',
+      quickFacts: [
+        'Viele Mercedes-Verkaufe passieren nicht wegen eines einzelnen Defekts, sondern wegen steigender Gesamtkosten.',
+        'AIRMATIC-, Elektronik- und Getriebethemen beeinflussen Restwert und Alltagstauglichkeit stark.',
+        'Der beste Verkaufszeitpunkt liegt oft vor grossen Reparaturblöcken und vor spurbarem Abschreibungsdruck.',
+        'Bei E-Klasse, S-Klasse und AMG zahlt eine saubere Historie besonders stark auf den Verkaufspreis ein.',
+        'Wer vor Ablauf wichtiger Garantie- oder Kulanzfenster entscheidet, verkauft oft mit weniger Preisdruck.',
+        'Ein strukturierter Direktankauf ist bei komplexem Zustand haufig planbarer als der Privatmarkt.',
+      ],
+      sections: [
+        {
+          heading: 'Warum entscheiden sich viele Mercedes-Halter fur den Verkauf?',
+          paragraphs: [
+            'Im Premiumsegment ist die Entscheidung selten rein emotional. Viele Halter verkaufen, sobald die Kostenkurve steiler wird als der erwartete Nutzwert. Bei alteren Mercedes trifft das besonders zu, wenn mehrere Systeme gleichzeitig Aufmerksamkeit brauchen: Fahrwerk, Elektronik, Antrieb und Komfortfunktionen.',
+            'Hinzu kommt die Nutzungsperspektive. Wer auf hohe Verfugbarkeit angewiesen ist, kann ungeplante Standzeiten schlechter akzeptieren als fruher. Wenn Werkstatttermine haufiger werden und die Kosten pro Jahr steigen, wird der Verkauf zur wirtschaftlichen Option statt zur Notlosung.',
+            'Gerade bei hochwertigen Fahrzeugen ist Timing entscheidend: Ein technisch fahrbereiter Mercedes mit sauberer Dokumentation erzielt meist ein stabileres Angebot als ein Fahrzeug, das bereits mit akuten Folgeproblemen in den Markt geht.',
+          ],
+          bullets: [
+            'Entscheidend ist die Gesamtkostenentwicklung, nicht nur das Fahrzeugalter',
+            'Premiumfahrzeuge verlieren bei akuten Defekten oft schneller an Marktattraktivitat',
+            'Fruhe Entscheidungen verbessern meist die Verhandlungsposition',
+          ],
+        },
+        {
+          heading: 'Welche Mercedes Probleme treten haufig auf?',
+          paragraphs: [
+            'Die Frage nach Mercedes haufige Fehler lasst sich nur modell- und baujahrspezifisch beantworten. Wiederkehrende Themen finden sich bei Komfortfahrwerken, Elektronikmodulen, bestimmten Motorvarianten und Getrieben. Nicht jeder Hinweis bedeutet sofort einen schweren Schaden, aber die Folgekosten konnen bei verspateter Reaktion deutlich steigen.',
+            'Typisch sind schleichende Warnzeichen: sporadische Fehlermeldungen, unruhiges Schaltverhalten, Leistungsverlust, Olspuren oder veranderter Federungskomfort. Solche Signale wirken einzeln oft harmlos, summieren sich jedoch schnell zu hoheren Gesamtaufwanden.',
+            'Fur die Praxis zahlt daher weniger die Frage, ob ein einzelnes Bauteil ausfallt, sondern wie hoch das Risiko weiterer Kosten in den nachsten 12 Monaten ist.',
+          ],
+        },
+        {
+          heading: 'AIRMATIC-Probleme: Warum Luftfederung teuer werden kann',
+          paragraphs: [
+            'AIRMATIC ist ein Komfortmerkmal, das den Mercedes-Charakter pragt - gleichzeitig ist es bei steigender Laufleistung ein potenzieller Kostentreiber. Kompressor, Federbalge, Ventilblock und Sensorik mussen zusammenspielen; fallt ein Teil aus, leiden oft weitere Komponenten.',
+            'In der Praxis bemerken Halter AIRMATIC-Themen uber ungleiches Fahrzeugniveau, Warnhinweise oder Komfortverlust. Wird das Thema zu lange aufgeschoben, konnen sich Reparaturen verteuern und die Alltagstauglichkeit sinken.',
+            'Beim Verkauf ist Transparenz entscheidend: Dokumentierte Diagnose und nachvollziehbare Historie helfen, den Ankaufpreis stabiler zu halten als eine unklare Zustandsbeschreibung.',
+          ],
+          bullets: [
+            'Fruhe Diagnose reduziert Folgeschadenrisiko',
+            'Kombinationsfehler bei Kompressor und Federbalgen sind kostenrelevant',
+            'Dokumentation wirkt preisstabilisierend im Ankauf',
+          ],
+        },
+        {
+          heading: 'Elektronik und Steuergerate: kleine Fehler, grosse Wirkung',
+          paragraphs: [
+            'Elektronische Systeme in Mercedes-Modellen sind umfangreich: Assistenzfunktionen, Komfortmodule, Infotainment, Sensorik und Steuergeratenetzwerke. Mit zunehmendem Fahrzeugalter steigen bei manchen Baureihen die Risiken fur sporadische Ausfalle oder Kommunikationsprobleme.',
+            'Einzelne Elektronikfehler sind nicht zwangslaufig kritisch. Problematisch wird es, wenn mehrere kleine Storungen zeitgleich auftreten und Diagnoseaufwand plus Teilekosten steigen. Genau das fuhrt in der Praxis oft zu Verkaufsentscheidungen.',
+            'Wer Elektronikthemen fruh strukturiert bewertet, kann besser entscheiden, ob eine Reparatur wirtschaftlich Sinn ergibt oder ob ein geordneter Verkauf der risikoarmere Weg ist.',
+          ],
+        },
+        {
+          heading: 'Motorprobleme bei Mercedes: Steuerkette, Olverlust und Nebenaggregate',
+          paragraphs: [
+            'Mercedes Motorschaden Ursachen sind vielfaltig und hangen stark von Motorcode, Wartung und Fahrprofil ab. Themen rund um Steuertrieb, Dichtungen, thermische Belastung und Olverlust treten je nach Generation unterschiedlich haufig auf.',
+            'Olspuren, steigender Olverbrauch oder unruhiger Lauf sollten nicht ignoriert werden. Selbst wenn zunaachst nur einzelne Bauteile betroffen scheinen, konnen Folgearbeiten die Rechnung deutlich vergrossern.',
+            'Fur die Entscheidung Reparatur oder Verkauf ist die zentrale Frage: Welche Kosten sind sicher, welche wahrscheinlich, und wie stark verbessert eine Instandsetzung den real erzielbaren Verkaufspreis?',
+          ],
+          bullets: [
+            'Motorprobleme immer im Systemkontext bewerten',
+            'Einzelreparatur kann Vorbote weiterer Positionen sein',
+            'Restwert nach Reparatur realistisch statt optimistisch kalkulieren',
+          ],
+        },
+        {
+          heading: '7G-Tronic und Getriebethemen: Wann wird es wirtschaftlich kritisch?',
+          paragraphs: [
+            'Die 7G-Tronic gilt in vielen Anwendungen als komfortorientiert, kann aber bei hoher Laufleistung oder Wartungsruckstandern Auffalligkeiten zeigen. Ruckeln, verzogerte Gangwechsel oder Notlauf sind fur Halter klare Warnsignale.',
+            'Nicht jede Auffalligkeit fuhrt sofort zur Grunduberholung, aber Diagnose, Teilreparaturen und Standzeit kosten spurbare Betrage. In Kombination mit weiteren Baustellen wird der Weiterbetrieb schnell unplanbar.',
+            'In dieser Phase lohnt ein fruher Marktvergleich: Wenn der erwartete Mehrerlös nach Reparatur gering ausfallt, ist der Verkauf oft die vernunftigere Option.',
+          ],
+        },
+        {
+          heading: 'Diesel-spezifische Probleme bei Mercedes',
+          paragraphs: [
+            'Bei einigen Dieselmodellen spielen Themen wie Abgasnachbehandlung, Injektoren, Turbolader oder AGR-Systeme eine Rolle. Je nach Einsatzprofil - Kurzstrecke vs. Langstrecke - konnen Belastung und Wartungsbedarf deutlich variieren.',
+            'Werden mehrere emissionsnahe Komponenten nacheinander auffallig, steigt das Kostenrisiko schnell. Gleichzeitig sinkt haufig die Bereitschaft privater Kaufer, ein Fahrzeug mit komplexer Diesel-Historie zu ubernehmen.',
+            'Ein strukturierter Ankauf kann hier planbarer sein als ein langwieriger Privatverkauf mit intensiven Preisverhandlungen.',
+          ],
+        },
+        {
+          heading: 'Welche Mercedes Modelle sind robust - und welche gelten als anfalliger?',
+          paragraphs: [
+            'Die Frage "Welche Mercedes Modelle sind zuverlassig?" braucht immer Kontext. Pauschale Listen helfen wenig, weil Baujahr, Motorisierung, Wartungsqualitat und Nutzung entscheidend sind.',
+            'In der Praxis werden bei alteren Generationen der C-Klasse und E-Klasse je nach Konfiguration haufiger Elektronik- oder Antriebsthemen diskutiert. Bei einigen komfortorientierten Oberklassemodellen kommen zusatzlich AIRMATIC- und Komfortsystemkosten hinzu.',
+            'Das heiBt nicht, dass einzelne Baureihen grundsatzlich problematisch sind. Ein gepflegtes Fahrzeug mit nachvollziehbarer Historie kann trotz hoher Laufleistung stabiler wirken als ein nominell "unauffalliges" Modell mit Wartungslucken.',
+          ],
+          bullets: [
+            'Modellname allein reicht nicht - Baujahr und Motor sind entscheidend',
+            'Wartungslucken wirken im Premiumsegment besonders preissensitiv',
+            'Zustandsbezogene Bewertung ist belastbarer als Forenpauschalen',
+          ],
+        },
+        {
+          heading: 'Wann Mercedes verkaufen? Die wirtschaftlich besten Zeitfenster',
+          paragraphs: [
+            'Der beste Verkaufszeitpunkt liegt oft vor den grossen Kostenspitzen: vor umfangreichen Fahrwerksarbeiten, vor teuren Getriebe- oder Motorpaketen und vor absehbaren TUV-bedingten Investitionen. Wer erst nach mehreren Rechnungen verkauft, holt die Kosten selten vollstandig uber den Preis zuruck.',
+            'Auch Laufleistungsgrenzen spielen eine Rolle. Je nach Modell sinkt ab bestimmten Marken die Nachfrage bestimmter Kaufergruppen, was zu starkeren Abschlagen fuhren kann.',
+            'Ein weiterer Hebel ist das Garantie- und Kulanzfenster. Vor dessen Ende ist die Verhandlungsposition in vielen Fallen besser als in der Phase danach.',
+          ],
+          bullets: [
+            'Vor grossen Reparaturblocken aktiv entscheiden',
+            'Laufleistungsschwellen im jeweiligen Modellsegment beachten',
+            'Garantie- oder Kulanzende als Trigger fur Neubewertung nutzen',
+          ],
+        },
+        {
+          heading: 'Mercedes Reparaturkosten im Uberblick: Warum Premiumtechnik teuer ist',
+          paragraphs: [
+            'Mercedes Reparaturkosten sind oft hoher als bei Volumenmarken, weil Technikdichte, Teilepreise und Diagnoseaufwand im Premiumsegment steigen. Dazu kommen hohere Anforderungen an Instandsetzung und Fehlersuche bei vernetzten Systemen.',
+            'Wirtschaftlich relevant ist nicht nur die einzelne Rechnung, sondern die Kombination mehrerer Positionen innerhalb kurzer Zeit. Aus einer isolierten Reparatur wird so schnell ein kumuliertes Kostenpaket.',
+            'Deshalb sollte die Rechnung immer lauten: erwartete Gesamtkosten plus Risiko im nachsten Nutzungsjahr gegen realistischen Verkaufserlos heute.',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Ein klarer Entscheidungsrahmen',
+          paragraphs: [
+            'Eine belastbare Entscheidung basiert auf drei Fragen: Wie hoch ist die sichere Mindestinvestition? Wie hoch ist die Wahrscheinlichkeit weiterer Defekte? Wie stark steigt der erzielbare Preis nach Reparatur wirklich?',
+            'Wenn der erwartete Mehrerlos die Investition nicht klar ubersteigt, ist Verkauf meist die stabilere Option. Das gilt besonders bei Kombinationen aus Fahrwerks-, Getriebe- und Elektronikthemen.',
+            'Berucksichtigen Sie zusatzlich indirekte Kosten wie Standzeit, Ersatzmobilitat und Zeitaufwand. In Summe kann ein fruher Verkauf deutlich wirtschaftlicher sein als ein weiterer Reparaturzyklus.',
+          ],
+        },
+        {
+          heading: 'Wie erzielen Sie den besten Preis beim Mercedes-Verkauf?',
+          paragraphs: [
+            'Der wichtigste Hebel ist Transparenz. Vollstandige Unterlagen, dokumentierte Wartung und ehrliche Mangelangaben reduzieren Unsicherheit und verbessern die Angebotsqualitat.',
+            'Praktisch hilfreich sind ein strukturierter Unterlagencheck, realistische Preisvorstellung, saubere Fahrzeugdaten und ein klarer Verkaufsweg. Gerade bei Premiumfahrzeugen zahlt Seriositat im Prozess stark auf den Endpreis ein.',
+            'Wenn Sie zwischen mehreren Optionen vergleichen wollen, starten Sie mit einer unverbindlichen Bewertung und entscheiden danach anhand von Zahlen statt Bauchgefuhl.',
+          ],
+          bullets: [
+            'Servicehistorie, Rechnungen und HU-Berichte gebundelt vorbereiten',
+            'Bekannte Defekte offen kommunizieren statt spaterer Abschlage',
+            'Preis- und Ablaufvergleich vor finaler Entscheidung durchfuhren',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf fur Mercedes-Halter oft die bessere Losung ist',
+          paragraphs: [
+            'Beim Privatverkauf hochwertiger Fahrzeuge sind Verhandlungen, Terminabbruche und Zahlungsrisiken besonders belastend. Hinzu kommt, dass Defekt- oder Hochlaufleistungsfahrzeuge auf dem Privatmarkt haufig nur mit grossem Aufwand platzierbar sind.',
+            'Ein strukturierter Mercedes Ankauf bietet dagegen planbare Geschwindigkeit, klare Vertragslogik und nachvollziehbare Auszahlung. Fur Fahrzeuge mit Defekten oder hoher Laufleistung ist das in vielen Fallen die sicherere und wirtschaftlich ruhigere Route.',
+            'Wenn Sie heute Klarheit wollen, ist ein direkter Ankaufvergleich oft der schnellste Weg zu einer tragfahigen Entscheidung.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Welche Mercedes Probleme sind beim Verkauf besonders preisrelevant?',
+          a: 'Vor allem AIRMATIC-, Getriebe-, Motor- und Elektronikthemen wirken sich deutlich auf Risiko und Ankaufpreis aus. Eine klare Dokumentation verbessert die Bewertung.',
+        },
+        {
+          q: 'Wann sollte ich meinen Mercedes eher verkaufen als weiter reparieren?',
+          a: 'Wenn absehbare Reparaturkosten plus Folgerisiko den realistischen Mehrerlös nach Instandsetzung nicht klar ubersteigen, ist Verkauf haufig wirtschaftlicher.',
+        },
+        {
+          q: 'Sind altere C-Klasse oder E-Klasse Modelle automatisch problematisch?',
+          a: 'Nein. Entscheidend sind Baujahr, Motorisierung, Wartung und aktueller Zustand. Pauschale Aussagen sind im Premiumsegment selten belastbar.',
+        },
+        {
+          q: 'Kann ich einen Mercedes mit hoher Laufleistung noch fair verkaufen?',
+          a: 'Ja. Mit sauberer Historie, transparenter Mangelangabe und realistischer Preislogik lassen sich auch hoch gelaufene Fahrzeuge strukturiert verkaufen.',
+        },
+        {
+          q: 'Warum wahlen viele Mercedes-Halter den Direktankauf statt Privatverkauf?',
+          a: 'Weil der Direktankauf bei komplexem Zustand meist schneller, planbarer und sicherer ist - insbesondere bei Defekten, hoher Laufleistung oder engem Zeitfenster.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-firmenwagen-gewerbe',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+        'autoankauf-ohne-tuev',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Mercedes jetzt verkaufen statt Kostenrisiko erhohen?',
+        text: 'Prufen Sie Ihren Mercedes Ankaufpreis und entscheiden Sie auf Basis klarer Zahlen, ob Verkauf oder Reparatur fur Sie sinnvoller ist.',
+        href: '/mercedes-verkaufen',
+        label: 'Zur Mercedes Ankaufseite',
+      },
+    },
+  },
+  oldtimer: {
+    slug: 'oldtimer',
+    displayName: 'Oldtimer',
+    keywordMap: {
+      primary: ['Oldtimer verkaufen', 'Oldtimer Ankauf', 'Autoankauf Oldtimer'],
+      secondary: [
+        'klassische Autos verkaufen',
+        'Oldtimer Bewertung',
+        'Oldtimer Ankauf Deutschland',
+        'Oldtimer mit Motorschaden verkaufen',
+        'restaurationsbedürftiger Oldtimer verkaufen',
+        'Oldtimer Export Ankauf',
+        'Sammlerauto verkaufen',
+        'Youngtimer verkaufen',
+      ],
+      semantic: [
+        'Oldtimer Wertgutachten',
+        'Sammlerfahrzeug Verkauf',
+        'historisches Fahrzeug verkaufen',
+        'Oldtimer Zustand 1 bis 5',
+        'Matching Numbers',
+        'Scheunenfund verkaufen',
+        'Oldtimer ohne Papiere',
+        'Youngtimer Ankauf',
+      ],
+      longTail: [
+        'Oldtimer Wert bestimmen vor dem Verkauf',
+        'Wann Oldtimer verkaufen vor Restaurationskosten',
+        'Oldtimer restaurieren oder verkaufen Entscheidung',
+        'Nicht fahrbereiten Oldtimer verkaufen in Deutschland',
+        'Seltenen Oldtimer sicher und professionell verkaufen',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Der Fokus liegt auf emotionalem Besitzwert plus wirtschaftlicher Realität: Sammlerbindung respektieren, aber Verkauf über belastbare Markt- und Zustandslogik steuern.',
+      requiredInsights: [
+        'Wertfaktoren bei Originalität, Historie und Zustandsnoten 1 bis 5',
+        'Abwägung zwischen Restaurationsbudget und realem Marktwert',
+        'Unterschied zwischen Sammlerfahrzeug, Projektfahrzeug und Youngtimer im Ankauf',
+      ],
+      bannedPatterns: [
+        'generische Gebrauchtwagenformulierungen ohne Sammlerbezug',
+        'Wertsteigerung als pauschales Versprechen ohne Marktkontext',
+        'identische FAQ-Fragen zwischen Oldtimer Landing und Guide',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/oldtimer-verkaufen',
+      seoTitle: 'Oldtimer verkaufen: Ankauf vom Experten',
+      seoDescription:
+        'Oldtimer verkaufen mit Expertenbewertung: fairer Preis, sichere Auszahlung, deutschlandweite Abholung. Auch Scheunenfund, Unfall und Motorschaden.',
+      canonicalPath: '/oldtimer-verkaufen',
+      heroHeadline: 'Oldtimer verkaufen mit Respekt für Geschichte und Wert',
+      heroSubheadline:
+        'Professioneller Oldtimer Ankauf Deutschland für Sammlerfahrzeuge, Projektfahrzeuge und Youngtimer',
+      h1: 'Oldtimer Ankauf: Ihren Klassiker sicher, fair und professionell verkaufen',
+      intro: [
+        'Ein Oldtimer ist selten nur ein Fahrzeug. Für viele Besitzer ist er ein Teil der eigenen Geschichte: restaurierte Wochenenden, lange Suche nach Originalteilen, Erinnerungen an Ausfahrten und Treffen. Genau deshalb fühlt sich der Schritt "Oldtimer verkaufen" oft schwerer an als ein normaler Fahrzeugverkauf.',
+        'Gleichzeitig braucht ein wertiger Klassiker einen Verkaufsprozess, der nicht auf schnelle Standardpreise setzt, sondern auf Substanz: Originalität, Zustand, Historie, Dokumente und Marktnachfrage. Unser Oldtimer Ankauf verbindet genau diese Perspektive - emotional respektvoll und wirtschaftlich klar.',
+        'Ob Sie ein Sammlerauto verkaufen möchten, einen restaurationsbedürftigen Oldtimer verkaufen müssen oder einen nicht fahrbereiten Scheunenfund abgeben wollen: Wir bieten eine strukturierte und transparente Lösung. Sie erhalten eine nachvollziehbare Bewertung, einen professionellen Ablauf und eine sichere Auszahlung.',
+        'Viele Privatverkäufe scheitern bei Oldtimern an unsicheren Interessenten, unrealistischen Preisdebatten und fehlender Verbindlichkeit. Mit unserem Autoankauf Oldtimer umgehen Sie diese Risiken und behalten jederzeit die Kontrolle über den Prozess.',
+      ],
+      benefitHeading: 'Warum Oldtimer-Besitzer uns vertrauen',
+      benefits: [
+        'Erfahrung mit klassischen Fahrzeugen: Wir unterscheiden zwischen Sammlerqualität, solider Fahrerqualität und Projektfahrzeugen.',
+        'Faire Oldtimer Bewertung statt Pauschalpreis: Seltenheit, Zustand 1 bis 5, Historie, Originalität und Dokumentation fließen nachvollziehbar ein.',
+        'Ankauf auch in schwierigen Fällen: Oldtimer mit Motorschaden, Unfallschaden oder Restaurationsstau sind möglich.',
+        'Spezialisierung auf Scheunenfunde und Fahrzeuge ohne vollständige Papiere inklusive sauberer Vorprüfung.',
+        'Youngtimer verkaufen mit klarer Marktlogik: Auch Fahrzeuge knapp unter 30 Jahren können strukturiert angekauft werden.',
+        'Deutschlandweite Abholung und optionaler Oldtimer Export Ankauf für passende Fahrzeugprofile.',
+      ],
+      processHeading: 'Oldtimer verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugprofil und Historie übermitteln',
+          text: 'Sie senden Basisdaten, Fotos, bekannte Mängel und - wenn vorhanden - wichtige Nachweise wie Rechnungen, Gutachten, Datenkarte, Besitzhistorie oder Restaurationsdokumentation.',
+        },
+        {
+          title: '2. Bewertungslogik transparent nachvollziehen',
+          text: 'Wir bewerten Ihren Klassiker auf Basis von Seltenheit, Zustand (1 bis 5), Originalitätsgrad, Dokumentationslage und aktueller Nachfrage im Sammler- bzw. Enthusiastenmarkt.',
+        },
+        {
+          title: '3. Übergabe, Abholung und sichere Auszahlung',
+          text: 'Nach Angebot und Termin folgt die geordnete Übergabe inklusive Vertragsdokumentation. Auf Wunsch organisieren wir die Abholung deutschlandweit, bei geeigneten Fahrzeugen auch für Exportmärkte.',
+        },
+      ],
+      buyTypesHeading: 'Welche Oldtimer und Youngtimer wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Restaurationsbedürftiger Oldtimer',
+          text: 'Auch Projektfahrzeuge mit Investitionsbedarf können sinnvoll verkauft werden, wenn Zustand und Teilelage sauber dokumentiert sind.',
+        },
+        {
+          title: 'Oldtimer Unfallfahrzeuge',
+          text: 'Unfallschäden schließen den Verkauf nicht aus. Entscheidend sind Schadenbild, Reparaturstand und Verfügbarkeit passender Komponenten.',
+        },
+        {
+          title: 'Nicht fahrbereiter Oldtimer',
+          text: 'Defekte Motoren, Brems- oder Elektrikprobleme sind kein Ausschluss. Wir kaufen auch nicht fahrbereite Fahrzeuge mit realistischer Bewertung.',
+        },
+        {
+          title: 'Scheunenfund verkaufen',
+          text: 'Scheunenfunde bewerten wir nach Substanz, Originalteilen, Karosseriezustand und Restaurationspotenzial.',
+        },
+        {
+          title: 'Oldtimer ohne Papiere',
+          text: 'Auch bei unvollständiger Dokumentation prüfen wir die Ankaufmöglichkeit strukturiert und transparent.',
+        },
+        {
+          title: 'Sammlerauto und seltene Modelle',
+          text: 'Wertige Sammlerfahrzeuge mit besonderer Historie oder seltener Spezifikation werden differenziert und nicht wie Massenfahrzeuge behandelt.',
+        },
+        {
+          title: 'Youngtimer verkaufen',
+          text: 'Wir kaufen auch gefragte Youngtimer, wenn Zustand, Historie und Marktnachfrage ein stimmiges Profil ergeben.',
+        },
+      ],
+      comparisonHeading: 'Warum professioneller Oldtimer Ankauf oft die bessere Option ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Bewertung nach Zustand, Originalität, Historie und Marktfenster',
+          privateSale: 'Häufig lange Diskussionen ohne belastbare Vergleichsbasis',
+          traditionalDealer: 'Oft unzureichende Spezialisierung auf Klassiker',
+        },
+        {
+          criterion: 'Seriosität der Käufer',
+          us: 'Verbindlicher Prozess mit klarer Dokumentation',
+          privateSale: 'Viele Besichtigungen ohne Abschlusswahrscheinlichkeit',
+          traditionalDealer: 'Formal sicher, aber nicht immer oldtimeraffin',
+        },
+        {
+          criterion: 'Schwierige Fahrzeugzustände',
+          us: 'Ankauf bei Motorschaden, Scheunenfund, Restaurationsbedarf',
+          privateSale: 'Starke Nachverhandlungen, häufige Terminabbrüche',
+          traditionalDealer: 'Häufig restriktiv bei Spezialfällen',
+        },
+        {
+          criterion: 'Abwicklungsgeschwindigkeit',
+          us: 'Planbarer Ablauf mit optionaler Abholung',
+          privateSale: 'Unkalkulierbar, oft mehrere Wochen',
+          traditionalDealer: 'Abhängig von interner Bewertung und Einkaufspolitik',
+        },
+      ],
+      trustHeading: 'Sicherheit und Vertrauen beim Verkauf Ihres Klassikers',
+      trustPoints: [
+        'Nachvollziehbare Bewertungsfaktoren statt intransparenter Lockpreise',
+        'Sichere Auszahlung und klare Zahlungsdokumentation',
+        'Vertraglich saubere Übergabe mit vollständigem Protokoll',
+        'Deutschlandweite Abholung und professionelle Logistik',
+        'Erfahrung mit Sammlerfahrzeugen, Projektfahrzeugen und Youngtimern',
+      ],
+      ctas: [
+        {
+          heading: 'Oldtimer jetzt unverbindlich bewerten',
+          text: 'Lassen Sie Ihren Klassiker professionell einschätzen und erhalten Sie eine belastbare Preisorientierung.',
+          label: 'Oldtimer bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Verkauf sicher starten',
+          text: 'Wenn Sie bereits verkaufen möchten, führen wir Sie strukturiert durch Angebot, Termin, Abholung und Auszahlung.',
+          label: 'Oldtimer Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Erst Wert und Strategie klären',
+          text: 'Unser Oldtimer Guide zeigt, wie Sie Wert, Markttrend und Restaurationsentscheidung sauber einordnen.',
+          label: 'Zum Oldtimer Guide',
+          href: '/ratgeber/oldtimer-wert-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Oldtimer verkaufen, Bewertung und Ankauf',
+      faqs: [
+        {
+          q: 'Wie läuft eine Oldtimer Bewertung bei Ihnen ab?',
+          a: 'Wir bewerten nach Seltenheit, Zustand 1 bis 5, Originalität, Historie und Dokumentation. So entsteht ein nachvollziehbares und marktgerechtes Angebot.',
+        },
+        {
+          q: 'Kaufen Sie auch restaurationsbedürftige Oldtimer an?',
+          a: 'Ja. Auch restaurationsbedürftige Fahrzeuge können angekauft werden, wenn Substanz und Zustand transparent dargestellt sind.',
+        },
+        {
+          q: 'Kann ich einen Oldtimer mit Motorschaden verkaufen?',
+          a: 'Ja. Ein Motorschaden schließt den Ankauf nicht aus. Entscheidend ist eine ehrliche Zustandsbeschreibung und die technische Gesamtsituation.',
+        },
+        {
+          q: 'Ist der Ankauf auch bei Scheunenfunden möglich?',
+          a: 'Ja. Scheunenfunde sind grundsätzlich möglich. Wir prüfen Karosserie, Originalteile, Dokumente und Restaurationspotenzial.',
+        },
+        {
+          q: 'Was ist, wenn Unterlagen oder Papiere fehlen?',
+          a: 'Auch Fahrzeuge ohne vollständige Unterlagen können geprüft werden. Wir klären transparent, welche Nachweise für einen sauberen Verkauf nötig sind.',
+        },
+        {
+          q: 'Bieten Sie Oldtimer Ankauf Deutschlandweit an?',
+          a: 'Ja. Wir organisieren den Ankauf in ganz Deutschland und bieten in vielen Fällen eine Abholung an.',
+        },
+        {
+          q: 'Ist auch ein Oldtimer Export Ankauf möglich?',
+          a: 'Bei geeigneten Fahrzeugprofilen ja. Abhängig von Modell, Zustand und Dokumentenlage prüfen wir Exportoptionen im Ankaufprozess.',
+        },
+        {
+          q: 'Kaufen Sie auch Youngtimer?',
+          a: 'Ja. Wenn Nachfrage, Historie und Zustand stimmen, kann auch ein Youngtimer strukturiert angekauft werden.',
+        },
+      ],
+      internalLinksHeading: 'Weiterführende Seiten für Ihren Klassiker-Verkauf',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Oldtimer kostenlos bewerten',
+          context: 'Für eine erste, unverbindliche Wertermittlung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Verkaufsablauf im Detail',
+          context: 'Wenn Sie sofort in die strukturierte Abwicklung einsteigen möchten.',
+        },
+        {
+          href: '/ratgeber/oldtimer-wert-verkauf',
+          label: 'Oldtimer Guide: Wert und Verkaufszeitpunkt',
+          context: 'Für die Entscheidung zwischen Restaurieren und Verkaufen.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'oldtimer-wert-verkauf',
+      seoTitle: 'Oldtimer Wert & Verkauf: Der Praxis-Guide 2026',
+      seoDescription:
+        'Oldtimer Wert bestimmen, Markttrend einordnen und den besten Verkaufszeitpunkt finden. Mit Zustand 1-5, Restaurierungscheck und Sammler-Praxis.',
+      h1: 'Oldtimer Guide: Wert bestimmen, Markt verstehen und besser verkaufen',
+      intro:
+        'Ein Klassiker wird selten nur mit dem Kopf verkauft. Zwischen Herz, Historie und Marktpreis entsteht oft Unsicherheit: Ist jetzt der richtige Zeitpunkt? Lohnt Restaurieren noch? Welche Unterlagen erhöhen den Wert wirklich? Dieser Guide liefert eine klare Entscheidungsgrundlage für Oldtimer- und Youngtimer-Besitzer in Deutschland.',
+      quickFacts: [
+        'Oldtimer gelten in der Regel ab 30 Jahren, doch der Wert hängt stark von Zustand, Originalität und Historie ab.',
+        'Zustandsnoten 1 bis 5 sind ein zentraler Preishebel - inklusive nachvollziehbarer Dokumentation.',
+        'Oldtimer Preise Entwicklung verläuft nicht linear; Modell- und Segmenttrends unterscheiden sich deutlich.',
+        'Der beste Verkaufszeitpunkt liegt oft vor großen Restaurations- oder Instandsetzungskosten.',
+        'Youngtimer können bei starker Nachfrage ebenfalls attraktive Verkaufserlöse erzielen.',
+        'Professioneller Ankauf reduziert Käufer-Risiko, Zeitaufwand und Verhandlungsstress.',
+      ],
+      sections: [
+        {
+          heading: 'Was macht ein Fahrzeug zum Oldtimer?',
+          paragraphs: [
+            'Formal wird ein Fahrzeug in Deutschland meist ab einem Alter von 30 Jahren als Oldtimer eingeordnet. Für den Marktwert reicht das Alter allein jedoch nicht aus: Historische Relevanz, Originalsubstanz und der Erhaltungszustand bestimmen, ob aus einem alten Auto ein begehrtes Sammlerfahrzeug wird.',
+            'Viele Besitzer unterschätzen diesen Unterschied. Ein 30+ Fahrzeug kann emotional und historisch interessant sein, erreicht aber ohne entsprechende Substanz oder Nachfrage nicht automatisch Spitzenpreise.',
+            'Für die Verkaufsstrategie ist daher wichtig, Oldtimer und Youngtimer klar zu trennen und beide Segmente mit eigener Marktlogik zu betrachten.',
+          ],
+          bullets: [
+            'Oldtimer: typischerweise 30 Jahre und älter',
+            'Youngtimer: oft jünger, aber bereits sammlerrelevant',
+            'Werttreiber: Zustand, Originalität, Historie, Nachfrage',
+          ],
+        },
+        {
+          heading: 'Wie können Sie den Oldtimer Wert bestimmen?',
+          paragraphs: [
+            'Oldtimer Wert bestimmen heißt, mehrere Faktoren sauber zusammenzuführen: technischer und optischer Zustand, Originalteile, Historie, Restaurierungsqualität, Dokumente und Marktumfeld. Einzelne Highlights genügen selten, wenn die übrige Fahrzeugsubstanz unklar bleibt.',
+            'In der Praxis hat sich die Einordnung über Zustandsnoten 1 bis 5 etabliert. Sie hilft, den Wert realistisch einzuordnen - vorausgesetzt, die Bewertung wird nachvollziehbar dokumentiert und nicht nur aus dem Bauch heraus vergeben.',
+            'Zusätzlich spielt die Nachweisqualität eine große Rolle: Rechnungen, Gutachten, alte Briefe, Datenkarten, Fotos und Besitzhistorie reduzieren Unsicherheit und stützen den Preis.',
+          ],
+          bullets: [
+            'Zustand 1 bis 5 als strukturierter Bewertungsrahmen',
+            'Originalität und Matching-Details als Sammlerhebel',
+            'Dokumentationslage wirkt direkt auf die Preisstabilität',
+          ],
+        },
+        {
+          heading: 'Welche Rolle spielen Originalität, Seltenheit und Historie?',
+          paragraphs: [
+            'Originalität ist im Sammlermarkt oft der entscheidende Unterschied zwischen "interessant" und "gesucht". Fahrzeuge mit stimmiger Auslieferungskonfiguration, originaler Farbkombination und plausibler Historie sind für ernsthafte Käufer meist attraktiver als stark umgebaute Exemplare.',
+            'Seltenheit kann den Wert erhöhen, aber nur in Verbindung mit Nachfrage und Zustand. Ein seltenes Modell in schwacher Substanz ist nicht automatisch höher bewertet als ein häufigeres Modell in belegter Top-Historie.',
+            'Historie schafft Vertrauen: nachvollziehbare Besitzerfolge, bekannte Herkunft, dokumentierte Wartung und belegte Restaurierung sind gerade bei hochpreisigen Transaktionen zentrale Kaufargumente.',
+          ],
+        },
+        {
+          heading: 'Oldtimer Preise Entwicklung: Steigen Klassiker immer weiter?',
+          paragraphs: [
+            'Die Oldtimer Preise Entwicklung verläuft zyklisch und segmentabhängig. Manche Modelle profitieren von stabiler Sammlernachfrage, andere verlieren an Dynamik, wenn das Käuferinteresse abnimmt oder das Angebot steigt.',
+            'Pauschale Aussagen wie "Oldtimer steigen immer im Wert" sind zu kurz gegriffen. Entscheidender sind Einstiegspreis, Qualität der Substanz, laufende Kosten, Markttrend des Modells und die Liquidität im Käufersegment.',
+            'Für Verkäufer ist daher sinnvoll, den individuellen Marktzeitpunkt zu prüfen: In einem starken Fenster kann ein Verkauf wirtschaftlich klüger sein als ein weiteres Haltejahr mit steigenden Kosten.',
+          ],
+        },
+        {
+          heading: 'Wann Oldtimer verkaufen? Die besten Zeitfenster',
+          paragraphs: [
+            'Wann Oldtimer verkaufen sinnvoll ist, hängt von drei Achsen ab: Marktfenster, technischer Zustand und Kostenperspektive. Häufig ist der beste Zeitpunkt vor einer größeren Restaurierungs- oder Reparaturphase, nicht danach.',
+            'Sobald mehrere kostenintensive Themen gleichzeitig anstehen - Karosserie, Technik, Interieur, Lack - sollte der Verkauf aktiv geprüft werden. Denn nicht jede Investition lässt sich im Verkaufspreis vollständig zurückholen.',
+            'Auch persönliche Faktoren zählen: Zeit für Pflege und Bewegung, Stellplatzsituation, Versicherungs- und Unterhaltskosten. Ein geordneter Verkauf aus Ruhe heraus führt meist zu besseren Ergebnissen als ein später Notverkauf.',
+          ],
+          bullets: [
+            'Vor großen Kostenblöcken neu bewerten',
+            'Marktfenster des konkreten Modells beobachten',
+            'Nicht erst unter Zeitdruck verkaufen',
+          ],
+        },
+        {
+          heading: 'Welche Herausforderungen gibt es beim Oldtimer-Verkauf?',
+          paragraphs: [
+            'Viele Verkäufer finden zwar Interessenten, aber nicht automatisch ernsthafte Käufer. Besichtigungstourismus, unklare Zahlungsbereitschaft und zähe Verhandlungen sind im Klassikersegment häufig.',
+            'Ein weiteres Problem ist Preisunsicherheit. Ohne klare Bewertungsbasis entstehen oft unrealistische Erwartungen auf beiden Seiten, was zu langen Vermarktungszeiten führt.',
+            'Zusätzlich können Logistik, Dokumentenlage und rechtssichere Vertragsgestaltung anspruchsvoll sein - insbesondere bei seltenen oder nicht fahrbereiten Fahrzeugen.',
+          ],
+          bullets: [
+            'Schwierige Trennung zwischen Liebhaber-Anfrage und echter Kaufabsicht',
+            'Hohe Varianz in Preisvorstellungen',
+            'Mehr Aufwand bei Unterlagen, Transport und Vertrag',
+          ],
+        },
+        {
+          heading: 'Oldtimer restaurieren oder verkaufen - was ist wirtschaftlich sinnvoll?',
+          paragraphs: [
+            'Die Frage "Oldtimer restaurieren oder verkaufen" sollte nüchtern gerechnet werden: Wie hoch ist das sichere Restaurationsbudget? Welche Folgekosten sind wahrscheinlich? Und wie stark steigt der erzielbare Marktwert danach wirklich?',
+            'Viele Teilrestaurationen wirken zunächst überschaubar, erweitern sich aber durch versteckte Zusatzarbeiten deutlich. Dadurch verschiebt sich die Wirtschaftlichkeit schneller als geplant.',
+            'Wenn Investition, Risiko und Zeitaufwand den realistischen Mehrerlös nicht klar übersteigen, ist der Verkauf im aktuellen Zustand oft die bessere Entscheidung - insbesondere bei Projektfahrzeugen ohne kurzfristige Nutzungsperspektive.',
+          ],
+          bullets: [
+            'Budget realistisch inklusive Reserve planen',
+            'Mehrwert nach Restaurierung konservativ schätzen',
+            'Zeit- und Opportunitätskosten immer mitrechnen',
+          ],
+        },
+        {
+          heading: 'Welche Oldtimer sind wertvoll - und welche Youngtimer werden interessant?',
+          paragraphs: [
+            'Welche Oldtimer sind wertvoll, lässt sich nur modellbezogen beantworten. Typisch sind Fahrzeuge mit starker Markenhistorie, limitierter Produktion, hoher Originalität und nachvollziehbarer Dokumentation.',
+            'Bei Youngtimern spielen zusätzlich Faktoren wie aufkommende Enthusiasten-Nachfrage, technische Besonderheiten, Produktionszahlen und Erhaltungszustand eine große Rolle.',
+            'Für Verkäufer ist entscheidend, das eigene Fahrzeug nicht über allgemeine Listen, sondern über das konkrete Marktprofil bewerten zu lassen.',
+          ],
+        },
+        {
+          heading: 'Wie maximieren Sie den Verkaufspreis Ihres Klassikers?',
+          paragraphs: [
+            'Die stärksten Hebel sind Transparenz und Vorbereitung. Käufer im Oldtimersegment zahlen für nachvollziehbare Qualität - nicht für unklare Hoffnung.',
+            'Sammeln Sie Dokumente, strukturieren Sie Fotos, benennen Sie bekannte Mängel offen und setzen Sie einen realistischen Preisrahmen. So reduzieren Sie Unsicherheit und verhindern aggressive Nachverhandlungen.',
+            'Auch bei nicht perfektem Zustand lässt sich ein starker Verkauf erreichen, wenn Substanz, Historie und Ablauf professionell aufbereitet sind.',
+          ],
+          bullets: [
+            'Unterlagen bündeln: Gutachten, Rechnungen, Historie, Schlüssel',
+            'Mängel offen benennen statt späterer Preisstürze',
+            'Verkaufskanal passend zu Fahrzeugtyp wählen',
+          ],
+        },
+        {
+          heading: 'Warum ist ein professioneller Oldtimer Ankauf oft sicherer?',
+          paragraphs: [
+            'Professionelle Ankäufer arbeiten mit klaren Prozessen: strukturierte Bewertung, verlässliche Vertragsgestaltung, nachvollziehbare Zahlung und organisierte Logistik. Das reduziert Risiken, die im Privatverkauf häufig auftreten.',
+            'Gerade bei wertigen Klassikern, Scheunenfunden oder nicht fahrbereiten Fahrzeugen ist diese Planbarkeit oft wichtiger als ein theoretisch höherer Wunschpreis ohne Abschlussgarantie.',
+            'Wenn Sie einen sicheren und geordneten Abschluss wünschen, ist ein professioneller Oldtimer Ankauf häufig die effizientere und nervenschonendere Lösung.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Wie kann ich den Wert meines Oldtimers realistisch einschätzen?',
+          a: 'Kombinieren Sie Zustandsnote, Originalität, Historie, Dokumente und Markttrend des Modells. Eine strukturierte Bewertung ist belastbarer als Vergleich mit Einzelinseraten.',
+        },
+        {
+          q: 'Ist ein Verkauf im unrestaurierten Zustand sinnvoll?',
+          a: 'Ja, häufig sogar. Wenn Restaurationskosten und Risiko den erwartbaren Mehrerlös nicht klar übersteigen, ist der Verkauf im Ist-Zustand oft wirtschaftlicher.',
+        },
+        {
+          q: 'Steigen Oldtimerpreise dauerhaft?',
+          a: 'Nicht pauschal. Preisentwicklungen sind modell- und segmentabhängig. Einige Fahrzeuge steigen, andere stagnieren oder verlieren.',
+        },
+        {
+          q: 'Kann ich auch einen Youngtimer professionell verkaufen?',
+          a: 'Ja. Viele Youngtimer sind sammlerrelevant. Entscheidend sind Nachfrage, Zustand, Historie und technisches Profil.',
+        },
+        {
+          q: 'Warum ist ein professioneller Ankauf bei Klassikern oft sicherer?',
+          a: 'Weil Bewertung, Vertrag, Zahlung und Übergabe klar strukturiert sind und Sie weniger Risiko durch unklare Käufer oder geplatzte Termine haben.',
+        },
+      ],
+      relatedSlugs: [
+        'unterlagen-autoverkauf-checkliste',
+        'rechtssicherer-kaufvertrag-auto',
+        'autoabmeldung-nach-verkauf',
+        'autoverkauf-an-exporthaendler',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Oldtimer jetzt strukturiert verkaufen?',
+        text: 'Prüfen Sie den aktuellen Marktwert Ihres Klassikers und starten Sie den Verkauf mit einem professionellen, sicheren Ablauf.',
+        href: '/oldtimer-verkaufen',
+        label: 'Zur Oldtimer Ankaufseite',
+      },
+    },
+  },
 };
 
 export const BRAND_SEO_SLUGS = Object.keys(BRAND_SEO_CONTENT);
