@@ -896,6 +896,473 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       },
     },
   },
+  audi: {
+    slug: 'audi',
+    displayName: 'Audi',
+    keywordMap: {
+      primary: ['Audi verkaufen', 'Audi Ankauf', 'Audi Autoankauf'],
+      secondary: [
+        'Audi schnell verkaufen',
+        'Audi Ankauf Deutschland',
+        'Audi Motorschaden verkaufen',
+        'Audi Unfallwagen verkaufen',
+        'Audi gebraucht verkaufen',
+        'Audi Export Ankauf',
+      ],
+      semantic: [
+        'Audi Probleme',
+        'Audi häufige Fehler',
+        'Audi Zuverlässigkeit',
+        'Audi Reparaturkosten',
+        'Audi TFSI Ölverbrauch',
+        'Audi S tronic Probleme',
+        'Audi quattro verkaufen',
+        'Audi S RS verkaufen',
+      ],
+      longTail: [
+        'Wann Audi verkaufen vor teurer Reparatur',
+        'Audi mit hoher Laufleistung verkaufen',
+        'Audi ohne TÜV sicher verkaufen',
+        'Audi Reparatur oder Verkauf Entscheidung',
+        'Audi Motorschaden Ursachen und Verkauf',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Der Audi-Fokus kombiniert Premium-Technik mit nüchterner Wirtschaftlichkeit: moderne Systeme wie quattro, TFSI und S tronic schaffen Fahrwert, können aber bei Alterung hohe Folgekosten erzeugen.',
+      requiredInsights: [
+        'Unterschiedliche Risiko- und Wertlogik bei TFSI, TDI und Performance-Modellen',
+        'Einfluss von quattro und S/RS Spezifikationen auf Ankaufpreis und Käuferkreis',
+        'Entscheidung Verkauf versus Reparatur auf Basis realistischer Kostenfenster',
+      ],
+      bannedPatterns: [
+        'austauschbare Premium-Texte ohne Audi-Technikbezug',
+        'pauschale Aussagen ohne Baujahr-, Motor- oder Laufleistungsbezug',
+        'identische FAQ-Struktur aus anderen Marken ohne Audi-Anpassung',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/audi-verkaufen',
+      seoTitle: 'Audi verkaufen | Audi Ankauf Deutschland',
+      seoDescription:
+        'Audi verkaufen mit fairer Bewertung, schneller Auszahlung und kostenloser Abholung in Deutschland. Auch bei Motorschaden, Unfallwagen und ohne TÜV.',
+      canonicalPath: '/audi-verkaufen',
+      heroHeadline: 'Audi verkaufen - schnell, fair und technisch fundiert',
+      heroSubheadline:
+        'Audi Autoankauf in ganz Deutschland mit transparenter Bewertung und schneller Auszahlung',
+      h1: 'Audi Autoankauf: Ihren Audi sicher und zum fairen Preis verkaufen',
+      intro: [
+        'Einen Audi zu verkaufen ist selten eine Standardentscheidung. Viele Halter wissen, dass ein gepflegter Audi wegen Qualität, Ausstattung und Markenwahrnehmung einen stabilen Markt hat. Gleichzeitig können komplexe Technik, hohe Ersatzteilpreise und teure Werkstattpositionen den idealen Verkaufszeitpunkt stark beeinflussen.',
+        'Genau hier setzt unser Audi Ankauf an. Statt pauschaler Lockpreise erhalten Sie eine nachvollziehbare Bewertung, die Motorisierung, Laufleistung, Servicehistorie, Ausstattungsniveau und bekannten Reparaturbedarf realistisch einordnet. Das gilt für den Audi A3 im Alltag genauso wie für einen Audi A6, einen Q5 mit hoher Laufleistung oder einen Audi S/RS mit besonderem Leistungsprofil.',
+        'Wenn Sie Ihren Audi schnell verkaufen möchten, brauchen Sie vor allem Klarheit: Was ist das Fahrzeug heute wert, welche Risiken sind in den nächsten Monaten wahrscheinlich und wie sicher ist der Abschluss? Unser Audi Autoankauf Deutschland liefert genau diese Klarheit - strukturiert, transparent und ohne Inseratsstress.',
+        'Ob Audi Unfallwagen verkaufen, Audi Motorschaden verkaufen oder Audi gebraucht verkaufen im guten Zustand: Sie bekommen einen planbaren Prozess mit verbindlicher Kommunikation, optionaler Abholung und dokumentierter Auszahlung.',
+        'Viele Verkäufer vergleichen zunächst Privatverkauf, Händlerangebot und Direktankauf. Genau in diesem Vergleich zeigt sich oft der Vorteil eines spezialisierten Audi Autoankaufs: Sie sparen Wochen an Abstimmung, vermeiden Preisdebatten ohne Abschlussabsicht und erhalten eine deutlich höhere Planungssicherheit für den nächsten Schritt - sei es ein Fahrzeugwechsel, ein Umstieg auf Elektromobilität oder die Reduktion laufender Kosten. Besonders bei Fahrzeugen mit anstehenden Werkstattarbeiten, auslaufender Garantie oder steigender Laufleistung ist Zeit ein zentraler Faktor. Je früher Sie den realistischen Marktwert kennen, desto besser können Sie entscheiden.',
+        'Unser Anspruch ist nicht nur ein schneller Kauf, sondern ein sauberer Prozess von der ersten Anfrage bis zur finalen Auszahlung. Dazu gehören klare Kommunikation, technische Einordnung Ihres Fahrzeugs, nachvollziehbare Preisargumentation und ein Übergabetermin, der in Ihren Alltag passt. Gerade bei hochwertigen Modellen wie Audi quattro, S oder RS erwarten Verkäufer zu Recht ein professionelles Niveau beim Ankauf. Genau dafür ist unser Audi Ankauf Deutschland ausgelegt - fachlich präzise, effizient in der Abwicklung und konsequent auf Sicherheit für den Verkäufer ausgerichtet.',
+        'Hinzu kommt ein weiterer Vorteil: Sie erhalten nicht nur einen Verkaufspreis, sondern eine echte Entscheidungsgrundlage. Wir zeigen transparent, welche Faktoren den Audi Ankaufpreis treiben, wo mögliche Reparatur- und Folgekosten liegen und warum ein Verkauf jetzt oder später sinnvoller sein kann. Diese Klarheit ist gerade bei technisch anspruchsvollen Audi-Modellen entscheidend, weil sie Fehlentscheidungen vermeidet und den Verkaufsprozess deutlich souveräner macht.',
+      ],
+      benefitHeading: 'Warum Audi-Verkäufer unseren Ankauf wählen',
+      benefits: [
+        'Technisch fundierte Bewertung statt Standardraster: Wir unterscheiden zwischen TFSI-, TDI- und Performance-Profilen.',
+        'quattro und Ausstattung werden differenziert betrachtet, nicht pauschal abgewertet.',
+        'Audi Ankauf auch bei Defekten: Motorschaden, Getriebeschaden, Elektronikprobleme und ohne TÜV möglich.',
+        'Schneller Abschluss: In vielen Fällen sind Bewertung, Termin und Verkauf innerhalb von 24 bis 72 Stunden umsetzbar.',
+        'Audi Ankauf Deutschland mit optionaler Abholung - auch bei nicht fahrbereiten Fahrzeugen.',
+        'Sichere, nachvollziehbare Auszahlung und klare Vertragsdokumentation ohne versteckte Gebühren.',
+        'Kein Besichtigungsmarathon, keine unseriösen Nachverhandlungen, kein Risiko durch unklare Interessenten.',
+      ],
+      processHeading: 'Audi verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugdaten und Zustand übermitteln',
+          text: 'Sie senden uns die wichtigsten Daten zu Ihrem Audi: Modell, Baujahr, Laufleistung, Motorisierung, Ausstattungsdetails und bekannte Mängel. Servicebelege und Reparaturrechnungen verbessern die Präzision.',
+        },
+        {
+          title: '2. Transparente Bewertung und Angebot',
+          text: 'Wir erstellen ein belastbares Angebot auf Basis aktueller Marktdaten, technischer Risikofaktoren und regionaler Nachfrage. So sehen Sie früh, ob ein Verkauf jetzt wirtschaftlich sinnvoll ist.',
+        },
+        {
+          title: '3. Übergabe, Abholung und Auszahlung',
+          text: 'Nach Terminabstimmung erfolgt die Übergabe strukturiert mit Vertrags- und Zahlungsdokumentation. Auf Wunsch holen wir den Audi ab und schließen den Verkauf ohne Umwege ab.',
+        },
+      ],
+      buyTypesHeading: 'Welche Audi wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Audi Unfallwagen verkaufen',
+          text: 'Auch bei Karosserie- oder Strukturschäden kaufen wir Audi Fahrzeuge an, sofern Schadenbild und Reparaturstand transparent dokumentiert sind.',
+        },
+        {
+          title: 'Audi Motorschaden verkaufen',
+          text: 'Bei kapitalen oder drohenden Motorschäden ist der Direktverkauf oft wirtschaftlicher als eine teure Reparaturkette mit unsicherem Ergebnis.',
+        },
+        {
+          title: 'Audi mit Getriebeschaden',
+          text: 'S tronic/DSG Auffälligkeiten, Schaltprobleme oder Notlauf schließen den Ankauf nicht aus. Wir bewerten den Zustand realistisch und ohne Lockpreislogik.',
+        },
+        {
+          title: 'Audi mit hoher Laufleistung',
+          text: 'Hohe Kilometer bedeuten nicht automatisch niedrigen Restwert. Entscheidend sind Wartung, Gesamtzustand, Motorvariante und nachvollziehbare Historie.',
+        },
+        {
+          title: 'Audi ohne TÜV',
+          text: 'Auch ohne gültige HU/AU ist ein strukturierter Verkauf möglich. Technischer Zustand und erwartbare Folgekosten werden transparent berücksichtigt.',
+        },
+        {
+          title: 'Leasingrückläufer und Firmenwagen',
+          text: 'Wir unterstützen auch gewerbliche Verkäufer mit klaren Anforderungen zu Unterlagen, Eigentumsnachweis und sauberem Übergabeprozess.',
+        },
+        {
+          title: 'Audi quattro Modelle',
+          text: 'quattro Fahrzeuge bewerten wir differenziert nach Laufleistung, Wartungszustand und Einsatzprofil statt mit pauschalen Abschlägen.',
+        },
+        {
+          title: 'Audi S und RS Modelle',
+          text: 'Performance-Modelle benötigen Spezialbewertung nach Zustand, Historie und Modellspezifik. Wir behandeln S/RS nicht wie normale Volumenfahrzeuge.',
+        },
+        {
+          title: 'Audi TDI und TFSI Varianten',
+          text: 'Diesel- und TFSI-Modelle werden anhand typischer Schwachstellen, Laufleistung und Marktnachfrage getrennt bewertet.',
+        },
+      ],
+      comparisonHeading: 'Warum unser Audi Ankauf oft die bessere Option ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Marktdaten plus Audi-spezifische Technikbewertung',
+          privateSale: 'Häufig emotionale Verhandlung und starke Preissprünge',
+          traditionalDealer: 'Oft pauschale Abschläge ohne Modelltiefe',
+        },
+        {
+          criterion: 'Zeit bis Verkauf',
+          us: 'Meist wenige Tage bei vollständigen Daten',
+          privateSale: 'Oft Wochen mit unsicherem Abschluss',
+          traditionalDealer: 'Termin- und Kapazitätsabhängig',
+        },
+        {
+          criterion: 'Defektfahrzeuge',
+          us: 'Ankauf auch bei Motorschaden, Getriebeproblemen und ohne TÜV',
+          privateSale: 'Schwieriger Verkauf und aggressive Nachverhandlung',
+          traditionalDealer: 'Häufig restriktive Annahme oder niedrige Angebote',
+        },
+        {
+          criterion: 'Sicherheit',
+          us: 'Klare Vertrags- und Zahlungsdokumentation',
+          privateSale: 'Erhöhtes Risiko bei Zahlung und Gewährleistung',
+          traditionalDealer: 'Sicher, aber nicht immer flexibel bei Sonderfällen',
+        },
+      ],
+      trustHeading: 'Vertrauen durch klare Zusagen im Audi Ankauf',
+      trustPoints: [
+        'Schnelle Auszahlung mit nachvollziehbarem Zahlungsnachweis',
+        'Kostenlose Abholung in vielen Regionen Deutschlands',
+        'Keine versteckten Kosten oder nachträgliche Gebühren',
+        'Transparente Bewertung mit belastbarer Preislogik',
+        'Ankauf in nahezu jedem Zustand, auch bei technischen Problemen',
+        'Verbindliche Kommunikation und strukturierter Abschlussprozess',
+      ],
+      ctas: [
+        {
+          heading: 'Audi jetzt kostenlos bewerten',
+          text: 'Starten Sie mit einer unverbindlichen Bewertung und sehen Sie sofort, ob der Verkauf aktuell wirtschaftlich sinnvoll ist.',
+          label: 'Jetzt Audi bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Direkt Audi Verkaufsprozess starten',
+          text: 'Wenn Sie bereits verkaufen möchten, führen wir Sie klar durch Termin, Übergabe und Auszahlung.',
+          label: 'Audi Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Audi Probleme zuerst einordnen',
+          text: 'Wenn Sie zwischen Reparatur und Verkauf entscheiden, hilft unser Audi Guide mit konkreten Kosten- und Timing-Faktoren.',
+          label: 'Zum Audi Guide',
+          href: '/ratgeber/audi-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Audi verkaufen, Ankauf und Abwicklung',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen Audi verkaufen?',
+          a: 'Nach vollständigen Fahrzeugdaten ist ein Abschluss häufig innerhalb weniger Tage möglich. Die genaue Dauer hängt von Zustand, Dokumentenlage und Terminverfügbarkeit ab.',
+        },
+        {
+          q: 'Kaufen Sie auch Audi mit Motorschaden oder Getriebeschaden?',
+          a: 'Ja. Wir kaufen auch Audi mit größeren technischen Defekten. Wichtig ist eine transparente Zustandsbeschreibung, damit das Angebot realistisch bleibt.',
+        },
+        {
+          q: 'Ist ein Audi Ankauf auch ohne TÜV möglich?',
+          a: 'Ja. Ein fehlender TÜV schließt den Verkauf nicht aus. Wir berücksichtigen technische Risiken und Folgekosten in der Bewertung.',
+        },
+        {
+          q: 'Spielt quattro beim Ankaufpreis eine Rolle?',
+          a: 'Ja. quattro kann je nach Modell, Zustand und Nachfrage den Marktwert beeinflussen. Entscheidend ist die Gesamtbewertung inklusive Historie und Laufleistung.',
+        },
+        {
+          q: 'Kaufen Sie auch Audi S und RS Modelle?',
+          a: 'Ja. S- und RS-Modelle werden bei uns differenziert bewertet, da Ausstattung, Wartung und Leistungsprofil hier besonders preisrelevant sind.',
+        },
+        {
+          q: 'Ist die Bewertung kostenlos und unverbindlich?',
+          a: 'Ja. Die Erstbewertung ist kostenfrei und unverbindlich. Ein konkretes Angebot basiert auf den übermittelten Fahrzeugdaten.',
+        },
+        {
+          q: 'Kann mein Audi abgeholt werden?',
+          a: 'In vielen Regionen ja. Die Details zur Abholung stimmen wir im Rahmen der Terminplanung transparent mit Ihnen ab.',
+        },
+        {
+          q: 'Wie erfolgt die Auszahlung?',
+          a: 'Die Auszahlung erfolgt dokumentiert und nachvollziehbar, üblicherweise per Banküberweisung. Zeitpunkt und Ablauf werden vor Übergabe klar abgestimmt.',
+        },
+      ],
+      internalLinksHeading: 'Weiterführende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Audi kostenlos bewerten',
+          context: 'Für eine schnelle Preisorientierung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Verkaufsprozess im Detail',
+          context: 'Wenn Sie direkt in die Abwicklung starten möchten.',
+        },
+        {
+          href: '/ratgeber/audi-probleme-verkauf',
+          label: 'Audi Guide: Probleme und Verkaufstiming',
+          context: 'Für die Entscheidung Reparatur versus Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'audi-probleme-verkauf',
+      seoTitle: 'Audi Probleme und Verkauf: Praxis-Guide 2026',
+      seoDescription:
+        'Audi Probleme verstehen, Reparaturkosten einschätzen und den besten Verkaufszeitpunkt finden. Praxisnaher Guide für TFSI, TDI, quattro und S tronic.',
+      h1: 'Audi Guide: Häufige Probleme erkennen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'Audi steht für präzise Verarbeitung, modernes Design und Technik wie quattro, TFSI und S tronic. Gerade diese technische Komplexität macht die Verkaufsentscheidung jedoch anspruchsvoll. Dieser Guide zeigt, welche Audi Probleme besonders kostenrelevant sind, wann ein Verkauf wirtschaftlich sinnvoll wird und wie Sie den bestmöglichen Verkaufspreis sichern.',
+      quickFacts: [
+        'Viele Audi Verkaufentscheidungen fallen vor großen Reparaturblöcken, nicht erst nach dem Totalausfall.',
+        'Audi häufige Fehler unterscheiden sich stark nach Motorisierung, Getriebe und Baujahr.',
+        'Bei TFSI- und S tronic-Themen kann frühes Handeln hohe Folgekosten vermeiden.',
+        'quattro und S/RS Modelle brauchen eine differenzierte Markt- und Zustandsbewertung.',
+        'Der beste Verkaufszeitpunkt liegt oft vor Garantieende, vor TÜV-Investitionen oder absehbaren Reparaturen.',
+        'Ein strukturierter Autoankauf ist bei defekten oder hochgelaufenen Audi oft risikoärmer als Privatverkauf.',
+      ],
+      sections: [
+        {
+          heading: 'Warum entscheiden sich viele Audi-Besitzer für den Verkauf?',
+          paragraphs: [
+            'Die Frage ist selten emotional allein, sondern meist wirtschaftlich: Steigende Wartungskosten, komplexe Technik im Alter und zunehmender Wertverlust setzen den Rahmen. Besonders bei Fahrzeugen außerhalb von Garantie und Kulanz wächst das Risiko unerwarteter Werkstattrechnungen.',
+            'Viele Halter nutzen ihren Audi täglich und brauchen planbare Mobilität. Sobald Ausfallrisiken steigen, wird der Verkauf oft zur strategischen Entscheidung statt zur spontanen Reaktion.',
+            'Wer frühzeitig entscheidet, verkauft meist aus einer stärkeren Position - mit mehr Zeit, besserer Preislogik und weniger Druck durch akute Defekte.',
+          ],
+          bullets: [
+            'Kostensicherheit wird wichtiger als Markenbindung',
+            'Technikrisiko steigt mit Laufleistung und Fahrzeugalter',
+            'Frühe Entscheidung reduziert Notverkaufsdruck',
+          ],
+        },
+        {
+          heading: 'Wartungskosten bei Audi: Premiumtechnik hat ihren Preis',
+          paragraphs: [
+            'Audi Modelle überzeugen oft durch hochwertige Technik, verlangen aber auch ein passendes Wartungsbudget. Neben regulären Services können bei höherer Laufleistung zusätzliche Positionen wie Fahrwerk, Steuertrieb, Abgasnachbehandlung oder Elektroniksysteme relevant werden.',
+            'Gerade bei gut ausgestatteten Fahrzeugen steigt die Komplexität im Reparaturfall. Einzelkosten sind häufig beherrschbar, die Kombination mehrerer Baustellen innerhalb eines Jahres verändert jedoch die Wirtschaftlichkeit deutlich.',
+            'Für die Verkaufsentscheidung ist deshalb nicht nur die nächste Rechnung wichtig, sondern das Gesamtbild der nächsten 12 bis 24 Monate.',
+          ],
+        },
+        {
+          heading: 'Technologiealterung bei Audi: Wenn Innovation zum Kostenfaktor wird',
+          paragraphs: [
+            'Audi Zuverlässigkeit im Alltag hängt stark vom Zusammenspiel aus Software, Sensorik, Getriebelogik und Motorsteuerung ab. Mit zunehmendem Alter steigt die Wahrscheinlichkeit, dass kleinere elektronische Auffälligkeiten zu größeren Diagnose- und Reparaturketten führen.',
+            'Fahrzeuge mit vielen Assistenzsystemen bieten Komfort, erfordern aber im Fehlerfall oft spezialisiertes Know-how. Das kann Standzeiten verlängern und Kosten erhöhen.',
+            'Je älter das Fahrzeug, desto wichtiger wird eine nüchterne Abwägung: Reparatur investieren oder in einem stabilen Zustand verkaufen.',
+          ],
+        },
+        {
+          heading: 'Wertverlust: Wann Audi Modelle besonders stark nachgeben',
+          paragraphs: [
+            'Der Wertverlust verläuft nicht linear. Häufige Bruchstellen sind Garantieende, hohe Laufleistungsmarken und Zeitfenster vor teuren Instandsetzungen. In diesen Phasen reagieren Käufer sensibel auf bekannte Schwachstellen.',
+            'Auch Markttrends spielen mit: Motorisierung, Emissionsklasse, Karosserieform und Ausstattung beeinflussen die Nachfrage teils stärker als erwartet.',
+            'Wer den Verkauf bis nach größeren Reparaturen aufschiebt, holt den Investitionsbetrag oft nicht vollständig über den späteren Verkaufspreis zurück.',
+          ],
+          bullets: [
+            'Wertfenster vor größeren Werkstattblöcken nutzen',
+            'Marktnachfrage je Motor und Modellgeneration prüfen',
+            'Nicht nur Wunschpreis, sondern Nettoergebnis betrachten',
+          ],
+        },
+        {
+          heading: 'Audi häufige Fehler: TFSI Ölverbrauch und Motorthemen',
+          paragraphs: [
+            'Bei einigen TFSI-Generationen wird erhöhtes Ölverbrauchsverhalten berichtet. Relevanz und Kosten hängen von Baujahr, Wartung, Laufleistung und tatsächlichem Schadbild ab.',
+            'Audi Motorschaden Ursachen sind selten monokausal. Oft entwickeln sich Probleme über längere Zeit: Ölthemen, thermische Belastung, Steuertrieb und Nebenaggregate können sich gegenseitig verstärken.',
+            'Für Verkäufer entscheidend: Frühzeitige Diagnose und transparente Dokumentation stabilisieren die Verhandlungsposition deutlich.',
+          ],
+          bullets: [
+            'Ölverbrauch und Warnsignale früh dokumentieren',
+            'Werkstattdiagnosen für belastbare Bewertung nutzen',
+            'Verkauf vor Folgeschäden kann wirtschaftlicher sein',
+          ],
+        },
+        {
+          heading: 'Steuerkette und Steuertrieb: Risiko je Baujahr richtig einordnen',
+          paragraphs: [
+            'Steuerketten- und Steuertriebthemen gehören in bestimmten Audi-Motorfamilien zu den preisrelevanten Punkten. Nicht jedes Geräusch bedeutet einen kapitalen Defekt, aber aufgeschobene Klärung erhöht das Folgerisiko.',
+            'Besonders bei unklarer Historie sind Käufer vorsichtig. Nachweise zu Wartung, bereits durchgeführten Maßnahmen und aktuellem Diagnosezustand wirken stark auf den erzielbaren Preis.',
+            'Wer diese Themen nicht mehr tragen möchte, sollte vor der nächsten großen Investition den Verkaufszeitpunkt prüfen.',
+          ],
+        },
+        {
+          heading: 'DSG/S tronic Probleme: Schaltqualität, Ruckeln, Notlauf',
+          paragraphs: [
+            'Audi häufige Fehler betreffen je nach Modell auch das Doppelkupplungsgetriebe. Typische Symptome sind Ruckeln, verzögerte Gangwechsel oder Notlaufzustände.',
+            'Die Kosten können stark streuen - von überschaubaren Maßnahmen bis zu größeren Eingriffen. Entscheidend ist, ob ein klarer Einzelfehler vorliegt oder ein wiederkehrendes Muster.',
+            'Wenn Ausfallrisiko und Reparaturunsicherheit steigen, ist der strukturierte Verkauf oft die risikoärmere Option.',
+          ],
+          bullets: [
+            'Symptome nicht ignorieren, sondern diagnostisch absichern',
+            'Einzelfehler von Systemproblemen unterscheiden',
+            'Bei hohem Risiko frühzeitig Verkauf prüfen',
+          ],
+        },
+        {
+          heading: 'Elektrik und Elektronik bei Audi: Kleine Fehler, großer Aufwand',
+          paragraphs: [
+            'Elektronikthemen beginnen häufig unscheinbar: sporadische Warnmeldungen, Sensorfehler oder Kommunikationsprobleme im Bordnetz. In der Summe können diese Punkte jedoch teuer und zeitintensiv werden.',
+            'Bei Premiumfahrzeugen sind Komfort- und Assistenzsysteme eng vernetzt. Das erhöht die Diagnosekomplexität und kann die Werkstattdauer verlängern.',
+            'Für den Verkauf gilt: Transparente Fehlerbeschreibung ist besser als Verbergen. Käufer honorieren nachvollziehbare Angaben stärker als unklare Zustände.',
+          ],
+        },
+        {
+          heading: 'Diesel-Probleme: EGR, DPF und thermische Belastung',
+          paragraphs: [
+            'Bei Audi Dieselmodellen sind EGR- und DPF-Themen in bestimmten Nutzungsprofilen ein wiederkehrender Kostenfaktor. Kurzstreckenbetrieb und ungünstige Fahrprofile können die Belastung erhöhen.',
+            'Zusätzlich können Abgas- und Regenerationsthemen die Fahrbarkeit beeinträchtigen und Folgekosten auslösen.',
+            'Wenn mehrere dieseltypische Baustellen gleichzeitig auftreten, ist der Verkauf häufig wirtschaftlicher als eine Serie ungewisser Einzelreparaturen.',
+          ],
+        },
+        {
+          heading: 'Welche Audi Modelle gelten als besonders auffällig?',
+          paragraphs: [
+            'Die Frage nach problematischen Audi-Modellen lässt sich nur differenziert beantworten. Häufig genannt werden je nach Motorisierung und Baujahr beispielsweise Audi A4 B8/B9 und Audi A6 C7/C8 in bestimmten Konfigurationen.',
+            'Entscheidend ist nicht das Modell allein, sondern die Kombination aus Baujahr, Motorcode, Getriebe, Laufleistung und Wartungsqualität. Ein gut dokumentierter A6 kann stabiler sein als ein vermeintlich unkritischer A4 mit Wartungslücken.',
+            'Pauschalurteile helfen beim Verkauf wenig. Relevant ist die konkrete technische und dokumentarische Qualität Ihres Fahrzeugs.',
+          ],
+          bullets: [
+            'A4/A6 nur mit Baujahr- und Motorbezug bewerten',
+            'Servicehistorie wirkt stärker als reine Modellbezeichnung',
+            'Zustandsdaten schlagen Forenpauschalen',
+          ],
+        },
+        {
+          heading: 'Wann Audi verkaufen? Die besten Zeitfenster',
+          paragraphs: [
+            'Wann Audi verkaufen sinnvoll ist, hängt oft von drei Zeitpunkten ab: vor teuren Reparaturen, vor Ablauf wichtiger Garantien und vor hohen Laufleistungsschwellen mit steigenden Abschlägen.',
+            'Zusätzlich sind TÜV-nahe Investitionen ein klassisches Entscheidungsfenster. Wer früh kalkuliert, kann den Verkauf planbar und ohne Notdruck umsetzen.',
+            'In der Praxis erzielen Halter häufig bessere Ergebnisse, wenn sie im fahrbereiten Zustand mit vollständigen Unterlagen verkaufen.',
+          ],
+          bullets: [
+            'Vor großen Reparaturblöcken neu rechnen',
+            'Garantie- und Kulanzfenster aktiv nutzen',
+            'Nicht erst nach Ausfall verkaufen',
+          ],
+        },
+        {
+          heading: 'Audi Reparaturkosten: Übersicht und wirtschaftliche Einordnung',
+          paragraphs: [
+            'Audi Reparaturkosten variieren stark je nach Schadbild, Modell und Werkstattweg. Einzelmaßnahmen können noch sinnvoll sein, mehrere parallele Risiken verändern jedoch schnell die Gesamtrechnung.',
+            'Für eine belastbare Entscheidung sollten Sie sichere Mindestkosten, wahrscheinliche Folgekosten und den realistischen Mehrerlös nach Reparatur gegenüberstellen.',
+            'Wenn der erwartete Mehrwert die Investition nicht klar übersteigt, ist Verkauf oft die ökonomisch stabilere Lösung.',
+          ],
+          bullets: [
+            'Mindestkosten plus Risikoaufschlag berechnen',
+            'Mehrerlös nach Reparatur konservativ schätzen',
+            'Nettoeffekt statt Einzelrechnung beurteilen',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Praktischer Entscheidungsleitfaden',
+          paragraphs: [
+            'Nutzen Sie drei Fragen: Erstens, wie hoch ist die sichere Investition? Zweitens, wie hoch ist das Risiko weiterer Defekte im nächsten Jahr? Drittens, wie realistisch steigt der Verkaufspreis nach Instandsetzung?',
+            'Ergänzen Sie indirekte Kosten wie Standzeit, Ersatzmobilität und Organisationsaufwand. Gerade bei beruflicher Nutzung sind diese Faktoren oft unterschätzt.',
+            'Wenn Risiko und Aufwand den potenziellen Mehrerlös relativieren, ist ein geordneter Verkauf die klarere Entscheidung.',
+          ],
+        },
+        {
+          heading: 'Wie maximieren Sie den Verkaufspreis Ihres Audi?',
+          paragraphs: [
+            'Der stärkste Hebel ist Vorbereitung: vollständige Unterlagen, saubere Zustandsbeschreibung, nachvollziehbare Wartung und klare Mängelangaben.',
+            'Bei Audi Fahrzeugen honorieren Käufer technische Transparenz besonders stark. Verdeckte Probleme führen dagegen fast immer zu harten Preisabschlägen im späteren Prozess.',
+            'Praktisch bewährt: Fahrzeugdaten präzise aufbereiten, Servicehistorie sortieren, realistischen Zielkorridor setzen und einen sicheren Verkaufskanal wählen.',
+          ],
+          bullets: [
+            'Servicebelege, HU-Berichte und Schlüssel vollständig halten',
+            'Bekannte Mängel offen kommunizieren',
+            'Preisstrategie datenbasiert statt emotional wählen',
+          ],
+        },
+        {
+          heading: 'Praxisbeispiele: Reparaturkosten versus Restwert bei Audi A4 und A6',
+          paragraphs: [
+            'In der Praxis zeigt sich häufig ein ähnliches Muster: Ein Audi A4 mit hoher Laufleistung hat einzelne, zunächst überschaubare Themen - etwa Ölverbrauch, Fahrwerkskomponenten und Elektronikmeldungen. Jede Position für sich wirkt beherrschbar, in der Summe entsteht jedoch ein Reparaturpaket, das den erwartbaren Mehrerlös nach Instandsetzung deutlich reduziert.',
+            'Beim Audi A6 sehen wir oft den gleichen Effekt auf höherem Kostenniveau: Werden Getriebeauffälligkeiten, Abgasnachbehandlung und weitere Verschleißpositionen parallel relevant, verschiebt sich die Wirtschaftlichkeit schnell. Viele Halter rechnen nur die erste Werkstattrechnung, nicht aber Folgeaufwand, Standzeit und Preisrisiko in den nächsten Monaten.',
+            'Der entscheidende Punkt ist deshalb nicht, ob eine Reparatur technisch möglich ist, sondern ob sie wirtschaftlich sinnvoll bleibt. Wenn das Kosten-Risiko-Profil den stabilen Marktwert deutlich belastet, ist ein früher, sauber geplanter Verkauf häufig die bessere Bilanzentscheidung.',
+          ],
+          bullets: [
+            'Einzelreparaturen immer als Gesamtkette bewerten',
+            'Standzeit- und Folgekosten in die Rechnung aufnehmen',
+            'Verkauf vor Kosteneskalation sichert oft den besseren Nettoeffekt',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf für Audi oft die beste Lösung ist',
+          paragraphs: [
+            'Der Privatverkauf kann theoretisch mehr Erlös bringen, ist bei technischen Fragen jedoch oft langsam und unsicher. Gerade bei Motorschaden, S tronic-Themen oder hoher Laufleistung steigt das Risiko geplatzter Abschlüsse.',
+            'Ein strukturierter Audi Ankauf bietet planbaren Ablauf, klare Vertragsbasis und schnelle Auszahlung - insbesondere dann, wenn Zeit, Sicherheit und Verlässlichkeit wichtig sind.',
+            'Wenn Sie Ihr Kostenrisiko begrenzen und Ihren Audi ohne langen Vermarktungsprozess verkaufen möchten, ist der professionelle Autoankauf häufig der effizientere Weg.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Welche Audi Probleme sind beim Verkauf besonders relevant?',
+          a: 'Vor allem Motorthemen (z. B. TFSI Ölverbrauch), Getriebeauffälligkeiten bei S tronic, Elektronikprobleme sowie dieseltypische EGR/DPF-Themen beeinflussen Preis und Risiko deutlich.',
+        },
+        {
+          q: 'Wann sollte ich meinen Audi verkaufen?',
+          a: 'Häufig vor größeren Reparaturblöcken, vor Garantieende oder vor steigenden Abschlägen bei hoher Laufleistung. Ein früher Verkauf reduziert Entscheidungsdruck.',
+        },
+        {
+          q: 'Kann ich einen Audi mit Defekten trotzdem fair verkaufen?',
+          a: 'Ja. Mit transparenter Zustandsbeschreibung, vollständigen Unterlagen und realistischer Preislogik sind auch Defektfahrzeuge strukturiert verkäuflich.',
+        },
+        {
+          q: 'Lohnt sich Reparatur bei Audi Motorschaden?',
+          a: 'Das hängt von Schadensumfang, Folgerisiko und realistischem Mehrerlös ab. Wenn Kosten und Risiko den Mehrwert übersteigen, ist Verkauf meist sinnvoller.',
+        },
+        {
+          q: 'Sind Audi A4 und A6 automatisch problematisch?',
+          a: 'Nein. Entscheidend sind Baujahr, Motorisierung, Getriebe, Wartungsstand und dokumentierter Zustand - nicht nur die Modellbezeichnung.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-ohne-tuev',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+        'online-autoankauf-ablauf-7-schritte',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Audi jetzt verkaufen statt weiter ins Risiko fahren?',
+        text: 'Prüfen Sie Ihren Audi Ankaufpreis und starten Sie den Verkauf mit einem klaren, sicheren Ablauf.',
+        href: '/audi-verkaufen',
+        label: 'Zur Audi Ankaufseite',
+      },
+    },
+  },
   oldtimer: {
     slug: 'oldtimer',
     displayName: 'Oldtimer',

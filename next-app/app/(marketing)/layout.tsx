@@ -19,7 +19,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       />
       <Header />
       <main className="flex-1 relative z-10 pb-20 md:pb-0">{children}</main>
-      <Footer />
+      <Footer showBrandLinks />
       <ConsentManager />
     </div>
     </>

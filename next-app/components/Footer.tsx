@@ -4,8 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import { COOKIE_SETTINGS_OPEN_EVENT } from '@/lib/consent';
 import { CITY_PAGES } from '@/lib/cityPages';
+import { BRAND_LINKS, MARKEN_OVERVIEW_PATH } from '@/lib/brandLinks';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  showBrandLinks?: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
   const currentYear = new Date().getFullYear();
 
   const serviceLinks = [
@@ -16,6 +21,10 @@ const Footer: React.FC = () => {
   ];
 
   const locationLinks = CITY_PAGES.slice(0, 3);
+  const brandLinks = [...BRAND_LINKS].sort((a, b) => a.order - b.order);
+  const gridColumnsClass = showBrandLinks
+    ? 'grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'
+    : 'grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4';
 
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#0b1328] via-[#0f172a] to-[#0b1328] text-slate-300">
@@ -26,7 +35,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="relative container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className={gridColumnsClass}>
           <div>
             <div className="flex items-center gap-3 mb-6">
               <Link
@@ -100,6 +109,33 @@ const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
+
+          {showBrandLinks && (
+            <div>
+              <h3 className="text-white font-black uppercase text-sm tracking-widest mb-5">Marken</h3>
+              <ul className="space-y-3 text-sm font-bold">
+                {brandLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="inline-flex items-center gap-2 transition-all hover:text-brand-orange hover:translate-x-1"
+                    >
+                      <span className="text-brand-orange">→</span>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    href={MARKEN_OVERVIEW_PATH}
+                    className="inline-flex items-center gap-2 rounded-lg border border-slate-500/50 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300 transition-all hover:border-brand-orange hover:bg-white/10 hover:text-brand-orange mt-1"
+                  >
+                    + alle Marken im Überblick
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
 
           <div>
             <h3 className="text-white font-black uppercase text-sm tracking-widest mb-5">Kontakt & Rechtliches</h3>

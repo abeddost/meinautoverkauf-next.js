@@ -195,7 +195,7 @@ const ValuationResultPage: React.FC = () => {
           />
         </div>
       </main>
-      <Footer />
+      <Footer showBrandLinks={false} />
     </div>
   );
 };

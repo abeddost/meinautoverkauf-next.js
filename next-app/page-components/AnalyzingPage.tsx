@@ -172,7 +172,7 @@ const AnalyzingPage: React.FC = () => {
             </button>
           </div>
         </main>
-        <Footer />
+        <Footer showBrandLinks={false} />
       </div>
     );
   }
@@ -319,7 +319,7 @@ const AnalyzingPage: React.FC = () => {
           )}
         </div>
       </main>
-      <Footer />
+      <Footer showBrandLinks={false} />
     </div>
   );
 };

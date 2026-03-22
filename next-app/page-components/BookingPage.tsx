@@ -98,7 +98,7 @@ const BookingPage: React.FC = () => {
           />
         </div>
       </main>
-      <Footer />
+      <Footer showBrandLinks={false} />
     </div>
   );
 };
