@@ -1363,6 +1363,890 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       },
     },
   },
+  vw: {
+    slug: 'vw',
+    displayName: 'VW',
+    keywordMap: {
+      primary: ['VW verkaufen', 'Volkswagen Ankauf', 'VW Autoankauf'],
+      secondary: [
+        'VW schnell verkaufen',
+        'VW Ankauf Deutschland',
+        'VW Motorschaden verkaufen',
+        'VW Unfallwagen verkaufen',
+        'VW gebraucht verkaufen',
+        'VW Export Ankauf',
+      ],
+      semantic: [
+        'VW Probleme',
+        'Volkswagen häufige Fehler',
+        'Wann VW verkaufen',
+        'VW Zuverlässigkeit',
+        'VW Motorschaden Ursachen',
+        'VW Reparaturkosten',
+        'DSG Getriebeschaden VW',
+        'VW Diesel Probleme EGR DPF',
+      ],
+      longTail: [
+        'VW Golf mit hoher Laufleistung verkaufen',
+        'VW Passat mit Motorschaden schnell verkaufen',
+        'VW DSG Probleme reparieren oder verkaufen',
+        'VW ohne TÜV in Deutschland verkaufen',
+        'Wann lohnt sich Volkswagen Reparatur nicht mehr',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Der VW-Fokus startet bei Alltag und Wirtschaftlichkeit: keine Premium-Inszenierung, sondern klare Antworten zu Laufleistung, Werkstattkosten und richtigem Verkaufszeitpunkt.',
+      requiredInsights: [
+        'Typische Alltagsmodelle wie Golf, Passat, Polo und Tiguan differenziert bewerten',
+        'DSG-, TSI- und Diesel-Risiken in die Verkaufslogik einordnen',
+        'Kostenvergleich Reparatur versus Direktverkauf mit pragmatischer Entscheidungshilfe',
+      ],
+      bannedPatterns: [
+        'Premium-Sprache aus Audi/BMW unverändert auf VW übertragen',
+        'pauschale Aussagen ohne Modell-, Motor- oder Laufleistungsbezug',
+        'identische FAQ-Texte aus anderen Marken',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/vw-verkaufen',
+      seoTitle: 'VW verkaufen | VW Autoankauf in Deutschland',
+      seoDescription:
+        'VW verkaufen ohne Stress: faire Bewertung, schnelle Auszahlung und kostenlose Abholung in Deutschland. Auch Unfallwagen, Motorschaden und ohne TÜV.',
+      canonicalPath: '/vw-verkaufen',
+      heroHeadline: 'VW verkaufen - einfach, fair und sicher',
+      heroSubheadline:
+        'Volkswagen Ankauf in ganz Deutschland mit transparenter Bewertung und schneller Auszahlung',
+      h1: 'VW Autoankauf: Ihren Volkswagen schnell und fair verkaufen',
+      intro: [
+        'Einen VW zu verkaufen wirkt auf den ersten Blick unkompliziert, weil Volkswagen in Deutschland sehr gefragt ist. In der Praxis hängen Preis und Abschlussgeschwindigkeit jedoch stark von Details ab: Modellgeneration, Motor, Getriebe, Laufleistung, Wartung und anstehende Reparaturen. Genau deshalb scheitern viele Privatverkaeufe nicht am Inserat, sondern an spaeteren Preisdiskussionen.',
+        'Unser VW Autoankauf richtet sich an Halter, die einen klaren und sicheren Ablauf wollen. Sie erhalten keine pauschale Zahl aus einem Standardrechner, sondern eine nachvollziehbare Bewertung Ihres konkreten Fahrzeugs. Ob Golf, Passat, Polo oder Tiguan: Wir ordnen Zustand, Nachfrage und Kostenrisiko transparent ein, damit Sie mit realistischen Erwartungen verkaufen.',
+        'Viele VW-Besitzer nutzen ihr Auto als verlässliches Alltagsfahrzeug fuer Pendelstrecken, Familie oder Gewerbe. Genau bei diesen Fahrzeugen steigen mit der Zeit oft die laufenden Kosten: Verschleiss bei hoher Laufleistung, Probleme an DSG-Getrieben, TSI-Themen oder Dieselbauteile wie EGR und DPF. Wer den richtigen Zeitpunkt verpasst, verkauft spaeter haeufig unter deutlich schlechteren Bedingungen.',
+        'Wenn Sie Ihren VW schnell verkaufen möchten, sollte der Prozess vor allem planbar sein. Statt wochenlanger Nachrichten, spontaner Besichtigungstermine und unklarer Zahlungsabsprachen bekommen Sie bei uns ein strukturiertes Vorgehen mit klaren Schritten, klaren Unterlagen und dokumentierter Auszahlung. Das spart Zeit und reduziert Unsicherheit.',
+        'Unser Volkswagen Ankauf funktioniert auch dann, wenn Ihr Fahrzeug nicht im Idealzustand ist. Wir kaufen ebenfalls VW Unfallwagen, Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV. Entscheidend ist eine ehrliche Zustandsbeschreibung. So bleibt das Angebot stabil und die Übergabe verläuft ohne unangenehme Nachverhandlungen.',
+        'Viele Kunden vergleichen zuerst Privatverkauf, Händler-Inzahlungnahme und Direktankauf. Beim VW Ankauf Deutschland zeigt sich oft: Der höchste theoretische Wunschpreis hilft wenig, wenn Abschluss, Zahlung und Haftungsfragen unsicher bleiben. Ein realistischer Ankaufpreis mit sicherem Abschluss ist in der Praxis häufig die wirtschaftlich bessere Lösung.',
+        'Hinzu kommt ein wichtiger Praxispunkt: Viele Volkswagen werden in Familien oder im Beruf taeglich gebraucht. Ein geplatzter Verkaufstermin oder eine kurzfristig abgesagte Zahlung verursacht dann nicht nur Frust, sondern echte Folgekosten. Genau deshalb setzen wir auf verbindliche Prozesse mit klaren Terminen, klaren Dokumenten und klaren Zusagen, damit Sie Ihren VW schnell verkaufen koennen, ohne Ihre Mobilitaetsplanung zu gefaehrden.',
+        'Gerade bei verbreiteten VW-Modellen lohnt eine nüchterne Betrachtung der nächsten 12 bis 24 Monate: Welche Reparaturen sind absehbar? Welche Kosten sind wahrscheinlich? Wie entwickelt sich der Restwert bei weiter steigender Laufleistung? Diese Fragen entscheiden oft mehr als die reine Modellbezeichnung. Wir helfen Ihnen, diese Punkte sauber in die Verkaufsentscheidung einzubeziehen.',
+        'Ob Sie einen gepflegten VW gebraucht verkaufen oder ein Fahrzeug mit Defekten abgeben möchten: Sie erhalten bei uns einen pragmatischen Ablauf, der zu Ihrem Alltag passt. Vom Erstkontakt über die Bewertung bis zur Übergabe bleibt alles nachvollziehbar, rechtssicher und effizient - ohne versteckte Gebühren und ohne unnötige Komplexität.',
+      ],
+      benefitHeading: 'Warum viele VW-Halter an uns verkaufen',
+      benefits: [
+        'Praktische und faire Bewertung statt Lockpreis: Zustand, Historie, Motor und Getriebe werden realistisch eingeordnet.',
+        'Schnelle Abwicklung: In vielen Fällen erfolgt der Verkauf innerhalb von 24 bis 72 Stunden.',
+        'Ankauf auch bei Problemen: VW Unfallwagen, Motorschaden, DSG/Getriebeschaden und ohne TÜV sind möglich.',
+        'Volkswagen Ankauf in ganz Deutschland mit optionaler kostenloser Abholung.',
+        'Sichere Zahlung mit klarer Dokumentation und rechtssicherem Kaufvertrag.',
+        'Kein Zeitverlust durch Inseratverwaltung, Probefahrttermine und unzuverlässige Interessenten.',
+        'Klare Ansprechpartner und ein strukturierter Prozess vom ersten Kontakt bis zur Übergabe.',
+      ],
+      processHeading: 'VW schnell verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugdaten senden',
+          text: 'Sie übermitteln Modell, Baujahr, Laufleistung, Motorisierung, Getriebe, Ausstattung und bekannte Mängel. Je genauer die Angaben, desto belastbarer die erste Bewertung.',
+        },
+        {
+          title: '2. Transparentes Angebot erhalten',
+          text: 'Wir bewerten Ihren VW anhand aktueller Marktnachfrage und technischer Faktoren wie Wartung, Defekte und Restwertrisiko. So sehen Sie sofort, ob der Verkauf jetzt sinnvoll ist.',
+        },
+        {
+          title: '3. Termin, Übergabe, Auszahlung',
+          text: 'Bei Zustimmung stimmen wir den Übergabetermin ab, dokumentieren den Verkauf sauber und zahlen schnell aus. Auf Wunsch holen wir den VW direkt bei Ihnen ab.',
+        },
+      ],
+      buyTypesHeading: 'Welche Volkswagen wir ankaufen',
+      buyTypes: [
+        {
+          title: 'VW Unfallwagen verkaufen',
+          text: 'Wir kaufen auch VW mit Unfallschaden, wenn Schadenbild und Reparaturhistorie transparent beschrieben sind.',
+        },
+        {
+          title: 'VW Motorschaden verkaufen',
+          text: 'Bei kapitalem Motorschaden oder teurem Risiko ist der Direktverkauf oft wirtschaftlicher als eine unklare Reparaturkette.',
+        },
+        {
+          title: 'VW mit DSG- oder Getriebeschaden',
+          text: 'Ruckeln, Schaltverzoegerungen oder Notlauf bei DSG schliessen den Ankauf nicht aus. Wir bewerten den Zustand realistisch.',
+        },
+        {
+          title: 'VW mit hoher Laufleistung',
+          text: 'Hohe Kilometer sind bei Volkswagen haeufig. Entscheidend bleiben Wartung, Gesamtzustand und Modellnachfrage.',
+        },
+        {
+          title: 'VW ohne TÜV',
+          text: 'Auch ohne gueltige HU/AU kaufen wir Ihren VW an und beruecksichtigen den technischen Zustand transparent im Angebot.',
+        },
+        {
+          title: 'Firmenwagen und Leasingrückläufer',
+          text: 'Wir kaufen auch gewerblich genutzte VW, inklusive klarer Abwicklung fuer Unterlagen, Übergabe und Auszahlung.',
+        },
+        {
+          title: 'Golf, Passat, Polo und Tiguan',
+          text: 'Beliebte VW-Modelle bewerten wir differenziert nach Generation, Motorisierung, Laufleistung und Ausstattungsprofil.',
+        },
+        {
+          title: 'Diesel und TSI Motoren',
+          text: 'Diesel- und TSI-Varianten werden getrennt bewertet, inklusive typischer Risiken wie EGR/DPF oder Steuerketten-/Ölverbrauchsthemen.',
+        },
+      ],
+      comparisonHeading: 'Warum unser VW Ankauf oft die bessere Wahl ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Transparente Bewertung mit Modell- und Zustandsbezug',
+          privateSale: 'Hauefig lange Verhandlungen und starke Preisschwankungen',
+          traditionalDealer: 'Oft pauschale Abschlaege ohne tiefe Zustandseinordnung',
+        },
+        {
+          criterion: 'Zeit bis Abschluss',
+          us: 'Meist 24 bis 72 Stunden nach Datenklaerung',
+          privateSale: 'Oft mehrere Wochen mit offenem Ausgang',
+          traditionalDealer: 'Termin- und Lagerabhaengig',
+        },
+        {
+          criterion: 'Defektfahrzeuge',
+          us: 'Ankauf auch bei Motorschaden, DSG-Problemen und ohne TÜV',
+          privateSale: 'Schwieriger Verkauf und hohe Nachverhandlung',
+          traditionalDealer: 'Häufig sehr niedrige Angebote oder Ablehnung',
+        },
+        {
+          criterion: 'Sicherheit',
+          us: 'Dokumentierter Vertrag, klare Zahlung, planbare Übergabe',
+          privateSale: 'Erhöhtes Risiko bei Zahlung und Gewährleistung',
+          traditionalDealer: 'Solide, aber oft weniger flexibel bei Sonderfällen',
+        },
+      ],
+      trustHeading: 'Vertrauen durch klare Zusagen',
+      trustPoints: [
+        'Schnelle Auszahlung mit nachvollziehbarem Zahlungsnachweis',
+        'Kostenlose Abholung in vielen Regionen Deutschlands',
+        'Keine versteckten Gebühren oder nachträglichen Zusatzkosten',
+        'Faire Bewertung mit transparenter Preislogik',
+        'Ankauf auch bei Defekten, hoher Laufleistung und ohne TÜV',
+        'Verbindliche Kommunikation mit festen Ansprechpartnern',
+      ],
+      ctas: [
+        {
+          heading: 'VW jetzt kostenlos bewerten',
+          text: 'Starten Sie mit einer unverbindlichen Einschätzung und prüfen Sie sofort, ob ein Verkauf aktuell wirtschaftlich sinnvoll ist.',
+          label: 'Jetzt VW bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Direkt VW Verkaufsprozess starten',
+          text: 'Wenn Sie schon verkaufen möchten, begleiten wir Sie in klaren Schritten bis zur sicheren Auszahlung.',
+          label: 'VW Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'VW Probleme zuerst einordnen',
+          text: 'Nutzen Sie unseren VW Guide, wenn Sie zwischen Reparatur und Verkauf entscheiden möchten.',
+          label: 'Zum VW Guide',
+          href: '/ratgeber/vw-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: VW verkaufen, Ankauf und Ablauf',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen VW verkaufen?',
+          a: 'Mit vollständigen Fahrzeugdaten ist ein Abschluss häufig innerhalb weniger Tage möglich. Dauer und Preis hängen von Zustand, Unterlagen und Terminlage ab.',
+        },
+        {
+          q: 'Kaufen Sie auch VW mit Motorschaden oder DSG-Schaden?',
+          a: 'Ja. Wir kaufen auch Fahrzeuge mit Motor- und Getriebeproblemen an, wenn der Zustand transparent beschrieben ist.',
+        },
+        {
+          q: 'Kann ich einen VW ohne TÜV verkaufen?',
+          a: 'Ja. Ein fehlender TÜV schließt den Verkauf nicht aus. Der technische Zustand wird nachvollziehbar in der Bewertung berücksichtigt.',
+        },
+        {
+          q: 'Welche VW Modelle kaufen Sie an?',
+          a: 'Wir kaufen unter anderem Golf, Passat, Polo, Tiguan sowie weitere Volkswagen Modelle in unterschiedlichen Zuständen.',
+        },
+        {
+          q: 'Ist die VW Bewertung kostenlos und unverbindlich?',
+          a: 'Ja. Die Erstbewertung ist kostenfrei und unverbindlich. Sie entscheiden danach in Ruhe über den Verkauf.',
+        },
+        {
+          q: 'Bieten Sie auch VW Ankauf in ganz Deutschland an?',
+          a: 'Ja. Unser VW Ankauf Deutschland ist bundesweit ausgerichtet, inklusive optionaler Abholung in vielen Regionen.',
+        },
+        {
+          q: 'Wie läuft die Auszahlung beim Volkswagen Ankauf ab?',
+          a: 'Die Auszahlung erfolgt dokumentiert und transparent, in der Regel per Überweisung. Zeitpunkt und Ablauf werden vorab klar abgestimmt.',
+        },
+        {
+          q: 'Ist VW Export Ankauf ebenfalls möglich?',
+          a: 'Ja. Für bestimmte Fahrzeuge kann der Exportweg sinnvoll sein. Wir berücksichtigen diese Option in der Bewertung.',
+        },
+      ],
+      internalLinksHeading: 'Weiterführende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'VW kostenlos bewerten',
+          context: 'Für eine schnelle Preisorientierung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Ablauf beim Autoverkauf',
+          context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten möchten.',
+        },
+        {
+          href: '/ratgeber/vw-probleme-verkauf',
+          label: 'VW Guide: Probleme und Verkaufszeitpunkt',
+          context: 'Für die Entscheidung Reparatur versus Verkauf bei Ihrem Volkswagen.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'vw-probleme-verkauf',
+      seoTitle: 'VW Probleme und Verkauf: Praxis-Guide 2026',
+      seoDescription:
+        'VW Probleme verstehen, Reparaturkosten einordnen und den besten Verkaufszeitpunkt finden. Praxisguide zu DSG, TSI, Diesel und Restwert.',
+      h1: 'VW Guide: Häufige Probleme erkennen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'Volkswagen steht fuer alltagstaugliche Fahrzeuge mit breiter Modellpalette, solider Ersatzteilversorgung und hoher Verbreitung. Genau diese Alltagstauglichkeit fuehrt jedoch oft dazu, dass Halter den Verkaufszeitpunkt zu lange aufschieben. Dieser Guide zeigt Ihnen praxisnah, welche VW Probleme wirklich kostenrelevant sind, wann ein Verkauf wirtschaftlich sinnvoll ist und wie Sie den besten Preis erzielen.',
+      quickFacts: [
+        'Viele VW-Besitzer verkaufen nicht wegen eines Totalschadens, sondern vor einer Kostenkette aus mehreren Reparaturen.',
+        'VW Probleme unterscheiden sich stark nach Motor, Getriebe, Baujahr und Nutzung.',
+        'DSG, TSI und Dieselthemen sind besonders wichtig fuer die Entscheidung Reparatur oder Verkauf.',
+        'Golf, Passat und Touran koennen je nach Generation unterschiedliche Schwachstellen zeigen.',
+        'Der beste Verkaufszeitpunkt liegt oft vor hoher Laufleistungsschwelle oder vor grossen Werkstattinvestitionen.',
+        'Ein strukturierter Autoankauf ist bei Defekten oder hoher Laufleistung oft sicherer als ein langer Privatverkauf.',
+      ],
+      sections: [
+        {
+          heading: 'Warum sich viele VW-Besitzer fuer den Verkauf entscheiden',
+          paragraphs: [
+            'Die Entscheidung faellt selten spontan. In den meisten Faellen kommen mehrere Signale zusammen: steigende Laufleistung, haeufigere Werkstatttermine und die Unsicherheit, welche Kosten als naechstes folgen. Gerade bei Fahrzeugen, die taeglich gebraucht werden, wird Planbarkeit wichtiger als die emotionale Bindung an das Auto.',
+            'VW Fahrzeuge gelten als robust, doch auch ein robustes Alltagsauto kann wirtschaftlich kippen, wenn Reparaturen und Wertverlust gleichzeitig steigen. Der reine Blick auf den Ist-Zustand reicht dann nicht mehr aus. Wichtiger ist die Frage, wie sich Kosten und Restwert in den kommenden 12 Monaten entwickeln.',
+            'Viele Halter verkaufen deshalb bewusst vor einem grossen Investitionspunkt. Wer frueh entscheidet, hat in der Regel mehr Verhandlungsspielraum, weniger Zeitdruck und deutlich bessere Chancen auf einen stabilen Verkaufspreis.',
+          ],
+          bullets: [
+            'Alltagssicherheit hat Vorrang vor reinem Markenfesthalten',
+            'Steigende Werkstattfrequenz ist oft ein fruehes Verkaufssignal',
+            'Fruehe Entscheidung senkt das Risiko eines Notverkaufs',
+          ],
+        },
+        {
+          heading: 'Hohe Laufleistung: Ab wann lohnt sich genaues Nachrechnen?',
+          paragraphs: [
+            'Bei VW ist hohe Laufleistung keine Seltenheit. Viele Golf, Passat oder Touran laufen lange und werden intensiv genutzt. Genau deshalb wird der Kilometerstand im Markt sehr differenziert betrachtet: Ein gepflegtes Fahrzeug kann trotz hoher Laufleistung verkaufbar sein, aber Preisabschlaege nehmen mit jeder Schwelle spuerbar zu.',
+            'Ab bestimmten Laufleistungsmarken steigt nicht nur der Abschlag, sondern auch das Risiko paralleler Verschleissthemen. Fahrwerk, Kupplung, Abgasnachbehandlung, Elektronik und Nebenaggregate koennen in engem Zeitraum auffaellig werden. Dann wird aus einer einzelnen Reparatur schnell ein Kostenpaket.',
+            'Wer diese Entwicklung frueh erkennt, verkauft oft im besseren Zeitfenster. Es geht nicht darum, bei jedem Kilometer nervoes zu werden, sondern den Punkt zu treffen, an dem Reparaturrisiko und Restwertverfall gemeinsam kippen.',
+          ],
+        },
+        {
+          heading: 'Steigende Reparaturkosten: Warum kleine Rechnungen sich summieren',
+          paragraphs: [
+            'Viele VW-Halter unterschaetzen nicht die einzelne Werkstattrechnung, sondern die Summe mehrerer mittlerer Positionen ueber ein Jahr. Ein Sensor hier, eine Fahrwerksposition dort, spaeter ein Thema am Abgas- oder Getriebesystem: Jede Position fuer sich wirkt beherrschbar, in der Gesamtrechnung aber wird es teuer.',
+            'Zusatzkosten entstehen haeufig ausserhalb der eigentlichen Reparatur: Zeitverlust, Ersatzmobilitaet, Organisationsaufwand und Unsicherheit ueber Folgeschaeden. Diese indirekten Kosten fehlen oft in der privaten Kalkulation, beeinflussen aber den wirtschaftlichen Gesamteffekt stark.',
+            'Deshalb sollte die Entscheidung Reparatur oder Verkauf immer als Gesamtbetrachtung erfolgen. Wenn mehrere Baustellen gleichzeitig absehbar sind, ist der geordnete Verkauf haeufig die planbarere und guenstigere Loesung.',
+          ],
+        },
+        {
+          heading: 'Dieselthemen im Alltag: EGR, DPF und Fahrprofil',
+          paragraphs: [
+            'Dieselmodelle sind bei VW in vielen Baureihen verbreitet und fuer Vielfahrer oft sinnvoll. Gleichzeitig koennen im Kurzstreckenbetrieb Probleme bei EGR und DPF haeufiger auftreten. Das zeigt sich zuerst oft durch Warnmeldungen, spaeter durch Leistungseinbussen oder teurere Eingriffe.',
+            'Entscheidend ist das Nutzungsprofil. Ein Diesel, der ueberwiegend auf kurzen Strecken bewegt wird, hat ein anderes Risikobild als ein Fahrzeug mit regelmaessiger Langstrecke. Deshalb sind pauschale Aussagen wenig hilfreich; wichtig ist die Kombination aus Fahrprofil, Laufleistung und Wartungshistorie.',
+            'Wenn sich dieseltypische Themen wiederholen, sollten Halter den Verkaufszeitpunkt aktiv pruefen. Ein Verkauf vor der naechsten grossen Abgasinvestition kann den Nettoerloes deutlich stabilisieren.',
+          ],
+        },
+        {
+          heading: 'VW Probleme im Fokus: DSG-Getriebe',
+          paragraphs: [
+            'DSG-Probleme gehoeren bei vielen Suchanfragen zu den wichtigsten Themen rund um Volkswagen haeufige Fehler. Typische Hinweise sind Ruckeln, unsaubere Gangwechsel, Verzögerungen beim Anfahren oder temporärer Notlauf. Nicht jeder Hinweis bedeutet sofort einen grossen Defekt, aber er sollte ernst genommen werden.',
+            'Die Kostenbreite bei Getriebethemen ist gross. Sie reicht von vergleichsweise begrenzten Massnahmen bis zu deutlich teureren Reparaturen. Genau diese Unsicherheit macht die Verkaufsentscheidung schwierig, weil Halter ohne klare Diagnose oft nur schwer kalkulieren koennen.',
+            'Fuer den Verkauf ist Transparenz entscheidend. Wer Symptome und Werkstattbefunde offen dokumentiert, reduziert Konflikte bei der Besichtigung und erhaelt in der Regel ein stabileres, realistischeres Angebot.',
+          ],
+          bullets: [
+            'Symptome frueh festhalten und diagnostisch absichern',
+            'Einzelfehler von wiederkehrenden Mustern trennen',
+            'Verkauf vor Kosteneskalation kann wirtschaftlich sinnvoll sein',
+          ],
+        },
+        {
+          heading: 'TSI-Probleme: Steuerkette und Oelverbrauch',
+          paragraphs: [
+            'Bei bestimmten TSI-Generationen werden haeufig Themen rund um Steuerkette, Kettenspanner oder erhoehten Oelverbrauch genannt. Relevanz und Kosten haengen stark von Baujahr, Motorcode, Wartungszustand und Laufleistung ab. Pauschalurteile helfen daher kaum weiter.',
+            'Wichtig ist die zeitliche Dynamik: Was heute noch als kleines Symptom erscheint, kann bei laengerem Zuwarten zu groesseren Folgekosten fuehren. Genau an dieser Stelle wird die Frage \"VW Motorschaden Ursachen\" fuer viele Halter zu einer sehr praktischen Verkaufsfrage.',
+            'Wenn die Wahrscheinlichkeit teurer Folgeschaeden steigt, lohnt sich ein frueher Marktcheck. Ein geordneter Verkauf im fahrbereiten Zustand erzielt haeufig bessere Ergebnisse als ein spaeter Verkauf nach Kostenanstieg.',
+          ],
+        },
+        {
+          heading: 'Diesel-Probleme: EGR/DPF, Injektoren und Nebenkosten',
+          paragraphs: [
+            'Neben EGR und DPF koennen bei hoeherer Laufleistung weitere dieseltypische Themen dazukommen, etwa im Bereich Einspritzung oder Peripherie. Jede einzelne Position ist kalkulierbar, das wirtschaftliche Risiko entsteht aber oft durch die Kombination mehrerer Baustellen.',
+            'Besonders kritisch ist dabei die Unsicherheit ueber Folgeeffekte. Eine erledigte Reparatur garantiert nicht automatisch, dass kurzfristig keine weiteren Themen auftreten. Diese Unsicherheit senkt haeufig die Bereitschaft privater Kaeufer und fuehrt zu harten Preisabschlaegen.',
+            'In solchen Situationen kann ein professioneller Ankauf sinnvoll sein, weil die Bewertung auch bei Defekten strukturiert erfolgt und der Abschluss nicht von einer Einzelmeinung beim Besichtigungstermin abhaengt.',
+          ],
+        },
+        {
+          heading: 'Elektronik-Probleme bei VW: Viele kleine Fehler, grosser Aufwand',
+          paragraphs: [
+            'Elektronikprobleme zeigen sich oft unspektakulaer: sporadische Warnmeldungen, Sensorabweichungen oder Aussetzer bei Komfortfunktionen. Das Problem ist weniger der einzelne Fehlercode als der Diagnoseaufwand, der sich ueber Zeit summiert.',
+            'Mit zunehmendem Fahrzeugalter nimmt die Wahrscheinlichkeit solcher Themen zu. Dadurch steigen Werkstattaufenthalte und Planungsaufwand, was gerade fuer Pendler und Familien zum echten Belastungsfaktor wird.',
+            'Fuer den Verkauf gilt: Eine klare, ehrliche Fehlerbeschreibung ist besser als das Verstecken von Symptomen. Transparenz erhoeht die Abschlusswahrscheinlichkeit und reduziert spaetere Diskussionen.',
+          ],
+        },
+        {
+          heading: 'Turbo-Probleme und Leistungsverlust richtig einordnen',
+          paragraphs: [
+            'Bei einigen VW-Motoren tauchen mit der Zeit Themen rund um Ladedruck, Leistungsverhalten oder Nebengeräusche auf. Nicht jeder Fall endet in einer grossen Reparatur, aber unklare Turbothemen wirken direkt auf den Marktwert, weil Kaeufer ein Kostenrisiko einpreisen.',
+            'Entscheidend ist der Befundkontext: Tritt das Problem isoliert auf oder zusammen mit weiteren Auffaelligkeiten? Genau diese Einordnung bestimmt, ob Reparatur noch sinnvoll ist oder ob ein Verkauf vor der naechsten Kostenstufe wirtschaftlicher wird.',
+            'Wer in dieser Phase aktiv entscheidet, reduziert das Risiko eines spaeteren Notverkaufs. Das ist besonders relevant, wenn das Fahrzeug taeglich gebraucht wird und Ausfallzeiten teuer werden.',
+          ],
+        },
+        {
+          heading: 'Welche VW Modelle gelten als auffaellig? Golf, Passat, Touran',
+          paragraphs: [
+            'Bei der Frage nach problematischen Modellen werden haeufig Golf, Passat und Touran genannt. Entscheidend ist jedoch nicht der Modellname allein, sondern die konkrete Generation, Motorisierung und Historie. Ein gepflegter Wagen kann selbst mit hoher Laufleistung besser dastehen als ein juengeres Fahrzeug mit Wartungsluecken.',
+            'Praxisnah betrachtet werden bei bestimmten Baujahren haeufiger Themen im Bereich TSI, DSG oder Dieselkomponenten diskutiert. Diese Hinweise sind nuetzlich als Fruehwarnsystem, ersetzen aber keine fahrzeugspezifische Bewertung.',
+            'Fuer Halter bedeutet das: Nutzen Sie Modellbeispiele als Orientierung, treffen Sie Ihre Verkaufsentscheidung aber immer auf Basis von Zustand, Unterlagen und realen Kostenrisiken Ihres Fahrzeugs.',
+          ],
+          bullets: [
+            'Golf: je Generation unterschiedliche Motor-/Getrieberisiken',
+            'Passat: hohe Laufleistungen erfordern saubere Kostenprognose',
+            'Touran: Familiennutzung kann Verschleissprofile beschleunigen',
+          ],
+        },
+        {
+          heading: 'Wann VW verkaufen? Die besten Zeitfenster',
+          paragraphs: [
+            'Die zentrale Frage \"Wann VW verkaufen\" laesst sich in der Praxis auf drei Zeitfenster verdichten: vor einer grossen Reparatur, vor einer kritischen Laufleistungsschwelle und vor einem deutlichen Restwertknick. Wer diese Punkte ignoriert, verkauft oft spaeter unter hoeherem Druck.',
+            'Ein weiteres Fenster ist der Zeitraum vor TÜV-nahen Investitionen. Wenn mehrere Maengel zusammenkommen, lohnt sich haeufig ein Vergleich zwischen Reparaturkosten und aktuellem Marktwert. Die Entscheidung sollte dann nicht aus Gewohnheit, sondern auf Basis klarer Zahlen fallen.',
+            'Verkaeufer mit vollstaendigen Unterlagen und fahrbereitem Zustand erzielen in der Regel stabilere Ergebnisse. Deshalb ist fruehes Planen oft der staerkste Hebel fuer einen guten Abschluss.',
+          ],
+        },
+        {
+          heading: 'VW Reparaturkosten: Kosten gegen Fahrzeugwert rechnen',
+          paragraphs: [
+            'VW Reparaturkosten variieren stark nach Modell und Schadensbild. Fuer die Entscheidungslogik ist weniger die Hoehe einer einzelnen Rechnung relevant als die Frage, wie viele weitere Kosten wahrscheinlich folgen. Erst diese Gesamtprognose zeigt, ob sich Instandsetzung wirklich lohnt.',
+            'Sinnvoll ist eine konservative Rechnung: sichere Mindestkosten, realistischer Risikoaufschlag und erwartbarer Mehrerloes nach Reparatur. Viele Halter rechnen zu optimistisch und unterschätzen Zeit- sowie Unsicherheitsfaktoren im Wiederverkauf.',
+            'Wenn der Nettoeffekt nach Reparatur nur gering oder unsicher ist, spricht viel fuer den geordneten Verkauf. Das gilt besonders bei Fahrzeugen, die im Alltag verlaesslich funktionieren muessen.',
+          ],
+          bullets: [
+            'Mindestkosten plus Risikopuffer kalkulieren',
+            'Mehrerloes nach Reparatur nicht zu optimistisch ansetzen',
+            'Immer den Nettoeffekt statt Einzelpositionen bewerten',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Praktischer Entscheidungsleitfaden',
+          paragraphs: [
+            'Starten Sie mit drei klaren Fragen: Wie hoch ist die sichere Investition jetzt? Wie hoch ist das Risiko weiterer Defekte in den naechsten 12 Monaten? Wie realistisch steigt der Verkaufspreis nach der Reparatur tatsaechlich? Erst das Zusammenspiel dieser Antworten ergibt eine tragfaehige Entscheidung.',
+            'Ergaenzen Sie die Rechnung um indirekte Kosten: Standzeit, Ersatzfahrzeug, Terminorganisation und persoenliche Belastung. Gerade bei alltagstauglichen VW, die taeglich benoetigt werden, sind diese Faktoren oft wichtiger als ein theoretisch maximaler Verkaufspreis.',
+            'Wenn Unsicherheit und Aufwand den moeglichen Mehrwert uebersteigen, ist ein direkter Verkauf haeufig der klarere Weg. So behalten Sie Kontrolle ueber Zeit, Risiko und Liquiditaet.',
+          ],
+        },
+        {
+          heading: 'Wie Sie den Verkaufspreis Ihres VW maximieren',
+          paragraphs: [
+            'Der wichtigste Hebel ist Vorbereitung. Sortieren Sie Serviceheft, Rechnungen, HU-Berichte und vorhandene Diagnoseunterlagen. Ein geordneter Dokumentenstand erhoeht Vertrauen und reduziert aggressive Nachverhandlungen.',
+            'Beschreiben Sie den Zustand ehrlich und konkret. Bei Volkswagen Fahrzeugen mit hoher Laufleistung oder bekannten Schwachstellen ist Transparenz besonders wichtig. Verdeckte Maengel fuehren spaeter fast immer zu Preisabzug oder Abbruch.',
+            'Setzen Sie den Preis nicht emotional, sondern datenbasiert. Ein realistischer Korridor mit sauberer Argumentation bringt in der Praxis meist einen schnelleren und stabileren Abschluss als ein zu hoher Startpreis.',
+          ],
+          bullets: [
+            'Unterlagen vollstaendig und sauber aufbereiten',
+            'Bekannte Maengel offen benennen statt verbergen',
+            'Preisstrategie auf Markt- und Zustandsdaten stützen',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf fuer VW haeufig ideal ist',
+          paragraphs: [
+            'Der Privatverkauf kann theoretisch mehr bringen, verlangt aber viel Zeit, Nerven und Risikomanagement. Bei VW mit Defekten oder hoher Laufleistung fuehren Besichtigungen oft zu harten Nachverhandlungen, geplatzten Terminen und unklaren Zahlungszusagen.',
+            'Ein professioneller Volkswagen Ankauf bietet dagegen einen klaren Ablauf mit verlässlicher Kommunikation, dokumentiertem Vertrag und schneller Auszahlung. Das ist besonders wertvoll, wenn Sie das Fahrzeug kurzfristig ersetzen oder laufende Kosten schnell stoppen wollen.',
+            'Gerade fuer Fahrzeuge mit DSG-Themen, Motorschaden, Dieselproblemen oder ohne TÜV ist ein strukturierter Ankauf oft der effizienteste Weg: weniger Reibung, mehr Planungssicherheit und ein realistisches Ergebnis ohne langes Vermarktungsrisiko.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Welche VW Probleme sind beim Verkauf besonders wichtig?',
+          a: 'Hauefig sind DSG-Themen, TSI-Probleme wie Steuerkette oder Oelverbrauch, dieseltypische EGR/DPF-Fragen sowie Elektronikauffaelligkeiten besonders preisrelevant.',
+        },
+        {
+          q: 'Wann sollte ich meinen VW verkaufen?',
+          a: 'Meist vor grossen Reparaturbloecken, vor kritischer Laufleistungsschwelle oder vor deutlichem Restwertverlust. Fruehes Handeln reduziert Zeit- und Preisdruck.',
+        },
+        {
+          q: 'Sind Golf, Passat oder Touran automatisch problematisch?',
+          a: 'Nein. Entscheidend sind Generation, Motor, Getriebe, Laufleistung und Wartungshistorie. Der Modellname allein reicht fuer eine Bewertung nicht aus.',
+        },
+        {
+          q: 'Lohnt sich Reparatur bei VW Motorschaden noch?',
+          a: 'Das haengt von Kosten, Folgerisiko und realistischem Mehrwert nach Instandsetzung ab. Wenn die Rechnung unsicher bleibt, ist Verkauf oft wirtschaftlicher.',
+        },
+        {
+          q: 'Warum ist Autoankauf bei hohem Kilometerstand oft sinnvoll?',
+          a: 'Weil ein strukturierter Ankauf auch bei hoher Laufleistung oder Defekten planbar bleibt und Sie nicht von unsicheren Privatverhandlungen abhaengig sind.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-ohne-tuev',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+        'online-autoankauf-ablauf-7-schritte',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'VW jetzt verkaufen statt weiter Reparaturrisiko tragen?',
+        text: 'Pruefen Sie Ihren aktuellen Volkswagen Ankaufpreis und starten Sie den Verkauf mit klarem, sicheren Ablauf.',
+        href: '/vw-verkaufen',
+        label: 'Zur VW Ankaufseite',
+      },
+    },
+  },
+  porsche: {
+    slug: 'porsche',
+    displayName: 'Porsche',
+    keywordMap: {
+      primary: ['Porsche verkaufen', 'Porsche Ankauf', 'Porsche Autoankauf'],
+      secondary: [
+        'Porsche schnell verkaufen',
+        'Porsche Ankauf Deutschland',
+        'Porsche Motorschaden verkaufen',
+        'Porsche Unfallwagen verkaufen',
+        'Porsche gebraucht verkaufen',
+        'Porsche Export Ankauf',
+      ],
+      semantic: [
+        'Porsche Zuverlässigkeit',
+        'Porsche Probleme',
+        'Porsche Reparaturkosten',
+        'Porsche Wertermittlung',
+        'Porsche 911 verkaufen',
+        'Porsche Turbo GTS GT3 Ankauf',
+        'Porsche Sammlerfahrzeug verkaufen',
+        'Porsche diskret verkaufen',
+      ],
+      longTail: [
+        'Wann Porsche verkaufen vor großer Motorreparatur',
+        'Porsche mit Motorschaden professionell verkaufen',
+        'Porsche 911 mit hoher Laufleistung verkaufen',
+        'Porsche Sammlerfahrzeug diskret bewerten lassen',
+        'Porsche Reparatur oder Verkauf wirtschaftlich entscheiden',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Der Porsche-Fokus verbindet Emotion und Ökonomie: Das Fahrzeug als Leidenschaft respektieren, aber den Verkaufszeitpunkt über Marktwert, Kostenrisiko und Diskretion professionell steuern.',
+      requiredInsights: [
+        'Unterschiedliche Bewertungslogik für 911, SUV-Modelle und Performance-Derivate',
+        'Einordnung von Defektrisiken bei Hochleistungsantrieben und Premium-Komponenten',
+        'Sammler- und Seltenheitsfaktoren als Werttreiber im Ankaufprozess',
+      ],
+      bannedPatterns: [
+        'Massenmarkt-Tonalität ohne Premium- und Diskretionsbezug',
+        'pauschale Porsche-Aussagen ohne Modell- oder Generationseinordnung',
+        'aggressive Discount-Sprache statt hochwertiger Servicekommunikation',
+      ],
+      minimumSemanticKeywords: 15,
+    },
+    landing: {
+      slugPath: '/porsche-verkaufen',
+      seoTitle: 'Porsche verkaufen | Porsche Ankauf Deutschland',
+      seoDescription:
+        'Porsche verkaufen mit Premium-Service: faire Expertenbewertung, diskrete Abwicklung, schnelle Auszahlung und bundesweite Abholung.',
+      canonicalPath: '/porsche-verkaufen',
+      heroHeadline: 'Porsche verkaufen - exklusiv, sicher und wertgerecht',
+      heroSubheadline:
+        'Porsche Autoankauf in ganz Deutschland mit Premium-Bewertung, diskretem Ablauf und schneller Auszahlung',
+      h1: 'Porsche Autoankauf: Ihren Porsche sicher und zum Bestpreis verkaufen',
+      intro: [
+        'Einen Porsche zu verkaufen ist keine alltägliche Entscheidung. Für viele Besitzer steht hinter dem Fahrzeug mehr als reine Mobilität: Es ist ein Stück Persönlichkeit, Technikleidenschaft und oft auch eine lange persönliche Geschichte. Genau deshalb reicht bei einem Porsche Ankauf kein Standardprozess, der für beliebige Gebrauchtwagen gebaut wurde.',
+        'Wenn Sie Ihren Porsche verkaufen möchten, brauchen Sie einen Partner, der den Markenwert und die technische Tiefe versteht. Ob 911, Cayenne, Panamera oder Macan: Die Preisbildung hängt nicht nur von Baujahr und Kilometern ab, sondern von Historie, Spezifikation, Wartungsniveau, Vorbesitzstruktur und Marktnachfrage in Ihrem konkreten Segment.',
+        'Unser Porsche Autoankauf verbindet diese Faktoren mit einem klaren Premium-Ablauf. Sie erhalten keine beliebige Schätzung, sondern eine fundierte Bewertung mit nachvollziehbarer Herleitung. Ziel ist ein Ergebnis, das dem Fahrzeugcharakter gerecht wird und gleichzeitig Ihren zeitlichen Rahmen sowie Ihren Sicherheitsanspruch respektiert.',
+        'Besonders bei leistungsstarken Modellen wie Turbo, GTS oder GT3 ist Fachkenntnis entscheidend. Kleine Unterschiede in Ausstattung, Zustand, Umbauten, Servicehistorie oder Dokumentation können den Marktwert stark beeinflussen. Wer diese Details ignoriert, verliert im Verkauf häufig unnötig viel Potenzial.',
+        'Dasselbe gilt für Fahrzeuge mit Herausforderungen. Ein Porsche Unfallwagen, ein Fahrzeug mit Motorschaden oder ein Porsche mit Getriebethemen ist nicht automatisch wertlos. Entscheidend ist eine professionelle Einordnung von Schadensbild, Verwertbarkeit und Marktfenster. Genau hier trennt sich ein spezialisierter Ankauf deutlich vom allgemeinen Händleransatz.',
+        'Viele Eigentümer wünschen bei hochpreisigen Fahrzeugen vor allem Verlässlichkeit und Diskretion. Deshalb ist unser Prozess so aufgebaut, dass Besichtigung, Dokumentation, Übergabe und Auszahlung klar strukturiert bleiben. Keine unnötige Öffentlichkeit, keine chaotischen Nachverhandlungen, keine versteckten Kosten im letzten Schritt.',
+        'Wenn Sie Ihren Porsche schnell verkaufen möchten, ohne Qualität beim Ablauf zu verlieren, erhalten Sie bei uns beides: Tempo und Professionalität. In vielen Fällen ist ein Abschluss innerhalb weniger Tage möglich, sofern Fahrzeugdaten und Unterlagen vollständig vorliegen.',
+        'Unser Anspruch ist ein hochwertiger Service auf Augenhöhe. Sie behalten jederzeit Kontrolle über den Prozess, entscheiden transparent auf Basis belastbarer Zahlen und können sich darauf verlassen, dass Ihr Porsche mit dem Respekt behandelt wird, den ein Premiumfahrzeug verdient.',
+        'Gerade im oberen Preissegment sind Vertrauen und Seriosität oft wichtiger als ein unrealistisch hoher Erstpreis. Ein belastbares Angebot mit klaren Bedingungen, diskreter Abwicklung und verlässlicher Zahlung schafft in der Praxis mehr Sicherheit als jede theoretische Höchstzahl ohne Abschlussqualität. Genau diesen Premium-Standard setzen wir im Porsche Ankauf konsequent um.',
+        'Ob Porsche gebraucht verkaufen im Topzustand, Leasingrückläufer mit enger Frist oder Sammlerfahrzeug mit besonderem Profil: Wir schaffen einen sicheren Rahmen für wertgerechten Ankauf in Deutschland - effizient, diskret und konsequent auf Ihren Vorteil ausgerichtet.',
+      ],
+      benefitHeading: 'Warum Porsche-Besitzer unseren Premium-Ankauf wählen',
+      benefits: [
+        'Spezialisierte Porsche Bewertung statt Massenmarkt-Raster: Modell, Generation, Technikprofil und Historie werden differenziert analysiert.',
+        'Premium Handling mit Diskretion: strukturierte Kommunikation, klare Ansprechpartner und professionelles Auftreten über den gesamten Prozess.',
+        'Ankauf auch bei komplexen Fällen: Porsche Unfallwagen, Motorschaden, Getriebeschaden und Fahrzeuge mit hoher Laufleistung.',
+        'Besondere Kompetenz für 911, Cayenne, Panamera, Macan sowie Performance-Linien wie Turbo, GTS und GT3.',
+        'Schnelle, sichere Auszahlung mit transparenter Dokumentation und ohne versteckte Gebühren.',
+        'Bundesweite Abholung auf Wunsch - auch bei nicht fahrbereiten Fahrzeugen.',
+        'Zeitersparnis ohne Qualitätsverlust: keine unproduktiven Besichtigungsmarathons und keine unseriösen Verhandlungssituationen.',
+      ],
+      processHeading: 'Porsche verkaufen in 3 sicheren Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugprofil präzise übermitteln',
+          text: 'Sie senden Modell, Baujahr, Laufleistung, Ausstattung, Servicehistorie und bekannte Themen. Gerade bei Porsche erhöhen genaue Spezifikations- und Wartungsdaten die Bewertungsqualität deutlich.',
+        },
+        {
+          title: '2. Expertenbewertung und transparentes Angebot',
+          text: 'Wir bewerten Ihr Fahrzeug auf Basis aktueller Marktindikatoren, Technikrisiken und Ausstattungsprofil. Sie erhalten ein nachvollziehbares Angebot statt pauschaler Lockpreise.',
+        },
+        {
+          title: '3. Diskrete Übergabe und schnelle Auszahlung',
+          text: 'Nach Terminabstimmung erfolgt die Übergabe strukturiert und rechtssicher. Die Auszahlung wird zügig und dokumentiert durchgeführt, auf Wunsch inklusive bundesweiter Abholung.',
+        },
+      ],
+      buyTypesHeading: 'Welche Porsche wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Porsche Unfallwagen verkaufen',
+          text: 'Auch bei Unfallschäden bewerten wir Ihren Porsche fair anhand Schadenbild, Reparaturstand und dokumentierter Historie.',
+        },
+        {
+          title: 'Porsche Motorschaden verkaufen',
+          text: 'Bei kapitalen Motorthemen ist der Direktverkauf häufig wirtschaftlicher als ein kostspieliger Reparaturpfad mit unklarer Rendite.',
+        },
+        {
+          title: 'Porsche mit Getriebeschaden',
+          text: 'PDK- oder manuelle Getriebeprobleme schließen den Ankauf nicht aus. Wir ordnen technische Risiken realistisch und transparent ein.',
+        },
+        {
+          title: 'Porsche mit hoher Laufleistung',
+          text: 'Hohe Kilometer sind kein Ausschlusskriterium. Entscheidend bleiben Wartungsqualität, Nutzungshistorie und Gesamtzustand.',
+        },
+        {
+          title: 'Porsche Sammlerfahrzeuge',
+          text: 'Seltene Konfigurationen und dokumentierte Historie werden bei uns differenziert betrachtet - nicht wie ein Standard-Gebrauchtwagen.',
+        },
+        {
+          title: 'Porsche Leasingrückläufer',
+          text: 'Wir unterstützen auch zeitkritische Rückläufer mit sauberem Prozess, klaren Unterlagenanforderungen und planbarer Übergabe.',
+        },
+        {
+          title: '911, Cayenne, Panamera, Macan',
+          text: 'Unsere Bewertung berücksichtigt modelltypische Unterschiede in Nachfrage, Unterhaltsprofil und Wertentwicklung.',
+        },
+        {
+          title: 'Turbo, GTS, GT3 und Performance-Modelle',
+          text: 'Hochleistungsmodelle werden individuell bewertet, inklusive Spezifikation, Einsatzprofil und dokumentierter Wartungsqualität.',
+        },
+        {
+          title: 'Seltene und exportrelevante Porsche',
+          text: 'Für bestimmte Fahrzeuge kann Export eine wertstabile Option sein. Wir prüfen das sauber in der Ankaufstrategie.',
+        },
+      ],
+      comparisonHeading: 'Warum unser Porsche Ankauf oft die bessere Entscheidung ist',
+      comparisonRows: [
+        {
+          criterion: 'Bewertungstiefe',
+          us: 'Porsche-spezifische Expertenbewertung mit Modell- und Technikbezug',
+          privateSale: 'Häufig subjektive Preisdebatten ohne belastbare Einordnung',
+          traditionalDealer: 'Oft pauschale Abschläge ohne Premium-Spezifik',
+        },
+        {
+          criterion: 'Diskretion und Sicherheit',
+          us: 'Vertraulicher Prozess, klare Dokumentation, strukturierte Übergabe',
+          privateSale: 'Mehr Öffentlichkeit, mehr Kontaktaufwand, höheres Risiko',
+          traditionalDealer: 'Sicher, aber häufig weniger flexibel bei Sonderfällen',
+        },
+        {
+          criterion: 'Geschwindigkeit',
+          us: 'In vielen Fällen Abschluss innerhalb weniger Tage',
+          privateSale: 'Oft Wochen bis Monate mit unklarem Ergebnis',
+          traditionalDealer: 'Abhängig von internen Prozessen und Kapazitäten',
+        },
+        {
+          criterion: 'Fahrzeuge mit Defekten',
+          us: 'Ankauf auch bei Motorschaden, Getriebeproblemen und Unfallschäden',
+          privateSale: 'Schwieriger Abschluss und starke Nachverhandlungen',
+          traditionalDealer: 'Häufig restriktiv oder mit sehr niedrigen Angeboten',
+        },
+      ],
+      trustHeading: 'Vertrauen durch Premium-Standards',
+      trustPoints: [
+        'Professionelle, diskrete Betreuung für hochpreisige Fahrzeuge',
+        'Faire und transparente Preislogik ohne versteckte Kosten',
+        'Schnelle Auszahlung mit klarer Zahlungsdokumentation',
+        'Bundesweite Abholung und strukturierte Übergabe auf Wunsch',
+        'Kompetenz für Performance- und Sammlersegmente',
+        'Rechtssichere Abwicklung mit verbindlicher Kommunikation',
+      ],
+      ctas: [
+        {
+          heading: 'Porsche jetzt diskret bewerten lassen',
+          text: 'Erhalten Sie eine unverbindliche Experteneinschätzung und prüfen Sie Ihren marktgerechten Ankaufpreis ohne Risiko.',
+          label: 'Porsche bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Premium-Verkaufsprozess starten',
+          text: 'Wenn Sie bereits verkaufen möchten, begleiten wir Sie mit einem sicheren, hochwertigen Ablauf bis zur Auszahlung.',
+          label: 'Porsche Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Porsche Probleme zuerst einordnen',
+          text: 'Unser Porsche Guide hilft bei der Frage, ob Reparatur oder Verkauf wirtschaftlich sinnvoller ist.',
+          label: 'Zum Porsche Guide',
+          href: '/ratgeber/porsche-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Porsche verkaufen, Bewertung und Ankauf',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen Porsche verkaufen?',
+          a: 'Bei vollständigen Fahrzeugdaten ist ein Abschluss häufig innerhalb weniger Tage möglich. Die genaue Dauer hängt von Zustand, Unterlagen und Terminabstimmung ab.',
+        },
+        {
+          q: 'Kaufen Sie auch Porsche mit Motorschaden oder Getriebeschaden?',
+          a: 'Ja. Wir kaufen auch Porsche mit größeren technischen Defekten. Wichtig ist eine transparente Zustandsbeschreibung für eine belastbare Bewertung.',
+        },
+        {
+          q: 'Werden auch Porsche Unfallwagen angekauft?',
+          a: 'Ja. Wir bewerten Unfallfahrzeuge differenziert nach Schadenbild, Reparaturstand und dokumentierter Historie.',
+        },
+        {
+          q: 'Können Sie auch seltene oder sammelwürdige Porsche bewerten?',
+          a: 'Ja. Sammlerfahrzeuge und seltene Konfigurationen werden bei uns individuell bewertet, inklusive Historie und Spezifikation.',
+        },
+        {
+          q: 'Ist der Porsche Ankauf in ganz Deutschland möglich?',
+          a: 'Ja. Unser Porsche Ankauf Deutschland ist bundesweit ausgerichtet. In vielen Fällen bieten wir eine Abholung an.',
+        },
+        {
+          q: 'Wie läuft die Auszahlung bei hochpreisigen Fahrzeugen ab?',
+          a: 'Die Auszahlung erfolgt transparent und dokumentiert, üblicherweise per Überweisung. Zeitpunkt und Ablauf werden vor Übergabe eindeutig abgestimmt.',
+        },
+        {
+          q: 'Ist auch Porsche Export Ankauf möglich?',
+          a: 'Für bestimmte Fahrzeuge ja. Wir prüfen, ob Export aus wirtschaftlicher Sicht sinnvoll ist und integrieren dies in die Bewertung.',
+        },
+        {
+          q: 'Fallen beim Ankauf versteckte Gebühren an?',
+          a: 'Nein. Unser Prozess ist auf transparente Konditionen ohne versteckte Zusatzkosten ausgelegt.',
+        },
+      ],
+      internalLinksHeading: 'Weiterführende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Porsche kostenlos bewerten',
+          context: 'Für eine schnelle, unverbindliche Preisorientierung auf Expertenniveau.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Ablauf beim Fahrzeugverkauf',
+          context: 'Wenn Sie den sicheren Verkaufsprozess direkt starten möchten.',
+        },
+        {
+          href: '/ratgeber/porsche-probleme-verkauf',
+          label: 'Porsche Guide: Probleme und Verkaufszeitpunkt',
+          context: 'Für die strategische Entscheidung zwischen Reparatur und Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'porsche-probleme-verkauf',
+      seoTitle: 'Porsche Probleme und Verkauf: Premium Guide 2026',
+      seoDescription:
+        'Porsche Probleme verstehen, Reparaturkosten einordnen und den idealen Verkaufszeitpunkt finden. Premium-Guide für 911, Cayenne, Boxster und mehr.',
+      h1: 'Porsche Guide: Probleme erkennen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'Porsche steht für Präzision, Performance und emotionale Bindung. Genau deshalb fällt die Verkaufsentscheidung oft schwerer als bei anderen Marken. Dieser Guide zeigt Ihnen fundiert, welche Porsche Probleme wirklich kostenrelevant sind, wie Sie Unterhalts- und Reparaturrisiken wirtschaftlich einordnen und wann der richtige Zeitpunkt für einen wertstabilen Verkauf ist.',
+      quickFacts: [
+        'Viele Porsche-Verkäufe passieren vor großen Reparaturblöcken, nicht erst nach einem Ausfall.',
+        'Porsche Zuverlässigkeit hängt stark von Modellgeneration, Wartung und Einsatzprofil ab.',
+        'IMS-, Bore-Scoring-, Kühlungs- und Getriebethemen sind bei bestimmten Baureihen zentrale Wertfaktoren.',
+        'Collector Value und Marktfenster können den idealen Verkaufszeitpunkt stark beeinflussen.',
+        'Hohe Unterhaltskosten machen die Frage Reparatur oder Verkauf bei Premiumfahrzeugen besonders wichtig.',
+        'Ein professioneller Autoankauf kann bei komplexen Porsche-Fällen schneller und sicherer sein als Privatvermarktung.',
+      ],
+      sections: [
+        {
+          heading: 'Warum Porsche-Besitzer ihre Fahrzeuge verkaufen',
+          paragraphs: [
+            'Die Gründe sind vielfältig und selten rein technisch. Oft treffen emotionale Bindung, wirtschaftliche Realität und veränderte Lebensplanung aufeinander. Wer früher viel gefahren ist, fährt heute eventuell weniger. Andere wollen aus einem Daily Driver in ein Sammlerfahrzeug wechseln oder Kapital für ein neues Projekt freisetzen.',
+            'Bei Porsche spielt zusätzlich das Thema Planbarkeit eine große Rolle. Mit steigender Laufleistung und zunehmendem Fahrzeugalter können Wartung und Reparatur nicht nur teurer, sondern auch schwerer kalkulierbar werden. Viele Eigentümer entscheiden sich deshalb bewusst vor dem nächsten größeren Kostenblock.',
+            'Ein Verkauf ist damit nicht zwangsläufig ein Abschied von der Marke, sondern häufig eine strategische Entscheidung im Sinne von Risiko, Liquidität und Timing.',
+          ],
+          bullets: [
+            'Emotion und Wirtschaftlichkeit müssen gemeinsam betrachtet werden',
+            'Verkauf ist oft eine aktive Strategie statt Notentscheidung',
+            'Frühes Handeln erhöht Preisstabilität und Verhandlungsspielraum',
+          ],
+        },
+        {
+          heading: 'Ist Porsche teuer im Unterhalt? Die realistische Perspektive',
+          paragraphs: [
+            'Ja, im Vergleich zu Volumenfahrzeugen sind Unterhalt und Instandhaltung bei Porsche typischerweise höher. Das betrifft nicht nur Teilepreise, sondern auch Arbeitszeit, Diagnostik, spezialisierte Werkstätten und die Qualitätserwartung bei jeder Maßnahme.',
+            'Zusätzlich schlagen premiumtypische Nebenkosten zu Buche: Hochleistungsreifen, größere Bremsanlagen, anspruchsvolle Fahrwerkskomponenten und teils höhere Versicherungskosten. Einzelne Positionen sind planbar, doch in Summe kann die jährliche Kostenlast spürbar steigen.',
+            'Genau hier entsteht die zentrale Frage vieler Halter: Weiter investieren oder in einem stabilen Marktfenster verkaufen? Eine belastbare Antwort erfordert immer den Vergleich von künftigen Kosten und realistischem Marktwert.',
+          ],
+        },
+        {
+          heading: 'Lifestyle-Wechsel als Verkaufstreiber',
+          paragraphs: [
+            'Nicht jeder Verkauf wird durch einen Defekt ausgelöst. Häufig ändern sich Lebensumstände: Umzug, Familienplanung, neuer Arbeitsweg, geringere Fahrleistung oder der Wunsch nach einem anderen Fahrzeugkonzept. Besonders bei sportlichen Modellen verändert das die Nutzungslogik stark.',
+            'Viele Besitzer stellen fest, dass ein hochwertiges Fahrzeug wirtschaftlich nur Sinn ergibt, wenn es auch regelmäßig genutzt wird. Steht der Wagen überwiegend, steigen Opportunitätskosten durch Kapitalbindung und laufende Fixkosten.',
+            'Ein geordneter Verkauf kann in solchen Situationen finanziell sinnvoller sein als eine lange Haltephase ohne echten Nutzwert.',
+          ],
+        },
+        {
+          heading: 'Wertverlust versus Sammlerwert bei Porsche',
+          paragraphs: [
+            'Porsche ist keine homogene Wertklasse. Während manche Konfigurationen klassischen Wertverlust zeigen, können andere Varianten durch Seltenheit, Historie oder Marktstimmung stabil bleiben oder sogar gewinnen. Diese Unterschiede werden häufig unterschätzt.',
+            'Entscheidend ist die Kombination aus Modell, Baujahr, Laufleistung, Spezifikation, Originalität und Dokumentation. Ein sauber dokumentiertes Fahrzeug mit gefragter Konfiguration kann deutlich resilienter sein als ein nominell ähnliches Fahrzeug ohne Historie.',
+            'Für den Verkaufszeitpunkt heißt das: Nicht nur auf allgemeine Marktstimmung schauen, sondern den konkreten Nachfragezustand Ihres Fahrzeugs professionell einordnen.',
+          ],
+          bullets: [
+            'Collector Value entsteht aus Seltenheit plus Dokumentation',
+            'Nicht jedes Porsche-Modell folgt derselben Wertkurve',
+            'Timing entscheidet oft stärker als der letzte Prozentpunkt im Wunschpreis',
+          ],
+        },
+        {
+          heading: 'Porsche Probleme im Fokus: IMS-Thematik bei älteren 911',
+          paragraphs: [
+            'Bei bestimmten älteren 911-Generationen wird das Thema IMS-Lager immer wieder diskutiert. Nicht jedes Fahrzeug ist betroffen, dennoch beeinflusst die Frage nach Vorsorge, Historie und technischem Status den Marktwert erheblich.',
+            'Für Käufer zählt weniger das Forengerücht als die belegbare Fahrzeugakte. Nachweise über durchgeführte Maßnahmen, regelmäßige Wartung und professionelle Diagnosen verbessern die Verhandlungsposition beim Verkauf deutlich.',
+            'Wenn Unsicherheit bleibt und gleichzeitig weitere Instandhaltungsthemen anstehen, ist ein frühzeitiger Verkauf oft wirtschaftlich sinnvoller als langes Abwarten.',
+          ],
+        },
+        {
+          heading: 'Bore Scoring und Motorthemen: teure Risiken richtig bewerten',
+          paragraphs: [
+            'Engine Scoring zählt zu den kostensensiblen Themen bei bestimmten Porsche-Motoren. Für Halter ist vor allem die Unsicherheit kritisch: Selbst bei ersten Symptomen ist der finale Kostenrahmen nicht immer sofort eindeutig.',
+            'Porsche Motorschaden Ursachen sind selten monokausal. Ölthemen, thermische Belastung, Fahrprofil und Wartungsgeschichte können zusammenwirken. Genau deshalb braucht die Entscheidung Reparatur oder Verkauf eine nüchterne Risikorechnung.',
+            'Wer früh reagiert und transparent dokumentiert, kann im Ankauf oft ein stabileres Ergebnis erreichen als bei einer späten Eskalation mit akutem Defekt.',
+          ],
+          bullets: [
+            'Frühdiagnose und Dokumentation sind preisrelevant',
+            'Gesamtrisiko betrachten, nicht nur Einzelbefund',
+            'Verkauf vor Eskalation kann Nettoeffekt verbessern',
+          ],
+        },
+        {
+          heading: 'Kühlungssystem und thermische Belastung',
+          paragraphs: [
+            'Kühlungsthemen wirken auf den ersten Blick oft unspektakulär, sind bei Hochleistungsfahrzeugen jedoch besonders wichtig. Schon kleinere Auffälligkeiten können Folgerisiken erzeugen, wenn sie nicht frühzeitig sauber geklärt werden.',
+            'Bei leistungsstarken Fahrzeugen bedeutet thermische Stabilität immer auch Werterhalt. Käufer achten deshalb auf Wartungsdisziplin, nachvollziehbare Instandsetzung und den dokumentierten technischen Gesamtzustand.',
+            'Wenn sich Kühlungsthemen mit weiteren Baustellen kombinieren, kippt die Wirtschaftlichkeit häufig schneller als erwartet.',
+          ],
+        },
+        {
+          heading: 'PDK und manuelle Getriebe: Unterschiede im Risiko',
+          paragraphs: [
+            'Sowohl PDK als auch manuelle Getriebe können je nach Modell und Nutzung unterschiedliche Schwachstellen zeigen. Beim Verkauf ist nicht der Getriebetyp allein entscheidend, sondern der konkrete Zustands- und Wartungsnachweis.',
+            'Schaltauffälligkeiten, Verzögerungen oder wiederkehrende Fehlermeldungen reduzieren die Planbarkeit für potenzielle Käufer. Das führt im Privatmarkt oft zu harten Preisabschlägen oder geplatzten Abschlüssen.',
+            'Ein professioneller Ankauf kann hier sinnvoll sein, weil technische Risiken strukturierter bewertet werden und der Prozess nicht an Einzelmeinungen bei Probefahrten scheitert.',
+          ],
+        },
+        {
+          heading: 'Elektronikprobleme bei Premiumfahrzeugen',
+          paragraphs: [
+            'Elektronikthemen entstehen häufig schleichend: Sensorabweichungen, sporadische Meldungen, Komfort- oder Assistenzfunktionen mit Aussetzern. Das eigentliche Problem ist oft nicht ein einzelnes Bauteil, sondern die Diagnosekomplexität.',
+            'Mit zunehmender Systemintegration steigen Aufwand und Kosten für Fehlersuche. Das wirkt direkt auf die Entscheidung, ob weitere Investitionen sinnvoll sind oder ob der Verkauf die wirtschaftlich bessere Option darstellt.',
+            'Für einen stabilen Verkauf ist Transparenz zentral. Saubere Fehlerbeschreibung und verfügbare Werkstattnachweise reduzieren Unsicherheit und verbessern die Abschlussqualität.',
+          ],
+        },
+        {
+          heading: 'Besonders auffällige Porsche-Modelle und Generationen',
+          paragraphs: [
+            'Häufig diskutiert werden frühe Cayenne-Modelle sowie ältere Boxster- und 911-Generationen. Solche Hinweise sind wertvoll als Orientierung, ersetzen aber keine individuelle Fahrzeugbewertung.',
+            'Entscheidend bleiben Baujahr, Motorvariante, Wartungsstand, Laufleistung und Nutzungshistorie. Ein exzellent gepflegtes Fahrzeug kann trotz bekannter Modellthemen deutlich besser dastehen als ein vermeintlich unkritisches Exemplar mit Lücken.',
+            'Wer verkaufen möchte, sollte deshalb nicht auf pauschale Modellurteile setzen, sondern auf belastbare Zustandsdaten und professionelle Wertermittlung.',
+          ],
+          bullets: [
+            'Frühe Cayenne: Kostenprofil und Nutzungshistorie genau prüfen',
+            'Ältere Boxster/911: Technikstatus plus Dokumentation entscheidend',
+            'Pauschalurteile vermeiden, Einzelfahrzeug bewerten',
+          ],
+        },
+        {
+          heading: 'Wann Porsche verkaufen? Die wichtigsten Zeitfenster',
+          paragraphs: [
+            'Die beste Antwort auf die Frage "Wann Porsche verkaufen" liegt meist vor großen Reparaturentscheidungen, vor kritischen Laufleistungsschwellen und in stabilen Nachfragefenstern für Ihr konkretes Modell.',
+            'Bei sammlerorientierten Fahrzeugen kommt Marktzyklik hinzu: Nachfrage nach bestimmten Spezifikationen kann phasenweise deutlich steigen. Wer diese Fenster nutzt, realisiert oft bessere Ergebnisse als bei zeitlich erzwungenem Verkauf.',
+            'Grundregel: Nicht erst unter Druck verkaufen. Ein planbarer, fahrbereiter Zustand mit vollständigen Unterlagen ist für Preis und Abschlussqualität fast immer vorteilhaft.',
+          ],
+        },
+        {
+          heading: 'Porsche Reparaturkosten: warum sie so hoch sind',
+          paragraphs: [
+            'Porsche Reparaturkosten setzen sich aus mehreren Ebenen zusammen: anspruchsvolle Technik, teure Komponenten, hohe Qualitätsstandards und spezialisierter Werkstattaufwand. Dadurch können selbst mittelgroße Maßnahmen relevante Budgets binden.',
+            'Zusätzlich ist die Bandbreite groß. Zwischen einer beherrschbaren Einzelmaßnahme und einer umfangreichen Instandsetzung liegen oft nur wenige Diagnosebefunde. Diese Unsicherheit erhöht das wirtschaftliche Risiko für Halter.',
+            'Für die Entscheidung Reparatur oder Verkauf ist deshalb nicht nur der aktuelle Kostenvoranschlag wichtig, sondern der erwartbare Gesamtaufwand der nächsten 12 bis 24 Monate.',
+          ],
+          bullets: [
+            'Premium-Komponenten plus Spezialarbeitszeit treiben Kosten',
+            'Risikoaufschlag für mögliche Folgeschäden einplanen',
+            'Entscheidung immer als Mehrjahresrechnung treffen',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Ein klarer Entscheidungsrahmen',
+          paragraphs: [
+            'Nutzen Sie drei Leitfragen: Erstens, wie hoch ist die sichere Sofortinvestition? Zweitens, wie hoch ist das Risiko weiterer Defekte? Drittens, wie stark steigt der realistische Verkaufspreis nach Reparatur wirklich?',
+            'Ergänzen Sie indirekte Kosten wie Standzeit, Ersatzmobilität und Ihren organisatorischen Aufwand. Gerade bei hochwertigen Fahrzeugen werden diese Faktoren häufig unterschätzt, obwohl sie den Nettoeffekt stark beeinflussen.',
+            'Wenn Risiko und Zusatzaufwand den erwartbaren Mehrwert übersteigen, ist ein strukturierter Verkauf oft die klarere wirtschaftliche Entscheidung.',
+          ],
+        },
+        {
+          heading: 'Wie maximieren Sie den Wert Ihres Porsche vor dem Verkauf?',
+          paragraphs: [
+            'Der größte Hebel liegt in der Vorbereitung. Vollständige Serviceunterlagen, Rechnungen, Diagnosen, HU-Berichte und Schlüsselstatus schaffen Vertrauen und reduzieren Sicherheitsabschläge.',
+            'Bei Porsche zählt technische Transparenz besonders. Offene Kommunikation zu bekannten Themen wirkt professioneller als das Verschweigen von Mängeln und verbessert die Verhandlungsstabilität.',
+            'Setzen Sie auf eine realistische Preisstrategie mit marktbezogenen Argumenten. Ein sauber positionierter Zielkorridor führt oft schneller zu einem verlässlichen Abschluss als überzogene Einstiegspreise.',
+          ],
+          bullets: [
+            'Dokumentation vollständig und strukturiert vorbereiten',
+            'Zustand präzise und ehrlich kommunizieren',
+            'Preis auf Daten, nicht auf Wunschdenken stützen',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf für Porsche oft die beste Lösung ist',
+          paragraphs: [
+            'Der Privatverkauf kann theoretisch höhere Erlöse versprechen, ist bei Premiumfahrzeugen aber häufig zeitintensiv, risikobehaftet und diskretionskritisch. Gerade bei Defekten oder komplexer Historie wird der Abschluss schnell unplanbar.',
+            'Ein professioneller Porsche Ankauf bietet dagegen strukturierte Bewertung, sichere Vertragsabwicklung, nachvollziehbare Zahlung und klare Terminführung. Das ist besonders relevant, wenn Sie hochwertige Transaktionen effizient und ohne öffentliche Reibung abwickeln möchten.',
+            'Für Fahrzeuge mit technischem Risiko, hoher Laufleistung oder speziellem Profil ist ein spezialisierter Ankauf deshalb oft der pragmatischere Weg: weniger Unsicherheit, mehr Planungssicherheit und ein wirtschaftlich belastbares Ergebnis.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Welche Porsche Probleme sind beim Verkauf besonders entscheidend?',
+          a: 'Besonders relevant sind je nach Modell Themen wie IMS bei älteren 911, Bore Scoring, Kühlung, Getriebeauffälligkeiten sowie Elektronikthemen, da sie direkt auf Preis und Risiko wirken.',
+        },
+        {
+          q: 'Ist Porsche teuer im Unterhalt?',
+          a: 'Im Regelfall ja. Premium-Komponenten, spezialisierte Werkstätten und hohe Qualitätsstandards führen zu höheren Gesamtunterhaltskosten als im Volumensegment.',
+        },
+        {
+          q: 'Wann sollte ich meinen Porsche verkaufen?',
+          a: 'Häufig vor größeren Reparaturblöcken, vor kritischen Laufleistungsschwellen oder in einem günstigen Nachfragefenster für Ihre konkrete Modellkonfiguration.',
+        },
+        {
+          q: 'Lohnt sich Reparatur bei Porsche Motorschaden?',
+          a: 'Das hängt von Schadensumfang, Folgerisiko und realistischem Mehrerlös ab. Wenn der Nettoeffekt unsicher bleibt, ist ein strukturierter Verkauf oft wirtschaftlicher.',
+        },
+        {
+          q: 'Kann ich auch einen Porsche mit Defekten professionell verkaufen?',
+          a: 'Ja. Mit transparenter Zustandsbeschreibung und sauberer Dokumentation sind auch komplexe oder beschädigte Fahrzeuge professionell und sicher verkäuflich.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoverkauf-an-exporthaendler',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+        'online-autoankauf-ablauf-7-schritte',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Porsche jetzt verkaufen und Risiken aktiv steuern?',
+        text: 'Prüfen Sie Ihren Porsche Ankaufpreis mit Premium-Bewertung und starten Sie den Verkauf in einem sicheren, diskreten Ablauf.',
+        href: '/porsche-verkaufen',
+        label: 'Zur Porsche Ankaufseite',
+      },
+    },
+  },
   oldtimer: {
     slug: 'oldtimer',
     displayName: 'Oldtimer',
