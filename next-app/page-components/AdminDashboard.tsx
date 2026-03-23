@@ -991,37 +991,39 @@ const AdminDashboardContent: React.FC = () => {
                     <table className="w-full">
                       <thead className="bg-slate-50 border-b border-gray-200">
                         <tr>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Datum</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Status</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Kunde</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Fahrzeug</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Preis</th>
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Zugewiesen an</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-20">Datum</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Status</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Kunde</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Fahrzeug</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-14">PLZ</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Preis</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Wunschpreis</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-32">Zugewiesen an</th>
                           {estimationSubTab === 'active' && (
                             <>
-                              <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Anrufstatus</th>
+                              <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-28">Anrufstatus</th>
                             </>
                           )}
-                          <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Aktion</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-16">Aktion</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-100">
                         {filteredEstimations.length === 0 ? (
                           <tr>
-                            <td colSpan={estimationSubTab === 'active' ? 8 : 7} className="px-4 py-8 text-center text-slate-500">
+                            <td colSpan={estimationSubTab === 'active' ? 10 : 9} className="px-4 py-8 text-center text-slate-500">
                               {estimationSubTab === 'active' ? 'Keine Bewertungen gefunden' : estimationSubTab === 'archived' ? 'Keine archivierten Bewertungen' : 'Keine gelöschten Bewertungen'}
                             </td>
                           </tr>
                         ) : (
                           filteredEstimations.map((est) => (
                             <tr key={est.id} className="hover:bg-slate-50 transition-colors">
-                              <td className="px-4 py-3 text-sm text-slate-600">
+                              <td className="px-2 py-3 text-sm text-slate-600">
                                 <div>{new Date(est.created_at).toLocaleDateString('de-DE')}</div>
                                 <div className="text-xs text-slate-400">
                                   {new Date(est.created_at).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                                 </div>
                               </td>
-                              <td className="px-4 py-3">
+                              <td className="px-2 py-3">
                                 {est.status === 'appointment_booked' ? (
                                   <button
                                     type="button"
@@ -1055,30 +1057,34 @@ const AdminDashboardContent: React.FC = () => {
                                   </span>
                                 )}
                               </td>
-                              <td className="px-4 py-3 text-sm">
-                                <div className="font-semibold text-slate-800">
-                                  {est.first_name} {est.last_name}
-                                </div>
-                                <div className="text-slate-500 text-xs">{est.email}</div>
+                              <td className="px-2 py-3 text-sm max-w-[144px]">
+                                <div className="font-semibold text-slate-800 truncate">{est.first_name} {est.last_name}</div>
+                                <div className="text-slate-500 text-xs truncate">{est.email}</div>
                               </td>
-                              <td className="px-4 py-3 text-sm">
-                                <div className="font-semibold text-slate-800">
-                                  {est.brand} {est.model}
-                                </div>
+                              <td className="px-2 py-3 text-sm max-w-[144px]">
+                                <div className="font-semibold text-slate-800 truncate">{est.brand} {est.model}</div>
                                 <div className="text-slate-500 text-xs">
                                   {est.year} • {est.mileage} km
                                 </div>
                               </td>
-                              <td className="px-4 py-3 text-sm font-bold text-brand-orange">
+                              <td className="px-2 py-3 text-sm font-bold text-green-600 whitespace-nowrap">
+                                {est.postal_code ?? <span className="text-slate-300 font-normal">—</span>}
+                              </td>
+                              <td className="px-2 py-3 text-sm font-bold text-brand-orange">
                                 {est.status === 'incomplete'
                                   ? <span className="text-slate-400 font-semibold">Ausstehend</span>
                                   : formatPrice(est.estimated_price)}
                               </td>
-                              <td className="px-4 py-3">
+                              <td className="px-2 py-3 text-sm font-bold text-red-500 whitespace-nowrap">
+                                {est.desired_price
+                                  ? `${est.desired_price} €`
+                                  : <span className="text-slate-300 font-normal">—</span>}
+                              </td>
+                              <td className="px-2 py-3">
                                 <select
                                   value={est.assigned_to ?? 'Nicht zugewiesen'}
                                   onChange={(e) => handleAssignedToChange(est.id, e.target.value)}
-                                  className={`min-w-[130px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${ASSIGNEE_COLORS[est.assigned_to ?? 'Nicht zugewiesen'] ?? ASSIGNEE_COLORS['Other']} border-current`}
+                                  className={`min-w-[110px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${ASSIGNEE_COLORS[est.assigned_to ?? 'Nicht zugewiesen'] ?? ASSIGNEE_COLORS['Other']} border-current`}
                                 >
                                   {ASSIGNEES.map((name) => (
                                     <option key={name} value={name}>{name}</option>
@@ -1087,11 +1093,11 @@ const AdminDashboardContent: React.FC = () => {
                               </td>
                               {estimationSubTab === 'active' && (
                                 <>
-                                  <td className="px-4 py-3">
+                                  <td className="px-2 py-3">
                                     <select
                                       value={est.call_status ?? 'Neu'}
                                       onChange={(e) => handleCallStatusChange(est.id, e.target.value)}
-                                      className={`min-w-[120px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${
+                                      className={`min-w-[100px] px-2 py-1 rounded-full text-xs font-bold border-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-orange ${
                                         (est.call_status ?? 'Neu') === 'Neu'
                                           ? 'bg-slate-100 text-slate-700 border-slate-300'
                                           : est.call_status === 'Zugewiesen'
@@ -1120,12 +1126,12 @@ const AdminDashboardContent: React.FC = () => {
                                   </td>
                                 </>
                               )}
-                              <td className="px-4 py-3">
-                                <div className="flex items-center gap-2 flex-wrap">
+                              <td className="px-2 py-3">
+                                <div className="flex items-center gap-1 flex-wrap">
                                   <button
                                     type="button"
                                     onClick={() => handleViewDetails(est)}
-                                    className="px-3 py-1 bg-brand-orange hover:bg-orange-600 text-white rounded-lg text-xs font-bold transition-colors"
+                                    className="px-2 py-1 bg-brand-orange hover:bg-orange-600 text-white rounded-lg text-xs font-bold transition-colors"
                                   >
                                     Details
                                   </button>
@@ -1135,7 +1141,7 @@ const AdminDashboardContent: React.FC = () => {
                                         type="button"
                                         onClick={() => handleArchiveEstimation(est.id)}
                                         disabled={archivingEstimationId === est.id}
-                                        className="px-3 py-1 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                                        className="px-2 py-1 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
                                         title="Archivieren"
                                       >
                                         {archivingEstimationId === est.id ? '…' : 'Archiv'}
@@ -1144,7 +1150,7 @@ const AdminDashboardContent: React.FC = () => {
                                         type="button"
                                         onClick={() => handleMoveEstimationToDeleted(est.id)}
                                         disabled={archivingEstimationId === est.id}
-                                        className="px-3 py-1 bg-slate-500 hover:bg-slate-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                                        className="px-2 py-1 bg-slate-500 hover:bg-slate-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
                                         title="In Gelöscht verschieben"
                                       >
                                         {archivingEstimationId === est.id ? '…' : 'Löschen'}
@@ -1157,7 +1163,7 @@ const AdminDashboardContent: React.FC = () => {
                                         type="button"
                                         onClick={() => handleRestoreEstimation(est.id)}
                                         disabled={archivingEstimationId === est.id}
-                                        className="px-3 py-1 bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                                        className="px-2 py-1 bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
                                         title="Wiederherstellen"
                                       >
                                         {archivingEstimationId === est.id ? '…' : 'Wiederherstellen'}
@@ -1165,7 +1171,7 @@ const AdminDashboardContent: React.FC = () => {
                                       <button
                                         type="button"
                                         onClick={() => handleHardDeleteEstimationById(est.id)}
-                                        className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-bold transition-colors"
+                                        className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-bold transition-colors"
                                         title="Endgültig löschen"
                                       >
                                         Endgültig löschen
