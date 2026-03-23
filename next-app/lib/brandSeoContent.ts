@@ -323,6 +323,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           label: 'BMW Guide: Probleme und Verkaufstiming',
           context: 'Für die Entscheidung Reparatur vs. Verkauf.',
         },
+        {
+          href: '/bmw-3er-verkaufen',
+          label: 'BMW 3er verkaufen',
+          context: 'Für modellgenaue Hinweise zu Kostenrisiken und Verkaufszeitpunkt.',
+        },
       ],
     },
     guide: {
@@ -704,6 +709,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           href: '/ratgeber/mercedes-probleme-verkauf',
           label: 'Mercedes Guide: Probleme und Verkaufszeitpunkt',
           context: 'Fur die Entscheidung zwischen Reparatur und Verkauf.',
+        },
+        {
+          href: '/mercedes-c-klasse-verkaufen',
+          label: 'Mercedes C-Klasse verkaufen',
+          context: 'Für modellgenaue Preis- und Timingfaktoren der C-Klasse.',
         },
       ],
     },
@@ -1132,6 +1142,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           href: '/ratgeber/audi-probleme-verkauf',
           label: 'Audi Guide: Probleme und Verkaufstiming',
           context: 'Für die Entscheidung Reparatur versus Verkauf.',
+        },
+        {
+          href: '/audi-a4-verkaufen',
+          label: 'Audi A4 verkaufen',
+          context: 'Für modellgenaue Hinweise zu Premium-Wert und Reparaturkosten.',
         },
       ],
     },
@@ -1597,6 +1612,16 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           href: '/ratgeber/vw-probleme-verkauf',
           label: 'VW Guide: Probleme und Verkaufszeitpunkt',
           context: 'Für die Entscheidung Reparatur versus Verkauf bei Ihrem Volkswagen.',
+        },
+        {
+          href: '/vw-golf-verkaufen',
+          label: 'VW Golf verkaufen',
+          context: 'Für modellgenaue Golf-Einordnung bei Defekten, Laufleistung und Timing.',
+        },
+        {
+          href: '/vw-passat-verkaufen',
+          label: 'VW Passat verkaufen',
+          context: 'Für Passat-spezifische Hinweise zu Langstrecke, Kostenlogik und Verkauf.',
         },
       ],
     },
@@ -2485,6 +2510,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten möchten.',
         },
         {
+          href: '/toyota-corolla-verkaufen',
+          label: 'Toyota Corolla verkaufen',
+          context: 'Modellspezifische Entscheidungshilfe fur Corolla, Hybridstatus und Verkaufszeitpunkt.',
+        },
+        {
           href: '/ratgeber/toyota-probleme-verkauf',
           label: 'Toyota Guide: Zuverlässigkeit, Probleme, Verkauf',
           context: 'Für die Entscheidung Reparatur versus Verkauf mit klarem Kostenblick.',
@@ -2941,6 +2971,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten mochten.',
         },
         {
+          href: '/opel-corsa-verkaufen',
+          label: 'Opel Corsa verkaufen',
+          context: 'Modellfokus fur Corsa mit Stadtverschleiss, Laufleistung und Preislogik.',
+        },
+        {
           href: '/ratgeber/opel-probleme-verkauf',
           label: 'Opel Guide: Probleme, Kosten, Verkaufszeitpunkt',
           context: 'Fur die fundierte Entscheidung zwischen Reparatur und Verkauf.',
@@ -3165,6 +3200,1950 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
         text: 'Prufen Sie Ihren Opel Ankaufpreis transparent und starten Sie den Verkauf mit einem klaren, sicheren Ablauf.',
         href: '/opel-verkaufen',
         label: 'Zur Opel Ankaufseite',
+      },
+    },
+  },
+  seat: {
+    slug: 'seat',
+    displayName: 'SEAT',
+    keywordMap: {
+      primary: ['SEAT verkaufen', 'SEAT Ankauf', 'SEAT Autoankauf'],
+      secondary: [
+        'SEAT schnell verkaufen',
+        'SEAT Ankauf Deutschland',
+        'SEAT Motorschaden verkaufen',
+        'SEAT Unfallwagen verkaufen',
+        'SEAT gebraucht verkaufen',
+        'SEAT Export Ankauf',
+      ],
+      semantic: [
+        'SEAT Zuverlassigkeit',
+        'SEAT haufige Fehler',
+        'SEAT Reparaturkosten',
+        'SEAT TSI Probleme',
+        'SEAT DSG Probleme',
+        'SEAT hohe Laufleistung',
+        'SEAT Restwert',
+        'SEAT VW Konzern',
+      ],
+      longTail: [
+        'Wann SEAT verkaufen vor teuren Reparaturen',
+        'SEAT mit DSG Schaden fair verkaufen',
+        'SEAT mit hoher Laufleistung schnell verkaufen',
+        'SEAT reparieren oder verkaufen Entscheidung',
+        'SEAT Export Ankauf bei alteren Fahrzeugen',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'SEAT wird als dynamische und bezahlbare VW-Konzern-Alternative eingeordnet: urban genutzt, oft sportlich gefahren und dadurch mit klaren Verschleissmustern im Verkauf.',
+      requiredInsights: [
+        'SEAT als alltagsnahes, modernes Stadt- und Pendlerfahrzeug darstellen',
+        'TSI- und DSG-Themen differenziert mit Kostenlogik verknupfen',
+        'Hohe Nutzung durch junge Fahrer und City-Betrieb realistisch abbilden',
+      ],
+      bannedPatterns: [
+        'Premium-Inszenierung wie bei Porsche oder Mercedes',
+        'allgemeine VW-Texte ohne SEAT-Modelle und Nutzungskontext',
+        'pauschale Defektangst ohne wirtschaftliche Einordnung',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/seat-verkaufen',
+      seoTitle: 'SEAT verkaufen | SEAT Ankauf Deutschland',
+      seoDescription:
+        'SEAT verkaufen mit fairer Bewertung, schneller Auszahlung und kostenloser Abholung in Deutschland. Auch Unfallwagen, DSG- und Motorschaden.',
+      canonicalPath: '/seat-verkaufen',
+      heroHeadline: 'SEAT verkaufen - modern, fair und schnell',
+      heroSubheadline:
+        'SEAT Autoankauf in ganz Deutschland mit transparenter Bewertung und sicherer Abwicklung',
+      h1: 'SEAT Autoankauf: Ihren SEAT schnell und fair verkaufen',
+      intro: [
+        'SEAT steht fur viele Fahrer in Deutschland fur einen modernen, dynamischen Auftritt bei alltagstauglichen Kosten. Genau diese Mischung macht die Marke besonders beliebt bei Stadtfahrern, Pendlern und jungen Besitzern. Wenn Sie Ihren SEAT verkaufen wollen, sollten Sie diese Nutzung realistisch in die Preisbewertung einbeziehen lassen.',
+        'Als bezahlbare Alternative innerhalb des VW-Konzerns wird ein SEAT oft intensiver genutzt als ein reines Zweitfahrzeug. Viele Kilometer in urbanem Betrieb, haufiges Stop-and-go und sportlichere Fahrweise konnen den technischen Zustand deutlich beeinflussen. Deshalb reicht ein pauschaler Durchschnittswert beim Verkauf selten aus.',
+        'Unser SEAT Ankauf bewertet Ihr Fahrzeug nicht nur nach Baujahr und Kilometerstand, sondern nach einem konkreten Praxisprofil: Modell, Motor, DSG-Status, Wartungshistorie, sichtbarer Verschleiss und aktuelle Nachfrage. So erhalten Sie einen realistischen und nachvollziehbaren Ankaufpreis statt einer unklaren Schnellschatzung.',
+        'Viele Halter verkaufen ihren SEAT nicht erst beim Ausfall, sondern schon bei einem geplanten Wechsel. Typische Ausloser sind der Umstieg auf ein neueres Modell, veranderte Fahrleistung, steigende Werkstattkosten oder der Wunsch nach mehr Platz. Gerade in diesen Phasen lohnt sich ein strukturierter Direktverkauf.',
+        'Bei Modellen wie Ibiza, Leon, Ateca oder Arona ist der Markt lebendig, aber auch preissensibel. Kleine Unterschiede bei Pflegezustand, Servicebelegen und Technikzustand konnen den Verkaufspreis deutlich bewegen. Wer diese Punkte sauber dokumentiert, verkauft in der Regel schneller und mit stabilerer Preisbasis.',
+        'Besonders relevant sind bei vielen Fahrzeugen TSI- und DSG-Themen. Nicht jedes Symptom bedeutet einen schweren Defekt, aber Unsicherheit fuhrt im Privatverkauf oft zu harten Nachverhandlungen. Unser Prozess schafft Klarheit fruhzeitig und reduziert damit Preisrisiko sowie Zeitverlust.',
+        'SEAT schnell verkaufen bedeutet bei uns nicht hektisch verkaufen. Es bedeutet: klare Datenerfassung, marktorientierte Bewertung, verbindliche Kommunikation und sichere Auszahlung. Damit erhalten Sie Planungssicherheit, ohne wochenlange Inserate und unzuverlassige Besichtigungstermine.',
+        'Auch bei schwierigen Fahrzeugen bleibt ein Verkauf moglich. Wir kaufen SEAT Unfallwagen, Fahrzeuge mit Motorschaden, DSG- oder Getriebeschaden sowie Autos ohne TUV. Vor allem bei alteren Fahrzeugen mit hoher Laufleistung kann das wirtschaftlich sinnvoller sein als weitere Reparaturketten.',
+        'Unser Team kennt Fahrzeuge aus dem VW-Konzern seit Jahren. Diese Erfahrung hilft dabei, technische Risiken und Marktpotenzial realistisch einzuordnen, statt pauschal abzuwerten. Sie erhalten ein Angebot, das Nutzung und Zustand in Balance bringt.',
+        'Zusatzlich bieten wir bundesweiten Service mit optionaler Abholung. So konnen Sie den SEAT Verkauf bequem abschliessen, egal ob Sie in einer Grossstadt oder im Umland wohnen. Sie sparen Zeit und behalten jederzeit den Uberblick uber den Ablauf.',
+        'Gerade bei Fahrzeugen mit wechselnder Nutzung, etwa Stadtverkehr unter der Woche und Langstrecke am Wochenende, sind pauschale Marktpreise oft unzutreffend. Wir beziehen deshalb typische Belastungsmuster in die Bewertung ein und schaffen so mehr Preissicherheit fur Sie.',
+        'Wenn Sie zwischen Privatverkauf und Direktankauf abwagen, lohnt sich ein Vergleich der Gesamtkosten: Inseratzeit, Besichtigungsaufwand, Verhandlungsrisiko und mogliche Nachforderungen. Unser strukturierter Ankauf reduziert diese Unsicherheiten und liefert einen klaren Abschlussrahmen.',
+        'Damit ist der Verkauf nicht nur schnell, sondern auch kalkulierbar. Sie wissen fruh, welche Daten den Preis bewegen, welche Schritte als nachstes folgen und wann Sie mit einem belastbaren Abschluss rechnen konnen.',
+        'Unser Ziel ist ein SEAT Ankauf Deutschland, der modern, transparent und praktisch ist. Sie erhalten klare Zahlen, konnen fundiert entscheiden und verkaufen Ihr Fahrzeug ohne unnötige Unsicherheit.',
+      ],
+      benefitHeading: 'Warum viele SEAT-Besitzer an uns verkaufen',
+      benefits: [
+        'Transparente Bewertung statt Pauschalpreis: Modell, TSI/DSG, Laufleistung und Wartung werden differenziert berucksichtigt.',
+        'Schneller und einfacher Ablauf: In vielen Fallen ist ein Abschluss innerhalb von 24 bis 72 Stunden moglich.',
+        'Ankauf auch bei Problemen: SEAT Unfallwagen, Motorschaden, Getriebeschaden und Fahrzeuge ohne TUV sind moglich.',
+        'Faire Preislogik auch bei hoher Laufleistung und urban gepragtem Verschleissprofil.',
+        'Erfahrung mit VW-Konzerntechnik fur realistische Einordnung von TSI- und DSG-Themen.',
+        'Bundesweiter Service inklusive optionaler kostenloser Abholung.',
+        'Sichere Auszahlung und klare Vertragsdokumentation ohne versteckte Zusatzkosten.',
+      ],
+      processHeading: 'SEAT verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugdaten senden',
+          text: 'Sie ubermitteln Modell, Baujahr, Laufleistung, Motorisierung, Getriebe, Ausstattung und bekannte Mangel. Serviceunterlagen erhohen die Genauigkeit.',
+        },
+        {
+          title: '2. Angebot mit klarer Preislogik erhalten',
+          text: 'Wir bewerten Ihren SEAT anhand aktueller Marktdaten, technischer Faktoren und Nachfrage. Sie erhalten ein transparentes Angebot ohne Lockpreis.',
+        },
+        {
+          title: '3. Ubergabe und Auszahlung',
+          text: 'Nach Terminabstimmung erfolgt die dokumentierte Fahrzeugubergabe. Die Auszahlung erfolgt schnell und nachvollziehbar, auf Wunsch mit Abholung.',
+        },
+      ],
+      buyTypesHeading: 'Welche SEAT wir ankaufen',
+      buyTypes: [
+        {
+          title: 'SEAT Unfallwagen verkaufen',
+          text: 'Auch bei dokumentierten Unfallschaden ist ein Ankauf moglich. Entscheidend sind Schadenbild, Reparaturstatus und Gesamtzustand.',
+        },
+        {
+          title: 'SEAT Motorschaden verkaufen',
+          text: 'Wenn hohe Motorreparaturen drohen, ist der Direktverkauf oft wirtschaftlicher als eine unklare Investitionskette.',
+        },
+        {
+          title: 'SEAT mit Getriebeschaden oder DSG-Problemen',
+          text: 'Schaltprobleme, Ruckeln oder Notlauf schliessen den Ankauf nicht aus. Wir bewerten Risiko und Restwert differenziert.',
+        },
+        {
+          title: 'SEAT mit hoher Laufleistung',
+          text: 'Viele SEAT sind alltagsbedingt hoch gelaufen. Laufleistung allein ist kein Ausschlusskriterium, wenn Zustand und Historie passen.',
+        },
+        {
+          title: 'SEAT ohne TUV',
+          text: 'Auch ohne gultige HU/AU ist ein Verkauf moglich. Notige Investitionen werden transparent in der Bewertung berucksichtigt.',
+        },
+        {
+          title: 'Firmenwagen und Leasingrucklaufer',
+          text: 'Wir begleiten gewerbliche Verkaufe mit klaren Anforderungen an Unterlagen, Termine und Auszahlung.',
+        },
+        {
+          title: 'Beliebte Modelle: Ibiza, Leon, Ateca, Arona',
+          text: 'Diese Modelle bewerten wir marktorientiert nach Baujahr, Motorisierung, Ausstattung und realem Nutzungsmuster.',
+        },
+        {
+          title: 'TSI- und DSG-Fahrzeuge',
+          text: 'Bei TSI-Motoren und DSG-Getrieben prufen wir Symptome und Historie sauber, statt pauschal den Preis zu drucken.',
+        },
+        {
+          title: 'Exportgeeignete SEAT',
+          text: 'Fur bestimmte Fahrzeuge kann ein Exportweg sinnvoll sein. Wir prufen transparent, ob dieser Weg den besseren Nettoerlös bringt.',
+        },
+      ],
+      comparisonHeading: 'Warum unser SEAT Ankauf oft die bessere Wahl ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Marktdaten plus technische Einordnung von TSI/DSG und Nutzung',
+          privateSale: 'Haufige Nachverhandlung bei technischen Ruckfragen',
+          traditionalDealer: 'Oft pauschale Abschlage bei hoher Laufleistung oder Defekten',
+        },
+        {
+          criterion: 'Zeit bis Abschluss',
+          us: 'In vielen Fallen 24 bis 72 Stunden',
+          privateSale: 'Oft Wochen mit Inserat, Besichtigung und Unsicherheit',
+          traditionalDealer: 'Abhangig von internen Ankaufgrenzen und Prozessen',
+        },
+        {
+          criterion: 'Defekte Fahrzeuge',
+          us: 'Ankauf auch bei Unfall, Motorschaden, DSG-Problem und ohne TUV',
+          privateSale: 'Komplexe Erklarungen und hohes Absprungrisiko',
+          traditionalDealer: 'Teilweise restriktive Annahme oder sehr niedrige Angebote',
+        },
+        {
+          criterion: 'Sicherheit',
+          us: 'Klare Vertrags- und Zahlungsdokumentation',
+          privateSale: 'Erhohtes Risiko bei Zahlung, Haftung und Terminzuverlassigkeit',
+          traditionalDealer: 'Formal sicher, aber oft weniger flexibel im Sonderfall',
+        },
+      ],
+      trustHeading: 'Vertrauen durch klare Zusagen',
+      trustPoints: [
+        'Transparenter Ablauf vom Erstkontakt bis zur Ubergabe',
+        'Keine versteckten Kosten oder nachtraglichen Zusatzgebuhren',
+        'Schnelle Auszahlung mit nachvollziehbarem Zahlungsnachweis',
+        'Bundesweiter Service inklusive optionaler Abholung',
+        'Faire Bewertung auch bei hoher Laufleistung oder Defekten',
+        'Verbindliche Kommunikation und klare Terminabstimmung',
+      ],
+      ctas: [
+        {
+          heading: 'SEAT jetzt kostenlos bewerten',
+          text: 'Starten Sie mit einer unverbindlichen Einschatzung und erhalten Sie schnell Klarheit uber den realistischen Ankaufpreis.',
+          label: 'SEAT bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'SEAT Verkauf direkt starten',
+          text: 'Wenn Sie bereits verkaufen mochten, begleiten wir Sie strukturiert bis zur sicheren Auszahlung.',
+          label: 'SEAT Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'SEAT Probleme zuerst einordnen',
+          text: 'Unser SEAT Guide unterstutzt Sie bei der Entscheidung zwischen Reparatur und Verkauf.',
+          label: 'Zum SEAT Guide',
+          href: '/ratgeber/seat-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: SEAT verkaufen, DSG und hohe Laufleistung',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen SEAT verkaufen?',
+          a: 'Mit vollstandigen Fahrzeugdaten ist ein Abschluss haufig innerhalb weniger Tage moglich. Die genaue Dauer hangt von Zustand und Terminlage ab.',
+        },
+        {
+          q: 'Kaufen Sie auch SEAT mit DSG-Problemen an?',
+          a: 'Ja. Auch bei DSG-Auffalligkeiten ist ein Ankauf moglich. Wir bewerten den technischen Zustand transparent im Einzelfall.',
+        },
+        {
+          q: 'Ist ein Verkauf bei hoher Laufleistung moglich?',
+          a: 'Ja. Hohe Kilometer sind bei SEAT alltagsbedingt nicht ungewohnlich. Entscheidend sind Wartung, Historie und Gesamtzustand.',
+        },
+        {
+          q: 'Kann ich einen SEAT mit Motorschaden oder Unfallschaden verkaufen?',
+          a: 'Ja. Defekt- und Unfallfahrzeuge konnen angekauft werden, wenn der Zustand offen beschrieben ist.',
+        },
+        {
+          q: 'Ist SEAT Ankauf Deutschland bundesweit verfugbar?',
+          a: 'Ja. Wir bieten den Ankauf bundesweit an, in vielen Regionen inklusive kostenloser Abholung.',
+        },
+        {
+          q: 'Kaufen Sie auch SEAT ohne TUV?',
+          a: 'Ja. Fahrzeuge ohne gultige HU/AU konnen weiterhin fair bewertet und angekauft werden.',
+        },
+        {
+          q: 'Ist SEAT Export Ankauf moglich?',
+          a: 'Bei geeigneten Fahrzeugen ja. Wir prufen, ob ein Exportweg wirtschaftlich sinnvoll ist, und beziehen dies in die Bewertung ein.',
+        },
+        {
+          q: 'Fallen versteckte Kosten an?',
+          a: 'Nein. Unser Ankaufprozess ist transparent und ohne versteckte Zusatzkosten.',
+        },
+      ],
+      internalLinksHeading: 'Weiterfuhrende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'SEAT kostenlos bewerten',
+          context: 'Fur eine schnelle Preisorientierung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Ablauf beim Autoverkauf',
+          context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten mochten.',
+        },
+        {
+          href: '/seat-leon-verkaufen',
+          label: 'SEAT Leon verkaufen',
+          context: 'Modellfokus fur Leon mit DSG-/Turbo-Risiken und sportlichem Nutzungsprofil.',
+        },
+        {
+          href: '/ratgeber/seat-probleme-verkauf',
+          label: 'SEAT Guide: Probleme, Kosten, Verkaufszeitpunkt',
+          context: 'Fur die fundierte Entscheidung zwischen Reparatur und Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'seat-probleme-verkauf',
+      seoTitle: 'SEAT Probleme und Verkauf: Praxis-Guide 2026',
+      seoDescription:
+        'SEAT Zuverlassigkeit, haufige Fehler und Reparaturkosten klar erklart. Finden Sie den richtigen Zeitpunkt, Ihren SEAT zu verkaufen.',
+      h1: 'SEAT Guide: Probleme verstehen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'SEAT Fahrzeuge verbinden modernes Design, sportliche Abstimmung und alltagstaugliche Kosten. Genau diese Mischung macht die Marke beliebt, fuhrt aber oft auch zu intensiver Nutzung im Stadt- und Pendelverkehr. Dieser Guide zeigt Ihnen, welche SEAT Probleme wirklich relevant sind, wie Sie Reparaturkosten sauber einordnen und wann ein Verkauf wirtschaftlich sinnvoller wird als weiteres Investieren.',
+      quickFacts: [
+        'SEAT wird haufig urban und dynamisch genutzt, was Verschleissmuster beeinflusst.',
+        'DSG- und TSI-Themen sollten fruh beobachtet und wirtschaftlich bewertet werden.',
+        'Hohe Laufleistung ist bei Ibiza und Leon kein Ausnahmefall.',
+        'Der beste Verkaufszeitpunkt liegt oft vor grosseren Kombinationsreparaturen.',
+        'Eine klare Historie verbessert den Erlos auch bei alteren Fahrzeugen deutlich.',
+        'Strukturierter Autoankauf reduziert Zeitverlust und Nachverhandlungsrisiken.',
+      ],
+      sections: [
+        {
+          heading: 'Warum SEAT-Besitzer ihre Fahrzeuge verkaufen',
+          paragraphs: [
+            'Die Entscheidung zum Verkauf entsteht bei SEAT oft aus einer Kombination von Nutzung, Kosten und Lebensphase. Viele Fahrzeuge laufen als Alltagsauto mit hoher Fahrleistung, sodass der wirtschaftliche Blick auf die nachsten Jahre zentral wird.',
+            'Halter verkaufen meist nicht erst beim Totalausfall, sondern dann, wenn mehrere Reparaturthemen gleichzeitig sichtbar werden oder ein Modellwechsel geplant ist.',
+            'Wer diesen Schritt fruhzeitig plant, hat mehr Verhandlungsspielraum und erzielt haufig stabilere Preise.',
+          ],
+          bullets: [
+            'Verkauf ist oft eine Kosten- und Planungsentscheidung',
+            'Fruher Zeitpunkt reduziert Druck und Preisabschlage',
+            'Restwert und Investitionsrisiko sollten gemeinsam bewertet werden',
+          ],
+        },
+        {
+          heading: 'Hohe Nutzung durch Stadtverkehr und junge Fahrer',
+          paragraphs: [
+            'SEAT Modelle wie Ibiza und Leon sind in urbanen Regionen besonders prasent. Viel Kurzstrecke, Stop-and-go, Parkmanover und haufige Kaltstarts beeinflussen Verschleiss und Wartungsbedarf.',
+            'Dazu kommt bei einigen Fahrzeugen eine dynamischere Fahrweise, die Bremsen, Kupplung, Fahrwerk und Reifen fruher beanspruchen kann.',
+            'Diese Faktoren bedeuten nicht automatisch schlechte Qualitat, sollten aber in der Preis- und Verkaufsstrategie realistisch einkalkuliert werden.',
+          ],
+        },
+        {
+          heading: 'Verschleiss und steigende Unterhaltskosten',
+          paragraphs: [
+            'Viele kleinere Werkstattpositionen wirken einzeln uberschaubar, konnen in Summe jedoch eine deutliche Kostenkette bilden. Das betrifft besonders altere Fahrzeuge mit hoher Laufleistung.',
+            'Wenn Wartungsthemen zusammenkommen, sinkt der wirtschaftliche Nutzen des Weiterfahrens haufig schneller als erwartet.',
+            'Ein fruhzeitiger Verkauf vor grosseren Investitionsblocken ist dann oft die solidere Option.',
+          ],
+        },
+        {
+          heading: 'Upgrade auf neuere Modelle als typischer Verkaufsgrund',
+          paragraphs: [
+            'Ein haufiger Ausloser ist der Wechsel auf eine neuere Generation mit besserer Effizienz, aktueller Assistenztechnik oder geandertem Platzbedarf.',
+            'In diesem Kontext taucht manchmal auch ein Wechsel innerhalb des Konzerns auf, beispielsweise in Richtung CUPRA. Dieser Schritt ist eher eine Nutzungsentscheidung als ein Mangelurteil uber den bisherigen SEAT.',
+            'Wer den Verkauf vor anstehenden Groesseren Reparaturen plant, realisiert den Umstieg meist mit besserer Kalkulierbarkeit.',
+          ],
+        },
+        {
+          heading: 'SEAT haufige Fehler: DSG-Probleme richtig einordnen',
+          paragraphs: [
+            'DSG-Auffalligkeiten wie Ruckeln, verzogertes Schalten oder unruhiges Anfahrverhalten sind bei bestimmten Baujahren und Nutzungsmustern bekannte Themen.',
+            'Nicht jede Auffalligkeit bedeutet sofort einen kapitalen Schaden, aber die wirtschaftliche Relevanz kann hoch sein, wenn mehrere Symptome gleichzeitig auftreten.',
+            'Fur den Verkauf zahlt Transparenz: dokumentierte Diagnose und nachvollziehbare Historie stabilisieren die Preisfindung deutlich.',
+          ],
+        },
+        {
+          heading: 'TSI-Motoren: Steuerkette und Ölverbrauch',
+          paragraphs: [
+            'Bei manchen TSI-Varianten werden Steuerkettenthemen oder erhohter Ölverbrauch diskutiert. Wichtig ist eine differenzierte Betrachtung nach Motorcode, Baujahr, Wartung und Symptomlage.',
+            'Wer fruh reagiert, kann Folgekosten begrenzen und die Reparatur-oder-Verkauf-Frage mit besseren Daten beantworten.',
+            'Im Verkauf reduzieren klare Unterlagen und ehrliche Zustandsangaben die Gefahr harter Nachverhandlungen.',
+          ],
+        },
+        {
+          heading: 'Elektronikprobleme im Alltag',
+          paragraphs: [
+            'Sporadische Sensorfehler, Komfortfunktionen oder Fehlermeldungen sind bei alternden Fahrzeugen nicht untypisch. Oft sind es keine Grossschaden, aber Diagnose und Wiederholungskosten summieren sich.',
+            'Gerade im Stadtalltag mit hoher Nutzungsfrequenz kann daraus ein relevanter Zeit- und Kostenfaktor entstehen.',
+            'Eine saubere Dokumentation aller bekannten Punkte schafft Vertrauen bei der Bewertung.',
+          ],
+        },
+        {
+          heading: 'Turbo-Verschleiss und Leistungsverhalten',
+          paragraphs: [
+            'Bei intensiver Nutzung und hoher Laufleistung kann der Turbolader ein Thema werden, insbesondere wenn Wartungsintervalle oder thermische Belastung nicht ideal waren.',
+            'Leistungsverlust oder ungewohnliche Gerause sollten fruh gepruft werden, damit die wirtschaftliche Tragweite klar wird.',
+            'Wenn ein groesseres Turbothema wahrscheinlich ist, kann ein Verkauf vor hoher Investition sinnvoll sein.',
+          ],
+        },
+        {
+          heading: 'Fahrwerk und Achskomponenten bei urbanem Einsatz',
+          paragraphs: [
+            'Schlaglocher, Bordsteine und dichter Stadtverkehr beanspruchen Fahrwerk und Lenkung uberdurchschnittlich. Bei SEAT mit sportlicher Abstimmung wird dies oft fruher spurbare.',
+            'Einzelne Positionen sind selten kritisch, die Kombination mehrerer Verschleissteile kann den Unterhalt aber deutlich erhohen.',
+            'Deshalb lohnt sich ein Blick auf den Gesamtzustand statt auf isolierte Einzelreparaturen.',
+          ],
+        },
+        {
+          heading: 'Welche SEAT Modelle gelten als auffalliger?',
+          paragraphs: [
+            'Pauschalurteile helfen wenig, dennoch zeigen Praxisbeobachtungen bei bestimmten Generationen von Ibiza und Leon haufiger einzelne Technikthemen.',
+            'Diese Hinweise sind nur Orientierung. Entscheidend bleibt immer das konkrete Fahrzeug mit seiner Wartungshistorie und Nutzung.',
+            'Eine Einzelfallbewertung ist fur den Verkauf belastbarer als jede starre Problemjahr-Liste.',
+          ],
+          bullets: [
+            'Ibiza: je nach Generation Fokus auf Antrieb und Elektrik',
+            'Leon: TSI/DSG-Konstellation und Wartungshistorie genau prufen',
+            'Ateca/Arona: Fahrprofil und Laufleistung im Kontext bewerten',
+          ],
+        },
+        {
+          heading: 'Wann SEAT verkaufen? Die besten Zeitfenster',
+          paragraphs: [
+            'Der optimale Zeitpunkt liegt oft vor grossen Investitionen, nicht erst nach dem Defekt. Sobald mehrere Wartungs- oder Reparaturpunkte zusammenkommen, sinkt der Restwert meist schneller.',
+            'Zusatzlich wirken Laufleistungsschwellen auf Nachfrage und Preisbereitschaft. Wer fruh reagiert, kann diese Effekte besser steuern.',
+            'Ein geplanter Verkauf schafft zudem mehr Optionen fur den Fahrzeugwechsel.',
+          ],
+        },
+        {
+          heading: 'Laufleistungsschwellen und Restwert',
+          paragraphs: [
+            'Viele Halter unterschatzen den Einfluss bestimmter Kilometerbereiche auf die Vermarktung. Nicht die genaue Zahl allein, sondern das Zusammenspiel mit Historie und Zustand entscheidet.',
+            'Bei hoher Laufleistung kann eine saubere Dokumentation den Preis stabilisieren und Abschlusszeiten verkurzen.',
+            'Wichtig ist, den Verkauf nicht erst in eine Phase zu verschieben, in der zusatzlich hohe Reparaturen anstehen.',
+          ],
+        },
+        {
+          heading: 'SEAT Reparaturkosten im wirtschaftlichen Kontext',
+          paragraphs: [
+            'SEAT gilt im Durchschnitt als bezahlbar, trotzdem konnen sich Kosten im Alter kumulieren. Entscheidend ist nicht nur die nachste Rechnung, sondern das Gesamtbild der kommenden 12 bis 24 Monate.',
+            'Wenn mehrere Themen parallel auftreten, steigt das Risiko ungeplanter Folgekosten deutlich an.',
+            'Dann ist die Frage nicht mehr nur technisch, sondern klar wirtschaftlich: investieren oder mit stabilem Restwert verkaufen.',
+          ],
+          bullets: [
+            'Gesamtkosten statt Einzelpositionen betrachten',
+            'Folgerisiko und Standzeiten mitrechnen',
+            'Restwert gegen Investitionssumme sauber vergleichen',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Ein praxisnaher Entscheidungsrahmen',
+          paragraphs: [
+            'Nutzen Sie drei Fragen: Wie hoch ist die sichere Reparaturinvestition? Wie wahrscheinlich sind weitere Kosten? Wie stark steigt der Erlos nach Reparatur realistisch an?',
+            'Wenn der erwartete Mehrerlos die Investition und das Risiko nicht klar ubertrifft, ist der Verkauf oft die robustere Option.',
+            'Diese Methodik hilft, emotionale Entscheidungen zu vermeiden und wirtschaftlich klar zu handeln.',
+            'Praktisch empfiehlt sich, zwei Szenarien nebeneinander zu rechnen: Verkauf im aktuellen Zustand versus Verkauf nach Reparatur mit realistischer Mehrerlösannahme. Erst dieser direkte Vergleich zeigt, ob eine Investition wirklich sinnvoll ist oder nur Zeit und Kapital bindet.',
+          ],
+        },
+        {
+          heading: 'Wie maximieren Sie den Verkaufspreis Ihres SEAT?',
+          paragraphs: [
+            'Der wichtigste Hebel ist Vorbereitung: vollstandige Unterlagen, nachvollziehbare Servicehistorie und transparente Angaben zu bekannten Mangeln.',
+            'Bei SEAT mit hoher Nutzung wirkt eine klare Dokumentation besonders stark, weil sie technische Unsicherheit reduziert.',
+            'Zusatzlich verbessert eine realistische Preispositionierung die Abschlusswahrscheinlichkeit deutlich.',
+          ],
+          bullets: [
+            'Serviceheft, Rechnungen und HU-Berichte bereithalten',
+            'Mangel offen benennen statt erst in der Verhandlung erklaren',
+            'Preisrahmen datenbasiert festlegen',
+          ],
+        },
+        {
+          heading: 'Praxisvergleich: Ibiza und Leon wirtschaftlich einordnen',
+          paragraphs: [
+            'Beim Verkauf von SEAT Ibiza und SEAT Leon zeigt sich oft derselbe Effekt: Das Modell allein entscheidet nicht uber den Preis, sondern die Kombination aus Nutzung, Wartung und technischen Auffalligkeiten.',
+            'Ein Ibiza mit hoher Stadtlaufleistung kann trotz vieler Kilometer attraktiv bleiben, wenn Servicehistorie und Zustand sauber dokumentiert sind. Ein Leon mit vergleichbarer Laufleistung, aber offenen DSG- oder TSI-Fragen, wird dagegen oft kritischer bewertet.',
+            'Fur Halter bedeutet das: Nicht nur auf Kilometer schauen, sondern auf die Qualitat der belegbaren Fahrzeughistorie. Diese Unterlagen sind in der Praxis haufig der Unterschied zwischen stabiler Verhandlung und deutlichem Preisabschlag.',
+          ],
+          bullets: [
+            'Modellimage ersetzt keine technische Einzelfallbewertung',
+            'Dokumentation reduziert Unsicherheit bei TSI- und DSG-Fahrzeugen',
+            'Nutzungskontext beeinflusst die Preisargumentation messbar',
+          ],
+        },
+        {
+          heading: 'Checkliste vor dem SEAT-Verkauf: schnell und sauber vorbereiten',
+          paragraphs: [
+            'Viele Verkaufsprozesse verzogern sich, weil Unterlagen und Zustandsangaben erst wahrend der Verhandlung zusammengetragen werden. Eine kurze Vorbereitung spart Zeit und verbessert die Verbindlichkeit auf beiden Seiten.',
+            'Sinnvoll ist ein strukturierter Vorab-Check: Zulassungsunterlagen, Servicebelege, letzte HU-Berichte, Reparaturrechnungen und eine realistische Mangelubersicht. Erganzend helfen klare Fahrzeugfotos, damit der Zustand bereits vor dem Termin nachvollziehbar ist.',
+            'Mit dieser Vorbereitung erhalten Sie in der Regel ein praziseres Angebot, vermeiden Missverstandnisse und verkurzen die Zeit bis zum Abschluss deutlich. Gerade bei alltagsgenutzten Fahrzeugen mit hoher Laufleistung ist das ein entscheidender Vorteil.',
+          ],
+          bullets: [
+            'Dokumente geordnet bereithalten',
+            'Bekannte Mangel offen und konkret notieren',
+            'Fahrzeugzustand vorab sauber erfassen',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf fur SEAT oft ideal ist',
+          paragraphs: [
+            'Der Privatverkauf kann bei TSI- oder DSG-Ruckfragen aufwendig sein und zu langen Verhandlungsschleifen fuhren. Das kostet Zeit und senkt Planungssicherheit.',
+            'Ein professioneller SEAT Ankauf bietet klare Prozesse, dokumentierte Zahlung und kurze Wege bis zum Abschluss.',
+            'Gerade fur hochgelaufene oder defekte Fahrzeuge ist der strukturierte Direktankauf haufig die effizienteste Losung.',
+            'Zusatzlich erhalten Sie fruh einen belastbaren Preisrahmen und konnen den Fahrzeugwechsel besser und nachhaltig planen, statt auf unklare Interessentenreaktionen im Privatmarkt angewiesen zu sein.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Sind DSG-Probleme ein Ausschluss fur den Verkauf?',
+          a: 'Nein. Auch mit DSG-Auffalligkeiten ist ein Verkauf moglich. Wichtig sind transparente Angaben und eine saubere Zustandsbeschreibung.',
+        },
+        {
+          q: 'Wann sollte ich meinen SEAT mit hoher Laufleistung verkaufen?',
+          a: 'Haufig vor der nachsten relevanten Laufleistungsschwelle oder vor grosseren kombinierten Reparaturen.',
+        },
+        {
+          q: 'Welche SEAT Probleme sind besonders kostenrelevant?',
+          a: 'Je nach Modell sind vor allem DSG-Themen, TSI-bezogene Auffalligkeiten, Elektrik sowie Turbo- und Fahrwerksverschleiss relevant.',
+        },
+        {
+          q: 'Lohnt sich Reparatur vor dem Verkauf immer?',
+          a: 'Nein. Entscheidend sind Investitionshohe, Folgerisiko und realistischer Mehrerlos. Oft ist direkter Verkauf wirtschaftlicher.',
+        },
+        {
+          q: 'Ist SEAT Export Ankauf moglich?',
+          a: 'Ja. Fur geeignete Fahrzeuge kann der Exportweg sinnvoll sein und in die Ankaufstrategie einbezogen werden.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-ohne-tuev',
+        'autoexport-ankauf',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'SEAT jetzt verkaufen und Kostenrisiken aktiv steuern?',
+        text: 'Prufen Sie Ihren SEAT Ankaufpreis transparent und starten Sie den Verkauf mit einem klaren, sicheren Ablauf.',
+        href: '/seat-verkaufen',
+        label: 'Zur SEAT Ankaufseite',
+      },
+    },
+  },
+  ford: {
+    slug: 'ford',
+    displayName: 'Ford',
+    keywordMap: {
+      primary: ['Ford verkaufen', 'Ford Ankauf', 'Ford Autoankauf'],
+      secondary: [
+        'Ford schnell verkaufen',
+        'Ford Ankauf Deutschland',
+        'Ford Motorschaden verkaufen',
+        'Ford Unfallwagen verkaufen',
+        'Ford gebraucht verkaufen',
+        'Ford Export Ankauf',
+      ],
+      semantic: [
+        'Ford Zuverlassigkeit',
+        'Ford haufige Fehler',
+        'Ford Reparaturkosten',
+        'Ford EcoBoost Probleme',
+        'Ford Getriebeschaden',
+        'Ford hohe Laufleistung',
+        'Ford Transit verkaufen',
+        'Ford Nutzfahrzeug Ankauf',
+      ],
+      longTail: [
+        'Wann Ford verkaufen vor grosser Reparatur',
+        'Ford mit hoher Laufleistung fair verkaufen',
+        'Ford Transit mit Defekt verkaufen',
+        'Ford reparieren oder verkaufen Entscheidung',
+        'Ford Export Ankauf fur altere Fahrzeuge',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Ford wird als robuste Alltags- und Arbeitsmarke eingeordnet: breite Modellpalette, hohe Nutzung, klare Kostenlogik bei Reparatur versus Verkauf.',
+      requiredInsights: [
+        'Privatfahrzeuge und Nutzfahrzeuge gemeinsam, aber differenziert bewerten',
+        'EcoBoost-, Diesel- und Getriebethemen wirtschaftlich einordnen',
+        'Hohe Laufleistung bei Focus, Fiesta, Mondeo, Kuga und Transit praxisnah bewerten',
+      ],
+      bannedPatterns: [
+        'Premium- oder Sportwagen-Tonalitat auf Ford ubertragen',
+        'Transit nur am Rand erwahnen statt als Kernfall zu behandeln',
+        'austauschbare Volumenmarken-Texte ohne Ford-Modelle und Nutzungsszenarien',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/ford-verkaufen',
+      seoTitle: 'Ford verkaufen | Ford Ankauf Deutschland',
+      seoDescription:
+        'Ford verkaufen mit fairer Bewertung, schneller Auszahlung und kostenloser Abholung in Deutschland. Auch Transit, Motorschaden und hohe Laufleistung.',
+      canonicalPath: '/ford-verkaufen',
+      heroHeadline: 'Ford verkaufen - fair, schnell und transparent',
+      heroSubheadline:
+        'Ford Autoankauf in ganz Deutschland fur Privat- und Nutzfahrzeuge mit klarer Bewertung',
+      h1: 'Ford Autoankauf: Ihren Ford sicher und unkompliziert verkaufen',
+      intro: [
+        'Ford ist in Deutschland seit Jahren eine feste Grosse im Alltag: als Familienauto, Pendlerfahrzeug und im gewerblichen Einsatz. Genau diese breite Nutzung sorgt dafur, dass Ford Fahrzeuge im Ankauf sehr unterschiedlich bewertet werden mussen. Wer seinen Ford verkaufen mochte, sollte deshalb auf eine differenzierte Einzelfahrzeugbewertung statt auf pauschale Richtwerte setzen.',
+        'Viele Modelle wie Focus, Fiesta, Mondeo oder Kuga erreichen hohe Laufleistungen, ohne sofort unverkaeuflich zu sein. Entscheidend ist nicht nur der Kilometerstand, sondern die Kombination aus Wartungshistorie, technischem Zustand und aktuell erwartbaren Folgekosten. Diese Faktoren bestimmen den realistischen Ankaufpreis deutlich starker als eine allgemeine Marktzahl.',
+        'Hinzu kommt der Nutzfahrzeugbereich: Ford Transit wird haufig intensiv eingesetzt und zeigt dadurch ein ganz anderes Verschleissprofil als klassische Privatfahrzeuge. Gerade bei Arbeitsfahrzeugen zahlen dokumentierte Wartung, Einsatzart und aktueller Technikzustand besonders stark fur eine faire Preisfindung.',
+        'Unser Ford Ankauf ist auf genau diese Unterschiede ausgelegt. Sie erhalten ein transparentes Angebot auf Basis von Modell, Motorisierung, Laufleistung, Nutzung, bekannten Mangelpunkten und Marktnachfrage. So konnen Sie fundiert entscheiden, ob ein Verkauf jetzt wirtschaftlich sinnvoll ist.',
+        'Viele Halter verkaufen nicht erst beim Totalausfall, sondern bei klaren Entscheidungspunkten: steigende Werkstattkosten, anstehende Reparaturketten, Umstieg auf ein neueres Fahrzeug oder Veranderungen im Betrieb. Diese Situation ist typisch und verlangt eine schnelle, belastbare Verkaufsoption ohne unnötigen Aufwand.',
+        'Wenn Sie Ihren Ford schnell verkaufen wollen, bedeutet das bei uns nicht Druck, sondern Struktur. Sie ubermitteln die relevanten Daten, wir liefern eine nachvollziehbare Bewertung, danach folgt die sichere Ubergabe mit dokumentierter Auszahlung. Das spart Zeit gegenuber langen Inseratsphasen mit unklaren Ergebnissen.',
+        'Besonders bei Ford Fahrzeugen mit hoher Laufleistung ist diese Klarheit wichtig. Viele Autos sind technisch noch nutzbar, gleichzeitig konnen einzelne Themen wie Antrieb, Getriebe oder Abgasnachbehandlung wirtschaftlich kippen. Ein geplanter Verkauf vor grossen Investitionen ist dann oft die bessere Bilanzentscheidung.',
+        'Auch bei Defekten bleibt ein Verkauf moglich. Wir kaufen Ford Unfallwagen, Ford mit Motorschaden, Getriebeschaden und Fahrzeuge ohne TUV. Gerade fur altere Fahrzeuge oder stark genutzte Arbeitsfahrzeuge ist ein professioneller Direktankauf haufig der pragmatischste Weg.',
+        'Ford Diesel- und EcoBoost-Modelle brauchen bei der Bewertung Erfahrung. Nicht jedes Symptom ist ein Kapitalschaden, aber Unsicherheit fuhrt im Privatmarkt oft zu harten Nachverhandlungen. Wir ordnen technische Hinweise fruh ein und schaffen dadurch mehr Preissicherheit.',
+        'Fur gewerbliche Kunden ist der Ablauf ebenso wichtig wie der Preis. Deshalb unterstutzen wir auch Firmenwagen, Leasingrucklaufer und Transit-Fahrzeuge mit klaren Anforderungen an Unterlagen, Terminierung und Zahlung. So bleibt der Verkauf planbar und passt in den Betriebsalltag.',
+        'Unser Service ist bundesweit verfugbar, auf Wunsch mit kostenloser Abholung. Damit konnen Sie den Ford Verkauf auch bei engem Zeitplan oder eingeschrankter Mobilitat effizient abschliessen.',
+        'Gerade bei Fahrzeugen, die als Arbeitsmittel genutzt werden, entstehen sonst schnell versteckte Folgekosten: Ausfalltage, Terminverschiebungen und organisatorischer Aufwand im Team. Ein strukturierter Direktankauf kann diese indirekten Kosten deutlich reduzieren und den Wechsel auf ein neues Fahrzeug beschleunigen.',
+        'Auch fur privat genutzte Ford gilt: Ein Verkauf ist oft dann am sinnvollsten, wenn das Fahrzeug noch fahrbereit ist, aber bereits eine absehbare Kostenkurve zeigt. Wer diesen Zeitpunkt aktiv steuert, vermeidet Notverkaufssituationen und erzielt haufig die stabilere Preisbasis.',
+        'Unser Ziel ist ein Ford Ankauf Deutschland, der praktisch, transparent und wirtschaftlich sinnvoll ist. Sie erhalten klare Daten statt Werbeversprechen und konnen Ihren Ford mit voller Entscheidungssicherheit verkaufen.',
+      ],
+      benefitHeading: 'Warum viele Ford-Besitzer an uns verkaufen',
+      benefits: [
+        'Transparente Ford Bewertung statt Pauschalangebot: Modell, Motor, Laufleistung, Nutzung und Historie werden differenziert berucksichtigt.',
+        'Schnelle Abwicklung: In vielen Fallen ist ein Abschluss innerhalb von 24 bis 72 Stunden moglich.',
+        'Ankauf auch bei Defekten: Ford Unfallwagen, Motorschaden, Getriebeschaden und Fahrzeuge ohne TUV sind moglich.',
+        'Erfahrung mit Privat- und Nutzfahrzeugen inklusive Ford Transit und gewerblichen Einsatzprofilen.',
+        'Faire Bewertung auch bei hoher Laufleistung und arbeitsbedingt starker Nutzung.',
+        'Bundesweiter Service mit optionaler kostenloser Abholung.',
+        'Sichere Auszahlung und rechtssichere Vertragsdokumentation ohne versteckte Kosten.',
+      ],
+      processHeading: 'Ford verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Ford-Daten ubermitteln',
+          text: 'Sie ubermitteln Modell, Baujahr, Laufleistung, Motor, Getriebe, Ausstattung und bekannte Mangel. Bei Transit und Firmenfahrzeugen helfen Nutzungs- und Wartungsdaten zusatzlich.',
+        },
+        {
+          title: '2. Nachvollziehbares Angebot erhalten',
+          text: 'Wir bewerten Ihr Fahrzeug anhand aktueller Nachfrage, technischer Faktoren und Restwertrisiken. Sie erhalten ein transparentes Angebot ohne Lockpreis.',
+        },
+        {
+          title: '3. Ubergabe und Auszahlung',
+          text: 'Nach Terminabstimmung folgt die dokumentierte Ubergabe. Die Auszahlung erfolgt schnell und nachvollziehbar, auf Wunsch mit Abholung.',
+        },
+      ],
+      buyTypesHeading: 'Welche Ford wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Ford Unfallwagen verkaufen',
+          text: 'Auch bei Unfallschaden ist ein Ankauf moglich, wenn Schadenbild und Reparaturstatus transparent vorliegen.',
+        },
+        {
+          title: 'Ford Motorschaden verkaufen',
+          text: 'Bei hoheren Motorrisiken ist der Direktverkauf oft wirtschaftlicher als eine unklare Reparaturkette.',
+        },
+        {
+          title: 'Ford mit Getriebeschaden',
+          text: 'Schaltprobleme, Ruckeln oder sonstige Getriebeauffalligkeiten schliessen den Ankauf nicht aus.',
+        },
+        {
+          title: 'Ford mit hoher Laufleistung',
+          text: 'Hohe Kilometer sind bei Ford alltagsbedingt haufig. Entscheidend bleiben Wartung, Zustand und Historie.',
+        },
+        {
+          title: 'Ford ohne TUV',
+          text: 'Auch ohne gultige HU/AU ist ein fairer Ankauf moglich. Notige Investitionen werden transparent eingeordnet.',
+        },
+        {
+          title: 'Firmenwagen und Leasingrucklaufer',
+          text: 'Wir begleiten gewerbliche Verkaufe mit klaren Prozessen fur Unterlagen, Termine und Auszahlung.',
+        },
+        {
+          title: 'Beliebte Modelle: Focus, Fiesta, Mondeo, Kuga',
+          text: 'Diese Modelle bewerten wir marktorientiert nach Baujahr, Nutzung, Ausstattung und technischem Zustand.',
+        },
+        {
+          title: 'Ford Transit und Nutzfahrzeuge',
+          text: 'Transit-Fahrzeuge werden nach Einsatzprofil, Laufleistung, Laderaumnutzung und Servicehistorie differenziert bewertet.',
+        },
+        {
+          title: 'Diesel- und EcoBoost-Ford',
+          text: 'Dieselthemen sowie EcoBoost-spezifische Hinweise ordnen wir technisch und wirtschaftlich im Einzelfall ein.',
+        },
+      ],
+      comparisonHeading: 'Warum unser Ford Ankauf oft die bessere Option ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Datenbasierte Bewertung mit Ford- und Transit-Nutzungskontext',
+          privateSale: 'Haufige Nachverhandlung bei Technik- und Laufleistungsthemen',
+          traditionalDealer: 'Oft pauschale Abschlage bei Defekten oder hoher Laufleistung',
+        },
+        {
+          criterion: 'Zeit bis Abschluss',
+          us: 'In vielen Fallen 24 bis 72 Stunden',
+          privateSale: 'Oft Wochen mit Inserat, Besichtigung und Unsicherheit',
+          traditionalDealer: 'Abhangig von internen Prozessen und Ankaufgrenzen',
+        },
+        {
+          criterion: 'Defekte und Arbeitsfahrzeuge',
+          us: 'Ankauf auch bei Motorschaden, Getriebethemen, Unfall und Transit-Nutzprofil',
+          privateSale: 'Komplexe Ruckfragen und hohes Absprungrisiko',
+          traditionalDealer: 'Teilweise restriktiv oder mit niedrigen Standardangeboten',
+        },
+        {
+          criterion: 'Sicherheit',
+          us: 'Klare Vertrags- und Zahlungsdokumentation',
+          privateSale: 'Erhohtes Risiko bei Zahlung und Haftungsfragen',
+          traditionalDealer: 'Formal sicher, aber oft weniger flexibel im Sonderfall',
+        },
+      ],
+      trustHeading: 'Vertrauen durch klare Zusagen',
+      trustPoints: [
+        'Transparenter Prozess von der Anfrage bis zur Ubergabe',
+        'Keine versteckten Kosten oder nachtraglichen Zusatzgebuhren',
+        'Schnelle Auszahlung mit nachvollziehbarem Zahlungsnachweis',
+        'Bundesweiter Service inklusive optionaler Abholung',
+        'Faire Bewertung auch bei hoher Laufleistung und Defekten',
+        'Erfahrung mit privaten Fahrzeugen und gewerblichen Ford-Nutzprofilen',
+      ],
+      ctas: [
+        {
+          heading: 'Ford jetzt kostenlos bewerten',
+          text: 'Erhalten Sie eine schnelle, unverbindliche Preisorientierung fur Ihren Ford.',
+          label: 'Ford bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Ford Verkauf direkt starten',
+          text: 'Wenn Sie bereits verkaufen mochten, begleiten wir Sie strukturiert bis zur sicheren Auszahlung.',
+          label: 'Ford Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Ford Probleme zuerst einordnen',
+          text: 'Unser Ford Guide hilft bei der Entscheidung zwischen Reparatur und Verkauf.',
+          label: 'Zum Ford Guide',
+          href: '/ratgeber/ford-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Ford verkaufen, hohe Laufleistung und Defekte',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen Ford verkaufen?',
+          a: 'Mit vollstandigen Fahrzeugdaten ist ein Abschluss oft innerhalb weniger Tage moglich. Die genaue Dauer hangt von Zustand und Terminlage ab.',
+        },
+        {
+          q: 'Kaufen Sie auch Ford mit hoher Laufleistung?',
+          a: 'Ja. Hohe Laufleistung ist bei Ford haufig und kein automatischer Ausschluss. Entscheidend sind Wartung, Zustand und Historie.',
+        },
+        {
+          q: 'Kann ich einen Ford mit Motorschaden oder Getriebeschaden verkaufen?',
+          a: 'Ja. Auch defekte Ford konnen angekauft werden, wenn der Zustand transparent beschrieben ist.',
+        },
+        {
+          q: 'Kaufen Sie Ford Transit und andere gewerbliche Fahrzeuge?',
+          a: 'Ja. Wir kaufen auch Transit, Firmenwagen und Leasingrucklaufer mit angepasster Bewertung nach Einsatzprofil.',
+        },
+        {
+          q: 'Ist Ford Export Ankauf moglich?',
+          a: 'Bei geeigneten Fahrzeugen ja. Wir prufen, ob der Exportweg wirtschaftlich sinnvoll ist, und berucksichtigen ihn in der Bewertung.',
+        },
+        {
+          q: 'Ist Ford Ankauf Deutschland bundesweit verfugbar?',
+          a: 'Ja. Unser Ankauf ist bundesweit verfugbar, in vielen Regionen inklusive kostenloser Abholung.',
+        },
+        {
+          q: 'Kaufen Sie auch Ford ohne TUV?',
+          a: 'Ja. Fahrzeuge ohne gultige HU/AU konnen weiterhin fair bewertet und angekauft werden.',
+        },
+        {
+          q: 'Fallen beim Ankauf versteckte Kosten an?',
+          a: 'Nein. Der Prozess ist transparent und ohne versteckte Zusatzkosten.',
+        },
+      ],
+      internalLinksHeading: 'Weiterfuhrende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Ford kostenlos bewerten',
+          context: 'Fur eine schnelle Preisorientierung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Ablauf beim Autoverkauf',
+          context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten mochten.',
+        },
+        {
+          href: '/ford-focus-verkaufen',
+          label: 'Ford Focus verkaufen',
+          context: 'Modellspezifische Einordnung fur Focus mit EcoBoost-, Getriebe- und Laufleistungsthemen.',
+        },
+        {
+          href: '/ratgeber/ford-probleme-verkauf',
+          label: 'Ford Guide: Probleme, Kosten, Verkaufszeitpunkt',
+          context: 'Fur die fundierte Entscheidung zwischen Reparatur und Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'ford-probleme-verkauf',
+      seoTitle: 'Ford Probleme und Verkauf: Praxis-Guide 2026',
+      seoDescription:
+        'Ford Zuverlassigkeit, haufige Fehler und Reparaturkosten praxisnah erklart. So finden Sie den besten Zeitpunkt fur den Ford Verkauf.',
+      h1: 'Ford Guide: Probleme erkennen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'Ford Fahrzeuge sind in Deutschland weit verbreitet und werden haufig intensiv genutzt - privat wie gewerblich. Genau dadurch entstehen klare Entscheidungspunkte zwischen Weiterfahren, Reparieren und Verkaufen. Dieser Guide zeigt praxisnah, welche Ford Probleme wirklich relevant sind, wie Sie Kosten realistisch einordnen und wann ein Verkauf wirtschaftlich sinnvoller wird als weiteres Investieren.',
+      quickFacts: [
+        'Hohe Laufleistungen sind bei Ford oft normal, aber wirtschaftlich zu bewerten.',
+        'EcoBoost-, Diesel- und Getriebethemen sollten fruhzeitig eingeordnet werden.',
+        'Transit-Nutzfahrzeuge folgen einer anderen Kostenlogik als reine Privatwagen.',
+        'Der beste Verkaufszeitpunkt liegt haufig vor groesseren Kombinationsreparaturen.',
+        'Saubere Historie verbessert den Erlos auch bei alteren Ford deutlich.',
+        'Strukturierter Autoankauf spart Zeit und reduziert Nachverhandlungsrisiken.',
+      ],
+      sections: [
+        {
+          heading: 'Warum Ford-Besitzer ihre Fahrzeuge verkaufen',
+          paragraphs: [
+            'Viele Ford-Halter verkaufen nicht aus einem einzelnen Anlass, sondern nach einer Kosten- und Nutzungsabwagung. Typisch ist die Situation, dass das Fahrzeug noch funktioniert, gleichzeitig aber mehrere Wartungs- oder Reparaturpunkte sichtbar werden.',
+            'Je nach Modell und Einsatzprofil unterscheiden sich diese Punkte deutlich. Ein privat genutzter Fiesta hat andere Kostentreiber als ein stark genutzter Transit im Gewerbebetrieb.',
+            'Wer fruhzeitig plant, verkauft meist mit mehr Preissicherheit und weniger Zeitdruck.',
+          ],
+          bullets: [
+            'Verkauf ist oft eine wirtschaftliche Planungsentscheidung',
+            'Nutzungskontext bestimmt Reparaturrisiko und Restwert mit',
+            'Fruhe Entscheidung verbessert Verhandlungsspielraum',
+          ],
+        },
+        {
+          heading: 'Hohe Laufleistung bei Ford: Alltag statt Ausnahme',
+          paragraphs: [
+            'Ford Modelle erreichen haufig hohe Kilometerstaende, ohne automatisch unverkaeuflich zu werden. Entscheidend ist, wie gut Wartung, Verschleisszustand und Historie dokumentiert sind.',
+            'Viele Preisabschlage entstehen nicht nur durch Kilometer, sondern durch fehlende Nachweise und offene Fragen zur Technik.',
+            'Eine transparente Darstellung hoher Laufleistung verbessert daher die Abschlusswahrscheinlichkeit deutlich.',
+          ],
+        },
+        {
+          heading: 'Verschleiss aus Alltag und gewerblichem Einsatz',
+          paragraphs: [
+            'Pendlerverkehr, Stadtbetrieb und gewerbliche Nutzung erzeugen unterschiedliche Belastungen. Bei Transit-Fahrzeugen kommen Laderaumnutzung, Stop-and-go und oft hohe Jahreslaufleistungen hinzu.',
+            'Diese Nutzung bedeutet nicht automatisch schlechten Zustand, verlangt aber eine differenzierte Bewertung statt pauschaler Preisannahmen.',
+            'Genau hier entscheidet sich, ob ein Verkauf jetzt sinnvoller ist als weiteres Investieren.',
+          ],
+        },
+        {
+          heading: 'Steigende Reparaturkosten als Ausloser',
+          paragraphs: [
+            'Einzelne Werkstattpositionen wirken oft uberschaubar. Problematisch wird es, wenn mehrere Themen nacheinander auftreten und sich zu einer Kostenkette summieren.',
+            'Bei alteren Ford kann diese Kumulation den Restwert schnell uberholen, vor allem wenn bereits bekannte Schwachpunkte aktiv werden.',
+            'Dann ist ein geplanter Verkauf oft wirtschaftlich robuster als ein spater Notverkauf.',
+          ],
+        },
+        {
+          heading: 'Ford haufige Fehler: EcoBoost im Fokus',
+          paragraphs: [
+            'Bei manchen EcoBoost-Varianten werden vor allem Kuhlungs- und Zahnriementhemen diskutiert. Entscheidend ist die konkrete Motorvariante, die Wartung und das vorliegende Symptombild.',
+            'Nicht jeder Hinweis bedeutet sofort einen kapitalen Motorschaden, aber die wirtschaftliche Relevanz kann hoch sein, wenn mehrere Anzeichen zusammenkommen.',
+            'Fur die Verkaufsentscheidung ist deshalb eine fruhe, sachliche Einordnung wichtiger als pauschale Forenaussagen.',
+          ],
+        },
+        {
+          heading: 'Getriebeprobleme richtig einordnen',
+          paragraphs: [
+            'Schaltauffalligkeiten, Ruckeln oder Verzogerungen konnen je nach Ford-Modell auftreten und den Verkaufsprozess deutlich beeinflussen.',
+            'Ob sich eine Reparatur lohnt, hangt vom Gesamtbild ab: Laufleistung, weiterer Wartungsbedarf und realistischer Mehrerlös nach Instandsetzung.',
+            'Ein transparenter Zustand reduziert beim Verkauf Unsicherheit und harte Nachverhandlungen.',
+          ],
+        },
+        {
+          heading: 'Elektrische und elektronische Themen',
+          paragraphs: [
+            'Sporadische Elektrikprobleme sind bei alternden Fahrzeugen nicht ungewohnlich. Oft sind es keine Grossschaden, aber Diagnose und Wiederholungsbesuche erzeugen Zeit- und Kostenaufwand.',
+            'Gerade bei hoher Nutzungsfrequenz wird dieser Aufwand im Alltag schnell spurbare.',
+            'Beim Verkauf helfen dokumentierte Werkstattbefunde, weil sie Vertrauen schaffen und Diskussionen verkurzen.',
+          ],
+        },
+        {
+          heading: 'Diesel-Themen: EGR und DPF',
+          paragraphs: [
+            'Bei Diesel-Ford spielen EGR- und DPF-Themen je nach Fahrprofil eine wichtige Rolle. Kurzstrecke und unvollstandige Regeneration konnen die Kostenwahrscheinlichkeit erhohen.',
+            'Entscheidend ist, ob es um eine einmalige Wartung oder um wiederkehrende Probleme mit Folgekosten geht.',
+            'Wenn mehrere Dieselthemen parallel auftreten, kann ein fruher Verkauf wirtschaftlich die bessere Wahl sein.',
+          ],
+        },
+        {
+          heading: 'Kupplung und Fahrwerk bei hoher Nutzung',
+          paragraphs: [
+            'Kupplungs- und Fahrwerksverschleiss sind bei intensiv genutzten Ford typisch planbare Themen. Sie sind selten allein ein Problem, in Kombination jedoch oft kostenrelevant.',
+            'Besonders bei Arbeitsfahrzeugen konnen solche Positionen schneller kumulieren als erwartet.',
+            'Fur die Entscheidung zahlt deshalb die Gesamtprognose statt der Blick auf einen Einzelposten.',
+          ],
+        },
+        {
+          heading: 'Welche Ford Modelle gelten als auffalliger?',
+          paragraphs: [
+            'Pauschalurteile sind wenig hilfreich, dennoch zeigen bestimmte Generationen von Focus, Fiesta und Mondeo je nach Motorisierung wiederkehrende Themen.',
+            'Diese Hinweise sind nur Orientierung. Im Verkauf zahlt immer das konkrete Fahrzeug mit seiner Historie und Nutzung.',
+            'Eine Einzelfallbewertung ist daher belastbarer als jede starre Problemjahr-Liste.',
+          ],
+          bullets: [
+            'Focus: je nach Baujahr auf Antrieb und Elektrik achten',
+            'Fiesta: Stadtprofil und Wartungshistorie sauber einordnen',
+            'Mondeo: Laufleistung und anstehende Reparaturkette genau rechnen',
+          ],
+        },
+        {
+          heading: 'Transit als Sonderfall im Ford-Verkauf',
+          paragraphs: [
+            'Beim Transit wirken Nutzung und Standzeiten direkt auf den Wert. Laderaumeinsatz, Wartungsdisziplin und Verschleiss an Antrieb und Fahrwerk bestimmen die Preislogik stark.',
+            'Fur gewerbliche Halter ist zudem wichtig, Ausfallzeit und Ersatzfahrzeugkosten in die Entscheidung einzubeziehen.',
+            'Haufig ist ein strukturierter Verkauf vor grosseren Investitionen wirtschaftlich stabiler als weiteres Nachinvestieren unter Zeitdruck.',
+          ],
+          bullets: [
+            'Einsatzprofil klar dokumentieren',
+            'Wartungsnachweise fur Gewerbefahrzeuge vollstandig halten',
+            'Kosten von Standzeit aktiv in die Entscheidung einrechnen',
+          ],
+        },
+        {
+          heading: 'Wann Ford verkaufen? Die besten Zeitfenster',
+          paragraphs: [
+            'Der beste Zeitpunkt liegt oft vor grossen Reparaturblocken. Sobald mehrere Wartungsthemen absehbar sind, sinkt der Restwert meist schneller als erwartet.',
+            'Zusatzlich beeinflussen Laufleistungsschwellen die Nachfrage und Preisbereitschaft im Markt.',
+            'Ein geplanter Verkauf schafft mehr Optionen und vermeidet Notverkaufssituationen.',
+          ],
+        },
+        {
+          heading: 'Laufleistungsschwellen und Wertverlust',
+          paragraphs: [
+            'Nicht nur die absolute Kilometerzahl zahlt, sondern deren Zusammenspiel mit Pflege und Technikzustand. Dokumentierte Wartung kann Abschlage deutlich reduzieren.',
+            'Wer den Verkauf vor der nachsten kritischen Schwelle plant, sichert haufig den stabileren Erlos.',
+            'Zu langes Warten kann den Wert bei gleichzeitig steigenden Reparaturrisiken doppelt belasten.',
+          ],
+        },
+        {
+          heading: 'Ford Reparaturkosten im Gesamtblick',
+          paragraphs: [
+            'Ford gilt oft als robust und vergleichsweise wirtschaftlich, doch auch hier konnen sich Kosten im Alter deutlich kumulieren.',
+            'Fur eine saubere Entscheidung sollten direkte Reparaturkosten, Folgerisiko, Standzeit und Nutzungsverlust gemeinsam bewertet werden.',
+            'Erst dieser Gesamtblick zeigt, ob Weiterfahren wirtschaftlich sinnvoll bleibt oder ein Verkauf die bessere Option ist.',
+            'Besonders bei Fahrzeugen mit gewerblicher Nutzung lohnt ein konservativer Ansatz: lieber fruher mit stabilem Restwert verkaufen als spater unter Druck, wenn Ausfallzeiten und Zusatzkosten die Kalkulation unkontrollierbar machen. Diese Perspektive sorgt fur belastbare Entscheidungen im Tagesgeschaft und vermeidet teure Ad-hoc-Entscheidungen.',
+          ],
+          bullets: [
+            'Gesamtkosten statt Einzelrechnungen betrachten',
+            'Folgerisiken und zeitliche Ausfalle mit einrechnen',
+            'Restwert gegen Investitionssumme vergleichen',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Entscheidungslogik',
+          paragraphs: [
+            'Drei Fragen helfen in der Praxis: Wie hoch ist die sichere Investition jetzt? Wie gross ist das Risiko weiterer Kosten? Wie hoch ist der realistische Mehrerlös nach Reparatur?',
+            'Wenn der erwartete Mehrerlös die Investition und das Risiko nicht klar ubersteigt, ist der Verkauf oft die robustere wirtschaftliche Entscheidung.',
+            'Diese Logik gilt fur Privatwagen ebenso wie fur Transit im gewerblichen Einsatz.',
+          ],
+        },
+        {
+          heading: 'Wie maximieren Sie den Verkaufspreis Ihres Ford?',
+          paragraphs: [
+            'Der grosste Hebel ist Vorbereitung: vollstandige Unterlagen, nachvollziehbare Servicehistorie und transparente Mangelbeschreibung.',
+            'Bei hoher Laufleistung oder gewerblicher Nutzung ist Dokumentation besonders wertvoll, weil sie Unsicherheit reduziert.',
+            'Zusatzlich hilft eine realistische Preispositionierung, um Abschlusszeit und Preisstabilitat zu verbessern.',
+          ],
+          bullets: [
+            'Serviceheft, Rechnungen und HU-Berichte bereithalten',
+            'Bekannte Themen offen statt beschonigend kommunizieren',
+            'Preis datenbasiert und marktnah festlegen',
+          ],
+        },
+        {
+          heading: 'Praxisfall: Ford Transit im Flotteneinsatz',
+          paragraphs: [
+            'Beim Transit zeigt sich besonders deutlich, wie stark Nutzung den Fahrzeugwert beeinflusst. Zwei Fahrzeuge mit gleichem Baujahr konnen je nach Einsatzprofil deutlich unterschiedliche Ankaufpreise erzielen.',
+            'Ein Transit mit dokumentierter Wartung, nachvollziehbarer Lastnutzung und planbarer Verschleisshistorie wird oft stabiler bewertet als ein Fahrzeug mit unklarer Nutzung und fehlenden Nachweisen. Diese Differenz ist in der Praxis haufig grosser als viele Halter erwarten.',
+            'Fur gewerbliche Betreiber lohnt sich deshalb eine einfache Kostenrechnung: Reparaturkosten plus Ausfallzeit und Organisationsaufwand gegen den realistischen Verkaufserlos heute. In vielen Fallen ist der fruhere Verkauf wirtschaftlich sauberer als weiteres Nachinvestieren.',
+          ],
+          bullets: [
+            'Einsatzprofil und Wartung strukturiert dokumentieren',
+            'Ausfalltage als echten Kostenfaktor einrechnen',
+            'Verkauf vor grosser Reparaturkette aktiv einplanen',
+          ],
+        },
+        {
+          heading: 'Checkliste vor dem Ford-Verkauf',
+          paragraphs: [
+            'Viele Preisverluste entstehen nicht durch den technischen Zustand allein, sondern durch fehlende Vorbereitung. Wenn Unterlagen, Nachweise und Mangelangaben erst in der Verhandlung zusammengetragen werden, sinkt die Abschlusswahrscheinlichkeit deutlich.',
+            'Sinnvoll ist ein kurzer Vorab-Check: Zulassungsunterlagen, Serviceheft, Rechnungen, HU-Berichte, Schlusselfrage zu bekannten Mangelpunkten und klare Fahrzeugfotos. Bei Transit oder Firmenfahrzeugen sollten zusatzlich Einsatz- und Wartungsnachweise sauber vorliegen.',
+            'Mit dieser Vorbereitung erhalten Sie in der Regel ein praziseres Angebot, vermeiden Missverstandnisse und verkurzen die Zeit bis zum Abschluss. Gerade bei hoher Laufleistung oder Defekten ist das ein spurbare Vorteil im gesamten Verkaufsprozess.',
+          ],
+          bullets: [
+            'Dokumente vollstandig und geordnet bereitstellen',
+            'Bekannte technische Themen offen benennen',
+            'Zustand realistisch dokumentieren statt beschonigen',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf fur Ford oft ideal ist',
+          paragraphs: [
+            'Der Privatverkauf kann bei hoher Laufleistung, Defekten oder Transit-Nutzprofilen aufwendig werden und in lange Verhandlungsschleifen fuhren.',
+            'Ein professioneller Ford Ankauf bietet klare Prozesse, dokumentierte Zahlung und planbaren Zeitrahmen.',
+            'Gerade bei Arbeitsfahrzeugen oder kostenkritischen Reparaturthemen ist der strukturierte Direktankauf haufig die effizienteste Losung.',
+            'Zusatzlich gewinnen Sie fruh Planungssicherheit fur den nachsten Schritt, ob Ersatzfahrzeug, Flottenwechsel oder private Umstellung. Diese Sicherheit ist in der Praxis oft genauso wertvoll wie der reine Verkaufspreis, weil sie Folgekosten und organisatorischen Druck spurbare reduziert.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Sind hohe Kilometer bei Ford ein Problem beim Verkauf?',
+          a: 'Nicht automatisch. Entscheidend sind Wartung, Zustand und nachvollziehbare Historie.',
+        },
+        {
+          q: 'Welche Ford Probleme sind besonders kostenrelevant?',
+          a: 'Haufig relevant sind je nach Modell EcoBoost-bezogene Themen, Getriebeauffalligkeiten, Dieselthemen, Elektrik sowie Kupplungs- und Fahrwerksverschleiss.',
+        },
+        {
+          q: 'Wann sollte ich meinen Ford verkaufen?',
+          a: 'Idealerweise vor groesseren Kombinationsreparaturen oder vor kritischen Laufleistungsschwellen.',
+        },
+        {
+          q: 'Kann ich auch einen Ford Transit im Autoankauf verkaufen?',
+          a: 'Ja. Transit und andere Nutzfahrzeuge konnen professionell angekauft werden, inklusive Bewertung nach Einsatzprofil.',
+        },
+        {
+          q: 'Lohnt sich Reparatur vor dem Verkauf immer?',
+          a: 'Nein. Entscheidend sind Investition, Folgerisiko und realistischer Mehrerlos nach Reparatur.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-ohne-tuev',
+        'autoexport-ankauf',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Ford jetzt verkaufen und Kostenrisiken aktiv steuern?',
+        text: 'Prufen Sie Ihren Ford Ankaufpreis transparent und starten Sie den Verkauf mit einem klaren, sicheren Ablauf deutlich schneller.',
+        href: '/ford-verkaufen',
+        label: 'Zur Ford Ankaufseite',
+      },
+    },
+  },
+  skoda: {
+    slug: 'skoda',
+    displayName: 'Škoda',
+    keywordMap: {
+      primary: ['Škoda verkaufen', 'Skoda Ankauf', 'Skoda Autoankauf'],
+      secondary: [
+        'Skoda schnell verkaufen',
+        'Skoda Ankauf Deutschland',
+        'Skoda Motorschaden verkaufen',
+        'Skoda Unfallwagen verkaufen',
+        'Skoda gebraucht verkaufen',
+        'Skoda Export Ankauf',
+      ],
+      semantic: [
+        'Skoda Zuverlässigkeit',
+        'Skoda häufige Fehler',
+        'Skoda Reparaturkosten',
+        'Skoda DSG Probleme',
+        'Skoda TSI Probleme',
+        'Skoda TDI Probleme',
+        'Skoda hohe Laufleistung',
+        'Škoda Octavia verkaufen',
+      ],
+      longTail: [
+        'Wann Skoda verkaufen vor teurer Reparatur',
+        'Skoda mit DSG Schaden fair verkaufen',
+        'Skoda mit hoher Laufleistung sicher verkaufen',
+        'Skoda reparieren oder verkaufen Entscheidung',
+        'Skoda Export Ankauf bei älteren Fahrzeugen',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Škoda wird als praktische, familienorientierte und wertstabile VW-Group-Option positioniert: viel Auto fürs Geld, aber mit klaren Kostenfenstern bei hoher Nutzung.',
+      requiredInsights: [
+        'Familien- und Langstreckennutzung als zentrale Wert- und Verschleissfaktoren einordnen',
+        'VW-Group-Technik (TSI, TDI, DSG) differenziert statt pauschal bewerten',
+        'Skoda als Smart-Value-Marke mit wirtschaftlicher Entscheidungslogik darstellen',
+      ],
+      bannedPatterns: [
+        'Premium-Tonalität aus Mercedes, Porsche oder BMW übertragen',
+        'reine VW- oder SEAT-Kopie ohne Škoda-spezifischen Familienkontext',
+        'austauschbare Defekttexte ohne klare Kosten- und Timing-Logik',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/skoda-verkaufen',
+      seoTitle: 'Škoda verkaufen | Skoda Ankauf Deutschland',
+      seoDescription:
+        'Škoda/Skoda verkaufen mit fairer Bewertung, schneller Auszahlung und kostenloser Abholung in Deutschland. Auch DSG, Motorschaden und hohe Laufleistung.',
+      canonicalPath: '/skoda-verkaufen',
+      heroHeadline: 'Škoda verkaufen - fair, schnell und einfach',
+      heroSubheadline:
+        'Skoda Autoankauf in ganz Deutschland mit transparenter Bewertung und sicherer Abwicklung',
+      h1: 'Skoda Autoankauf: Ihren Škoda sicher und fair verkaufen',
+      intro: [
+        'Škoda steht in Deutschland fur eine klare Idee: viel Platz, praktische Lösungen und wirtschaftliche Vernunft. Genau deshalb sind Modelle wie Octavia, Fabia, Superb oder Kodiaq bei Familien, Pendlern und Vielfahrern besonders beliebt. Wenn Sie Ihren Škoda verkaufen möchten, sollte diese Nutzung realistisch in die Bewertung einfließen.',
+        'Viele Halter nutzen ihren Skoda uber viele Jahre und erreichen hohe Laufleistungen. Das ist nicht automatisch ein Nachteil, solange Wartung, Pflege und bekannte Reparaturen sauber dokumentiert sind. Eine faire Bewertung muss daher den Kilometerstand immer im Zusammenhang mit Zustand und Historie betrachten.',
+        'Als Teil der VW Group teilen viele Škoda-Modelle technische Plattformen, Motoren und Getriebe mit anderen Konzernfahrzeugen. In der Praxis bedeutet das: TSI-, TDI- und DSG-Themen mussen differenziert eingeordnet werden. Pauschale Abschlage ohne Einzelfallprüfung führen oft zu ungenauen Preisen.',
+        'Unser Skoda Ankauf setzt genau hier an. Sie erhalten keine reine Standardschätzung, sondern eine nachvollziehbare Bewertung Ihres konkreten Fahrzeugs. Modell, Ausstattung, Laufleistung, Servicehistorie, bekannte Mangel und aktuelle Marktnachfrage werden transparent zusammengeführt.',
+        'Viele Besitzer verkaufen nicht erst bei akutem Ausfall. Typische Auslöser sind steigende Reparaturkosten, ein geplanter Wechsel auf ein neueres Modell oder ein verändertes Familienprofil. Gerade in diesen Situationen ist ein strukturierter und schneller Verkauf wirtschaftlich oft sinnvoller als spätes Handeln unter Zeitdruck.',
+        'Wenn Sie Skoda schnell verkaufen möchten, bedeutet das bei uns nicht Hektik. Es bedeutet klare Datenerfassung, ein belastbares Angebot und eine sichere Übergabe mit dokumentierter Auszahlung. So behalten Sie jederzeit die Kontrolle über den Prozess.',
+        'Auch Fahrzeuge mit Problemen können fair angekauft werden. Das gilt für Skoda Unfallwagen, Motorschaden, DSG- oder Getriebethemen sowie Fahrzeuge ohne TUV. Besonders bei älteren Fahrzeugen mit hoher Laufleistung ist der professionelle Direktankauf oft die pragmatischste Lösung.',
+        'Škoda wird im Alltag häufig als Familienauto genutzt. Dadurch spielen Innenraumzustand, Verschleiß durch tägliche Nutzung und Wartungsqualität eine wichtige Rolle in der Preisfindung. Wir berücksichtigen diese Faktoren statt nur schematisch nach Alter und Kilometer zu bewerten.',
+        'Bei Modellen mit TSI- oder TDI-Motorisierung ist die technische Einordnung entscheidend. Nicht jede Auffälligkeit ist ein schwerer Defekt, aber fehlende Klarheit führt im Privatmarkt oft zu langen Verhandlungen. Unser Prozess reduziert dieses Risiko mit einer frühzeitigen, nachvollziehbaren Bewertung.',
+        'Unser Service ist bundesweit verfügbar und auf Wunsch mit kostenloser Abholung kombinierbar. Damit können Sie Ihren Skoda Verkauf effizient abschließen, auch wenn Zeit und Mobilität begrenzt sind.',
+        'Für Firmenwagen und Leasingrückläufer bieten wir ebenfalls klare Abläufe. Unterlagen, Terminierung und Auszahlung werden sauber abgestimmt, damit der Verkauf auch im gewerblichen Umfeld planbar bleibt.',
+        'Gerade bei Fahrzeugen mit hoher Familiennutzung oder täglichem Pendelbetrieb lohnt sich ein Blick auf die Gesamtkosten der nächsten Jahre. Wenn mehrere kleinere Themen gleichzeitig absehbar sind, kann ein früh geplanter Verkauf die wirtschaftlich bessere Lösung sein als spätes Reagieren unter Zeitdruck. Wir helfen Ihnen, diesen Zeitpunkt mit klarer Preislogik zu erkennen.',
+        'So entsteht ein Verkaufsprozess, der nicht nur schnell ist, sondern auch belastbar planbar bleibt. Sie wissen früh, welche Faktoren Ihren Preis bestimmen und welche Schritte als nächstes zuverlässig folgen.',
+        'Unser Ziel ist ein Škoda Ankauf Deutschland, der zu Ihrer Realität passt: praktisch, transparent und wirtschaftlich sinnvoll. Sie erhalten klare Zahlen statt Lockversprechen und können fundiert entscheiden, ob jetzt der richtige Verkaufszeitpunkt ist.',
+      ],
+      benefitHeading: 'Warum viele Škoda-Besitzer an uns verkaufen',
+      benefits: [
+        'Transparente Bewertung statt Pauschalpreis: Modell, TSI/TDI, DSG, Laufleistung und Historie werden differenziert berücksichtigt.',
+        'Schneller Ablauf: In vielen Fällen ist ein Abschluss innerhalb von 24 bis 72 Stunden möglich.',
+        'Ankauf auch bei Problemen: Skoda Unfallwagen, Motorschaden, Getriebeschaden und Fahrzeuge ohne TUV sind möglich.',
+        'Faire Preislogik auch bei hoher Laufleistung und familienbedingter Intensivnutzung.',
+        'Erfahrung mit VW-Group-Technik für realistische Einordnung statt pauschaler Abwertung.',
+        'Bundesweiter Service mit optionaler kostenloser Abholung.',
+        'Sichere Auszahlung und klare Vertragsabwicklung ohne versteckte Zusatzkosten.',
+      ],
+      processHeading: 'Škoda verkaufen in 3 klaren Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugdaten senden',
+          text: 'Sie übermitteln Modell, Baujahr, Laufleistung, Motorisierung, Getriebe, Ausstattung und bekannte Mängel. Serviceunterlagen erhöhen die Genauigkeit.',
+        },
+        {
+          title: '2. Transparentes Angebot erhalten',
+          text: 'Wir bewerten Ihren Skoda anhand aktueller Marktdaten, technischer Faktoren und Restwertrisiken. Sie erhalten ein nachvollziehbares Angebot ohne Lockpreis.',
+        },
+        {
+          title: '3. Ubergabe und Auszahlung',
+          text: 'Nach Terminabstimmung erfolgt die dokumentierte Fahrzeugübergabe. Die Auszahlung wird schnell und nachvollziehbar abgewickelt, auf Wunsch mit Abholung.',
+        },
+      ],
+      buyTypesHeading: 'Welche Škoda wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Skoda Unfallwagen verkaufen',
+          text: 'Auch bei dokumentierten Unfallschäden ist ein Ankauf möglich. Entscheidend sind Schadenbild, Reparaturstatus und Gesamtzustand.',
+        },
+        {
+          title: 'Skoda Motorschaden verkaufen',
+          text: 'Wenn hohe Instandsetzungskosten drohen, ist der Direktverkauf oft wirtschaftlicher als eine unklare Reparaturkette.',
+        },
+        {
+          title: 'Skoda mit Getriebeschaden (DSG)',
+          text: 'Ruckeln, Schaltprobleme oder Notlauf schließen den Ankauf nicht aus. Wir bewerten Zustand und Risiko differenziert.',
+        },
+        {
+          title: 'Skoda mit hoher Laufleistung',
+          text: 'Hohe Kilometer sind bei Škoda häufig alltagsbedingt. Laufleistung allein ist kein Ausschluss, wenn Historie und Zustand stimmen.',
+        },
+        {
+          title: 'Skoda ohne TUV',
+          text: 'Auch ohne gültige HU/AU ist ein Verkauf möglich. Notige Investitionen werden transparent in die Bewertung einbezogen.',
+        },
+        {
+          title: 'Firmenwagen und Leasingrucklaufer',
+          text: 'Wir unterstützen auch gewerbliche Verkäufe mit klaren Prozessen bei Unterlagen, Terminen und Auszahlung.',
+        },
+        {
+          title: 'Beliebte Modelle: Octavia, Fabia, Superb, Kodiaq',
+          text: 'Diese Modelle bewerten wir marktnah nach Baujahr, Motorisierung, Ausstattung und realem Nutzungsmuster.',
+        },
+        {
+          title: 'VW-Group-Motoren: TSI und TDI',
+          text: 'TSI- und TDI-Themen ordnen wir technisch ein, statt pauschal abzuwerten.',
+        },
+        {
+          title: 'Familien- und Vielfahrerfahrzeuge',
+          text: 'Bei stark genutzten Familienautos berücksichtigen wir Zustand, Wartung und Verschleißprofil differenziert.',
+        },
+      ],
+      comparisonHeading: 'Warum unser Skoda Ankauf oft die bessere Wahl ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Datenbasierte Bewertung mit Škoda- und VW-Group-Technikbezug',
+          privateSale: 'Häufige Nachverhandlungen bei DSG-, TSI- oder Laufleistungsthemen',
+          traditionalDealer: 'Oft pauschale Abschläge bei älteren oder hochgelaufenen Fahrzeugen',
+        },
+        {
+          criterion: 'Zeit bis Abschluss',
+          us: 'In vielen Fällen 24 bis 72 Stunden',
+          privateSale: 'Oft Wochen mit Inserat, Besichtigung und unsicherem Abschluss',
+          traditionalDealer: 'Abhängig von internen Prozessen und Ankaufgrenzen',
+        },
+        {
+          criterion: 'Defekte Fahrzeuge',
+          us: 'Ankauf auch bei Unfall, Motorschaden, DSG-Problem und ohne TUV',
+          privateSale: 'Komplexe Rückfragen und hohes Absprungrisiko',
+          traditionalDealer: 'Teilweise restriktiv oder mit niedrigen Standardangeboten',
+        },
+        {
+          criterion: 'Sicherheit',
+          us: 'Klare Vertrags- und Zahlungsdokumentation',
+          privateSale: 'Erhöhtes Risiko bei Zahlung und Haftungsfragen',
+          traditionalDealer: 'Formal sicher, aber oft weniger flexibel im Sonderfall',
+        },
+      ],
+      trustHeading: 'Vertrauen durch klare Zusagen',
+      trustPoints: [
+        'Transparenter Ablauf von der Anfrage bis zur Übergabe',
+        'Keine versteckten Kosten oder nachträglichen Zusatzgebühren',
+        'Schnelle Auszahlung mit nachvollziehbarem Zahlungsnachweis',
+        'Bundesweiter Service inklusive optionaler Abholung',
+        'Faire Bewertung auch bei hoher Laufleistung und Defekten',
+        'Verbindliche Kommunikation und klare Terminabstimmung',
+      ],
+      ctas: [
+        {
+          heading: 'Škoda jetzt kostenlos bewerten',
+          text: 'Starten Sie mit einer unverbindlichen Einschätzung und erhalten Sie schnell Klarheit über Ihren realistischen Ankaufpreis.',
+          label: 'Skoda bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Skoda Verkauf direkt starten',
+          text: 'Wenn Sie bereits verkaufen möchten, begleiten wir Sie strukturiert bis zur sicheren Auszahlung.',
+          label: 'Skoda Verkauf starten',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Skoda Probleme zuerst einordnen',
+          text: 'Unser Škoda Guide hilft bei der Entscheidung zwischen Reparatur und Verkauf.',
+          label: 'Zum Skoda Guide',
+          href: '/ratgeber/skoda-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Škoda verkaufen, DSG und hohe Laufleistung',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen Škoda verkaufen?',
+          a: 'Mit vollständigen Fahrzeugdaten ist ein Abschluss häufig innerhalb weniger Tage möglich. Die genaue Dauer hängt von Zustand und Terminlage ab.',
+        },
+        {
+          q: 'Kaufen Sie auch Skoda mit DSG-Problemen an?',
+          a: 'Ja. Auch bei DSG-Auffälligkeiten ist ein Ankauf möglich. Wir bewerten den technischen Zustand transparent im Einzelfall.',
+        },
+        {
+          q: 'Ist ein Verkauf bei hoher Laufleistung möglich?',
+          a: 'Ja. Hohe Kilometer sind bei Škoda nicht ungewöhnlich. Entscheidend sind Wartung, Historie und Gesamtzustand.',
+        },
+        {
+          q: 'Kann ich einen Skoda mit Motorschaden oder Unfallschaden verkaufen?',
+          a: 'Ja. Defekt- und Unfallfahrzeuge können angekauft werden, wenn der Zustand offen beschrieben ist.',
+        },
+        {
+          q: 'Ist Skoda Export Ankauf möglich?',
+          a: 'Bei geeigneten Fahrzeugen ja. Wir prüfen, ob ein Exportweg wirtschaftlich sinnvoll ist, und beziehen ihn in die Bewertung ein.',
+        },
+        {
+          q: 'Kaufen Sie auch Skoda ohne TUV?',
+          a: 'Ja. Fahrzeuge ohne gültige HU/AU können weiterhin fair bewertet und angekauft werden.',
+        },
+        {
+          q: 'Ist Skoda Ankauf Deutschland bundesweit verfügbar?',
+          a: 'Ja. Unser Ankauf ist bundesweit verfügbar, in vielen Regionen inklusive kostenloser Abholung.',
+        },
+        {
+          q: 'Fallen versteckte Kosten an?',
+          a: 'Nein. Unser Ankaufprozess ist transparent und ohne versteckte Zusatzkosten.',
+        },
+      ],
+      internalLinksHeading: 'Weiterfuhrende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Skoda kostenlos bewerten',
+          context: 'Für eine schnelle Preisorientierung vor dem Verkauf.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Ablauf beim Autoverkauf',
+          context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten möchten.',
+        },
+        {
+          href: '/skoda-octavia-verkaufen',
+          label: 'Skoda Octavia verkaufen',
+          context: 'Modellfokus fur Octavia bei hoher Laufleistung, Familiennutzung und DSG-Risiken.',
+        },
+        {
+          href: '/ratgeber/skoda-probleme-verkauf',
+          label: 'Škoda Guide: Probleme, Kosten, Verkaufszeitpunkt',
+          context: 'Für die fundierte Entscheidung zwischen Reparatur und Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'skoda-probleme-verkauf',
+      seoTitle: 'Skoda Probleme und Verkauf: Praxis-Guide 2026',
+      seoDescription:
+        'Skoda Zuverlässigkeit, häufige Fehler und Reparaturkosten verständlich erklärt. So finden Sie den richtigen Zeitpunkt für den Skoda Verkauf.',
+      h1: 'Škoda Guide: Probleme verstehen und zum richtigen Zeitpunkt verkaufen',
+      intro:
+        'Škoda gilt für viele Fahrer als smarte Wahl im Alltag: viel Platz, gute Wirtschaftlichkeit und solide Technikbasis aus der VW Group. Gleichzeitig zeigen sich bei hoher Nutzung klare Wartungs- und Reparaturfenster, die den idealen Verkaufszeitpunkt beeinflussen. Dieser Guide zeigt praxisnah, welche Skoda Probleme wirklich relevant sind, wie Sie Kosten realistisch bewerten und wann ein Verkauf wirtschaftlich sinnvoller wird als weiteres Investieren.',
+      quickFacts: [
+        'Škoda-Modelle werden oft als Familien- und Langstreckenfahrzeuge intensiv genutzt.',
+        'DSG-, TSI- und TDI-Themen sollten frühzeitig wirtschaftlich eingeordnet werden.',
+        'Hohe Laufleistung ist bei Octavia, Fabia und Superb häufig alltagsbedingt.',
+        'Der beste Verkaufszeitpunkt liegt meist vor größeren Kombinationsreparaturen.',
+        'Eine saubere Servicehistorie verbessert den Erlös auch bei älteren Fahrzeugen.',
+        'Strukturierter Autoankauf reduziert Zeitverlust und Nachverhandlungsrisiken.',
+      ],
+      sections: [
+        {
+          heading: 'Warum Škoda-Besitzer ihre Fahrzeuge verkaufen',
+          paragraphs: [
+            'Viele Halter verkaufen ihren Skoda nicht wegen eines einzelnen Defekts, sondern nach einer wirtschaftlichen Abwägung. Typisch sind steigende Wartungskosten, veränderte Nutzungsprofile oder ein geplanter Wechsel auf ein neueres Modell.',
+            'Gerade weil Škoda-Fahrzeuge oft lange gefahren werden, entsteht die zentrale Frage meist schrittweise: weiter investieren oder den Restwert aktiv sichern.',
+            'Wer frühzeitig plant, erreicht häufig bessere Preisstabilität und einen entspannteren Verkaufsprozess.',
+          ],
+          bullets: [
+            'Verkauf ist oft eine Planungsentscheidung statt Notfall',
+            'Kostenentwicklung der nächsten 12 bis 24 Monate ist entscheidend',
+            'Früher Vergleich von Restwert und Investitionsbedarf schafft Klarheit',
+          ],
+        },
+        {
+          heading: 'Hohe Laufleistung im Alltag richtig einordnen',
+          paragraphs: [
+            'Škoda-Modelle sind bei Vielfahrern beliebt und daher oft hoch gelaufen. Das ist kein automatischer Nachteil, solange Wartung und Zustand nachvollziehbar dokumentiert sind.',
+            'Entscheidend ist, ob Laufleistung, Servicehistorie und aktueller Technikzustand zusammenpassen. Dann bleibt die Vermarktung in vielen Fällen stabil.',
+            'Fehlen dagegen Nachweise, steigt die Unsicherheit und damit der Preisabschlag im Verkauf.',
+          ],
+        },
+        {
+          heading: 'Familiennutzung und typischer Verschleiß',
+          paragraphs: [
+            'Octavia, Superb und Kodiaq werden häufig als Familienfahrzeuge eingesetzt. Das bedeutet viele Kurz- und Langstrecken, hohe Nutzungsintensität und entsprechend andere Verschleißmuster als beim klassischen Zweitwagen.',
+            'Diese Nutzung ist normal, sollte aber in der Preisfindung ehrlich berücksichtigt werden. Ein gepflegtes Fahrzeug mit klarer Historie bleibt deutlich besser positioniert.',
+            'Für den Verkauf zählt daher nicht nur Alter und Kilometerstand, sondern die Gesamtdokumentation über die Nutzungsjahre.',
+          ],
+        },
+        {
+          heading: 'Upgrade auf neuere Modelle als Verkaufsgrund',
+          paragraphs: [
+            'Viele Besitzer wechseln bewusst auf eine neuere Škoda-Generation mit aktueller Effizienz, Assistenztechnik oder verändertem Raumkonzept.',
+            'Dieser Schritt gelingt wirtschaftlich meist besser, wenn der Verkauf vor größeren Reparaturblöcken erfolgt.',
+            'Ein geplanter Wechsel bietet mehr Verhandlungsspielraum als ein später Verkauf unter Druck.',
+          ],
+        },
+        {
+          heading: 'Skoda häufige Fehler: DSG-Probleme',
+          paragraphs: [
+            'DSG-Auffälligkeiten wie Ruckeln, verzögertes Schalten oder unsauberes Anfahren sind bei bestimmten Baujahren und Nutzungsprofilen bekannte Themen.',
+            'Nicht jedes Symptom bedeutet sofort einen kapitalen Schaden, aber die wirtschaftliche Bedeutung kann hoch sein, wenn mehrere Hinweise zusammenkommen.',
+            'Für den Verkauf hilft eine transparente Zustandsbeschreibung mit vorhandener Diagnose deutlich weiter.',
+          ],
+        },
+        {
+          heading: 'TSI-Motoren: Steuerkette und Ölverbrauch',
+          paragraphs: [
+            'Bei einzelnen TSI-Varianten werden je nach Generation Themen wie Steuerkette oder erhöhter Ölverbrauch diskutiert.',
+            'Wichtig ist die Einzelfallbetrachtung nach Motorcode, Baujahr, Wartung und Symptomen statt pauschaler Aussagen.',
+            'Wer diese Punkte früh klärt, kann Reparatur- versus Verkaufsentscheidung besser und ruhiger treffen.',
+          ],
+        },
+        {
+          heading: 'Diesel-Themen: EGR und DPF',
+          paragraphs: [
+            'Bei TDI-Varianten spielen EGR- und DPF-Themen je nach Fahrprofil eine relevante Rolle, insbesondere bei hohem Kurzstreckenanteil.',
+            'Die wirtschaftliche Frage lautet hier oft: einmalige Instandsetzung oder wiederkehrende Kostenkette?',
+            'Wenn mehrere Dieselthemen parallel auftreten, ist ein früher Verkauf häufig die stabilere Option.',
+          ],
+        },
+        {
+          heading: 'Elektrische und elektronische Auffälligkeiten',
+          paragraphs: [
+            'Sporadische Sensor- oder Komfortprobleme sind bei alternden Fahrzeugen nicht ungewöhnlich. Häufig sind es keine Großschäden, aber Diagnoseaufwand und Wiederholungstermine kosten Zeit und Geld.',
+            'Im Alltag wird dieser Aufwand schnell relevant, gerade bei Fahrzeugen mit hoher Nutzungsfrequenz.',
+            'Im Verkauf stärkt eine offene Darstellung aller bekannten Punkte das Vertrauen und reduziert Nachverhandlung.',
+          ],
+        },
+        {
+          heading: 'Fahrwerksverschleiß bei hoher Nutzung',
+          paragraphs: [
+            'Fahrwerk und Achskomponenten zeigen bei hoher Laufleistung naturgemäß Verschleiß. Das gilt bei Familien- und Langstreckennutzung besonders.',
+            'Einzelne Positionen sind oft beherrschbar, in Summe können sie jedoch eine größere Kostenkette erzeugen.',
+            'Für die Entscheidung zählt deshalb die Gesamtprognose statt die isolierte Einzelrechnung.',
+          ],
+        },
+        {
+          heading: 'Welche Škoda Modelle gelten als auffälliger?',
+          paragraphs: [
+            'Pauschalurteile sind wenig hilfreich, dennoch zeigen bestimmte Generationen von Octavia, Superb und Fabia je nach Motor-/Getriebekombination wiederkehrende Themen.',
+            'Solche Hinweise dienen nur als Orientierung. Ausschlaggebend bleibt immer das konkrete Fahrzeug mit seiner Historie.',
+            'Eine fundierte Einzelfallbewertung ist im Verkauf belastbarer als jede starre Problemjahr-Liste.',
+          ],
+          bullets: [
+            'Octavia: je nach Baujahr Fokus auf Antrieb und Getriebe',
+            'Superb: Laufleistungs- und Wartungshistorie genau einordnen',
+            'Fabia: Nutzungsprofil und bekannte Motor-/Elektrikpunkte prüfen',
+          ],
+        },
+        {
+          heading: 'Wann Skoda verkaufen? Die besten Zeitfenster',
+          paragraphs: [
+            'Der beste Zeitpunkt liegt oft vor größeren Reparaturblöcken, nicht danach. Sobald mehrere Wartungs- oder Defektthemen zusammenkommen, sinkt der Restwert meist schneller.',
+            'Zusätzlich beeinflussen Laufleistungsschwellen die Nachfrage und Preisbereitschaft am Markt.',
+            'Ein geplanter Verkauf vermeidet Notverkaufsdruck und verbessert die Entscheidungsqualität.',
+          ],
+        },
+        {
+          heading: 'Laufleistungsschwellen und Wiederverkaufswert',
+          paragraphs: [
+            'Nicht nur die absolute Kilometerzahl zählt, sondern das Zusammenspiel mit Pflegezustand und Dokumentation.',
+            'Mit nachvollziehbarer Historie lassen sich auch höher gelaufene Skoda oft solide vermarkten.',
+            'Wird der Verkauf zu lange verschoben, treffen Wertverlust und steigendes Reparaturrisiko gleichzeitig.',
+          ],
+        },
+        {
+          heading: 'Skoda Reparaturkosten im Gesamtblick',
+          paragraphs: [
+            'Škoda gilt häufig als wirtschaftlich, doch auch hier können sich Kosten im Alter spürbar summieren.',
+            'Für eine belastbare Entscheidung sollten direkte Reparaturkosten, Folgerisiko, Standzeiten und Nutzungsverlust gemeinsam betrachtet werden.',
+            'Erst dieser Gesamtblick zeigt, ob Weiterfahren sinnvoll bleibt oder der Verkauf die bessere Option ist.',
+          ],
+          bullets: [
+            'Gesamtkosten statt Einzelrechnungen bewerten',
+            'Folgerisiko und Zeitaufwand mit einrechnen',
+            'Restwert gegen Investitionssumme vergleichen',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Praktischer Entscheidungsrahmen',
+          paragraphs: [
+            'Drei Fragen helfen in der Praxis: Wie hoch ist die sichere Investition jetzt? Wie groß ist das Risiko weiterer Kosten? Wie hoch ist der realistische Mehrerlös nach Reparatur?',
+            'Wenn der Mehrerlös Investition und Risiko nicht klar übersteigt, ist der Verkauf oft die robustere Lösung.',
+            'Diese Logik verhindert emotionale Kurzschlussentscheidungen und macht den nächsten Schritt kalkulierbar.',
+          ],
+        },
+        {
+          heading: 'Wie maximieren Sie den Verkaufspreis Ihres Škoda?',
+          paragraphs: [
+            'Der wichtigste Hebel ist Vorbereitung: vollständige Unterlagen, saubere Servicehistorie und transparente Mangelbeschreibung.',
+            'Gerade bei höherer Laufleistung reduziert gute Dokumentation technische Unsicherheit und stärkt Ihre Verhandlungsposition.',
+            'Zusätzlich hilft eine realistische Preispositionierung für schnellere Abschlüsse ohne unnötige Nachlässe.',
+          ],
+          bullets: [
+            'Serviceheft, Rechnungen und HU-Berichte vollständig bereithalten',
+            'Bekannte Themen offen statt beschonigend kommunizieren',
+            'Preis datenbasiert und marktnah ansetzen',
+          ],
+        },
+        {
+          heading: 'Praxisvergleich: Octavia, Superb und Fabia',
+          paragraphs: [
+            'In der Praxis zeigen Octavia, Superb und Fabia oft unterschiedliche Verkaufsmuster, obwohl sie technisch teilweise auf verwandten Konzernbausteinen basieren. Der Octavia wird häufig als Vielfahrer- oder Familienauto genutzt, wodurch Laufleistung ein normaler Faktor ist, aber die Historie besonders stark gewichtet wird.',
+            'Beim Superb spielen neben Technik oft Ausstattungsniveau und Langstreckennutzung eine größere Rolle in der Preisbildung. Ein gepflegtes Fahrzeug mit vollständigen Nachweisen kann trotz hoher Kilometer deutlich stabiler bewertet werden als ein vergleichbares Auto mit unklarer Servicehistorie.',
+            'Der Fabia wird häufiger im urbanen Alltag genutzt. Dort zählen überschaubare Betriebskosten und transparenter Zustand besonders stark. Für alle drei Modelle gilt: Ein sauber dokumentierter Einzelfall ist für den Erlös wichtiger als jede pauschale Modellmeinung.',
+          ],
+          bullets: [
+            'Octavia: Laufleistung immer mit Wartungshistorie gemeinsam bewerten',
+            'Superb: Ausstattung und Nutzungsprofil in die Preislogik einbeziehen',
+            'Fabia: Stadtprofil und dokumentierter Zustand klar kommunizieren',
+          ],
+        },
+        {
+          heading: 'Checkliste vor dem Skoda Verkauf',
+          paragraphs: [
+            'Viele Preisverluste entstehen, weil Unterlagen und Zustandsangaben erst während der Verhandlung zusammengestellt werden. Eine kurze Vorbereitung verbessert deshalb nicht nur den Preisrahmen, sondern auch die Abschlussgeschwindigkeit.',
+            'Sinnvoll ist ein strukturierter Vorab-Check: Zulassungsunterlagen, Serviceheft, Werkstattrechnungen, letzte HU-Berichte, bekannte Mängel und klare Fahrzeugfotos. Bei DSG-, TSI- oder TDI-Themen sind vorhandene Diagnosen besonders hilfreich, weil sie Unsicherheit auf Käuferseite reduzieren.',
+            'Mit dieser Vorbereitung erhalten Sie in der Regel ein präziseres Angebot und vermeiden spätere Diskussionen über Zustand oder Wartungsstand. Gerade bei hochgelaufenen Familienfahrzeugen ist dieser Schritt oft der entscheidende Hebel für einen stabilen und schnellen Verkauf.',
+          ],
+          bullets: [
+            'Unterlagen vollständig und geordnet bereithalten',
+            'Bekannte technische Punkte offen und konkret benennen',
+            'Zustand realistisch dokumentieren statt beschönigen',
+          ],
+        },
+        {
+          heading: 'Familienfahrzeug-Verkauf: worauf Käufer besonders achten',
+          paragraphs: [
+            'Bei familiengenutzten Škoda achten Käufer häufig besonders auf nachvollziehbare Wartung, Innenraumzustand und den Umgang mit typischem Alltagsverschleiß. Diese Punkte beeinflussen nicht nur den Preis, sondern auch das Vertrauen in die Verhandlung.',
+            'Entscheidend ist daher, den Zustand nicht zu beschönigen, sondern klar und vollständig darzustellen. Transparenz wirkt im Markt oft stärker als ein zu hoch angesetzter Einstiegspreis.',
+            'Wenn diese Faktoren vorbereitet sind, steigt die Chance auf einen schnellen, sauberen Abschluss deutlich. Gerade bei Octavia, Superb und Kodiaq ist das in der Praxis ein wesentlicher Hebel für stabile Ergebnisse.',
+          ],
+          bullets: [
+            'Innenraum- und Nutzungsspuren ehrlich einordnen',
+            'Wartungshistorie als zentrales Vertrauenssignal nutzen',
+            'Realistische Preispositionierung vorab festlegen',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf fur Škoda oft ideal ist',
+          paragraphs: [
+            'Der Privatverkauf kann bei DSG-/Motorfragen und hoher Laufleistung langwierig werden. Häufig entstehen Verhandlungsschleifen ohne sicheren Abschluss.',
+            'Ein professioneller Skoda Ankauf bietet klare Prozesse, dokumentierte Zahlung und planbaren Zeitrahmen.',
+            'Gerade bei älteren, hochgelaufenen oder defekten Fahrzeugen ist der strukturierte Direktankauf oft die effizienteste Lösung.',
+            'Zusätzlich gewinnen Sie früh Planungssicherheit für den Fahrzeugwechsel und vermeiden unnötige Standzeiten sowie organisatorischen Mehraufwand.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Sind DSG-Probleme ein Ausschluss beim Skoda Verkauf?',
+          a: 'Nein. Auch mit DSG-Auffälligkeiten ist ein Verkauf möglich, wenn der Zustand transparent beschrieben wird.',
+        },
+        {
+          q: 'Wann sollte ich meinen Škoda mit hoher Laufleistung verkaufen?',
+          a: 'Häufig vor der nächsten relevanten Laufleistungsschwelle oder vor größeren kombinierten Reparaturen.',
+        },
+        {
+          q: 'Welche Skoda Probleme sind besonders kostenrelevant?',
+          a: 'Je nach Modell sind vor allem DSG-Themen, TSI-/TDI-bezogene Auffälligkeiten, Elektrik und Fahrwerksverschleiß relevant.',
+        },
+        {
+          q: 'Lohnt sich Reparatur vor dem Verkauf immer?',
+          a: 'Nein. Entscheidend sind Investitionshöhe, Folgerisiko und realistischer Mehrerlös nach Reparatur.',
+        },
+        {
+          q: 'Ist Skoda Export Ankauf möglich?',
+          a: 'Ja. Für geeignete Fahrzeuge kann der Exportweg sinnvoll sein und in die Ankaufstrategie einbezogen werden.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-ohne-tuev',
+        'autoexport-ankauf',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Škoda jetzt verkaufen und Kostenrisiken aktiv steuern?',
+        text: 'Prufen Sie Ihren Skoda Ankaufpreis transparent und starten Sie den Verkauf mit einem klaren, sicheren Ablauf.',
+        href: '/skoda-verkaufen',
+        label: 'Zur Skoda Ankaufseite',
+      },
+    },
+  },
+  mazda: {
+    slug: 'mazda',
+    displayName: 'Mazda',
+    keywordMap: {
+      primary: ['Mazda verkaufen', 'Mazda Ankauf', 'Mazda Autoankauf'],
+      secondary: [
+        'Mazda schnell verkaufen',
+        'Mazda Ankauf Deutschland',
+        'Mazda Motorschaden verkaufen',
+        'Mazda Unfallwagen verkaufen',
+        'Mazda gebraucht verkaufen',
+        'Mazda Export Ankauf',
+      ],
+      semantic: [
+        'Mazda Zuverlässigkeit',
+        'Mazda hohe Laufleistung',
+        'Mazda Skyactiv',
+        'Mazda Reparaturkosten',
+        'Mazda Motor Probleme',
+        'Mazda älteres Fahrzeug verkaufen',
+        'Mazda Restwert',
+        'Mazda Ankaufpreis',
+      ],
+      longTail: [
+        'Wann Mazda verkaufen bei hoher Laufleistung',
+        'Mazda mit Motorschaden fair verkaufen',
+        'Mazda CX-5 oder Mazda 6 verkaufen vor teurer Reparatur',
+        'Mazda Skyactiv Benziner reparieren oder verkaufen',
+        'Mazda Export Ankauf für ältere Modelle',
+      ],
+    },
+    uniquenessRules: {
+      introAngle:
+        'Mazda wird als zuverlässige, fahrerorientierte Langzeitmarke positioniert: nicht Defekt-Drama, sondern wirtschaftlicher Verkaufszeitpunkt bei Alter, Laufleistung und Lebenswandel.',
+      requiredInsights: [
+        'Skyactiv-Technik nüchtern erklären, ohne künstliche Problemüberhöhung',
+        'Mazda-Zuverlässigkeit mit realen Verschleißfenstern in Beziehung setzen',
+        'Verkauf als ruhige Planungsentscheidung statt Notverkauf darstellen',
+      ],
+      bannedPatterns: [
+        'aggressive Hard-Sell-Tonalität ohne Fachbezug',
+        'austauschbare Defektlisten ohne Mazda-Kontext',
+        'übertragene VW-, Opel- oder Ford-Formulierungen ohne Markenprofil',
+      ],
+      minimumSemanticKeywords: 14,
+    },
+    landing: {
+      slugPath: '/mazda-verkaufen',
+      seoTitle: 'Mazda verkaufen | Mazda Ankauf in Deutschland',
+      seoDescription:
+        'Mazda verkaufen mit fairer Bewertung, schneller Auszahlung und kostenloser Abholung deutschlandweit. Auch Unfallwagen, Motorschaden und ohne TÜV.',
+      canonicalPath: '/mazda-verkaufen',
+      heroHeadline: 'Mazda verkaufen - transparent, fair und sicher',
+      heroSubheadline:
+        'Mazda Autoankauf in ganz Deutschland mit klarer Bewertung und zügiger Auszahlung',
+      h1: 'Mazda Autoankauf: Ihren Mazda schnell und fair verkaufen',
+      intro: [
+        'Mazda steht für viele Fahrer in Deutschland für Zuverlässigkeit, klare Technik und ein direktes Fahrgefühl. Genau diese Mischung macht Modelle wie Mazda 3, Mazda 6 oder CX-5 zu langjährigen Begleitern im Alltag.',
+        'Wenn Sie Ihren Mazda verkaufen möchten, geht es deshalb oft nicht um einen plötzlichen Defekt. Häufig ist es eine ruhige Entscheidung: Das Fahrzeug ist älter geworden, die Laufleistung steigt, die Lebenssituation ändert sich oder ein Modellwechsel steht an.',
+        'Ein professioneller Mazda Ankauf sollte diese Realität abbilden. Wer pauschal bewertet, übersieht Unterschiede bei Wartung, Nutzung und Ausstattung. Wir setzen stattdessen auf eine nachvollziehbare Einzelfallbewertung mit klaren Preisfaktoren.',
+        'Gerade bei Mazda Fahrzeugen mit hoher Laufleistung zeigt sich, wie wichtig eine differenzierte Einschätzung ist. Kilometer allein sagen wenig aus, wenn Servicehistorie, Pflegezustand und bekannte Arbeiten sauber dokumentiert sind.',
+        'Mazda ist zudem für effiziente Skyactiv-Benziner bekannt. Diese Technik gilt als robust, muss im Verkauf aber trotzdem korrekt eingeordnet werden, besonders wenn bereits erste Verschleißthemen sichtbar sind oder größere Wartungsfenster bevorstehen.',
+        'Viele Verkäufer möchten heute vor allem eins: einen sicheren Ablauf ohne endlose Inserate und unsichere Besichtigungstermine. Unser Mazda Autoankauf ist darauf ausgerichtet, den Prozess kurz, transparent und rechtssicher zu halten.',
+        'Das gilt auch für Fahrzeuge mit Herausforderungen. Wir kaufen Mazda Unfallwagen, Mazda mit Motorschaden, Fahrzeuge mit Getriebeschaden sowie Autos ohne TÜV oder mit deutlicher Laufleistung.',
+        'Besonders bei älteren Modellen lohnt sich ein strukturierter Verkauf häufig mehr als ein langes Warten auf den perfekten Privatkäufer. Je länger Reparaturen aufgeschoben werden, desto stärker kann der Restwert unter Druck geraten.',
+        'Unser Ansatz ist nicht aggressiv, sondern planbar: Sie erhalten früh eine klare Einschätzung und entscheiden dann in Ruhe. So bleibt der Verkauf eine kontrollierte Entscheidung und kein Termin unter Zeitdruck.',
+        'Auch bei Familienfahrzeugen oder Pendlerautos mit intensiver Nutzung bewerten wir nicht nach Schablone. Innenraumzustand, Wartung und technische Nachweise fließen in die Bewertung ein und verhindern pauschale Abschläge.',
+        'Bei SUVs wie CX-3, CX-30 und CX-5 spielt zusätzlich die Marktnachfrage eine wichtige Rolle. Ein realistischer Ankaufpreis entsteht erst aus der Kombination von Zustand, Modellprofil und aktueller Nachfrage.',
+        'Wenn Sie Mazda schnell verkaufen möchten, bedeutet das bei uns: kurze Wege, klare Kommunikation und dokumentierte Auszahlung. Sie kennen jeden Schritt im Voraus und behalten die volle Entscheidungshoheit.',
+        'Der Mazda Ankauf Deutschland ist bundesweit verfügbar, auf Wunsch inklusive kostenloser Abholung. Damit funktioniert der Verkauf auch dann effizient, wenn Zeit oder Mobilität begrenzt sind.',
+        'Viele Verkäufer fragen sich, ob sie vor dem Verkauf noch investieren sollen. Unsere Empfehlung ist eine klare Kosten-Nutzen-Prüfung: Wenn mehrere Verschleißthemen absehbar sind und der Mehrwert einer Reparatur unsicher bleibt, ist ein früher Verkauf oft die stabilere Lösung. So sichern Sie Restwert, vermeiden Folgekosten und behalten Flexibilität für Ihr nächstes Fahrzeug.',
+        'So verbinden wir fachliche Bewertung mit einem Ablauf, der für Sie praktisch bleibt: fairer Preis, verlässlicher Termin und ein Abschluss, der ohne versteckte Kosten auskommt.',
+      ],
+      benefitHeading: 'Warum viele Mazda-Besitzer an uns verkaufen',
+      benefits: [
+        'Marktorientierte Mazda Bewertung statt pauschaler Standardpreise.',
+        'Schneller Ablauf: In vielen Fällen ist der Verkauf in 24 bis 72 Stunden abgeschlossen.',
+        'Ankauf auch bei Problemen: Unfallwagen, Motorschaden, Getriebeschaden und ohne TÜV.',
+        'Faire Preisfindung auch bei hoher Laufleistung und älteren Mazda Modellen.',
+        'Technisches Verständnis für Skyactiv-Benziner und typische Mazda Nutzungsmuster.',
+        'Bundesweiter Service mit optionaler kostenloser Abholung.',
+        'Klare Verträge und nachvollziehbare Auszahlung ohne versteckte Gebühren.',
+        'Ruhige, transparente Kommunikation statt Druckverkauf.',
+      ],
+      processHeading: 'Mazda verkaufen in 3 einfachen Schritten',
+      processSteps: [
+        {
+          title: '1. Fahrzeugdaten übermitteln',
+          text: 'Sie senden uns Modell, Baujahr, Laufleistung, Motorisierung, Zustand und bekannte Mängel. Mit Serviceunterlagen wird die Bewertung noch präziser.',
+        },
+        {
+          title: '2. Transparentes Angebot erhalten',
+          text: 'Wir prüfen Marktlage, technischen Zustand und Restwertrisiken und geben Ihnen ein nachvollziehbares Angebot statt Lockpreis.',
+        },
+        {
+          title: '3. Übergabe und Auszahlung',
+          text: 'Nach Terminabstimmung erfolgt die saubere Übergabe mit Dokumentation. Die Auszahlung wird schnell und verlässlich abgewickelt, auf Wunsch mit Abholung.',
+        },
+      ],
+      buyTypesHeading: 'Welche Mazda wir ankaufen',
+      buyTypes: [
+        {
+          title: 'Mazda Unfallwagen verkaufen',
+          text: 'Auch bei Unfallschäden ist ein Ankauf möglich. Schadenbild, Reparaturstatus und Gesamtzustand werden transparent bewertet.',
+        },
+        {
+          title: 'Mazda Motorschaden verkaufen',
+          text: 'Wenn eine teure Instandsetzung ansteht, ist der Direktverkauf oft wirtschaftlicher als ein offenes Reparaturrisiko.',
+        },
+        {
+          title: 'Mazda mit Getriebeschaden',
+          text: 'Schaltprobleme oder auffälliges Fahrverhalten schließen den Ankauf nicht aus. Wir bewerten den Einzelfall nachvollziehbar.',
+        },
+        {
+          title: 'Mazda mit hoher Laufleistung',
+          text: 'Hohe Kilometer sind bei Mazda häufig alltagsbedingt. Entscheidend sind Wartung, Zustand und Dokumentation.',
+        },
+        {
+          title: 'Mazda ohne TÜV',
+          text: 'Auch ohne gültige HU/AU ist ein fairer Ankauf möglich. Notwendige Investitionen werden transparent berücksichtigt.',
+        },
+        {
+          title: 'Ältere Mazda Fahrzeuge',
+          text: 'Gerade ältere Fahrzeuge können über den strukturierten Ankauf effizient verkauft werden, inklusive möglicher Exportoption.',
+        },
+        {
+          title: 'Firmenwagen und Leasingrückläufer',
+          text: 'Auch gewerbliche Mazda Fahrzeuge kaufen wir mit klarer Prozessstruktur und sauberer Unterlagenabwicklung an.',
+        },
+        {
+          title: 'Modelle im Fokus: Mazda 2, 3, 6 und CX-Baureihen',
+          text: 'Wir bewerten unter anderem Mazda 2, Mazda 3, Mazda 6, CX-3, CX-5 und CX-30 marktnah nach Nutzung und Zustand.',
+        },
+        {
+          title: 'Skyactiv-Benziner realistisch bewertet',
+          text: 'Skyactiv-Modelle werden technisch differenziert eingeordnet, statt pauschal über- oder unterbewertet.',
+        },
+      ],
+      comparisonHeading: 'Warum unser Mazda Ankauf oft die bessere Wahl ist',
+      comparisonRows: [
+        {
+          criterion: 'Preisfindung',
+          us: 'Einzelfallbewertung mit Markt- und Technikbezug',
+          privateSale: 'Häufig emotionale Verhandlung und unsichere Preisbasis',
+          traditionalDealer: 'Oft pauschale Abschläge bei älteren oder hochgelaufenen Fahrzeugen',
+        },
+        {
+          criterion: 'Zeit bis Abschluss',
+          us: 'In vielen Fällen 24 bis 72 Stunden',
+          privateSale: 'Oft mehrere Wochen mit Besichtigungs- und Nachverhandlungsaufwand',
+          traditionalDealer: 'Abhängig von internen Prozessen und Ankaufkriterien',
+        },
+        {
+          criterion: 'Defekte Fahrzeuge',
+          us: 'Ankauf auch bei Unfall, Motorschaden, Getriebeproblemen und ohne TÜV',
+          privateSale: 'Hohe Absprungrate bei Defekten',
+          traditionalDealer: 'Häufig restriktiv oder mit deutlichen Risikoabschlägen',
+        },
+        {
+          criterion: 'Abwicklungssicherheit',
+          us: 'Klare Vertrags- und Zahlungsdokumentation',
+          privateSale: 'Erhöhtes Risiko bei Zahlung und Haftung',
+          traditionalDealer: 'Formal sicher, aber oft weniger flexibel im Sonderfall',
+        },
+      ],
+      trustHeading: 'Vertrauen durch nachvollziehbare Zusagen',
+      trustPoints: [
+        'Transparente Preisfindung ohne versteckte Klauseln',
+        'Schnelle Auszahlung mit dokumentiertem Zahlungsnachweis',
+        'Kostenlose Abholung in vielen Regionen Deutschlands',
+        'Ankauf auch bei älteren, hochgelaufenen oder defekten Mazda',
+        'Klare Kommunikation vom Erstkontakt bis zur Übergabe',
+        'Keine versteckten Kosten im gesamten Verkaufsprozess',
+      ],
+      ctas: [
+        {
+          heading: 'Mazda jetzt kostenlos bewerten',
+          text: 'Starten Sie mit einer unverbindlichen Einschätzung und erhalten Sie Klarheit über Ihren realistischen Ankaufpreis.',
+          label: 'Mazda bewerten',
+          href: '/auto-bewerten',
+        },
+        {
+          heading: 'Mazda Verkauf direkt starten',
+          text: 'Wenn Sie sich entschieden haben, begleiten wir Sie strukturiert bis zur sicheren Auszahlung.',
+          label: 'Mazda verkaufen',
+          href: '/auto-verkaufen',
+        },
+        {
+          heading: 'Erst informieren, dann entscheiden',
+          text: 'Im Mazda Guide sehen Sie, wann sich Reparatur lohnt und wann ein Verkauf wirtschaftlicher ist.',
+          label: 'Zum Mazda Guide',
+          href: '/ratgeber/mazda-probleme-verkauf',
+        },
+      ],
+      faqHeading: 'FAQ: Mazda verkaufen, Laufleistung und Motorhaltbarkeit',
+      faqs: [
+        {
+          q: 'Wie schnell kann ich meinen Mazda verkaufen?',
+          a: 'Mit vollständigen Fahrzeugdaten ist ein Abschluss häufig innerhalb weniger Tage möglich. Der konkrete Zeitraum hängt von Zustand und Terminabstimmung ab.',
+        },
+        {
+          q: 'Kaufen Sie auch Mazda mit hoher Laufleistung?',
+          a: 'Ja. Hohe Laufleistung ist kein Ausschlusskriterium. Entscheidend sind Wartung, Gesamtzustand und nachvollziehbare Historie.',
+        },
+        {
+          q: 'Ist ein Verkauf bei Motorschaden möglich?',
+          a: 'Ja. Auch Mazda mit Motorschaden können angekauft werden, wenn der Schaden transparent beschrieben ist.',
+        },
+        {
+          q: 'Kann ich einen älteren Mazda ohne TÜV verkaufen?',
+          a: 'Ja. Auch ohne gültige HU/AU ist ein Ankauf möglich. Die nötigen Investitionen werden fair in die Preisfindung einbezogen.',
+        },
+        {
+          q: 'Sind Skyactiv-Motoren beim Verkauf ein Vorteil?',
+          a: 'Häufig ja, wenn Wartung und Zustand nachvollziehbar sind. Eine pauschale Bewertung gibt es aber nicht, der Einzelfall bleibt entscheidend.',
+        },
+        {
+          q: 'Ist Mazda Export Ankauf möglich?',
+          a: 'Für geeignete Fahrzeuge ja. Wir prüfen, ob ein Exportweg wirtschaftlich sinnvoll ist und berücksichtigen ihn in der Bewertung.',
+        },
+        {
+          q: 'Fallen versteckte Gebühren an?',
+          a: 'Nein. Der Prozess ist transparent und ohne versteckte Zusatzkosten.',
+        },
+        {
+          q: 'Ist der Mazda Ankauf bundesweit verfügbar?',
+          a: 'Ja. Unser Mazda Ankauf Deutschland ist bundesweit verfügbar, in vielen Regionen inklusive Abholung.',
+        },
+      ],
+      internalLinksHeading: 'Weiterführende Seiten',
+      internalLinks: [
+        {
+          href: '/auto-bewerten',
+          label: 'Mazda kostenlos bewerten',
+          context: 'Für eine schnelle und unverbindliche Preisorientierung.',
+        },
+        {
+          href: '/auto-verkaufen',
+          label: 'Autoverkauf Ablauf',
+          context: 'Wenn Sie direkt in den strukturierten Verkaufsprozess starten möchten.',
+        },
+        {
+          href: '/ratgeber/mazda-probleme-verkauf',
+          label: 'Mazda Guide: Zuverlässigkeit, Probleme, Verkaufszeitpunkt',
+          context: 'Für die fundierte Entscheidung zwischen Reparatur und Verkauf.',
+        },
+      ],
+    },
+    guide: {
+      slug: 'mazda-probleme-verkauf',
+      seoTitle: 'Mazda Probleme und Verkauf: Zuverlässigkeits-Guide 2026',
+      seoDescription:
+        'Mazda Zuverlässigkeit, typische Schwachstellen und Reparaturkosten im Praxischeck. So finden Sie den richtigen Zeitpunkt für den Mazda Verkauf.',
+      h1: 'Mazda Guide: Zuverlässigkeit verstehen und richtig verkaufen',
+      intro:
+        'Mazda hat in Deutschland einen Ruf als langlebige, fahrerorientierte Marke mit effizienter Technik. Genau deshalb ist die Verkaufsfrage bei Mazda selten schwarz-weiß: Viele Fahrzeuge laufen lange zuverlässig, gleichzeitig steigen mit Alter und Laufleistung die Kostenfenster. Dieser Guide zeigt Ihnen ausgewogen, welche Mazda Probleme wirklich relevant sind, wann Reparaturen noch sinnvoll sind und wann ein Verkauf den besseren wirtschaftlichen Weg darstellt.',
+      quickFacts: [
+        'Mazda gilt als überdurchschnittlich zuverlässig, aber nicht wartungsfrei.',
+        'Skyactiv-Technik ist effizient, braucht jedoch konsequente Pflege und Ölqualität.',
+        'Viele Mazda werden lange gefahren, Laufleistung ist daher zentraler Preisfaktor.',
+        'Der beste Verkaufszeitpunkt liegt oft vor mehreren gebündelten Verschleißthemen.',
+        'Ältere Modelle können trotz Alter attraktiv bleiben, besonders mit sauberer Historie.',
+        'Ein strukturierter Ankauf reduziert Unsicherheit und spart Zeit im Verkaufsprozess.',
+      ],
+      sections: [
+        {
+          heading: 'Wie zuverlässig sind Mazda Fahrzeuge wirklich?',
+          paragraphs: [
+            'Mazda wird häufig mit japanischer Ingenieurslogik verbunden: klare Konstruktion, solide Langzeitqualität und ein Fokus auf effiziente Technik statt übermäßiger Komplexität. Diese Wahrnehmung ist nicht nur Marketing, sie spiegelt sich bei vielen Modellen im Alltag wider.',
+            'Gleichzeitig ist Zuverlässigkeit nie absolut. Auch ein robustes Fahrzeug entwickelt mit den Jahren typische Verschleißmuster, besonders bei hoher Jahresfahrleistung, Kurzstreckenprofil oder unregelmäßiger Wartung.',
+            'Wer seinen Mazda verkaufen möchte, profitiert von einem realistischen Blick: nicht dramatisieren, aber auch nicht verharmlosen. Genau diese Balance ermöglicht einen guten Verkaufszeitpunkt.',
+          ],
+          bullets: [
+            'Zuverlässig bedeutet planbar, nicht fehlerfrei',
+            'Laufleistung und Wartungsqualität zählen mehr als Einzelmeinungen',
+            'Frühe Einordnung spart spätere Notentscheidungen',
+          ],
+        },
+        {
+          heading: 'Warum verkaufen viele Mazda-Besitzer trotz guter Haltbarkeit?',
+          paragraphs: [
+            'Viele Mazda Verkäufe entstehen nicht durch akute Defekte, sondern durch Lebensphasen: Familienwechsel, Pendelstrecke, Jobwechsel oder der Wunsch nach einem anderen Fahrzeugkonzept.',
+            'Ein weiterer Grund ist wirtschaftliche Planung. Selbst zuverlässige Fahrzeuge erreichen Punkte, an denen mehrere Wartungs- und Verschleißthemen gleichzeitig absehbar werden.',
+            'Wer dann früh handelt, verkauft oft mit besserem Restwert als jemand, der bis nach einer teuren Reparatur wartet.',
+          ],
+        },
+        {
+          heading: 'Alter und hohe Laufleistung als Verkaufsfaktor',
+          paragraphs: [
+            'Mazda Fahrzeuge erreichen häufig hohe Laufleistungen, was grundsätzlich für die Marke spricht. Im Verkauf führt das aber zu einer differenzierten Preislogik: Dokumentation und Gesamtzustand werden wichtiger als eine einzelne Kennzahl.',
+            'Ein Mazda mit vielen Kilometern, aber nachvollziehbarer Historie, kann wirtschaftlich deutlich besser dastehen als ein niedriger gelaufenes Fahrzeug mit Lücken im Serviceverlauf.',
+            'Für Verkäufer bedeutet das: Unterlagen sind ein echter Preishebel, besonders bei älteren Fahrzeugen und Vielfahrerprofilen.',
+          ],
+        },
+        {
+          heading: 'Lifestyle-Wechsel und Modellupgrade als Trigger',
+          paragraphs: [
+            'Der Wechsel in eine neue Lebensphase ist bei Mazda ein häufiger Verkaufsgrund. Wer früher ein kompaktes Modell wie Mazda 2 oder 3 fuhr, benötigt später vielleicht mehr Platz oder eine andere Antriebsstrategie.',
+            'Andere steigen von einer älteren Generation auf modernere Assistenzsysteme und effizientere Motorabstimmungen um.',
+            'In beiden Fällen gilt: Ein geplanter Verkauf vor größeren Kostenblöcken schafft mehr Verhandlungsspielraum und weniger Zeitdruck.',
+          ],
+        },
+        {
+          heading: 'Welche Rolle spielt Skyactiv-Technologie im Langzeitbetrieb?',
+          paragraphs: [
+            'Skyactiv steht bei Mazda für Effizienz ohne unnötige Komplexität, besonders bei Benzinmotoren. Im Markt wird das oft positiv bewertet, weil die Technik als langlebig und alltagstauglich gilt.',
+            'Trotzdem hängt die Haltbarkeit klar von Wartungsdisziplin, Ölqualität, Fahrprofil und thermischer Belastung ab. Vernachlässigte Intervalle schlagen auch bei robusten Motoren langfristig durch.',
+            'Beim Verkauf ist deshalb entscheidend, dass Wartung und relevante Arbeiten nachvollziehbar belegt sind. Das erhöht Vertrauen und stabilisiert den Ankaufpreis.',
+          ],
+        },
+        {
+          heading: 'Mazda Probleme im Alltag: Wo liegen die häufigsten Punkte?',
+          paragraphs: [
+            'Mazda hat im Vergleich zu vielen Wettbewerbern keinen extremen Problemfokus. Häufiger sind normale Alterungs- und Verschleißthemen, die sich über Jahre summieren.',
+            'Gerade diese Summe kleinerer Punkte ist wirtschaftlich wichtig: Nicht der einzelne Defekt entscheidet, sondern der Gesamtaufwand in den nächsten 12 bis 24 Monaten.',
+            'Wer diese Perspektive früh einnimmt, kann die Reparatur-oder-Verkauf-Frage klarer beantworten.',
+          ],
+        },
+        {
+          heading: 'Rost bei älteren Mazda Modellen: noch relevant?',
+          paragraphs: [
+            'Rost ist vor allem bei älteren Generationen ein Thema, insbesondere an Unterboden, Radläufen und tragenden Bereichen, wenn Pflege und Korrosionsschutz vernachlässigt wurden.',
+            'Nicht jede Roststelle ist kritisch, aber die Grenze zwischen kosmetischem und strukturellem Thema kann teuer werden, wenn sie zu spät erkannt wird.',
+            'Beim Verkauf hilft eine offene Dokumentation deutlich. Käufer und Ankäufer reagieren besser auf transparente Zustandsangaben als auf verharmloste Beschreibung.',
+          ],
+          bullets: [
+            'Früh prüfen, bevor aus Oberflächenrost Substanzthemen werden',
+            'Zustand dokumentieren und ehrlich kommunizieren',
+            'Kosten gegen Restwert konsequent vergleichen',
+          ],
+        },
+        {
+          heading: 'Fahrwerksverschleiß bei hoher Kilometerleistung',
+          paragraphs: [
+            'Bei lang genutzten Mazda Fahrzeugen sind Fahrwerksthemen erwartbar: Dämpfer, Lager, Koppelstangen oder Achsgeometrie können mit der Zeit nachlassen.',
+            'Einzelreparaturen bleiben oft moderat, aber mehrere Positionen in kurzer Folge verändern die Wirtschaftlichkeit schnell.',
+            'Wer bereits die nächsten Fahrwerksarbeiten absehen kann, sollte den Verkaufszeitpunkt aktiv prüfen, bevor weitere Kostenblöcke entstehen.',
+          ],
+        },
+        {
+          heading: 'Kupplung und Antriebsstrang: wann wird es teuer?',
+          paragraphs: [
+            'Vor allem bei älteren Schaltfahrzeugen kann Kupplungsverschleiß im fortgeschrittenen Alter relevant werden. Das ist kein Mazda-Spezialproblem, aber ein typischer Kostenfaktor bei hoher Nutzung.',
+            'Entscheidend ist, ob das Thema isoliert auftritt oder zusammen mit weiteren Arbeiten ansteht. Erst die Kombination macht die Investition kritisch.',
+            'Im Verkauf zählt dann die klare Faktenlage: aktueller Zustand, Symptomatik und bereits durchgeführte Arbeiten.',
+          ],
+        },
+        {
+          heading: 'Elektronik: meist kleinere, aber lästige Themen',
+          paragraphs: [
+            'Bei alternden Fahrzeugen können Sensorik, Komfortfunktionen oder Infotainment punktuell auffällig werden. Meist handelt es sich nicht um Totalausfälle, sondern um wiederkehrende Kleinthemen.',
+            'Diese Punkte verursachen vor allem Zeitverlust durch Diagnose und Werkstatttermine. In der Summe kann das den Alltag stärker belasten als die reine Reparaturrechnung zeigt.',
+            'Für den Verkauf ist Transparenz wieder der wichtigste Faktor: bekannte Punkte klar benennen, statt sie im Prozess erst spät offenzulegen.',
+          ],
+        },
+        {
+          heading: 'Seltene Motorprobleme bei Mazda: wie einordnen?',
+          paragraphs: [
+            'Größere Motorschäden sind bei Mazda im Verhältnis eher seltener als bei manchen Vergleichsmarken, können aber natürlich vorkommen. Häufig geht es dann um Wartungshistorie, Überhitzungsereignisse oder lange ignorierte Vorzeichen.',
+            'In der Bewertung sollten Sie zwischen akutem Defekt, beginnender Auffälligkeit und normalem Altersverhalten unterscheiden. Das verhindert falsche Extrementscheidungen.',
+            'Wenn bereits hohe Reparaturkosten im Raum stehen, ist der Direktverkauf häufig die risikoärmere Alternative zur offenen Kostenkette.',
+          ],
+        },
+        {
+          heading: 'Welche Mazda Modelle zeigen häufiger Schwachpunkte?',
+          paragraphs: [
+            'Pauschal ist kein Mazda Modell grundsätzlich problematisch. Dennoch zeigen ältere Generationen von Mazda 3 und Mazda 6 je nach Baujahr typische Schwerpunkte wie Rostanfälligkeit oder altersbedingten Verschleiß in Fahrwerk und Elektrik.',
+            'Solche Hinweise sind Orientierung, kein Urteil über jedes Fahrzeug. Ein gepflegtes Exemplar mit sauberer Historie kann deutlich stabiler sein als die allgemeine Modellmeinung vermuten lässt.',
+            'Deshalb bleibt die Einzelfallbewertung entscheidend, vor allem bei Gebrauchtwagen mit langer Nutzungsgeschichte.',
+          ],
+          bullets: [
+            'Mazda 3 ältere Generationen: Rost- und Verschleißprofil prüfen',
+            'Mazda 6 ältere Generationen: Unterboden, Fahrwerk und Historie beachten',
+            'Immer modell- und zustandsbezogen statt pauschal entscheiden',
+          ],
+        },
+        {
+          heading: 'Wann Mazda verkaufen? Die wichtigsten Zeitfenster',
+          paragraphs: [
+            'Der ideale Zeitpunkt liegt oft vor größeren kombinierten Investitionen. Sobald mehrere Themen gleichzeitig absehbar sind, sinkt der Restwert meist schneller als erwartet.',
+            'Auch Laufleistungsschwellen spielen eine Rolle, weil sich Nachfrage und Preisbereitschaft ab bestimmten Bereichen spürbar verändern können.',
+            'Ein geplanter Verkauf ist fast immer stärker als ein später Notverkauf unter Werkstatt- und Termindruck.',
+          ],
+        },
+        {
+          heading: 'Hohe Laufleistung: wo liegt der Kipppunkt?',
+          paragraphs: [
+            'Einen festen Kilometerwert als allgemeine Grenze gibt es nicht. Entscheidend ist das Verhältnis aus Restwert, bevorstehenden Arbeiten und Nutzungsprofil.',
+            'Bei vielen Mazda liegt der wirtschaftliche Kipppunkt dort, wo mehrere Verschleißthemen zeitgleich auftreten und die nächste Investition den Fahrzeugwert deutlich belastet.',
+            'Wer diese Phase erkennt und früh verkauft, schützt den erzielbaren Preis häufig besser.',
+          ],
+        },
+        {
+          heading: 'Mazda Reparaturkosten realistisch bewerten',
+          paragraphs: [
+            'Mazda wird oft als kostenseitig moderat eingeschätzt. Das stimmt in vielen Fällen, darf aber nicht dazu führen, dass mehrere kleinere Kostenblöcke unterschätzt werden.',
+            'Wichtig ist der Gesamtblick: direkte Reparaturkosten, Folgerisiko, Standzeiten und Wertverlust während der Wartezeit.',
+            'Erst mit dieser Gesamtrechnung wird klar, ob Investieren sinnvoll bleibt oder der Verkauf die sauberere Option ist.',
+          ],
+          bullets: [
+            'Einzelkosten nicht isoliert betrachten',
+            'Folgerisiko und Zeitaufwand mit einrechnen',
+            'Restwertentwicklung aktiv gegenrechnen',
+          ],
+        },
+        {
+          heading: 'Reparieren oder verkaufen? Ein klarer Entscheidungsrahmen',
+          paragraphs: [
+            'Drei Fragen helfen in der Praxis: Wie hoch ist die sichere Investition heute? Wie groß ist das Risiko zusätzlicher Arbeiten? Und welcher Mehrerlös ist nach Reparatur realistisch erreichbar?',
+            'Wenn der erwartete Mehrerlös Investition plus Risiko nicht klar übersteigt, ist ein Verkauf meist die wirtschaftlich stabilere Entscheidung.',
+            'Diese Logik reduziert emotionale Fehlentscheidungen und schafft eine belastbare Grundlage für den nächsten Schritt.',
+          ],
+        },
+        {
+          heading: 'Wie erzielen Sie den besten Verkaufspreis für Ihren Mazda?',
+          paragraphs: [
+            'Der wichtigste Hebel ist Vorbereitung. Vollständige Unterlagen, nachvollziehbare Servicehistorie und eine ehrliche Beschreibung des Zustands erhöhen Vertrauen und Abschlussgeschwindigkeit.',
+            'Gerade bei älteren oder hochgelaufenen Mazda ist Transparenz wichtiger als ein künstlich hoher Einstiegspreis. Klare Fakten reduzieren aggressive Nachverhandlung.',
+            'Zusätzlich hilft eine marktnah angesetzte Preisstrategie, damit Sie nicht wochenlang Reichweite aufbauen müssen, ohne echten Abschluss.',
+          ],
+          bullets: [
+            'Serviceheft, Rechnungen und HU-Berichte geordnet bereitstellen',
+            'Bekannte Mängel offen und konkret benennen',
+            'Preisrealität vor Verhandlung klar definieren',
+          ],
+        },
+        {
+          heading: 'Warum Autoankauf für Mazda oft die effizienteste Lösung ist',
+          paragraphs: [
+            'Beim Privatverkauf entstehen häufig Zeitverluste durch unklare Interessenten, Besichtigungsabbrüche und Nachverhandlungsrunden. Das belastet vor allem dann, wenn das Fahrzeug bereits technische Themen zeigt.',
+            'Ein professioneller Mazda Ankauf bietet stattdessen klare Prozesse, verlässliche Terminstruktur und dokumentierte Zahlung. Das reduziert Risiko und organisatorischen Aufwand.',
+            'Gerade für ältere Fahrzeuge, hohe Laufleistung oder grenzwertige Reparaturfälle kann der strukturierte Ankauf inklusive möglicher Exportoption wirtschaftlich und praktisch die beste Lösung sein.',
+            'Zusätzlich erhalten Sie schnelle Planungssicherheit für den nächsten Fahrzeugschritt, ohne monatelange Vermarktungsphase.',
+          ],
+        },
+      ],
+      faqs: [
+        {
+          q: 'Sind Mazda Fahrzeuge wirklich so zuverlässig wie ihr Ruf?',
+          a: 'Viele Mazda Modelle gelten als robust und langlebig. Entscheidend bleiben trotzdem Wartung, Fahrprofil und der konkrete Zustand des einzelnen Fahrzeugs.',
+        },
+        {
+          q: 'Welche Mazda Probleme sind im Alter am häufigsten relevant?',
+          a: 'Typisch sind vor allem Rost bei älteren Generationen, Fahrwerks- und Kupplungsverschleiß sowie einzelne Elektronikthemen. Schwere Motorprobleme sind vergleichsweise seltener, aber möglich.',
+        },
+        {
+          q: 'Wann sollte ich meinen Mazda verkaufen?',
+          a: 'Häufig vor größeren kombinierten Reparaturen und bevor mehrere Kostenblöcke gleichzeitig anstehen. Frühe Planung schützt oft den Restwert.',
+        },
+        {
+          q: 'Lohnt sich eine Reparatur vor dem Verkauf immer?',
+          a: 'Nein. Entscheidend ist, ob der zu erwartende Mehrerlös die Investition und das Folgerisiko klar übersteigt.',
+        },
+        {
+          q: 'Ist Autoankauf auch für ältere Mazda mit hoher Laufleistung sinnvoll?',
+          a: 'Ja. Gerade bei älteren oder hochgelaufenen Fahrzeugen ist der strukturierte Direktankauf häufig die schnellere und wirtschaftlich klarere Lösung.',
+        },
+      ],
+      relatedSlugs: [
+        'autoankauf-mit-motorschaden',
+        'autoankauf-ohne-tuev',
+        'autoexport-ankauf',
+        'kilometerstand-scheckheft-vorbesitzer-preis',
+      ],
+      coreLink: '/auto-verkaufen',
+      ctaBridge: {
+        heading: 'Mazda jetzt strukturiert und fair verkaufen?',
+        text: 'Prüfen Sie Ihren realistischen Ankaufpreis und starten Sie den Mazda Verkauf mit einem transparenten Ablauf.',
+        href: '/mazda-verkaufen',
+        label: 'Zur Mazda Ankaufseite',
       },
     },
   },

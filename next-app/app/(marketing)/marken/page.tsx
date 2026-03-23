@@ -40,6 +40,19 @@ export default function MarkenRoute() {
             ))}
           </ul>
         </nav>
+
+        <div className="max-w-4xl mx-auto mt-10 rounded-3xl border border-orange-200 bg-orange-50/70 p-6 lg:p-8">
+          <h2 className="text-xl font-black text-brand-dark mb-3">Sie suchen eine modellgenaue Seite?</h2>
+          <p className="text-slate-700 font-medium mb-4">
+            Neben Markenseiten finden Sie auch spezifische Ankaufseiten für stark nachgefragte Modelle mit detaillierten Problem- und Timinghinweisen.
+          </p>
+          <Link
+            href="/modelle"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors"
+          >
+            Zu den Modellseiten
+          </Link>
+        </div>
       </div>
     </div>
   );

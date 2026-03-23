@@ -17,7 +17,11 @@ export const BRAND_LINKS: BrandLinkItem[] = [
   { href: '/porsche-verkaufen', label: 'Porsche verkaufen', order: 5 },
   { href: '/toyota-verkaufen', label: 'Toyota verkaufen', order: 6 },
   { href: '/opel-verkaufen', label: 'Opel verkaufen', order: 7 },
-  { href: '/oldtimer-verkaufen', label: 'Oldtimer verkaufen', order: 8 },
+  { href: '/seat-verkaufen', label: 'SEAT verkaufen', order: 8 },
+  { href: '/ford-verkaufen', label: 'Ford verkaufen', order: 9 },
+  { href: '/skoda-verkaufen', label: 'Skoda verkaufen', order: 10 },
+  { href: '/mazda-verkaufen', label: 'Mazda verkaufen', order: 11 },
+  { href: '/oldtimer-verkaufen', label: 'Oldtimer verkaufen', order: 12 },
 ];
 
 export const MARKEN_OVERVIEW_PATH = '/marken';

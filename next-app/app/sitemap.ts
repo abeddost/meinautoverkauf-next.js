@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { CITY_SEO_DATA } from '@/lib/citySeoData';
 import { GUIDE_CONTENT } from '@/lib/guideContent';
 import { BRAND_SEO_CONTENT } from '@/lib/brandSeoContent';
+import { MODEL_SEO_PAGES } from '@/lib/modelSeoPages';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 
@@ -39,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/marken`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/modelle`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -84,5 +91,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticPages, ...cityPages, ...guidePages, ...brandLandingPages];
+  const modelLandingPages: MetadataRoute.Sitemap = MODEL_SEO_PAGES.map((model) => ({
+    url: `${BASE_URL}${model.canonicalPath}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...cityPages, ...guidePages, ...brandLandingPages, ...modelLandingPages];
 }
