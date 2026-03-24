@@ -994,8 +994,8 @@ const AdminDashboardContent: React.FC = () => {
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-20">Datum</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Status</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Kunde</th>
-                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Fahrzeug</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-14">PLZ</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Fahrzeug</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Preis</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Wunschpreis</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-32">Zugewiesen an</th>
@@ -1061,14 +1061,14 @@ const AdminDashboardContent: React.FC = () => {
                                 <div className="font-semibold text-slate-800 truncate">{est.first_name} {est.last_name}</div>
                                 <div className="text-slate-500 text-xs truncate">{est.email}</div>
                               </td>
+                              <td className="px-2 py-3 text-sm font-bold text-green-600 whitespace-nowrap">
+                                {est.postal_code ?? <span className="text-slate-300 font-normal">—</span>}
+                              </td>
                               <td className="px-2 py-3 text-sm max-w-[144px]">
                                 <div className="font-semibold text-slate-800 truncate">{est.brand} {est.model}</div>
                                 <div className="text-slate-500 text-xs">
                                   {est.year} • {est.mileage} km
                                 </div>
-                              </td>
-                              <td className="px-2 py-3 text-sm font-bold text-green-600 whitespace-nowrap">
-                                {est.postal_code ?? <span className="text-slate-300 font-normal">—</span>}
                               </td>
                               <td className="px-2 py-3 text-sm font-bold text-brand-orange">
                                 {est.status === 'incomplete'
