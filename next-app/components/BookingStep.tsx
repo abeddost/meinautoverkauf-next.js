@@ -122,7 +122,7 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
             <legend className="block text-xs sm:text-sm font-bold text-brand-dark uppercase tracking-wider ml-0.5">
               Übergabeart
             </legend>
-            <div className="grid grid-cols-1 gap-2.5 sm:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
               <button
                 type="button"
                 onClick={() => handleMethodSelect('DROP_OFF')}
@@ -141,6 +141,30 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
                     </p>
                   </div>
                   <div className={`mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${method === 'DROP_OFF' ? 'border-brand-orange bg-brand-orange text-white' : 'border-slate-300'}`}>
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                </div>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleMethodSelect('PICKUP')}
+                className={`p-3.5 sm:p-4 rounded-xl border text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange/40 ${
+                  method === 'PICKUP'
+                    ? 'border-brand-orange bg-orange-50 shadow-sm'
+                    : 'border-slate-200 hover:border-brand-orange/50 bg-white'
+                }`}
+                aria-pressed={method === 'PICKUP'}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="font-black text-sm sm:text-base mb-0.5 text-brand-dark">Hausabholung</div>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-snug">
+                      Wir holen Ihr Fahrzeug bei Ihnen ab. Details klären wir kurz telefonisch zur Bestätigung.
+                    </p>
+                  </div>
+                  <div className={`mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${method === 'PICKUP' ? 'border-brand-orange bg-brand-orange text-white' : 'border-slate-300'}`}>
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
