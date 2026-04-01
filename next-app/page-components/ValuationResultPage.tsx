@@ -100,6 +100,7 @@ const ValuationResultPage: React.FC = () => {
             doors: carDetails.doors,
             postalCode: carDetails.postalCode,
             color: carDetails.color,
+            knownDamages: carDetails.knownDamages || undefined,
           },
           valuation: {
             estimatedPrice: valuation.estimatedPrice,

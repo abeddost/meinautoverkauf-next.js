@@ -415,6 +415,7 @@ Deno.serve(async (req: Request) => {
     doors: car.doors ?? null,
     postal_code: car.postalCode ?? null,
     color: car.color ?? null,
+    known_damages: car.knownDamages ?? null,
     estimated_price: val.estimatedPrice,
     price_min: priceRange.min,
     price_max: priceRange.max,

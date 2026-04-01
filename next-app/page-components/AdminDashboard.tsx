@@ -46,6 +46,7 @@ export interface Estimation {
   provision_euro: number | null;
   commission_paid: boolean;
   rejection_reason: string | null;
+  known_damages: string | null;
   deleted_at: string | null;
   assigned_to: string | null;
   call_status: string;
@@ -1655,6 +1656,12 @@ const AdminDashboardContent: React.FC = () => {
                     <div>
                       <div className="text-xs text-slate-500 mb-1">FIN</div>
                       <div className="font-semibold font-mono text-sm">{selectedEstimation.vin}</div>
+                    </div>
+                  )}
+                  {selectedEstimation.known_damages && (
+                    <div className="col-span-2">
+                      <div className="text-xs text-slate-500 mb-1">Bekannte Schäden / Mängel</div>
+                      <div className="font-semibold">{selectedEstimation.known_damages}</div>
                     </div>
                   )}
                 </div>

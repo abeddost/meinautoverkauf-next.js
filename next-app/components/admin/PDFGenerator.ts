@@ -44,6 +44,7 @@ interface Estimation {
   color: string | null;
   doors: string | null;
   vin: string | null;
+  known_damages: string | null;
   desired_price: string | null;
   final_sale_price: number | null;
   commission_percentage: number | null;
@@ -139,6 +140,7 @@ export const generateEstimationPDF = async (
     ...(estimation.color ? [['Farbe', estimation.color]] : []),
     ...(estimation.doors ? [['Türen', estimation.doors]] : []),
     ...(estimation.vin ? [['FIN/VIN', estimation.vin]] : []),
+    ...(estimation.known_damages ? [['Bekannte Schäden', estimation.known_damages]] : []),
   ];
 
   autoTable(doc, {
