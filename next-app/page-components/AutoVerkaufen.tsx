@@ -46,7 +46,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               Auto verkaufen online – Schnell, transparent und zum fairen Preis
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
-              Sie möchten Ihr <strong>Auto verkaufen</strong> und suchen nach einer stressfreien Lösung? Wir kaufen dein Auto – egal ob <strong>Gebrauchtwagen verkaufen</strong>, <strong>Auto mit Motorschaden verkaufen</strong> oder <strong>defektes Auto verkaufen</strong>. Bei Meinautoverkauf.de profitieren Sie von einem innovativen Service, der den gesamten Verkaufsprozess vereinfacht.
+              Sie möchten Ihr <strong>Auto verkaufen</strong> und suchen nach einer stressfreien Lösung? Wir kaufen dein Auto – egal ob <strong>Gebrauchtwagen verkaufen in Deutschland</strong>, <strong>Auto mit Motorschaden verkaufen</strong> oder <strong>defektes Auto verkaufen</strong>. Bei Meinautoverkauf.de können Sie Ihr Auto <strong>sicher online verkaufen</strong> und von einem innovativen Service profitieren, der den gesamten Verkaufsprozess vereinfacht.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
               Ob Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, ein <strong>Auto für Export verkaufen</strong> wollen oder einen marktgerechten Preis anstreben – wir bieten Ihnen eine faire <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link> und einen reibungslosen Ablauf.

@@ -48,7 +48,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
           </h1>
           
           <p className="text-base text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
-            Sie fragen sich: "Was ist mein Auto wert?" oder "Wie viel ist mein Auto wert?" Mit unserem kostenlosen KI-gestützten Bewertungstool erhalten Sie in wenigen Minuten eine transparente, faire und unverbindliche Einschätzung.
+            Sie fragen sich: "Was ist mein Auto wert?" oder "Wie viel ist mein Auto wert?" Mit unserem kostenlosen KI-gestützten Bewertungstool können Sie Ihr Auto online kostenlos bewerten – schnell, transparent und unverbindlich in ganz Deutschland.
           </p>
 
           <section id="auto-bewerten-content" className="prose max-w-none text-slate-700 space-y-8 relative">

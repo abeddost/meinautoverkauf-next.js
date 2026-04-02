@@ -879,10 +879,10 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
     slug: 'autoexport-ankauf',
     title: 'Autoexport Ankauf | Exportfahrzeuge inkl. Abmeldung',
     description:
-      'Autoexport Ankauf für ältere Fahrzeuge, Diesel und hohe Laufleistung: faire Bewertung, Dokumente, Abmeldung und sichere Übergabe.',
+      'Autoexport Ankauf für ältere Fahrzeuge Diesel und Autos mit hoher Laufleistung mit fairer Bewertung einfacher Dokumentenabwicklung und sicherer Übergabe.',
     h1: 'Autoexport Ankauf – wir kaufen Exportfahrzeuge inkl. Abmeldung und Dokumente',
     intro:
-      'Der Exportmarkt ist für viele Fahrzeuge die wirtschaftlich beste Verwertung, besonders bei hoher Laufleistung oder eingeschränkter Inlandsnachfrage. Entscheidend ist ein seriöser Prozess mit klaren Dokumenten.',
+      'Der Exportmarkt ist für viele Fahrzeuge die wirtschaftlich beste Verwertung, besonders bei hoher Laufleistung oder eingeschränkter Inlandsnachfrage. Wer sein Auto für den Export verkaufen möchte, profitiert in Deutschland von einem geregelten Autoankauf-Export-Prozess inklusive Abmeldung als Service. Entscheidend ist ein seriöser Ablauf mit klaren Dokumenten.',
     quickFacts: [
       'Exportankauf ist legal und bei vielen Fahrzeugen sinnvoll.',
       'Besonders gefragt: ältere Diesel, robuste Volumenmodelle, Nutzfahrzeuge.',

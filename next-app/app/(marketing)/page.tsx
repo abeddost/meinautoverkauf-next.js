@@ -6,7 +6,10 @@ import { buildFaqPageSchema } from '@/lib/structuredData';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 
 export const metadata: Metadata = {
-  title: 'Auto verkaufen – Einfach, schnell & stressfrei',
+  title: {
+    absolute:
+      'Autoankauf Deutschland | Auto online verkaufen | Einfach, schnell & stressfrei | Meinautoverkauf.de',
+  },
   description:
     'Autoankauf in Frankfurt, Wiesbaden, Mainz und ganz Deutschland: KI-Bewertung, fairer Preis, schnelle Auszahlung. Jetzt kostenlos bewerten.',
   alternates: { canonical: '/' },

@@ -121,7 +121,7 @@ export default function HomePageClient() {
         onValuationComplete={handleValuationComplete}
         onValuationSubmit={handleValuationSubmit}
         headline="Auto verkaufen online – Einfach, schnell & stressfrei"
-        subheadline="Autoankauf – Wir kaufen Ihr Auto zum fairen Preis"
+        subheadline="Autoankauf in Deutschland – Wir kaufen Ihr Auto zum fairen Preis"
         accent="home"
       />
 
@@ -139,7 +139,7 @@ export default function HomePageClient() {
               So funktioniert der Auto Ankauf bei uns – In 3 einfachen Schritten
             </h2>
             <p className="text-slate-600 font-medium leading-relaxed">
-              Der Prozess könnte kaum einfacher sein. In nur drei Schritten von der ersten Anfrage bis zum Geld auf Ihrem Konto.
+              Der Prozess könnte kaum einfacher sein. Auto online verkaufen in Deutschland war nie so unkompliziert – in nur drei Schritten von der ersten Anfrage bis zum Geld auf Ihrem Konto.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">

@@ -3,9 +3,12 @@ import AutoVerkaufenWrapper from '@/components/AutoVerkaufenWrapper';
 import RouteHero from '@/components/RouteHero';
 
 export const metadata: Metadata = {
-  title: 'Auto verkaufen – Schnell & Sicher | Schritt für Schritt',
+  title: {
+    absolute:
+      'Gebrauchtwagen in Deutschland sicher online verkaufen | Meinautoverkauf.de',
+  },
   description:
-    'Auto sicher und schnell verkaufen: Bewertung, Termin vereinbaren, Fahrzeug übergeben, Geld erhalten. Einfacher Ablauf ohne Risiko.',
+    'Auto sicher und stressfrei online verkaufen mit kostenloser Bewertung fairen Preisen schneller Auszahlung und einfacher Abwicklung in ganz Deutschland',
   alternates: { canonical: '/auto-verkaufen' },
 };
 
