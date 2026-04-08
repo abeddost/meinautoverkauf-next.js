@@ -93,11 +93,6 @@ const loadGtmScriptOnce = async (): Promise<void> => {
   if (typeof window === 'undefined') return;
   if (gtmScriptPromise) return gtmScriptPromise;
 
-  if (window.google_tag_manager?.[GTM_CONTAINER_ID]) {
-    gtmScriptPromise = Promise.resolve();
-    return gtmScriptPromise;
-  }
-
   const existingScript = document.querySelector<HTMLScriptElement>(GTM_SCRIPT_SELECTOR);
   if (existingScript) {
     gtmScriptPromise = Promise.resolve();
