@@ -64,10 +64,23 @@ interface Appointment {
   deleted_at: string | null;
 }
 
+const PAGE_SIZE = 100;
+
 const AdminDashboardContent: React.FC = () => {
   const { user, isAdmin, loading: authLoading, signOut } = useAuth();
   const router = useRouter();
   const [estimations, setEstimations] = useState<Estimation[]>([]);
+  /** Accurate totals from count queries (full table), not derived from the max-rows estimations fetch */
+  const [estimationAggregates, setEstimationAggregates] = useState<{
+    active: number;
+    archived: number;
+    deleted: number;
+    accepted: number;
+    pending: number;
+    rejected: number;
+    acceptedThisMonth: number;
+    provisionAccepted: number;
+  } | null>(null);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'estimations' | 'appointments' | 'provision'>('estimations');
@@ -91,6 +104,9 @@ const AdminDashboardContent: React.FC = () => {
   const [provisionDraft, setProvisionDraft] = useState<Record<string, string>>({});
   const [provisionMonthFilter, setProvisionMonthFilter] = useState<string>('all');
   const [notification, setNotification] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
+  const [estimationPage, setEstimationPage] = useState(0);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [bulkLoading, setBulkLoading] = useState(false);
 
   const ASSIGNEES = [
     'Nicht zugewiesen',
@@ -150,26 +166,114 @@ const AdminDashboardContent: React.FC = () => {
 
   useEffect(() => {
     if (user && isAdmin) {
-      loadData();
+      loadData(0);
     }
   }, [user, isAdmin]);
 
-  const loadData = async () => {
+  // Reset page and selection when sub-tab changes, and reload for the new sub-tab
+  useEffect(() => {
+    setEstimationPage(0);
+    setSelectedIds(new Set());
+    if (user && isAdmin) {
+      loadData(0, estimationSubTab);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [estimationSubTab]);
+
+  const loadData = async (page = 0, subTab: 'active' | 'archived' | 'deleted' = estimationSubTab) => {
     setLoading(true);
     try {
-      const [estResponse, apptResponse] = await Promise.all([
-        supabase
-          .from('estimations')
-          .select('*')
-          .order('created_at', { ascending: false }),
+      const currentMonth = new Date().toISOString().slice(0, 7);
+      const [yStr, mStr] = currentMonth.split('-');
+      const y = Number(yStr);
+      const m = Number(mStr);
+      const monthStart = new Date(Date.UTC(y, m - 1, 1)).toISOString();
+      const monthEnd = new Date(Date.UTC(y, m, 1)).toISOString();
+      const from = page * PAGE_SIZE;
+      const to = from + PAGE_SIZE - 1;
+
+      const headCount = { count: 'exact' as const, head: true as const };
+      const estimationCount = () =>
+        supabase.from('estimations').select('id', headCount);
+
+      let estQuery = supabase
+        .from('estimations')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .range(from, to);
+      if (subTab === 'active') {
+        estQuery = estQuery.not('status', 'eq', 'archived').not('status', 'eq', 'deleted');
+      } else if (subTab === 'archived') {
+        estQuery = estQuery.eq('status', 'archived');
+      } else {
+        estQuery = estQuery.eq('status', 'deleted');
+      }
+
+      const [
+        estResponse,
+        apptResponse,
+        countActive,
+        countArchived,
+        countDeleted,
+        countAccepted,
+        countPending,
+        countRejected,
+        countAcceptedThisMonth,
+        countProvisionAccepted,
+      ] = await Promise.all([
+        estQuery,
         supabase
           .from('appointments')
           .select('*')
           .order('created_at', { ascending: false }),
+        estimationCount().not('status', 'eq', 'archived').not('status', 'eq', 'deleted'),
+        estimationCount().eq('status', 'archived'),
+        estimationCount().eq('status', 'deleted'),
+        estimationCount()
+          .not('status', 'eq', 'archived')
+          .not('status', 'eq', 'deleted')
+          .eq('verkaufsstatus', 'Accepted'),
+        estimationCount()
+          .not('status', 'eq', 'archived')
+          .not('status', 'eq', 'deleted')
+          .eq('verkaufsstatus', 'Pending'),
+        estimationCount()
+          .not('status', 'eq', 'archived')
+          .not('status', 'eq', 'deleted')
+          .eq('verkaufsstatus', 'Rejected'),
+        estimationCount()
+          .not('status', 'eq', 'archived')
+          .not('status', 'eq', 'deleted')
+          .eq('verkaufsstatus', 'Accepted')
+          .gte('created_at', monthStart)
+          .lt('created_at', monthEnd),
+        estimationCount().eq('verkaufsstatus', 'Accepted').not('status', 'eq', 'deleted'),
       ]);
 
       if (estResponse.data) setEstimations(estResponse.data);
       if (apptResponse.data) setAppointments(apptResponse.data);
+
+      const countResponses = [
+        countActive,
+        countArchived,
+        countDeleted,
+        countAccepted,
+        countPending,
+        countRejected,
+        countAcceptedThisMonth,
+        countProvisionAccepted,
+      ];
+      countResponses.forEach((r) => { if (r.error) console.error('Count query error:', r.error); });
+      setEstimationAggregates({
+        active: countActive.count ?? 0,
+        archived: countArchived.count ?? 0,
+        deleted: countDeleted.count ?? 0,
+        accepted: countAccepted.count ?? 0,
+        pending: countPending.count ?? 0,
+        rejected: countRejected.count ?? 0,
+        acceptedThisMonth: countAcceptedThisMonth.count ?? 0,
+        provisionAccepted: countProvisionAccepted.count ?? 0,
+      });
     } catch (e) {
       console.error('Error loading data:', e);
     } finally {
@@ -242,7 +346,7 @@ const AdminDashboardContent: React.FC = () => {
     }
 
     // Reload data
-    await loadData();
+    await loadData(estimationPage);
     
     // Update selected estimation
     setSelectedEstimation({ ...selectedEstimation, ...updated } as Estimation);
@@ -274,7 +378,7 @@ const AdminDashboardContent: React.FC = () => {
       }
     }
 
-    await loadData();
+    await loadData(estimationPage);
     handleCloseDetails();
     showSuccess(hardDelete ? 'Bewertung gelöscht.' : 'Bewertung archiviert.');
   };
@@ -298,7 +402,7 @@ const AdminDashboardContent: React.FC = () => {
       throw error;
     }
 
-    await loadData();
+    await loadData(estimationPage);
     setSelectedEstimation({ ...selectedEstimation, ...updateData } as Estimation);
   };
 
@@ -434,7 +538,7 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Löschen');
         return;
       }
-      await loadData();
+      await loadData(estimationPage);
       if (selectedEstimation?.id === estimationId) handleCloseDetails();
       showSuccess('Bewertung in Gelöscht verschoben. Nach 30 Tagen wird sie endgültig entfernt.');
     } finally {
@@ -455,7 +559,7 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Archivieren');
         return;
       }
-      await loadData();
+      await loadData(estimationPage);
       if (selectedEstimation?.id === estimationId) {
         handleCloseDetails();
       }
@@ -478,7 +582,7 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Wiederherstellen');
         return;
       }
-      await loadData();
+      await loadData(estimationPage);
       showSuccess('Bewertung wiederhergestellt.');
     } finally {
       setArchivingEstimationId(null);
@@ -494,12 +598,85 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Löschen');
         return;
       }
-      await loadData();
+      await loadData(estimationPage);
       if (selectedEstimation?.id === estimationId) handleCloseDetails();
       showSuccess('Bewertung endgültig gelöscht.');
     } catch (e) {
       console.error(e);
       showError('Beim Löschen ist ein Fehler aufgetreten.');
+    }
+  };
+
+  const handleBulkMoveToDeleted = async () => {
+    if (selectedIds.size === 0) return;
+    const count = selectedIds.size;
+    setBulkLoading(true);
+    try {
+      const { error } = await supabase
+        .from('estimations')
+        .update({ status: 'deleted' })
+        .in('id', [...selectedIds]);
+      if (error) { showError(error.message, 'Sammel-Löschen'); return; }
+      setSelectedIds(new Set());
+      await loadData(estimationPage);
+      showSuccess(`${count} Bewertung(en) in Gelöscht verschoben.`);
+    } finally {
+      setBulkLoading(false);
+    }
+  };
+
+  const handleBulkHardDelete = async () => {
+    if (selectedIds.size === 0) return;
+    const count = selectedIds.size;
+    if (!window.confirm(`${count} Bewertung(en) endgültig löschen? Diese Aktion kann nicht rückgängig gemacht werden.`)) return;
+    setBulkLoading(true);
+    try {
+      const { error } = await supabase
+        .from('estimations')
+        .delete()
+        .in('id', [...selectedIds]);
+      if (error) { showError(error.message, 'Sammel-Löschen'); return; }
+      setSelectedIds(new Set());
+      await loadData(estimationPage);
+      showSuccess(`${count} Bewertung(en) endgültig gelöscht.`);
+    } finally {
+      setBulkLoading(false);
+    }
+  };
+
+  const handleBulkArchive = async () => {
+    if (selectedIds.size === 0) return;
+    const count = selectedIds.size;
+    setBulkLoading(true);
+    try {
+      const { error } = await supabase
+        .from('estimations')
+        .update({ status: 'archived' })
+        .in('id', [...selectedIds]);
+      if (error) { showError(error.message, 'Sammel-Archivieren'); return; }
+      setSelectedIds(new Set());
+      await loadData(estimationPage);
+      showSuccess(`${count} Bewertung(en) archiviert.`);
+    } finally {
+      setBulkLoading(false);
+    }
+  };
+
+  const handleBulkRestore = async () => {
+    if (selectedIds.size === 0) return;
+    const count = selectedIds.size;
+    setBulkLoading(true);
+    try {
+      const { error } = await supabase
+        .from('estimations')
+        .update({ status: 'estimated' })
+        .in('id', [...selectedIds]);
+      if (error) { showError(error.message, 'Sammel-Wiederherstellen'); return; }
+      setSelectedIds(new Set());
+      await loadData(estimationPage);
+      showSuccess(`${count} Bewertung(en) wiederhergestellt.`);
+    } finally {
+      setBulkLoading(false);
     }
   };
 
@@ -564,7 +741,7 @@ const AdminDashboardContent: React.FC = () => {
     try {
       const { error } = await supabase.from('appointments').update({ archived_at: new Date().toISOString() }).eq('id', appointmentId);
       if (error) { showError(error.message, 'Archiv'); return; }
-      await loadData();
+      await loadData(estimationPage);
       showSuccess('Termin archiviert.');
     } finally { setDeletingAppointmentId(null); }
   };
@@ -575,7 +752,7 @@ const AdminDashboardContent: React.FC = () => {
     try {
       const { error } = await supabase.from('appointments').update({ deleted_at: new Date().toISOString() }).eq('id', appointmentId);
       if (error) { showError(error.message, 'Löschen'); return; }
-      await loadData();
+      await loadData(estimationPage);
       showSuccess('Termin in Gelöscht verschoben. Nach 30 Tagen wird er endgültig entfernt.');
     } finally { setDeletingAppointmentId(null); }
   };
@@ -587,7 +764,7 @@ const AdminDashboardContent: React.FC = () => {
       const update = fromArchived ? { archived_at: null } : { deleted_at: null };
       const { error } = await supabase.from('appointments').update(update).eq('id', appointmentId);
       if (error) { showError(error.message, 'Wiederherstellen'); return; }
-      await loadData();
+      await loadData(estimationPage);
       showSuccess('Termin wiederhergestellt.');
     } finally { setDeletingAppointmentId(null); }
   };
@@ -602,7 +779,7 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Termin löschen');
         return;
       }
-      await loadData();
+      await loadData(estimationPage);
       showSuccess('Termin endgültig gelöscht.');
     } finally {
       setDeletingAppointmentId(null);
@@ -650,16 +827,9 @@ const AdminDashboardContent: React.FC = () => {
     }
   };
 
-  // Filtered estimations: active / archived / deleted
+  // Filtered estimations: status already pre-filtered server-side per sub-tab; apply remaining filters client-side
   const filteredEstimations = useMemo(() => {
-    let result: Estimation[];
-    if (estimationSubTab === 'active') {
-      result = estimations.filter((est) => est.status !== 'archived' && est.status !== 'deleted');
-    } else if (estimationSubTab === 'archived') {
-      result = estimations.filter((est) => est.status === 'archived');
-    } else {
-      result = estimations.filter((est) => est.status === 'deleted');
-    }
+    let result = [...estimations];
 
     if (estimationSubTab === 'active' && filters.status && filters.status.length > 0) {
       result = result.filter((est) => filters.status!.includes(est.status as any));
@@ -729,14 +899,40 @@ const AdminDashboardContent: React.FC = () => {
     return appointments.filter((apt) => !!apt.deleted_at);
   }, [appointments, appointmentSubTab, appointmentListTab, filters.dateFrom, filters.dateTo, filters.searchQuery]);
 
+  const estimationListTabCounts = useMemo(() => {
+    if (estimationAggregates) {
+      return {
+        active: estimationAggregates.active,
+        archived: estimationAggregates.archived,
+        deleted: estimationAggregates.deleted,
+        provisionAccepted: estimationAggregates.provisionAccepted,
+      };
+    }
+    return {
+      active: estimations.filter((e) => e.status !== 'archived' && e.status !== 'deleted').length,
+      archived: estimations.filter((e) => e.status === 'archived').length,
+      deleted: estimations.filter((e) => e.status === 'deleted').length,
+      provisionAccepted: estimations.filter((e) => e.verkaufsstatus === 'Accepted' && e.status !== 'deleted').length,
+    };
+  }, [estimations, estimationAggregates]);
+
   // Dashboard stats (active only: not archived, not deleted)
   const stats = useMemo(() => {
+    if (estimationAggregates) {
+      return {
+        totalEstimations: estimationAggregates.active,
+        acceptedCount: estimationAggregates.accepted,
+        pendingCount: estimationAggregates.pending,
+        rejectedCount: estimationAggregates.rejected,
+        acceptedThisMonth: estimationAggregates.acceptedThisMonth,
+      };
+    }
     const activeEstimations = estimations.filter((e) => e.status !== 'archived' && e.status !== 'deleted');
     const totalEstimations = activeEstimations.length;
     const acceptedCount = activeEstimations.filter((e) => e.verkaufsstatus === 'Accepted').length;
     const pendingCount = activeEstimations.filter((e) => e.verkaufsstatus === 'Pending').length;
     const rejectedCount = activeEstimations.filter((e) => e.verkaufsstatus === 'Rejected').length;
-    const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM
+    const currentMonth = new Date().toISOString().slice(0, 7);
     const acceptedThisMonth = activeEstimations.filter(
       (e) => e.verkaufsstatus === 'Accepted' && e.created_at.startsWith(currentMonth)
     ).length;
@@ -748,7 +944,7 @@ const AdminDashboardContent: React.FC = () => {
       rejectedCount,
       acceptedThisMonth,
     };
-  }, [estimations]);
+  }, [estimations, estimationAggregates]);
 
   // Provision tab stats (Accepted, non-deleted)
   const provisionStats = useMemo(() => {
@@ -883,7 +1079,7 @@ const AdminDashboardContent: React.FC = () => {
                 : 'bg-white text-slate-600 hover:bg-slate-50'
             }`}
           >
-            Bewertungen ({estimations.filter((e) => e.status !== 'archived' && e.status !== 'deleted').length})
+            Bewertungen ({estimationListTabCounts.active})
           </button>
           <button
             onClick={() => setActiveTab('appointments')}
@@ -903,7 +1099,7 @@ const AdminDashboardContent: React.FC = () => {
                 : 'bg-white text-slate-600 hover:bg-slate-50'
             }`}
           >
-            Provision ({estimations.filter((e) => e.verkaufsstatus === 'Accepted' && e.status !== 'deleted').length})
+            Provision ({estimationListTabCounts.provisionAccepted})
           </button>
         </div>
 
@@ -914,19 +1110,19 @@ const AdminDashboardContent: React.FC = () => {
               onClick={() => setEstimationSubTab('active')}
               className={`px-4 py-2 rounded-lg font-semibold text-sm ${estimationSubTab === 'active' ? 'bg-brand-orange text-white' : 'bg-white text-slate-600 border border-gray-200'}`}
             >
-              Aktiv ({estimations.filter((e) => e.status !== 'archived' && e.status !== 'deleted').length})
+              Aktiv ({estimationListTabCounts.active})
             </button>
             <button
               onClick={() => setEstimationSubTab('archived')}
               className={`px-4 py-2 rounded-lg font-semibold text-sm ${estimationSubTab === 'archived' ? 'bg-brand-orange text-white' : 'bg-white text-slate-600 border border-gray-200'}`}
             >
-              Archiv ({estimations.filter((e) => e.status === 'archived').length})
+              Archiv ({estimationListTabCounts.archived})
             </button>
             <button
               onClick={() => setEstimationSubTab('deleted')}
               className={`px-4 py-2 rounded-lg font-semibold text-sm ${estimationSubTab === 'deleted' ? 'bg-brand-orange text-white' : 'bg-white text-slate-600 border border-gray-200'}`}
             >
-              Gelöscht ({estimations.filter((e) => e.status === 'deleted').length})
+              Gelöscht ({estimationListTabCounts.deleted})
             </button>
           </div>
         )}
@@ -987,11 +1183,87 @@ const AdminDashboardContent: React.FC = () => {
                   <FilterBar filters={filters} onFiltersChange={setFilters} mode="estimations" />
                 )}
 
+                {/* Bulk action bar */}
+                {selectedIds.size > 0 && (
+                  <div className="mb-3 flex items-center gap-3 flex-wrap bg-slate-800 text-white rounded-xl px-4 py-3">
+                    <span className="font-semibold text-sm">{selectedIds.size} ausgewählt</span>
+                    {estimationSubTab === 'active' && (
+                      <button
+                        type="button"
+                        onClick={handleBulkArchive}
+                        disabled={bulkLoading}
+                        className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                      >
+                        {bulkLoading ? '…' : 'In Archiv verschieben'}
+                      </button>
+                    )}
+                    {estimationSubTab !== 'deleted' && (
+                      <button
+                        type="button"
+                        onClick={handleBulkMoveToDeleted}
+                        disabled={bulkLoading}
+                        className="px-3 py-1.5 bg-slate-500 hover:bg-slate-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                      >
+                        {bulkLoading ? '…' : 'In Gelöscht verschieben'}
+                      </button>
+                    )}
+                    {estimationSubTab !== 'active' && (
+                      <button
+                        type="button"
+                        onClick={handleBulkRestore}
+                        disabled={bulkLoading}
+                        className="px-3 py-1.5 bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                      >
+                        {bulkLoading ? '…' : 'Wiederherstellen'}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={handleBulkHardDelete}
+                      disabled={bulkLoading}
+                      className="px-3 py-1.5 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                    >
+                      {bulkLoading ? '…' : 'Endgültig löschen'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedIds(new Set())}
+                      className="ml-auto px-3 py-1.5 bg-slate-600 hover:bg-slate-700 text-white rounded-lg text-xs font-semibold transition-colors"
+                    >
+                      Auswahl aufheben
+                    </button>
+                  </div>
+                )}
+
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-slate-50 border-b border-gray-200">
                         <tr>
+                          <th className="px-3 py-3 w-10">
+                            <input
+                              type="checkbox"
+                              className="w-4 h-4 rounded border-gray-400 cursor-pointer accent-orange-500"
+                              checked={filteredEstimations.length > 0 && filteredEstimations.every((e) => selectedIds.has(e.id))}
+                              ref={(el) => {
+                                if (el) {
+                                  el.indeterminate = filteredEstimations.some((e) => selectedIds.has(e.id)) && !filteredEstimations.every((e) => selectedIds.has(e.id));
+                                }
+                              }}
+                              onChange={(ev) => {
+                                if (ev.target.checked) {
+                                  setSelectedIds((prev) => new Set([...prev, ...filteredEstimations.map((e) => e.id)]));
+                                } else {
+                                  setSelectedIds((prev) => {
+                                    const next = new Set(prev);
+                                    filteredEstimations.forEach((e) => next.delete(e.id));
+                                    return next;
+                                  });
+                                }
+                              }}
+                              title="Alle auf dieser Seite auswählen"
+                            />
+                          </th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-20">Datum</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Status</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Kunde</th>
@@ -1011,13 +1283,28 @@ const AdminDashboardContent: React.FC = () => {
                       <tbody className="divide-y divide-gray-100">
                         {filteredEstimations.length === 0 ? (
                           <tr>
-                            <td colSpan={estimationSubTab === 'active' ? 10 : 9} className="px-4 py-8 text-center text-slate-500">
+                            <td colSpan={estimationSubTab === 'active' ? 11 : 10} className="px-4 py-8 text-center text-slate-500">
                               {estimationSubTab === 'active' ? 'Keine Bewertungen gefunden' : estimationSubTab === 'archived' ? 'Keine archivierten Bewertungen' : 'Keine gelöschten Bewertungen'}
                             </td>
                           </tr>
                         ) : (
                           filteredEstimations.map((est) => (
-                            <tr key={est.id} className="hover:bg-slate-50 transition-colors">
+                            <tr key={est.id} className={`hover:bg-slate-50 transition-colors ${selectedIds.has(est.id) ? 'bg-orange-50' : ''}`}>
+                              <td className="px-3 py-3 w-10">
+                                <input
+                                  type="checkbox"
+                                  className="w-4 h-4 rounded border-gray-400 cursor-pointer accent-orange-500"
+                                  checked={selectedIds.has(est.id)}
+                                  onChange={(ev) => {
+                                    setSelectedIds((prev) => {
+                                      const next = new Set(prev);
+                                      if (ev.target.checked) next.add(est.id);
+                                      else next.delete(est.id);
+                                      return next;
+                                    });
+                                  }}
+                                />
+                              </td>
                               <td className="px-2 py-3 text-sm text-slate-600">
                                 <div>{new Date(est.created_at).toLocaleDateString('de-DE')}</div>
                                 <div className="text-xs text-slate-400">
@@ -1188,6 +1475,53 @@ const AdminDashboardContent: React.FC = () => {
                     </table>
                   </div>
                 </div>
+
+                {/* Pagination bar */}
+                {(() => {
+                  const totalForTab =
+                    estimationSubTab === 'active'
+                      ? estimationListTabCounts.active
+                      : estimationSubTab === 'archived'
+                      ? estimationListTabCounts.archived
+                      : estimationListTabCounts.deleted;
+                  const totalPages = Math.max(1, Math.ceil(totalForTab / PAGE_SIZE));
+                  if (totalPages <= 1) return null;
+                  return (
+                    <div className="flex items-center justify-between mt-4 px-1">
+                      <span className="text-sm text-slate-500">
+                        Seite {estimationPage + 1} von {totalPages} &middot; {totalForTab} Ergebnisse
+                      </span>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          disabled={estimationPage === 0}
+                          onClick={() => {
+                            const newPage = estimationPage - 1;
+                            setEstimationPage(newPage);
+                            setSelectedIds(new Set());
+                            loadData(newPage);
+                          }}
+                          className="px-4 py-2 rounded-lg text-sm font-semibold bg-white border border-gray-200 text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                        >
+                          ← Zurück
+                        </button>
+                        <button
+                          type="button"
+                          disabled={estimationPage >= totalPages - 1}
+                          onClick={() => {
+                            const newPage = estimationPage + 1;
+                            setEstimationPage(newPage);
+                            setSelectedIds(new Set());
+                            loadData(newPage);
+                          }}
+                          className="px-4 py-2 rounded-lg text-sm font-semibold bg-white border border-gray-200 text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                        >
+                          Weiter →
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })()}
               </>
             )}
 

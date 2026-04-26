@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
+  "crons": [
+    { "path": "/api/cron/cleanup-leads", "schedule": "0 2 * * *" }
+  ],
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": ".next",
