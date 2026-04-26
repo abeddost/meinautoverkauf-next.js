@@ -107,6 +107,9 @@ const AdminDashboardContent: React.FC = () => {
   const [estimationPage, setEstimationPage] = useState(0);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [bulkLoading, setBulkLoading] = useState(false);
+  const [deletePasswordModal, setDeletePasswordModal] = useState<{ action: () => void; label: string } | null>(null);
+  const [deletePasswordInput, setDeletePasswordInput] = useState('');
+  const [deletePasswordError, setDeletePasswordError] = useState(false);
 
   const ASSIGNEES = [
     'Nicht zugewiesen',
@@ -156,6 +159,23 @@ const AdminDashboardContent: React.FC = () => {
   const showSuccess = (message: string) => {
     setNotification({ type: 'success', message });
     setTimeout(() => setNotification(null), 4000);
+  };
+
+  const requireDeletePassword = (label: string, action: () => void) => {
+    setDeletePasswordInput('');
+    setDeletePasswordError(false);
+    setDeletePasswordModal({ action, label });
+  };
+
+  const confirmDeletePassword = () => {
+    if (deletePasswordInput === 'abdulqaderabeddost') {
+      deletePasswordModal?.action();
+      setDeletePasswordModal(null);
+      setDeletePasswordInput('');
+      setDeletePasswordError(false);
+    } else {
+      setDeletePasswordError(true);
+    }
   };
 
   useEffect(() => {
@@ -526,24 +546,23 @@ const AdminDashboardContent: React.FC = () => {
     }
   };
 
-  const handleMoveEstimationToDeleted = async (estimationId: string) => {
+  const handleMoveEstimationToDeleted = (estimationId: string) => {
     if (!estimationId) return;
-    setArchivingEstimationId(estimationId);
-    try {
-      const { error } = await supabase
-        .from('estimations')
-        .update({ status: 'deleted' })
-        .eq('id', estimationId);
-      if (error) {
-        showError(error.message, 'Löschen');
-        return;
+    requireDeletePassword('In Gelöscht verschieben', async () => {
+      setArchivingEstimationId(estimationId);
+      try {
+        const { error } = await supabase
+          .from('estimations')
+          .update({ status: 'deleted' })
+          .eq('id', estimationId);
+        if (error) { showError(error.message, 'Löschen'); return; }
+        await loadData(estimationPage);
+        if (selectedEstimation?.id === estimationId) handleCloseDetails();
+        showSuccess('Bewertung in Gelöscht verschoben. Nach 30 Tagen wird sie endgültig entfernt.');
+      } finally {
+        setArchivingEstimationId(null);
       }
-      await loadData(estimationPage);
-      if (selectedEstimation?.id === estimationId) handleCloseDetails();
-      showSuccess('Bewertung in Gelöscht verschoben. Nach 30 Tagen wird sie endgültig entfernt.');
-    } finally {
-      setArchivingEstimationId(null);
-    }
+    });
   };
 
   const handleArchiveEstimation = async (estimationId: string) => {
@@ -589,59 +608,60 @@ const AdminDashboardContent: React.FC = () => {
     }
   };
 
-  const handleHardDeleteEstimationById = async (estimationId: string) => {
+  const handleHardDeleteEstimationById = (estimationId: string) => {
     if (!estimationId) return;
-    if (!window.confirm('Bewertung endgültig löschen? Alle Fotos und verknüpften Termine werden gelöscht.')) return;
-    try {
-      const { error } = await supabase.from('estimations').delete().eq('id', estimationId);
-      if (error) {
-        showError(error.message, 'Löschen');
-        return;
+    requireDeletePassword('Endgültig löschen', async () => {
+      try {
+        const { error } = await supabase.from('estimations').delete().eq('id', estimationId);
+        if (error) { showError(error.message, 'Löschen'); return; }
+        await loadData(estimationPage);
+        if (selectedEstimation?.id === estimationId) handleCloseDetails();
+        showSuccess('Bewertung endgültig gelöscht.');
+      } catch (e) {
+        console.error(e);
+        showError('Beim Löschen ist ein Fehler aufgetreten.');
       }
-      await loadData(estimationPage);
-      if (selectedEstimation?.id === estimationId) handleCloseDetails();
-      showSuccess('Bewertung endgültig gelöscht.');
-    } catch (e) {
-      console.error(e);
-      showError('Beim Löschen ist ein Fehler aufgetreten.');
-    }
+    });
   };
 
-  const handleBulkMoveToDeleted = async () => {
+  const handleBulkMoveToDeleted = () => {
     if (selectedIds.size === 0) return;
     const count = selectedIds.size;
-    setBulkLoading(true);
-    try {
-      const { error } = await supabase
-        .from('estimations')
-        .update({ status: 'deleted' })
-        .in('id', [...selectedIds]);
-      if (error) { showError(error.message, 'Sammel-Löschen'); return; }
-      setSelectedIds(new Set());
-      await loadData(estimationPage);
-      showSuccess(`${count} Bewertung(en) in Gelöscht verschoben.`);
-    } finally {
-      setBulkLoading(false);
-    }
+    requireDeletePassword(`${count} Bewertung(en) in Gelöscht verschieben`, async () => {
+      setBulkLoading(true);
+      try {
+        const { error } = await supabase
+          .from('estimations')
+          .update({ status: 'deleted' })
+          .in('id', [...selectedIds]);
+        if (error) { showError(error.message, 'Sammel-Löschen'); return; }
+        setSelectedIds(new Set());
+        await loadData(estimationPage);
+        showSuccess(`${count} Bewertung(en) in Gelöscht verschoben.`);
+      } finally {
+        setBulkLoading(false);
+      }
+    });
   };
 
-  const handleBulkHardDelete = async () => {
+  const handleBulkHardDelete = () => {
     if (selectedIds.size === 0) return;
     const count = selectedIds.size;
-    if (!window.confirm(`${count} Bewertung(en) endgültig löschen? Diese Aktion kann nicht rückgängig gemacht werden.`)) return;
-    setBulkLoading(true);
-    try {
-      const { error } = await supabase
-        .from('estimations')
-        .delete()
-        .in('id', [...selectedIds]);
-      if (error) { showError(error.message, 'Sammel-Löschen'); return; }
-      setSelectedIds(new Set());
-      await loadData(estimationPage);
-      showSuccess(`${count} Bewertung(en) endgültig gelöscht.`);
-    } finally {
-      setBulkLoading(false);
-    }
+    requireDeletePassword(`${count} Bewertung(en) endgültig löschen`, async () => {
+      setBulkLoading(true);
+      try {
+        const { error } = await supabase
+          .from('estimations')
+          .delete()
+          .in('id', [...selectedIds]);
+        if (error) { showError(error.message, 'Sammel-Löschen'); return; }
+        setSelectedIds(new Set());
+        await loadData(estimationPage);
+        showSuccess(`${count} Bewertung(en) endgültig gelöscht.`);
+      } finally {
+        setBulkLoading(false);
+      }
+    });
   };
 
   const handleBulkArchive = async () => {
@@ -974,6 +994,55 @@ const AdminDashboardContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Delete password modal */}
+      {deletePasswordModal && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm mx-4">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m0 0v2m0-2h2m-2 0H10m2-5a7 7 0 100-14 7 7 0 000 14z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-800 text-base">Passwort erforderlich</h3>
+                <p className="text-xs text-slate-500 mt-0.5">{deletePasswordModal.label}</p>
+              </div>
+            </div>
+            <input
+              type="password"
+              autoFocus
+              value={deletePasswordInput}
+              onChange={(e) => { setDeletePasswordInput(e.target.value); setDeletePasswordError(false); }}
+              onKeyDown={(e) => { if (e.key === 'Enter') confirmDeletePassword(); if (e.key === 'Escape') setDeletePasswordModal(null); }}
+              placeholder="Passwort eingeben"
+              className={`w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-colors ${
+                deletePasswordError ? 'border-red-400 bg-red-50 focus:border-red-500' : 'border-gray-300 focus:border-brand-orange'
+              }`}
+            />
+            {deletePasswordError && (
+              <p className="text-xs text-red-600 mt-1.5">Falsches Passwort. Bitte erneut versuchen.</p>
+            )}
+            <div className="flex gap-2 mt-4">
+              <button
+                type="button"
+                onClick={() => setDeletePasswordModal(null)}
+                className="flex-1 px-4 py-2 rounded-xl border border-gray-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+              >
+                Abbrechen
+              </button>
+              <button
+                type="button"
+                onClick={confirmDeletePassword}
+                className="flex-1 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-bold transition-colors"
+              >
+                Bestätigen
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Notification toast */}
       {notification && (
         <div
