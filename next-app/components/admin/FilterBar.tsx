@@ -12,6 +12,9 @@ export interface FilterState {
   dateFrom?: string;
   dateTo?: string;
   searchQuery?: string;
+  assignedTo?: string;
+  callStatus?: string;
+  followUp?: boolean;
   // Appointment filters (Termine) – same date + search; search filters by estimation_id
   deliveryType?: DeliveryType;
   bringLocation?: BringLocation;
@@ -22,6 +25,16 @@ interface FilterBarProps {
   onFiltersChange: (filters: FilterState) => void;
   mode: 'estimations' | 'appointments';
 }
+
+const ASSIGNEES_FILTER = [
+  'Nicht zugewiesen', 'Akin Yasar', 'Idris Sarwari',
+  'Hamza Sarwari', 'Bilal Sarwari', 'Other',
+] as const;
+
+const CALL_STATUSES = [
+  'Neu', 'Zugewiesen', 'Angerufen', 'Keine Antwort',
+  'Interessiert', 'Nicht interessiert', 'Gekauft',
+] as const;
 
 const FilterBar: React.FC<FilterBarProps> = ({ filters, onFiltersChange, mode }) => {
   const [expanded, setExpanded] = React.useState(false);
@@ -56,7 +69,9 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, onFiltersChange, mode })
 
   const activeFilterCount = mode === 'appointments'
     ? (filters.dateFrom ? 1 : 0) + (filters.dateTo ? 1 : 0) + (filters.searchQuery ? 1 : 0)
-    : (filters.status?.length || 0) + (filters.dateFrom ? 1 : 0) + (filters.dateTo ? 1 : 0) + (filters.searchQuery ? 1 : 0);
+    : (filters.status?.length || 0) + (filters.dateFrom ? 1 : 0) + (filters.dateTo ? 1 : 0)
+      + (filters.searchQuery ? 1 : 0) + (filters.assignedTo ? 1 : 0)
+      + (filters.callStatus ? 1 : 0) + (filters.followUp ? 1 : 0);
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6">
@@ -94,7 +109,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, onFiltersChange, mode })
       {/* Filter Content */}
       {expanded && (
         <div className="px-6 pb-6 border-t border-gray-200 pt-4">
-          {/* Search: different placeholder and meaning per mode */}
+          {/* Search */}
           <div className="mb-4">
             <label className="block text-sm font-semibold text-slate-700 mb-2">Suche</label>
             <input
@@ -107,30 +122,79 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, onFiltersChange, mode })
           </div>
 
           {mode === 'estimations' && (
-            <div className="mb-4">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">Status</label>
-              <div className="flex flex-wrap gap-2">
-                {statusOptions.map((option) => {
-                  const isSelected = filters.status?.includes(option.value) ?? false;
-                  return (
-                    <button
-                      key={option.value}
-                      onClick={() => handleStatusToggle(option.value)}
-                      className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
-                        isSelected
-                          ? option.color + ' ring-2 ring-offset-2 ring-brand-orange'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  );
-                })}
+            <>
+              {/* Status multi-select */}
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Status</label>
+                <div className="flex flex-wrap gap-2">
+                  {statusOptions.map((option) => {
+                    const isSelected = filters.status?.includes(option.value) ?? false;
+                    return (
+                      <button
+                        key={option.value}
+                        onClick={() => handleStatusToggle(option.value)}
+                        className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all ${
+                          isSelected
+                            ? option.color + ' ring-2 ring-offset-2 ring-brand-orange'
+                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+
+              {/* Zugewiesen an */}
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Zugewiesen an</label>
+                <select
+                  value={filters.assignedTo ?? ''}
+                  onChange={(e) => onFiltersChange({ ...filters, assignedTo: e.target.value || undefined })}
+                  className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-brand-orange focus:ring-0 outline-none bg-white text-sm"
+                >
+                  <option value="">Alle</option>
+                  {ASSIGNEES_FILTER.map((name) => (
+                    <option key={name} value={name}>{name}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Anrufstatus */}
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Anrufstatus</label>
+                <select
+                  value={filters.callStatus ?? ''}
+                  onChange={(e) => onFiltersChange({ ...filters, callStatus: e.target.value || undefined })}
+                  className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-brand-orange focus:ring-0 outline-none bg-white text-sm"
+                >
+                  <option value="">Alle</option>
+                  {CALL_STATUSES.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Follow Up toggle */}
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Follow Up</label>
+                <button
+                  type="button"
+                  onClick={() => onFiltersChange({ ...filters, followUp: filters.followUp ? undefined : true })}
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                    filters.followUp
+                      ? 'bg-green-500 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-green-100'
+                  }`}
+                >
+                  Nur Follow Up anzeigen
+                </button>
+              </div>
+            </>
           )}
 
-          {/* Date Range: created_at for estimations, preferred_date for appointments */}
+          {/* Date Range */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2">Von</label>

@@ -53,6 +53,7 @@ export interface Estimation {
   deleted_at: string | null;
   assigned_to: string | null;
   call_status: string;
+  follow_up: boolean;
 }
 
 interface Appointment {
@@ -95,10 +96,18 @@ const AdminDashboardContent: React.FC = () => {
   } | null>(null);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'estimations' | 'appointments' | 'provision' | 'kalender'>('estimations');
-  const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>('active');
-  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>('all');
-  const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>('active');
+  const [activeTab, setActiveTab] = useState<'estimations' | 'appointments' | 'provision' | 'kalender'>(() => {
+    try { return (sessionStorage.getItem('admin_activeTab') as any) ?? 'estimations'; } catch { return 'estimations'; }
+  });
+  const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>(() => {
+    try { return (sessionStorage.getItem('admin_estimationSubTab') as any) ?? 'active'; } catch { return 'active'; }
+  });
+  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>(() => {
+    try { return (sessionStorage.getItem('admin_appointmentSubTab') as any) ?? 'all'; } catch { return 'all'; }
+  });
+  const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>(() => {
+    try { return (sessionStorage.getItem('admin_appointmentListTab') as any) ?? 'active'; } catch { return 'active'; }
+  });
   const [selectedEstimation, setSelectedEstimation] = useState<Estimation | null>(null);
   const [photoUrls, setPhotoUrls] = useState<{ id: string; url: string; filename: string; storagePath: string }[]>([]);
   const [loadingPhotos, setLoadingPhotos] = useState(false);
@@ -116,7 +125,9 @@ const AdminDashboardContent: React.FC = () => {
   const [provisionDraft, setProvisionDraft] = useState<Record<string, string>>({});
   const [provisionMonthFilter, setProvisionMonthFilter] = useState<string>('all');
   const [notification, setNotification] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
-  const [estimationPage, setEstimationPage] = useState(0);
+  const [estimationPage, setEstimationPage] = useState(() => {
+    try { const v = sessionStorage.getItem('admin_estimationPage'); return v ? parseInt(v, 10) : 0; } catch { return 0; }
+  });
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [bulkLoading, setBulkLoading] = useState(false);
   const [deletePasswordModal, setDeletePasswordModal] = useState<{ action: () => void; label: string } | null>(null);
@@ -202,8 +213,9 @@ const AdminDashboardContent: React.FC = () => {
 
   useEffect(() => {
     if (user && isAdmin) {
-      loadData(0);
+      loadData(estimationPage);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isAdmin]);
 
   // Reset page and selection when sub-tab changes, and reload for the new sub-tab
@@ -215,6 +227,40 @@ const AdminDashboardContent: React.FC = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [estimationSubTab]);
+
+  // Persist navigation state to sessionStorage
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('admin_activeTab', activeTab);
+      sessionStorage.setItem('admin_estimationSubTab', estimationSubTab);
+      sessionStorage.setItem('admin_appointmentListTab', appointmentListTab);
+      sessionStorage.setItem('admin_appointmentSubTab', appointmentSubTab);
+      sessionStorage.setItem('admin_estimationPage', String(estimationPage));
+    } catch {}
+  }, [activeTab, estimationSubTab, appointmentListTab, appointmentSubTab, estimationPage]);
+
+  // Reload when filters change (server-side filtering)
+  const prevFiltersRef = React.useRef(filters);
+  useEffect(() => {
+    if (!isAdmin || authLoading) return;
+    const prev = prevFiltersRef.current;
+    prevFiltersRef.current = filters;
+    if (prev === filters) return;
+    setEstimationPage(0);
+    setSelectedIds(new Set());
+    const searchChanged = prev.searchQuery !== filters.searchQuery;
+    if (searchChanged) {
+      const timer = setTimeout(() => loadData(0, estimationSubTab), 350);
+      return () => clearTimeout(timer);
+    }
+    loadData(0, estimationSubTab);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
+
+  const hasEstimationFilters = (f: FilterState) =>
+    !!(f.searchQuery?.trim() || f.dateFrom || f.dateTo ||
+       (f.status && f.status.length > 0) ||
+       f.assignedTo || f.callStatus || f.followUp);
 
   const loadData = async (page = 0, subTab: 'active' | 'archived' | 'deleted' = estimationSubTab) => {
     setLoading(true);
@@ -232,17 +278,44 @@ const AdminDashboardContent: React.FC = () => {
       const estimationCount = () =>
         supabase.from('estimations').select('id', headCount);
 
+      const filtersActive = hasEstimationFilters(filters);
+
       let estQuery = supabase
         .from('estimations')
         .select('*')
-        .order('created_at', { ascending: false })
-        .range(from, to);
+        .order('created_at', { ascending: false });
+
+      // Sub-tab scope
       if (subTab === 'active') {
-        estQuery = estQuery.not('status', 'eq', 'archived').not('status', 'eq', 'deleted');
+        if (!(filters.status && filters.status.length > 0)) {
+          estQuery = estQuery.not('status', 'eq', 'archived').not('status', 'eq', 'deleted');
+        }
       } else if (subTab === 'archived') {
         estQuery = estQuery.eq('status', 'archived');
       } else {
         estQuery = estQuery.eq('status', 'deleted');
+      }
+
+      if (filtersActive) {
+        // Server-side filters — no pagination limit
+        if (filters.status?.length) estQuery = estQuery.in('status', filters.status);
+        if (filters.searchQuery?.trim()) {
+          const q = filters.searchQuery.trim();
+          estQuery = estQuery.or(
+            `first_name.ilike.%${q}%,last_name.ilike.%${q}%,email.ilike.%${q}%,` +
+            `phone.ilike.%${q}%,brand.ilike.%${q}%,model.ilike.%${q}%,variant.ilike.%${q}%,vin.ilike.%${q}%`
+          );
+        }
+        if (filters.dateFrom) estQuery = estQuery.gte('created_at', filters.dateFrom);
+        if (filters.dateTo)   estQuery = estQuery.lte('created_at', filters.dateTo + 'T23:59:59.999Z');
+        if (filters.assignedTo) {
+          if (filters.assignedTo === 'Nicht zugewiesen') estQuery = estQuery.is('assigned_to', null);
+          else estQuery = estQuery.eq('assigned_to', filters.assignedTo);
+        }
+        if (filters.callStatus) estQuery = estQuery.eq('call_status', filters.callStatus);
+        if (filters.followUp)   estQuery = estQuery.eq('follow_up', true);
+      } else {
+        estQuery = estQuery.range(from, to);
       }
 
       const [
@@ -402,10 +475,8 @@ const AdminDashboardContent: React.FC = () => {
       throw new Error(error.message);
     }
 
-    // Reload data
-    await loadData(estimationPage);
-    
-    // Update selected estimation
+    // Update local state
+    setEstimations((prev) => prev.map((e) => e.id === selectedEstimation.id ? { ...e, ...updated } : e));
     setSelectedEstimation({ ...selectedEstimation, ...updated } as Estimation);
   };
 
@@ -435,7 +506,8 @@ const AdminDashboardContent: React.FC = () => {
       }
     }
 
-    await loadData(estimationPage);
+    setEstimations((prev) => prev.filter((e) => e.id !== selectedEstimation.id));
+    setEstimationAggregates((prev) => prev ? { ...prev, active: Math.max(0, prev.active - 1) } : prev);
     handleCloseDetails();
     showSuccess(hardDelete ? 'Bewertung gelöscht.' : 'Bewertung archiviert.');
   };
@@ -459,7 +531,7 @@ const AdminDashboardContent: React.FC = () => {
       throw error;
     }
 
-    await loadData(estimationPage);
+    setEstimations((prev) => prev.map((e) => e.id === selectedEstimation.id ? { ...e, ...updateData } : e));
     setSelectedEstimation({ ...selectedEstimation, ...updateData } as Estimation);
   };
 
@@ -534,6 +606,20 @@ const AdminDashboardContent: React.FC = () => {
     }
   };
 
+  const handleFollowUpToggle = async (estimationId: string, currentValue: boolean) => {
+    const newValue = !currentValue;
+    setEstimations((prev) =>
+      prev.map((e) => e.id === estimationId ? { ...e, follow_up: newValue } : e)
+    );
+    const { error } = await supabase.from('estimations').update({ follow_up: newValue }).eq('id', estimationId);
+    if (error) {
+      setEstimations((prev) =>
+        prev.map((e) => e.id === estimationId ? { ...e, follow_up: currentValue } : e)
+      );
+      showError(error.message, 'Follow Up');
+    }
+  };
+
   const handleAssignedToChange = async (estimationId: string, newAssignee: string) => {
     if (!estimationId) return;
     const value = newAssignee === 'Nicht zugewiesen' ? null : newAssignee;
@@ -593,7 +679,8 @@ const AdminDashboardContent: React.FC = () => {
           .update({ status: 'deleted' })
           .eq('id', estimationId);
         if (error) { showError(error.message, 'Löschen'); return; }
-        await loadData(estimationPage);
+        setEstimations((prev) => prev.filter((e) => e.id !== estimationId));
+        setEstimationAggregates((prev) => prev ? { ...prev, active: Math.max(0, prev.active - 1), deleted: prev.deleted + 1 } : prev);
         if (selectedEstimation?.id === estimationId) handleCloseDetails();
         showSuccess('Bewertung in Gelöscht verschoben. Nach 30 Tagen wird sie endgültig entfernt.');
       } finally {
@@ -615,7 +702,8 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Archivieren');
         return;
       }
-      await loadData(estimationPage);
+      setEstimations((prev) => prev.filter((e) => e.id !== estimationId));
+      setEstimationAggregates((prev) => prev ? { ...prev, active: Math.max(0, prev.active - 1), archived: prev.archived + 1 } : prev);
       if (selectedEstimation?.id === estimationId) {
         handleCloseDetails();
       }
@@ -638,7 +726,12 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Wiederherstellen');
         return;
       }
-      await loadData(estimationPage);
+      setEstimations((prev) => prev.filter((e) => e.id !== estimationId));
+      setEstimationAggregates((prev) => {
+        if (!prev) return prev;
+        const fromArchived = estimationSubTab === 'archived';
+        return { ...prev, active: prev.active + 1, archived: fromArchived ? Math.max(0, prev.archived - 1) : prev.archived, deleted: !fromArchived ? Math.max(0, prev.deleted - 1) : prev.deleted };
+      });
       showSuccess('Bewertung wiederhergestellt.');
     } finally {
       setArchivingEstimationId(null);
@@ -651,7 +744,11 @@ const AdminDashboardContent: React.FC = () => {
       try {
         const { error } = await supabase.from('estimations').delete().eq('id', estimationId);
         if (error) { showError(error.message, 'Löschen'); return; }
-        await loadData(estimationPage);
+        setEstimations((prev) => prev.filter((e) => e.id !== estimationId));
+        setEstimationAggregates((prev) => {
+          if (!prev) return prev;
+          return estimationSubTab === 'deleted' ? { ...prev, deleted: Math.max(0, prev.deleted - 1) } : { ...prev, active: Math.max(0, prev.active - 1) };
+        });
         if (selectedEstimation?.id === estimationId) handleCloseDetails();
         showSuccess('Bewertung endgültig gelöscht.');
       } catch (e) {
@@ -672,8 +769,10 @@ const AdminDashboardContent: React.FC = () => {
           .update({ status: 'deleted' })
           .in('id', [...selectedIds]);
         if (error) { showError(error.message, 'Sammel-Löschen'); return; }
+        const ids = new Set(selectedIds);
+        setEstimations((prev) => prev.filter((e) => !ids.has(e.id)));
+        setEstimationAggregates((prev) => prev ? { ...prev, active: Math.max(0, prev.active - ids.size), deleted: prev.deleted + ids.size } : prev);
         setSelectedIds(new Set());
-        await loadData(estimationPage);
         showSuccess(`${count} Bewertung(en) in Gelöscht verschoben.`);
       } finally {
         setBulkLoading(false);
@@ -692,8 +791,13 @@ const AdminDashboardContent: React.FC = () => {
           .delete()
           .in('id', [...selectedIds]);
         if (error) { showError(error.message, 'Sammel-Löschen'); return; }
+        const ids = new Set(selectedIds);
+        setEstimations((prev) => prev.filter((e) => !ids.has(e.id)));
+        setEstimationAggregates((prev) => {
+          if (!prev) return prev;
+          return estimationSubTab === 'deleted' ? { ...prev, deleted: Math.max(0, prev.deleted - ids.size) } : { ...prev, active: Math.max(0, prev.active - ids.size) };
+        });
         setSelectedIds(new Set());
-        await loadData(estimationPage);
         showSuccess(`${count} Bewertung(en) endgültig gelöscht.`);
       } finally {
         setBulkLoading(false);
@@ -711,8 +815,10 @@ const AdminDashboardContent: React.FC = () => {
         .update({ status: 'archived' })
         .in('id', [...selectedIds]);
       if (error) { showError(error.message, 'Sammel-Archivieren'); return; }
+      const ids = new Set(selectedIds);
+      setEstimations((prev) => prev.filter((e) => !ids.has(e.id)));
+      setEstimationAggregates((prev) => prev ? { ...prev, active: Math.max(0, prev.active - ids.size), archived: prev.archived + ids.size } : prev);
       setSelectedIds(new Set());
-      await loadData(estimationPage);
       showSuccess(`${count} Bewertung(en) archiviert.`);
     } finally {
       setBulkLoading(false);
@@ -729,8 +835,14 @@ const AdminDashboardContent: React.FC = () => {
         .update({ status: 'estimated' })
         .in('id', [...selectedIds]);
       if (error) { showError(error.message, 'Sammel-Wiederherstellen'); return; }
+      const ids = new Set(selectedIds);
+      setEstimations((prev) => prev.filter((e) => !ids.has(e.id)));
+      setEstimationAggregates((prev) => {
+        if (!prev) return prev;
+        const fromArchived = estimationSubTab === 'archived';
+        return { ...prev, active: prev.active + ids.size, archived: fromArchived ? Math.max(0, prev.archived - ids.size) : prev.archived, deleted: !fromArchived ? Math.max(0, prev.deleted - ids.size) : prev.deleted };
+      });
       setSelectedIds(new Set());
-      await loadData(estimationPage);
       showSuccess(`${count} Bewertung(en) wiederhergestellt.`);
     } finally {
       setBulkLoading(false);
@@ -798,7 +910,7 @@ const AdminDashboardContent: React.FC = () => {
     try {
       const { error } = await supabase.from('appointments').update({ archived_at: new Date().toISOString() }).eq('id', appointmentId);
       if (error) { showError(error.message, 'Archiv'); return; }
-      await loadData(estimationPage);
+      setAppointments((prev) => prev.map((a) => a.id === appointmentId ? { ...a, archived_at: new Date().toISOString() } : a));
       showSuccess('Termin archiviert.');
     } finally { setDeletingAppointmentId(null); }
   };
@@ -809,7 +921,7 @@ const AdminDashboardContent: React.FC = () => {
     try {
       const { error } = await supabase.from('appointments').update({ deleted_at: new Date().toISOString() }).eq('id', appointmentId);
       if (error) { showError(error.message, 'Löschen'); return; }
-      await loadData(estimationPage);
+      setAppointments((prev) => prev.map((a) => a.id === appointmentId ? { ...a, deleted_at: new Date().toISOString() } : a));
       showSuccess('Termin in Gelöscht verschoben. Nach 30 Tagen wird er endgültig entfernt.');
     } finally { setDeletingAppointmentId(null); }
   };
@@ -821,7 +933,7 @@ const AdminDashboardContent: React.FC = () => {
       const update = fromArchived ? { archived_at: null } : { deleted_at: null };
       const { error } = await supabase.from('appointments').update(update).eq('id', appointmentId);
       if (error) { showError(error.message, 'Wiederherstellen'); return; }
-      await loadData(estimationPage);
+      setAppointments((prev) => prev.map((a) => a.id === appointmentId ? { ...a, ...update } : a));
       showSuccess('Termin wiederhergestellt.');
     } finally { setDeletingAppointmentId(null); }
   };
@@ -846,7 +958,7 @@ const AdminDashboardContent: React.FC = () => {
         showError(error.message, 'Termin löschen');
         return;
       }
-      await loadData(estimationPage);
+      setAppointments((prev) => prev.filter((a) => a.id !== appointmentId));
       showSuccess('Termin endgültig gelöscht.');
     } finally {
       setDeletingAppointmentId(null);
@@ -894,46 +1006,8 @@ const AdminDashboardContent: React.FC = () => {
     }
   };
 
-  // Filtered estimations: status already pre-filtered server-side per sub-tab; apply remaining filters client-side
-  const filteredEstimations = useMemo(() => {
-    let result = [...estimations];
-
-    if (estimationSubTab === 'active' && filters.status && filters.status.length > 0) {
-      result = result.filter((est) => filters.status!.includes(est.status as any));
-    }
-
-    // Date range filter
-    if (filters.dateFrom) {
-      const fromDate = new Date(filters.dateFrom);
-      result = result.filter((est) => new Date(est.created_at) >= fromDate);
-    }
-    if (filters.dateTo) {
-      const toDate = new Date(filters.dateTo);
-      toDate.setHours(23, 59, 59, 999);
-      result = result.filter((est) => new Date(est.created_at) <= toDate);
-    }
-
-    // Search filter (null-safe: match actual estimation fields)
-    if (filters.searchQuery && filters.searchQuery.trim()) {
-      const query = filters.searchQuery.toLowerCase().trim();
-      result = result.filter((est) => {
-        const first = (est.first_name ?? '').toLowerCase();
-        const last = (est.last_name ?? '').toLowerCase();
-        const email = (est.email ?? '').toLowerCase();
-        const phone = (est.phone ?? '').toLowerCase();
-        const brand = (est.brand ?? '').toLowerCase();
-        const model = (est.model ?? '').toLowerCase();
-        const variant = (est.variant ?? '').toLowerCase();
-        const vin = (est.vin ?? '').toLowerCase();
-        const id = (est.id ?? '').toLowerCase();
-        return first.includes(query) || last.includes(query) || email.includes(query) ||
-          phone.includes(query) || brand.includes(query) || model.includes(query) ||
-          variant.includes(query) || vin.includes(query) || id.includes(query);
-      });
-    }
-
-    return result;
-  }, [estimations, filters, estimationSubTab]);
+  // All filtering is now server-side in loadData. This alias keeps all JSX references intact.
+  const filteredEstimations = estimations;
 
   // Filtered appointments: active (by location) / archived / deleted; then apply filter bar (date + search)
   const filteredAppointments = useMemo(() => {
@@ -1405,7 +1479,7 @@ const AdminDashboardContent: React.FC = () => {
                           </tr>
                         ) : (
                           filteredEstimations.map((est) => (
-                            <tr key={est.id} className={`hover:bg-slate-50 transition-colors ${selectedIds.has(est.id) ? 'bg-orange-50' : estimationsWithNotes.has(est.id) ? 'bg-blue-100' : ''}`}>
+                            <tr key={est.id} className={`hover:bg-slate-50 transition-colors ${selectedIds.has(est.id) ? 'bg-orange-50' : est.follow_up ? 'bg-green-100' : estimationsWithNotes.has(est.id) ? 'bg-blue-100' : ''}`}>
                               <td className="px-3 py-3 w-10">
                                 <input
                                   type="checkbox"
@@ -1567,6 +1641,18 @@ const AdminDashboardContent: React.FC = () => {
                                       >
                                         Notiz
                                       </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => handleFollowUpToggle(est.id, est.follow_up)}
+                                        className={`px-2 py-1 rounded-lg text-xs font-bold transition-colors ${
+                                          est.follow_up
+                                            ? 'bg-green-500 text-white hover:bg-green-600'
+                                            : 'bg-slate-200 text-slate-600 hover:bg-green-100'
+                                        }`}
+                                        title={est.follow_up ? 'Follow Up entfernen' : 'Als Follow Up markieren'}
+                                      >
+                                        Follow Up
+                                      </button>
                                     </>
                                   )}
                                   {(estimationSubTab === 'archived' || estimationSubTab === 'deleted') && (
@@ -1600,8 +1686,15 @@ const AdminDashboardContent: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Pagination bar */}
-                {(() => {
+                {/* Result count when filters active */}
+                {hasEstimationFilters(filters) && (
+                  <p className="mt-3 text-sm text-slate-500">
+                    {estimations.length} Ergebnis{estimations.length !== 1 ? 'se' : ''} gefunden
+                  </p>
+                )}
+
+                {/* Pagination bar (hidden when server-side filters are active) */}
+                {!hasEstimationFilters(filters) && (() => {
                   const totalForTab =
                     estimationSubTab === 'active'
                       ? estimationListTabCounts.active
