@@ -137,6 +137,7 @@ const AdminDashboardContent: React.FC = () => {
   const [estimationsWithNotes, setEstimationsWithNotes] = useState<Set<string>>(new Set());
   const [appointmentEstimations, setAppointmentEstimations] = useState<Record<string, Estimation>>({});
   const [editingAppointment, setEditingAppointment] = useState<Appointment | null>(null);
+  const estimationSubTabMounted = React.useRef(false);
 
   const ASSIGNEES = [
     'Nicht zugewiesen',
@@ -220,10 +221,14 @@ const AdminDashboardContent: React.FC = () => {
 
   // Reset page and selection when sub-tab changes, and reload for the new sub-tab
   useEffect(() => {
+    if (!estimationSubTabMounted.current) {
+      estimationSubTabMounted.current = true;
+      return;
+    }
     setEstimationPage(0);
     setSelectedIds(new Set());
     if (user && isAdmin) {
-      loadData(0, estimationSubTab);
+      loadData(0, estimationSubTab, false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [estimationSubTab]);
@@ -250,10 +255,10 @@ const AdminDashboardContent: React.FC = () => {
     setSelectedIds(new Set());
     const searchChanged = prev.searchQuery !== filters.searchQuery;
     if (searchChanged) {
-      const timer = setTimeout(() => loadData(0, estimationSubTab), 350);
+      const timer = setTimeout(() => loadData(0, estimationSubTab, false), 350);
       return () => clearTimeout(timer);
     }
-    loadData(0, estimationSubTab);
+    loadData(0, estimationSubTab, false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
@@ -262,8 +267,12 @@ const AdminDashboardContent: React.FC = () => {
        (f.status && f.status.length > 0) ||
        f.assignedTo || f.callStatus || f.followUp);
 
-  const loadData = async (page = 0, subTab: 'active' | 'archived' | 'deleted' = estimationSubTab) => {
-    setLoading(true);
+  const loadData = async (
+    page = 0,
+    subTab: 'active' | 'archived' | 'deleted' = estimationSubTab,
+    showLoading = true,
+  ) => {
+    if (showLoading) setLoading(true);
     try {
       const currentMonth = new Date().toISOString().slice(0, 7);
       const [yStr, mStr] = currentMonth.split('-');
