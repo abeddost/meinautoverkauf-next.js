@@ -108,6 +108,14 @@ export default function CalendarTab({
       });
   }, [appointments, estimations, appointmentEstimations]);
 
+  const visibleEvents = useMemo(() => {
+    if (calendarView === Views.AGENDA) {
+      const now = new Date();
+      return events.filter((e) => e.start >= now);
+    }
+    return events;
+  }, [events, calendarView]);
+
   function eventPropGetter(event: CalendarEvent) {
     return {
       style: {
@@ -152,12 +160,13 @@ export default function CalendarTab({
       <div className={`bg-white rounded-2xl shadow-lg p-4 ${styles.wrapper}`}>
         <Calendar
           localizer={localizer}
-          events={events}
+          events={visibleEvents}
           view={calendarView}
           date={calendarDate}
           onNavigate={(newDate) => setCalendarDate(newDate)}
           onView={(newView) => setCalendarView(newView)}
           views={[Views.MONTH, Views.WEEK, Views.AGENDA]}
+          length={365}
           style={{ height: 650 }}
           culture="de"
           popup

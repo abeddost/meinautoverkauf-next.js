@@ -1416,14 +1416,16 @@ const AdminDashboardContent: React.FC = () => {
                         {bulkLoading ? '…' : 'Wiederherstellen'}
                       </button>
                     )}
-                    <button
-                      type="button"
-                      onClick={handleBulkHardDelete}
-                      disabled={bulkLoading}
-                      className="px-3 py-1.5 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
-                    >
-                      {bulkLoading ? '…' : 'Endgültig löschen'}
-                    </button>
+                    {estimationSubTab === 'deleted' && (
+                      <button
+                        type="button"
+                        onClick={handleBulkHardDelete}
+                        disabled={bulkLoading}
+                        className="px-3 py-1.5 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                      >
+                        {bulkLoading ? '…' : 'Endgültig löschen'}
+                      </button>
+                    )}
                     <button
                       type="button"
                       onClick={() => setSelectedIds(new Set())}
@@ -1665,25 +1667,25 @@ const AdminDashboardContent: React.FC = () => {
                                     </>
                                   )}
                                   {(estimationSubTab === 'archived' || estimationSubTab === 'deleted') && (
-                                    <>
-                                      <button
-                                        type="button"
-                                        onClick={() => handleRestoreEstimation(est.id)}
-                                        disabled={archivingEstimationId === est.id}
-                                        className="px-2 py-1 bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
-                                        title="Wiederherstellen"
-                                      >
-                                        {archivingEstimationId === est.id ? '…' : 'Wiederherstellen'}
-                                      </button>
-                                      <button
-                                        type="button"
-                                        onClick={() => handleHardDeleteEstimationById(est.id)}
-                                        className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-bold transition-colors"
-                                        title="Endgültig löschen"
-                                      >
-                                        Endgültig löschen
-                                      </button>
-                                    </>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleRestoreEstimation(est.id)}
+                                      disabled={archivingEstimationId === est.id}
+                                      className="px-2 py-1 bg-green-500 hover:bg-green-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-colors"
+                                      title="Wiederherstellen"
+                                    >
+                                      {archivingEstimationId === est.id ? '…' : 'Wiederherstellen'}
+                                    </button>
+                                  )}
+                                  {estimationSubTab === 'deleted' && (
+                                    <button
+                                      type="button"
+                                      onClick={() => handleHardDeleteEstimationById(est.id)}
+                                      className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-bold transition-colors"
+                                      title="Endgültig löschen"
+                                    >
+                                      Endgültig löschen
+                                    </button>
                                   )}
                                 </div>
                               </td>
