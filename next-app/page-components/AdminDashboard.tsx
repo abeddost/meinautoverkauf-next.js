@@ -10,6 +10,9 @@ import DeleteConfirmDialog from '@/components/admin/DeleteConfirmDialog';
 import PhotoUploadModal from '@/components/admin/PhotoUploadModal';
 import FilterBar, { FilterState } from '@/components/admin/FilterBar';
 import { generateEstimationPDF } from '@/components/admin/PDFGenerator';
+import NotizModal from '@/components/admin/NotizModal';
+import CalendarTab from '@/components/admin/CalendarTab';
+import EditAppointmentModal from '@/components/admin/EditAppointmentModal';
 
 export interface Estimation {
   id: string;
@@ -62,6 +65,15 @@ interface Appointment {
   bring_location: string | null;
   archived_at: string | null;
   deleted_at: string | null;
+  created_by_admin: boolean;
+}
+
+interface LeadNote {
+  id: string;
+  estimation_id: string;
+  content: string;
+  created_at: string;
+  updated_at: string;
 }
 
 const PAGE_SIZE = 100;
@@ -83,7 +95,7 @@ const AdminDashboardContent: React.FC = () => {
   } | null>(null);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'estimations' | 'appointments' | 'provision'>('estimations');
+  const [activeTab, setActiveTab] = useState<'estimations' | 'appointments' | 'provision' | 'kalender'>('estimations');
   const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>('active');
   const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>('all');
   const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>('active');
@@ -110,6 +122,10 @@ const AdminDashboardContent: React.FC = () => {
   const [deletePasswordModal, setDeletePasswordModal] = useState<{ action: () => void; label: string } | null>(null);
   const [deletePasswordInput, setDeletePasswordInput] = useState('');
   const [deletePasswordError, setDeletePasswordError] = useState(false);
+  const [notizModalForEstimation, setNotizModalForEstimation] = useState<Estimation | null>(null);
+  const [estimationsWithNotes, setEstimationsWithNotes] = useState<Set<string>>(new Set());
+  const [appointmentEstimations, setAppointmentEstimations] = useState<Record<string, Estimation>>({});
+  const [editingAppointment, setEditingAppointment] = useState<Appointment | null>(null);
 
   const ASSIGNEES = [
     'Nicht zugewiesen',
@@ -240,6 +256,7 @@ const AdminDashboardContent: React.FC = () => {
         countRejected,
         countAcceptedThisMonth,
         countProvisionAccepted,
+        notesResponse,
       ] = await Promise.all([
         estQuery,
         supabase
@@ -268,10 +285,30 @@ const AdminDashboardContent: React.FC = () => {
           .gte('created_at', monthStart)
           .lt('created_at', monthEnd),
         estimationCount().eq('verkaufsstatus', 'Accepted').not('status', 'eq', 'deleted'),
+        supabase.from('lead_notes').select('estimation_id'),
       ]);
 
       if (estResponse.data) setEstimations(estResponse.data);
-      if (apptResponse.data) setAppointments(apptResponse.data);
+      if (apptResponse.data) {
+        setAppointments(apptResponse.data);
+        const ids = [...new Set(apptResponse.data.map((a: Appointment) => a.estimation_id))];
+        if (ids.length > 0) {
+          const { data: linkedData } = await supabase
+            .from('estimations')
+            .select('*')
+            .in('id', ids);
+          if (linkedData) {
+            const map: Record<string, Estimation> = {};
+            (linkedData as Estimation[]).forEach((e) => { map[e.id] = e; });
+            setAppointmentEstimations(map);
+          }
+        }
+      }
+      if (notesResponse.data) {
+        setEstimationsWithNotes(
+          new Set((notesResponse.data as { estimation_id: string }[]).map((n) => n.estimation_id))
+        );
+      }
 
       const countResponses = [
         countActive,
@@ -789,6 +826,16 @@ const AdminDashboardContent: React.FC = () => {
     } finally { setDeletingAppointmentId(null); }
   };
 
+  const handleUpdateAppointment = (updated: Appointment) => {
+    setAppointments((prev) => prev.map((a) => (a.id === updated.id ? updated : a)));
+  };
+
+  const handleAppointmentDeletedFromCalendar = (deletedId: string) => {
+    setAppointments((prev) =>
+      prev.map((a) => a.id === deletedId ? { ...a, deleted_at: new Date().toISOString() } : a)
+    );
+  };
+
   const handleDeleteAppointment = async (appointmentId: string) => {
     if (!appointmentId) return;
     if (!window.confirm('Termin endgültig löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
@@ -1161,14 +1208,14 @@ const AdminDashboardContent: React.FC = () => {
             Termine ({appointments.filter((a) => !a.archived_at && !a.deleted_at).length})
           </button>
           <button
-            onClick={() => setActiveTab('provision')}
+            onClick={() => setActiveTab('kalender')}
             className={`px-6 py-3 rounded-xl font-bold text-sm transition-all ${
-              activeTab === 'provision'
+              activeTab === 'kalender'
                 ? 'bg-brand-orange text-white shadow-lg'
                 : 'bg-white text-slate-600 hover:bg-slate-50'
             }`}
           >
-            Provision ({estimationListTabCounts.provisionAccepted})
+            Kalender
           </button>
         </div>
 
@@ -1358,7 +1405,7 @@ const AdminDashboardContent: React.FC = () => {
                           </tr>
                         ) : (
                           filteredEstimations.map((est) => (
-                            <tr key={est.id} className={`hover:bg-slate-50 transition-colors ${selectedIds.has(est.id) ? 'bg-orange-50' : ''}`}>
+                            <tr key={est.id} className={`hover:bg-slate-50 transition-colors ${selectedIds.has(est.id) ? 'bg-orange-50' : estimationsWithNotes.has(est.id) ? 'bg-blue-100' : ''}`}>
                               <td className="px-3 py-3 w-10">
                                 <input
                                   type="checkbox"
@@ -1512,6 +1559,14 @@ const AdminDashboardContent: React.FC = () => {
                                       >
                                         {archivingEstimationId === est.id ? '…' : 'Löschen'}
                                       </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => setNotizModalForEstimation(est)}
+                                        className="px-2 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg text-xs font-bold transition-colors"
+                                        title="Notiz bearbeiten"
+                                      >
+                                        Notiz
+                                      </button>
                                     </>
                                   )}
                                   {(estimationSubTab === 'archived' || estimationSubTab === 'deleted') && (
@@ -1594,7 +1649,23 @@ const AdminDashboardContent: React.FC = () => {
               </>
             )}
 
-            {/* Provision Tab */}
+            {/* Kalender Tab */}
+            {activeTab === 'kalender' && (
+              <CalendarTab
+                appointments={appointments}
+                estimations={estimations}
+                appointmentEstimations={appointmentEstimations}
+                onAppointmentCreated={(newAppt) => setAppointments((prev) => [newAppt, ...prev])}
+                onAppointmentUpdated={handleUpdateAppointment}
+                onAppointmentDeleted={handleAppointmentDeletedFromCalendar}
+                onViewEstimationDetails={async (estimation) => {
+                  await handleViewDetails(estimation);
+                }}
+                onNoteSaved={(id) => setEstimationsWithNotes((prev) => new Set([...prev, id]))}
+              />
+            )}
+
+            {/* Provision Tab (hidden — replaced by Kalender) */}
             {activeTab === 'provision' && (() => {
               const acceptedEstimations = estimations.filter(
                 (e) => e.verkaufsstatus === 'Accepted' && e.status !== 'deleted'
@@ -1827,7 +1898,7 @@ const AdminDashboardContent: React.FC = () => {
                               </td>
                               <td className="px-4 py-3 text-sm">
                                 {(() => {
-                                  const linked = estimations.find((e) => e.id === appt.estimation_id);
+                                  const linked = appointmentEstimations[appt.estimation_id];
                                   return linked ? (
                                     <div>
                                       <div className="font-semibold text-slate-800">{linked.first_name} {linked.last_name}</div>
@@ -1842,7 +1913,7 @@ const AdminDashboardContent: React.FC = () => {
                               <td className="px-4 py-3">
                                 <div className="flex items-center gap-2 flex-wrap">
                                   {(() => {
-                                    const linked = estimations.find((e) => e.id === appt.estimation_id);
+                                    const linked = appointmentEstimations[appt.estimation_id];
                                     return linked ? (
                                       <button
                                         type="button"
@@ -1855,6 +1926,14 @@ const AdminDashboardContent: React.FC = () => {
                                   })()}
                                   {appointmentListTab === 'active' && (
                                     <>
+                                      <button
+                                        type="button"
+                                        onClick={() => setEditingAppointment(appt)}
+                                        className="px-3 py-1 bg-slate-600 hover:bg-slate-700 text-white rounded-lg text-xs font-bold transition-colors"
+                                        title="Bearbeiten"
+                                      >
+                                        Bearbeiten
+                                      </button>
                                       <button
                                         type="button"
                                         onClick={() => handleArchiveAppointment(appt.id)}
@@ -2276,7 +2355,7 @@ const AdminDashboardContent: React.FC = () => {
 
       {appointmentModalForEstimation && (() => {
         const appts = appointments.filter((a) => a.estimation_id === appointmentModalForEstimation);
-        const estimation = estimations.find((e) => e.id === appointmentModalForEstimation);
+        const estimation = appointmentEstimations[appointmentModalForEstimation] ?? estimations.find((e) => e.id === appointmentModalForEstimation);
         const hasContent = estimation || appts.length > 0;
         return (
           <div
@@ -2383,6 +2462,25 @@ const AdminDashboardContent: React.FC = () => {
           </div>
         );
       })()}
+
+      {/* Notiz Modal */}
+      {notizModalForEstimation && (
+        <NotizModal
+          estimationId={notizModalForEstimation.id}
+          estimationLabel={`${notizModalForEstimation.first_name} ${notizModalForEstimation.last_name} — ${notizModalForEstimation.brand} ${notizModalForEstimation.model} (${notizModalForEstimation.year})`}
+          onClose={() => setNotizModalForEstimation(null)}
+          onNoteSaved={(id) => setEstimationsWithNotes((prev) => new Set([...prev, id]))}
+        />
+      )}
+
+      {/* Edit Appointment Modal */}
+      {editingAppointment && (
+        <EditAppointmentModal
+          appointment={editingAppointment}
+          onClose={() => setEditingAppointment(null)}
+          onSaved={(updated) => { handleUpdateAppointment(updated); setEditingAppointment(null); }}
+        />
+      )}
     </div>
   );
 };
