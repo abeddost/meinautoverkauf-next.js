@@ -43,8 +43,8 @@ export default function DatenschutzPage() {
               <p>Deutschland</p>
               <p>
                 Telefon:{' '}
-                <a className="text-brand-orange font-bold hover:underline" href="tel:+4917662878366">
-                  0176 62878366
+                <a className="text-brand-orange font-bold hover:underline" href="tel:+491782415897">
+                  0178 2415897
                 </a>
               </p>
               <p>

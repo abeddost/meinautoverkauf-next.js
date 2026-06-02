@@ -129,7 +129,7 @@ function emailShell(bodyContent: string): string {
                   <td style="color:#94a3b8;font-size:13px;line-height:1.8;">
                     <strong style="color:#ffffff;font-size:14px;">Meinautoverkauf.de</strong><br/>
                     <a href="https://www.meinautoverkauf.de" style="color:#f97316;text-decoration:none;">www.meinautoverkauf.de</a><br/>
-                    Tel: <a href="tel:+4917662878366" style="color:#f97316;text-decoration:none;">0176 62878366</a><br/>
+                    Tel: <a href="tel:+491782415897" style="color:#f97316;text-decoration:none;">0178 2415897</a><br/>
                     E-Mail: <a href="mailto:info@meinautoverkauf.de" style="color:#f97316;text-decoration:none;">info@meinautoverkauf.de</a>
                   </td>
                 </tr>
@@ -267,7 +267,7 @@ function buildCustomerAppointmentEmail(params: {
 
     <p style="font-size:14px;color:#64748b;line-height:1.7;margin:0;">
       Bei Fragen erreichen Sie uns unter <a href="mailto:info@meinautoverkauf.de" style="color:#f97316;font-weight:bold;">info@meinautoverkauf.de</a> oder
-      <a href="tel:+4917662878366" style="color:#f97316;font-weight:bold;">0176 62878366</a>.
+      <a href="tel:+491782415897" style="color:#f97316;font-weight:bold;">0178 2415897</a>.
     </p>
   `;
 

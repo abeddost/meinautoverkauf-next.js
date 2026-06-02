@@ -145,8 +145,8 @@ const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange">☎</div>
                   <div>
                     <div className="text-xs uppercase tracking-widest text-slate-400">Kostenlose Hotline</div>
-                    <a href="tel:+4917662878366" className="text-base font-black text-white hover:text-brand-orange transition-colors">
-                      0176 62878366
+                    <a href="tel:+491782415897" className="text-base font-black text-white hover:text-brand-orange transition-colors">
+                      0178 2415897
                     </a>
                   </div>
                 </div>
