@@ -256,7 +256,7 @@ interface NewAppointmentModalProps {
 }
 
 function NewAppointmentModal({ onClose, onCreated }: NewAppointmentModalProps) {
-  const [allLeads, setAllLeads] = useState<Estimation[]>([]);
+  const [searchResults, setSearchResults] = useState<Estimation[]>([]);
   const [leadsLoading, setLeadsLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [selectedEstimationId, setSelectedEstimationId] = useState('');
@@ -268,33 +268,32 @@ function NewAppointmentModal({ onClose, onCreated }: NewAppointmentModalProps) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    supabase
-      .from('estimations')
-      .select('*')
-      .is('deleted_at', null)
-      .order('created_at', { ascending: false })
-      .limit(200)
-      .then(({ data }) => {
-        if (data) setAllLeads(data as Estimation[]);
-        setLeadsLoading(false);
-      });
-  }, []);
+    setLeadsLoading(true);
+    const timer = setTimeout(async () => {
+      let query = supabase
+        .from('estimations')
+        .select('*')
+        .is('deleted_at', null)
+        .order('created_at', { ascending: false });
 
-  const filtered = useMemo(() => {
-    const q = search.toLowerCase();
-    return allLeads.filter(
-      (e) =>
-        !q ||
-        `${e.first_name} ${e.last_name}`.toLowerCase().includes(q) ||
-        e.brand.toLowerCase().includes(q) ||
-        e.model.toLowerCase().includes(q) ||
-        e.email.toLowerCase().includes(q)
-    );
-  }, [allLeads, search]);
+      if (search.trim()) {
+        const q = `%${search.trim()}%`;
+        query = query.or(
+          `first_name.ilike.${q},last_name.ilike.${q},brand.ilike.${q},model.ilike.${q},email.ilike.${q}`
+        );
+      } else {
+        query = query.limit(50);
+      }
 
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split('T')[0];
+      const { data } = await query;
+      if (data) setSearchResults(data as Estimation[]);
+      setLeadsLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  const minDate = new Date().toISOString().split('T')[0];
 
   async function handleSave() {
     if (!selectedEstimationId) { setError('Bitte eine Bewertung auswählen.'); return; }
@@ -361,7 +360,7 @@ function NewAppointmentModal({ onClose, onCreated }: NewAppointmentModalProps) {
               {leadsLoading ? (
                 <option disabled>Lade Leads…</option>
               ) : (
-                filtered.map((e) => (
+                searchResults.map((e) => (
                   <option key={e.id} value={e.id}>
                     {e.first_name} {e.last_name} — {e.brand} {e.model} ({e.year})
                   </option>
@@ -369,7 +368,7 @@ function NewAppointmentModal({ onClose, onCreated }: NewAppointmentModalProps) {
               )}
             </select>
             {!leadsLoading && (
-              <p className="text-xs text-slate-400 mt-1">{filtered.length} Lead{filtered.length !== 1 ? 's' : ''} gefunden</p>
+              <p className="text-xs text-slate-400 mt-1">{searchResults.length} Lead{searchResults.length !== 1 ? 's' : ''} gefunden</p>
             )}
           </div>
 
