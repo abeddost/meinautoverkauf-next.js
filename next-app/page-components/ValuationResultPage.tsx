@@ -101,6 +101,9 @@ const ValuationResultPage: React.FC = () => {
             postalCode: carDetails.postalCode,
             color: carDetails.color,
             knownDamages: carDetails.knownDamages || undefined,
+            tuv: carDetails.tuv,
+            vorbesitzer: carDetails.vorbesitzer,
+            letzteInspektion: carDetails.letzteInspektion,
           },
           valuation: {
             estimatedPrice: valuation.estimatedPrice,

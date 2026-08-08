@@ -22,6 +22,9 @@ export interface CarDetails {
   postalCode?: string;
   color?: string;
   knownDamages?: string;
+  tuv?: string;
+  vorbesitzer?: string;
+  letzteInspektion?: string;
 }
 
 export interface CarSpecs {

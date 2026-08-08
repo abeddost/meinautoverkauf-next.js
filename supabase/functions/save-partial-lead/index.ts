@@ -138,6 +138,9 @@ Deno.serve(async (req: Request) => {
     doors: car.doors ?? null,
     postal_code: car.postalCode ?? null,
     color: car.color ?? null,
+    tuv: car.tuv ?? null,
+    vorbesitzer: car.vorbesitzer ?? null,
+    letzte_inspektion: car.letzteInspektion ?? null,
     // AI fields intentionally null — will be filled by submit-estimation later
     estimated_price: null,
     price_min: null,

@@ -51,6 +51,9 @@ export default function RouteHero({
           vin: formData.vin,
           doors: formData.doors,
           color: formData.color,
+          tuv: formData.tuv,
+          vorbesitzer: formData.vorbesitzer,
+          letzteInspektion: formData.letzteInspektion,
         },
         photos: photos ?? [],
       })

@@ -1011,6 +1011,39 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   className={inputClass}
                 />
               </div>
+              <div>
+                <StepLabel label="TÜV" optional />
+                <input
+                  type="text"
+                  name="tuv"
+                  value={formData.tuv || ''}
+                  onChange={handleSelectChange}
+                  placeholder="z.B. 03/2026"
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <StepLabel label="Vorbesitzer" optional />
+                <input
+                  type="text"
+                  name="vorbesitzer"
+                  value={formData.vorbesitzer || ''}
+                  onChange={handleSelectChange}
+                  placeholder="Anzahl Vorbesitzer"
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <StepLabel label="Letzte Inspektion" optional />
+                <input
+                  type="text"
+                  name="letzteInspektion"
+                  value={formData.letzteInspektion || ''}
+                  onChange={handleSelectChange}
+                  placeholder="z.B. 06/2025"
+                  className={inputClass}
+                />
+              </div>
               <div className="relative">
                 <StepLabel label="Fotos hochladen" optional />
                 <div className="space-y-2">

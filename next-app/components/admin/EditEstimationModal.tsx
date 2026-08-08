@@ -30,6 +30,9 @@ interface Estimation {
   color: string | null;
   doors: string | null;
   vin: string | null;
+  tuv: string | null;
+  vorbesitzer: string | null;
+  letzte_inspektion: string | null;
   desired_price: string | null;
   final_sale_price: number | null;
   commission_percentage: number | null;
@@ -68,6 +71,9 @@ const EditEstimationModal: React.FC<EditEstimationModalProps> = ({
     color: estimation.color || '',
     doors: estimation.doors || '',
     vin: estimation.vin || '',
+    tuv: estimation.tuv || '',
+    vorbesitzer: estimation.vorbesitzer || '',
+    letzte_inspektion: estimation.letzte_inspektion || '',
     desired_price: estimation.desired_price || '',
     estimated_price: estimation.estimated_price ?? 0,
     price_min: estimation.price_min ?? 0,
@@ -329,6 +335,36 @@ const EditEstimationModal: React.FC<EditEstimationModalProps> = ({
                   value={formData.vin}
                   onChange={handleChange}
                   className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-brand-orange focus:ring-0 outline-none font-mono text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">TÜV</label>
+                <input
+                  type="text"
+                  name="tuv"
+                  value={formData.tuv}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-brand-orange focus:ring-0 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Vorbesitzer</label>
+                <input
+                  type="text"
+                  name="vorbesitzer"
+                  value={formData.vorbesitzer}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-brand-orange focus:ring-0 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Letzte Inspektion</label>
+                <input
+                  type="text"
+                  name="letzte_inspektion"
+                  value={formData.letzte_inspektion}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-brand-orange focus:ring-0 outline-none"
                 />
               </div>
               <div>
