@@ -105,7 +105,7 @@ const AdminDashboardContent: React.FC = () => {
   const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>(() => {
     try { return (sessionStorage.getItem('admin_estimationSubTab') as any) ?? 'active'; } catch { return 'active'; }
   });
-  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'bodenheim' | 'ruesselsheim'>(() => {
+  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>(() => {
     try { return (sessionStorage.getItem('admin_appointmentSubTab') as any) ?? 'all'; } catch { return 'all'; }
   });
   const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>(() => {
@@ -347,7 +347,6 @@ const AdminDashboardContent: React.FC = () => {
         supabase
           .from('appointments')
           .select('*')
-          .neq('delivery_type', 'pickup')
           .order('created_at', { ascending: false }),
         estimationCount().not('status', 'eq', 'archived').not('status', 'eq', 'deleted'),
         estimationCount().eq('status', 'archived'),
@@ -1027,7 +1026,8 @@ const AdminDashboardContent: React.FC = () => {
     let base: Appointment[];
     if (appointmentListTab === 'active') {
       base = appointments.filter((apt) => !apt.archived_at && !apt.deleted_at);
-      if (appointmentSubTab === 'bodenheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'bodenheim');
+      if (appointmentSubTab === 'pickup') base = base.filter((apt) => apt.delivery_type === 'pickup');
+      else if (appointmentSubTab === 'bodenheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'bodenheim');
       else if (appointmentSubTab === 'ruesselsheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'ruesselsheim');
       // 'all' — no additional filter
 
@@ -1356,6 +1356,9 @@ const AdminDashboardContent: React.FC = () => {
               <div className="flex gap-2">
                 <button onClick={() => setAppointmentSubTab('all')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'all' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
                   Alle ({appointments.filter((a) => !a.archived_at && !a.deleted_at).length})
+                </button>
+                <button onClick={() => setAppointmentSubTab('pickup')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'pickup' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                  Haus-Abholung ({appointments.filter((a) => !a.archived_at && !a.deleted_at && a.delivery_type === 'pickup').length})
                 </button>
                 <button onClick={() => setAppointmentSubTab('bodenheim')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'bodenheim' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
                   Bodenheim ({appointments.filter((a) => !a.archived_at && !a.deleted_at && a.delivery_type === 'bring_car' && a.bring_location === 'bodenheim').length})
