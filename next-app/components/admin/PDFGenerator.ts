@@ -44,6 +44,9 @@ interface Estimation {
   color: string | null;
   doors: string | null;
   vin: string | null;
+  tuv: string | null;
+  vorbesitzer: string | null;
+  letzte_inspektion: string | null;
   known_damages: string | null;
   desired_price: string | null;
   final_sale_price: number | null;
@@ -140,6 +143,9 @@ export const generateEstimationPDF = async (
     ...(estimation.color ? [['Farbe', estimation.color]] : []),
     ...(estimation.doors ? [['Türen', estimation.doors]] : []),
     ...(estimation.vin ? [['FIN/VIN', estimation.vin]] : []),
+    ...(estimation.tuv ? [['TÜV', estimation.tuv]] : []),
+    ...(estimation.vorbesitzer ? [['Vorbesitzer', estimation.vorbesitzer]] : []),
+    ...(estimation.letzte_inspektion ? [['Letzte Inspektion', estimation.letzte_inspektion]] : []),
     ...(estimation.known_damages ? [['Bekannte Schäden', estimation.known_damages]] : []),
   ];
 
