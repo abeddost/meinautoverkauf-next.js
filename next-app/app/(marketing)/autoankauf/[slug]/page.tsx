@@ -4,7 +4,9 @@ import { CITY_SEO_DATA, CITY_SEO_BY_SLUG } from '@/lib/citySeoData';
 import CityPageWrapper from '@/components/CityPageWrapper';
 import RouteHero from '@/components/RouteHero';
 import Breadcrumb from '@/components/Breadcrumb';
+import CityLocationInfo from '@/components/CityLocationInfo';
 import { buildBreadcrumbSchema } from '@/lib/structuredData';
+import { getNearestCitySlugs } from '@/lib/cityGeo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 
@@ -39,6 +41,11 @@ export default async function AutoankaufCityRoute({ params }: Props) {
     { name: city.cityName, path: city.path },
   ]);
 
+  const nearbyCities = getNearestCitySlugs(city.slug, 3)
+    .map(({ slug: nearbySlug }) => CITY_SEO_BY_SLUG[nearbySlug])
+    .filter((nearbyCity): nearbyCity is NonNullable<typeof nearbyCity> => Boolean(nearbyCity))
+    .map((nearbyCity) => ({ cityName: nearbyCity.cityName, path: nearbyCity.path }));
+
   return (
     <>
       <script
@@ -59,6 +66,7 @@ export default async function AutoankaufCityRoute({ params }: Props) {
         headlineTag="h2"
       />
       <CityPageWrapper slug={city.pageComponentName} />
+      <CityLocationInfo state={city.state} nearbyCities={nearbyCities} />
     </>
   );
 }
