@@ -509,6 +509,20 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     faqKey: 'FRANKENTHAL_FAQS',
   },
   {
+    slug: 'bodenheim',
+    path: '/autoankauf-bodenheim',
+    cityName: 'Bodenheim',
+    state: 'Rheinland-Pfalz',
+    title: 'Autoankauf Bodenheim | Direkt an unserem Firmensitz',
+    description:
+      'Meinautoverkauf.de hat hier seinen Firmensitz. Auto in Bodenheim online bewerten, faires Angebot erhalten und kostenlos abholen lassen – schnell und transparent.',
+    heroHeadline: 'Autoankauf Bodenheim – Direkt an unserem Firmensitz',
+    heroSubheadline: 'Verifiziert bei Google, zuhause im Landkreis Mainz-Bingen',
+    schemaDescription: 'Autoankauf in Bodenheim, dem Firmensitz von Meinautoverkauf.de, mit fairer Bewertung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufBodenheim',
+    faqKey: 'BODENHEIM_FAQS',
+  },
+  {
     slug: 'rodgau',
     path: '/autoankauf-rodgau',
     cityName: 'Rodgau',

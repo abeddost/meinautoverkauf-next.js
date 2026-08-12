@@ -8,6 +8,7 @@ interface Props {
 
 // Dynamic imports for all city pages with client-side rendering
 const components = {
+  AutoankaufBodenheim: dynamic(() => import('@/page-components/AutoankaufBodenheim')),
   AutoankaufFrankfurt: dynamic(() => import('@/page-components/AutoankaufFrankfurt')),
   AutoankaufWiesbaden: dynamic(() => import('@/page-components/AutoankaufWiesbaden')),
   AutoankaufMainz: dynamic(() => import('@/page-components/AutoankaufMainz')),

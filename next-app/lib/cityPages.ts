@@ -8,6 +8,7 @@ export interface CityPage {
 }
 
 export const CITY_PAGES: CityPage[] = [
+  { path: '/autoankauf-bodenheim', label: 'Autoankauf Bodenheim' },
   { path: '/autoankauf-frankfurt', label: 'Autoankauf Frankfurt' },
   { path: '/autoankauf-wiesbaden', label: 'Autoankauf Wiesbaden' },
   { path: '/autoankauf-mainz', label: 'Autoankauf Mainz' },

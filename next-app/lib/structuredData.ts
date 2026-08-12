@@ -56,6 +56,8 @@ export const buildLocalBusinessSchema = (siteUrl: string): Record<string, unknow
       addressRegion: "Rheinland-Pfalz",
       addressCountry: "DE",
     },
+    hasMap: "https://share.google/qn8pSz064K7Cy6c6S",
+    sameAs: ["https://share.google/qn8pSz064K7Cy6c6S"],
   };
 };
 

@@ -973,3 +973,30 @@ export const RODGAU_FAQS: FAQItem[] = [
     a: "Die Auszahlung erfolgt am Tag der Fahrzeugübergabe per Banküberweisung. Es gibt keine Verzögerung – Sie erhalten den vereinbarten Betrag direkt nach Übergabe und Unterzeichnung des Kaufvertrags."
   }
 ];
+
+export const BODENHEIM_FAQS: FAQItem[] = [
+  {
+    q: "Wie läuft der Autoankauf in Bodenheim konkret ab?",
+    a: "Sie starten mit einer kostenlosen Online-Bewertung Ihres Fahrzeugs. Anschließend erhalten Sie ein transparentes Angebot, vereinbaren einen Termin und erhalten die Auszahlung direkt bei der Übergabe – auf Wunsch inklusive Abholung."
+  },
+  {
+    q: "Welche Fahrzeugtypen kaufen Sie in Bodenheim und der Region an?",
+    a: "Wir kaufen ein breites Spektrum an: Pendlerfahrzeuge Richtung Mainz, Familienautos und Kombis, Kleinwagen sowie Nutzfahrzeuge und Transporter, wie sie in der Landwirtschaft und im Weinbau der Region häufig im Einsatz sind."
+  },
+  {
+    q: "Kaufen Sie auch Fahrzeuge mit Motorschaden oder anderen technischen Mängeln an?",
+    a: "Ja. Auch Fahrzeuge mit Motorschaden, Getriebeproblemen oder anderen technischen Mängeln kaufen wir an, sofern Zustand und Unterlagen transparent dargelegt werden."
+  },
+  {
+    q: "Nehmen Sie auch Fahrzeuge ohne gültige HU/AU an?",
+    a: "Ja. Fahrzeuge ohne gültige Hauptuntersuchung sind bei uns weiterhin ankauffähig. Der Zustand wird offen bewertet und fließt nachvollziehbar in das Angebot ein."
+  },
+  {
+    q: "Holen Sie das Fahrzeug auch in Nackenheim, Mainz oder anderen Gemeinden im Landkreis Mainz-Bingen ab?",
+    a: "Ja. Von unserem Standort in Bodenheim aus bieten wir die kostenlose Abholung im gesamten Landkreis Mainz-Bingen sowie in angrenzenden Gemeinden wie Nackenheim und Gau-Bischofsheim an."
+  },
+  {
+    q: "Unterstützen Sie bei der Abmeldung bei der zuständigen Zulassungsstelle?",
+    a: "Ja. Auf Wunsch übernehmen wir die Abmeldung bei der für Bodenheim zuständigen Zulassungsstelle im Landkreis Mainz-Bingen und dokumentieren die Abwicklung transparent."
+  }
+];

@@ -10,6 +10,7 @@ export interface Coordinates {
 }
 
 export const CITY_COORDINATES: Record<string, Coordinates> = {
+  bodenheim: { lat: 49.9283, lng: 8.3068 },
   frankfurt: { lat: 50.1109, lng: 8.6821 },
   wiesbaden: { lat: 50.0782, lng: 8.2398 },
   mainz: { lat: 49.9929, lng: 8.2473 },
