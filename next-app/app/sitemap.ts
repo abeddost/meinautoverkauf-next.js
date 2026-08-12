@@ -5,66 +5,67 @@ import { BRAND_SEO_CONTENT } from '@/lib/brandSeoContent';
 import { MODEL_SEO_PAGES } from '@/lib/modelSeoPages';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
+const BUILD_DATE = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/auto-bewerten`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/auto-verkaufen`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/vorteile`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/standorte`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/marken`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/modelle`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/ratgeber`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/datenschutz`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/impressum`,
-      lastModified: new Date(),
+      lastModified: BUILD_DATE,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
@@ -72,28 +73,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const cityPages: MetadataRoute.Sitemap = CITY_SEO_DATA.map((city) => ({
     url: `${BASE_URL}${city.path}`,
-    lastModified: new Date(),
+    lastModified: BUILD_DATE,
     changeFrequency: 'monthly' as const,
     priority: 0.85,
   }));
 
   const guidePages: MetadataRoute.Sitemap = GUIDE_CONTENT.map((guide) => ({
     url: `${BASE_URL}/ratgeber/${guide.slug}`,
-    lastModified: new Date(),
+    lastModified: BUILD_DATE,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
   const brandLandingPages: MetadataRoute.Sitemap = Object.values(BRAND_SEO_CONTENT).map((brand) => ({
     url: `${BASE_URL}${brand.landing.canonicalPath}`,
-    lastModified: new Date(),
+    lastModified: BUILD_DATE,
     changeFrequency: 'monthly' as const,
     priority: 0.85,
   }));
 
   const modelLandingPages: MetadataRoute.Sitemap = MODEL_SEO_PAGES.map((model) => ({
     url: `${BASE_URL}${model.canonicalPath}`,
-    lastModified: new Date(),
+    lastModified: BUILD_DATE,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));

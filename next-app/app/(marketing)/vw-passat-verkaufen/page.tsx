@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import RouteHero from '@/components/RouteHero';
 import FAQSection from '@/components/FAQSection';
-import { buildFaqPageSchema } from '@/lib/structuredData';
+import Breadcrumb from '@/components/Breadcrumb';
+import { buildFaqPageSchema, buildBreadcrumbSchema } from '@/lib/structuredData';
 import { MODEL_SEO_PAGE_BY_SLUG } from '@/lib/modelSeoPages';
+import { BRAND_SEO_CONTENT } from '@/lib/brandSeoContent';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 const MODEL = MODEL_SEO_PAGE_BY_SLUG['vw-passat-verkaufen'];
@@ -43,12 +45,31 @@ export const metadata: Metadata = {
 
 export default function VwPassatVerkaufenPage() {
   const faqSchema = buildFaqPageSchema(SITE_URL, MODEL.canonicalPath, FAQS);
+  const brandContent = BRAND_SEO_CONTENT[MODEL.brandSlug];
+  const breadcrumbSchema = buildBreadcrumbSchema(SITE_URL, [
+    { name: 'Home', path: '/' },
+    { name: 'Marken', path: '/marken' },
+    { name: brandContent.displayName, path: MODEL.brandHref },
+    { name: MODEL.label, path: MODEL.canonicalPath },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Breadcrumb
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Marken', href: '/marken' },
+          { name: brandContent.displayName, href: MODEL.brandHref },
+          { name: MODEL.label, href: MODEL.canonicalPath },
+        ]}
       />
 
       <RouteHero

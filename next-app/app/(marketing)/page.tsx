@@ -17,6 +17,14 @@ export const metadata: Metadata = {
     title: 'Meinautoverkauf.de – Auto schnell und fair verkaufen',
     description: 'KI-gestützte Fahrzeugbewertung & Sofortankauf in ganz Deutschland. Keine Inseratkosten, keine Haftung.',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Meinautoverkauf.de – Auto verkaufen online',
+      },
+    ],
   },
 };
 

@@ -3,6 +3,10 @@ import { notFound } from 'next/navigation';
 import { CITY_SEO_DATA, CITY_SEO_BY_SLUG } from '@/lib/citySeoData';
 import CityPageWrapper from '@/components/CityPageWrapper';
 import RouteHero from '@/components/RouteHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import { buildBreadcrumbSchema } from '@/lib/structuredData';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -29,8 +33,25 @@ export default async function AutoankaufCityRoute({ params }: Props) {
   const city = CITY_SEO_BY_SLUG[slug];
   if (!city) notFound();
 
+  const breadcrumbSchema = buildBreadcrumbSchema(SITE_URL, [
+    { name: 'Home', path: '/' },
+    { name: 'Standorte', path: '/standorte' },
+    { name: city.cityName, path: city.path },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Breadcrumb
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Standorte', href: '/standorte' },
+          { name: city.cityName, href: city.path },
+        ]}
+      />
       <RouteHero
         headline={city.heroHeadline}
         subheadline={city.heroSubheadline}

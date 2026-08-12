@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import RouteHero from '@/components/RouteHero';
 import BrandAutoankaufLanding from '@/components/BrandAutoankaufLanding';
+import Breadcrumb from '@/components/Breadcrumb';
 import { BRAND_SEO_CONTENT } from '@/lib/brandSeoContent';
-import { buildFaqPageSchema } from '@/lib/structuredData';
+import { buildFaqPageSchema, buildBreadcrumbSchema } from '@/lib/structuredData';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 const TOYOTA_CONTENT = BRAND_SEO_CONTENT.toyota;
@@ -19,12 +20,28 @@ export default function ToyotaVerkaufenRoute() {
     TOYOTA_CONTENT.landing.canonicalPath,
     TOYOTA_CONTENT.landing.faqs,
   );
+  const breadcrumbSchema = buildBreadcrumbSchema(SITE_URL, [
+    { name: 'Home', path: '/' },
+    { name: 'Marken', path: '/marken' },
+    { name: TOYOTA_CONTENT.displayName, path: TOYOTA_CONTENT.landing.canonicalPath },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Breadcrumb
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Marken', href: '/marken' },
+          { name: TOYOTA_CONTENT.displayName, href: TOYOTA_CONTENT.landing.canonicalPath },
+        ]}
       />
       <RouteHero
         headline={TOYOTA_CONTENT.landing.heroHeadline}

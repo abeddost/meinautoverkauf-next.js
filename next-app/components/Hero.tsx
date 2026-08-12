@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 import ValuationForm from './ValuationForm';
 import { CarDetails, ValuationResult } from '@/types';
 
@@ -182,18 +183,14 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
       className={`relative bg-gradient-to-br ${heroAccent.gradientClass} overflow-hidden min-h-[100vh] -mt-16 lg:-mt-20 pt-16 lg:pt-20 flex flex-col scroll-mt-16 lg:scroll-mt-20`}
     >
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/hero%20section.webp"
-          srcSet="/hero%20section.webp 800w"
-          sizes="100vw"
           alt=""
           aria-hidden="true"
-          width={800}
-          height={533}
-          className="absolute inset-0 w-full h-full object-cover opacity-45 lg:opacity-100"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-45 lg:opacity-100"
+          priority
         />
         <div className={`absolute -top-24 right-[-60px] h-[320px] w-[320px] lg:-top-32 lg:right-[-80px] lg:h-[420px] lg:w-[420px] rounded-full ${heroAccent.blobTopClass} blur-3xl opacity-85 animate-float-slow`}></div>
         <div className={`absolute -bottom-28 left-[-90px] h-[380px] w-[380px] lg:-bottom-40 lg:left-[-120px] lg:h-[520px] lg:w-[520px] rounded-full ${heroAccent.blobBottomClass} blur-3xl opacity-85 animate-float-slower`}></div>
@@ -261,26 +258,21 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <img
-                    src="/bmw-560.webp"
-                    srcSet="/bmw-560.webp 560w, /bmw.webp 1024w"
-                    sizes="560px"
-                    alt="BMW Car"
+                  <Image
+                    src="/bmw.webp"
+                    alt="BMW als Beispielfahrzeug für den Autoankauf"
                     className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
                     style={carStyle}
                     width={1024}
                     height={512}
-                    loading="eager"
-                    fetchPriority="high"
-                    decoding="async"
+                    sizes="560px"
+                    priority
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
                   />
-                  <img
-                    src="/bmw-560.webp"
-                    srcSet="/bmw-560.webp 560w, /bmw.webp 1024w"
-                    sizes="560px"
+                  <Image
+                    src="/bmw.webp"
                     alt=""
                     aria-hidden="true"
                     className="absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
@@ -291,8 +283,7 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
                     }}
                     width={1024}
                     height={512}
-                    loading="lazy"
-                    decoding="async"
+                    sizes="560px"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
@@ -342,15 +333,13 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
           <div className="relative mb-4 flex justify-center">
             <div className="relative w-[95%] max-w-[440px]">
               <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
-              <img
+              <Image
                 src="/bmw-mobile.webp"
-                alt="BMW Car"
+                alt="BMW als Beispielfahrzeug für den Autoankauf"
                 className="relative w-full h-auto max-h-[200px] object-contain"
                 style={{ aspectRatio: '480/240', minHeight: '120px' }}
                 width={480}
                 height={240}
-                loading="lazy"
-                decoding="async"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
