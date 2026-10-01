@@ -17,6 +17,6 @@
     "images:webp:dry-run": "npm --prefix next-app run images:webp:dry-run"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }

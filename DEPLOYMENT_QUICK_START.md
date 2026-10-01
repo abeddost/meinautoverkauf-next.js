@@ -77,7 +77,7 @@ npm --prefix next-app run build
 # Deploy via Vercel project configured with:
 # - Root Directory: next-app
 # - Framework Preset: Next.js
-# - Node.js Version: 20.x
+# - Node.js Version: 24.x
 ```
 
 ---

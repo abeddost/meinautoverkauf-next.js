@@ -19,7 +19,7 @@ if (!Number.isInteger(requiredMajor)) {
 
 if (currentMajor !== requiredMajor) {
   console.error(`[node-check] Unsupported Node.js ${currentVersion}. Required major: ${requiredMajor}.x`);
-  console.error('[node-check] Run `nvm use` (or install Node 20) and retry.');
+  console.error('[node-check] Run `nvm use` (or install the version in .nvmrc) and retry.');
   process.exit(1);
 }
 

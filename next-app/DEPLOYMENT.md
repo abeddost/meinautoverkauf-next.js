@@ -79,7 +79,7 @@ Verify each URL returns `200` (or expected redirect):
 
 ### 5. DNS / Domain Cutover
 1. Use the existing Vercel project with Root Directory set to `next-app`
-2. In Vercel project settings, pin Node.js version to `20.x`
+2. In Vercel project settings, pin Node.js version to `24.x`
 3. Verify all checks above on preview
 4. Assign custom domain `www.meinautoverkauf.de`
 5. Keep apex redirect `meinautoverkauf.de -> https://www.meinautoverkauf.de`

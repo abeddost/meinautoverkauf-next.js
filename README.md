@@ -23,7 +23,7 @@ Root npm commands are wrappers to `next-app`:
 
 ## Local Setup
 
-1. Use Node.js `20.x` (see `.nvmrc`), then run `nvm use`.
+1. Use Node.js `24.x` (see `.nvmrc`), then run `nvm use`.
 2. Install dependencies in `next-app`:
    - `cd next-app && npm install`
 3. Copy `next-app/.env.example` to `next-app/.env.local` and fill values.
@@ -50,7 +50,7 @@ Use the existing Vercel project with:
 
 - Root Directory: `next-app`
 - Framework Preset: `Next.js`
-- Node.js Version: `20.x`
+- Node.js Version: `24.x`
 - Production branch: `main`
 
 See the full checklist in `next-app/DEPLOYMENT.md`.
