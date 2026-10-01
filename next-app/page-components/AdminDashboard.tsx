@@ -13,6 +13,7 @@ import { generateEstimationPDF } from '@/components/admin/PDFGenerator';
 import NotizModal from '@/components/admin/NotizModal';
 import CalendarTab from '@/components/admin/CalendarTab';
 import EditAppointmentModal from '@/components/admin/EditAppointmentModal';
+import { FUEL_GROUPS, TRANSMISSION_VALUES, mileageLabelsUpTo } from '@/lib/vehicleFilters';
 
 export interface Estimation {
   id: string;
@@ -39,6 +40,7 @@ export interface Estimation {
   market_trend: string | null;
   price_explanation: string | null;
   postal_code: string | null;
+  distance_from_bodenheim_km: number | null;
   color: string | null;
   doors: string | null;
   vin: string | null;
@@ -268,7 +270,9 @@ const AdminDashboardContent: React.FC = () => {
   const hasEstimationFilters = (f: FilterState) =>
     !!(f.searchQuery?.trim() || f.dateFrom || f.dateTo ||
        (f.status && f.status.length > 0) ||
-       f.assignedTo || f.callStatus || f.followUp);
+       f.assignedTo || f.callStatus || f.followUp ||
+       f.transmission || (f.fuelTypes && f.fuelTypes.length > 0) || f.maxMileage ||
+       f.maxDistanceKm || f.yearFrom || f.yearTo || f.maxPrice);
 
   const loadData = async (
     page = 0,
@@ -326,6 +330,16 @@ const AdminDashboardContent: React.FC = () => {
         }
         if (filters.callStatus) estQuery = estQuery.eq('call_status', filters.callStatus);
         if (filters.followUp)   estQuery = estQuery.eq('follow_up', true);
+        // Vehicle filters (combined with AND)
+        if (filters.transmission) estQuery = estQuery.in('transmission', TRANSMISSION_VALUES[filters.transmission]);
+        if (filters.fuelTypes?.length) {
+          estQuery = estQuery.in('fuel_type', filters.fuelTypes.flatMap((g) => FUEL_GROUPS[g]));
+        }
+        if (filters.maxMileage)    estQuery = estQuery.in('mileage', mileageLabelsUpTo(filters.maxMileage));
+        if (filters.maxDistanceKm) estQuery = estQuery.lte('distance_from_bodenheim_km', filters.maxDistanceKm);
+        if (filters.yearFrom)      estQuery = estQuery.gte('year', filters.yearFrom);
+        if (filters.yearTo)        estQuery = estQuery.lte('year', filters.yearTo);
+        if (filters.maxPrice)      estQuery = estQuery.lte('estimated_price', filters.maxPrice);
       } else {
         estQuery = estQuery.range(from, to);
       }
@@ -1555,6 +1569,9 @@ const AdminDashboardContent: React.FC = () => {
                               </td>
                               <td className="px-2 py-3 text-sm font-bold text-green-600 whitespace-nowrap">
                                 {est.postal_code ?? <span className="text-slate-300 font-normal">—</span>}
+                                {est.distance_from_bodenheim_km != null && (
+                                  <div className="text-xs font-normal text-slate-500">{est.distance_from_bodenheim_km} km</div>
+                                )}
                               </td>
                               <td className="px-2 py-3 text-sm max-w-[144px]">
                                 <div className="font-semibold text-slate-800 truncate">{est.brand} {est.model}</div>
@@ -2175,7 +2192,12 @@ const AdminDashboardContent: React.FC = () => {
                   {selectedEstimation.postal_code && (
                     <div>
                       <div className="text-xs text-slate-500 mb-1">PLZ</div>
-                      <div className="font-semibold">{selectedEstimation.postal_code}</div>
+                      <div className="font-semibold">
+                        {selectedEstimation.postal_code}
+                        {selectedEstimation.distance_from_bodenheim_km != null && (
+                          <span className="font-normal text-slate-500"> · {selectedEstimation.distance_from_bodenheim_km} km bis Bodenheim</span>
+                        )}
+                      </div>
                     </div>
                   )}
                   {selectedEstimation.desired_price && (

@@ -83,8 +83,8 @@ const FUELS = [
   'LPG / Autogas',
 ];
 const TRANSMISSIONS = ['Schaltung', 'Automatik', 'Halbautomatik'];
-const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
-const MILEAGE_RANGES = [
+export const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
+export const MILEAGE_RANGES = [
   ...Array.from({ length: 25 }, (_, i) => {
     const start = i * 10000;
     const end = start + 10000;
