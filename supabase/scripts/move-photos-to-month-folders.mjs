@@ -50,14 +50,14 @@ for (let i = 0; i < uuids.length; i += 100) {
 }
 
 let moved = 0, failed = 0, orphanFiles = 0, deleted = 0;
-for (const folder of rootFolders) {
+async function processFolder(folder) {
   const leadDate = createdAt.get(folder);
   const files = await list(folder);
   if (!leadDate) {
     const refs = await api(`/rest/v1/estimation_photos?select=id&storage_path=like.${encodeURIComponent(folder + "/*")}`);
     if (refs.length > 0) {
       console.warn(`  skip ${folder}: no estimation row but ${refs.length} estimation_photos rows reference it`);
-      continue;
+      return;
     }
     const paths = files.filter((f) => f.id !== null).map((f) => `${folder}/${f.name}`);
     orphanFiles += paths.length;
@@ -71,7 +71,7 @@ for (const folder of rootFolders) {
         console.error(`  FAILED: ${err.message}`);
       }
     }
-    continue;
+    return;
   }
   for (const file of files) {
     if (file.id === null) {
@@ -99,4 +99,10 @@ for (const folder of rootFolders) {
     }
   }
 }
+
+// Process folders in parallel; files within a folder stay sequential.
+const queue = [...rootFolders];
+await Promise.all(Array.from({ length: 10 }, async () => {
+  while (queue.length) await processFolder(queue.shift());
+}));
 console.log(`\nDone. moved=${moved} deleted=${deleted} failed=${failed} orphanFiles=${orphanFiles}`);
