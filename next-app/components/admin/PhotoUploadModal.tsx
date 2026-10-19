@@ -2,15 +2,18 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { photoStoragePath } from '@/lib/photoPath';
 
 interface PhotoUploadModalProps {
   estimationId: string;
+  estimationCreatedAt: string;
   onComplete: () => void;
   onClose: () => void;
 }
 
 const PhotoUploadModal: React.FC<PhotoUploadModalProps> = ({
   estimationId,
+  estimationCreatedAt,
   onComplete,
   onClose,
 }) => {
@@ -71,7 +74,7 @@ const PhotoUploadModal: React.FC<PhotoUploadModalProps> = ({
         const timestamp = Date.now();
         const randomSuffix = Math.random().toString(36).substring(7);
         const fileName = `${timestamp}_${randomSuffix}_${file.name}`;
-        const storagePath = `${estimationId}/${fileName}`;
+        const storagePath = photoStoragePath(estimationId, fileName, estimationCreatedAt);
 
         // Upload to Supabase Storage
         const { error: uploadError } = await supabase.storage

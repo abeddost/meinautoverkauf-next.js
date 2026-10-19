@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { photoStoragePath } from "../_shared/photoPath.ts";
 
 // ── CORS ──────────────────────────────────────────────────────────────
 const corsHeaders = {
@@ -153,13 +154,14 @@ Deno.serve(async (req: Request) => {
   const { data: estimation, error: insertErr } = await supabase
     .from("estimations")
     .insert(estRow)
-    .select("id")
+    .select("id, created_at")
     .single();
 
   if (insertErr || !estimation)
     return jsonResp({ error: "Failed to save partial lead", code: "db_error" }, 500);
 
   const estimationId = estimation.id as string;
+  const leadCreatedAt = estimation.created_at as string;
 
   // ── Process photos ────────────────────────────────────────────────
   const bucket = "car-photos";
@@ -171,7 +173,7 @@ Deno.serve(async (req: Request) => {
     if (storagePath.startsWith("pending/")) {
       const segments = storagePath.split("/");
       const filename = segments[segments.length - 1] || `photo_${Date.now()}.jpg`;
-      finalPath = `${estimationId}/${filename}`;
+      finalPath = photoStoragePath(estimationId, filename, leadCreatedAt);
 
       const { data: blob, error: downloadErr } = await supabase.storage.from(bucket).download(storagePath);
       if (downloadErr || !blob) continue;

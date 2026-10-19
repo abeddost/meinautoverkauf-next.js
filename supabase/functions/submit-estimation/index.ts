@@ -1,5 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { photoStoragePath } from "../_shared/photoPath.ts";
 
 // ── CORS ──────────────────────────────────────────────────────────────
 const corsHeaders = {
@@ -428,27 +429,31 @@ Deno.serve(async (req: Request) => {
   };
 
   let estimationId: string;
+  let leadCreatedAt: string | undefined;
 
   if (incomingEstimationId) {
     // UPDATE existing incomplete record
-    const { error: updateErr } = await supabase
+    const { data: updated, error: updateErr } = await supabase
       .from("estimations")
       .update(estFields)
       .eq("id", incomingEstimationId)
-      .eq("status", "incomplete");
+      .eq("status", "incomplete")
+      .select("created_at");
     if (updateErr)
       return jsonResp({ error: "Failed to update estimation", code: "db_error" }, 500);
     estimationId = incomingEstimationId;
+    leadCreatedAt = updated?.[0]?.created_at as string | undefined;
   } else {
     // INSERT new record (backwards-compatible)
     const { data: estimation, error: insertErr } = await supabase
       .from("estimations")
       .insert(estFields)
-      .select("id")
+      .select("id, created_at")
       .single();
     if (insertErr || !estimation)
       return jsonResp({ error: "Failed to save estimation", code: "db_error" }, 500);
     estimationId = estimation.id as string;
+    leadCreatedAt = estimation.created_at as string;
   }
 
   // ── Step 3: Process photos ────────────────────────────────────────
@@ -461,7 +466,7 @@ Deno.serve(async (req: Request) => {
     if (storagePath.startsWith("pending/")) {
       const segments = storagePath.split("/");
       const filename = segments[segments.length - 1] || `photo_${Date.now()}.jpg`;
-      finalPath = `${estimationId}/${filename}`;
+      finalPath = photoStoragePath(estimationId, filename, leadCreatedAt);
 
       const { data: blob, error: downloadErr } = await supabase.storage.from(bucket).download(storagePath);
       if (downloadErr || !blob) continue;

@@ -2495,6 +2495,7 @@ const AdminDashboardContent: React.FC = () => {
       {showPhotoUploadModal && selectedEstimation && (
         <PhotoUploadModal
           estimationId={selectedEstimation.id}
+          estimationCreatedAt={selectedEstimation.created_at}
           onComplete={handlePhotoUploadComplete}
           onClose={() => setShowPhotoUploadModal(false)}
         />
