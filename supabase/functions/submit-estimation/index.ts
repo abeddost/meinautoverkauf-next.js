@@ -1,6 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { photoStoragePath } from "../_shared/photoPath.ts";
+import { enforcePhotoQuota } from "../_shared/photoQuota.ts";
 
 // ── CORS ──────────────────────────────────────────────────────────────
 const corsHeaders = {
@@ -486,6 +487,9 @@ Deno.serve(async (req: Request) => {
       size_bytes: (p.sizeBytes as number) ?? null,
     });
   }
+
+  // Free space in the background if the photo bucket is over its quota.
+  if (photos.length > 0) EdgeRuntime.waitUntil(enforcePhotoQuota(supabase));
 
   // ── Step 4: Send emails ───────────────────────────────────────────
   const resendKey = Deno.env.get("RESEND_API_KEY");
