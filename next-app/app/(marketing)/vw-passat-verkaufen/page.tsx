@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import RouteHero from '@/components/RouteHero';
 import FAQSection from '@/components/FAQSection';
@@ -37,11 +38,11 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: MODEL.seoTitle,
   description: MODEL.seoDescription,
-  alternates: { canonical: MODEL.canonicalPath },
-};
+  path: MODEL.canonicalPath,
+});
 
 export default function VwPassatVerkaufenPage() {
   const faqSchema = buildFaqPageSchema(SITE_URL, MODEL.canonicalPath, FAQS);
@@ -76,15 +77,14 @@ export default function VwPassatVerkaufenPage() {
         headline="VW Passat verkaufen: hoher Kilometerstand, klare Preislogik"
         subheadline="Praxisfokus auf Langstrecke, Familiennutzung und wirtschaftlich sinnvollen Verkaufszeitpunkt"
         accent="verkaufen"
-        headlineTag="h2"
       />
 
       <div className="bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
           <article className="max-w-4xl mx-auto">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
               VW Passat verkaufen: Warum gerade bei Vielfahrerprofilen Timing über den Preis entscheidet
-            </h1>
+            </h2>
 
             <p className="text-lg text-slate-700 font-medium leading-relaxed mb-5">
               Der Passat ist in Deutschland ein Klassiker für Langstrecke, Familie und Flotteneinsatz. Genau dadurch entsteht ein spezielles Verkaufsprofil: Viele Fahrzeuge sind technisch solide,
@@ -102,7 +102,7 @@ export default function VwPassatVerkaufenPage() {
             <section className="mb-12 rounded-3xl border border-slate-200 bg-slate-50 p-6 lg:p-8">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Passat-Nutzungsrealität: Warum dieses Modell anders bewertet werden muss</h2>
               <p className="text-slate-700 font-medium leading-relaxed mb-4">
-                Ein Passat ist selten ein reines Freizeitfahrzeug. In der Praxis sehen wir häufig Pendel- und Autobahnprofile, Familienurlaube, Anhängerbetrieb oder gewerbliche Nutzung.
+                Ein Passat ist selten ein reines Freizeitfahrzeug. In der Praxis gibt es häufig Pendel- und Autobahnprofile, Familienurlaube, Anhängerbetrieb oder gewerbliche Nutzung.
                 Das beeinflusst nicht nur den Verschleiß, sondern auch die Käuferpsychologie.
               </p>
               <ul className="space-y-3 text-slate-700 font-medium leading-relaxed">
@@ -219,7 +219,7 @@ export default function VwPassatVerkaufenPage() {
                 </div>
                 <div className="rounded-2xl border border-slate-200 p-4">
                   <h3 className="font-black text-brand-dark mb-2">3. Übergabe + Auszahlung</h3>
-                  <p className="text-sm text-slate-700 font-medium leading-relaxed">Vertrag, Fahrzeugübernahme, Zahlungsnachweis und auf Wunsch Abholung bundesweit.</p>
+                  <p className="text-sm text-slate-700 font-medium leading-relaxed">Vertrag, Fahrzeugübernahme, Zahlungsnachweis, alles in unserer Filiale.</p>
                 </div>
               </div>
             </section>

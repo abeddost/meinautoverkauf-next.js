@@ -20,11 +20,11 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Neuwied - <span className="text-brand-orange">regional verkaufen mit klarem Zeitplan</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
-            Der Automarkt in Neuwied funktioniert anders als in einer reinen Grossstadt. Viele Fahrzeuge werden hier als
+            Der Automarkt in Neuwied funktioniert anders als in einer reinen Großstadt. Viele Fahrzeuge werden hier als
             Pendlerautos genutzt: morgens über B42 oder B256 Richtung Koblenz, beruflich weiter in den Raum Bonn oder
             überregional auf die Fernachsen. Das erzeugt typische Profile mit solider Wartung, aber oft höherer
             Laufleistung. Genau diese Fahrzeuge werden im privaten Verkauf häufig unter Wert diskutiert, obwohl sie für
@@ -53,7 +53,7 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
             {[
               {
                 title: 'Stadtteile mit unterschiedlichen Nutzungsprofilen',
-                text: 'In Heddesdorf und Niederbieber sehen wir viele Alltags- und Familienfahrzeuge, in Engers häufiger Pendler- und Zweitwagen. Diese Mischung verlangt eine differenzierte Bewertung statt pauschaler Listenpreise.',
+                text: 'In Heddesdorf und Niederbieber sind viele Alltags- und Familienfahrzeuge, in Engers häufiger Pendler- und Zweitwagen. Diese Mischung verlangt eine differenzierte Bewertung statt pauschaler Listenpreise.',
               },
               {
                 title: 'Wichtige Verkehrsachsen B42 und B256',
@@ -129,7 +129,7 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
                 text: 'Bei Kombis und SUVs aus Familienhaushalten sind Pflegezustand, Innenraum und nachvollziehbare Historie oft kaufentscheidend.',
               },
               {
-                title: 'Aeltere Fahrzeuge mit Restwert',
+                title: 'Ältere Fahrzeuge mit Restwert',
                 text: 'Auch ältere Fahrzeuge lassen sich fair verkaufen, wenn Unterlagen vollständig und bekannte Mängel transparent beschrieben sind.',
               },
               {
@@ -148,8 +148,7 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
         <section className="mb-14 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white border border-slate-700/50">
           <h2 className="text-lg lg:text-xl font-black mb-4">Lokaler Bezug: Bahnhof Neuwied, Schloss Engers und Pendelachsen</h2>
           <p className="text-slate-300 font-medium leading-relaxed mb-4">
-            Unser Team kennt die lokalen Wege im Alltag: rund um den Bahnhof Neuwied, die Wohnlagen in Heddesdorf,
-            Engers und Niederbieber sowie die stark frequentierten Zufahrten in Richtung Koblenz. Wer werktags zwischen
+            Wichtig für viele Halter sind die Wege im Alltag: rund um den Bahnhof Neuwied, die Wohnlagen in Heddesdorf, Engers und Niederbieber sowie die stark frequentierten Zufahrten in Richtung Koblenz. Wer werktags zwischen
             Terminfenstern plant, braucht eine Übergabe, die nicht den halben Tag blockiert.
           </p>
           <p className="text-slate-300 font-medium leading-relaxed">
@@ -174,7 +173,7 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Abschluss', mv: 'Häufig 1 bis 2 Tage', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Ankaufinteresse' },
-                  { label: 'Planbarkeit', mv: 'Fester Ablauf mit Termin', privat: 'Absagen und Neuverhandlungen', handler: 'Gebunden an Oeffnungszeiten' },
+                  { label: 'Planbarkeit', mv: 'Fester Ablauf mit Termin', privat: 'Absagen und Neuverhandlungen', handler: 'An Öffnungszeiten gebunden' },
                   { label: 'Preisermittlung', mv: 'Marktdaten plus Fahrzeugzustand', privat: 'Stark verhandlungsabhängig', handler: 'Interner Ankaufkorridor' },
                   { label: 'Neuwied-spezifischer Aufwand', mv: 'Unterstützung ohne eigenen Weg zur Zulassungsstelle Neuwied', privat: 'Abmeldung und Nachweise selbst organisieren', handler: 'Service nicht immer enthalten' },
                 ].map((row, idx) => (
@@ -192,7 +191,7 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 gap-4 md:hidden">
             {[
               { label: 'Zeit bis zum Abschluss', mv: 'Häufig 1 bis 2 Tage', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Ankaufinteresse' },
-              { label: 'Planbarkeit', mv: 'Fester Ablauf mit Termin', privat: 'Absagen und Neuverhandlungen', handler: 'Gebunden an Oeffnungszeiten' },
+              { label: 'Planbarkeit', mv: 'Fester Ablauf mit Termin', privat: 'Absagen und Neuverhandlungen', handler: 'An Öffnungszeiten gebunden' },
               { label: 'Preisermittlung', mv: 'Marktdaten plus Fahrzeugzustand', privat: 'Stark verhandlungsabhängig', handler: 'Interner Ankaufkorridor' },
               { label: 'Neuwied-spezifischer Aufwand', mv: 'Unterstützung ohne eigenen Weg zur Zulassungsstelle Neuwied', privat: 'Abmeldung und Nachweise selbst organisieren', handler: 'Service nicht immer enthalten' },
             ].map((row) => (
@@ -237,7 +236,7 @@ const AutoankaufNeuwiedPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Wege für den direkten Start</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie sofort mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

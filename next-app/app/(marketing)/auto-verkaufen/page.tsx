@@ -1,27 +1,39 @@
 import type { Metadata } from 'next';
-import AutoVerkaufenWrapper from '@/components/AutoVerkaufenWrapper';
+import { buildPageMetadata } from '@/lib/seo';
+import AutoVerkaufenPage from '@/page-components/AutoVerkaufen';
 import RouteHero from '@/components/RouteHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import { buildBreadcrumbSchema } from '@/lib/structuredData';
+import { SITE_URL } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: {
-    absolute:
-      'Gebrauchtwagen in Deutschland sicher online verkaufen | Meinautoverkauf.de',
-  },
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Auto verkaufen: sicher, schnell, fair',
   description:
-    'Auto sicher und stressfrei online verkaufen mit kostenloser Bewertung fairen Preisen schneller Auszahlung und einfacher Abwicklung in ganz Deutschland',
-  alternates: { canonical: '/auto-verkaufen' },
-};
+    'Auto verkaufen: Privatverkauf oder Händler, Unterlagen, Kaufvertrag und Preis. So finden Sie den passenden Weg und vermeiden typische Fehler beim Autoverkauf.',
+  path: '/auto-verkaufen',
+});
 
 export default function AutoVerkaufenRoute() {
+  const breadcrumbSchema = buildBreadcrumbSchema(SITE_URL, [
+    { name: 'Home', path: '/' },
+    { name: 'Auto verkaufen', path: '/auto-verkaufen' },
+  ]);
+
   return (
     <>
-      <RouteHero
-        headline="Auto verkaufen online – Schnell, fair & sicher"
-        subheadline="Kostenlose Bewertung und stressfreier Verkauf in ganz Deutschland"
-        accent="verkaufen"
-        headlineTag="h2"
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Breadcrumb
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Auto verkaufen', href: '/auto-verkaufen' },
+        ]}
       />
-      <AutoVerkaufenWrapper />
+      <RouteHero
+        headline="Auto verkaufen: So finden Sie den passenden Weg"
+        subheadline="Privat oder an den Händler? Unterlagen, Preis und Ablauf im Überblick"
+        accent="verkaufen"
+      />
+      <AutoVerkaufenPage />
     </>
   );
 }

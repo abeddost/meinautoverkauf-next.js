@@ -1,24 +1,39 @@
 import type { Metadata } from 'next';
-import AutoBewertenWrapper from '@/components/AutoBewertenWrapper';
+import { buildPageMetadata } from '@/lib/seo';
+import AutoBewertenPage from '@/page-components/AutoBewerten';
 import RouteHero from '@/components/RouteHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import { buildBreadcrumbSchema } from '@/lib/structuredData';
+import { SITE_URL } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Auto bewerten – Kostenlose KI-Sofortbewertung',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Auto bewerten: Was ist mein Auto wert?',
   description:
-    'Auto online bewerten und sofort einen fairen Ankaufspreis erhalten. Unsere KI analysiert aktuelle Marktdaten – kostenlos, unverbindlich und in 2 Minuten.',
-  alternates: { canonical: '/auto-bewerten' },
-};
+    'Auto kostenlos online bewerten: In etwa 2 Minuten erhalten Sie eine KI-gestützte, unverbindliche Preiseinschätzung auf Basis aktueller Online-Angebote.',
+  path: '/auto-bewerten',
+});
 
 export default function AutoBewertenRoute() {
+  const breadcrumbSchema = buildBreadcrumbSchema(SITE_URL, [
+    { name: 'Home', path: '/' },
+    { name: 'Auto bewerten', path: '/auto-bewerten' },
+  ]);
+
   return (
     <>
-      <RouteHero
-        headline="Auto bewerten online – Kostenlos & präzise Wertermittlung"
-        subheadline="In 2 Minuten den realistischen Marktwert Ihres Fahrzeugs erhalten"
-        accent="bewerten"
-        headlineTag="h2"
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Breadcrumb
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Auto bewerten', href: '/auto-bewerten' },
+        ]}
       />
-      <AutoBewertenWrapper />
+      <RouteHero
+        headline="Auto bewerten: Was ist mein Auto wert?"
+        subheadline="In etwa 2 Minuten zur kostenlosen, unverbindlichen Preiseinschätzung"
+        accent="bewerten"
+      />
+      <AutoBewertenPage />
     </>
   );
 }

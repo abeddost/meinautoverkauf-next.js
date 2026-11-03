@@ -20,9 +20,9 @@ const AutoankaufBadHomburgPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Bad Homburg vor der Höhe - <span className="text-brand-orange">schnell verkaufen im Hochtaunuskreis</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Der Gebrauchtwagenmarkt in Bad Homburg vor der Höhe ist deutlich von Pendelverkehr und gehobenen
             Fahrzeugprofilen geprägt. Viele Eigentümer nutzen ihr Auto täglich auf den Routen Richtung Frankfurt,
@@ -51,7 +51,7 @@ const AutoankaufBadHomburgPage: React.FC<Props> = ({ onCtaClick }) => {
             {[
               {
                 title: 'Stadtteile mit unterschiedlichen Nutzungsmustern',
-                text: 'In Kirdorf und Gonzenheim sehen wir häufig urbane Alltagsautos, in Ober-Erlenbach und Dornholzhausen eher Familienfahrzeuge mit längeren Streckenprofilen. Das wirkt sich direkt auf die Marktansprache aus.',
+                text: 'In Kirdorf und Gonzenheim sind häufig urbane Alltagsautos, in Ober-Erlenbach und Dornholzhausen eher Familienfahrzeuge mit längeren Streckenprofilen. Das wirkt sich direkt auf die Marktansprache aus.',
               },
               {
                 title: 'Bad Homburger Kreuz als Verkehrsdrehscheibe',
@@ -91,7 +91,7 @@ const AutoankaufBadHomburgPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin in Bad Homburg vereinbaren',
-                text: 'Wir stimmen ein passendes Zeitfenster ab und prüfen Fahrzeugzustand sowie Unterlagen transparent vor Ort.',
+                text: 'Wir stimmen ein passendes Zeitfenster ab und prüfen Fahrzeugzustand sowie Unterlagen transparent in unserer Filiale.',
               },
               {
                 step: '03',
@@ -232,7 +232,7 @@ const AutoankaufBadHomburgPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für Ihren nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie direkt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

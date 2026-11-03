@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Datenschutzerklärung',
   description:
     'Datenschutzerklärung von Meinautoverkauf.de – Informationen zu Datenverarbeitung, Analytics, Cookies und Ihren Rechten.',
-};
+  path: '/datenschutz',
+});
 
 export default function DatenschutzPage() {
   return (

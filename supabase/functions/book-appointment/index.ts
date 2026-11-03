@@ -163,7 +163,7 @@ function infoRow(label: string, value: string): string {
 const BRANCH_LOCATIONS = {
   bodenheim: {
     name: "Bodenheim",
-    address: "Am Kümmerling 41a, 55294 Bodenheim",
+    address: "Am Kuemmerling 41a, 55294 Bodenheim",
   },
   ruesselsheim: {
     name: "Rüsselsheim",

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import RouteHero from '@/components/RouteHero';
 import BrandAutoankaufLanding from '@/components/BrandAutoankaufLanding';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -8,11 +9,11 @@ import { buildFaqPageSchema, buildBreadcrumbSchema } from '@/lib/structuredData'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 const VW_CONTENT = BRAND_SEO_CONTENT.vw;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: VW_CONTENT.landing.seoTitle,
   description: VW_CONTENT.landing.seoDescription,
-  alternates: { canonical: VW_CONTENT.landing.canonicalPath },
-};
+  path: VW_CONTENT.landing.canonicalPath,
+});
 
 export default function VwVerkaufenRoute() {
   const faqSchema = buildFaqPageSchema(
@@ -47,7 +48,6 @@ export default function VwVerkaufenRoute() {
         headline={VW_CONTENT.landing.heroHeadline}
         subheadline={VW_CONTENT.landing.heroSubheadline}
         accent="verkaufen"
-        headlineTag="h2"
       />
       <BrandAutoankaufLanding brandSlug={VW_CONTENT.slug} />
     </>

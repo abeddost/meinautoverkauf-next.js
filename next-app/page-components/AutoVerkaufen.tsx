@@ -1,16 +1,9 @@
-'use client';
-
-
-import React from 'react';
 import Link from 'next/link';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 import FAQSection from '@/components/FAQSection';
 import { AUTO_VERKAUFEN_FAQS } from '@/lib/faqContent';
 
-interface Props {
-  onCtaClick: () => void;
-}
-
-const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
+export default function AutoVerkaufenPage() {
   return (
     <div className="bg-white relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -36,20 +29,17 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               className="w-full max-w-[520px] opacity-[0.24]"
               loading="lazy"
               decoding="async"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
             />
           </div>
           <div className="relative z-10 text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight text-center lg:text-left">
-              Auto verkaufen online – Schnell, transparent und zum fairen Preis
-            </h1>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight text-center lg:text-left">
+              Auto verkaufen: Welcher Weg passt zu Ihnen?
+            </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
-              Sie möchten Ihr <strong>Auto verkaufen</strong> und suchen nach einer stressfreien Lösung? Wir kaufen dein Auto – egal ob <strong>Gebrauchtwagen verkaufen in Deutschland</strong>, <strong>Auto mit Motorschaden verkaufen</strong> oder <strong>defektes Auto verkaufen</strong>. Bei Meinautoverkauf.de können Sie Ihr Auto <strong>sicher online verkaufen</strong> und von einem innovativen Service profitieren, der den gesamten Verkaufsprozess vereinfacht.
+              Wer sein <strong>Auto verkaufen</strong> möchte, hat zwei Wege: privat oder an einen Händler. Privat bringt meist mehr Geld, der Händler ist einfacher und schneller. Diese Seite zeigt beide Wege, die nötigen Unterlagen und was Sie bei einem <Link href="/defektes-auto-verkaufen" className="text-brand-orange font-bold hover:underline">defekten Auto</Link> beachten sollten.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
-              Ob Sie Ihr <strong>Auto schnell verkaufen</strong> möchten, ein <strong>Auto für Export verkaufen</strong> wollen oder einen marktgerechten Preis anstreben – wir bieten Ihnen eine faire <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link> und einen reibungslosen Ablauf.
+              Möchten Sie direkt an uns verkaufen, starten Sie mit der kostenlosen <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützten Bewertung</Link> und buchen danach einen Termin in Bodenheim oder Rüsselsheim.
             </p>
             <div className="flex flex-wrap gap-3 mt-8 justify-start">
               <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full">
@@ -58,11 +48,11 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
               <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full">
                 <span className="text-green-600 font-black text-xl">✓</span>
-                <span className="text-sm font-bold text-slate-700">Sofortige Auszahlung</span>
+                <span className="text-sm font-bold text-slate-700">Auszahlung bei Übergabe</span>
               </div>
               <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-full">
                 <span className="text-green-600 font-black text-xl">✓</span>
-                <span className="text-sm font-bold text-slate-700">Keine Haftung</span>
+                <span className="text-sm font-bold text-slate-700">Abmeldung inklusive</span>
               </div>
             </div>
           </div>
@@ -71,7 +61,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* Main Content */}
         <div id="auto-verkaufen-content" className="max-w-4xl mx-auto">
           <p className="text-lg text-slate-600 leading-relaxed mb-12 font-medium italic border-l-4 border-brand-orange pl-6">
-            Der Verkauf eines Autos kann eine stressige Angelegenheit sein – nervige Anrufe, unzuverlässige Käufer und endlose Preisverhandlungen. Wir zeigen Ihnen, wie Sie Ihr <strong>Auto verkaufen online</strong> können, ohne Kopfschmerzen und zum fairen Preis.
+            Der Verkauf eines Autos kann stressig sein: viele Anrufe, unzuverlässige Interessenten und lange Preisverhandlungen. Mit guter Vorbereitung lässt sich das meiste davon vermeiden.
           </p>
 
           <section className="prose prose-lg max-w-none text-slate-700 space-y-8">
@@ -98,17 +88,17 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Händlerankauf: Schnell, sicher, stressfrei</h3>
             <p className="font-medium leading-relaxed">
-              Der Händlerankauf, wie wir ihn bei Meinautoverkauf.de anbieten, ist auf Geschwindigkeit und Sicherheit optimiert. "Wir kaufen dein Auto" bedeutet bei uns:
+              Der Händlerankauf, wie wir ihn bei Meinautoverkauf.de anbieten, ist auf einen planbaren Ablauf ausgelegt. Das bedeutet bei uns:
             </p>
             <ul className="list-disc pl-6 space-y-3 font-medium">
-              <li><strong>Sofortiges Angebot:</strong> In 2 Minuten erhalten Sie eine verbindliche <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link>.</li>
-              <li><strong>Keine Haftung:</strong> Sie verkaufen "wie gesehen" ohne spätere Reklamationen.</li>
-              <li><strong>Sichere Zahlung:</strong> Geld per Banküberweisung, oft am selben Tag.</li>
+              <li><strong>Schnelle Einschätzung:</strong> In etwa 2 Minuten erhalten Sie eine unverbindliche <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link>.</li>
+              <li><strong>Klare Haftungsregel:</strong> Die Sachmängelhaftung wird im Vertrag ausgeschlossen, bekannte Mängel geben Sie an.</li>
+              <li><strong>Sichere Zahlung:</strong> Geld per Banküberweisung am Tag der Übergabe.</li>
               <li><strong>Kostenlose Abmeldung:</strong> Wir kümmern uns um alle Formalitäten.</li>
-              <li><strong>Keine Wartezeit:</strong> Innerhalb von 24-48 Stunden ist alles erledigt.</li>
+              <li><strong>Fester Termin:</strong> Sie buchen den Termin in unserer Filiale selbst.</li>
             </ul>
             <p className="font-medium leading-relaxed mt-4">
-              Der Händlerpreis liegt zwar ca. 10-15% unter dem privaten Verkaufspreis, aber Sie sparen enorm viel Zeit, Nerven und Risiko.
+              Der Händlerpreis liegt unter dem privaten Verkaufspreis, weil Marge, Aufbereitung und Risiko einkalkuliert sind. Wie groß der Abstand ist, hängt vom Fahrzeug ab. Dafür sparen Sie Zeit und Aufwand. Unser <Link href="/ratgeber/auto-privat-oder-haendler-verkaufen" className="text-brand-orange font-bold hover:underline">Vergleich mit Rechenbeispiel</Link> zeigt, wann sich welcher Weg lohnt.
             </p>
 
             {/* Document Checklist with Visual Element */}
@@ -122,7 +112,6 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
                 className="absolute top-4 right-4 w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 opacity-[0.12] pointer-events-none"
                 loading="lazy"
                 decoding="async"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <h3 className="text-lg md:text-xl font-black text-brand-dark mb-6">Wichtige Dokumente zum Auto verkaufen</h3>
               <p className="font-medium text-slate-600 mb-6">
@@ -158,12 +147,12 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">1. Gründliche Reinigung</h3>
             <p className="font-medium leading-relaxed">
-              Der erste Eindruck zählt. Eine professionelle Innen- und Außenreinigung kann den wahrgenommenen Wert um mehrere hundert Euro steigern. Entfernen Sie alle persönlichen Gegenstände, saugen Sie Teppiche und Sitze, reinigen Sie das Armaturenbrett und polieren Sie die Scheiben. Ein frischer Duft (aber kein penetranter Lufterfrischer) macht einen guten Eindruck.
+              Der erste Eindruck zählt. Eine gründliche Innen- und Außenreinigung verbessert den Eindruck deutlich. Entfernen Sie alle persönlichen Gegenstände, saugen Sie Teppiche und Sitze, reinigen Sie das Armaturenbrett und polieren Sie die Scheiben. Ein frischer Duft (aber kein penetranter Lufterfrischer) macht einen guten Eindruck.
             </p>
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">2. Kleine Reparaturen</h3>
             <p className="font-medium leading-relaxed">
-              Kleinigkeiten wie defekte Glühbirnen, beschädigte Scheibenwischer oder blinde Scheinwerfer sollten Sie vor dem Verkauf beheben. Diese Reparaturen kosten wenig, signalisieren aber Pflege und Sorgfalt. Größere Reparaturen lohnen sich meist nicht – besprechen Sie dies vorab mit uns.
+              Kleinigkeiten wie defekte Glühbirnen, beschädigte Scheibenwischer oder blinde Scheinwerfer sollten Sie vor dem Verkauf beheben. Diese Reparaturen kosten wenig, signalisieren aber Pflege und Sorgfalt. Größere Reparaturen lohnen sich meist nicht.
             </p>
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">3. Dokumentation vorbereiten</h3>
@@ -173,12 +162,12 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Defektes Auto verkaufen: Motorschaden, Unfallschaden & Co.</h2>
             <p className="font-medium leading-relaxed">
-              Viele Autobesitzer glauben, dass ein <strong>defektes Auto verkaufen</strong> unmöglich oder nicht lohnenswert ist. Das stimmt nicht! Auch Fahrzeuge mit erheblichen Mängeln haben einen Restwert.
+              Auch Fahrzeuge mit erheblichen Mängeln können einen Restwert haben. Unsere Übersicht <Link href="/defektes-auto-verkaufen" className="text-brand-orange font-bold hover:underline">defektes Auto verkaufen</Link> zeigt das Vorgehen je nach Schaden.
             </p>
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Auto mit Motorschaden verkaufen</h3>
             <p className="font-medium leading-relaxed">
-              Ein Motorschaden bedeutet nicht das Ende. Wenn Sie Ihr <strong>Auto mit Motorschaden verkaufen</strong> möchten, gibt es mehrere Abnehmer: Händler, die Fahrzeuge für Ersatzteile nutzen, Exporteure oder Werkstätten, die Motoren austauschen. Bei uns erhalten Sie auch für ein <strong>motorschaden auto verkaufen</strong> ein faires Angebot – basierend auf:
+              Wenn Sie Ihr <strong>Auto mit Motorschaden verkaufen</strong> möchten, gibt es mehrere Abnehmer: Händler, die Fahrzeuge für Ersatzteile nutzen, Exporteure oder Werkstätten, die Motoren austauschen. Der Preis hängt vor allem davon ab:
             </p>
             <ul className="list-disc pl-6 space-y-3 font-medium">
               <li><strong>Restwert der Teile:</strong> Karosserie, Innenraum, Elektronik, Reifen – all das hat noch Wert.</li>
@@ -188,7 +177,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Unfallfahrzeuge und Totalschäden</h3>
             <p className="font-medium leading-relaxed">
-              Auch nach einem Unfall müssen Sie Ihr Fahrzeug nicht verschrotten. Unfallwagen mit reparierbaren Schäden oder sogar Totalschäden werden häufig an Händler verkauft, die diese professionell aufarbeiten oder für Ersatzteile nutzen.
+              Auch nach einem Unfall müssen Sie Ihr Fahrzeug nicht automatisch verschrotten. Unfallwagen mit reparierbaren Schäden werden häufig an Händler verkauft. Echte Totalschäden und Wracks gehören dagegen zu einem anerkannten Demontagebetrieb. Mehr dazu unter <Link href="/ratgeber/auto-verschrotten-oder-verkaufen" className="text-brand-orange font-bold hover:underline">verschrotten oder verkaufen</Link>.
             </p>
 
             <h3 className="text-lg md:text-xl font-bold text-brand-dark mt-8 mb-4">Fahrzeuge ohne TÜV</h3>
@@ -198,16 +187,16 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Auto für Export verkaufen</h2>
             <p className="font-medium leading-relaxed">
-              Wenn Sie Ihr <strong>Auto für Export verkaufen</strong> möchten, können Sie oft bessere Preise erzielen als auf dem deutschen Markt. Bestimmte Fahrzeugtypen sind in anderen Ländern besonders gefragt:
+              Für manche Fahrzeuge kann der <Link href="/ratgeber/autoexport-ankauf" className="text-brand-orange font-bold hover:underline">Export</Link> ein passender Weg sein. Bestimmte Fahrzeugtypen sind in anderen Ländern besonders gefragt:
             </p>
             <ul className="list-disc pl-6 space-y-3 font-medium">
               <li><strong>Ältere Mercedes-Modelle:</strong> In Osteuropa, Afrika und dem Nahen Osten sehr beliebt.</li>
-              <li><strong>Robuste Geländewagen:</strong> Toyota, Land Cruiser, Nissan Patrol – perfekt für schwieriges Terrain.</li>
+              <li><strong>Robuste Geländewagen:</strong> Toyota Land Cruiser oder Nissan Patrol für schwieriges Terrain.</li>
               <li><strong>Kleinwagen und Kompaktfahrzeuge:</strong> VW Polo, Opel Corsa – ideal für Märkte mit engen Straßen.</li>
               <li><strong>Dieselfahrzeuge:</strong> Während sie in Deutschland an Wert verlieren, sind sie im Export oft noch gefragt.</li>
             </ul>
             <p className="font-medium leading-relaxed mt-4">
-              Wir haben ein internationales Händlernetzwerk und wissen genau, welche Fahrzeuge wo gefragt sind. Wenn Ihr Auto exportfähig ist, erhalten Sie bei uns oft einen höheren Preis als bei einem lokalen Verkauf.
+              Ob sich der Export für Ihr Auto lohnt, hängt von Modell, Zustand und Unterlagen ab.
             </p>
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Seriöse Käufer erkennen (beim Privatverkauf)</h2>
@@ -227,7 +216,7 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Der Verkaufsprozess bei Meinautoverkauf.de</h2>
             <p className="font-medium leading-relaxed">
-              Wenn Sie bei uns Ihr <strong>Auto verkaufen online</strong> möchten, durchlaufen Sie einen einfachen, transparenten Prozess in nur 3 Schritten:
+              Wenn Sie direkt an uns verkaufen möchten, läuft das in 3 Schritten ab:
             </p>
 
             {/* 3-Step Process with Visual Elements */}
@@ -240,24 +229,24 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">2</div>
                 <h3 className="font-black text-lg text-brand-dark">Termin vereinbaren</h3>
-                <p className="text-sm text-slate-600 font-medium leading-relaxed">Wählen Sie einen passenden Termin für die Fahrzeugübergabe oder lassen Sie Ihr Auto bei sich abholen.</p>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">Wählen Sie einen passenden Termin in unserer Filiale in Bodenheim oder Rüsselsheim.</p>
               </div>
               <div className="space-y-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-slate-100">
                 <div className="w-20 h-20 bg-brand-orange/10 text-brand-orange rounded-full flex items-center justify-center mx-auto text-3xl font-black">3</div>
                 <h3 className="font-black text-lg text-brand-dark">Geld erhalten</h3>
-                <p className="text-sm text-slate-600 font-medium leading-relaxed">Nach Prüfung und Vertragsunterzeichnung erfolgt die sofortige Überweisung auf Ihr Konto.</p>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">Nach Prüfung und Vertragsunterzeichnung veranlassen wir die Überweisung auf Ihr Konto.</p>
               </div>
             </div>
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Gebrauchtwagen verkaufen: Tipps für einen besseren Preis</h2>
             <p className="font-medium leading-relaxed">
-              Wenn Sie Ihren <strong>Gebrauchtwagen verkaufen</strong> möchten, können Sie mit einigen Tricks den Preis optimieren:
+              Mit diesen Tipps holen Sie beim Gebrauchtwagenverkauf mehr heraus:
             </p>
             <ul className="list-disc pl-6 space-y-3 font-medium">
               <li><strong>Timing:</strong> Cabrios im Frühjahr, Geländewagen im Herbst – saisonale Nachfrage nutzen.</li>
               <li><strong>Markt beobachten:</strong> Wirtschaftliche Schwankungen beeinflussen Preise. In starken Wirtschaftsphasen sind Gebrauchtwagen teurer.</li>
               <li><strong>Vollständige Ausstattung:</strong> Zweiter Schlüsselsatz, Winterreifen, Originalteile – alles mitliefern.</li>
-              <li><strong>Ehrlichkeit:</strong> Verschweigen Sie keine Mängel. Transparenz schafft Vertrauen und vermeidet spätere Probleme.</li>
+              <li><strong>Ehrlichkeit:</strong> Verschweigen Sie keine Mängel. Das schafft Vertrauen und vermeidet spätere Probleme.</li>
             </ul>
           </section>
         </div>
@@ -271,16 +260,13 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <p className="text-orange-600 text-sm font-bold uppercase tracking-widest mb-3">Kostenlos & unverbindlich</p>
               <h2 className="text-xl lg:text-2xl font-black mb-3">Bereit, Ihr Auto zu verkaufen?</h2>
               <p className="text-slate-600 font-semibold text-base">
-                Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong>, ein <strong>Auto mit Motorschaden verkaufen</strong> oder einen marktgerechten Preis erzielen möchten – starten Sie jetzt Ihre kostenlose Bewertung!
+                Starten Sie jetzt Ihre kostenlose Bewertung. Sie ist unverbindlich und auch für Autos mit Schäden möglich.
               </p>
             </div>
             <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-3">
-              <button
-                onClick={onCtaClick}
-                className="w-full lg:w-auto bg-brand-dark text-white px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] transform duration-200"
-              >
+              <ScrollToTopButton className="w-full lg:w-auto bg-brand-dark text-white px-8 py-4 rounded-2xl font-bold text-base hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] transform duration-200">
                 Jetzt kostenlos Auto bewerten & verkaufen
-              </button>
+              </ScrollToTopButton>
               <div className="flex flex-wrap gap-2 text-xs text-slate-600">
                 <span className="bg-orange-100 px-3 py-1 rounded-full">2 Minuten</span>
                 <span className="bg-orange-100 px-3 py-1 rounded-full">Sofort-Ergebnis</span>
@@ -302,6 +288,8 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
             <h2 className="text-lg md:text-xl font-black text-brand-dark mb-4">Passende Ratgeber für den nächsten Schritt</h2>
             <div className="flex flex-wrap gap-3">
               {[
+                { href: '/ratgeber/auto-privat-oder-haendler-verkaufen', label: 'Privat oder Händler?' },
+                { href: '/ratgeber/inzahlungnahme-oder-verkaufen', label: 'Inzahlungnahme oder verkaufen' },
                 { href: '/ratgeber/online-autoankauf-ablauf-7-schritte', label: 'Ablauf in 7 Schritten' },
                 { href: '/ratgeber/unterlagen-autoverkauf-checkliste', label: 'Unterlagen-Checkliste' },
                 { href: '/ratgeber/rechtssicherer-kaufvertrag-auto', label: 'Rechtssicherer Kaufvertrag' },
@@ -322,15 +310,12 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
 
           {/* Conclusion Section */}
           <section className="mt-16 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-10 border border-slate-100">
-            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Auto verkaufen leicht gemacht</h2>
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6 text-center">Fazit: Erst vergleichen, dann verkaufen</h2>
             <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              Ob Sie Ihr <strong>Auto verkaufen online</strong> möchten, einen <strong>Gebrauchtwagen verkaufen</strong>, ein <strong>defektes Auto verkaufen</strong> oder sogar ein <strong>Auto mit Motorschaden verkaufen</strong> wollen – bei Meinautoverkauf.de sind Sie richtig. Wir bieten Ihnen eine schnelle, transparente und faire Lösung.
-            </p>
-            <p className="text-slate-700 font-medium leading-relaxed mb-4">
-              "Wir kaufen dein Auto" bedeutet bei uns: Transparente <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützte Bewertung</Link>, keine versteckten Kosten und eine schnelle Auszahlung. Egal ob Sie Ihr <strong>Auto schnell verkaufen</strong> müssen oder ein <strong>Auto für Export verkaufen</strong> möchten – wir finden eine passende Lösung.
+              Hat Ihr Auto einen guten Zustand und haben Sie Zeit, lohnt sich oft ein Privatverkauf. Ist das Auto defekt oder brauchen Sie schnell Klarheit, ist ein Ankauf durch einen Händler meist einfacher.
             </p>
             <p className="text-slate-700 font-medium leading-relaxed mb-6">
-              Starten Sie jetzt Ihre kostenlose Bewertung und erfahren Sie, was Ihr Fahrzeug wirklich wert ist. In nur 2 Minuten zum fairen Angebot – unverbindlich und ohne Risiko.
+              Mit unserer kostenlosen <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">KI-gestützten Bewertung</Link> sehen Sie in etwa 2 Minuten, wo Ihr Fahrzeug preislich liegt. Danach entscheiden Sie in Ruhe.
             </p>
             <div className="flex flex-wrap gap-3 justify-center pt-6 border-t border-slate-200">
               <Link href="/auto-bewerten" className="text-sm px-4 py-3 sm:py-2 bg-orange-50 text-brand-orange rounded-xl font-bold hover:bg-orange-100 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Kostenlos bewerten</Link>
@@ -340,14 +325,12 @@ const AutoVerkaufenPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link href="/autoankauf-frankfurt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Frankfurt</Link>
               <Link href="/autoankauf-wiesbaden" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Wiesbaden</Link>
               <Link href="/autoankauf-mainz" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Mainz</Link>
-              <Link href="/autoankauf-koeln" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Köln</Link>
-              <Link href="/autoankauf-hamburg" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Hamburg</Link>
+              <Link href="/autoankauf-darmstadt" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Darmstadt</Link>
+              <Link href="/standorte" className="text-sm px-4 py-3 sm:py-2 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors inline-block min-h-[44px] sm:min-h-0 flex items-center justify-center">Alle Standorte</Link>
             </div>
           </section>
         </div>
       </div>
     </div>
   );
-};
-
-export default AutoVerkaufenPage;
+}

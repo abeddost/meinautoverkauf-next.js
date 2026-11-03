@@ -5,6 +5,8 @@ import CityPageWrapper from '@/components/CityPageWrapper';
 import RouteHero from '@/components/RouteHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import CityLocationInfo from '@/components/CityLocationInfo';
+import CityHandoverInfo from '@/components/CityHandoverInfo';
+import { buildPageMetadata } from '@/lib/seo';
 import { buildBreadcrumbSchema } from '@/lib/structuredData';
 import { getNearestCitySlugs } from '@/lib/cityGeo';
 
@@ -23,11 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = CITY_SEO_BY_SLUG[slug];
   if (!city) return {};
 
-  return {
-    title: city.title,
-    description: city.description,
-    alternates: { canonical: city.path },
-  };
+  return buildPageMetadata({ title: city.title, description: city.description, path: city.path });
 }
 
 export default async function AutoankaufCityRoute({ params }: Props) {
@@ -63,10 +61,10 @@ export default async function AutoankaufCityRoute({ params }: Props) {
         headline={city.heroHeadline}
         subheadline={city.heroSubheadline}
         accent="verkaufen"
-        headlineTag="h2"
       />
+      <CityHandoverInfo slug={city.slug} cityName={city.cityName} />
       <CityPageWrapper slug={city.pageComponentName} />
-      <CityLocationInfo state={city.state} nearbyCities={nearbyCities} />
+      <CityLocationInfo slug={city.slug} state={city.state} nearbyCities={nearbyCities} />
     </>
   );
 }

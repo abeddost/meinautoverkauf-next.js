@@ -11,14 +11,12 @@ interface RouteHeroProps {
   headline: string;
   subheadline: string;
   accent: 'home' | 'bewerten' | 'verkaufen' | 'vorteile' | 'ratgeber';
-  headlineTag?: 'h1' | 'h2';
 }
 
 export default function RouteHero({
   headline,
   subheadline,
   accent,
-  headlineTag = 'h2',
 }: RouteHeroProps) {
   const router = useRouter();
 
@@ -82,7 +80,6 @@ export default function RouteHero({
       headline={headline}
       subheadline={subheadline}
       accent={accent}
-      headlineTag={headlineTag}
     />
   );
 }

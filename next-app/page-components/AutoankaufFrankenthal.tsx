@@ -28,17 +28,17 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-blue-200/50 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Frankenthal –{' '}
             <span className="text-brand-orange">Schnell verkaufen in der Pfalz</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Frankenthal verkaufen – ohne Inserat, ohne Zeitverlust und zu einem
             fairen Preis? Frankenthal liegt als kreisfreie Stadt im Herzen der Metropolregion Rhein-Neckar,
             direkt an der A61 und nur wenige Minuten von Ludwigshafen und Mannheim entfernt. Viele Pendler,
             BASF-Mitarbeitende und Familien nutzen täglich die gut ausgebauten Verbindungen in die Region –
             was den lokalen Fahrzeugmarkt besonders aktiv und vielseitig macht. Wir kaufen Ihr Fahrzeug
-            direkt an: Online bewerten, Termin vereinbaren, Geld erhalten – alles noch am selben Tag.
+            direkt an: Online bewerten, Termin vereinbaren und bei der Übergabe das Geld erhalten.
           </p>
 
           {/* Advantages box */}
@@ -47,11 +47,11 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Sofortige Auszahlung nach Vertragsunterzeichnung',
-                'Kostenlose Abholung in Frankenthal & Rhein-Pfalz-Kreis',
+                'Auszahlung per Überweisung nach Vertragsunterzeichnung',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 48 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Frankenthal inklusive',
                 'Ankauf aller Marken & Zustände – auch ohne TÜV',
-                'Flexible Abend- und Wochenendtermine verfügbar',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -88,10 +88,7 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
             schnell ein Fahrzeug, das unkompliziert verkauft werden soll. Genau das ist unser Spezialgebiet.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            Wir bewerten Ihr Fahrzeug auf Basis aktueller Transaktionsdaten – kein Bauchgefühl,
-            kein veralteter Listenpreis. Dank der A61 (Anschlussstelle Frankenthal) sind wir schnell
-            bei Ihnen, ob in der Kernstadt, in Studernheim oder in Mörsch. Termine auch abends
-            oder am Wochenende.
+            Wir bewerten Ihr Fahrzeug auf Basis aktueller Online-Angebote statt nach Bauchgefühl oder veralteter Liste. Über die A61 und die A67 erreichen Sie unsere Filiale in Rüsselsheim aus der Kernstadt, aus Studernheim oder Mörsch in etwa 48 Minuten.
           </p>
         </section>
 
@@ -101,8 +98,7 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Frankenthaler Stadtteilen & Umland
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos ab – egal in welchem Stadtteil oder in welcher Nachbargemeinde
-            Sie sich befinden:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -156,12 +152,12 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen nach Frankenthal oder in den Rhein-Pfalz-Kreis. Abholung auch abends oder am Samstag möglich.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim, etwa 48 Minuten von Frankenthal entfernt.',
               },
               {
                 step: '03',
                 title: 'Übergabe & Auszahlung',
-                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld kommt per Überweisung noch am selben Tag. Abmeldung bei der Zulassungsstelle Frankenthal übernehmen wir.',
+                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld überweisen wir am Tag der Übergabe. Abmeldung bei der Zulassungsstelle Frankenthal übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -230,13 +226,12 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
               Nachbarschaft zum BASF-Werk Ludwigshafen den Alltag vieler Einwohner. Typisch für solche
               Standorte: Dienstwagen mit Scheckheft-Historie, Zweitwagen, die nach einem Stellenwechsel
               nicht mehr benötigt werden, und Fahrzeuge, die nach Jahren täglichen Pendlerbetriebs
-              effizient und ohne Aufwand verkauft werden sollen. Wir kennen diese Situation und handeln
-              entsprechend – schnell, transparent, mit einem Angebot das auf echten Marktdaten basiert.
+              effizient und ohne Aufwand verkauft werden sollen. Für diese Situation bieten wir einen transparenten Ablauf mit einem Angebot auf Basis aktueller Marktpreise.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300 font-medium">
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Ankauf von Firmenwagen mit Scheckheft-Historie</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Abholung entlang A61 und im gesamten Rhein-Pfalz-Kreis</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Flexible Termine auch abends nach Feierabend</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Fahrzeit zur Filiale in Rüsselsheim: ca. 48 Minuten</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Auszahlung am Tag der Übergabe per Überweisung</li>
             </ul>
           </div>
@@ -251,8 +246,8 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:hidden gap-4">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen', handler: 'Schnell, aber Preisabzüge' },
-              { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Fahrt zur Filiale nötig' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Mehrere Händler anfahren und vergleichen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
               { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig', handler: 'Meist selbst zuständig' },
               { label: 'Frankenthal-Vorteil', ankauf: 'Abmeldung FT-Kennzeichen inklusive', privat: 'Amt selbst aufsuchen', handler: 'Kein lokaler Vorteil' },
             ].map((row) => (
@@ -285,8 +280,8 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen', handler: 'Schnell, aber Preisabzüge' },
-                  { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Fahrt zur Filiale nötig' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Mehrere Händler anfahren und vergleichen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
                   { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig', handler: 'Meist selbst zuständig' },
                   { label: 'Frankenthal-Vorteil', ankauf: 'Abmeldung FT-Kennzeichen inklusive', privat: 'Amt selbst aufsuchen', handler: 'Kein lokaler Vorteil' },
                 ].map((row, i) => (
@@ -342,8 +337,7 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Frankenthal verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung in der Kernstadt,
-              Mörsch, Studernheim und im gesamten Rhein-Pfalz-Kreis.
+              Kostenlose Bewertung in 2 Minuten. Fairer Preis, Auszahlung bei Übergabe. Termin in unserer Filiale in Rüsselsheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -352,7 +346,7 @@ const AutoankaufFrankenthalPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Alle Stadtteile', 'Rhein-Pfalz-Kreis', 'Sofort Geld'].map((badge) => (
+              {['Alle Stadtteile', 'Rhein-Pfalz-Kreis', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

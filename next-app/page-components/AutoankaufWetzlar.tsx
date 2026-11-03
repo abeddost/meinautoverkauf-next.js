@@ -20,9 +20,9 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Wetzlar - <span className="text-brand-orange">schneller Verkauf im Lahn-Dill-Korridor</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             In Wetzlar ist der Fahrzeugmarkt stark von Pendel- und Berufsverkehr geprägt. Viele Halter nutzen ihr Auto
             täglich auf den Achsen Richtung Giessen, Frankfurt und innerhalb des Lahn-Dill-Kreises. Gleichzeitig ist
@@ -34,8 +34,7 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Unser Autoankauf Wetzlar setzt auf eine klare Struktur statt Verhandlungsmarathon. Sie starten online mit
             einer kostenlosen Bewertung, erhalten eine nachvollziehbare Einschätzung und entscheiden dann in Ruhe. Wenn
-            Sie verkaufen möchten, vereinbaren wir einen verbindlichen Termin in Wetzlar oder im nahen Umland, prüfen
-            Fahrzeug und Unterlagen transparent und schließen den Kauf rechtssicher ab. Gerade für Berufstätige in
+            Sie verkaufen möchten, vereinbaren wir einen festen Termin in unserer Filiale in Rüsselsheim, prüfen Fahrzeug und Unterlagen transparent und schließen den Kauf rechtssicher ab. Gerade für Berufstätige in
             Dalheim, Nauborn oder Hermannstein ist das entscheidend, weil der Verkauf nicht zum Zusatzprojekt werden
             darf.
           </p>
@@ -92,7 +91,7 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin in Wetzlar planen',
-                text: 'Wir stimmen ein Terminfenster ab, das zu Ihrem Tagesablauf passt, und prüfen das Fahrzeug vor Ort mit nachvollziehbarer Dokumentation.',
+                text: 'Sie wählen einen Termin in unserer Filiale, der zu Ihrem Tagesablauf passt. Dort prüfen wir das Fahrzeug mit nachvollziehbarer Dokumentation.',
               },
               {
                 step: '03',
@@ -124,14 +123,14 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
               },
               {
                 title: 'Familien-SUVs und Kombis',
-                text: 'In Wohnlagen wie Nauborn oder Dalheim sehen wir viele größere Fahrzeuge mit hohem Alltagsnutzen. Zustand und Ausstattung wirken direkt auf den Marktwert.',
+                text: 'In Wohnlagen wie Nauborn oder Dalheim sind viele größere Fahrzeuge mit hohem Alltagsnutzen. Zustand und Ausstattung wirken direkt auf den Marktwert.',
               },
               {
                 title: 'Dienst- und Firmenwagen',
                 text: 'Durch den lokalen Wirtschaftsstandort werden Firmenfahrzeuge häufig in festen Zyklen ersetzt. Gute Dokumentation schafft hier klare Preisgrundlagen.',
               },
               {
-                title: 'Aeltere Fahrzeuge mit Restwertpotenzial',
+                title: 'Ältere Fahrzeuge mit Restwertpotenzial',
                 text: 'Auch bei älteren Modellen ist ein seriöser Ankauf möglich, sofern Unterlagen vollständig und bekannte Mängel offen kommuniziert sind.',
               },
             ].map((item) => (
@@ -172,8 +171,8 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
               </thead>
               <tbody>
                 {[
-                  { label: 'Geschwindigkeit', mv: 'Häufig 24 bis 48 Stunden', privat: 'Oft mehrere Wochen', handler: 'Je nach Ankaufbedarf' },
-                  { label: 'Planungssicherheit', mv: 'Verbindlicher Terminprozess', privat: 'Anfragen mit hoher Ausfallquote', handler: 'Oeffnungszeitengebunden' },
+                  { label: 'Geschwindigkeit', mv: 'Bewertung online, Verkauf an einem Termin', privat: 'Oft mehrere Wochen', handler: 'Je nach Ankaufbedarf' },
+                  { label: 'Planungssicherheit', mv: 'Verbindlicher Terminprozess', privat: 'Anfragen mit hoher Ausfallquote', handler: 'An Öffnungszeiten gebunden' },
                   { label: 'Preisfindung', mv: 'Regional und datenbasiert', privat: 'Stark von Verhandlung abhängig', handler: 'Interne Kalkulation mit Sicherheitsabschlag' },
                   { label: 'Wetzlar-spezifischer Verwaltungsaufwand', mv: 'Unterstützung ohne Zusatztermine bei der Zulassungsstelle', privat: 'Abmeldung und Nachweise komplett selbst', handler: 'Service je Betrieb unterschiedlich' },
                 ].map((row, idx) => (
@@ -190,8 +189,8 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
 
           <div className="grid grid-cols-1 gap-4 md:hidden">
             {[
-              { label: 'Geschwindigkeit', mv: 'Häufig 24 bis 48 Stunden', privat: 'Oft mehrere Wochen', handler: 'Je nach Ankaufbedarf' },
-              { label: 'Planungssicherheit', mv: 'Verbindlicher Terminprozess', privat: 'Anfragen mit hoher Ausfallquote', handler: 'Oeffnungszeitengebunden' },
+              { label: 'Geschwindigkeit', mv: 'Bewertung online, Verkauf an einem Termin', privat: 'Oft mehrere Wochen', handler: 'Je nach Ankaufbedarf' },
+              { label: 'Planungssicherheit', mv: 'Verbindlicher Terminprozess', privat: 'Anfragen mit hoher Ausfallquote', handler: 'An Öffnungszeiten gebunden' },
               { label: 'Preisfindung', mv: 'Regional und datenbasiert', privat: 'Stark von Verhandlung abhängig', handler: 'Interne Kalkulation mit Sicherheitsabschlag' },
               { label: 'Wetzlar-spezifischer Verwaltungsaufwand', mv: 'Unterstützung ohne Zusatztermine bei der Zulassungsstelle', privat: 'Abmeldung und Nachweise komplett selbst', handler: 'Service je Betrieb unterschiedlich' },
             ].map((row) => (
@@ -235,7 +234,7 @@ const AutoankaufWetzlarPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für Ihren nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie direkt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

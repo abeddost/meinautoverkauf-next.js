@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { COOKIE_SETTINGS_OPEN_EVENT } from '@/lib/consent';
-import { CITY_PAGES } from '@/lib/cityPages';
 import { BRAND_LINKS, MARKEN_OVERVIEW_PATH } from '@/lib/brandLinks';
 
 interface FooterProps {
@@ -18,9 +17,18 @@ const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
     { href: '/auto-verkaufen', label: 'Auto verkaufen' },
     { href: '/vorteile', label: 'Ihre Vorteile' },
     { href: '/ratgeber', label: 'Verkaufs-Ratgeber' },
+    { href: '/modelle', label: 'Modelle' },
+    { href: '/defektes-auto-verkaufen', label: 'Defektes Auto verkaufen' },
+    { href: '/wertverlust-auto-rechner', label: 'Wertverlust-Rechner' },
   ];
 
-  const locationLinks = CITY_PAGES.slice(0, 3);
+  const locationLinks = [
+    { path: '/autoankauf-bodenheim', label: 'Filiale Bodenheim' },
+    { path: '/autoankauf-ruesselsheim', label: 'Filiale Rüsselsheim' },
+    { path: '/autoankauf-mainz', label: 'Autoankauf Mainz' },
+    { path: '/autoankauf-wiesbaden', label: 'Autoankauf Wiesbaden' },
+    { path: '/autoankauf-frankfurt', label: 'Autoankauf Frankfurt' },
+  ];
   const brandLinks = [...BRAND_LINKS].sort((a, b) => a.order - b.order);
   const gridColumnsClass = showBrandLinks
     ? 'grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'
@@ -62,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
               Wir vereinfachen den Autoverkauf für Privatpersonen – transparent, nachvollziehbar und mit marktgerechten Preisen.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
-              <span>KI-Analyse</span>
+              <span>KI-Schätzung</span>
               <span>Faire Preise</span>
               <span>Schnelle Auszahlung</span>
             </div>
@@ -104,7 +112,7 @@ const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
                   href="/standorte"
                   className="inline-flex items-center gap-2 rounded-lg border border-slate-500/50 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300 transition-all hover:border-brand-orange hover:bg-white/10 hover:text-brand-orange mt-1"
                 >
-                  + viele weitere Orte in Deutschland
+                  + alle Orte und Filialen
                 </Link>
               </li>
             </ul>
@@ -144,7 +152,7 @@ const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
                 <div className="flex items-center gap-3 text-slate-200">
                   <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-brand-orange">☎</div>
                   <div>
-                    <div className="text-xs uppercase tracking-widest text-slate-400">Kostenlose Hotline</div>
+                    <div className="text-xs uppercase tracking-widest text-slate-400">Telefon</div>
                     <a href="tel:+491782415897" className="text-base font-black text-white hover:text-brand-orange transition-colors">
                       0178 2415897
                     </a>

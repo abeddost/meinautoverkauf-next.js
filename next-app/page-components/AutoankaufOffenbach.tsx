@@ -36,14 +36,13 @@ const AutoankaufOffenbachPage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-orange-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Offenbach –{' '}
             <span className="text-brand-orange">Schnell verkaufen in der Stadt am Main</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Offenbach verkaufen und nicht wochenlang auf Anfragen warten?
-            Wir bieten Ihnen einen direkten Ankauf mit transparenter Bewertung, kostenloser Abholung
-            und schneller Auszahlung. Ohne Inserat, ohne Preisdrückerei, ohne unnötigen Aufwand.
+            Wir bieten Ihnen einen direkten Ankauf mit transparenter Bewertung, Übergabe in unserer Filiale in Rüsselsheim und schneller Auszahlung. Ohne Inserat, ohne Preisdrückerei, ohne unnötigen Aufwand.
           </p>
 
           <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100 rounded-3xl p-8 shadow-sm">
@@ -51,8 +50,8 @@ const AutoankaufOffenbachPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Online-Bewertung in 2 Minuten',
-                'Express-Auszahlung am Übergabetag',
-                'Kostenlose Abholung in ganz Offenbach und Umgebung',
+                'Auszahlung am Übergabetag',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 28 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Stadt Offenbach inklusive',
                 'Ankauf auch von Pendlerfahrzeugen mit hoher Laufleistung',
                 'Flexible Termine auch außerhalb klassischer Bürozeiten',
@@ -135,7 +134,7 @@ const AutoankaufOffenbachPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin wählen',
-                desc: 'Wir kommen zu Ihnen nach Offenbach oder ins direkte Umland, auch kurzfristig.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim, etwa 28 Minuten von Offenbach entfernt.',
               },
               {
                 step: '03',

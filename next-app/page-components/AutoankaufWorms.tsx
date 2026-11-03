@@ -28,11 +28,11 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-amber-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Worms –{' '}
-            <span className="text-brand-orange">Fairer Preis & Sofortige Auszahlung</span>{' '}
+            <span className="text-brand-orange">Fairer Preis & schnelle Auszahlung</span>{' '}
             in der Nibelungenstadt
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Worms verkaufen – schnell, unkompliziert und zu einem fairen Preis? Wir
             kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin vereinbaren, Geld erhalten – alles ohne
@@ -45,11 +45,11 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Sofortige Auszahlung per Überweisung am Übergabetag',
-                'Kostenlose Abholung in ganz Worms & Umkreis',
+                'Auszahlung per Überweisung am Übergabetag',
+                'Übergabe in unserer Filiale in Bodenheim, ca. 40 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Worms (WO) inklusive',
                 'Ankauf aller Marken, Modelle und Zustände',
-                'Flexible Abend- und Wochenendtermine verfügbar',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -85,7 +85,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
           <p className="text-slate-600 font-medium leading-relaxed">
             Ob gepflegter Pendler-Kombi, älteres Weinbau-Nutzfahrzeug oder gut erhaltener Mittelklassewagen
             aus dem Industriepark-Umfeld: Wir bewerten alle Fahrzeuge transparent, auf Basis aktueller
-            Marktdaten – und zahlen sofort am Übergabetag.
+            Marktdaten – und zahlen am Übergabetag.
           </p>
         </section>
 
@@ -98,7 +98,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
             {[
               {
                 title: 'Zentrale Lage an A61 & A63',
-                desc: 'Worms liegt zwischen Mannheim (A61, ca. 30 Min.) und Mainz (A61, ca. 40 Min.). Pendler und Berufspendler schätzen die schnelle Erreichbarkeit – und wir nutzen diese Lage für eine kostenlose Abholung ohne Aufwand.',
+                desc: 'Worms liegt zwischen Mannheim (A61, ca. 30 Min.) und Mainz (A61, ca. 40 Min.). Pendler schätzen die schnelle Erreichbarkeit. Auch unsere Filiale in Bodenheim erreichen Sie über die A61 oder B9 in etwa 40 Minuten.',
               },
               {
                 title: 'Weinregion mit vielfältigem Fahrzeugangebot',
@@ -127,7 +127,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Wormser Stadtteilen & dem Landkreis Alzey-Worms
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos ab – egal in welchem Stadtteil oder welcher Gemeinde im Umland:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Bodenheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -181,12 +181,12 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen – nach Hause, an Ihren Arbeitsplatz im Industriepark oder an einen anderen Wunschort in Worms oder dem Umland. Auch abends und samstags.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Bodenheim, etwa 40 Minuten von Worms entfernt.',
               },
               {
                 step: '03',
-                title: 'Übergabe & Sofortzahlung',
-                desc: 'Kurze Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Auszahlung per Überweisung noch am selben Tag. Die Abmeldung bei der Zulassungsstelle Worms (WO) übernehmen wir.',
+                title: 'Übergabe & Zahlung',
+                desc: 'Kurze Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Auszahlung per Überweisung am Tag der Übergabe. Die Abmeldung bei der Zulassungsstelle Worms (WO) übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -253,8 +253,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
               Worms liegt direkt am Rhein und verbindet Hessen mit Rheinland-Pfalz. Die Nibelungenbrücke ist
               eine der wenigen Rheinquerungen in der Region – ein geografischer Vorteil, der Worms zur
               wichtigen Drehscheibe zwischen den Metropolregionen Frankfurt/Rhein-Main und Rhein-Neckar macht.
-              Wir nutzen diese Anbindung: Fahrzeugabholung in Worms, Ludwigshafen oder Frankenthal – ohne
-              Aufpreis.
+              Fahrzeuge aus Worms, Ludwigshafen oder Frankenthal kaufen wir an, die Übergabe findet in unserer Filiale statt.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300 font-medium">
               <div>
@@ -267,7 +266,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
               <div>
                 <div className="font-black text-white mb-1.5">Ankauf auch mit Wormser Kennzeichen (WO)</div>
                 <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Kein Aufpreis für Abholung in Osthofen oder Alzey</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Ankauf auch für Halter aus Osthofen oder Alzey</li>
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Grenzübergreifender Ankauf mit MZ-, LU- oder GER-Kennzeichen möglich</li>
                 </ul>
               </div>
@@ -283,8 +282,8 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
               { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung trotz Ausschluss möglich' },
               { label: 'Abmeldung (WO)', ankauf: 'Wir übernehmen bei Zulassungsstelle Worms', privat: 'Selbst zuständig, Wartezeit möglich' },
             ].map((row) => (
@@ -315,8 +314,8 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
                   { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
                   { label: 'Abmeldung (WO)', ankauf: 'Wir übernehmen bei Zulassungsstelle Worms', privat: 'Selbst zuständig' },
                 ].map((row, i) => (
@@ -371,8 +370,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Worms verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Sofortige Auszahlung. Abholung direkt bei Ihnen – egal ob
-              Innenstadt, Hochheim oder Landkreis Alzey-Worms.
+              Kostenlose Bewertung in 2 Minuten. Auszahlung bei Übergabe. Termin in unserer Filiale in Bodenheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -381,7 +379,7 @@ const AutoankaufWormsPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Alle Stadtteile', 'Nibelungenstadt', 'Sofort Geld'].map((badge) => (
+              {['Alle Stadtteile', 'Nibelungenstadt', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

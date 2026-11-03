@@ -22,10 +22,10 @@ const AutoankaufHanauPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Hanau – <span className="text-brand-orange">Planbar verkaufen statt lange suchen</span>{' '}
             im Main-Kinzig-Raum
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             In Hanau verkaufen viele Eigentümer ihr Fahrzeug nicht "irgendwann", sondern dann, wenn beruflich oder
             privat ein Wechsel ansteht: neuer Arbeitsweg, Umzug, Leasingende oder Zweitwagen-Abbau. Genau in solchen
@@ -35,7 +35,7 @@ const AutoankaufHanauPage: React.FC<Props> = ({ onCtaClick }) => {
           </p>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Unser Autoankauf Hanau ist auf diese Realität ausgelegt. Sie erhalten zuerst eine kostenlose Online-
-            Bewertung, dann einen klaren Termin zur Vor-Ort-Prüfung und anschließend – bei Einigung – einen direkten
+            Bewertung, dann einen klaren Termin zur Prüfung in unserer Filiale und anschließend – bei Einigung – einen direkten
             Vertragsabschluss. Der entscheidende Punkt: Sie wissen jederzeit, wo im Prozess Sie stehen, welche Unterlagen
             fehlen und wann Ihr Fahrzeug verbindlich übergeben werden kann. Genau das unterscheidet einen strukturierten
             Ankauf von einem offenen Privatverkauf mit unklarer Abschlussquote.
@@ -147,7 +147,7 @@ const AutoankaufHanauPage: React.FC<Props> = ({ onCtaClick }) => {
             <article className="bg-slate-50 border border-slate-100 rounded-2xl p-5">
               <h3 className="font-black text-brand-dark mb-2">Dienstwagen aus Industrie- und Technikumfeld</h3>
               <p className="text-sm text-slate-600 font-medium leading-relaxed">
-                Rund um Hanau-Wolfgang und das Heraeus-Umfeld sehen wir häufig Fahrzeuge mit guter Servicehistorie und
+                Rund um Hanau-Wolfgang und das Heraeus-Umfeld sind häufig Fahrzeuge mit guter Servicehistorie und
                 planmäßiger Pflege. Das schafft eine solide Grundlage für transparente Preise.
               </p>
             </article>
@@ -174,7 +174,7 @@ const AutoankaufHanauPage: React.FC<Props> = ({ onCtaClick }) => {
                 text: 'Wir legen gemeinsam ein Zeitfenster fest, das zu Ihrem Arbeits- und Pendelrhythmus passt.',
               },
               {
-                title: 'Vor-Ort-Prüfung im Stadtgebiet',
+                title: 'Vor-Ort-Prüfung in unserer Filiale',
                 text: 'Bei der Prüfung werden Zustand, Ausstattung und Unterlagen abgeglichen, damit das Angebot belastbar bleibt.',
               },
               {
@@ -210,7 +210,7 @@ const AutoankaufHanauPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Wege für Ihren nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie direkt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

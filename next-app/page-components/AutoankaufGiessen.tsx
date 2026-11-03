@@ -28,16 +28,15 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-emerald-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Gießen –{' '}
             <span className="text-brand-orange">Fairer Preis & schnelle Auszahlung</span>{' '}
             in der Universitätsstadt
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Gießen verkaufen – unkompliziert und mit klarem Preis? Ob Sie an der
             Justus-Liebig-Universität studieren, an der TH Mittelhessen lehren oder aus dem Lahn-Dill-Kreis
-            pendeln: Wir kaufen Ihr Fahrzeug direkt an. Online bewerten, verbindliches Angebot, kostenlose
-            Abholung und Auszahlung noch am selben Tag.
+            pendeln: Wir kaufen Ihr Fahrzeug direkt an. Online bewerten, Termin in unserer Filiale in Rüsselsheim buchen, Auszahlung am Tag der Übergabe.
           </p>
 
           {/* Advantages box */}
@@ -47,10 +46,10 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
                 'Auszahlung per Banküberweisung am Tag der Übergabe',
-                'Kostenlose Abholung in Gießen, Lahn-Dill-Kreis und Mittelhessen',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 56 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Gießen (GI) inklusive',
                 'Ankauf aller Marken – auch Studentenwagen und ältere Modelle',
-                'Flexible Termine, auch abends und am Wochenende',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -80,14 +79,11 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Ob Abschluss und Umzug in eine andere Stadt, Wechsel des Dienstwagens oder schlicht der Wunsch
             nach einem unkomplizierten Verkauf ohne Inserate und Besichtigungen – in Gießen und Umgebung
-            gibt es eine hohe Nachfrage nach fairem, schnellem Autoankauf. Wir decken genau das ab: KI-gestützte
-            Preisermittlung auf Basis aktueller Marktdaten, verbindliches Angebot und Abholung direkt bei Ihnen.
+            gibt es eine hohe Nachfrage nach fairem, schnellem Autoankauf. Wir decken genau das ab: KI-gestützte Preisschätzung auf Basis aktueller Online-Angebote, Termin in unserer Filiale und verbindliches Angebot nach der Fahrzeugprüfung.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
             Der Bahnhof Gießen ist ein wichtiger Knoten im Regional- und Fernverkehr; wer auf das Auto
-            verzichtet, will es oft zügig loswerden. Wir holen Ihr Fahrzeug in der Innenstadt, in Wieseck,
-            Kleinlinden, Rödgen oder in den umliegenden Gemeinden ab – ohne Aufpreis und mit klarem Ablauf
-            bis zur sofortigen Auszahlung.
+            verzichtet, will es oft zügig loswerden. Fahrzeuge aus der Innenstadt, aus Wieseck, Kleinlinden, Rödgen und den umliegenden Gemeinden kaufen wir an – mit festem Termin in unserer Filiale und Auszahlung bei der Übergabe.
           </p>
         </section>
 
@@ -97,7 +93,7 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Gießener Stadtteilen & Mittelhessen
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos bei Ihnen ab – im gesamten Stadtgebiet Gießen und in der Region:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -146,17 +142,17 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '01',
                 title: 'Online bewerten',
-                desc: 'Fahrzeugdaten eingeben, in 2 Minuten ein KI-gestütztes Angebot erhalten – kostenlos und unverbindlich.',
+                desc: 'Fahrzeugdaten eingeben, in 2 Minuten eine KI-gestützte Preiseinschätzung erhalten – kostenlos und unverbindlich.',
               },
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen nach Gießen oder in die Region. Abholung auch abends oder am Samstag möglich.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim, etwa 56 Minuten von Gießen entfernt.',
               },
               {
                 step: '03',
-                title: 'Übergabe & sofortige Zahlung',
-                desc: 'Kurze Prüfung vor Ort, Kaufvertrag, Übergabe. Auszahlung noch am selben Tag. Abmeldung bei der Zulassungsstelle Gießen übernehmen wir.',
+                title: 'Übergabe & Zahlung bei Übergabe',
+                desc: 'Kurze Prüfung in unserer Filiale, Kaufvertrag, Übergabe. Auszahlung am Tag der Übergabe. Abmeldung bei der Zulassungsstelle Gießen übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -222,7 +218,7 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
             <p className="text-slate-300 font-medium leading-relaxed mb-5">
               Wer an der JLU oder THM studiert oder arbeitet, hat oft wenig Zeit für einen langen Verkaufsprozess.
               Ein neuer Job in Frankfurt, ein Umzug nach Marburg oder einfach der Wechsel zum nächsten Fahrzeug –
-              wir übernehmen die komplette Abwicklung: Bewertung, Abholung, Abmeldung und Auszahlung am selben Tag.
+              wir übernehmen die komplette Abwicklung: Bewertung, Vertrag, Abmeldung und Auszahlung am Tag der Übergabe.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300 font-medium">
               <div>
@@ -235,8 +231,8 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
               <div>
                 <div className="font-black text-white mb-1.5">Pendler & Berufstätige</div>
                 <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Termine auch abends oder am Wochenende</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Abholung entlang A45, A480 und B49</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Fahrzeit zur Filiale in Rüsselsheim: ca. 56 Minuten</li>
                 </ul>
               </div>
             </div>
@@ -251,8 +247,8 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
               { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
               { label: 'Abmeldung', ankauf: 'Wir übernehmen (Zulassungsstelle Gießen)', privat: 'Selbst zuständig' },
             ].map((row) => (
@@ -283,8 +279,8 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich, sofortige Zahlung', privat: 'Betrugsrisiko möglich' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich, Zahlung bei Übergabe', privat: 'Betrugsrisiko möglich' },
                   { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
                   { label: 'Abmeldung', ankauf: 'Wir übernehmen (Zulassungsstelle Gießen)', privat: 'Selbst zuständig' },
                 ].map((row, i) => (
@@ -339,8 +335,7 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Gießen verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung in der Innenstadt,
-              Wieseck, Kleinlinden und in ganz Mittelhessen.
+              Kostenlose Bewertung in 2 Minuten. Fairer Preis, Auszahlung bei Übergabe. Termin in unserer Filiale in Rüsselsheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -349,7 +344,7 @@ const AutoankaufGiessenPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['JLU & THM', 'A45 / A480', 'Express-Auszahlung'].map((badge) => (
+              {['JLU & THM', 'A45 / A480', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

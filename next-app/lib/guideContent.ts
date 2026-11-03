@@ -1,5 +1,7 @@
 import type { FAQItem } from './faqContent';
 import { BRAND_SEO_CONTENT } from './brandSeoContent';
+import { GUIDE_EXTRAS, type GuideListSection } from './guideExtras';
+import { NEW_GUIDES } from './newGuides';
 
 export interface GuideSection {
   heading: string;
@@ -16,6 +18,9 @@ export interface GuidePageContent {
   quickFacts: string[];
   sections: GuideSection[];
   faqs: FAQItem[];
+  /** Hand-written list sections. Brand guides carry theirs inside `sections`. */
+  checklist?: GuideListSection;
+  pitfalls?: GuideListSection;
   relatedSlugs: string[];
   coreLink: '/auto-bewerten' | '/auto-verkaufen';
   ctaBridge?: {
@@ -43,21 +48,13 @@ const SLUG_EVALUATION_FAQ: Record<string, FAQItem> = {
     q: 'Ist die Bewertung bei dokumentiertem Unfallschaden kostenlos?',
     a: 'Ja. Auch Unfallfahrzeuge können unverbindlich bewertet werden, wenn Schadenhistorie und Reparaturstand transparent angegeben sind.',
   },
-  'unfallwagen-ankauf': {
-    q: 'Bekomme ich für einen Unfallwagen eine schnelle Ersteinschätzung?',
-    a: 'Ja. Eine erste, unverbindliche Einschätzung ist möglich, bevor ein konkreter Ankauftermin abgestimmt wird.',
-  },
   'unterlagen-autoverkauf-checkliste': {
     q: 'Kann ich vorab prüfen, ob meine Unterlagen für die Bewertung ausreichen?',
     a: 'Ja. Bereits mit den Kernunterlagen ist eine erste Einschätzung möglich; fehlende Nachweise können anschließend gezielt ergänzt werden.',
   },
   'auto-online-verkaufen-sofort-auszahlung': {
-    q: 'Ist die Online-Einschätzung vor einer Sofort-Auszahlung kostenfrei?',
+    q: 'Ist die Online-Einschätzung kostenfrei?',
     a: 'Ja. Die Bewertung ist kostenlos und dient als Grundlage, bevor Sie über den finalen Verkauf entscheiden.',
-  },
-  'autoankauf-mit-motorschaden': {
-    q: 'Kann ich ein nicht fahrbereites Auto unverbindlich anfragen?',
-    a: 'Ja. Auch bei nicht fahrbereiten Fahrzeugen ist die Ersteinschätzung kostenlos und unverbindlich.',
   },
   'online-autoankauf-ablauf-7-schritte': {
     q: 'Startet der 7-Schritte-Ablauf mit einer unverbindlichen Bewertung?',
@@ -70,10 +67,6 @@ const SLUG_EVALUATION_FAQ: Record<string, FAQItem> = {
   'autoankauf-firmenwagen-gewerbe': {
     q: 'Können Firmenfahrzeuge vorab unverbindlich bewertet werden?',
     a: 'Ja. Für einzelne Fahrzeuge oder Teilflotten ist eine kostenfreie Ersteinschätzung möglich.',
-  },
-  'autoverkauf-an-exporthaendler': {
-    q: 'Kann ich Export und Direktankauf zunächst unverbindlich vergleichen?',
-    a: 'Ja. Eine unverbindliche Bewertung hilft, die wirtschaftlich sinnvollste Verkaufsroute zu wählen.',
   },
   'kilometerstand-scheckheft-vorbesitzer-preis': {
     q: 'Berücksichtigt die Bewertung Kilometerstand und Historie differenziert?',
@@ -138,16 +131,6 @@ const SLUG_BASE_FAQS: Record<string, FAQItem[]> = {
       a: 'Gutachten, Reparaturrechnungen und eine klare Zustandsbeschreibung erhöhen Rechtssicherheit und Nachvollziehbarkeit.',
     },
   ],
-  'unfallwagen-ankauf': [
-    {
-      q: 'Werden auch Fahrzeuge mit größeren Karosserieschäden angekauft?',
-      a: 'Ja. Entscheidende Faktoren sind Verwertbarkeit, technischer Gesamtzustand und dokumentierte Schadenhistorie.',
-    },
-    {
-      q: 'Wie wird der Restwert bei einem Unfallwagen ermittelt?',
-      a: 'Die Bewertung orientiert sich an Schadenumfang, Reparaturqualität, Modellnachfrage und realistischer Verwertungsoption.',
-    },
-  ],
   'unterlagen-autoverkauf-checkliste': [
     {
       q: 'Was passiert, wenn einzelne Unterlagen fehlen?',
@@ -166,16 +149,6 @@ const SLUG_BASE_FAQS: Record<string, FAQItem[]> = {
     {
       q: 'Kann die Auszahlung am Tag der Übergabe erfolgen?',
       a: 'In vielen Fällen ja. Der konkrete Geldeingang hängt zusätzlich von Banklaufzeiten und dem Übergabezeitpunkt ab.',
-    },
-  ],
-  'autoankauf-mit-motorschaden': [
-    {
-      q: 'Ist die Abholung bei nicht fahrbereitem Fahrzeug möglich?',
-      a: 'Ja. Nicht fahrbereite Fahrzeuge können am Standort übernommen werden, wenn Zufahrt und Unterlagen vorab geklärt sind.',
-    },
-    {
-      q: 'Welche Angaben beschleunigen den Motorschaden-Ankauf?',
-      a: 'Hilfreich sind Schadendiagnose, Standortinfo, Schlüsselanzahl und vollständige Fahrzeugdokumente.',
     },
   ],
   'online-autoankauf-ablauf-7-schritte': [
@@ -206,16 +179,6 @@ const SLUG_BASE_FAQS: Record<string, FAQItem[]> = {
     {
       q: 'Welche Zusatzunterlagen braucht ein gewerblicher Verkauf?',
       a: 'Je nach Fall sind Vollmachten, Rechnungsdaten, Handelsregisterinformationen und Leasing-/Ablöseangaben relevant.',
-    },
-  ],
-  'autoverkauf-an-exporthaendler': [
-    {
-      q: 'Wann lohnt Export gegenüber einem Inlandsverkauf eher nicht?',
-      a: 'Vor allem bei stark nachgefragten Fahrzeugen mit guter Inlandsvermarktung kann ein lokaler Verkauf wirtschaftlicher sein.',
-    },
-    {
-      q: 'Wie vergleiche ich Export und Direktankauf sinnvoll?',
-      a: 'Entscheidend sind Nettoerlös, Zeitaufwand, Risiko aus Nachverhandlungen und die Verlässlichkeit des Abschlussprozesses.',
     },
   ],
   'kilometerstand-scheckheft-vorbesitzer-preis': [
@@ -323,7 +286,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         heading: 'Unterlagen und Ablauf für einen schnellen Abschluss',
         paragraphs: [
           'Für den Start reichen meist Fahrzeugschein, Halterausweis, Kreditdaten und eine realistische Zustandsangabe. Serviceunterlagen und Rechnungen verbessern die Beurteilbarkeit und können den Preis stützen.',
-          'Wenn alle Daten vollständig sind, lässt sich die Abwicklung häufig in 24 bis 48 Stunden strukturieren. Der genaue Zeitrahmen hängt vor allem von der Bankreaktion und Terminverfügbarkeit ab.',
+          'Wenn alle Daten vollständig sind, lässt sich die Abwicklung zügig planen. Der genaue Zeitrahmen hängt vor allem von der Bank und Ihrem Termin ab.',
         ],
       },
     ],
@@ -394,6 +357,20 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
           'Mit dokumentierter Übergabe, schneller Auszahlung und Abmeldung schließen Sie den Verkauf ohne offene Haftungsfragen ab.',
         ],
       },
+      {
+        heading: 'Welche Motorschäden wir ankaufen',
+        paragraphs: [
+          'Angekauft werden unter anderem Fahrzeuge mit Kolbenfresser, Steuerkettenschaden, Turboladerschaden, Öldruckproblemen oder starken Laufgeräuschen. Auch ein zusätzliches Getriebe- oder Elektronikproblem schließt den Ankauf nicht aus.',
+          'Wichtig ist eine ehrliche Schadenbeschreibung. Ohne belastbare Reparaturkosten ist der Direktverkauf oft die sicherere Wahl, weil Sie keine Werkstattarbeiten vorfinanzieren müssen.',
+        ],
+      },
+      {
+        heading: 'Wenn das Auto nicht mehr fährt',
+        paragraphs: [
+          'Ein nicht fahrbereites Fahrzeug kann trotzdem verkauft werden. Die Übergabe findet grundsätzlich in unserer Filiale in Bodenheim oder Rüsselsheim statt, daher sollten Sie den Transport vor dem Termin klären.',
+          'Rufen Sie uns in diesem Fall vorher an. Halten Sie Standort, Schlüssel und Fahrzeugpapiere bereit, dann besprechen wir die Übergabe.',
+        ],
+      },
     ],
     faqs: withBaseFaqs('auto-mit-motorschaden-verkaufen', [
       {
@@ -401,14 +378,18 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         a: 'Nur wenn der erwartete Mehrerlös die Reparaturkosten plus Risiko klar übersteigt. Bei älteren Fahrzeugen ist der Direktverkauf oft wirtschaftlicher.',
       },
       {
+        q: 'Kaufen Sie auch Autos mit kapitalem Motorschaden an?',
+        a: 'Ja, in vielen Fällen. Voraussetzung ist, dass Eigentum und Unterlagen klar sind. Echte Wracks gehören dagegen zu einem anerkannten Demontagebetrieb.',
+      },
+      {
         q: 'Kann ich ein nicht fahrbereites Auto trotzdem verkaufen?',
-        a: 'Ja. Auch nicht fahrbereite Fahrzeuge können angekauft und abgeholt werden, sofern Eigentum und Unterlagen nachvollziehbar sind.',
+        a: 'Ja, sofern Eigentum und Unterlagen nachvollziehbar sind. Rufen Sie uns vor dem Termin an, damit wir die Übergabe besprechen können.',
       },
     ]),
     relatedSlugs: [
-      'autoankauf-mit-motorschaden',
+      'auto-mit-motorschaden-verkaufen',
       'autoankauf-ohne-tuev',
-      'autoverkauf-an-exporthaendler',
+      'autoexport-ankauf',
       'unterlagen-autoverkauf-checkliste',
     ],
     coreLink: '/auto-bewerten',
@@ -530,6 +511,20 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
           'Wenn Sie kurzfristig verkaufen müssen oder Diskussionen vermeiden möchten, ist ein strukturierter Ankauf häufig die robustere Lösung.',
         ],
       },
+      {
+        heading: 'Wie Unfallwagen im Ankauf bewertet werden',
+        paragraphs: [
+          'Ankaufsbewertungen berücksichtigen Schadenart, Karosseriestruktur, Laufleistung, Ausstattung und Marktgängigkeit des Modells. Derselbe Schaden kann sich je nach Fahrzeugklasse unterschiedlich auswirken.',
+          'Auch die Teileverfügbarkeit spielt eine Rolle. Modelle mit guter Ersatzteillage und stabiler Nachfrage erreichen häufig höhere Restwerte.',
+        ],
+      },
+      {
+        heading: 'Repariert oder unrepariert verkaufen?',
+        paragraphs: [
+          'Eine Teilreparatur lohnt sich nur, wenn sie den erzielbaren Mehrpreis sicher übersteigt. Bei unsicherer Kostenschätzung ist der Verkauf im aktuellen Zustand meist wirtschaftlicher.',
+          'Unreparierte Fahrzeuge lassen sich oft schneller abgeben, weil keine zusätzliche Werkstatt- und Standzeit entsteht. Geben Sie den Schaden auch dann vollständig an.',
+        ],
+      },
     ],
     faqs: withBaseFaqs('unfallwagen-verkaufen', [
       {
@@ -537,85 +532,21 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         a: 'Ja. Bekannte Unfallschäden sollten immer offengelegt werden, auch wenn sie fachgerecht repariert wurden.',
       },
       {
+        q: 'Brauche ich ein Gutachten für den Verkauf?',
+        a: 'Ein Gutachten ist hilfreich, aber nicht immer zwingend. Rechnungen, Fotos und eine ehrliche Schadenbeschreibung unterstützen die Bewertung ebenfalls.',
+      },
+      {
         q: 'Kann ein Unfallwagen trotzdem einen guten Preis erzielen?',
         a: 'Ja, besonders mit vollständiger Dokumentation und qualitativ nachvollziehbarer Reparatur.',
       },
     ]),
     relatedSlugs: [
-      'unfallwagen-ankauf',
+      'unfallwagen-verkaufen',
       'rechtssicherer-kaufvertrag-auto',
       'unterlagen-autoverkauf-checkliste',
       'autoverkauf-betrug-kleinanzeigen-erkennen',
     ],
     coreLink: '/auto-verkaufen',
-  },
-  {
-    slug: 'unfallwagen-ankauf',
-    title: 'Unfallwagen Ankauf | Fairer Preis trotz Schaden',
-    description:
-      'Unfallwagen direkt an Händler verkaufen: faire Bewertung trotz Schaden, komplette Abwicklung mit Vertrag, Abholung und schneller Auszahlung.',
-    h1: 'Unfallwagen Ankauf – fairer Preis trotz Schaden und komplette Abwicklung',
-    intro:
-      'Beim Unfallwagen-Ankauf steht nicht die perfekte Optik im Fokus, sondern die wirtschaftliche Verwertung des Fahrzeugs. Mit realistischer Bewertung und vollständiger Dokumentation lässt sich auch ein beschädigtes Auto schnell verkaufen.',
-    quickFacts: [
-      'Ankauf ist auch bei nicht reparierten Unfallschäden möglich.',
-      'Bewertung basiert auf Schadenbild, Modell und Verwertungsweg.',
-      'Abholung und Vertragsabwicklung können in einem Termin erfolgen.',
-      'Restwert hängt stark von Reparaturfähigkeit und Teilemarkt ab.',
-      'Transparente Angaben beschleunigen den Abschluss deutlich.',
-    ],
-    sections: [
-      {
-        heading: 'Wie Unfallwagen im Ankauf bewertet werden',
-        paragraphs: [
-          'Ankaufsbewertungen berücksichtigen Schadenart, Karosseriestruktur, Laufleistung, Ausstattungsniveau und Marktgängigkeit des Modells. Ein identischer Schaden kann je nach Fahrzeugklasse unterschiedlich wirken.',
-          'Zusätzlich spielt die Teileverfügbarkeit eine Rolle. Modelle mit guter Ersatzteillage und stabiler Nachfrage erreichen häufig höhere Restwerte.',
-        ],
-      },
-      {
-        heading: 'Repariert oder unrepariert verkaufen',
-        paragraphs: [
-          'Eine Teilreparatur lohnt sich nur, wenn sie den erzielbaren Mehrpreis sicher übersteigt. Bei unsicherer Kostenschätzung ist der Direktankauf meist wirtschaftlicher.',
-          'Unreparierte Fahrzeuge lassen sich oft schneller und mit geringerem Risiko abgeben, weil keine zusätzliche Werkstatt- und Standzeit entsteht.',
-        ],
-      },
-      {
-        heading: 'Ablauf: von der Bewertung bis zur Übergabe',
-        paragraphs: [
-          'Nach der Online-Einschätzung werden Schadendetails abgestimmt und ein Termin vereinbart. Vor Ort erfolgt die finale Prüfung und Vertragsunterzeichnung. Danach wird die Auszahlung veranlasst.',
-          'Bei klarer Dokumentenlage lässt sich der gesamte Prozess kurzfristig planen, inklusive Abholung und Abmeldung.',
-        ],
-        bullets: [
-          'Schadendaten und Fotos vorab bereitstellen',
-          'Dokumente und Schlüssel vollständig mitbringen',
-          'Bekannte Restmängel ausdrücklich im Vertrag aufführen',
-        ],
-      },
-      {
-        heading: 'Wann ein Ankauf dem Privatmarkt überlegen ist',
-        paragraphs: [
-          'Unfallfahrzeuge erzeugen im Privatmarkt viele Rückfragen und harte Nachverhandlungen. Das kostet Zeit und erhöht das Risiko geplatzter Termine.',
-          'Ein professioneller Ankauf reduziert diese Unsicherheit, weil Bewertung, Vertrag, Zahlung und Formalitäten aus einer Hand kommen.',
-        ],
-      },
-    ],
-    faqs: withBaseFaqs('unfallwagen-ankauf', [
-      {
-        q: 'Kaufen Sie auch schwer beschädigte Unfallwagen an?',
-        a: 'Ja. Auch Fahrzeuge mit größeren Unfallschäden können angekauft werden, sofern Eigentum und Unterlagen nachvollziehbar sind.',
-      },
-      {
-        q: 'Brauche ich ein Gutachten für den Ankauf?',
-        a: 'Ein Gutachten ist hilfreich, aber nicht immer zwingend. Rechnungen, Fotos und eine ehrliche Schadenbeschreibung unterstützen die Bewertung ebenfalls.',
-      },
-    ]),
-    relatedSlugs: [
-      'unfallwagen-verkaufen',
-      'rechtssicherer-kaufvertrag-auto',
-      'autoankauf-ohne-tuev',
-      'online-autoankauf-ablauf-7-schritte',
-    ],
-    coreLink: '/auto-bewerten',
   },
   {
     slug: 'unterlagen-autoverkauf-checkliste',
@@ -688,12 +619,12 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
   },
   {
     slug: 'auto-online-verkaufen-sofort-auszahlung',
-    title: 'Auto online verkaufen | Sofort-Auszahlung per Überweisung',
+    title: 'Auto online verkaufen | Schnelle Auszahlung per Überweisung',
     description:
       'Auto online verkaufen mit schneller Auszahlung: sichere Zahlungswege, transparente Vertragsabwicklung und typische Prüfungen vor der Übergabe.',
-    h1: 'Auto online verkaufen mit Sofort-Auszahlung per Überweisung',
+    h1: 'Auto online verkaufen mit schneller Auszahlung per Überweisung',
     intro:
-      'Der entscheidende Vorteil beim Online-Autoankauf ist planbare Geschwindigkeit. Damit "Sofort-Auszahlung" sicher bleibt, müssen Zahlungsweg, Vertrag und Übergabe logisch zusammenpassen.',
+      'Der entscheidende Vorteil beim Online-Autoankauf ist ein planbarer Ablauf. Damit eine schnelle Auszahlung sicher bleibt, müssen Zahlungsweg, Vertrag und Übergabe logisch zusammenpassen.',
     quickFacts: [
       'Online-Bewertung reduziert den Prozess auf wenige Schritte.',
       'Auszahlung erfolgt nach Vertragsabschluss per Banküberweisung.',
@@ -703,9 +634,9 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
     ],
     sections: [
       {
-        heading: 'Was "Sofort-Auszahlung" seriös bedeutet',
+        heading: 'Was "schnelle Auszahlung" seriös bedeutet',
         paragraphs: [
-          'Sofort bedeutet im seriösen Ankauf: Auszahlung wird direkt nach Vertragsabschluss veranlasst, häufig mit Geldeingang am selben Tag. Banklaufzeiten können je nach Uhrzeit und Institut variieren.',
+          'Schnell bedeutet im seriösen Ankauf: Die Auszahlung wird am Tag der Übergabe nach Vertragsabschluss veranlasst. Wann das Geld ankommt, hängt von Uhrzeit und Bank ab.',
           'Wichtig ist, dass der Zahlungsweg im Vertrag eindeutig festgelegt wird und Sie einen nachvollziehbaren Nachweis erhalten.',
         ],
       },
@@ -750,73 +681,10 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
     coreLink: '/auto-bewerten',
   },
   {
-    slug: 'autoankauf-mit-motorschaden',
-    title: 'Autoankauf Motorschaden | Abholung und sichere Abwicklung',
-    description:
-      'Direkter Autoankauf mit Motorschaden: kostenlos abholen lassen, Restwert fair bewerten und sicher per Vertrag verkaufen.',
-    h1: 'Autoankauf mit Motorschaden – kostenlos abholen lassen und sicher verkaufen',
-    intro:
-      'Wenn der Motor defekt ist, zählt ein verlässlicher Prozess mehr als ein theoretischer Höchstpreis. Der Direktankauf bündelt Bewertung, Abholung, Vertrag und Auszahlung in einer klaren Abfolge.',
-    quickFacts: [
-      'Ankauf ist auch bei schwerem Motorschaden möglich.',
-      'Fahrzeug muss für den Verkauf nicht fahrbereit sein.',
-      'Restwert basiert auf Modell, Zustand und Verwertungsweg.',
-      'Abholung spart Abschlepp- und Standkosten.',
-      'Vertrag und Auszahlung erfolgen in einem planbaren Termin.',
-    ],
-    sections: [
-      {
-        heading: 'Direktankauf statt Reparaturrisiko',
-        paragraphs: [
-          'Bei Motorschaden sind Reparaturkosten oft schwer kalkulierbar. Der Direktankauf vermeidet dieses Risiko, weil keine Vorfinanzierung für Werkstattarbeiten nötig ist.',
-          'Sie erhalten eine marktnahe Restwertbewertung auf Basis der vorhandenen Daten und können ohne lange Standzeit entscheiden.',
-        ],
-      },
-      {
-        heading: 'Welche Motorschäden typischerweise angekauft werden',
-        paragraphs: [
-          'Angekauft werden unter anderem Fahrzeuge mit Kolbenfresser, Steuerkettenschaden, Turboladerschaden, Öldruckproblemen oder massiver Laufgeräuschentwicklung.',
-          'Auch Mischbilder mit zusätzlichem Getriebe- oder Elektronikproblem sind möglich. Wichtig bleibt eine ehrliche Schadenbeschreibung.',
-        ],
-      },
-      {
-        heading: 'Abholung nicht fahrbereiter Fahrzeuge',
-        paragraphs: [
-          'Nicht fahrbereite Fahrzeuge können am Standort übernommen werden. Das reduziert Organisationsaufwand und vermeidet zusätzliche Kosten für private Transporte.',
-          'Für eine schnelle Terminierung sollten Zufahrt, Standortbedingungen und Schlüsselverfügbarkeit vorab geklärt sein.',
-        ],
-      },
-      {
-        heading: 'So bleibt der Verkauf rechtssicher',
-        paragraphs: [
-          'Der bekannte Motorschaden sollte im Vertrag klar benannt werden. So ist der Zustand bei Übergabe eindeutig dokumentiert.',
-          'Mit nachweisbarer Auszahlung und Abmeldebestätigung schließen Sie den Vorgang vollständig und nachvollziehbar ab.',
-        ],
-      },
-    ],
-    faqs: withBaseFaqs('autoankauf-mit-motorschaden', [
-      {
-        q: 'Kaufen Sie auch Autos mit kapitalem Motorschaden?',
-        a: 'Ja. Auch Fahrzeuge mit schwerem Motorschaden können bewertet und angekauft werden, sofern Eigentum und Unterlagen klar sind.',
-      },
-      {
-        q: 'Entstehen Zusatzkosten für die Abholung?',
-        a: 'Im Regelfall wird die Abholung im Ankaufprozess kostenfrei organisiert. Details werden vor Termin transparent abgestimmt.',
-      },
-    ]),
-    relatedSlugs: [
-      'auto-mit-motorschaden-verkaufen',
-      'autoankauf-ohne-tuev',
-      'autoverkauf-an-exporthaendler',
-      'online-autoankauf-ablauf-7-schritte',
-    ],
-    coreLink: '/auto-verkaufen',
-  },
-  {
     slug: 'online-autoankauf-ablauf-7-schritte',
     title: 'Online-Autoankauf Ablauf | In 7 klaren Schritten',
     description:
-      'Wie funktioniert Online-Autoankauf? Der gesamte Ablauf in 7 Schritten von der Bewertung bis zur Abholung und Auszahlung.',
+      'Wie funktioniert Online-Autoankauf? Der gesamte Ablauf in 7 Schritten von der Bewertung bis zur Übergabe und Auszahlung.',
     h1: 'Wie funktioniert der Online-Autoankauf? Ablauf in 7 Schritten',
     intro:
       'Ein guter Online-Ankaufprozess ist vorhersehbar: gleiche Reihenfolge, klare Zuständigkeiten, keine versteckten Zwischenschritte. Damit wird aus einer Preisidee ein sauber dokumentierter Verkauf.',
@@ -824,7 +692,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'Der Prozess startet mit unverbindlicher Online-Bewertung.',
       'Erst nach Angebotsannahme wird der Verkauf verbindlich.',
       'Alle Schritte sind zeitlich planbar und dokumentierbar.',
-      'Abholung, Vertrag und Auszahlung werden koordiniert.',
+      'Termin, Vertrag und Auszahlung werden koordiniert.',
       'Abmeldung kann direkt mit übernommen werden.',
     ],
     sections: [
@@ -864,7 +732,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       },
       {
         q: 'Wie lange dauert der komplette Ablauf in der Praxis?',
-        a: 'Je nach Fahrzeug und Terminlage ist eine Abwicklung oft in 24 bis 48 Stunden möglich.',
+        a: 'Das hängt vor allem davon ab, wann Sie einen Termin buchen und ob alle Unterlagen vollständig sind.',
       },
     ]),
     relatedSlugs: [
@@ -877,12 +745,12 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
   },
   {
     slug: 'autoexport-ankauf',
-    title: 'Autoexport Ankauf | Exportfahrzeuge inkl. Abmeldung',
+    title: 'Autoexport Ankauf | Wann sich der Export wirklich lohnt',
     description:
-      'Autoexport Ankauf für ältere Fahrzeuge Diesel und Autos mit hoher Laufleistung mit fairer Bewertung einfacher Dokumentenabwicklung und sicherer Übergabe.',
-    h1: 'Autoexport Ankauf – wir kaufen Exportfahrzeuge inkl. Abmeldung und Dokumente',
+      'Auto für den Export verkaufen: Für welche Fahrzeuge sich das lohnt, wie der Preis entsteht und welche Unterlagen Sie für einen sicheren Verkauf brauchen.',
+    h1: 'Autoexport Ankauf: Wann sich der Export lohnt und wie der Verkauf abläuft',
     intro:
-      'Der Exportmarkt ist für viele Fahrzeuge die wirtschaftlich beste Verwertung, besonders bei hoher Laufleistung oder eingeschränkter Inlandsnachfrage. Wer sein Auto für den Export verkaufen möchte, profitiert in Deutschland von einem geregelten Autoankauf-Export-Prozess inklusive Abmeldung als Service. Entscheidend ist ein seriöser Ablauf mit klaren Dokumenten.',
+      'Für manche Fahrzeuge ist der Export ein sinnvoller Verkaufsweg, besonders bei hoher Laufleistung oder geringer Nachfrage im Inland. Das gilt aber nicht für jedes Auto. Entscheidend sind Fahrzeugprofil, vollständige Papiere und ein seriöser Ablauf mit klaren Dokumenten.',
     quickFacts: [
       'Exportankauf ist legal und bei vielen Fahrzeugen sinnvoll.',
       'Besonders gefragt: ältere Diesel, robuste Volumenmodelle, Nutzfahrzeuge.',
@@ -894,7 +762,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Wann ein Fahrzeug für den Export besonders geeignet ist',
         paragraphs: [
-          'Typische Exportkandidaten sind ältere Diesel, Fahrzeuge mit hoher Laufleistung, Modelle mit geringen Reparaturkosten im Zielmarkt und Fahrzeuge ohne aktuelle HU.',
+          'Typische Exportkandidaten sind ältere Diesel, Fahrzeuge mit hoher Laufleistung, Modelle mit geringen Reparaturkosten im Zielmarkt und Fahrzeuge ohne aktuelle HU. Echte Wracks gehören dagegen nicht in den Verkauf als Gebrauchtwagen.',
           'Nicht jedes Auto ist automatisch exportstark. Modellbeliebtheit, Ersatzteillage und Zustand entscheiden über den tatsächlichen Exportwert.',
         ],
       },
@@ -919,6 +787,20 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
           'Mit strukturierter Übergabe und dokumentierter Zahlung bleibt der Verkauf auch beim Exportmarkt rechtlich stabil.',
         ],
       },
+      {
+        heading: 'Wann Export eher nicht sinnvoll ist',
+        paragraphs: [
+          'Neuwertige Fahrzeuge oder Modelle mit starker Inlandsnachfrage erzielen häufig bessere Erlöse im klassischen Händler- oder Privatmarkt. Export ist dann nicht automatisch die beste Option.',
+          'Fehlende Dokumente oder eine unklare Eigentumslage machen Exportgeschäfte zudem unnötig riskant.',
+        ],
+      },
+      {
+        heading: 'Entscheidungshilfe: Export, Händler oder privat?',
+        paragraphs: [
+          'Vergleichen Sie mindestens zwei Verkaufswege. Entscheidend sind Nettoerlös, Zeitaufwand und Risiko, nicht nur der höchste Preis auf dem Papier.',
+          'Wenn Geschwindigkeit und Sicherheit im Vordergrund stehen, ist ein strukturierter Ankauf oft die pragmatische Lösung. Bei einem gefragten Auto in gutem Zustand kann sich dagegen ein Privatverkauf mehr lohnen.',
+        ],
+      },
     ],
     faqs: withBaseFaqs('autoexport-ankauf', [
       {
@@ -926,14 +808,18 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         a: 'Häufig ältere Diesel, robuste Volumenmodelle, Fahrzeuge mit hoher Laufleistung oder ohne HU, sofern die Dokumentenlage vollständig ist.',
       },
       {
+        q: 'Bekomme ich beim Export immer mehr Geld als im Inland?',
+        a: 'Nein. Das hängt stark vom Fahrzeugprofil ab. Bei manchen Modellen ist der Inlandsmarkt wirtschaftlich attraktiver.',
+      },
+      {
         q: 'Ist der Verkauf an Exporthändler rechtlich sicher?',
         a: 'Ja, wenn Vertrag, Eigentumsnachweis, Zahlungsweg und Abmeldung sauber dokumentiert sind.',
       },
     ]),
     relatedSlugs: [
-      'autoverkauf-an-exporthaendler',
+      'autoexport-ankauf',
       'autoankauf-ohne-tuev',
-      'autoankauf-mit-motorschaden',
+      'auto-mit-motorschaden-verkaufen',
       'rechtssicherer-kaufvertrag-auto',
     ],
     coreLink: '/auto-verkaufen',
@@ -951,14 +837,14 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'Rechnungs- und Nachweislogik wird gewerblich sauber abgebildet.',
       'Eigentümer- und Vertretungsnachweise sind zentral.',
       'Auch Leasingrückläufer oder hohe Laufleistung sind abbildbar.',
-      'Zeitfenster und Übergaben lassen sich standortübergreifend planen.',
+      'Mehrere Übergaben lassen sich gebündelt planen.',
     ],
     sections: [
       {
         heading: 'Was Unternehmen beim Fahrzeugverkauf brauchen',
         paragraphs: [
           'Unternehmen benötigen vor allem Prozesssicherheit: klare Angebotslogik, feste Ansprechpartner und dokumentierte Übergaben. Das reduziert internen Abstimmungsaufwand zwischen Fuhrpark, Buchhaltung und Geschäftsführung.',
-          'Gerade bei mehreren Fahrzeugen ist Standardisierung entscheidend, damit keine Einzelfallchaos entsteht.',
+          'Gerade bei mehreren Fahrzeugen ist Standardisierung entscheidend, damit kein Chaos aus Einzelfällen entsteht.',
         ],
       },
       {
@@ -984,7 +870,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Abwicklung mit minimalem operativen Aufwand',
         paragraphs: [
-          'Ein strukturierter Ankauf übernimmt Terminierung, Abholung und Nachweisdokumentation. Unternehmen sparen dadurch interne Ressourcen und vermeiden langwierige Einzelverkäufe.',
+          'Ein strukturierter Ankauf übernimmt Terminierung und Nachweisdokumentation. Unternehmen sparen dadurch interne Ressourcen und vermeiden langwierige Einzelverkäufe.',
           'Mit abgestimmten Übergabeprozessen bleibt der Verkauf auditierbar und betriebswirtschaftlich planbar.',
         ],
       },
@@ -1006,69 +892,6 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'online-autoankauf-ablauf-7-schritte',
     ],
     coreLink: '/auto-bewerten',
-  },
-  {
-    slug: 'autoverkauf-an-exporthaendler',
-    title: 'Autoverkauf an Exporthändler | Wann Export wirklich lohnt',
-    description:
-      'Autoverkauf an Exporthändler: Für welche Fahrzeuge Export sinnvoll ist, wie Preise entstehen und welche Unterlagen für einen sicheren Verkauf nötig sind.',
-    h1: 'Autoverkauf an Exporthändler – für welche Fahrzeuge lohnt sich Export wirklich?',
-    intro:
-      'Export kann wirtschaftlich sinnvoll sein, aber nicht bei jedem Fahrzeug. Wer den richtigen Fahrzeugtyp mit sauberer Dokumentenlage verkauft, erzielt meist die besten Ergebnisse.',
-    quickFacts: [
-      'Export lohnt sich vor allem bei spezifischen Fahrzeugprofilen.',
-      'Nicht der Kilometerstand allein entscheidet über den Wert.',
-      'Dokumente und klare Eigentumslage sind entscheidend.',
-      'Seriöse Händler arbeiten mit transparenten Zahlungswegen.',
-      'Abmeldung und Vertrag müssen vollständig belegt sein.',
-    ],
-    sections: [
-      {
-        heading: 'Welche Fahrzeuge im Exportmarkt stark nachgefragt sind',
-        paragraphs: [
-          'Besonders gefragt sind robuste Diesel, Nutzfahrzeuge, Volumenmodelle mit einfacher Technik und Fahrzeuge mit hoher Laufleistung, die im Inland schwer vermarktbar sind.',
-          'Auch markenspezifische Präferenzen spielen eine Rolle. Deshalb kann ein Modell im Export deutlich besser laufen als im regionalen Privatmarkt.',
-        ],
-      },
-      {
-        heading: 'Wann Export eher nicht sinnvoll ist',
-        paragraphs: [
-          'Neuwertige Fahrzeuge oder Modelle mit starker Inlandsnachfrage erzielen häufig bessere Erlöse im klassischen Händler- oder Privatmarkt. Export ist dann nicht automatisch die beste Option.',
-          'Fehlende Dokumente oder unklare Eigentumslage können Exportdeals zudem unnötig riskant machen.',
-        ],
-      },
-      {
-        heading: 'Sicher verkaufen: Vertrag, Zahlung, Nachweise',
-        paragraphs: [
-          'Vermeiden Sie intransparente Bargeldzusagen ohne belastbare Dokumentation. Ein seriöser Verkauf nutzt klare Vertragsdaten und nachvollziehbare Zahlungswege.',
-          'Mit Abmeldebestätigung und vollständigem Übergabeprotokoll reduzieren Sie das Risiko späterer Haftungs- und Zulassungsfragen.',
-        ],
-      },
-      {
-        heading: 'Praktische Entscheidungshilfe für den Exportverkauf',
-        paragraphs: [
-          'Vergleichen Sie mindestens zwei Vermarktungswege: Direktankauf und Exportoption. Entscheidend sind Nettoerlös, Zeitaufwand und Risiko - nicht nur der Höchstpreis auf dem Papier.',
-          'Wenn Geschwindigkeit und Sicherheit im Vordergrund stehen, ist ein strukturierter Ankauf mit klarer Exportlogik oft die pragmatischste Lösung.',
-        ],
-      },
-    ],
-    faqs: withBaseFaqs('autoverkauf-an-exporthaendler', [
-      {
-        q: 'Bekomme ich beim Export immer mehr Geld als im Inland?',
-        a: 'Nein. Das hängt stark vom Fahrzeugprofil ab. Bei manchen Modellen ist der Inlandsmarkt wirtschaftlich attraktiver.',
-      },
-      {
-        q: 'Welche Risiken sollte ich beim Exportverkauf vermeiden?',
-        a: 'Vor allem unklare Zahlungszusagen, lückenhafte Verträge und fehlende Abmeldenachweise sollten vermieden werden.',
-      },
-    ]),
-    relatedSlugs: [
-      'autoexport-ankauf',
-      'autoankauf-ohne-tuev',
-      'autoankauf-mit-motorschaden',
-      'rechtssicherer-kaufvertrag-auto',
-    ],
-    coreLink: '/auto-verkaufen',
   },
   {
     slug: 'kilometerstand-scheckheft-vorbesitzer-preis',
@@ -1143,8 +966,8 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
     slug: 'rechtssicherer-kaufvertrag-auto',
     title: 'Kaufvertrag Auto rechtssicher | Klauseln & Übergabeprotokoll',
     description:
-      'Rechtssicherer Kaufvertrag fürs Auto: Muss-Klauseln, Gewährleistung, bekannte Mängel und ein sauberes Übergabeprotokoll.',
-    h1: 'Der rechtssichere Kaufvertrag fürs Auto – Must-Klauseln und Übergabeprotokoll',
+      'Rechtssicherer Kaufvertrag fürs Auto: wichtige Klauseln, Gewährleistung, bekannte Mängel und ein sauberes Übergabeprotokoll.',
+    h1: 'Der rechtssichere Kaufvertrag fürs Auto: Pflichtangaben und Übergabeprotokoll',
     intro:
       'Die meisten Streitfälle entstehen nicht wegen des Preises, sondern wegen unklarer Vertragsdetails. Ein präziser Kaufvertrag mit sauberem Übergabeprotokoll schützt vor späteren Reklamationen.',
     quickFacts: [
@@ -1228,7 +1051,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Die häufigsten Betrugsmaschen im Überblick',
         paragraphs: [
-          'Typisch sind gefälschte Zahlungsbestätigungen, Zeitdruck mit Auslandsabholung, Identitätswechsel und nachträgliche Preisdrückerei am Übergabetag.',
+          'Typisch sind gefälschte Zahlungsbestätigungen, Zeitdruck mit einer angeblichen Abholung aus dem Ausland, Identitätswechsel und nachträgliche Preisdrückerei am Übergabetag.',
           'Auffällig sind zudem unklare Kommunikation, ungewöhnliche Vermittlerrollen und Forderungen nach Dokumenten vor echtem Kaufinteresse.',
         ],
       },
@@ -1424,7 +1247,18 @@ const BRAND_GUIDE_CONTENT: GuidePageContent[] = Object.values(BRAND_SEO_CONTENT)
   ctaBridge: brand.guide.ctaBridge,
 }));
 
-export const GUIDE_CONTENT: GuidePageContent[] = [...BASE_GUIDE_CONTENT, ...BRAND_GUIDE_CONTENT];
+const withExtras = (guide: GuidePageContent): GuidePageContent => ({
+  ...guide,
+  ...GUIDE_EXTRAS[guide.slug],
+  // A merged guide can leave a page pointing at itself or listing the same page twice.
+  relatedSlugs: [...new Set(guide.relatedSlugs)].filter((slug) => slug !== guide.slug),
+});
+
+export const GUIDE_CONTENT: GuidePageContent[] = [
+  ...BASE_GUIDE_CONTENT,
+  ...NEW_GUIDES,
+  ...BRAND_GUIDE_CONTENT,
+].map(withExtras);
 
 export const GUIDE_CONTENT_BY_SLUG: Record<string, GuidePageContent> = Object.fromEntries(
   GUIDE_CONTENT.map((guide) => [guide.slug, guide]),

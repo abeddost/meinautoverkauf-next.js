@@ -28,17 +28,17 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-emerald-200/50 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Rodgau –{' '}
             <span className="text-brand-orange">Schnell verkaufen im Landkreis Offenbach</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Rodgau verkaufen – ohne Inserat, ohne Zeitverlust und zu einem fairen
             Preis? Rodgau liegt im Landkreis Offenbach und zählt zu den bevölkerungsreichsten Gemeinden
             Hessens. Mit Anbindung an die A3, die B45 und die S-Bahn-Linie S1 (Frankfurt–Darmstadt) ist die
             Stadt ein typischer Pendlerstandort: Viele Einwohner fahren täglich nach Frankfurt oder Darmstadt
             zur Arbeit. Das sorgt für einen aktiven, vielseitigen Fahrzeugmarkt. Wir kaufen Ihr Fahrzeug
-            direkt an: Online bewerten, Termin vereinbaren, Geld erhalten – alles noch am selben Tag.
+            direkt an: Online bewerten, Termin vereinbaren und bei der Übergabe das Geld erhalten.
           </p>
 
           {/* Advantages box */}
@@ -47,11 +47,11 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Sofortige Auszahlung nach Vertragsunterzeichnung',
-                'Kostenlose Abholung in allen Rodgauer Stadtteilen',
+                'Auszahlung per Überweisung nach Vertragsunterzeichnung',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 37 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Landkreis Offenbach inklusive',
                 'Ankauf aller Marken & Zustände – auch ohne TÜV',
-                'Flexible Abend- und Wochenendtermine verfügbar',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -82,11 +82,10 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
             Dieser Pendlercharakter prägt den lokalen Fahrzeugmarkt: Gut gepflegte Kompaktwagen, Kombis und
             SUVs wechseln regelmäßig den Besitzer – sei es weil das Homeoffice den zweiten Wagen überflüssig
             macht, ein Leasingvertrag ausläuft oder eine jüngere Generation auf Elektromobilität umsteigt.
-            Wir kennen diese Dynamik und bewerten Ihr Fahrzeug auf Basis aktueller Transaktionsdaten.
+            Wir bewerten Ihr Fahrzeug auf Basis aktueller Online-Angebote.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            Wir kommen zu Ihnen – ob in Nieder-Roden, Dudenhofen oder Jügesheim. Ein Termin ist auch abends
-            nach Feierabend oder am Wochenende möglich, damit der Fahrzeugverkauf in Ihren Alltag passt.
+            Ob aus Nieder-Roden, Dudenhofen oder Jügesheim: Die Übergabe findet in unserer Filiale in Rüsselsheim statt, rund 37 Minuten entfernt. Den Termin wählen Sie online selbst.
           </p>
         </section>
 
@@ -96,8 +95,7 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Rodgauer Stadtteilen & Umland
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos ab – egal in welchem Stadtteil oder in welcher Nachbargemeinde
-            Sie sich befinden:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -151,12 +149,12 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen nach Rodgau oder in den Landkreis Offenbach. Abholung auch abends oder am Wochenende möglich.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim, etwa 37 Minuten von Rodgau entfernt.',
               },
               {
                 step: '03',
                 title: 'Übergabe & Auszahlung',
-                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld kommt per Überweisung noch am selben Tag. Abmeldung bei der Zulassungsstelle Landkreis Offenbach übernehmen wir.',
+                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld überweisen wir am Tag der Übergabe. Abmeldung bei der Zulassungsstelle Landkreis Offenbach übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -217,7 +215,7 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="relative z-10">
             <h2 className="text-lg lg:text-xl font-black mb-4">
-              Idealer Standort: A3, B45 und S-Bahn S1 direkt vor der Tür
+              Gute Anbindung: A3, B45 und S-Bahn S1
             </h2>
             <p className="text-slate-300 font-medium leading-relaxed mb-4">
               Rodgau punktet mit einer der besten Verkehrslagen im Landkreis Offenbach. Die S-Bahn-Linie S1
@@ -226,9 +224,9 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
               Wir sind Ihr direkter Ansprechpartner – ohne Umwege, ohne Wartezeit.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-300 font-medium">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Abholung in allen fünf Stadtteilen</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Ankauf aus allen fünf Stadtteilen</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>A3-Nähe: schnelle Erreichbarkeit auch aus Umlandgemeinden</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Flexible Termine nach Feierabend oder am Wochenende</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>Auszahlung am Tag der Übergabe per Überweisung</li>
             </ul>
           </div>
@@ -243,8 +241,8 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:hidden gap-4">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen', handler: 'Schnell, aber Preisabzüge' },
-              { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Fahrt zur Filiale nötig' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Mehrere Händler anfahren und vergleichen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
               { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig', handler: 'Meist selbst zuständig' },
               { label: 'Rodgau-Vorteil', ankauf: 'Abmeldung OF-Kennzeichen inklusive', privat: 'Amt selbst aufsuchen', handler: 'Kein lokaler Vorteil' },
             ].map((row) => (
@@ -277,8 +275,8 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen', handler: 'Schnell, aber Preisabzüge' },
-                  { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Fahrt zur Filiale nötig' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen', handler: 'Mehrere Händler anfahren und vergleichen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich', handler: 'Sicher, aber Konditionen unklar' },
                   { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig', handler: 'Meist selbst zuständig' },
                   { label: 'Rodgau-Vorteil', ankauf: 'Abmeldung OF-Kennzeichen inklusive', privat: 'Amt selbst aufsuchen', handler: 'Kein lokaler Vorteil' },
                 ].map((row, i) => (
@@ -334,8 +332,7 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Rodgau verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung in Nieder-Roden,
-              Dudenhofen, Jügesheim und allen weiteren Stadtteilen.
+              Kostenlose Bewertung in 2 Minuten. Fairer Preis, Auszahlung bei Übergabe. Termin in unserer Filiale in Rüsselsheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -344,7 +341,7 @@ const AutoankaufRodgauPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Alle Stadtteile', 'Landkreis Offenbach', 'Sofort Geld'].map((badge) => (
+              {['Alle Stadtteile', 'Landkreis Offenbach', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

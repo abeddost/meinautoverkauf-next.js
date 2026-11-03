@@ -13,7 +13,7 @@ const dropOffLocations = [
   {
     id: 'bodenheim',
     name: 'Bodenheim',
-    address: 'Am Kümmerling 41a, 55294 Bodenheim',
+    address: 'Am Kuemmerling 41a, 55294 Bodenheim',
   },
   {
     id: 'ruesselsheim',

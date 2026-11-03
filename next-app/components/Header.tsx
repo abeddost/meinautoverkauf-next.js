@@ -59,6 +59,7 @@ const Header: React.FC = () => {
     { href: '/auto-verkaufen', label: 'Verkaufen' },
     { href: '/vorteile', label: 'Vorteile' },
     { href: '/ratgeber', label: 'Ratgeber' },
+    { href: '/standorte', label: 'Standorte' },
   ];
 
   const isActive = (href: string) => pathname === href;

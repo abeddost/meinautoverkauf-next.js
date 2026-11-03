@@ -21,7 +21,9 @@ export const BRAND_LINKS: BrandLinkItem[] = [
   { href: '/ford-verkaufen', label: 'Ford verkaufen', order: 9 },
   { href: '/skoda-verkaufen', label: 'Skoda verkaufen', order: 10 },
   { href: '/mazda-verkaufen', label: 'Mazda verkaufen', order: 11 },
-  { href: '/oldtimer-verkaufen', label: 'Oldtimer verkaufen', order: 12 },
+  { href: '/renault-verkaufen', label: 'Renault verkaufen', order: 12 },
+  { href: '/hyundai-verkaufen', label: 'Hyundai verkaufen', order: 13 },
+  { href: '/oldtimer-verkaufen', label: 'Oldtimer verkaufen', order: 14 },
 ];
 
 export const MARKEN_OVERVIEW_PATH = '/marken';

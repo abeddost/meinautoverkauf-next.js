@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import RouteHero from '@/components/RouteHero';
 import BrandAutoankaufLanding from '@/components/BrandAutoankaufLanding';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -8,11 +9,11 @@ import { buildFaqPageSchema, buildBreadcrumbSchema } from '@/lib/structuredData'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 const SKODA_CONTENT = BRAND_SEO_CONTENT.skoda;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: SKODA_CONTENT.landing.seoTitle,
   description: SKODA_CONTENT.landing.seoDescription,
-  alternates: { canonical: SKODA_CONTENT.landing.canonicalPath },
-};
+  path: SKODA_CONTENT.landing.canonicalPath,
+});
 
 export default function SkodaVerkaufenRoute() {
   const faqSchema = buildFaqPageSchema(
@@ -47,7 +48,6 @@ export default function SkodaVerkaufenRoute() {
         headline={SKODA_CONTENT.landing.heroHeadline}
         subheadline={SKODA_CONTENT.landing.heroSubheadline}
         accent="verkaufen"
-        headlineTag="h2"
       />
       <BrandAutoankaufLanding brandSlug={SKODA_CONTENT.slug} />
     </>

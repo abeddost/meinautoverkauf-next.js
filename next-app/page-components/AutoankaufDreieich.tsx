@@ -20,9 +20,9 @@ const AutoankaufDreieichPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Dreieich - <span className="text-brand-orange">schnell verkaufen im Kreis Offenbach</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Dreieich ist ein klassischer Pendlerstandort zwischen Frankfurt, Offenbach und dem südlichen Rhein-Main-
             Gebiet. In Stadtteilen wie Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal werden
@@ -89,7 +89,7 @@ const AutoankaufDreieichPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin in Dreieich abstimmen',
-                text: 'Wir vereinbaren ein passendes Zeitfenster und prüfen Fahrzeug sowie Unterlagen nachvollziehbar vor Ort.',
+                text: 'Wir vereinbaren ein passendes Zeitfenster und prüfen Fahrzeug sowie Unterlagen nachvollziehbar in unserer Filiale.',
               },
               {
                 step: '03',
@@ -168,7 +168,7 @@ const AutoankaufDreieichPage: React.FC<Props> = ({ onCtaClick }) => {
               </thead>
               <tbody>
                 {[
-                  { label: 'Verkaufsdauer', mv: 'Oft 24 bis 48 Stunden', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Ankaufkapazität' },
+                  { label: 'Verkaufsdauer', mv: 'Bewertung online, Verkauf an einem Termin', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Ankaufkapazität' },
                   { label: 'Ablaufklarheit', mv: 'Fester Prozess mit Termin', privat: 'Hohe Ausfallquote bei Anfragen', handler: 'Öffnungszeitengebunden' },
                   { label: 'Preisermittlung', mv: 'Datenbasiert und regional', privat: 'Stark verhandlungsabhängig', handler: 'Interne Kalkulation mit Abschlägen' },
                   { label: 'Dreieich-spezifischer Vorteil', mv: 'Kein eigener Weg zur Zulassungsstelle im Kreis Offenbach bei Wunschservice', privat: 'Abmeldung und Formalitäten selbst', handler: 'Serviceumfang unterschiedlich' },
@@ -186,7 +186,7 @@ const AutoankaufDreieichPage: React.FC<Props> = ({ onCtaClick }) => {
 
           <div className="grid grid-cols-1 gap-4 md:hidden">
             {[
-              { label: 'Verkaufsdauer', mv: 'Oft 24 bis 48 Stunden', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Ankaufkapazität' },
+              { label: 'Verkaufsdauer', mv: 'Bewertung online, Verkauf an einem Termin', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Ankaufkapazität' },
               { label: 'Ablaufklarheit', mv: 'Fester Prozess mit Termin', privat: 'Hohe Ausfallquote bei Anfragen', handler: 'Öffnungszeitengebunden' },
               { label: 'Preisermittlung', mv: 'Datenbasiert und regional', privat: 'Stark verhandlungsabhängig', handler: 'Interne Kalkulation mit Abschlägen' },
               { label: 'Dreieich-spezifischer Vorteil', mv: 'Kein eigener Weg zur Zulassungsstelle im Kreis Offenbach bei Wunschservice', privat: 'Abmeldung und Formalitäten selbst', handler: 'Serviceumfang unterschiedlich' },
@@ -229,7 +229,7 @@ const AutoankaufDreieichPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für den nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie direkt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

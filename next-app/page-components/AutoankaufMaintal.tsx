@@ -20,9 +20,9 @@ const AutoankaufMaintalPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Maintal - <span className="text-brand-orange">schnell verkaufen zwischen Frankfurt und Hanau</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Maintal ist einer der typischen Mobilitätsstandorte im östlichen Rhein-Main-Gebiet. In Dörnigheim,
             Bischofsheim, Hochstadt und Wachenbuchen werden Fahrzeuge täglich für Pendelwege nach Frankfurt, Offenbach
@@ -169,7 +169,7 @@ const AutoankaufMaintalPage: React.FC<Props> = ({ onCtaClick }) => {
               </thead>
               <tbody>
                 {[
-                  { label: 'Verkaufsdauer', mv: 'Oft 24 bis 48 Stunden', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Kapazität' },
+                  { label: 'Verkaufsdauer', mv: 'Bewertung online, Verkauf an einem Termin', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Kapazität' },
                   { label: 'Ablauf', mv: 'Transparenter Terminprozess', privat: 'Viele Nachrichten und Absagen', handler: 'Öffnungszeiten und Ankauffokus' },
                   { label: 'Preisfindung', mv: 'Marktdaten + Fahrzeugprofil', privat: 'Stark verhandlungsabhängig', handler: 'Interne Kalkulation mit Abschlägen' },
                   { label: 'Maintal-spezifischer Vorteil', mv: 'Auf Wunsch kein eigener Behördengang im Main-Kinzig-Kreis', privat: 'Abmeldung und Nachweise selbst erledigen', handler: 'Service je nach Betrieb unterschiedlich' },
@@ -187,7 +187,7 @@ const AutoankaufMaintalPage: React.FC<Props> = ({ onCtaClick }) => {
 
           <div className="grid grid-cols-1 gap-4 md:hidden">
             {[
-              { label: 'Verkaufsdauer', mv: 'Oft 24 bis 48 Stunden', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Kapazität' },
+              { label: 'Verkaufsdauer', mv: 'Bewertung online, Verkauf an einem Termin', privat: 'Mehrere Wochen möglich', handler: 'Abhängig von Kapazität' },
               { label: 'Ablauf', mv: 'Transparenter Terminprozess', privat: 'Viele Nachrichten und Absagen', handler: 'Öffnungszeiten und Ankauffokus' },
               { label: 'Preisfindung', mv: 'Marktdaten + Fahrzeugprofil', privat: 'Stark verhandlungsabhängig', handler: 'Interne Kalkulation mit Abschlägen' },
               { label: 'Maintal-spezifischer Vorteil', mv: 'Auf Wunsch kein eigener Behördengang im Main-Kinzig-Kreis', privat: 'Abmeldung und Nachweise selbst erledigen', handler: 'Service je nach Betrieb unterschiedlich' },
@@ -231,7 +231,7 @@ const AutoankaufMaintalPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für den nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Nutzen Sie direkt die{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

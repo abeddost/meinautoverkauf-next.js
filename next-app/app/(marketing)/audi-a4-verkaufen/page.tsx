@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import RouteHero from '@/components/RouteHero';
 import FAQSection from '@/components/FAQSection';
@@ -37,11 +38,11 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: MODEL.seoTitle,
   description: MODEL.seoDescription,
-  alternates: { canonical: MODEL.canonicalPath },
-};
+  path: MODEL.canonicalPath,
+});
 
 export default function AudiA4VerkaufenPage() {
   const faqSchema = buildFaqPageSchema(SITE_URL, MODEL.canonicalPath, FAQS);
@@ -76,15 +77,14 @@ export default function AudiA4VerkaufenPage() {
         headline="Audi A4 verkaufen: Premium-Anspruch trifft Kostenrealität"
         subheadline="So sichern Sie den Restwert Ihres A4, bevor Reparaturfenster den Verkaufspreis drücken"
         accent="verkaufen"
-        headlineTag="h2"
       />
 
       <div className="bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
           <article className="max-w-4xl mx-auto">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
               Audi A4 verkaufen: Zwischen Premium-Wert und steigenden Instandhaltungskosten richtig entscheiden
-            </h1>
+            </h2>
 
             <p className="text-lg text-slate-700 font-medium leading-relaxed mb-5">
               Der A4 gilt als seriöser Premium-Allrounder: hochwertiger Innenraum, gute Langstreckenqualitäten, starke Motorpalette. Viele Halter fahren das Modell länger als geplant,

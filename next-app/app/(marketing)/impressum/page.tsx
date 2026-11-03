@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Impressum',
   description: 'Impressum von Meinautoverkauf.de – Angaben gemäß § 5 TMG, Kontakt und rechtliche Hinweise.',
-  robots: { index: false, follow: false },
-};
+  path: '/impressum',
+});
 
 export default function ImpressumPage() {
   return (

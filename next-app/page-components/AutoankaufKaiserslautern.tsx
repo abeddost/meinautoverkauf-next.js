@@ -28,15 +28,14 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-red-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Kaiserslautern –{' '}
             <span className="text-brand-orange">Schnell & Fair</span>{' '}
             in der Pfalz
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Kaiserslautern verkaufen – schnell, sicher und zum fairen Marktpreis?
-            Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin vereinbaren und am selben Tag
-            Geld erhalten – ohne Inserat, ohne Verhandlung.
+            Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin vereinbaren und bei der Übergabe Geld erhalten – ohne Inserat, ohne Verhandlung.
           </p>
 
           {/* Advantages box */}
@@ -45,11 +44,11 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Sofortige Auszahlung per Überweisung am Übergabetag',
-                'Kostenlose Abholung im gesamten Stadtgebiet & Umland',
+                'Auszahlung per Überweisung am Übergabetag',
+                'Übergabe in unserer Filiale in Bodenheim, ca. 61 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Kaiserslautern (KL) inklusive',
                 'Ankauf aller Marken, Modelle und Zustände',
-                'Flexible Abend- und Wochenendtermine verfügbar',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -85,8 +84,7 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
             überdurchschnittlich hoch.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            Wir sind auf genau diese Situationen spezialisiert: unkomplizierter Ablauf, transparente
-            Preisermittlung, sofortige Auszahlung und vollständige Übernahme der Abmeldung bei der
+            Für genau diese Situationen bieten wir einen unkomplizierten Ablauf: transparente Preisschätzung, Auszahlung bei der Übergabe und vollständige Übernahme der Abmeldung bei der
             Zulassungsstelle Kaiserslautern.
           </p>
         </section>
@@ -129,7 +127,7 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Stadtteilen Kaiserslauterns & der gesamten Westpfalz
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos ab – in jedem Stadtteil und in der gesamten Region:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Bodenheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -183,12 +181,12 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen – auf dem Campus, an der Wohnadresse oder an einem anderen Wunschort in Kaiserslautern und Umgebung. Auch kurzfristige Termine möglich.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Bodenheim, etwa 61 Minuten von Kaiserslautern entfernt.',
               },
               {
                 step: '03',
-                title: 'Übergabe & Sofortzahlung',
-                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Auszahlung per Überweisung noch am selben Tag. Die Abmeldung bei der Zulassungsstelle KL übernehmen wir vollständig.',
+                title: 'Übergabe & Zahlung',
+                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Auszahlung per Überweisung am Tag der Übergabe. Die Abmeldung bei der Zulassungsstelle KL übernehmen wir vollständig.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -269,7 +267,7 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
               <div>
                 <div className="font-black text-white mb-1.5">Ankauf mit KL-Kennzeichen</div>
                 <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Kein Aufpreis für Abholung in Landstuhl oder Ramstein-Miesenbach</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Ankauf auch für Halter aus Landstuhl oder Ramstein-Miesenbach</li>
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Import- & US-Fahrzeuge willkommen</li>
                 </ul>
               </div>
@@ -285,8 +283,8 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
               { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung trotz Ausschluss möglich' },
               { label: 'Abmeldung (KL)', ankauf: 'Wir übernehmen bei Zulassungsstelle KL', privat: 'Selbst zuständig, Wartezeit möglich' },
             ].map((row) => (
@@ -317,8 +315,8 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
                   { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
                   { label: 'Abmeldung (KL)', ankauf: 'Wir übernehmen bei Zulassungsstelle KL', privat: 'Selbst zuständig' },
                 ].map((row, i) => (
@@ -372,8 +370,7 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Kaiserslautern verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Sofortige Auszahlung. Abholung direkt bei Ihnen –
-              egal ob Innenstadt, Siegelbach oder Landkreis Kaiserslautern.
+              Kostenlose Bewertung in 2 Minuten. Auszahlung bei Übergabe. Termin in unserer Filiale in Bodenheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -382,7 +379,7 @@ const AutoankaufKaiserslauternPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Alle Stadtteile', 'Westpfalz', 'Sofort Geld'].map((badge) => (
+              {['Alle Stadtteile', 'Westpfalz', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

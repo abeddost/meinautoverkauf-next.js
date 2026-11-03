@@ -20,9 +20,9 @@ const AutoankaufKasselPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Kassel - <span className="text-brand-orange">schnell verkaufen in Nordhessen</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Der Fahrzeugmarkt in Kassel ist deutlich von Pendelwegen, regionaler Industrie und der Rolle als
             Verkehrsknoten in Nordhessen geprägt. Viele Halter fahren täglich über das Kasseler Kreuz zwischen A7 und
@@ -235,7 +235,7 @@ const AutoankaufKasselPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für den nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie jetzt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

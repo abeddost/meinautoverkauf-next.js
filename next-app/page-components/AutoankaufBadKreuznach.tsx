@@ -20,9 +20,9 @@ const AutoankaufBadKreuznachPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Bad Kreuznach - <span className="text-brand-orange">schnell verkaufen im Naheland</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Der Fahrzeugmarkt in Bad Kreuznach ist stark von Pendelstrecken, regionalem Gewerbe und den typischen
             Stadt-Umland-Bewegungen im Naheland geprägt. Viele Halter nutzen ihr Fahrzeug täglich auf der B41, in
@@ -51,7 +51,7 @@ const AutoankaufBadKreuznachPage: React.FC<Props> = ({ onCtaClick }) => {
             {[
               {
                 title: 'Stadtteile mit unterschiedlichen Fahrzeugprofilen',
-                text: 'In Winzenheim und Planig sehen wir häufig Familienfahrzeuge und Kombis, in Bad Münster am Stein-Ebernburg eher gemischte Pendler- und Alltagsprofile. Diese Unterschiede beeinflussen die Nachfrage deutlich.',
+                text: 'In Winzenheim und Planig sind häufig Familienfahrzeuge und Kombis, in Bad Münster am Stein-Ebernburg eher gemischte Pendler- und Alltagsprofile. Diese Unterschiede beeinflussen die Nachfrage deutlich.',
               },
               {
                 title: 'B41 und A61 als zentrale Pendelachsen',
@@ -91,7 +91,7 @@ const AutoankaufBadKreuznachPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin in Bad Kreuznach abstimmen',
-                text: 'Wir koordinieren ein passendes Zeitfenster, prüfen Fahrzeugzustand und Unterlagen nachvollziehbar vor Ort.',
+                text: 'Wir koordinieren ein passendes Zeitfenster, prüfen Fahrzeugzustand und Unterlagen nachvollziehbar in unserer Filiale.',
               },
               {
                 step: '03',
@@ -111,7 +111,7 @@ const AutoankaufBadKreuznachPage: React.FC<Props> = ({ onCtaClick }) => {
         <section className="mb-14">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">Fahrzeugtypen in Bad Kreuznach</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-5">
-            In Bad Kreuznach ist der Fahrzeugbestand breit aufgestellt. Neben klassischen Pendlerautos sehen wir viele
+            In Bad Kreuznach ist der Fahrzeugbestand breit aufgestellt. Neben klassischen Pendlerautos sind viele
             Familien-SUVs, ältere Alltagsfahrzeuge und zunehmend elektrifizierte Modelle. Eine faire Bewertung muss
             daher Nutzung, Wartungsstand und regionale Nachfrage gemeinsam betrachten.
           </p>
@@ -230,7 +230,7 @@ const AutoankaufBadKreuznachPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für den nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie direkt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

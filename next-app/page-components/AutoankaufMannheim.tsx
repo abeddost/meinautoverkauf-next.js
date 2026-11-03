@@ -28,15 +28,14 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-blue-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Mannheim –{' '}
             <span className="text-brand-orange">Schnell, fair & direkt</span>{' '}
             im Rhein-Neckar-Raum
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Mannheim verkaufen – ohne Inserat, ohne Zeitverlust und zu einem fairen
-            Preis? Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin vereinbaren, Geld erhalten –
-            alles noch am selben Tag.
+            Preis? Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin vereinbaren und bei der Übergabe das Geld erhalten.
           </p>
 
           {/* Advantages box */}
@@ -45,11 +44,11 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Sofortige Auszahlung per Überweisung am Übergabetag',
-                'Kostenlose Abholung in ganz Mannheim & Rhein-Neckar-Kreis',
+                'Auszahlung per Überweisung am Übergabetag',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 48 Minuten Fahrt',
                 'Abmeldung beim Straßenverkehrsamt Mannheim inklusive',
                 'Ankauf aller Marken, Modelle und Zustände',
-                'Flexible Abend- und Wochenendtermine verfügbar',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -78,13 +77,12 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Diese Wirtschaftsstruktur spiegelt sich im Fahrzeugmarkt wider: In Mannheim gibt es eine
             überdurchschnittlich hohe Anzahl an gut gepflegten Firmen- und Dienstwagen, zuverlässigen
-            Pendlerfahrzeugen sowie Fahrzeugen aus dem Flottenbestand großer Unternehmen. Genau diese
-            Fahrzeuge bewerten wir täglich – auf Basis aktueller Marktdaten, transparent und fair.
+            Pendlerfahrzeugen sowie Fahrzeugen aus dem Flottenbestand großer Unternehmen. Auch diese Fahrzeuge bewerten wir auf Basis aktueller Online-Angebote, transparent und fair.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
             Dazu kommt die einzigartige geografische Lage: Mannheim liegt direkt an der Grenze zu
             Rheinland-Pfalz. Über die A5, A6 und A656 ist die gesamte Metropolregion in kurzer Zeit
-            erreichbar. Wir holen Fahrzeuge im gesamten Raum ab – ohne Aufpreis.
+            erreichbar. Fahrzeuge aus dem gesamten Raum kaufen wir an, die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
         </section>
 
@@ -94,7 +92,7 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Mannheimer Stadtteilen & der gesamten Metropolregion
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos ab – egal wo in Mannheim oder der Region Sie sich befinden:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -148,12 +146,12 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir vereinbaren einen Vor-Ort-Termin bei Ihnen – auch abends oder am Wochenende. Die Besichtigung dauert ca. 15–20 Minuten.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim.',
               },
               {
                 step: '03',
                 title: 'Übergabe & Auszahlung',
-                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld kommt per Überweisung noch am selben Tag. Abmeldung beim Straßenverkehrsamt Mannheim übernehmen wir.',
+                desc: 'Fahrzeugprüfung, Kaufvertrag, Schlüsselübergabe. Das Geld überweisen wir am Tag der Übergabe. Abmeldung beim Straßenverkehrsamt Mannheim übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -233,7 +231,7 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
                 <div className="font-black text-white mb-1.5">Grenzlage Rheinland-Pfalz</div>
                 <ul className="space-y-1">
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Ankauf auch mit LU- und NW-Kennzeichen</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Kein Aufpreis für Abholung in Ludwigshafen</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Ankauf auch für Halter aus Ludwigshafen</li>
                 </ul>
               </div>
             </div>
@@ -248,8 +246,8 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
               { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung trotz Ausschluss möglich' },
               { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig' },
             ].map((row) => (
@@ -280,8 +278,8 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
                   { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
                   { label: 'Abmeldung', ankauf: 'Wir übernehmen komplett', privat: 'Selbst zuständig' },
                 ].map((row, i) => (
@@ -341,8 +339,7 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Mannheim verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Sofortige Auszahlung. Abholung direkt bei Ihnen – egal ob
-              Innenstadt, Neckarstadt oder Rhein-Neckar-Kreis.
+              Kostenlose Bewertung in 2 Minuten. Auszahlung bei Übergabe. Termin in unserer Filiale in Rüsselsheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -351,7 +348,7 @@ const AutoankaufMannheimPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Alle Stadtteile', 'Rhein-Neckar-Raum', 'Sofort Geld'].map((badge) => (
+              {['Alle Stadtteile', 'Rhein-Neckar-Raum', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

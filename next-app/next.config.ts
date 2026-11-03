@@ -15,6 +15,30 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      // The rewrite below serves /autoankauf-<slug> from this internal route.
+      { source: '/autoankauf', destination: '/standorte', permanent: true },
+      { source: '/autoankauf/:slug', destination: '/autoankauf-:slug', permanent: true },
+      // Guides merged because each pair competed for the same search intent.
+      {
+        source: '/ratgeber/autoankauf-mit-motorschaden',
+        destination: '/ratgeber/auto-mit-motorschaden-verkaufen',
+        permanent: true,
+      },
+      {
+        source: '/ratgeber/unfallwagen-ankauf',
+        destination: '/ratgeber/unfallwagen-verkaufen',
+        permanent: true,
+      },
+      {
+        source: '/ratgeber/autoverkauf-an-exporthaendler',
+        destination: '/ratgeber/autoexport-ankauf',
+        permanent: true,
+      },
+    ];
+  },
+
   async rewrites() {
     return [
       {

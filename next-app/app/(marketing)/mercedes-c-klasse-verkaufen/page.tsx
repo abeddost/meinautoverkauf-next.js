@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import RouteHero from '@/components/RouteHero';
 import FAQSection from '@/components/FAQSection';
@@ -37,11 +38,11 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: MODEL.seoTitle,
   description: MODEL.seoDescription,
-  alternates: { canonical: MODEL.canonicalPath },
-};
+  path: MODEL.canonicalPath,
+});
 
 export default function MercedesCKlasseVerkaufenPage() {
   const faqSchema = buildFaqPageSchema(SITE_URL, MODEL.canonicalPath, FAQS);
@@ -76,15 +77,14 @@ export default function MercedesCKlasseVerkaufenPage() {
         headline="Mercedes C-Klasse verkaufen: Premium bleibt, Kosten steigen"
         subheadline="Wie Sie bei alternder C-Klasse versteckte Kosten früh erkennen und den Restwert sichern"
         accent="verkaufen"
-        headlineTag="h2"
       />
 
       <div className="bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
           <article className="max-w-4xl mx-auto">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
               Mercedes C-Klasse verkaufen: Luxus im Alltag, versteckte Kosten im Alter
-            </h1>
+            </h2>
 
             <p className="text-lg text-slate-700 font-medium leading-relaxed mb-5">
               Die C-Klasse steht für Komfort, Markenimage und souveränes Fahren. Viele Halter bleiben dem Modell lange treu, weil Qualität und Fahrgefühl überzeugen.
@@ -196,7 +196,7 @@ export default function MercedesCKlasseVerkaufenPage() {
               <ol className="space-y-4 text-slate-700 font-medium leading-relaxed">
                 <li><strong>1. Datenerfassung:</strong> Modell, Baujahr, Laufleistung, Ausstattung, bekannte Mängel und Unterlagen.</li>
                 <li><strong>2. Angebotsphase:</strong> marktnahe Bewertung mit Premium- und Risikologik statt Pauschalpreis.</li>
-                <li><strong>3. Abschluss:</strong> Übergabe, Vertragsdokumentation und schnelle Auszahlung, optional mit Abholung.</li>
+                <li><strong>3. Abschluss:</strong> Übergabe, Vertragsdokumentation und schnelle Auszahlung in unserer Filiale.</li>
               </ol>
               <p className="text-slate-700 font-medium leading-relaxed mt-4">
                 Damit vermeiden Sie die typischen Unsicherheiten des Privatmarktes: Besichtigungstourismus, harte Nachverhandlung und unklare Abschlusswahrscheinlichkeit.

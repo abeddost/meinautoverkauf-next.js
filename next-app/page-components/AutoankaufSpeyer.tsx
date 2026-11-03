@@ -26,18 +26,16 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-amber-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Speyer –{' '}
             <span className="text-brand-orange">Fairer Preis & schnelle Auszahlung</span>{' '}
             in der Domstadt am Rhein
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Speyer verkaufen – unkompliziert und mit klarem Preis? Speyer ist mit dem
             Kaiserdom UNESCO-Welterbe, dem Technik-Museum und der Lage am Rhein eine beliebte Stadt in Rheinland-Pfalz.
             Viele Pendler fahren täglich nach Ludwigshafen oder Mannheim; andere wechseln nach einem Umzug oder
-            Fahrzeugtausch ihr Auto. Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, verbindliches Angebot,
-            kostenlose Abholung und Auszahlung noch am selben Tag. Die A61 (Anschlussstelle Speyer) macht die
-            Anbindung an die Metropolregion Rhein-Neckar perfekt – und uns die Abholung in der gesamten Region leicht.
+            Fahrzeugtausch ihr Auto. Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin in unserer Filiale in Rüsselsheim und Auszahlung am Tag der Übergabe. Über die A61 (Anschlussstelle Speyer) und die A67 ist die Filiale in etwa einer Stunde erreichbar.
           </p>
 
           <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100 rounded-3xl p-8 shadow-sm">
@@ -46,10 +44,10 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
                 'Auszahlung per Banküberweisung am Tag der Übergabe',
-                'Kostenlose Abholung in Speyer, Rhein-Pfalz-Kreis und Vorderpfalz',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 60 Minuten Fahrt',
                 'Abmeldung beim Straßenverkehrsamt Speyer (SP-Kennzeichen) inklusive',
                 'Ankauf aller Marken – auch Pendlerfahrzeuge und ältere Modelle',
-                'Flexible Termine, auch abends und am Wochenende',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -77,16 +75,12 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
             unkomplizierten Verkauf ohne Inserate und Besichtigungstermine.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
-            Wir bieten genau das: KI-gestützte Preisermittlung auf Basis aktueller Marktdaten, verbindliches
-            Angebot und Abholung direkt bei Ihnen in der Altstadt, in Speyer-Nord, -West oder -Süd, in
-            Dudenhofen, Otterstadt oder im gesamten Rhein-Pfalz-Kreis. Die Abmeldung beim Straßenverkehrsamt
-            Speyer (SP-Kennzeichen) übernehmen wir vollständig; die Auszahlung erfolgt noch am selben Tag per
-            Banküberweisung.
+            Wir bieten genau das: KI-gestützte Preisschätzung auf Basis aktueller Online-Angebote, Termin in unserer Filiale und verbindliches Angebot nach der Fahrzeugprüfung – für Halter aus der Altstadt, aus Speyer-Nord, -West oder -Süd, aus Dudenhofen, Otterstadt oder dem gesamten Rhein-Pfalz-Kreis. Die Abmeldung beim Straßenverkehrsamt
+            Speyer (SP-Kennzeichen) übernehmen wir vollständig; die Auszahlung erfolgt am Tag der Übergabe per Banküberweisung.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
             Ob Sie am Technik-Museum vorbeikommen oder von der A61-Anschlussstelle Speyer in die Stadt fahren –
-            wir holen Ihr Fahrzeug dort ab, wo es für Sie am einfachsten ist. Kein zusätzlicher Aufwand, keine
-            versteckten Kosten, kein langes Warten auf Käufer.
+            Sie buchen einen festen Termin in unserer Filiale. Keine versteckten Kosten, kein langes Warten auf Käufer.
           </p>
         </section>
 
@@ -95,7 +89,7 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Speyerer Stadtteilen & Rhein-Pfalz-Kreis
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos bei Ihnen ab – im Stadtgebiet und in der Region:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -140,9 +134,9 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { step: '01', title: 'Online bewerten', desc: 'Fahrzeugdaten eingeben, in 2 Minuten ein KI-gestütztes Angebot erhalten – kostenlos und unverbindlich.' },
-              { step: '02', title: 'Termin vereinbaren', desc: 'Wir kommen zu Ihnen nach Speyer oder in den Rhein-Pfalz-Kreis. Abholung auch abends oder am Samstag möglich.' },
-              { step: '03', title: 'Übergabe & sofortige Zahlung', desc: 'Kurze Prüfung vor Ort, Kaufvertrag, Übergabe. Auszahlung noch am selben Tag. Abmeldung beim Straßenverkehrsamt Speyer übernehmen wir.' },
+              { step: '01', title: 'Online bewerten', desc: 'Fahrzeugdaten eingeben, in 2 Minuten eine KI-gestützte Preiseinschätzung erhalten – kostenlos und unverbindlich.' },
+              { step: '02', title: 'Termin vereinbaren', desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim, etwa 60 Minuten von Speyer entfernt.' },
+              { step: '03', title: 'Übergabe & Zahlung bei Übergabe', desc: 'Kurze Prüfung in unserer Filiale, Kaufvertrag, Übergabe. Auszahlung am Tag der Übergabe. Abmeldung beim Straßenverkehrsamt Speyer übernehmen wir.' },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
                 <div className="text-5xl font-black text-brand-orange/20 mb-3">{item.step}</div>
@@ -193,15 +187,15 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
             <p className="text-slate-300 font-medium leading-relaxed mb-5">
               Speyer liegt zwischen Rhein und A61 – ideal für Pendler nach Ludwigshafen und Mannheim. Ob Sie
               nach einem Jobwechsel Ihr Auto verkaufen, von der Domstadt wegziehen oder einfach einen
-              unkomplizierten Verkauf ohne Inserate suchen: Wir übernehmen Bewertung, Abholung, Abmeldung
-              beim Straßenverkehrsamt Speyer und Auszahlung am selben Tag.
+              unkomplizierten Verkauf ohne Inserate suchen: Wir übernehmen Bewertung, Vertrag, Abmeldung
+              beim Straßenverkehrsamt Speyer und Auszahlung am Tag der Übergabe.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300 font-medium">
               <div>
                 <div className="font-black text-white mb-1.5">Pendler LU / MA</div>
                 <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Termine auch abends oder am Wochenende</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Abholung entlang A61 und in der Domstadt</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Fahrzeit zur Filiale in Rüsselsheim: ca. 60 Minuten</li>
                 </ul>
               </div>
               <div>
@@ -222,8 +216,8 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko möglich' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko möglich' },
               { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
               { label: 'Abmeldung', ankauf: 'Wir übernehmen (Straßenverkehrsamt Speyer)', privat: 'Selbst zuständig' },
             ].map((row) => (
@@ -254,8 +248,8 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich, sofortige Zahlung', privat: 'Betrugsrisiko möglich' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich, Zahlung bei Übergabe', privat: 'Betrugsrisiko möglich' },
                   { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
                   { label: 'Abmeldung', ankauf: 'Wir übernehmen (Straßenverkehrsamt Speyer)', privat: 'Selbst zuständig' },
                 ].map((row, i) => (
@@ -298,14 +292,13 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Speyer verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung in der Domstadt,
-              im Rhein-Pfalz-Kreis und entlang der A61.
+              Kostenlose Bewertung in 2 Minuten. Fairer Preis, Auszahlung bei Übergabe. Termin in unserer Filiale in Rüsselsheim.
             </p>
             <button onClick={onCtaClick} className="bg-brand-orange text-white px-10 py-4 rounded-2xl font-bold text-base hover:bg-orange-600 transition-all shadow-2xl transform hover:scale-105 duration-200">
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['Kaiserdom Speyer', 'A61', 'Express-Auszahlung'].map((badge) => (
+              {['Kaiserdom Speyer', 'A61', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">{badge}</span>
               ))}
             </div>

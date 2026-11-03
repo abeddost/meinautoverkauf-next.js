@@ -28,16 +28,15 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
         {/* H1 */}
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-sky-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Aschaffenburg –{' '}
-            <span className="text-brand-orange">Schnell verkaufen & sofort auszahlen</span>{' '}
+            <span className="text-brand-orange">Schnell verkaufen, bei Übergabe ausgezahlt</span>{' '}
             lassen
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Aschaffenburg verkaufen – ohne Stress und mit fairem Preis? Aschaffenburg
             liegt als Tor zu Bayern direkt an der A3 und A45, viele Pendler fahren täglich nach Frankfurt.
-            Wir kaufen Ihr Fahrzeug direkt an: Online bewerten, Termin wählen, Abholung bei Ihnen – Auszahlung
-            noch am selben Tag. Kostenlose Abmeldung beim Straßenverkehrsamt Aschaffenburg inklusive.
+            Wir kaufen Ihr Fahrzeug direkt an: online bewerten, Termin in unserer Filiale in Rüsselsheim wählen, Auszahlung am Tag der Übergabe. Kostenlose Abmeldung beim Straßenverkehrsamt Aschaffenburg inklusive.
           </p>
 
           {/* Advantages box */}
@@ -47,10 +46,10 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
                 'Auszahlung per Banküberweisung am Tag der Übergabe',
-                'Kostenlose Abholung in Aschaffenburg & Landkreis',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 42 Minuten Fahrt',
                 'Abmeldung beim Straßenverkehrsamt Aschaffenburg (AB) inklusive',
                 'Ankauf aller Marken – auch Pendlerfahrzeuge und ältere Modelle',
-                'Flexible Termine, auch abends und am Wochenende',
+                'Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr',
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-700 font-medium">
                   <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center">
@@ -80,9 +79,7 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Ob Umzug nach Bayern oder Hessen, Wechsel des Dienstwagens oder der Wunsch nach einem
             unkomplizierten Verkauf ohne Inserate und Besichtigungstermine – wir bieten einen klaren
-            Ablauf: KI-gestützte Preisermittlung, verbindliches Angebot und Abholung direkt bei Ihnen
-            in der Innenstadt, in Damm, Schweinheim, Obernau oder im Landkreis Aschaffenburg. Die
-            Auszahlung erfolgt noch am selben Tag; die Kfz-Abmeldung beim Straßenverkehrsamt
+            Ablauf: KI-gestützte Preisschätzung, Termin in unserer Filiale in Rüsselsheim und verbindliches Angebot nach der Fahrzeugprüfung. Das gilt für die Innenstadt ebenso wie für Damm, Schweinheim, Obernau oder den Landkreis Aschaffenburg. Die Auszahlung erfolgt am Tag der Übergabe; die Kfz-Abmeldung beim Straßenverkehrsamt
             Aschaffenburg übernehmen wir vollständig.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
@@ -99,7 +96,7 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Aschaffenburger Stadtteilen & Umland
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos bei Ihnen ab – im Stadtgebiet und in der Region:
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -148,17 +145,17 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '01',
                 title: 'Online bewerten',
-                desc: 'Fahrzeugdaten eingeben, in 2 Minuten ein KI-gestütztes Angebot erhalten – kostenlos und unverbindlich.',
+                desc: 'Fahrzeugdaten eingeben, in 2 Minuten eine KI-gestützte Preiseinschätzung erhalten – kostenlos und unverbindlich.',
               },
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir kommen zu Ihnen nach Aschaffenburg oder in den Landkreis. Auch Abend- und Wochenendtermine möglich.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim, etwa 42 Minuten von Aschaffenburg entfernt.',
               },
               {
                 step: '03',
-                title: 'Übergabe & sofortige Zahlung',
-                desc: 'Kurze Prüfung vor Ort, Kaufvertrag, Übergabe. Auszahlung noch am selben Tag. Abmeldung beim Straßenverkehrsamt Aschaffenburg übernehmen wir.',
+                title: 'Übergabe & Zahlung bei Übergabe',
+                desc: 'Kurze Prüfung in unserer Filiale, Kaufvertrag, Übergabe. Auszahlung am Tag der Übergabe. Abmeldung beim Straßenverkehrsamt Aschaffenburg übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -224,15 +221,14 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
             <p className="text-slate-300 font-medium leading-relaxed mb-5">
               Aschaffenburg verbindet den Rhein-Main-Raum mit Unterfranken. Ob Sie nach einem Jobwechsel
               Ihr Pendlerauto verkaufen, von Hessen nach Bayern umziehen oder einfach einen unkomplizierten
-              Verkauf ohne Inserate suchen – wir übernehmen die komplette Abwicklung: Bewertung, Abholung,
-              Abmeldung beim Straßenverkehrsamt Aschaffenburg und Auszahlung am selben Tag.
+              Verkauf ohne Inserate suchen – wir übernehmen die komplette Abwicklung: Bewertung, Vertrag, Abmeldung beim Straßenverkehrsamt Aschaffenburg und Auszahlung am Tag der Übergabe.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300 font-medium">
               <div>
                 <div className="font-black text-white mb-1.5">Pendler nach Frankfurt / Hanau</div>
                 <ul className="space-y-1">
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Termine auch abends oder am Wochenende</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Abholung entlang A3 und A45</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Termine online buchbar, Uhrzeiten zwischen 10 und 18 Uhr</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-orange flex-shrink-0"></span>Fahrzeit zur Filiale in Rüsselsheim: ca. 42 Minuten</li>
                 </ul>
               </div>
               <div>
@@ -254,8 +250,8 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:hidden">
             {[
               { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-              { label: 'Aufwand', ankauf: 'Minimal – wir kommen zu Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, sofortige Zahlung', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
+              { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+              { label: 'Sicherheit', ankauf: 'Vertraglich gesichert, Zahlung bei Übergabe', privat: 'Betrugsrisiko, Zahlungsausfall möglich' },
               { label: 'Haftung nach Verkauf', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
               { label: 'Abmeldung', ankauf: 'Wir übernehmen (Straßenverkehrsamt Aschaffenburg)', privat: 'Selbst zuständig' },
             ].map((row) => (
@@ -286,8 +282,8 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
               <tbody>
                 {[
                   { label: 'Zeit bis zum Verkauf', ankauf: '1–2 Tage', privat: '3–8 Wochen' },
-                  { label: 'Aufwand', ankauf: 'Minimal – Abholung bei Ihnen', privat: 'Inserate, Besichtigungen, Verhandlungen' },
-                  { label: 'Sicherheit', ankauf: 'Vertraglich, sofortige Zahlung', privat: 'Betrugsrisiko möglich' },
+                  { label: 'Aufwand', ankauf: 'Gering – ein Termin in unserer Filiale', privat: 'Inserate, Besichtigungen, Verhandlungen' },
+                  { label: 'Sicherheit', ankauf: 'Vertraglich, Zahlung bei Übergabe', privat: 'Betrugsrisiko möglich' },
                   { label: 'Haftung', ankauf: 'Keine Gewährleistung', privat: 'Mängelhaftung möglich' },
                   { label: 'Abmeldung', ankauf: 'Wir übernehmen (Straßenverkehrsamt Aschaffenburg)', privat: 'Selbst zuständig' },
                 ].map((row, i) => (
@@ -341,8 +337,7 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
           <div className="relative z-10">
             <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Aschaffenburg verkaufen</h2>
             <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-              Kostenlose Bewertung in 2 Minuten. Fairer Preis, sofortige Auszahlung. Abholung in der Innenstadt,
-              Damm, Schweinheim und im gesamten Landkreis Aschaffenburg.
+              Kostenlose Bewertung in 2 Minuten. Fairer Preis, Auszahlung bei Übergabe. Termin in unserer Filiale in Rüsselsheim.
             </p>
             <button
               onClick={onCtaClick}
@@ -351,7 +346,7 @@ const AutoankaufAschaffenburgPage: React.FC<Props> = ({ onCtaClick }) => {
               Kostenlosen Verkaufspreis erhalten
             </button>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
-              {['A3 / A45', 'Schloss Johannisburg', 'Express-Auszahlung'].map((badge) => (
+              {['A3 / A45', 'Schloss Johannisburg', 'Auszahlung bei Übergabe'].map((badge) => (
                 <span key={badge} className="bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
                   {badge}
                 </span>

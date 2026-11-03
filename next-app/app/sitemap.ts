@@ -3,101 +3,42 @@ import { CITY_SEO_DATA } from '@/lib/citySeoData';
 import { GUIDE_CONTENT } from '@/lib/guideContent';
 import { BRAND_SEO_CONTENT } from '@/lib/brandSeoContent';
 import { MODEL_SEO_PAGES } from '@/lib/modelSeoPages';
+import { getLastModified } from '@/lib/contentDates';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
-const BUILD_DATE = new Date();
+
+const STATIC_PATHS = [
+  '/auto-bewerten',
+  '/auto-verkaufen',
+  '/vorteile',
+  '/standorte',
+  '/marken',
+  '/modelle',
+  '/ratgeber',
+  '/defektes-auto-verkaufen',
+  '/wertverlust-auto-rechner',
+  '/impressum',
+  '/datenschutz',
+];
+
+// changeFrequency and priority are omitted on purpose: Google ignores both.
+const toEntry = (path: string): MetadataRoute.Sitemap[number] => {
+  const lastModified = getLastModified(path);
+  return {
+    url: path === '/' ? BASE_URL : `${BASE_URL}${path}`,
+    ...(lastModified ? { lastModified } : {}),
+  };
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: BASE_URL,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${BASE_URL}/auto-bewerten`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/auto-verkaufen`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/vorteile`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/standorte`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/marken`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/modelle`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/ratgeber`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/datenschutz`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/impressum`,
-      lastModified: BUILD_DATE,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+  const paths = [
+    '/',
+    ...STATIC_PATHS,
+    ...CITY_SEO_DATA.map((city) => city.path),
+    ...GUIDE_CONTENT.map((guide) => `/ratgeber/${guide.slug}`),
+    ...Object.values(BRAND_SEO_CONTENT).map((brand) => brand.landing.canonicalPath),
+    ...MODEL_SEO_PAGES.map((model) => model.canonicalPath),
   ];
 
-  const cityPages: MetadataRoute.Sitemap = CITY_SEO_DATA.map((city) => ({
-    url: `${BASE_URL}${city.path}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.85,
-  }));
-
-  const guidePages: MetadataRoute.Sitemap = GUIDE_CONTENT.map((guide) => ({
-    url: `${BASE_URL}/ratgeber/${guide.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  const brandLandingPages: MetadataRoute.Sitemap = Object.values(BRAND_SEO_CONTENT).map((brand) => ({
-    url: `${BASE_URL}${brand.landing.canonicalPath}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.85,
-  }));
-
-  const modelLandingPages: MetadataRoute.Sitemap = MODEL_SEO_PAGES.map((model) => ({
-    url: `${BASE_URL}${model.canonicalPath}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...cityPages, ...guidePages, ...brandLandingPages, ...modelLandingPages];
+  return paths.map(toEntry);
 }

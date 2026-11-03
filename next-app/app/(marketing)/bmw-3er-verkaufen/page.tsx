@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import RouteHero from '@/components/RouteHero';
 import FAQSection from '@/components/FAQSection';
@@ -37,11 +38,11 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: MODEL.seoTitle,
   description: MODEL.seoDescription,
-  alternates: { canonical: MODEL.canonicalPath },
-};
+  path: MODEL.canonicalPath,
+});
 
 export default function Bmw3erVerkaufenPage() {
   const faqSchema = buildFaqPageSchema(SITE_URL, MODEL.canonicalPath, FAQS);
@@ -76,15 +77,14 @@ export default function Bmw3erVerkaufenPage() {
         headline="BMW 3er verkaufen: Fahrfreude endet, Kostenlogik beginnt"
         subheadline="So treffen Sie beim 3er die richtige Entscheidung zwischen Emotion und wirtschaftlicher Vernunft"
         accent="verkaufen"
-        headlineTag="h2"
       />
 
       <div className="bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
           <article className="max-w-4xl mx-auto">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
               BMW 3er verkaufen: Wenn Fahrspaß und Unterhaltsrealität auseinanderlaufen
-            </h1>
+            </h2>
 
             <p className="text-lg text-slate-700 font-medium leading-relaxed mb-5">
               Für viele Fahrer ist der 3er mehr als ein Auto. Er steht für Lenkpräzision, Dynamik und das Gefühl, aktiv zu fahren statt nur zu rollen. Genau deshalb fällt
@@ -103,7 +103,7 @@ export default function Bmw3erVerkaufenPage() {
             <section className="mb-12 rounded-3xl border border-slate-200 bg-slate-50 p-6 lg:p-8">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Typische Fahrerprofile beim 3er: Warum Nutzung den Preis so stark bestimmt</h2>
               <p className="text-slate-700 font-medium leading-relaxed mb-4">
-                Beim 3er sehen wir in der Bewertung stark unterschiedliche Nutzungsszenarien, die den Ankaufpreis direkt beeinflussen.
+                Beim 3er gibt es in der Bewertung stark unterschiedliche Nutzungsszenarien, die den Ankaufpreis direkt beeinflussen.
               </p>
               <ul className="space-y-3 text-slate-700 font-medium leading-relaxed">
                 <li><strong>Daily Driver mit hoher Laufleistung:</strong> robust im Alltag, aber mit kumuliertem Verschleiß.</li>
@@ -194,7 +194,7 @@ export default function Bmw3erVerkaufenPage() {
               <ol className="space-y-3 text-slate-700 font-medium leading-relaxed">
                 <li><strong>1. Daten + Zustand:</strong> Baureihe, Laufleistung, Ausstattung, bekannte Punkte, Unterlagen.</li>
                 <li><strong>2. Marktgerechtes Angebot:</strong> Bewertung auf Basis von Nachfrage, Technik und Restwertrisiko.</li>
-                <li><strong>3. Übergabe + Auszahlung:</strong> Dokumentierter Abschluss mit optionaler Abholung.</li>
+                <li><strong>3. Übergabe + Auszahlung:</strong> Dokumentierter Abschluss in unserer Filiale.</li>
               </ol>
             </section>
 

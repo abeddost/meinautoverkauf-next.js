@@ -20,9 +20,9 @@ const AutoankaufKarlsruhePage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Karlsruhe - <span className="text-brand-orange">schnell verkaufen in der Technologieregion</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Karlsruhe ist als Technologie- und Hochschulstandort ein sehr dynamischer Fahrzeugmarkt. Zwischen KIT,
             Innenstadt, Gewerbegebieten und den Wohnlagen in Durlach, Mühlburg oder Knielingen entstehen stark
@@ -51,7 +51,7 @@ const AutoankaufKarlsruhePage: React.FC<Props> = ({ onCtaClick }) => {
             {[
               {
                 title: 'Unterschiedliche Nutzung in den Stadtteilen',
-                text: 'In Durlach sehen wir häufig gemischte Pendel- und Familienprofile, in Mühlburg viele urbane Alltagsfahrten, in Knielingen zusätzlich starke Umlandbezüge.',
+                text: 'In Durlach sind häufig gemischte Pendel- und Familienprofile, in Mühlburg viele urbane Alltagsfahrten, in Knielingen zusätzlich starke Umlandbezüge.',
               },
               {
                 title: 'A5, A8 und Karlsruher Dreieck als Verkehrsachsen',
@@ -90,7 +90,7 @@ const AutoankaufKarlsruhePage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin in Karlsruhe festlegen',
-                text: 'Wir stimmen ein passendes Zeitfenster ab und prüfen Fahrzeug sowie Unterlagen transparent vor Ort.',
+                text: 'Wir stimmen ein passendes Zeitfenster ab und prüfen Fahrzeug sowie Unterlagen transparent in unserer Filiale.',
               },
               {
                 step: '03',
@@ -230,7 +230,7 @@ const AutoankaufKarlsruhePage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für den nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie direkt mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

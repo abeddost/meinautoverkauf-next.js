@@ -36,14 +36,13 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-blue-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Koblenz –{' '}
             <span className="text-brand-orange">Fair verkaufen zwischen Rhein und Mosel</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Koblenz verkaufen, ohne wochenlang zu inserieren? Wir bieten Ihnen
-            einen schnellen, transparenten Ankauf mit kostenloser Abholung, rechtssicherem Vertrag und
-            Auszahlung am Übergabetag. Online bewerten, Termin buchen, Fahrzeug direkt verkaufen.
+            einen transparenten Ankauf mit Übergabe in unserer Filiale in Rüsselsheim, klarem Vertrag und Auszahlung am Übergabetag. Online bewerten, Termin buchen, Fahrzeug direkt verkaufen.
           </p>
 
           <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100 rounded-3xl p-8 shadow-sm">
@@ -51,8 +50,8 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Kostenlose Online-Bewertung in 2 Minuten',
-                'Sofortige Auszahlung nach Vertragsabschluss',
-                'Kostenlose Abholung in ganz Koblenz & Umland',
+                'Auszahlung per Überweisung nach Vertragsabschluss',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 73 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsbehörde der Stadt Koblenz inklusive',
                 'Ankauf aller Marken, auch ältere Diesel und Exportfahrzeuge',
                 'Flexible Termine für Berufspendler und Dienstwagen',
@@ -81,12 +80,11 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
           </p>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Als Behörden- und Bundeswehrstandort gibt es in Koblenz regelmäßig Dienst- und Fuhrparkfahrzeuge,
-            die zügig veräußert werden. Gleichzeitig sehen wir viele klassische Pendlerfahrzeuge mit höherer
+            die zügig veräußert werden. Gleichzeitig sind viele klassische Pendlerfahrzeuge mit höherer
             Laufleistung, die dennoch einen stabilen Restwert haben.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed">
-            Unser Service ist auf diesen Markt zugeschnitten: datenbasierte Preisermittlung, kurze Reaktionszeit
-            und zuverlässige Abholung vor Ort. So verkaufen Sie Ihr Fahrzeug planbar und ohne Preisverhandlungen
+            Unser Service ist auf diesen Markt zugeschnitten: KI-gestützte Preisschätzung, fester Termin in unserer Filiale und Abmeldung inklusive. So verkaufen Sie Ihr Fahrzeug planbar und ohne Preisverhandlungen
             mit unbekannten Privatinteressenten.
           </p>
         </section>
@@ -96,8 +94,7 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
             Autoankauf in allen Koblenzer Stadtteilen und im Umland
           </h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-6">
-            Wir holen Ihr Fahrzeug kostenlos bei Ihnen ab, auch in Stadtteilen mit schwieriger Parkplatzlage
-            oder Hanglagen.
+            Wir kaufen Fahrzeuge aus diesen Stadtteilen und dem Umland an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -139,12 +136,12 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin abstimmen',
-                desc: 'Wir vereinbaren kurzfristig einen Vor-Ort-Termin in Koblenz oder im Umland.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim.',
               },
               {
                 step: '03',
                 title: 'Verkaufen & Auszahlung',
-                desc: 'Besichtigung, Kaufvertrag und Auszahlung am selben Tag. Die Abmeldung übernehmen wir.',
+                desc: 'Besichtigung, Kaufvertrag und Auszahlung am Tag der Übergabe. Die Abmeldung übernehmen wir.',
               },
             ].map((item) => (
               <div key={item.step} className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-7 border border-slate-100 shadow-sm">
@@ -292,7 +289,7 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
             <div className="relative z-10">
               <h2 className="text-xl lg:text-2xl font-black mb-4">Jetzt Auto in Koblenz verkaufen</h2>
               <p className="text-slate-300 font-medium mb-8 max-w-xl mx-auto">
-                Kostenlose Bewertung, schnelle Abholung und Auszahlung am Übergabetag.
+                Kostenlose Bewertung, Termin in unserer Filiale und Auszahlung am Übergabetag.
               </p>
               <button
                 onClick={onCtaClick}

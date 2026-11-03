@@ -22,10 +22,10 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Ludwigshafen – <span className="text-brand-orange">Schnelle Auszahlung & klare Abwicklung</span>{' '}
             in der BASF-Stadt
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Ludwigshafen hat einen Fahrzeugmarkt, der sich deutlich von vielen anderen Städten unterscheidet. Als großer
             Industriestandort mit BASF, Pendlerverkehr in Richtung Mannheim und vielen berufsbedingten Fahrzeugwechseln
@@ -35,9 +35,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
           </p>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Genau dafür ist unser Autoankauf Ludwigshafen ausgelegt. Sie starten mit einer kostenlosen Online-Bewertung,
-            erhalten ein nachvollziehbares Angebot und entscheiden in Ruhe. Wenn Sie verkaufen möchten, organisieren wir
-            einen Termin bei Ihnen vor Ort, prüfen das Fahrzeug transparent und zahlen nach Vertragsabschluss per
-            Überweisung aus. Auf Wunsch übernehmen wir zusätzlich die Abmeldung bei der zuständigen Zulassungsstelle der
+            erhalten ein nachvollziehbares Angebot und entscheiden in Ruhe. Wenn Sie verkaufen möchten, buchen Sie einen Termin in unserer Filiale in Rüsselsheim. Dort prüfen wir das Fahrzeug transparent und zahlen nach Vertragsabschluss per Überweisung aus. Auf Wunsch übernehmen wir zusätzlich die Abmeldung bei der zuständigen Zulassungsstelle der
             Stadt Ludwigshafen, damit Sie keinen Behördentermin einplanen müssen.
           </p>
           <p className="text-lg text-slate-600 font-medium leading-relaxed">
@@ -61,7 +59,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
               },
               {
                 title: 'Stadtteile mit unterschiedlichem Fahrzeugprofil',
-                text: 'In Oggersheim und Ruchheim sehen wir häufiger Familienfahrzeuge und Vans, in Mundenheim und Friesenheim eher kompakte Alltagsautos. Das beeinflusst die regionale Nachfrage und damit den Ankaufspreis.',
+                text: 'In Oggersheim und Ruchheim sind häufiger Familienfahrzeuge und Vans, in Mundenheim und Friesenheim eher kompakte Alltagsautos. Das beeinflusst die regionale Nachfrage und damit den Ankaufspreis.',
               },
               {
                 title: 'Rhein-Neckar-Verzahnung mit Mannheim',
@@ -93,7 +91,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin in Ludwigshafen vereinbaren',
-                desc: 'Wir stimmen einen Termin in Ludwigshafen oder direkter Umgebung mit Ihnen ab, prüfen das Fahrzeug vor Ort und beantworten offene Fragen unmittelbar.',
+                desc: 'Sie wählen einen Termin in unserer Filiale in Rüsselsheim. Dort prüfen wir das Fahrzeug und beantworten offene Fragen unmittelbar.',
               },
               {
                 step: '03',
@@ -130,7 +128,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
               },
               {
                 title: 'Familienfahrzeuge aus Wohnlagen',
-                desc: 'In Stadtteilen wie Oggersheim oder Gartenstadt sehen wir häufig Vans und Kompakt-SUVs. Hier zählen vor allem Alltagstauglichkeit und Pflegezustand.',
+                desc: 'In Stadtteilen wie Oggersheim oder Gartenstadt sind häufig Vans und Kompakt-SUVs. Hier zählen vor allem Alltagstauglichkeit und Pflegezustand.',
               },
               {
                 title: 'Fahrzeuge mit Reparaturbedarf',
@@ -148,8 +146,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
         <section className="mb-14 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 text-white border border-slate-700/50">
           <h2 className="text-lg lg:text-xl font-black mb-4">Lokaler Bezug: BASF-Umfeld, Hemshof, A650 und Rheinbrücken</h2>
           <p className="text-slate-300 font-medium leading-relaxed mb-4">
-            Unser Team kennt die lokalen Gegebenheiten in Ludwigshafen: vom BASF-Umfeld über Wohnlagen wie Hemshof,
-            Friesenheim und Mundenheim bis hin zu den verkehrsreichen Abschnitten Richtung Mannheim. Für viele
+            Ludwigshafen ist vielfältig: vom BASF-Umfeld über Wohnlagen wie Hemshof, Friesenheim und Mundenheim bis zu den verkehrsreichen Abschnitten Richtung Mannheim. Für viele
             Verkäuferinnen und Verkäufer ist nicht nur der Preis wichtig, sondern auch ein Termin, der zum Alltag passt
             und ohne zusätzliche Wege funktioniert.
           </p>
@@ -164,7 +161,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-6">Meinautoverkauf.de vs. Privatkauf vs. Händler vor Ort</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:hidden">
             {[
-              { label: 'Zeit bis zum Abschluss', ankauf: 'Oft 24–48 Stunden', privat: 'Häufig mehrere Wochen', handler: 'Je nach Ankaufquote' },
+              { label: 'Zeit bis zum Abschluss', ankauf: 'Bewertung online, Verkauf an einem Termin', privat: 'Häufig mehrere Wochen', handler: 'Je nach Ankaufquote' },
               { label: 'Planbarkeit', ankauf: 'Fester Prozess mit Termin', privat: 'Absagen und Verhandlungen', handler: 'Hängt von Öffnungszeiten ab' },
               { label: 'Preisfindung', ankauf: 'Datenbasiert und transparent', privat: 'Schwankend je Interessent', handler: 'Häufig mit Risikoabschlag' },
               { label: 'Behördenthema in Ludwigshafen', ankauf: 'Abmeldung auf Wunsch inklusive', privat: 'Selbst zur Zulassungsstelle', handler: 'Nicht immer enthalten' },
@@ -190,7 +187,7 @@ const AutoankaufLudwigshafenPage: React.FC<Props> = ({ onCtaClick }) => {
               </thead>
               <tbody>
                 {[
-                  { label: 'Zeit bis zum Abschluss', ankauf: 'Oft 24–48 Stunden', privat: 'Häufig mehrere Wochen', handler: 'Abhängig von Ankaufinteresse' },
+                  { label: 'Zeit bis zum Abschluss', ankauf: 'Bewertung online, Verkauf an einem Termin', privat: 'Häufig mehrere Wochen', handler: 'Abhängig von Ankaufinteresse' },
                   { label: 'Planbarkeit', ankauf: 'Klarer Ablauf mit Terminfenster', privat: 'Unklare Besichtigungslage', handler: 'Öffnungszeitengebunden' },
                   { label: 'Preisfindung', ankauf: 'Datenbasiert, nachvollziehbar', privat: 'Stark verhandlungsabhängig', handler: 'Risiko- und Marge-orientiert' },
                   { label: 'Ludwigshafen-spezifischer Aufwand', ankauf: 'Keine Zusatzwege zur Zulassungsstelle bei Wunschservice', privat: 'Eigenständige Abmeldung und Nachweise', handler: 'Service nicht immer inklusive' },

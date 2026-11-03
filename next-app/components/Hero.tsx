@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import Image from 'next/image';
+import Image, { getImageProps } from 'next/image';
 import ValuationForm from './ValuationForm';
 import { CarDetails, ValuationResult } from '@/types';
 
@@ -12,7 +12,6 @@ interface HeroProps {
   headline?: string;
   subheadline?: string;
   accent?: 'home' | 'bewerten' | 'verkaufen' | 'vorteile' | 'ratgeber';
-  headlineTag?: 'h1' | 'h2';
 }
 
 const PARTICLES = [
@@ -48,7 +47,7 @@ const BENEFITS = [
     )
   },
   {
-    title: 'Geprüfte Händler',
+    title: 'Kostenlos bewerten',
     icon: (
       <svg className="w-5 h-5 text-brand-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" />
@@ -97,30 +96,30 @@ const ACCENTS = {
   }
 } as const;
 
-const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, headline, subheadline, accent, headlineTag }) => {
+const CAR_ALT = 'BMW als Beispielfahrzeug für den Autoankauf';
+
+// One <picture> so the browser downloads only the image for the current viewport.
+const {
+  props: { srcSet: carDesktopSrcSet },
+} = getImageProps({ src: '/bmw.webp', alt: CAR_ALT, width: 1024, height: 512, sizes: '560px' });
+const carReflectionSrcSet = carDesktopSrcSet;
+const TRANSPARENT_PIXEL = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+const {
+  props: { srcSet: carMobileSrcSet, ...carImageProps },
+} = getImageProps({
+  src: '/bmw-mobile.webp',
+  alt: CAR_ALT,
+  width: 480,
+  height: 240,
+  loading: 'eager',
+  fetchPriority: 'high',
+});
+
+const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, headline, subheadline, accent }) => {
   const [carTransform, setCarTransform] = useState({ tiltX: 0, tiltY: 0, offsetY: 0 });
-  // Keep SSR and initial client render identical; resolve viewport after mount.
-  const [isDesktopViewport, setIsDesktopViewport] = useState<boolean | null>(null);
   const heroHeadline = headline ?? 'Auto verkaufen online – Einfach, schnell & stressfrei';
   const heroSubheadline = subheadline ?? 'Autoankauf – Wir kaufen Ihr Auto zum fairen Preis';
   const heroAccent = ACCENTS[accent ?? 'home'];
-  const DesktopHeadlineTag = headlineTag ?? 'h1';
-  const MobileHeadlineTag = headlineTag === 'h1' ? 'h2' : headlineTag ?? 'h2';
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const mediaQuery = window.matchMedia('(min-width: 1024px)');
-    const updateViewport = () => setIsDesktopViewport(mediaQuery.matches);
-    updateViewport();
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', updateViewport);
-      return () => mediaQuery.removeEventListener('change', updateViewport);
-    }
-
-    mediaQuery.addListener(updateViewport);
-    return () => mediaQuery.removeListener(updateViewport);
-  }, []);
 
   useEffect(() => {
     const disableParallax =
@@ -237,61 +236,66 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
         </div>
       </div>
 
-      <div className="hidden lg:flex flex-grow items-center relative py-6">
-        <div className="container mx-auto px-8 lg:px-16 z-10 max-w-7xl">
-          <div className="grid grid-cols-12 gap-10 items-center">
-            <div className="col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 overflow-visible">
-              <div className="max-w-2xl -mt-2">
-                <DesktopHeadlineTag className="text-[32px] sm:text-[36px] lg:text-[40px] font-black leading-[1.08] tracking-tight text-[#1e293b]">
+      <div className="relative flex flex-grow flex-col pt-4 pb-6 min-h-[calc(100vh-64px)] lg:min-h-0 lg:flex-row lg:items-center lg:py-6">
+        <div className="container mx-auto px-4 lg:px-16 z-10 lg:max-w-7xl flex flex-grow flex-col lg:block">
+          <div className="flex flex-grow flex-col lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center">
+            <div className="lg:col-span-7 overflow-visible">
+              <div className="text-left mb-4 lg:mb-0 lg:max-w-2xl lg:-mt-2">
+                <h1 className="text-[22px] sm:text-[24px] lg:text-[40px] font-black leading-[1.15] lg:leading-[1.08] tracking-tight text-[#1e293b]">
                   {heroHeadline}
-                </DesktopHeadlineTag>
-                <p className="mt-4 text-base lg:text-lg text-slate-600 font-medium max-w-xl">
+                </h1>
+                <p className="mt-3 lg:mt-4 text-base lg:text-lg text-slate-600 font-medium lg:max-w-xl">
                   {heroSubheadline}
                 </p>
               </div>
 
-              <div className="relative mt-6 overflow-visible">
-                <div className="absolute -bottom-12 left-28 right-0 h-32 rounded-full bg-orange-100/70 blur-3xl"></div>
-                <div
-                  className="relative overflow-visible"
-                  style={{ perspective: '900px' }}
-                  onMouseMove={handleMouseMove}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Image
-                    src="/bmw.webp"
-                    alt="BMW als Beispielfahrzeug für den Autoankauf"
-                    className="relative z-10 w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain transform-gpu transition-transform duration-200 drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
-                    style={carStyle}
-                    width={1024}
-                    height={512}
-                    sizes="560px"
-                    priority
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  <Image
-                    src="/bmw.webp"
-                    alt=""
-                    aria-hidden="true"
-                    className="absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
-                    style={{
-                      ...reflectionStyle,
-                      WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
-                      maskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)'
-                    }}
-                    width={1024}
-                    height={512}
-                    sizes="560px"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
+              <div className="relative mb-4 lg:mb-0 lg:mt-6 flex justify-center lg:block overflow-visible">
+                <div className="relative w-[95%] max-w-[440px] lg:w-auto lg:max-w-none overflow-visible">
+                  <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full lg:-bottom-12 lg:left-28 lg:right-0 lg:h-32 lg:blur-3xl"></div>
+                  <div
+                    className="relative overflow-visible"
+                    style={{ perspective: '900px' }}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <picture>
+                      <source media="(min-width: 1024px)" srcSet={carDesktopSrcSet} sizes="560px" />
+                      <source srcSet={carMobileSrcSet} />
+                      {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text -- props come from getImageProps */}
+                      <img
+                        {...carImageProps}
+                        className="relative z-10 w-full lg:w-[200%] lg:-ml-[24%] h-auto aspect-[2/1] min-h-[120px] lg:min-h-0 max-h-[200px] lg:max-h-[280px] object-contain transform-gpu transition-transform duration-200 lg:drop-shadow-[0_50px_80px_rgba(15,23,42,0.32)]"
+                        style={carStyle}
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    </picture>
+                    {/* Desktop-only reflection. The transparent fallback keeps phones from downloading it. */}
+                    <picture>
+                      <source media="(min-width: 1024px)" srcSet={carReflectionSrcSet} sizes="560px" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={TRANSPARENT_PIXEL}
+                        alt=""
+                        aria-hidden="true"
+                        width={1024}
+                        height={512}
+                        loading="lazy"
+                        decoding="async"
+                        className="hidden lg:block absolute left-0 right-0 top-[64%] w-[200%] -ml-[24%] h-auto max-h-[280px] object-contain opacity-25 blur-sm"
+                        style={{
+                          ...reflectionStyle,
+                          WebkitMaskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)',
+                          maskImage: 'linear-gradient(to bottom, rgba(15,23,42,0.4), transparent)'
+                        }}
+                      />
+                    </picture>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="hidden lg:grid mt-8 grid-cols-3 gap-3">
                 {BENEFITS.map((benefit, index) => (
                   <div
                     key={index}
@@ -308,65 +312,27 @@ const Hero: React.FC<HeroProps> = ({ onValuationComplete, onValuationSubmit, hea
               </div>
             </div>
 
-            <div className="col-span-5 flex justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
-              <div className="w-full max-w-[460px] lg:max-w-[640px] scale-[1] origin-top">
-                {isDesktopViewport === true && (
-                  <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
-                )}
+            <div className="relative z-20 lg:col-span-5 lg:flex lg:justify-center">
+              <div className="w-full lg:max-w-[640px]">
+                <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="lg:hidden flex flex-col pt-4 pb-6 min-h-[calc(100vh-64px)]">
-        <div className="container mx-auto px-4 z-10 flex-grow flex flex-col">
-          <div className="text-left mb-4">
-            <MobileHeadlineTag className="text-[22px] sm:text-[24px] font-black leading-[1.15] tracking-tight text-[#1e293b]">
-              {heroHeadline}
-            </MobileHeadlineTag>
-            <p className="mt-3 text-base text-slate-600 font-medium">
-              {heroSubheadline}
-            </p>
-          </div>
-
-          <div className="relative mb-4 flex justify-center">
-            <div className="relative w-[95%] max-w-[440px]">
-              <div className="absolute -bottom-2 left-10 right-10 h-12 bg-orange-100/70 blur-2xl rounded-full"></div>
-              <Image
-                src="/bmw-mobile.webp"
-                alt="BMW als Beispielfahrzeug für den Autoankauf"
-                className="relative w-full h-auto max-h-[200px] object-contain"
-                style={{ aspectRatio: '480/240', minHeight: '120px' }}
-                width={480}
-                height={240}
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {isDesktopViewport !== true && (
-              <ValuationForm onValuationComplete={onValuationComplete} onValuationSubmit={onValuationSubmit} />
-            )}
-          </div>
-
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            {BENEFITS.map((benefit, index) => (
-              <div
-                key={index}
-                className="rounded-xl border border-white/80 bg-white/85 px-2 py-3 shadow-[0_8px_16px_-8px_rgba(15,23,42,0.25)] backdrop-blur"
-              >
-                <div className="flex flex-col items-center gap-1.5 text-center">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70 flex-shrink-0">
-                    {benefit.icon}
+            <div className="lg:hidden mt-4 grid grid-cols-3 gap-2">
+              {BENEFITS.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl border border-white/80 bg-white/85 px-2 py-3 shadow-[0_8px_16px_-8px_rgba(15,23,42,0.25)] backdrop-blur"
+                >
+                  <div className="flex flex-col items-center gap-1.5 text-center">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-orange-100 to-white ring-1 ring-orange-200/70 flex-shrink-0">
+                      {benefit.icon}
+                    </div>
+                    <div className="text-[10px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
                   </div>
-                  <div className="text-[10px] font-bold text-slate-800 leading-tight">{benefit.title}</div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

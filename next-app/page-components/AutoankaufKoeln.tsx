@@ -35,13 +35,12 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-16 relative">
           <div className="absolute -top-12 -left-12 w-24 h-24 bg-red-200/40 rounded-full blur-2xl"></div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-8 leading-tight tracking-tight relative">
             Autoankauf Köln – <span className="text-brand-orange">sicher verkaufen in der Rheinmetropole</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 max-w-3xl">
             Sie möchten Ihr Auto in Köln verkaufen, ohne Inseratsstress und ohne unklare Verhandlungen? Wir bieten
-            Ihnen einen transparenten Direktankauf mit kostenloser Abholung, rechtssicherem Kaufvertrag und
-            schneller Auszahlung am Übergabetag.
+            Ihnen einen transparenten Direktankauf mit klarem Kaufvertrag und Auszahlung am Übergabetag. Die Online-Bewertung funktioniert von überall und zeigt Ihnen, ob sich der Weg zu unserer Filiale lohnt.
           </p>
 
           <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-100 rounded-3xl p-8 shadow-sm">
@@ -50,7 +49,7 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
               {[
                 'Online-Bewertung in ca. 2 Minuten',
                 'Schnelle Auszahlung per Überweisung',
-                'Kostenlose Abholung in allen Kölner Stadtteilen',
+                'Übergabe in unserer Filiale in Rüsselsheim, ca. 115 Minuten Fahrt',
                 'Abmeldung bei der Zulassungsstelle Stadt Köln inklusive',
                 'Ankauf auch bei Motorschaden, Unfall oder ohne TÜV',
                 'Planbare Termine für Berufstätige und Pendler',
@@ -155,7 +154,7 @@ const AutoankaufKoelnPage: React.FC<Props> = ({ onCtaClick }) => {
               {
                 step: '02',
                 title: 'Termin vereinbaren',
-                desc: 'Wir stimmen einen Vor-Ort-Termin in Köln oder im Umland ab.',
+                desc: 'Sie buchen online einen Termin in unserer Filiale in Rüsselsheim.',
               },
               {
                 step: '03',

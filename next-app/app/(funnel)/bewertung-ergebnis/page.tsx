@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ValuationResultPage from '@/page-components/ValuationResultPage';
 
 export const metadata: Metadata = {
-  title: 'Ihr Bewertungsergebnis – Meinautoverkauf.de',
+  title: 'Ihr Bewertungsergebnis',
   robots: { index: false },
 };
 

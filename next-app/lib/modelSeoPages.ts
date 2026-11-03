@@ -22,7 +22,7 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
     order: 1,
     seoTitle: 'VW Golf verkaufen | Golf Ankauf fair und schnell',
     seoDescription:
-      'VW Golf verkaufen mit transparenter Bewertung, schneller Auszahlung und Abholung. Auch bei Motorschaden, Unfall oder hoher Laufleistung.',
+      'VW Golf verkaufen mit transparenter Bewertung, schneller Auszahlung und Übergabe in unserer Filiale. Auch bei Motorschaden, Unfall oder hoher Laufleistung.',
     canonicalPath: '/vw-golf-verkaufen',
   },
   {
@@ -32,9 +32,9 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
     brandSlug: 'vw',
     brandHref: '/vw-verkaufen',
     order: 2,
-    seoTitle: 'VW Passat verkaufen | Passat Ankauf deutschlandweit',
+    seoTitle: 'VW Passat verkaufen | Passat Ankauf fair und planbar',
     seoDescription:
-      'VW Passat Ankauf in Deutschland: fairer Preis auch bei hoher Laufleistung, Diesel-Themen, Motorschaden oder Unfallwagen.',
+      'VW Passat Ankauf: fairer Preis auch bei hoher Laufleistung, Diesel-Themen, Motorschaden oder Unfallwagen.',
     canonicalPath: '/vw-passat-verkaufen',
   },
   {
@@ -94,7 +94,7 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
     order: 7,
     seoTitle: 'Ford Focus verkaufen | Focus Ankauf direkt und fair',
     seoDescription:
-      'Ford Focus Ankauf deutschlandweit: fairer Preis auch bei Motorschaden, Getriebeproblemen, Unfallwagen oder hoher Laufleistung.',
+      'Ford Focus Ankauf: fairer Preis auch bei Motorschaden, Getriebeproblemen, Unfallwagen oder hoher Laufleistung.',
     canonicalPath: '/ford-focus-verkaufen',
   },
   {
@@ -104,7 +104,7 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
     brandSlug: 'skoda',
     brandHref: '/skoda-verkaufen',
     order: 8,
-    seoTitle: 'Skoda Octavia verkaufen | Octavia Ankauf bundesweit',
+    seoTitle: 'Skoda Octavia verkaufen | Octavia fair bewertet',
     seoDescription:
       'Skoda Octavia verkaufen mit klarer Preislogik auch bei hoher Laufleistung. Ankauf bei Defekten, Unfall oder ohne TÜV.',
     canonicalPath: '/skoda-octavia-verkaufen',

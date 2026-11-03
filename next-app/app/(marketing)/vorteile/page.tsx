@@ -1,24 +1,39 @@
 import type { Metadata } from 'next';
-import VorteileWrapper from '@/components/VorteileWrapper';
+import { buildPageMetadata } from '@/lib/seo';
+import VorteilePage from '@/page-components/VorteilePage';
 import RouteHero from '@/components/RouteHero';
+import Breadcrumb from '@/components/Breadcrumb';
+import { buildBreadcrumbSchema } from '@/lib/structuredData';
+import { SITE_URL } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Ihre Vorteile – Warum Meinautoverkauf.de?',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Ihre Vorteile beim Autoankauf',
   description:
-    'Entdecken Sie die Vorteile: Faire KI-Bewertung, keine versteckten Kosten, schnelle Auszahlung und ein persönlicher Ansprechpartner beim Autoankauf.',
-  alternates: { canonical: '/vorteile' },
-};
+    'Warum an uns verkaufen? Kostenlose Bewertung, fester Termin in unserer Filiale, keine versteckten Kosten und Abmeldung inklusive. Und wann privat mehr bringt.',
+  path: '/vorteile',
+});
 
 export default function VorteileRoute() {
+  const breadcrumbSchema = buildBreadcrumbSchema(SITE_URL, [
+    { name: 'Home', path: '/' },
+    { name: 'Ihre Vorteile', path: '/vorteile' },
+  ]);
+
   return (
     <>
-      <RouteHero
-        headline="Ihre Vorteile beim Autoankauf – Transparent & zuverlässig"
-        subheadline="So einfach war Auto verkaufen noch nie"
-        accent="vorteile"
-        headlineTag="h2"
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Breadcrumb
+        items={[
+          { name: 'Home', href: '/' },
+          { name: 'Ihre Vorteile', href: '/vorteile' },
+        ]}
       />
-      <VorteileWrapper />
+      <RouteHero
+        headline="Ihre Vorteile beim Autoankauf"
+        subheadline="Was Sie von uns erwarten können und was nicht"
+        accent="vorteile"
+      />
+      <VorteilePage />
     </>
   );
 }

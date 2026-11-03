@@ -22,9 +22,9 @@ const AutoankaufBodenheimPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Bodenheim – <span className="text-brand-orange">direkt an unserem Firmensitz</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Bodenheim ist kein weiterer Punkt auf einer Ankaufkarte, sondern der Ort, an dem Meinautoverkauf.de
             tatsächlich beheimatet und angemeldet ist. Die kleine Weinbaugemeinde im Landkreis Mainz-Bingen liegt
@@ -34,9 +34,7 @@ const AutoankaufBodenheimPage: React.FC<Props> = ({ onCtaClick }) => {
           </p>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Der Ablauf unterscheidet sich dabei nicht von unseren anderen Standorten: Sie starten mit einer
-            kostenlosen Online-Bewertung, erhalten ein nachvollziehbares Angebot und lassen Ihr Fahrzeug bei
-            Bedarf kostenlos abholen. Der Unterschied liegt in der Nähe – Termine in Bodenheim und den direkt
-            angrenzenden Gemeinden lassen sich ohne lange Anfahrtswege koordinieren, weil unser Team von hier
+            kostenlosen Online-Bewertung, erhalten ein nachvollziehbares Angebot und übergeben Ihr Fahrzeug bei uns Am Kuemmerling 41a. Der Unterschied liegt in der Nähe – aus Bodenheim und den direkt angrenzenden Gemeinden ist die Anfahrt kurz, weil unser Team von hier
             aus arbeitet.
           </p>
           <p className="text-lg text-slate-600 font-medium leading-relaxed">
@@ -184,7 +182,7 @@ const AutoankaufBodenheimPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für den nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">

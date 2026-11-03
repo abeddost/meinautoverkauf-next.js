@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | Meinautoverkauf.de',
   },
   description:
-    'Autoankauf in Frankfurt, Wiesbaden, Mainz und ganz Deutschland. Online bewerten, Termin buchen, Fahrzeug abgeben – sofortige Auszahlung.',
+    'Autoankauf mit Filialen in Bodenheim und Rüsselsheim: online bewerten, Termin buchen, Fahrzeug abgeben, Auszahlung bei Übergabe.',
   metadataBase: new URL(SITE_URL),
   openGraph: {
     siteName: 'Meinautoverkauf.de',
@@ -34,9 +34,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Autoankauf – Fair & Schnell | Meinautoverkauf.de',
-    description:
-      'Autoankauf in Frankfurt, Wiesbaden, Mainz und ganz Deutschland. Online bewerten, Termin buchen, Fahrzeug abgeben – sofortige Auszahlung.',
     images: ['/og-image.webp'],
   },
   manifest: '/site.webmanifest',

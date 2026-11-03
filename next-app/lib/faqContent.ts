@@ -6,177 +6,202 @@ export interface FAQItem {
 export const HOME_FAQS: FAQItem[] = [
   {
     q: "Wie kann ich mein Auto online verkaufen?",
-    a: "Geben Sie die Fahrzeugdaten in unser Online-Bewertungstool ein. Sie erhalten sofort ein unverbindliches Angebot. Wenn Ihnen der Preis zusagt, vereinbaren Sie einen Abholtermin. Wir holen das Auto bei Ihnen ab, prüfen den Zustand und überweisen Ihnen das Geld direkt."
+    a: "Geben Sie die Fahrzeugdaten in unsere Online-Bewertung ein. Sie erhalten sofort eine unverbindliche Preiseinschätzung. Wenn sie Ihnen zusagt, buchen Sie einen Termin in unserer Filiale in Bodenheim oder Rüsselsheim. Dort prüfen wir das Fahrzeug und nennen unser verbindliches Angebot."
   },
   {
     q: "Wie schnell bekomme ich mein Geld?",
-    a: "In der Regel ist das Geld innerhalb weniger Stunden nach Fahrzeugübergabe auf Ihrem Konto. Bei Übergabe am Vormittag oft noch am selben Tag."
+    a: "Wir veranlassen die Überweisung am Tag der Übergabe, sobald der Kaufvertrag unterschrieben ist. Wann das Geld auf Ihrem Konto ist, hängt von den Banklaufzeiten ab."
   },
   {
-    q: "Kauft ihr auch Autos mit Motorschaden?",
-    a: "Ja, wir kaufen Fahrzeuge in jedem Zustand – auch mit Motorschaden, Unfallschaden oder ohne TÜV. Selbst nicht fahrbereite Autos haben noch einen Wert für uns."
+    q: "Kaufen Sie auch Autos mit Motorschaden?",
+    a: "Ja, auch Fahrzeuge mit Motorschaden, Unfallschaden oder ohne TÜV kaufen wir an. Selbst nicht fahrbereite Autos können noch einen Restwert haben. Rufen Sie uns in diesem Fall vor dem Termin an, damit wir die Übergabe besprechen können."
   },
   {
     q: "Ist die Bewertung wirklich kostenlos und unverbindlich?",
-    a: "Absolut! Die Online-Bewertung ist 100% kostenlos und verpflichtet Sie zu nichts. Sie können das Angebot annehmen oder ablehnen – ganz wie Sie möchten."
+    a: "Ja. Die Online-Bewertung ist kostenlos und verpflichtet Sie zu nichts. Auch das Angebot nach der Fahrzeugprüfung können Sie annehmen oder ablehnen."
   },
   {
-    q: "Was passiert, wenn das Auto bei der Abholung anders aussieht als beschrieben?",
-    a: "Sollte der tatsächliche Zustand von Ihren Angaben abweichen, passen wir den Preis fair an. Sie entscheiden dann, ob Sie zum angepassten Preis verkaufen möchten oder nicht. Völlig ohne Druck."
+    q: "Was passiert, wenn das Auto bei der Prüfung anders aussieht als beschrieben?",
+    a: "Weicht der tatsächliche Zustand von Ihren Angaben ab, passen wir den Preis an. Sie entscheiden dann, ob Sie zu diesem Preis verkaufen möchten oder nicht."
   },
   {
     q: "Muss ich das Auto selbst abmelden?",
-    a: "Nein, wir übernehmen die Abmeldung bei der Zulassungsstelle kostenlos für Sie. Sie müssen sich um nichts kümmern."
+    a: "Nein, wir übernehmen die Abmeldung bei der Zulassungsstelle kostenlos für Sie."
   },
   {
-    q: "Welche Marken und Modelle kauft ihr an?",
-    a: "Wir kaufen alle gängigen Marken: VW, Audi, BMW, Mercedes, Opel, Ford, Toyota, Renault, Peugeot, Skoda, Seat und viele mehr. Auch Premiummarken, Sportwagen und Oldtimer."
+    q: "Welche Marken und Modelle kaufen Sie an?",
+    a: "Wir kaufen alle gängigen Marken: VW, Audi, BMW, Mercedes, Opel, Ford, Toyota, Renault, Hyundai, Peugeot, Skoda, Seat und viele mehr. Auch Premiummarken, Sportwagen und Oldtimer."
   },
   {
-    q: "Ist der Service in meiner Stadt verfügbar?",
-    a: "Wir sind deutschlandweit aktiv – von Großstädten wie Berlin, München, Hamburg, Köln, Frankfurt, Stuttgart bis zu kleineren Städten wie Wiesbaden, Mannheim, Karlsruhe, Nürnberg oder Dresden."
+    q: "Wo findet der Verkauf statt?",
+    a: "Die Übergabe findet in einer unserer beiden Filialen statt: Am Kuemmerling 41a in 55294 Bodenheim oder Wormser Str. 8b in 65428 Rüsselsheim am Main. Die Online-Bewertung funktioniert von überall. Wohnen Sie weiter entfernt, rufen Sie uns vor einer Anreise an."
   },
   {
     q: "Was muss ich zur Fahrzeugübergabe mitbringen?",
-    a: "Sie benötigen: Fahrzeugbrief (Zulassungsbescheinigung Teil II), Fahrzeugschein (Zulassungsbescheinigung Teil I), alle Fahrzeugschlüssel, sowie Ihren Personalausweis. Falls vorhanden: Serviceheft und TÜV-Berichte."
+    a: "Sie benötigen: Fahrzeugbrief (Zulassungsbescheinigung Teil II), Fahrzeugschein (Zulassungsbescheinigung Teil I), alle Fahrzeugschlüssel sowie Ihren Personalausweis. Falls vorhanden: Serviceheft und TÜV-Berichte."
   },
   {
     q: "Kann ich mein Fahrzeug auch ohne Inserat verkaufen?",
-    a: "Ja, genau dafür sind wir da! Sie müssen keine Inserate auf Portalen schalten, keine Fotos machen und keine Interessenten empfangen. Wir übernehmen den kompletten Verkaufsprozess für Sie."
+    a: "Ja, genau dafür sind wir da. Sie müssen keine Inserate auf Portalen schalten, keine Fotos machen und keine Interessenten empfangen."
   }
 ];
 
-export const RATGEBER_FAQS: FAQItem[] = [...HOME_FAQS];
+export const RATGEBER_FAQS: FAQItem[] = [
+  {
+    q: "Muss der Kaufvertrag beim Autoverkauf schriftlich sein?",
+    a: "Gesetzlich ist für einen Autokauf keine bestimmte Form vorgeschrieben. Ein schriftlicher Vertrag ist trotzdem dringend zu empfehlen, weil er Zustand, bekannte Mängel, Kilometerstand und Haftung nachweisbar festhält."
+  },
+  {
+    q: "Welche Mängel muss ich beim Verkauf angeben?",
+    a: "Alle Mängel und Unfallschäden, die Ihnen bekannt sind. Ein Haftungsausschluss schützt Sie nicht, wenn Sie einen bekannten Mangel arglistig verschweigen."
+  },
+  {
+    q: "Lohnt sich eine Reparatur vor dem Verkauf?",
+    a: "Kleine, günstige Reparaturen können sich lohnen. Größere Reparaturen holen Sie beim Verkauf oft nicht wieder herein. Lassen Sie sich die Kosten nennen und vergleichen Sie sie mit dem erwarteten Mehrerlös."
+  },
+  {
+    q: "Kann ich ein Auto ohne TÜV verkaufen?",
+    a: "Ja, das ist möglich. Der Preis fällt in der Regel niedriger aus. Wer mit abgelaufener HU fährt, riskiert ein Verwarn- oder Bußgeld, und ein Kurzzeitkennzeichen setzt eine gültige HU voraus. Klären Sie den Transport also vorab."
+  },
+  {
+    q: "Wer meldet das Auto nach dem Verkauf ab?",
+    a: "Das regeln Käufer und Verkäufer untereinander. Beim Privatverkauf ist es am sichersten, das Auto vor der Übergabe selbst abzumelden. Beim Verkauf an uns übernehmen wir die Abmeldung kostenfrei."
+  },
+  {
+    q: "Woran erkenne ich Betrug beim Autoverkauf?",
+    a: "Typische Warnzeichen sind Käufer, die das Auto ungesehen kaufen wollen, angebliche Überweisungsbelege, Zahlungen über Dritte oder Bitten um Vorkasse für Transport und Gebühren. Übergeben Sie Auto und Papiere erst, wenn das Geld sicher bei Ihnen eingegangen ist."
+  }
+];
 
 export const AUTO_BEWERTEN_FAQS: FAQItem[] = [
   {
     q: "Was ist mein Auto wert – wie genau ist die Online-Bewertung?",
-    a: "Unsere KI-gestützte Bewertung liefert eine fundierte Einschätzung auf Basis vieler aktueller Transaktionen und relevanter Faktoren. Der tatsächliche Verkaufspreis kann je nach Ausstattung, Zustand und Nachfrage abweichen."
+    a: "Unsere KI-gestützte Bewertung ist eine Einschätzung auf Basis Ihrer Angaben und aktueller Online-Angebote vergleichbarer Fahrzeuge. Der tatsächliche Preis kann je nach Ausstattung, Zustand und Nachfrage abweichen. Verbindlich wird er erst nach der Fahrzeugprüfung."
   },
   {
     q: "Warum weicht mein Online-Wert vom Händlerangebot ab?",
-    a: "Der Händler-Ankaufspreis liegt meist unter dem Privatverkaufspreis. Ein Händler muss Kosten für Aufbereitung, Garantie, Standzeit und seine eigene Marge einplanen. Dafür erhalten Sie eine schnelle und bequeme Abwicklung."
+    a: "Der Händler-Ankaufspreis liegt unter dem Privatverkaufspreis. Ein Händler muss Kosten für Aufbereitung, Gewährleistung, Standzeit und seine eigene Marge einplanen. Dafür erhalten Sie eine schnelle und bequeme Abwicklung."
   },
   {
     q: "Wie lange ist die Bewertung gültig?",
-    a: "Der Gebrauchtwagenmarkt ist dynamisch. Unsere Bewertung spiegelt den aktuellen Marktwert wider und ist in der Regel 7 bis 14 Tage verbindlich. Danach empfehlen wir eine erneute Bewertung, um aktuelle Marktveränderungen zu berücksichtigen."
+    a: "Die Online-Bewertung zeigt den Stand zum Zeitpunkt Ihrer Anfrage und ist unverbindlich. Der Gebrauchtwagenmarkt ändert sich laufend. Liegt Ihre Bewertung schon länger zurück, empfehlen wir eine neue."
   },
   {
     q: "Kostet es etwas, mein Auto schätzen zu lassen?",
-    a: "Nein, bei Meinautoverkauf.de ist die Wertermittlung ein reiner Service und bleibt kostenfrei. Es entstehen keine versteckten Kosten oder Verpflichtungen."
+    a: "Nein, die Online-Bewertung ist kostenlos und ohne Verpflichtung."
   },
   {
     q: "Werden Unfallschäden berücksichtigt?",
-    a: "Ja, im Rahmen der detaillierten Zustandsbeschreibung können Sie Schäden, Vorschäden und Unfallhistorie angeben. Wir fließen diese fair in die Berechnung ein, sodass Sie einen realistischen Wert erhalten."
+    a: "Ja. Geben Sie im Formular den Zustand und bekannte Schäden an. Diese Angaben fließen in die Einschätzung ein und werden bei der Fahrzeugprüfung abgeglichen."
   },
   {
     q: "Kann ich auch Fahrzeuge mit Motorschaden bewerten lassen?",
-    a: "Absolut. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV haben einen Restwert. Unsere KI berücksichtigt den Zustand und ermittelt einen fairen Preis für Ihr Fahrzeug – auch für den Export oder als Teilespender."
+    a: "Ja. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder ohne TÜV können noch einen Restwert haben, etwa für den Export oder als Teilespender."
   },
   {
     q: "Wie viel ist mein Auto wert, wenn es getunt oder umgebaut ist?",
-    a: "Die KI ist auf Serienmodelle optimiert. Bei speziellen Umbauten, Tuning oder seltenen Fahrzeugen empfehlen wir nach der Online-Einschätzung ein persönliches Gespräch mit unseren Experten für eine individuelle Bewertung."
+    a: "Die Online-Bewertung passt am besten zu Serienfahrzeugen. Bei Umbauten, Tuning oder seltenen Fahrzeugen rufen Sie uns nach der Online-Einschätzung am besten an."
   },
   {
     q: "Muss ich mein Auto nach der Bewertung verkaufen?",
-    a: "Nein, die Bewertung ist völlig unverbindlich. Sie können den Wert Ihres Autos ermitteln, ohne jegliche Verkaufsverpflichtung einzugehen. Nutzen Sie unseren Service einfach zur Information."
+    a: "Nein. Die Bewertung ist unverbindlich, und Sie können sie auch nur zur Information nutzen."
   }
 ];
 
 export const AUTO_VERKAUFEN_FAQS: FAQItem[] = [
   {
     q: "Wie schnell kann ich mein Auto verkaufen?",
-    a: "Bei Meinautoverkauf.de können Sie Ihr Auto innerhalb von 24-48 Stunden verkaufen. Nach der Online-Bewertung vereinbaren Sie einen Termin, das Fahrzeug wird geprüft, der Vertrag unterzeichnet und das Geld überwiesen – alles an einem Tag möglich."
+    a: "Das hängt davon ab, wann Sie einen Termin buchen. Bewertung, Termin in der Filiale, Fahrzeugprüfung, Vertrag und Überweisung können sehr zügig ablaufen, wenn alle Unterlagen vollständig sind."
   },
   {
     q: "Kann ich ein finanziertes Auto verkaufen?",
-    a: "Ja, absolut! Wir lösen die Finanzierung direkt bei Ihrer Bank ab und zahlen Ihnen den Differenzbetrag aus. Wir kümmern uns um den gesamten Schriftverkehr mit der finanzierenden Bank."
+    a: "Ja. Die Restschuld wird aus dem Kaufpreis bei Ihrer Bank abgelöst, und Sie erhalten den Differenzbetrag. Halten Sie dafür die Ablösesumme Ihrer Bank bereit. Mehr dazu im Ratgeber zum Verkauf trotz Finanzierung."
   },
   {
     q: "Was passiert mit meiner Versicherung und Steuern?",
-    a: "Wir melden Ihr Fahrzeug zeitnah nach dem Ankauf bei der Zulassungsstelle ab. Damit endet automatisch auch die Versicherungspflicht und die KFZ-Steuerpflicht. Sie sollten Ihre Versicherung trotzdem informieren."
+    a: "Nach dem Ankauf melden wir das Fahrzeug bei der Zulassungsstelle ab. Mit der Abmeldung enden Kfz-Steuer und Versicherungspflicht. Informieren Sie Ihre Versicherung trotzdem über den Verkauf."
   },
   {
     q: "Muss ich das Auto vor dem Verkauf reparieren lassen?",
-    a: "Nein, in der Regel nicht. Wir kaufen Fahrzeuge in jedem Zustand – auch mit Motorschaden, Unfallschäden oder ohne TÜV. Größere Reparaturen vor dem Verkauf lohnen sich meist finanziell nicht für Sie."
+    a: "In der Regel nicht. Wir kaufen auch Fahrzeuge mit Motorschaden, Unfallschäden oder ohne TÜV. Größere Reparaturen vor dem Verkauf lohnen sich meist nicht."
   },
   {
     q: "Wie viel weniger bekomme ich beim Händler als beim Privatverkauf?",
-    a: "Der Händler-Ankaufspreis liegt typischerweise 10-20% unter dem Privatverkaufspreis. Dafür sparen Sie Zeit und Aufwand, und die Abwicklung ist vertraglich klar geregelt."
+    a: "Das hängt stark vom Fahrzeug ab. Der Händlerpreis liegt spürbar unter dem Privatverkaufspreis, weil Marge, Aufbereitung und Risiko einkalkuliert sind. Dafür sparen Sie Zeit und Aufwand. Unser Vergleich Privatverkauf oder Händler zeigt ein Rechenbeispiel."
   },
   {
     q: "Kann ich auch ein Auto mit Motorschaden verkaufen?",
-    a: "Ja. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder anderen Defekten haben einen Restwert. Wir berücksichtigen den Zustand, Ersatzteile und Exportpotenzial in unserer Bewertung."
+    a: "Ja. Auch Fahrzeuge mit Motorschaden, Getriebeschaden oder anderen Defekten können einen Restwert haben, zum Beispiel für den Export oder als Teileträger."
   },
   {
     q: "Ist der Export meines Autos möglich?",
-    a: "Ja, wir haben ein internationales Händlernetzwerk. Wenn Ihr Fahrzeug für den Export geeignet ist (z.B. ältere Mercedes, robuste Geländewagen, Dieselfahrzeuge), kann der Export eine Option sein."
+    a: "Für manche Fahrzeuge kann der Export ein passender Weg sein, etwa bei älteren Mercedes, robusten Geländewagen oder Dieselfahrzeugen. Mehr dazu im Ratgeber Autoexport."
   },
   {
     q: "Welche Dokumente brauche ich zum Auto verkaufen?",
-    a: "Sie benötigen: Fahrzeugschein, Fahrzeugbrief, TÜV-Bericht, alle Schlüssel, Scheckheft/Service-Nachweise, Ihren Personalausweis und Ihre Bankverbindung. Je vollständiger die Unterlagen, desto reibungsloser der Verkauf."
+    a: "Sie benötigen Fahrzeugschein, Fahrzeugbrief, alle Schlüssel und Ihren Personalausweis. Hilfreich sind außerdem TÜV-Bericht, Scheckheft und Rechnungen. Je vollständiger die Unterlagen, desto reibungsloser der Verkauf."
   },
   {
-    q: "Haftet ich nach dem Verkauf noch für Mängel?",
-    a: "Nein. Beim Verkauf an einen Händler (wie uns) verkaufen Sie das Fahrzeug in der Regel 'wie gesehen' ohne Gewährleistung. Es gibt keine späteren Reklamationen oder Haftungsansprüche."
+    q: "Hafte ich nach dem Verkauf noch für Mängel?",
+    a: "Im Kaufvertrag wird die Sachmängelhaftung ausgeschlossen. Das gilt jedoch nicht für Mängel, die Sie kennen und verschweigen. Geben Sie bekannte Mängel und Unfallschäden deshalb immer an."
   },
   {
-    q: "Wie lange dauert die Fahrzeugprüfung vor Ort?",
-    a: "Die Begutachtung und Vertragsunterzeichnung dauert in der Regel 45-60 Minuten. Unser Experte prüft den Zustand, vergleicht mit den Angaben und erstellt das finale Angebot."
+    q: "Wie läuft die Fahrzeugprüfung vor Ort ab?",
+    a: "Wir prüfen in der Filiale den Zustand, vergleichen ihn mit Ihren Angaben und nennen unser verbindliches Angebot. Sind Sie einverstanden, unterschreiben wir den Kaufvertrag."
   }
 ];
 
 export const VORTEILE_FAQS: FAQItem[] = [
   {
-    q: "Warum ist Ihr Autoankauf besser als der Privatverkauf?",
-    a: "Beim Privatverkauf investieren Sie Wochen in Inserate, Besichtigungen und Verhandlungen – mit Haftungsrisiken und Betrugsgefahr. Bei uns verkaufen Sie Ihr Auto in 24-48 Stunden, erhalten sofort Geld, haben keine Haftung und sparen enorm viel Zeit und Nerven. Wir übernehmen alle Risiken und den gesamten Papierkram."
+    q: "Ist der Verkauf an Sie besser als der Privatverkauf?",
+    a: "Das kommt darauf an. Privat erzielen Sie meist einen höheren Preis, investieren aber Zeit in Inserat, Besichtigungen und Verhandlungen. Bei uns ist der Preis niedriger, dafür ist der Ablauf planbar: online bewerten, Termin buchen, Vertrag und Auszahlung bei der Übergabe."
   },
   {
-    q: "Ist die Hausabholung wirklich kostenlos?",
-    a: "Ja, absolut. Innerhalb unseres Einzugsgebiets berechnen wir keinen Cent für die Abholung. Der Preis, den wir Ihnen anbieten, kommt ohne Abzüge bei Ihnen an. Keine Kilometer-Pauschalen, keine Logistikgebühren – komplett kostenfrei."
+    q: "Kommen Sie zu mir nach Hause?",
+    a: "Die Übergabe findet in unserer Filiale in Bodenheim oder Rüsselsheim statt. Ist Ihr Auto nicht fahrbereit, rufen Sie uns vorher an, dann besprechen wir die Übergabe."
   },
   {
     q: "Wie schnell erhalte ich mein Geld?",
-    a: "Die Auszahlung erfolgt sofort nach Vertragsunterzeichnung per Banküberweisung. In den meisten Fällen ist das Geld noch am selben Tag auf Ihrem Konto. Keine Wartezeiten, keine verzögerten Zahlungen."
+    a: "Wir veranlassen die Banküberweisung am Tag der Übergabe, sobald der Kaufvertrag unterschrieben ist. Wann das Geld auf Ihrem Konto ist, hängt von den Banklaufzeiten ab."
   },
   {
     q: "Was passiert, wenn mein Auto noch finanziert ist?",
-    a: "Kein Problem! Wir kontaktieren Ihre finanzierende Bank, begleichen die Restschuld direkt und zahlen Ihnen den Differenzbetrag aus. Dieser Service ist kostenlos und erspart Ihnen jegliche Kommunikation mit der Bank."
+    a: "Die Restschuld wird aus dem Kaufpreis bei Ihrer Bank abgelöst, und Sie erhalten den Differenzbetrag. Halten Sie dafür die Ablösesumme bereit."
   },
   {
     q: "Muss ich das Auto vorher putzen oder reparieren?",
-    a: "Ein sauberer, gepflegter Wagen macht immer einen besseren Eindruck und kann die Bewertung positiv beeinflussen. Größere Reparaturen vor dem Verkauf lohnen sich jedoch meist nicht finanziell. Wir kaufen Fahrzeuge in jedem Zustand – auch mit Mängeln."
+    a: "Ein sauberer, gepflegter Wagen macht immer einen besseren Eindruck. Größere Reparaturen vor dem Verkauf lohnen sich jedoch meist nicht. Wir kaufen auch Fahrzeuge mit Mängeln."
   },
   {
     q: "Gibt es versteckte Gebühren oder Kosten?",
-    a: "Nein, absolut nicht. Unser gesamtes Geschäftsmodell basiert auf Transparenz. Es gibt keine Servicepauschalen, Bearbeitungsgebühren, Logistikkosten oder sonstige versteckte Kosten. Der genannte Preis ist der Preis, den Sie erhalten."
+    a: "Nein. Bewertung und Abmeldung sind kostenlos, und wir berechnen keine Bearbeitungsgebühren. Der im Kaufvertrag genannte Preis ist der Betrag, den Sie erhalten. Weicht der Zustand von Ihren Angaben ab, ändern wir das Angebot vor dem Vertrag, nicht danach."
   },
   {
     q: "Was passiert, wenn ich den Termin absagen muss?",
-    a: "Kein Problem. Rufen Sie uns einfach kurz an oder nutzen Sie den Link in Ihrer Bestätigungsmail. Wir finden flexibel einen neuen Termin, der Ihnen besser passt. Es gibt keine Stornierungsgebühren oder Ähnliches."
+    a: "Rufen Sie uns kurz an, dann finden wir einen neuen Termin. Stornierungsgebühren gibt es nicht."
   },
   {
     q: "Kaufen Sie auch Autos mit Motorschaden oder Unfallschäden?",
-    a: "Ja, wir kaufen Fahrzeuge in jedem Zustand – ob Motorschaden, Getriebeschaden, Unfallschaden oder ohne TÜV. Auch defekte Autos haben einen Restwert."
+    a: "Ja, auch mit Motorschaden, Getriebeschaden, Unfallschaden oder ohne TÜV. Solche Fahrzeuge können noch einen Restwert haben."
   },
   {
     q: "Wie funktioniert die Abmeldung des Fahrzeugs?",
-    a: "Wir übernehmen die komplette Abmeldung bei der Zulassungsstelle für Sie. Sie müssen sich um nichts kümmern. Nach der Abmeldung endet automatisch auch Ihre Versicherungs- und Steuerpflicht. Wir stellen Ihnen alle nötigen Unterlagen zur Verfügung."
+    a: "Wir übernehmen die Abmeldung bei der Zulassungsstelle für Sie. Mit der Abmeldung enden Kfz-Steuer und Versicherungspflicht. Informieren Sie Ihre Versicherung trotzdem über den Verkauf."
   },
   {
-    q: "Warum sollte ich mich für Meinautoverkauf.de entscheiden?",
-    a: "Wir kombinieren die Vorteile eines schnellen Händlerankaufs mit fairer Preisermittlung. Sie erhalten einen marktgerechten Preis, eine schnelle Auszahlung, kostenlose Abholung und kompletten Service – alles aus einer Hand."
+    q: "Wann ist Meinautoverkauf.de die richtige Wahl?",
+    a: "Wenn Ihnen ein planbarer Ablauf wichtiger ist als der letzte Euro, oder wenn Ihr Auto Schäden hat und sich privat schwer verkaufen lässt. Wenn Sie Zeit haben und Ihr Auto in gutem Zustand ist, kann ein Privatverkauf mehr bringen."
   }
 ];
 
 export const FRANKFURT_FAQS: FAQItem[] = [
   {
     q: "Kaufen Sie auch Firmenwagen im Bankenviertel oder Westend an?",
-    a: "Ja. Wir kaufen Firmen- und Dienstwagen in ganz Frankfurt an, auch direkt an Bürostandorten im Bankenviertel, Westend oder Europaviertel. Auf Wunsch mit flexiblen Abendterminen."
+    a: "Ja. Wir kaufen Firmen- und Dienstwagen aus ganz Frankfurt an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 25 Minuten von Frankfurt entfernt."
   },
   {
-    q: "Ist eine Abholung am Flughafen Frankfurt möglich?",
-    a: "Ja, wir organisieren auch Übergaben im Umfeld des Frankfurter Flughafens, wenn Sie beruflich viel reisen oder kurzfristig umziehen. Termin und Übergabepunkt stimmen wir individuell mit Ihnen ab."
+    q: "Ist Ihre Filiale gut vom Frankfurter Flughafen erreichbar?",
+    a: "Ja. Unsere Filiale in Rüsselsheim liegt nah am Flughafen. Wenn Sie viel reisen oder kurzfristig umziehen, buchen Sie den Termin am besten mit etwas Vorlauf vor Ihrer Abreise."
   },
   {
     q: "Kaufen Sie Fahrzeuge mit Umweltzonen-Problemen oder ältere Diesel?",
@@ -184,7 +209,7 @@ export const FRANKFURT_FAQS: FAQItem[] = [
   },
   {
     q: "Wie schnell ist die Auszahlung beim Autoankauf Frankfurt?",
-    a: "Nach Fahrzeugprüfung und Vertragsabschluss erfolgt die Auszahlung in der Regel noch am selben Tag per Überweisung. Die genaue Dauer hängt von Banklaufzeiten und Uhrzeit ab."
+    a: "Nach Fahrzeugprüfung und Vertragsabschluss veranlassen wir die Überweisung am Tag der Übergabe. Wann das Geld auf Ihrem Konto ist, hängt von den Banklaufzeiten ab."
   },
   {
     q: "Übernehmen Sie die Abmeldung bei der Zulassungsstelle Frankfurt?",
@@ -217,12 +242,12 @@ export const WIESBADEN_FAQS: FAQItem[] = [
 
 export const MAINZ_FAQS: FAQItem[] = [
   {
-    q: "Holen Sie Fahrzeuge in allen Mainzer Stadtteilen ab?",
-    a: "Ja. Wir holen Fahrzeuge in allen Mainzer Stadtteilen ab, inklusive Altstadt, Neustadt, Gonsenheim, Bretzenheim, Weisenau, Lerchenberg sowie im Umland."
+    q: "Kaufen Sie Fahrzeuge aus allen Mainzer Stadtteilen an?",
+    a: "Ja. Fahrzeuge aus allen Mainzer Stadtteilen und dem Umland kaufen wir an. Die Übergabe findet in unserer Filiale in Bodenheim statt, ohne Stau etwa 17 Minuten von Mainz entfernt."
   },
   {
     q: "Ist Autoankauf auch in Mainz-Kastel und Mainz-Kostheim möglich?",
-    a: "Ja. Auch in Mainz-Kastel und Mainz-Kostheim bieten wir Abholung und Ankauf an."
+    a: "Ja. Auch Fahrzeuge aus Mainz-Kastel und Mainz-Kostheim kaufen wir an. Für die rechte Rheinseite kann auch unsere Filiale in Rüsselsheim günstig liegen."
   },
   {
     q: "Kaufen Sie auch Studentenautos oder Fahrzeuge mit hoher Laufleistung?",
@@ -256,8 +281,8 @@ export const RUESSELSHEIM_FAQS: FAQItem[] = [
     a: "Ja. Hochkilometrige Dieselfahrzeuge und ältere Modelle haben oft noch einen soliden Restwert – besonders wenn sie für den Export geeignet sind. Wir bewerten transparent auf Basis aktueller Marktdaten."
   },
   {
-    q: "Holen Sie Fahrzeuge aus allen Rüsselsheimer Stadtteilen ab?",
-    a: "Ja. Wir holen in der Kernstadt sowie in Bauschheim, Königstädten, Haßloch, Crumstadt, Goddelau, Leeheim und Nauheim ab – ohne zusätzliche Anfahrtskosten."
+    q: "Kaufen Sie Fahrzeuge aus allen Rüsselsheimer Stadtteilen an?",
+    a: "Ja. Fahrzeuge aus der Kernstadt sowie aus Bauschheim, Königstädten, Haßloch, Crumstadt, Goddelau, Leeheim und Nauheim kaufen wir an. Die Übergabe findet direkt in unserer Filiale in Rüsselsheim statt."
   }
 ];
 
@@ -268,15 +293,15 @@ export const DARMSTADT_FAQS: FAQItem[] = [
   },
   {
     q: "Können internationale Mitarbeitende (z. B. von ESA/ESOC oder Merck) ihr Fahrzeug verkaufen?",
-    a: "Ja. Wir kaufen auch Fahrzeuge von internationalen Beschäftigten an, einschließlich Fahrzeuge mit ausländischer Zulassung oder kurzem deutschen Zulassungszeitraum. Sprechen Sie uns einfach an."
+    a: "Ja. Sprechen Sie uns vorab an, wenn Ihr Fahrzeug im Ausland zugelassen ist oder Sie Deutschland bald verlassen. Dann prüfen wir vorab, welche Unterlagen nötig sind."
   },
   {
     q: "Welche Zulassungsstelle ist für Darmstadt zuständig?",
     a: "Fahrzeuge mit Darmstädter Kennzeichen (DA) werden beim Straßenverkehrsamt der Stadt Darmstadt abgemeldet. Wir übernehmen die Abmeldung vollständig für Sie – kein Behördengang nötig."
   },
   {
-    q: "Holen Sie Fahrzeuge auch in Griesheim, Weiterstadt oder Pfungstadt ab?",
-    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Darmstadt sowie den Landkreis Darmstadt-Dieburg, inklusive Griesheim, Weiterstadt, Pfungstadt, Langen und Mörfelden-Walldorf."
+    q: "Kaufen Sie auch Fahrzeuge aus Griesheim, Weiterstadt oder Pfungstadt an?",
+    a: "Ja. Fahrzeuge aus Griesheim, Weiterstadt, Pfungstadt, Langen und Mörfelden-Walldorf kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 22 Minuten von Darmstadt entfernt."
   },
   {
     q: "Kaufen Sie auch zurückgegebene Firmenwagen oder Leasingfahrzeuge?",
@@ -290,8 +315,8 @@ export const KOBLENZ_FAQS: FAQItem[] = [
     a: "Ja. In Koblenz bewerten wir regelmäßig Fahrzeuge aus Behörden-, Dienst- und Fuhrparkumfeld. Entscheidend sind Zustand, Laufleistung und nachvollziehbare Historie."
   },
   {
-    q: "Holen Sie Fahrzeuge auch im Rhein-Mosel-Umland wie Lahnstein oder Neuwied ab?",
-    a: "Ja. Unser Einzugsgebiet umfasst Koblenz sowie angrenzende Orte wie Lahnstein, Neuwied, Andernach, Bendorf und Mülheim-Kärlich. Die Abholung ist für Sie kostenlos."
+    q: "Kaufen Sie auch Fahrzeuge aus dem Rhein-Mosel-Umland an?",
+    a: "Ja. Fahrzeuge aus Lahnstein, Neuwied, Andernach, Bendorf und Mülheim-Kärlich kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 73 Minuten von Koblenz entfernt."
   },
   {
     q: "Welche Zulassungsstelle ist für Fahrzeuge in Koblenz zuständig?",
@@ -317,12 +342,12 @@ export const OFFENBACH_FAQS: FAQItem[] = [
     a: "In der Region gibt es unterschiedliche Zuständigkeiten. Wir prüfen vor dem Ankauf, welche Behörde für Ihr Fahrzeug zuständig ist, und übernehmen die korrekte Abmeldung für Sie."
   },
   {
-    q: "Ist eine Abholung in Kaiserlei, Hafen Offenbach oder im Gewerbegebiet möglich?",
-    a: "Ja. Wir holen Fahrzeuge auch an Firmenstandorten und Gewerbeadressen ab, z. B. im Bereich Kaiserlei oder Hafen Offenbach. Termin und Übergabepunkt stimmen wir individuell ab."
+    q: "Kaufen Sie auch Fahrzeuge von Firmen aus Kaiserlei oder vom Hafen Offenbach an?",
+    a: "Ja. Fahrzeuge aus Firmen im Bereich Kaiserlei oder Hafen Offenbach kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 28 Minuten von Offenbach entfernt."
   },
   {
     q: "Kaufen Sie auch Fahrzeuge von internationalen Eigentümern an?",
-    a: "Ja. Wir kaufen auch Fahrzeuge von internationalen Eigentümern an. Bei ausländischen Dokumenten prüfen wir die Unterlagen vorab, damit die Abwicklung reibungslos bleibt."
+    a: "Ja. Bei ausländischen Dokumenten sprechen Sie uns bitte vorab an, damit wir die Unterlagen prüfen können."
   },
   {
     q: "Nehmen Sie Firmenwagen und Leasingrückläufer in Offenbach an?",
@@ -333,7 +358,7 @@ export const OFFENBACH_FAQS: FAQItem[] = [
 export const KOELN_FAQS: FAQItem[] = [
   {
     q: "Kaufen Sie Fahrzeuge in allen Kölner Stadtteilen an?",
-    a: "Ja. Wir holen Fahrzeuge in allen Kölner Stadtteilen ab, unter anderem in Ehrenfeld, Nippes, Lindenthal, Porz, Mülheim, Kalk und Rodenkirchen."
+    a: "Ja, aus allen Kölner Stadtteilen. Die Übergabe findet allerdings in unserer Filiale in Rüsselsheim statt, ohne Stau rund zwei Stunden von Köln entfernt. Rufen Sie uns vor einer Anreise an, damit wir klären können, ob sich der Weg für Ihr Fahrzeug lohnt."
   },
   {
     q: "Ist der Ankauf auch bei typischen Pendlerfahrzeugen mit hoher Laufleistung möglich?",
@@ -349,14 +374,14 @@ export const KOELN_FAQS: FAQItem[] = [
   },
   {
     q: "Wie schnell erfolgt die Auszahlung beim Autoankauf Köln?",
-    a: "Nach Vertragsabschluss wird die Auszahlung in der Regel umgehend per Überweisung veranlasst, häufig noch am selben Tag."
+    a: "Nach Vertragsabschluss veranlassen wir die Überweisung am Tag der Übergabe. Wann das Geld auf Ihrem Konto ist, hängt von den Banklaufzeiten ab."
   }
 ];
 
 export const HAMBURG_FAQS: FAQItem[] = [
   {
-    q: "Holen Sie Fahrzeuge in ganz Hamburg und der Metropolregion ab?",
-    a: "Ja. Wir holen in allen Hamburger Bezirken sowie in Teilen der Metropolregion ab, zum Beispiel in Norderstedt, Ahrensburg, Seevetal oder Pinneberg."
+    q: "Muss ich mein Auto aus Hamburg selbst zur Filiale bringen?",
+    a: "In der Regel ja. Unsere Filialen liegen in Bodenheim und Rüsselsheim, rund 500 km von Hamburg entfernt. Rufen Sie uns vor einer Anreise an, damit wir klären können, ob sich der Weg für Ihr Fahrzeug lohnt."
   },
   {
     q: "Ist Autoankauf auch bei hoher Laufleistung oder Pendlerprofil möglich?",
@@ -378,16 +403,16 @@ export const HAMBURG_FAQS: FAQItem[] = [
 
 export const LUDWIGSHAFEN_FAQS: FAQItem[] = [
   {
-    q: "Ich arbeite im BASF-Schichtsystem: Sind frühe oder späte Übergabetermine in Ludwigshafen möglich?",
-    a: "Ja. Gerade im BASF-Umfeld koordinieren wir regelmäßig Termine außerhalb klassischer Bürozeiten. Teilen Sie uns Ihr Schichtfenster mit, dann planen wir die Fahrzeugübergabe entsprechend."
+    q: "Ich arbeite im BASF-Schichtsystem: Welche Übergabezeiten sind möglich?",
+    a: "Die Uhrzeiten im Online-Kalender liegen zwischen 10 und 18 Uhr. Passt das nicht zu Ihrer Schicht, rufen Sie uns an, dann suchen wir gemeinsam nach einer Lösung."
   },
   {
     q: "Kaufen Sie auch Fahrzeuge mit typischer Pendlerlaufleistung über A650, B9 oder Richtung Mannheim an?",
     a: "Ja. Hohe Laufleistung ist im Rhein-Neckar-Pendelverkehr normal. Wir bewerten nicht nur den Kilometerstand, sondern auch Wartungshistorie, Zustand und Ausstattung."
   },
   {
-    q: "Ist die Abholung in Oggersheim, Friesenheim, Mundenheim und Oppau ohne Aufpreis möglich?",
-    a: "Ja. Wir holen in allen großen Ludwigshafener Stadtteilen ab, darunter Oggersheim, Friesenheim, Mundenheim, Oppau, Gartenstadt und Rheingönheim."
+    q: "Kaufen Sie auch Fahrzeuge aus Oggersheim, Friesenheim, Mundenheim und Oppau an?",
+    a: "Ja. Fahrzeuge aus Oggersheim, Friesenheim, Mundenheim, Oppau, Gartenstadt und Rheingönheim kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 54 Minuten von Ludwigshafen entfernt."
   },
   {
     q: "Was benötige ich bei einem LU-Fahrzeug mit laufender Finanzierung oder Leasingablöse?",
@@ -405,12 +430,12 @@ export const HANAU_FAQS: FAQItem[] = [
     a: "Ja. Fahrzeuge aus dem täglichen Pendelverkehr rund um Hanau werden regelmäßig angekauft. Hohe Kilometerstände sind möglich, wenn Pflege- und Wartungszustand nachvollziehbar sind."
   },
   {
-    q: "Sind Abholungen in Kesselstadt, Steinheim, Großauheim und Wolfgang ohne Zusatzkosten möglich?",
-    a: "Ja. Wir bieten die Abholung im gesamten Hanauer Stadtgebiet an, inklusive Kesselstadt, Steinheim, Großauheim, Lamboy, Mittelbuchen und Wolfgang."
+    q: "Kaufen Sie auch Fahrzeuge aus Kesselstadt, Steinheim, Großauheim und Wolfgang an?",
+    a: "Ja. Fahrzeuge aus Kesselstadt, Steinheim, Großauheim, Lamboy, Mittelbuchen und Wolfgang kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 34 Minuten von Hanau entfernt."
   },
   {
-    q: "Kann die Übergabe in Hanau auch nach Feierabend in der Nähe vom Hanau Hauptbahnhof stattfinden?",
-    a: "In vielen Fällen ja. Gerade für Berufspendler stimmen wir die Übergabe flexibel ab, damit Sie den Verkauf ohne zusätzlichen Arbeitstag erledigen können."
+    q: "Zu welchen Zeiten kann ich mein Auto aus Hanau übergeben?",
+    a: "Den Termin buchen Sie online, die Uhrzeiten liegen zwischen 10 und 18 Uhr. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 34 Minuten von Hanau entfernt. Passt keine dieser Zeiten, rufen Sie uns an."
   },
   {
     q: "Kaufen Sie Firmenwagen aus dem Umfeld Heraeus oder dem Industriepark Hanau-Wolfgang an?",
@@ -428,8 +453,8 @@ export const NEUWIED_FAQS: FAQItem[] = [
     a: "Ja. Bei typischen Pendlerfahrzeugen aus Neuwied ist hohe Laufleistung normal. Wir bewerten deshalb immer Wartung, Zustand und Nachweise statt nur den Kilometerstand."
   },
   {
-    q: "Ist die Abholung in Heddesdorf, Engers, Niederbieber und Irlich ohne Zusatzkosten möglich?",
-    a: "Ja. Wir organisieren die Abholung im gesamten Stadtgebiet Neuwied, einschließlich Heddesdorf, Engers, Niederbieber, Irlich und den angrenzenden Ortsteilen."
+    q: "Kaufen Sie auch Fahrzeuge aus Heddesdorf, Engers, Niederbieber und Irlich an?",
+    a: "Ja. Fahrzeuge aus Heddesdorf, Engers, Niederbieber, Irlich und den angrenzenden Ortsteilen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 76 Minuten von Neuwied entfernt."
   },
   {
     q: "Kann ich mein NR-Fahrzeug verkaufen, wenn noch eine Finanzierung läuft?",
@@ -451,8 +476,8 @@ export const WETZLAR_FAQS: FAQItem[] = [
     a: "Ja. Gerade im Bereich Wetzlar sind solche Laufprofile häufig. Wir berücksichtigen Wartungshistorie, Verschleiß und Ausstattung für eine realistische Bewertung."
   },
   {
-    q: "Ist die Abholung in Dalheim, Nauborn, Hermannstein und gar nicht zentralen Lagen möglich?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Wetzlar ab, auch in Dalheim, Nauborn, Hermannstein und weiteren Ortsteilen ohne Zusatzkosten."
+    q: "Kaufen Sie auch Fahrzeuge aus Dalheim, Nauborn und Hermannstein an?",
+    a: "Ja. Fahrzeuge aus Dalheim, Nauborn, Hermannstein und den weiteren Ortsteilen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 57 Minuten von Wetzlar entfernt."
   },
   {
     q: "Kaufen Sie auch Firmen- oder Dienstwagen aus dem Wetzlarer Industrie- und Optikumfeld an?",
@@ -470,16 +495,16 @@ export const WETZLAR_FAQS: FAQItem[] = [
 
 export const BAD_HOMBURG_FAQS: FAQItem[] = [
   {
-    q: "Ist die Abholung in Kirdorf, Gonzenheim, Dornholzhausen und Ober-Erlenbach möglich?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Bad Homburg vor der Höhe ab, einschließlich Kirdorf, Gonzenheim, Dornholzhausen, Ober-Erlenbach und den angrenzenden Wohnlagen."
+    q: "Kaufen Sie auch Fahrzeuge aus Kirdorf, Gonzenheim, Dornholzhausen und Ober-Erlenbach an?",
+    a: "Ja. Fahrzeuge aus Kirdorf, Gonzenheim, Dornholzhausen, Ober-Erlenbach und den angrenzenden Wohnlagen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 30 Minuten von Bad Homburg entfernt."
   },
   {
     q: "Kaufen Sie in Bad Homburg auch Pendlerfahrzeuge mit hoher Laufleistung aus dem A5/A661-Korridor an?",
     a: "Ja. Gerade im Raum Bad Homburg sind solche Laufprofile üblich. Wir berücksichtigen Wartungshistorie, Zustand und Ausstattung für eine realistische Bewertung."
   },
   {
-    q: "Kann die Übergabe in Bad Homburg nach Feierabend oder nahe Bahnhof abgestimmt werden?",
-    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeits- und Pendelalltag in Bad Homburg vor der Höhe vereinbar sind."
+    q: "Zu welchen Zeiten kann ich mein Auto aus Bad Homburg übergeben?",
+    a: "Den Termin buchen Sie online, die Uhrzeiten liegen zwischen 10 und 18 Uhr. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 30 Minuten von Bad Homburg entfernt. Passt keine dieser Zeiten, rufen Sie uns an."
   },
   {
     q: "Ist ein Verkauf möglich, wenn mein Fahrzeug noch finanziert ist oder als ehemaliger Dienstwagen lief?",
@@ -493,8 +518,8 @@ export const BAD_HOMBURG_FAQS: FAQItem[] = [
 
 export const OBERURSEL_FAQS: FAQItem[] = [
   {
-    q: "Bieten Sie Abholung in Oberstedten, Bommersheim, Weißkirchen und Stierstadt an?",
-    a: "Ja. Wir holen Fahrzeuge in allen Oberurseler Stadtteilen ab, darunter Oberstedten, Bommersheim, Weißkirchen, Stierstadt und den angrenzenden Bereichen."
+    q: "Kaufen Sie auch Fahrzeuge aus Oberstedten, Bommersheim, Weißkirchen und Stierstadt an?",
+    a: "Ja. Fahrzeuge aus Oberstedten, Bommersheim, Weißkirchen, Stierstadt und den angrenzenden Bereichen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 32 Minuten von Oberursel entfernt."
   },
   {
     q: "Kaufen Sie in Oberursel auch Fahrzeuge mit täglicher Nutzung über B455 oder Richtung A661 an?",
@@ -516,16 +541,16 @@ export const OBERURSEL_FAQS: FAQItem[] = [
 
 export const BAD_KREUZNACH_FAQS: FAQItem[] = [
   {
-    q: "Ist die Abholung in Winzenheim, Planig und Bad Münster am Stein-Ebernburg möglich?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Bad Kreuznach ab, einschließlich Winzenheim, Planig, Bad Münster am Stein-Ebernburg und angrenzender Ortsteile."
+    q: "Kaufen Sie auch Fahrzeuge aus Winzenheim, Planig und Bad Münster am Stein-Ebernburg an?",
+    a: "Ja. Fahrzeuge aus Winzenheim, Planig, Bad Münster am Stein-Ebernburg und den angrenzenden Ortsteilen kaufen wir an. Die Übergabe findet in unserer Filiale in Bodenheim statt, ohne Stau etwa 40 Minuten von Bad Kreuznach entfernt."
   },
   {
     q: "Kaufen Sie in Bad Kreuznach auch Pendlerfahrzeuge mit Laufleistung aus dem B41- und A61-Korridor an?",
     a: "Ja. Gerade im Raum Bad Kreuznach sind solche Fahrprofile üblich. Wir bewerten sie auf Basis von Zustand, Wartung und Ausstattung statt nur nach Kilometerstand."
   },
   {
-    q: "Sind Übergabetermine in Bad Kreuznach auch nach Feierabend oder nahe Bahnhof möglich?",
-    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeitsalltag und typischen Pendelzeiten im Raum Bad Kreuznach vereinbar sind."
+    q: "Zu welchen Zeiten kann ich mein Auto aus Bad Kreuznach übergeben?",
+    a: "Den Termin buchen Sie online, die Uhrzeiten liegen zwischen 10 und 18 Uhr. Die Übergabe findet in unserer Filiale in Bodenheim statt, ohne Stau etwa 40 Minuten von Bad Kreuznach entfernt. Passt keine dieser Zeiten, rufen Sie uns an."
   },
   {
     q: "Ist ein Verkauf möglich, wenn mein Fahrzeug noch finanziert ist?",
@@ -539,8 +564,8 @@ export const BAD_KREUZNACH_FAQS: FAQItem[] = [
 
 export const DREIEICH_FAQS: FAQItem[] = [
   {
-    q: "Bieten Sie Abholung in Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal an?",
-    a: "Ja. Wir holen Fahrzeuge in allen Dreieicher Stadtteilen ab, darunter Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal."
+    q: "Kaufen Sie auch Fahrzeuge aus Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal an?",
+    a: "Ja. Fahrzeuge aus Sprendlingen, Dreieichenhain, Götzenhain, Buchschlag und Offenthal kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 28 Minuten von Dreieich entfernt."
   },
   {
     q: "Kaufen Sie in Dreieich auch Pendlerfahrzeuge mit täglicher Nutzung über A661 und B486 an?",
@@ -562,16 +587,16 @@ export const DREIEICH_FAQS: FAQItem[] = [
 
 export const BENSHEIM_FAQS: FAQItem[] = [
   {
-    q: "Bieten Sie Abholung in Auerbach, Fehlheim und Schwanheim an?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Bensheim ab, einschließlich Auerbach, Fehlheim, Schwanheim und weiterer Ortsteile an der Bergstraße."
+    q: "Kaufen Sie auch Fahrzeuge aus Auerbach, Fehlheim und Schwanheim an?",
+    a: "Ja. Fahrzeuge aus Auerbach, Fehlheim, Schwanheim und den weiteren Ortsteilen an der Bergstraße kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 31 Minuten von Bensheim entfernt."
   },
   {
     q: "Kaufen Sie in Bensheim auch Pendlerfahrzeuge mit Laufleistung über A5 und A67 an?",
     a: "Ja. Solche Fahrprofile sind in Bensheim üblich. Wir bewerten diese Fahrzeuge anhand von Zustand, Wartung und Ausstattung statt nur nach Kilometerstand."
   },
   {
-    q: "Sind Übergabetermine in Bensheim auch nahe Bahnhof oder nach Feierabend möglich?",
-    a: "In vielen Fällen ja. Wir planen Terminfenster so, dass sie mit Ihrem Arbeitsalltag und den typischen Pendelzeiten im Raum Bergstraße vereinbar sind."
+    q: "Zu welchen Zeiten kann ich mein Auto aus Bensheim übergeben?",
+    a: "Den Termin buchen Sie online, die Uhrzeiten liegen zwischen 10 und 18 Uhr. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 31 Minuten von Bensheim entfernt. Passt keine dieser Zeiten, rufen Sie uns an."
   },
   {
     q: "Kaufen Sie in Bensheim auch Familien-SUVs, Kombis und Elektrofahrzeuge an?",
@@ -585,8 +610,8 @@ export const BENSHEIM_FAQS: FAQItem[] = [
 
 export const MAINTAL_FAQS: FAQItem[] = [
   {
-    q: "Ist die Abholung in Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen möglich?",
-    a: "Ja. Wir holen Fahrzeuge in allen Maintaler Stadtteilen ab, darunter Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen."
+    q: "Kaufen Sie auch Fahrzeuge aus Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen an?",
+    a: "Ja. Fahrzeuge aus Dörnigheim, Bischofsheim, Hochstadt und Wachenbuchen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 36 Minuten von Maintal entfernt."
   },
   {
     q: "Kaufen Sie in Maintal auch Pendlerfahrzeuge mit täglicher Nutzung über A66 und B8 an?",
@@ -608,8 +633,8 @@ export const MAINTAL_FAQS: FAQItem[] = [
 
 export const HOFHEIM_AM_TAUNUS_FAQS: FAQItem[] = [
   {
-    q: "Ist die Abholung in Marxheim, Diedenbergen, Wallau und Lorsbach möglich?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Hofheim am Taunus ab, einschließlich Marxheim, Diedenbergen, Wallau, Lorsbach und weiterer Ortsteile."
+    q: "Kaufen Sie auch Fahrzeuge aus Marxheim, Diedenbergen, Wallau und Lorsbach an?",
+    a: "Ja. Fahrzeuge aus Marxheim, Diedenbergen, Wallau, Lorsbach und den weiteren Ortsteilen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 23 Minuten von Hofheim entfernt."
   },
   {
     q: "Kaufen Sie in Hofheim auch Pendlerfahrzeuge mit täglicher Nutzung über A66 und A3 an?",
@@ -631,8 +656,8 @@ export const HOFHEIM_AM_TAUNUS_FAQS: FAQItem[] = [
 
 export const WEINHEIM_FAQS: FAQItem[] = [
   {
-    q: "Bieten Sie Abholung in Sulzbach, Lützelsachsen und Oberflockenbach an?",
-    a: "Ja. Wir holen Fahrzeuge in allen Weinheimer Stadtteilen ab, darunter Sulzbach, Lützelsachsen, Oberflockenbach und angrenzende Bereiche."
+    q: "Kaufen Sie auch Fahrzeuge aus Sulzbach, Lützelsachsen und Oberflockenbach an?",
+    a: "Ja. Fahrzeuge aus Sulzbach, Lützelsachsen, Oberflockenbach und den angrenzenden Bereichen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 40 Minuten von Weinheim entfernt."
   },
   {
     q: "Kaufen Sie in Weinheim auch Pendlerfahrzeuge mit regelmäßiger Nutzung über A5 und A659 an?",
@@ -654,16 +679,16 @@ export const WEINHEIM_FAQS: FAQItem[] = [
 
 export const KASSEL_FAQS: FAQItem[] = [
   {
-    q: "Ist die Abholung in Kassel auch in Bad Wilhelmshöhe, Vorderer Westen und Niederzwehren möglich?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Stadtgebiet Kassel ab, einschließlich Bad Wilhelmshöhe, Vorderer Westen, Niederzwehren und angrenzender Stadtteile."
+    q: "Muss ich mein Auto aus Kassel selbst zur Filiale bringen?",
+    a: "In der Regel ja. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau rund zwei Stunden von Kassel entfernt. Rufen Sie uns vor einer Anreise an, damit wir klären können, ob sich der Weg für Ihr Fahrzeug lohnt."
   },
   {
     q: "Kaufen Sie in Kassel auch Pendlerfahrzeuge mit Nutzung über A7, A44 und A49 an?",
     a: "Ja. Solche Fahrprofile sind in Kassel sehr häufig. Wir bewerten transparent auf Basis von Zustand, Wartung, Ausstattung und nachvollziehbarer Nutzungshistorie."
   },
   {
-    q: "Sind in Kassel Termine auch nahe Bahnhof Kassel-Wilhelmshöhe oder nach Feierabend möglich?",
-    a: "In vielen Fällen ja. Wir stimmen Termine so ab, dass sie mit Ihrem Arbeitsalltag und den typischen Pendelzeiten im Raum Kassel vereinbar sind."
+    q: "Zu welchen Zeiten kann ich mein Auto übergeben?",
+    a: "Den Termin buchen Sie online, die Uhrzeiten liegen zwischen 10 und 18 Uhr. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 116 Minuten von Kassel entfernt. Passt keine dieser Zeiten, rufen Sie uns an."
   },
   {
     q: "Kaufen Sie in Kassel auch ältere Zweitwagen oder Elektrofahrzeuge an?",
@@ -677,8 +702,8 @@ export const KASSEL_FAQS: FAQItem[] = [
 
 export const STUTTGART_FAQS: FAQItem[] = [
   {
-    q: "Bieten Sie Abholung in Bad Cannstatt, Vaihingen und Zuffenhausen an?",
-    a: "Ja. Wir holen Fahrzeuge in allen Stuttgarter Stadtbezirken ab, darunter Bad Cannstatt, Vaihingen, Zuffenhausen und angrenzende Bereiche."
+    q: "Muss ich mein Auto aus Stuttgart selbst zur Filiale bringen?",
+    a: "In der Regel ja. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau rund zwei Stunden von Stuttgart entfernt. Rufen Sie uns vor einer Anreise an, damit wir klären können, ob sich der Weg für Ihr Fahrzeug lohnt."
   },
   {
     q: "Kaufen Sie in Stuttgart auch Pendlerfahrzeuge mit täglicher Nutzung über A8 und A81 an?",
@@ -700,8 +725,8 @@ export const STUTTGART_FAQS: FAQItem[] = [
 
 export const BONN_FAQS: FAQItem[] = [
   {
-    q: "Ist die Abholung in Beuel, Bad Godesberg und Duisdorf möglich?",
-    a: "Ja. Wir holen Fahrzeuge im gesamten Bonner Stadtgebiet ab, einschließlich Beuel, Bad Godesberg, Duisdorf und angrenzender Stadtteile."
+    q: "Muss ich mein Auto aus Bonn selbst zur Filiale bringen?",
+    a: "In der Regel ja. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau rund 1 Stunde 45 Minuten von Bonn entfernt. Rufen Sie uns vor einer Anreise an, damit wir klären können, ob sich der Weg für Ihr Fahrzeug lohnt."
   },
   {
     q: "Kaufen Sie in Bonn auch Pendlerfahrzeuge mit täglicher Nutzung über A565, A59 und A555 an?",
@@ -723,16 +748,16 @@ export const BONN_FAQS: FAQItem[] = [
 
 export const KARLSRUHE_FAQS: FAQItem[] = [
   {
-    q: "Bieten Sie Abholung in Durlach, Mühlburg und Knielingen an?",
-    a: "Ja. Wir holen Fahrzeuge in allen Karlsruher Stadtteilen ab, darunter Durlach, Mühlburg, Knielingen und angrenzende Bereiche."
+    q: "Kaufen Sie auch Fahrzeuge aus Durlach, Mühlburg und Knielingen an?",
+    a: "Ja. Fahrzeuge aus Durlach, Mühlburg, Knielingen und den angrenzenden Bereichen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 78 Minuten von Karlsruhe entfernt."
   },
   {
     q: "Kaufen Sie in Karlsruhe auch Pendlerfahrzeuge mit Nutzung über A5 und Karlsruher Dreieck an?",
     a: "Ja. Diese Fahrprofile sind in Karlsruhe sehr häufig. Wir bewerten transparent auf Basis von Wartung, Zustand und dokumentierter Nutzungshistorie."
   },
   {
-    q: "Sind in Karlsruhe Termine auch nahe Hauptbahnhof oder nach Feierabend möglich?",
-    a: "In vielen Fällen ja. Wir stimmen Terminfenster so ab, dass sie mit Ihrem Arbeitsalltag und den typischen Verkehrszeiten im Raum Karlsruhe vereinbar sind."
+    q: "Zu welchen Zeiten kann ich mein Auto aus Karlsruhe übergeben?",
+    a: "Den Termin buchen Sie online, die Uhrzeiten liegen zwischen 10 und 18 Uhr. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 78 Minuten von Karlsruhe entfernt. Passt keine dieser Zeiten, rufen Sie uns an."
   },
   {
     q: "Kaufen Sie in Karlsruhe auch Firmenwagen, Leasingrückläufer und Elektrofahrzeuge an?",
@@ -746,12 +771,12 @@ export const KARLSRUHE_FAQS: FAQItem[] = [
 
 export const MANNHEIM_FAQS: FAQItem[] = [
   {
-    q: "Holen Sie Fahrzeuge in allen Mannheimer Stadtteilen ab?",
-    a: "Ja. Wir holen in der gesamten Quadratestadt ab – inklusive Neckarstadt-Ost, Neckarstadt-West, Lindenhof, Rheinau, Sandhofen, Käfertal, Vogelstang und Innenstadt. Keine Anfahrtskosten."
+    q: "Kaufen Sie Fahrzeuge aus allen Mannheimer Stadtteilen an?",
+    a: "Ja. Fahrzeuge aus der gesamten Quadratestadt, darunter Neckarstadt, Lindenhof, Rheinau, Sandhofen, Käfertal und Vogelstang kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 48 Minuten von Mannheim entfernt."
   },
   {
     q: "Kaufen Sie auch Fahrzeuge aus dem Raum Ludwigshafen und Rhein-Neckar-Kreis?",
-    a: "Ja. Unser Einzugsgebiet umfasst Mannheim und die gesamte Metropolregion Rhein-Neckar – inklusive Ludwigshafen, Viernheim, Weinheim, Schwetzingen, Hockenheim, Eppelheim und Walldorf."
+    a: "Ja. Fahrzeuge aus Ludwigshafen, Viernheim, Weinheim, Schwetzingen, Hockenheim, Eppelheim und Walldorf kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 48 Minuten von Mannheim entfernt."
   },
   {
     q: "Welche Zulassungsstelle ist für Mannheimer Fahrzeuge zuständig?",
@@ -774,15 +799,15 @@ export const HEIDELBERG_FAQS: FAQItem[] = [
   },
   {
     q: "Können internationale Mitarbeitende (z. B. von DKFZ, EMBL oder SAP) ihr Fahrzeug verkaufen?",
-    a: "Ja. Wir kaufen Fahrzeuge von internationalen Beschäftigten an – einschließlich Fahrzeuge mit ausländischer Zulassung oder kurzem deutschen Zulassungszeitraum. Sprechen Sie uns gerne an."
+    a: "Ja. Sprechen Sie uns vorab an, wenn Ihr Fahrzeug im Ausland zugelassen ist oder Sie Deutschland bald verlassen. Dann prüfen wir vorab, welche Unterlagen nötig sind."
   },
   {
     q: "Welche Zulassungsstelle ist für Heidelberg zuständig?",
     a: "Heidelberger Fahrzeuge (Kennzeichen HD) werden beim Straßenverkehrsamt der Stadt Heidelberg abgemeldet. Wir übernehmen die Abmeldung vollständig für Sie."
   },
   {
-    q: "Holen Sie Fahrzeuge auch aus Leimen, Wiesloch, Walldorf oder Schwetzingen ab?",
-    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Heidelberg sowie den Rhein-Neckar-Kreis, inklusive Leimen, Wiesloch, Walldorf, Schwetzingen, Dossenheim, Eppelheim und Sandhausen."
+    q: "Kaufen Sie auch Fahrzeuge aus Leimen, Wiesloch, Walldorf oder Schwetzingen an?",
+    a: "Ja. Fahrzeuge aus Leimen, Wiesloch, Walldorf, Schwetzingen, Dossenheim, Eppelheim und Sandhausen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 49 Minuten von Heidelberg entfernt."
   },
   {
     q: "Kaufen Sie auch Leasingfahrzeuge oder Dienstwagen aus dem SAP-Umfeld an?",
@@ -793,15 +818,15 @@ export const HEIDELBERG_FAQS: FAQItem[] = [
 export const WORMS_FAQS: FAQItem[] = [
   {
     q: "Wie schnell bekomme ich Geld, wenn ich mein Auto in Worms verkaufe?",
-    a: "Bei uns erhalten Sie die Auszahlung per Banküberweisung noch am selben Tag der Fahrzeugübergabe. Es gibt keine Wartezeit: Fahrzeug übergeben, Kaufvertrag unterschreiben, Geld erhalten – fertig. Online-Bewertung dauert ca. 2 Minuten."
+    a: "Wir veranlassen die Überweisung am Tag der Fahrzeugübergabe, sobald der Kaufvertrag unterschrieben ist. Die Online-Bewertung dauert vorab etwa 2 Minuten."
   },
   {
-    q: "Kauft ihr auch Autos mit hoher Laufleistung oder ohne TÜV in Worms an?",
-    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand – mit hoher Laufleistung, abgelaufener HU, Unfallschäden oder Motorproblemen. Vollständige Fahrzeugpapiere und Eigentumsnachweis genügen. Den Preis ermitteln wir transparent auf Basis des aktuellen Marktwerts."
+    q: "Kaufen Sie auch Autos mit hoher Laufleistung oder ohne TÜV in Worms an?",
+    a: "Ja. Wir kaufen Fahrzeuge auch mit Mängeln – mit hoher Laufleistung, abgelaufener HU, Unfallschäden oder Motorproblemen. Vollständige Fahrzeugpapiere und Eigentumsnachweis genügen. Den Preis ermitteln wir transparent auf Basis des aktuellen Marktwerts."
   },
   {
-    q: "Muss ich mein Auto selbst zur Übergabe bringen oder holt ihr es ab?",
-    a: "Wir kommen zu Ihnen – kostenlos, in ganz Worms und Umgebung. Einfach online bewerten, Termin auswählen und wir erscheinen an Ihrer Adresse. Abholung ist auch abends oder am Wochenende möglich."
+    q: "Muss ich mein Auto selbst zur Übergabe bringen?",
+    a: "Ja, die Übergabe findet in unserer Filiale in Bodenheim statt, ohne Stau etwa 40 Minuten von Worms entfernt. Ist Ihr Auto nicht fahrbereit, rufen Sie uns vorher an, dann besprechen wir die Übergabe."
   },
   {
     q: "Was brauche ich für den Autoverkauf in Worms – welche Unterlagen?",
@@ -816,57 +841,57 @@ export const WORMS_FAQS: FAQItem[] = [
 export const GIESSEN_FAQS: FAQItem[] = [
   {
     q: "Wie schnell kann ich mein Auto in Gießen verkaufen?",
-    a: "In der Regel ist alles innerhalb von 1–2 Tagen erledigt. Online-Bewertung dauert ca. 2 Minuten, danach wählen Sie einen Termin. Wir kommen zu Ihnen – egal ob Innenstadt, Wieseck oder Kleinlinden – und zahlen noch am selben Tag per Banküberweisung aus."
+    a: "Die Online-Bewertung dauert etwa 2 Minuten, danach wählen Sie einen Termin in unserer Filiale in Rüsselsheim, ohne Stau etwa 56 Minuten von Gießen. Die Auszahlung erfolgt am Tag der Übergabe per Banküberweisung."
   },
   {
-    q: "Kauft ihr in Gießen auch Autos ohne TÜV oder mit hoher Laufleistung an?",
-    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand: ohne gültige HU, mit Unfallschäden, hoher Laufleistung oder technischen Mängeln. Entscheidend sind vollständige Fahrzeugpapiere und ein klarer Eigentumsnachweis – den Rest regeln wir."
+    q: "Kaufen Sie in Gießen auch Autos ohne TÜV oder mit hoher Laufleistung an?",
+    a: "Ja. Wir kaufen Fahrzeuge auch mit Mängeln: ohne gültige HU, mit Unfallschäden, hoher Laufleistung oder technischen Mängeln. Entscheidend sind vollständige Fahrzeugpapiere und ein klarer Eigentumsnachweis – den Rest regeln wir."
   },
   {
-    q: "Übernehmt ihr die Abmeldung des Fahrzeugs in Gießen?",
+    q: "Übernehmen Sie die Abmeldung des Fahrzeugs in Gießen?",
     a: "Ja, die Abmeldung bei der Zulassungsstelle Gießen (GI-Kennzeichen) übernehmen wir vollständig für Sie. Sie müssen keine Behörde aufsuchen und keine Wartezeit einplanen – das erledigen wir als kostenloser Bestandteil des Verkaufsprozesses."
   },
   {
-    q: "Ich bin Student an der JLU Gießen – verkauft ihr auch kleinere Erstfahrzeuge?",
-    a: "Ja, gerade Studierende verkaufen bei uns häufig kompakte Erstfahrzeuge oder ältere Modelle – z. B. beim Studienabschluss, einem Auslandspraktikum oder dem Wechsel in eine andere Stadt. Wir bewerten alle Fahrzeugtypen fair, unabhängig von Marke oder Baujahr."
+    q: "Ich studiere an der JLU Gießen. Kaufen Sie auch kleinere Erstfahrzeuge an?",
+    a: "Ja. Auch kompakte Erstfahrzeuge und ältere Modelle kaufen wir an, zum Beispiel beim Studienabschluss, vor einem Auslandspraktikum oder beim Wechsel in eine andere Stadt."
   },
   {
-    q: "Holt ihr das Auto in Gießen kostenlos ab oder muss ich es irgendwo bringen?",
-    a: "Wir kommen zu Ihnen – kostenlos, im gesamten Stadtgebiet Gießen und Umgebung (Lahn-Dill-Kreis, Marburg-Biedenkopf, Wetteraukreis). Abendtermine und Samstage sind auf Anfrage möglich."
+    q: "Muss ich mein Auto selbst zur Übergabe bringen?",
+    a: "Ja, die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 56 Minuten von Gießen entfernt. Ist Ihr Auto nicht fahrbereit, rufen Sie uns vorher an, dann besprechen wir die Übergabe."
   }
 ];
 
 export const ASCHAFFENBURG_FAQS: FAQItem[] = [
   {
-    q: "Wie läuft der Autoverkauf in Aschaffenburg bei euch ab?",
-    a: "Ganz einfach in drei Schritten: Fahrzeugdaten online eingeben und kostenloses Angebot erhalten, Abholtermin auswählen und wir kommen zu Ihnen. Bei der Übergabe prüfen wir das Fahrzeug kurz, Sie unterschreiben den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Banküberweisung."
+    q: "Wie läuft der Autoverkauf aus Aschaffenburg ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und eine kostenlose Preiseinschätzung erhalten, dann einen Termin in unserer Filiale in Rüsselsheim wählen. Dort prüfen wir das Fahrzeug und nennen unser verbindliches Angebot. Sind Sie einverstanden, unterschreiben Sie den Kaufvertrag und erhalten die Auszahlung am Tag der Übergabe per Überweisung."
   },
   {
-    q: "Kauft ihr in Aschaffenburg auch Fahrzeuge mit Unfallschäden oder ohne TÜV an?",
-    a: "Ja. Wir kaufen Autos in jedem Zustand – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorschäden. Sie benötigen vollständige Fahrzeugpapiere und einen gültigen Ausweis – alles andere klären wir vor Ort."
+    q: "Kaufen Sie in Aschaffenburg auch Fahrzeuge mit Unfallschäden oder ohne TÜV an?",
+    a: "Ja. Wir kaufen Autos auch mit Mängeln – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorschäden. Sie benötigen vollständige Fahrzeugpapiere und einen gültigen Ausweis – alles andere klären wir in der Filiale."
   },
   {
-    q: "Was kostet die Abholung in Aschaffenburg?",
-    a: "Die Abholung ist kostenlos – egal ob Sie in der Innenstadt, in Damm, Schweinheim, Obernau oder im Landkreis Aschaffenburg (z. B. Alzenau, Großostheim, Stockstadt) wohnen. Wir kommen zu Ihrem Fahrzeug, nicht umgekehrt."
+    q: "Muss ich mein Auto selbst zur Übergabe bringen?",
+    a: "Ja, die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 42 Minuten von Aschaffenburg entfernt. Ist Ihr Auto nicht fahrbereit, rufen Sie uns vorher an, dann besprechen wir die Übergabe."
   },
   {
-    q: "Übernehmt ihr die Kfz-Abmeldung auch in Bayern (Aschaffenburg)?",
-    a: "Ja. Die Abmeldung beim Straßenverkehrsamt Aschaffenburg (AB-Kennzeichen) übernehmen wir vollständig. Obwohl Aschaffenburg in Bayern liegt, funktioniert unser Service bayernweit – Sie müssen kein Amt aufsuchen."
+    q: "Übernehmen Sie die Kfz-Abmeldung auch für Aschaffenburg in Bayern?",
+    a: "Ja. Die Abmeldung beim Straßenverkehrsamt Aschaffenburg (AB-Kennzeichen) übernehmen wir vollständig. Dass Aschaffenburg in Bayern liegt, ändert daran nichts. Sie müssen kein Amt aufsuchen."
   },
   {
     q: "Bekomme ich in Aschaffenburg einen vergleichbaren Preis wie in Frankfurt?",
-    a: "Ja. Unser Angebot basiert auf aktuellen bundesweiten Marktdaten, nicht auf dem Standort des Verkäufers. Ein Fahrzeug aus Aschaffenburg wird identisch bewertet wie dasselbe Fahrzeug aus Frankfurt – transparent und datenbasiert."
+    a: "Ja. Unsere Bewertung orientiert sich an aktuellen Online-Angeboten und nicht am Wohnort des Verkäufers. Dasselbe Fahrzeug wird aus Aschaffenburg genauso bewertet wie aus Frankfurt."
   }
 ];
 
 export const KAISERSLAUTERN_FAQS: FAQItem[] = [
   {
-    q: "Wie läuft der Autoverkauf in Kaiserslautern bei euch ab?",
-    a: "Ganz einfach: Fahrzeugdaten online eingeben, kostenloses Angebot erhalten, Termin vereinbaren. Wir kommen zu Ihnen – egal ob Innenstadt, Siegelbach oder Umland. Bei der Übergabe prüfen wir das Fahrzeug kurz, Sie unterschreiben den Kaufvertrag und erhalten noch am selben Tag die Zahlung per Überweisung."
+    q: "Wie läuft der Autoverkauf aus Kaiserslautern ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und eine kostenlose Preiseinschätzung erhalten, dann einen Termin in unserer Filiale in Bodenheim wählen. Dort prüfen wir das Fahrzeug und nennen unser verbindliches Angebot. Sind Sie einverstanden, unterschreiben Sie den Kaufvertrag und erhalten die Auszahlung am Tag der Übergabe per Überweisung."
   },
   {
-    q: "Kauft ihr in Kaiserslautern auch ältere oder beschädigte Fahrzeuge an?",
-    a: "Ja. Wir kaufen Autos in jedem Zustand – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorproblemen. Auch Fahrzeuge ohne Hauptuntersuchung sind willkommen, solange vollständige Papiere vorliegen."
+    q: "Kaufen Sie in Kaiserslautern auch ältere oder beschädigte Fahrzeuge an?",
+    a: "Ja. Wir kaufen Autos auch mit Mängeln – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorproblemen. Auch Fahrzeuge ohne Hauptuntersuchung sind willkommen, solange vollständige Papiere vorliegen."
   },
   {
     q: "Was passiert mit der Abmeldung meines Autos nach dem Verkauf in Kaiserslautern?",
@@ -874,7 +899,7 @@ export const KAISERSLAUTERN_FAQS: FAQItem[] = [
   },
   {
     q: "Wie lange dauert es, bis ich mein Geld bekomme?",
-    a: "Die Auszahlung erfolgt per Banküberweisung am Tag der Fahrzeugübergabe. Es gibt keine Verzögerung, keinen Teilzahlungsplan – Sie erhalten den vollen vereinbarten Betrag sofort nach Übergabe und Unterzeichnung des Kaufvertrags."
+    a: "Die Auszahlung erfolgt per Banküberweisung am Tag der Fahrzeugübergabe, nachdem der Kaufvertrag unterschrieben ist. Einen Teilzahlungsplan gibt es nicht."
   },
   {
     q: "Kann ich mein Auto auch verkaufen, wenn ich noch einen laufenden Kredit darauf habe?",
@@ -885,42 +910,42 @@ export const KAISERSLAUTERN_FAQS: FAQItem[] = [
 export const SPEYER_FAQS: FAQItem[] = [
   {
     q: "Wie schnell bekomme ich mein Geld beim Autoverkauf in Speyer?",
-    a: "Die Auszahlung erfolgt per Banküberweisung noch am selben Tag der Fahrzeugübergabe. Online-Bewertung dauert ca. 2 Minuten, danach Termin wählen – wir kommen zu Ihnen in Speyer oder Umgebung und zahlen am Übergabetag aus."
+    a: "Die Auszahlung erfolgt per Banküberweisung am Tag der Fahrzeugübergabe. Die Online-Bewertung dauert vorab etwa 2 Minuten, danach wählen Sie einen Termin in unserer Filiale in Rüsselsheim."
   },
   {
-    q: "Kauft ihr in Speyer auch Autos ohne TÜV oder mit Unfallschaden an?",
-    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand – ohne gültige HU, mit Unfallschäden, hoher Laufleistung oder technischen Mängeln. Vollständige Fahrzeugpapiere und Eigentumsnachweis genügen. Den Preis ermitteln wir transparent nach Marktwert."
+    q: "Kaufen Sie in Speyer auch Autos ohne TÜV oder mit Unfallschaden an?",
+    a: "Ja. Wir kaufen Fahrzeuge auch mit Mängeln – ohne gültige HU, mit Unfallschäden, hoher Laufleistung oder technischen Mängeln. Vollständige Fahrzeugpapiere und Eigentumsnachweis genügen. Den Preis ermitteln wir transparent nach Marktwert."
   },
   {
-    q: "Übernehmt ihr die Abmeldung beim Straßenverkehrsamt Speyer?",
+    q: "Übernehmen Sie die Abmeldung beim Straßenverkehrsamt Speyer?",
     a: "Ja. Die Abmeldung für Fahrzeuge mit SP-Kennzeichen (Straßenverkehrsbehörde Speyer) übernehmen wir vollständig für Sie. Kein Behördengang, keine Wartezeit – das ist Teil unseres Services, kostenlos."
   },
   {
-    q: "Holt ihr das Auto in Speyer und Umgebung kostenlos ab?",
-    a: "Ja. Wir kommen zu Ihnen – kostenlos in der Domstadt, in den Stadtteilen und im Umland (Rhein-Pfalz-Kreis, Ludwigshafen-Nähe). Abholung auch abends oder am Wochenende auf Anfrage möglich."
+    q: "Muss ich mein Auto selbst zur Übergabe bringen?",
+    a: "Ja, die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 60 Minuten von Speyer entfernt. Ist Ihr Auto nicht fahrbereit, rufen Sie uns vorher an, dann besprechen wir die Übergabe."
   },
   {
     q: "Bekomme ich in Speyer einen fairen Preis oder wird vor Ort nachverhandelt?",
-    a: "Unser Online-Angebot basiert auf aktuellen Marktdaten und ist verbindlich. Eine Anpassung erfolgt nur, wenn bei der Besichtigung ein zuvor nicht genannter Schaden festgestellt wird – sonst zahlen wir den vereinbarten Betrag."
+    a: "Die Online-Bewertung ist eine unverbindliche Einschätzung auf Basis aktueller Online-Angebote. Den verbindlichen Preis nennen wir nach der Fahrzeugprüfung. Weicht der Zustand von Ihren Angaben ab, passen wir den Preis an, und Sie entscheiden, ob Sie zu diesem Preis verkaufen."
   }
 ];
 
 export const NEUSTADT_WEINSTRASSE_FAQS: FAQItem[] = [
   {
-    q: "Wie läuft der Autoverkauf in Neustadt an der Weinstraße bei euch ab?",
-    a: "In drei Schritten: Fahrzeugdaten online eingeben und kostenloses Angebot erhalten, Abholtermin wählen – wir kommen zu Ihnen. Bei der Übergabe prüfen wir das Fahrzeug kurz, Sie unterschreiben den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Überweisung."
+    q: "Wie läuft der Autoverkauf aus Neustadt an der Weinstraße ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und eine kostenlose Preiseinschätzung erhalten, dann einen Termin in unserer Filiale in Rüsselsheim wählen. Dort prüfen wir das Fahrzeug und nennen unser verbindliches Angebot. Sind Sie einverstanden, unterschreiben Sie den Kaufvertrag und erhalten die Auszahlung am Tag der Übergabe per Überweisung."
   },
   {
-    q: "Kauft ihr in Neustadt auch ältere oder beschädigte Fahrzeuge an?",
-    a: "Ja. Wir kaufen Autos in jedem Zustand – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorschäden. Vollständige Papiere und Eigentumsnachweis vorausgesetzt. Wir bewerten transparent nach aktuellem Marktwert."
+    q: "Kaufen Sie in Neustadt auch ältere oder beschädigte Fahrzeuge an?",
+    a: "Ja. Wir kaufen Autos auch mit Mängeln – mit Unfallschäden, abgelaufenem TÜV, hoher Laufleistung oder Motorschäden. Vollständige Papiere und Eigentumsnachweis vorausgesetzt. Wir bewerten transparent nach aktuellem Marktwert."
   },
   {
     q: "Was passiert mit der Abmeldung meines Autos in Neustadt (NW-Kennzeichen)?",
     a: "Die Abmeldung bei der Zulassungsstelle Neustadt an der Weinstraße übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen – wir erledigen das als Teil unseres Services, kostenlos."
   },
   {
-    q: "Holt ihr auch in den Ortsbezirken und an der Weinstraße ab?",
-    a: "Ja. Unser Einzugsgebiet umfasst die gesamte Stadt Neustadt an der Weinstraße inklusive aller Ortsbezirke sowie die Region Deutsche Weinstraße. Abholung ist kostenlos; Termine auch abends oder am Wochenende möglich."
+    q: "Kaufen Sie auch Fahrzeuge aus den Ortsbezirken und von der Weinstraße an?",
+    a: "Ja. Fahrzeuge aus allen Ortsbezirken und von der Deutschen Weinstraße kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 65 Minuten von Neustadt entfernt."
   },
   {
     q: "Wie lange dauert es bis zur Auszahlung?",
@@ -930,43 +955,43 @@ export const NEUSTADT_WEINSTRASSE_FAQS: FAQItem[] = [
 
 export const FRANKENTHAL_FAQS: FAQItem[] = [
   {
-    q: "Wie läuft der Autoverkauf in Frankenthal bei euch ab?",
-    a: "In drei Schritten: Fahrzeugdaten online eingeben und ein kostenloses Angebot erhalten, Übergabetermin wählen – wir kommen zu Ihnen nach Frankenthal. Bei der Besichtigung prüfen wir das Fahrzeug kurz, Sie unterzeichnen den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Überweisung."
+    q: "Wie läuft der Autoverkauf aus Frankenthal ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und eine kostenlose Preiseinschätzung erhalten, dann einen Termin in unserer Filiale in Rüsselsheim wählen. Dort prüfen wir das Fahrzeug und nennen unser verbindliches Angebot. Sind Sie einverstanden, unterschreiben Sie den Kaufvertrag und erhalten die Auszahlung am Tag der Übergabe per Überweisung."
   },
   {
-    q: "Kauft ihr in Frankenthal auch Autos ohne TÜV oder mit Schäden?",
-    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand an – mit abgelaufenem TÜV, Unfallschäden, Motorschäden oder hoher Laufleistung. Voraussetzung sind vollständige Fahrzeugpapiere und ein klarer Eigentumsnachweis."
+    q: "Kaufen Sie in Frankenthal auch Autos ohne TÜV oder mit Schäden an?",
+    a: "Ja. Wir kaufen Fahrzeuge auch mit Mängeln an – mit abgelaufenem TÜV, Unfallschäden, Motorschäden oder hoher Laufleistung. Voraussetzung sind vollständige Fahrzeugpapiere und ein klarer Eigentumsnachweis."
   },
   {
     q: "Was passiert mit der Abmeldung meines Autos in Frankenthal (FT-Kennzeichen)?",
     a: "Die Abmeldung bei der Zulassungsstelle Frankenthal übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen – wir erledigen das als Teil unseres kostenlosen Services."
   },
   {
-    q: "Holt ihr auch in den Stadtteilen und entlang der A61 ab?",
-    a: "Ja. Unser Einzugsgebiet umfasst das gesamte Stadtgebiet Frankenthal – Kernstadt, Mörsch, Studernheim, Eppstein – sowie das Umland entlang der A61 und im Rhein-Pfalz-Kreis. Abholung ist kostenlos, auch abends oder am Wochenende."
+    q: "Kaufen Sie auch Fahrzeuge aus den Stadtteilen und dem Umland an?",
+    a: "Ja. Fahrzeuge aus der Kernstadt, aus Mörsch, Studernheim, Eppstein und dem Rhein-Pfalz-Kreis kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 48 Minuten von Frankenthal entfernt."
   },
   {
     q: "Bekomme ich in Frankenthal einen fairen Preis oder wird nachverhandelt?",
-    a: "Unser Angebot basiert auf aktuellen Marktdaten und ist verbindlich. Eine Anpassung erfolgt nur, wenn bei der Besichtigung ein zuvor nicht genannter Schaden festgestellt wird – ansonsten zahlen wir den vereinbarten Betrag ohne Abzüge."
+    a: "Die Online-Bewertung ist eine unverbindliche Einschätzung auf Basis aktueller Online-Angebote. Den verbindlichen Preis nennen wir nach der Fahrzeugprüfung. Weicht der Zustand von Ihren Angaben ab, passen wir den Preis an, und Sie entscheiden, ob Sie zu diesem Preis verkaufen."
   }
 ];
 
 export const RODGAU_FAQS: FAQItem[] = [
   {
-    q: "Wie läuft der Autoverkauf in Rodgau bei euch ab?",
-    a: "In drei Schritten: Fahrzeugdaten online eingeben und ein kostenloses Angebot erhalten, Termin vereinbaren – wir kommen zu Ihnen nach Rodgau. Bei der Übergabe prüfen wir das Fahrzeug, Sie unterzeichnen den Kaufvertrag und erhalten noch am selben Tag die Auszahlung per Überweisung."
+    q: "Wie läuft der Autoverkauf aus Rodgau ab?",
+    a: "In drei Schritten: Fahrzeugdaten online eingeben und eine kostenlose Preiseinschätzung erhalten, dann einen Termin in unserer Filiale in Rüsselsheim wählen. Dort prüfen wir das Fahrzeug und nennen unser verbindliches Angebot. Sind Sie einverstanden, unterschreiben Sie den Kaufvertrag und erhalten die Auszahlung am Tag der Übergabe per Überweisung."
   },
   {
-    q: "Kauft ihr in Rodgau auch Autos ohne TÜV oder mit Unfallschäden?",
-    a: "Ja. Wir kaufen Fahrzeuge in jedem Zustand an – mit abgelaufenem TÜV, Unfallschäden, Motorschäden oder hoher Laufleistung. Vollständige Fahrzeugpapiere und Eigentumsnachweis sind Voraussetzung."
+    q: "Kaufen Sie in Rodgau auch Autos ohne TÜV oder mit Unfallschäden an?",
+    a: "Ja. Wir kaufen Fahrzeuge auch mit Mängeln an – mit abgelaufenem TÜV, Unfallschäden, Motorschäden oder hoher Laufleistung. Vollständige Fahrzeugpapiere und Eigentumsnachweis sind Voraussetzung."
   },
   {
     q: "Was passiert mit der Abmeldung meines Autos in Rodgau (OF-Kennzeichen)?",
     a: "Die Abmeldung bei der Zulassungsstelle des Landkreises Offenbach übernehmen wir vollständig für Sie. Sie müssen kein Amt aufsuchen – wir erledigen das als Teil unseres Services, kostenlos."
   },
   {
-    q: "Holt ihr auch in allen Rodgauer Stadtteilen und im Umland ab?",
-    a: "Ja. Wir holen in allen Stadtteilen ab: Nieder-Roden, Dudenhofen, Jügesheim, Hainhausen und Weiskirchen. Auch im Umland – Heusenstamm, Dietzenbach, Obertshausen – ist die Abholung kostenlos. Termine auch abends oder am Wochenende möglich."
+    q: "Kaufen Sie auch Fahrzeuge aus allen Rodgauer Stadtteilen und dem Umland an?",
+    a: "Ja. Fahrzeuge aus Nieder-Roden, Dudenhofen, Jügesheim, Hainhausen, Weiskirchen sowie aus Heusenstamm, Dietzenbach und Obertshausen kaufen wir an. Die Übergabe findet in unserer Filiale in Rüsselsheim statt, ohne Stau etwa 37 Minuten von Rodgau entfernt."
   },
   {
     q: "Wie lange dauert es bis zur Auszahlung in Rodgau?",
@@ -977,7 +1002,7 @@ export const RODGAU_FAQS: FAQItem[] = [
 export const BODENHEIM_FAQS: FAQItem[] = [
   {
     q: "Wie läuft der Autoankauf in Bodenheim konkret ab?",
-    a: "Sie starten mit einer kostenlosen Online-Bewertung Ihres Fahrzeugs. Anschließend erhalten Sie ein transparentes Angebot, vereinbaren einen Termin und erhalten die Auszahlung direkt bei der Übergabe – auf Wunsch inklusive Abholung."
+    a: "Sie starten mit einer kostenlosen Online-Bewertung Ihres Fahrzeugs und buchen dann einen Termin in unserer Filiale Am Kuemmerling 41a. Dort prüfen wir das Fahrzeug, nennen unser verbindliches Angebot und zahlen bei der Übergabe aus."
   },
   {
     q: "Welche Fahrzeugtypen kaufen Sie in Bodenheim und der Region an?",
@@ -992,8 +1017,8 @@ export const BODENHEIM_FAQS: FAQItem[] = [
     a: "Ja. Fahrzeuge ohne gültige Hauptuntersuchung sind bei uns weiterhin ankauffähig. Der Zustand wird offen bewertet und fließt nachvollziehbar in das Angebot ein."
   },
   {
-    q: "Holen Sie das Fahrzeug auch in Nackenheim, Mainz oder anderen Gemeinden im Landkreis Mainz-Bingen ab?",
-    a: "Ja. Von unserem Standort in Bodenheim aus bieten wir die kostenlose Abholung im gesamten Landkreis Mainz-Bingen sowie in angrenzenden Gemeinden wie Nackenheim und Gau-Bischofsheim an."
+    q: "Kaufen Sie auch Fahrzeuge aus Nackenheim, Mainz oder dem Landkreis Mainz-Bingen an?",
+    a: "Ja. Fahrzeuge aus dem gesamten Landkreis Mainz-Bingen und angrenzenden Gemeinden wie Nackenheim und Gau-Bischofsheim kaufen wir an. Die Übergabe findet in unserer Filiale in Bodenheim statt."
   },
   {
     q: "Unterstützen Sie bei der Abmeldung bei der zuständigen Zulassungsstelle?",

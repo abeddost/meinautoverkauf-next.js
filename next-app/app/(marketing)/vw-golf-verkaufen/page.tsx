@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { buildPageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import RouteHero from '@/components/RouteHero';
 import FAQSection from '@/components/FAQSection';
@@ -13,7 +14,7 @@ const MODEL = MODEL_SEO_PAGE_BY_SLUG['vw-golf-verkaufen'];
 const FAQS = [
   {
     q: 'Wie schnell kann ich meinen VW Golf verkaufen?',
-    a: 'Mit vollständigen Fahrzeugdaten ist ein Abschluss häufig innerhalb von 24 bis 72 Stunden möglich. Bei klarer Unterlagenlage und flexibler Terminwahl geht es oft noch schneller.',
+    a: 'Mit vollständigen Fahrzeugdaten ist ein Abschluss oft schnell möglich. Bei klarer Unterlagenlage und flexibler Terminwahl geht es oft noch schneller.',
   },
   {
     q: 'Kaufen Sie auch einen Golf mit Motorschaden?',
@@ -37,11 +38,11 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: MODEL.seoTitle,
   description: MODEL.seoDescription,
-  alternates: { canonical: MODEL.canonicalPath },
-};
+  path: MODEL.canonicalPath,
+});
 
 export default function VwGolfVerkaufenPage() {
   const faqSchema = buildFaqPageSchema(SITE_URL, MODEL.canonicalPath, FAQS);
@@ -76,15 +77,14 @@ export default function VwGolfVerkaufenPage() {
         headline="VW Golf verkaufen: schnell, fair und ohne Inseratstress"
         subheadline="Modellexpertise für Golf-typische Probleme, realistische Preise und sichere Auszahlung"
         accent="verkaufen"
-        headlineTag="h2"
       />
 
       <div className="bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
           <article className="max-w-4xl mx-auto">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
               VW Golf verkaufen: Der Praxisleitfaden für ein Volumenmodell mit echten Alltagsfragen
-            </h1>
+            </h2>
 
             <p className="text-lg text-slate-700 font-medium leading-relaxed mb-5">
               Einen <strong>VW Golf verkaufen</strong> zu wollen klingt zuerst einfach. Das Modell ist bekannt, die Nachfrage ist breit, Werkstätten kennen das Auto in- und auswendig.
@@ -105,7 +105,7 @@ export default function VwGolfVerkaufenPage() {
             <section className="rounded-3xl border border-slate-200 bg-slate-50 p-6 lg:p-8 mb-12">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Schnellcheck: In welcher Verkaufssituation befinden Sie sich?</h2>
               <p className="text-slate-700 font-medium leading-relaxed mb-4">
-                Beim Golf sehen wir immer wieder die gleichen Ausgangslagen. Wenn Sie sich hier wiederfinden, können Sie den nächsten Schritt gezielt planen statt im Blindflug zu verkaufen.
+                Beim Golf gibt es immer wieder die gleichen Ausgangslagen. Wenn Sie sich hier wiederfinden, können Sie den nächsten Schritt gezielt planen statt im Blindflug zu verkaufen.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-semibold text-slate-700">
                 <li className="rounded-xl border border-slate-200 bg-white px-4 py-3">Hohe Laufleistung, aber noch fahrbereit: Preis sichern bevor mehrere Reparaturen zusammenfallen.</li>
@@ -167,7 +167,7 @@ export default function VwGolfVerkaufenPage() {
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Welche Golf-Generationen sind im Verkauf besonders sensibel?</h2>
               <p className="text-slate-700 font-medium leading-relaxed mb-4">
                 Beim Golf gibt es keinen pauschal „guten“ oder „schlechten“ Jahrgang. Entscheidend ist die Kombination aus Generation, Motor/Getriebe, Nutzung und Pflegezustand.
-                Trotzdem sehen wir im Ankauf klare Unterschiede in der Käufererwartung:
+                Trotzdem gibt es im Ankauf klare Unterschiede in der Käufererwartung:
               </p>
               <ul className="space-y-3 text-slate-700 font-medium leading-relaxed mb-4">
                 <li><strong>Golf V/VI:</strong> oft preisgetrieben, stark auf Zustand und HU-Status fokussiert, hohe Sensibilität bei Rost und Verschleiß.</li>
@@ -235,7 +235,7 @@ export default function VwGolfVerkaufenPage() {
                   <strong>2. Transparentes Angebot:</strong> Wir bewerten den Golf anhand Marktdaten, Schadensbild und Verwertbarkeit.
                 </li>
                 <li>
-                  <strong>3. Übergabe und Auszahlung:</strong> Termin, Vertrag, Fahrzeugübernahme und dokumentierte Zahlung – auf Wunsch mit Abholung.
+                  <strong>3. Übergabe und Auszahlung:</strong> Termin, Vertrag, Fahrzeugübernahme und dokumentierte Zahlung.
                 </li>
               </ol>
               <p className="text-slate-700 font-medium leading-relaxed mt-4">

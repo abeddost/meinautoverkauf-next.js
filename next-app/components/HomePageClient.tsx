@@ -1,35 +1,33 @@
 'use client';
 
-import React, { Suspense, lazy } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
+import FAQSection from '@/components/FAQSection';
 import type { CarDetails, ValuationResult } from '@/types';
 import { savePartialLead } from '@/lib/supabaseFunctions';
 import { consumePendingPhotoPromise } from '@/lib/pendingPhotoUpload';
 import { setPendingPartialSavePromise } from '@/lib/pendingPartialSave';
 
-const FAQSection = lazy(() => import('@/components/FAQSection'));
-
 const STEPS = [
   {
     num: '01',
     title: 'Fahrzeugdaten eingeben',
-    desc: 'Gib online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.',
+    desc: 'Geben Sie online die wichtigsten Fahrzeugdaten ein – kostenlos und unverbindlich.',
     img: '/3-steps/fahrzeugdaten-online-eingeben.webp',
     imgSmall: '/3-steps/fahrzeugdaten-online-eingeben-288.webp',
   },
   {
     num: '02',
-    title: 'Fairen Preis erhalten',
-    desc: 'Du erhältst eine transparente Preiseinschätzung auf Basis aktueller Marktdaten.',
+    title: 'Preiseinschätzung erhalten',
+    desc: 'Sie erhalten eine KI-gestützte Preiseinschätzung auf Basis aktueller Online-Angebote.',
     img: '/3-steps/preis-erhalten.webp',
     imgSmall: '/3-steps/preis-erhalten-288.webp',
   },
   {
     num: '03',
     title: 'Termin wählen & Geld erhalten',
-    desc: 'Wähle einen passenden Übergabetermin und erhalte die Auszahlung bequem per Banküberweisung.',
+    desc: 'Buchen Sie einen Termin in Bodenheim oder Rüsselsheim. Nach der Prüfung und dem Vertrag erhalten Sie die Auszahlung per Banküberweisung.',
     img: '/3-steps/abgabe-termin-buchen-geld-erhalten.webp',
     imgSmall: '/3-steps/abgabe-termin-buchen-geld-erhalten-288.webp',
   },
@@ -38,17 +36,17 @@ const STEPS = [
 const VORTEILE = [
   { label: 'Sie sparen Zeit', text: 'Keine Anzeigen schalten, keine Fotos aufnehmen, keine potenziellen Käufer empfangen' },
   { label: 'Sie sparen Nerven', text: 'Keine Preisverhandlungen oder unseriöse Interessenten' },
-  { label: 'Sie erhalten faire Preise', text: 'KI-gestützte Bewertung, oft höher als Angebote lokaler Händler' },
-  { label: 'Maximale Sicherheit', text: 'Keine Betrüger, sichere Banküberweisung, rechtssichere Dokumentation' },
-  { label: 'Abholung', text: 'Wir kommen zu Ihnen nach Hause' },
-  { label: 'Blitzschnelle Auszahlung', text: 'Geld in weniger Stunden auf Ihrem Konto' },
-  { label: 'Keine Gewährleistung', text: 'Sie verkaufen "wie gesehen" ohne spätere Haftung' },
+  { label: 'Nachvollziehbarer Preis', text: 'KI-gestützte Einschätzung auf Basis aktueller Online-Angebote' },
+  { label: 'Klare Abwicklung', text: 'Schriftlicher Kaufvertrag und Auszahlung per Banküberweisung' },
+  { label: 'Fester Termin', text: 'Übergabe in unserer Filiale in Bodenheim oder Rüsselsheim' },
+  { label: 'Zügige Auszahlung', text: 'Überweisung am Tag der Übergabe' },
+  { label: 'Klare Haftungsregel', text: 'Die Sachmängelhaftung wird im Vertrag ausgeschlossen, bekannte Mängel geben Sie an' },
 ];
 
 const VERSPRECHEN = [
-  { title: 'Rechtssichere Abwicklung', desc: 'Alle Verträge entsprechen den aktuellen rechtlichen Anforderungen. Sie erhalten eine Kopie des Kaufvertrags für Ihre Unterlagen.' },
-  { title: 'Kostenlose Abmeldung', desc: 'Die Abmeldung des Fahrzeugs bei der Zulassungsstelle übernehmen wir kostenfrei. Sie müssen sich um nichts kümmern.' },
-  { title: 'Sichere Auszahlung', desc: 'Ihr Geld wird per Banküberweisung oder Bar transferiert – keine unsicheren Zahlungsmethoden.' },
+  { title: 'Rechtssichere Abwicklung', desc: 'Sie erhalten einen schriftlichen Kaufvertrag und eine Kopie für Ihre Unterlagen.' },
+  { title: 'Kostenlose Abmeldung', desc: 'Die Abmeldung des Fahrzeugs bei der Zulassungsstelle übernehmen wir kostenfrei.' },
+  { title: 'Sichere Auszahlung', desc: 'Ihr Geld erhalten Sie per Banküberweisung – keine unsicheren Zahlungsmethoden.' },
 ];
 
 const MOTORSCHADEN_TYPES = [
@@ -123,8 +121,8 @@ export default function HomePageClient() {
       <Hero
         onValuationComplete={handleValuationComplete}
         onValuationSubmit={handleValuationSubmit}
-        headline="Auto verkaufen online – Einfach, schnell & stressfrei"
-        subheadline="Autoankauf in Deutschland – Wir kaufen Ihr Auto zum fairen Preis"
+        headline="Autoankauf: Wir kaufen Ihr Auto fair und unkompliziert"
+        subheadline="Kostenlos online bewerten, Termin in Bodenheim oder Rüsselsheim buchen, bei der Übergabe ausgezahlt werden"
         accent="home"
       />
 
@@ -139,10 +137,10 @@ export default function HomePageClient() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-5">
-              So funktioniert der Auto Ankauf bei uns – In 3 einfachen Schritten
+              So funktioniert der Autoankauf bei uns – in 3 einfachen Schritten
             </h2>
             <p className="text-slate-600 font-medium leading-relaxed">
-              Der Prozess könnte kaum einfacher sein. Auto online verkaufen in Deutschland war nie so unkompliziert – in nur drei Schritten von der ersten Anfrage bis zum Geld auf Ihrem Konto.
+              Der Ablauf hat drei Schritte: online bewerten, Termin in unserer Filiale buchen und bei der Übergabe ausgezahlt werden.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
@@ -184,7 +182,7 @@ export default function HomePageClient() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-xl md:text-2xl font-black text-center text-brand-dark mb-12">
-            Auto verkaufen online:{' '}
+            Auto verkaufen ohne Inserat:{' '}
             <Link href="/vorteile" className="text-brand-orange-contrast hover:underline">
               Die Vorteile
             </Link>{' '}
@@ -217,9 +215,11 @@ export default function HomePageClient() {
                 ))}
               </ul>
               <p className="text-slate-600 leading-relaxed font-medium pt-6 max-w-3xl mx-auto text-left">
-                Ein weiterer großer Vorteil ist die Sicherheit. Beim Privatverkauf besteht immer das Risiko, an Betrüger zu geraten.
-                Gefälschte Überweisungsbestätigungen, ungedeckte Schecks oder sogar Diebstahl sind leider keine Seltenheit. Bei uns
-                erhalten Sie Ihr Geld per sicherer Banküberweisung, und die gesamte Transaktion wird rechtssicher dokumentiert.
+                Beim Privatverkauf müssen Sie sich selbst vor Betrug schützen, etwa vor gefälschten Überweisungsbelegen. Bei uns erhalten Sie Ihr Geld per Banküberweisung, und der Verkauf wird schriftlich dokumentiert. Dafür liegt unser Preis unter dem, was ein Privatverkauf bringen kann. Wann sich welcher Weg lohnt, zeigt unser{' '}
+                <Link href="/ratgeber/auto-privat-oder-haendler-verkaufen" className="text-brand-orange-contrast font-bold hover:underline">
+                  Vergleich Privatverkauf oder Händler
+                </Link>
+                .
               </p>
             </div>
           </div>
@@ -240,8 +240,7 @@ export default function HomePageClient() {
               Sicher, schnell und seriös: Das Versprechen von Meinautoverkauf.de
             </h2>
             <p className="text-slate-600 font-medium leading-relaxed">
-              Seriösität ist im Autoankauf-Geschäft leider keine Selbstverständlichkeit. Bei Meinautoverkauf.de legen wir größten
-              Wert auf einen sauberen und transparenten Geschäftsablauf.
+              Seriosität ist im Autoankauf nicht selbstverständlich. Deshalb finden Sie hier klare Angaben zu Ablauf, Standorten und dem Unternehmen dahinter.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -279,27 +278,25 @@ export default function HomePageClient() {
             </div>
             <div className="relative z-10 text-left">
               <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6 text-center">
-                Autoankauf neu gedacht: Warum Meinautoverkauf.de die beste Wahl ist
+                Autoankauf einfach erklärt: Warum viele ohne Inserat verkaufen
               </h2>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
                 Der Autoverkauf kann eine nervenaufreibende Angelegenheit sein. Unzählige Anrufe von unseriösen Interessenten,
                 zeitraubende Besichtigungen und zähe Preisverhandlungen gehören beim Privatverkauf leider oft dazu. Genau hier setzen wir an.
               </p>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Unser Autoankauf-Service kombiniert modernste Technologie mit langjähriger Branchenerfahrung, um Ihnen den bestmöglichen
-                Service zu bieten. Bei uns können Sie Ihr Auto verkaufen online, ohne das Haus verlassen zu müssen.
+                Unser Ablauf verbindet eine KI-gestützte Online-Bewertung mit einem festen Termin in unserer Filiale. Sie starten bequem von zu Hause und kommen nur einmal zur Übergabe zu uns.
               </p>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Unsere künstliche Intelligenz analysiert in Echtzeit Tausende von Transaktionsdaten und ermittelt so einen marktgerechten
-                Preis für Ihr Fahrzeug. Diese KI-gestützte Bewertung berücksichtigt nicht nur Marke, Modell und Kilometerstand, sondern
-                auch regionale Markttrends und saisonale Schwankungen.
+                Unsere KI schätzt den Preis anhand Ihrer Angaben und aktueller Online-Angebote vergleichbarer Fahrzeuge. Sie berücksichtigt unter anderem Marke, Modell, Baujahr, Kilometerstand, Motorisierung, Getriebe und Zustand.
               </p>
               <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
                 <p className="text-slate-600 leading-relaxed font-semibold">
-                  Ihr Auto in guten Händen: Wir kaufen Fahrzeuge in ganz Deutschland – von München über Berlin bis Hamburg, von{' '}
-                  <Link href="/autoankauf-frankfurt" className="text-brand-orange-contrast font-bold hover:underline">Frankfurt</Link> über{' '}
+                  Unsere Filialen liegen in Bodenheim und Rüsselsheim, nah an{' '}
+                  <Link href="/autoankauf-mainz" className="text-brand-orange-contrast font-bold hover:underline">Mainz</Link>,{' '}
                   <Link href="/autoankauf-wiesbaden" className="text-brand-orange-contrast font-bold hover:underline">Wiesbaden</Link> und{' '}
-                  <Link href="/autoankauf-mainz" className="text-brand-orange-contrast font-bold hover:underline">Mainz</Link> bis Köln und darüber hinaus. Unser Service ist überall verfügbar.
+                  <Link href="/autoankauf-frankfurt" className="text-brand-orange-contrast font-bold hover:underline">Frankfurt</Link>. Die Online-Bewertung funktioniert von überall, die Übergabe findet in einer unserer{' '}
+                  <Link href="/standorte" className="text-brand-orange-contrast font-bold hover:underline">Filialen</Link> statt.
                 </p>
               </div>
             </div>
@@ -336,14 +333,13 @@ export default function HomePageClient() {
               </h2>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
                 Nicht jedes Fahrzeug ist in einem perfekten Zustand. Vielleicht hat Ihr Auto einen Motorschaden, einen Unfallschaden
-                oder ist einfach schon sehr alt. Kein Problem – wir kaufen auch solche Fahrzeuge an.
+                oder ist einfach schon sehr alt. Auch solche Fahrzeuge können wir oft ankaufen.
               </p>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Während Privatpersonen bei einem Motorschaden oft abwinken, sehen wir den Wert, der in jedem Fahrzeug steckt. Selbst
-                Autos, die nicht mehr fahrtüchtig sind, haben noch einen Restwert, sei es für Ersatzteile oder für den Export.
+                Privatkäufer winken bei einem Motorschaden oft ab. Auch nicht mehr fahrtüchtige Autos können aber einen Restwert haben, etwa für Ersatzteile oder den Export. Echte Wracks gehören dagegen zu einem anerkannten Demontagebetrieb.
               </p>
               <div className="rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
-                <div className="font-bold text-brand-dark mb-3">Wir kaufen jeden PKW:</div>
+                <div className="font-bold text-brand-dark mb-3">Wir kaufen unter anderem:</div>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-600 font-medium">
                   {MOTORSCHADEN_TYPES.map((item, index) => (
                     <li key={index} className="flex gap-2 items-start">
@@ -354,11 +350,14 @@ export default function HomePageClient() {
                 </ul>
               </div>
               <p className="text-slate-600 leading-relaxed font-medium mt-4">
-                Besonders interessant ist unser Service für Besitzer von Fahrzeugen, die sich für den Export eignen. Ältere
-                Mercedes-Modelle, robuste Geländewagen oder beliebte Kleinwagen finden auf ausländischen Märkten oft dankbare Abnehmer.
+                Für manche Fahrzeuge kann auch der Export ein passender Weg sein, zum Beispiel für ältere Mercedes-Modelle, robuste Geländewagen oder beliebte Kleinwagen.
               </p>
               <div className="mt-4 text-slate-600 font-semibold">
-                💡 Tipp: Auch wenn Ihr Auto nicht mehr fährt – kontaktieren Sie uns trotzdem. Sie werden überrascht sein, was es noch wert ist!
+                Ihr Auto fährt nicht mehr? Rufen Sie uns vor dem Termin an, dann besprechen wir die Übergabe. Mehr dazu unter{' '}
+                <Link href="/defektes-auto-verkaufen" className="text-brand-orange-contrast font-bold hover:underline">
+                  defektes Auto verkaufen
+                </Link>
+                .
               </div>
               <a
                 href="#bewerten"
@@ -384,21 +383,17 @@ export default function HomePageClient() {
             Gebrauchtwagen verkaufen: Transparenz steht an erster Stelle
           </h2>
           <p className="text-slate-600 leading-relaxed font-medium mb-4">
-            Transparenz ist das Fundament unseres Geschäftsmodells. Wenn Sie Ihren Gebrauchtwagen verkaufen möchten, haben Sie ein
-            Recht darauf zu wissen, wie der angebotene Preis zustande kommt. Deshalb legen wir alle Bewertungskriterien offen.
+            Wenn Sie Ihren Gebrauchtwagen verkaufen möchten, sollten Sie wissen, wie der angebotene Preis zustande kommt. Deshalb erklären wir, welche Kriterien in die Bewertung einfließen.
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-4">
-            Sie erfahren genau, welchen Einfluss Faktoren wie die Laufleistung, das Alter des Fahrzeugs, die Ausstattung und der
-            Zustand auf den Ankaufspreis haben.
+            Laufleistung, Alter, Motorisierung und Zustand beeinflussen den Preis am stärksten. Außerdem kalkulieren wir als Händler Marge und Risiko ein, deshalb liegt der Ankaufspreis unter dem Preis, den ein Privatverkauf erzielen kann.
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-4">
-            Anders als beim Privatverkauf müssen Sie sich bei uns keine Sorgen über rechtliche Fallstricke machen. Wir übernehmen die
-            vollständige Haftung und Sie verkaufen das Fahrzeug wie gesehen. Das bedeutet: keine späteren Reklamationen, keine
-            Diskussionen über versteckte Mängel und keine juristischen Auseinandersetzungen.
+            Im Kaufvertrag wird die Sachmängelhaftung ausgeschlossen. Mängel, die Sie kennen, geben Sie an. So ist klar geregelt, in welchem Zustand das Fahrzeug übergeben wird, und das Risiko späterer Diskussionen sinkt.
           </p>
           <div className="mt-6 rounded-2xl bg-white/80 border border-slate-100 p-5 shadow-sm">
             <p className="text-slate-600 leading-relaxed font-semibold">
-              Sobald der Kaufvertrag unterschrieben ist, sind Sie aus dem Schneider.
+              Sie erhalten eine Kopie des Kaufvertrags, und die Abmeldung übernehmen wir für Sie.
             </p>
           </div>
         </div>
@@ -432,17 +427,13 @@ export default function HomePageClient() {
                 Faire Bewertung durch künstliche Intelligenz
               </h2>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Unser größter Trumpf ist die KI-gestützte Bewertung. Während traditionelle Händler oft aus dem Bauch heraus entscheiden
-                oder veraltete Preislisten verwenden, setzen wir auf Datenanalyse.
+                Für die Preiseinschätzung nutzen wir eine KI, die aktuelle Online-Angebote vergleichbarer Fahrzeuge recherchiert und mit Ihren Angaben abgleicht.
               </p>
               <p className="text-slate-600 leading-relaxed font-medium mb-4">
-                Unsere Algorithmen werten kontinuierlich Verkaufsdaten von allen großen Gebrauchtwagenportalen,
-                Auktionsplattformen und Händlernetzwerken aus. Das Ergebnis ist eine Preiseinschätzung, die den aktuellen Marktwert
-                präzise widerspiegelt.
+                Das Ergebnis ist eine Einschätzung mit Preisspanne, in die auch Händlermarge und Risiko einfließen.
               </p>
               <p className="text-slate-600 leading-relaxed font-medium mb-6">
-                Sie erhalten keinen Fantasiepreis, der sich später als unrealistisch herausstellt, sondern ein solides Angebot, das auf
-                echten Verkaufszahlen basiert. Diese Transparenz schafft Vertrauen und sorgt dafür, dass beide Seiten zufrieden sind.
+                Die Online-Bewertung ist unverbindlich. Den verbindlichen Preis nennen wir nach der Fahrzeugprüfung in der Filiale, und Sie entscheiden dann, ob Sie verkaufen.
               </p>
               <a
                 href="#bewerten"
@@ -458,9 +449,7 @@ export default function HomePageClient() {
       {/* FAQ — matches Vite position: after all prose sections, before Zufriedenheit */}
       <section id="faq" className="defer-render relative py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
-          <Suspense fallback={null}>
-            <FAQSection />
-          </Suspense>
+          <FAQSection sectionId="faq-startseite" />
         </div>
       </section>
 
@@ -476,29 +465,25 @@ export default function HomePageClient() {
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
           <h2 className="text-xl md:text-2xl font-black text-brand-dark mb-6">Ihre Zufriedenheit ist unser Maßstab</h2>
           <p className="text-slate-600 leading-relaxed font-medium mb-4">
-            Am Ende des Tages zählt nur eines: Ihre Zufriedenheit. Wir möchten, dass Sie den Verkauf Ihres Autos als positives
-            Erlebnis in Erinnerung behalten. Deshalb legen wir Wert auf eine freundliche und kompetente Beratung, faire Preise und
-            eine schnelle Abwicklung.
+            Wir möchten, dass Sie den Verkauf Ihres Autos als positives Erlebnis in Erinnerung behalten. Deshalb legen wir Wert auf eine freundliche Beratung, nachvollziehbare Preise und eine zügige Abwicklung.
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-4">
-            Viele unserer Kunden kommen über Empfehlungen zu uns oder verkaufen bei ihrem nächsten Fahrzeugwechsel wieder an uns.
-            Das ist für uns der beste Beweis dafür, dass wir unsere Arbeit gut machen.
+            Wenn Sie Fragen haben, erreichen Sie uns telefonisch unter 0178 2415897 oder per E-Mail an info@meinautoverkauf.de.
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-6">
-            Auto verkaufen muss nicht kompliziert sein – mit Meinautoverkauf.de wird er zum Kinderspiel.
+            Auto verkaufen muss nicht kompliziert sein.
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-4">
             Wenn Sie Ihr Auto verkaufen möchten, zögern Sie nicht länger. Nutzen Sie unser kostenloses Online-Bewertungstool und
-            erfahren Sie in wenigen Minuten, was Ihr Fahrzeug wert ist. Unverbindlich, schnell und präzise. Der erste Schritt zu
+            erfahren Sie in wenigen Minuten, was Ihr Fahrzeug wert ist. Unverbindlich und schnell. Der erste Schritt zu
             Ihrem stressfreien Autoverkauf ist nur einen Klick entfernt.
           </p>
           <p className="text-slate-600 leading-relaxed font-medium mb-6">
-            Egal ob Sie Ihren{' '}
+            Egal, ob Sie Ihren{' '}
             <Link href="/auto-verkaufen" className="text-brand-orange-contrast font-bold hover:underline">
               Gebrauchtwagen verkaufen
             </Link>
-            , ein Fahrzeug mit Motorschaden loswerden oder einen PKW für den Export anbieten möchten – wir sind Ihr zuverlässiger
-            Partner für den Autoankauf in ganz Deutschland. Mehr über unsere{' '}
+            , ein Fahrzeug mit Motorschaden loswerden oder einen Pkw für den Export anbieten möchten: Starten Sie einfach mit der kostenlosen Bewertung. Mehr über unsere{' '}
             <Link href="/vorteile" className="text-brand-orange-contrast font-bold hover:underline">
               Vorteile
             </Link>{' '}

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import FAQSection from '@/components/FAQSection';
 import { getBrandSeoContent } from '@/lib/brandSeoContent';
+import { MODEL_SEO_PAGES } from '@/lib/modelSeoPages';
+import { pickLinks, SELLING_GUIDE_LINKS } from '@/lib/contextualLinks';
 
 interface Props {
   brandSlug: string;
@@ -13,7 +15,7 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
     return (
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center">
-          <h1 className="text-2xl font-black text-brand-dark mb-3">Markenseite nicht gefunden</h1>
+          <h2 className="text-2xl font-black text-brand-dark mb-3">Markenseite nicht gefunden</h2>
           <p className="text-slate-600 font-medium">
             Für diese Marke liegt aktuell noch keine Autoankauf-Seite vor.
           </p>
@@ -23,6 +25,8 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
   }
 
   const { displayName, landing } = brand;
+  const modelLinks = MODEL_SEO_PAGES.filter((model) => model.brandSlug === brand.slug);
+  const guideLinks = pickLinks(SELLING_GUIDE_LINKS, brand.slug, 3);
 
   return (
     <div className="bg-white relative overflow-hidden">
@@ -34,9 +38,9 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-6xl relative z-10">
         <section className="max-w-5xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-6 leading-tight tracking-tight">
             {landing.h1}
-          </h1>
+          </h2>
           <div className="space-y-4 mb-8">
             {landing.intro.map((paragraph) => (
               <p key={paragraph} className="text-slate-600 text-base lg:text-lg font-medium leading-relaxed">
@@ -156,6 +160,27 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
                 </Link>
                 <p className="text-sm text-slate-600 font-medium mt-2">{link.context}</p>
               </article>
+            ))}
+          </div>
+
+          <div className="mb-8 flex flex-wrap gap-2">
+            {modelLinks.map((model) => (
+              <Link
+                key={model.href}
+                href={model.href}
+                className="rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
+              >
+                {model.label}
+              </Link>
+            ))}
+            {guideLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
 

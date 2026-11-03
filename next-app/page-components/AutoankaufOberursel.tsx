@@ -20,9 +20,9 @@ const AutoankaufOberurselPage: React.FC<Props> = ({ onCtaClick }) => {
 
       <div className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl relative z-10">
         <div className="max-w-4xl mx-auto mb-14">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark mb-7 leading-tight tracking-tight">
             Autoankauf Oberursel - <span className="text-brand-orange">schnell verkaufen im Taunus</span>
-          </h1>
+          </h2>
           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-5">
             Oberursel ist als Wohn- und Pendlerstadt stark mit Frankfurt verbunden. Viele Fahrzeuge werden hier täglich
             für den Arbeitsweg über B455, Richtung A661 oder im Mix aus Auto und Schiene genutzt. Gleichzeitig gibt es
@@ -49,7 +49,7 @@ const AutoankaufOberurselPage: React.FC<Props> = ({ onCtaClick }) => {
             {[
               {
                 title: 'Stadtteile mit klaren Fahrzeugmustern',
-                text: 'In Oberstedten und Bommersheim sehen wir häufig Familienfahrzeuge, in Weißkirchen und Stierstadt viele Pendlerautos. Diese Unterschiede beeinflussen Nachfrage und Preisniveau.',
+                text: 'In Oberstedten und Bommersheim sind häufig Familienfahrzeuge, in Weißkirchen und Stierstadt viele Pendlerautos. Diese Unterschiede beeinflussen Nachfrage und Preisniveau.',
               },
               {
                 title: 'B455 und A661-Anbindung für Pendler',
@@ -87,7 +87,7 @@ const AutoankaufOberurselPage: React.FC<Props> = ({ onCtaClick }) => {
               },
               {
                 step: '02',
-                title: 'Termin vor Ort abstimmen',
+                title: 'Termin in der Filiale buchen',
                 text: 'Wir planen einen Termin in Oberursel oder im direkten Umfeld, passend zu Ihrem Tagesablauf.',
               },
               {
@@ -228,7 +228,7 @@ const AutoankaufOberurselPage: React.FC<Props> = ({ onCtaClick }) => {
         </section>
 
         <section className="mb-14 bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100">
-          <h2 className="text-xl font-black text-brand-dark mb-4">Interne Links für Ihren nächsten Schritt</h2>
+          <h2 className="text-xl font-black text-brand-dark mb-4">So geht es weiter</h2>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
             Starten Sie sofort mit der{' '}
             <Link href="/auto-bewerten" className="text-brand-orange font-bold hover:underline">
