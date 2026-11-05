@@ -234,7 +234,7 @@ function buildCustomerEstimationEmail(params: {
     </table>
 
     <p style="font-size:14px;color:#334155;line-height:1.7;margin:0 0 28px;">
-      Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort. Er kann auch unter dieser Spanne liegen.
+      Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort.
     </p>
 
     <p style="font-size:14px;color:#64748b;line-height:1.7;margin:0;">

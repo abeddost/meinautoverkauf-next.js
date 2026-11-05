@@ -47,7 +47,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
           </div>
 
           <p className="text-xs leading-relaxed text-slate-300">
-            Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort. Er kann auch unter dieser Spanne liegen.
+            Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort.
           </p>
         </div>
 
