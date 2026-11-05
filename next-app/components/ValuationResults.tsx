@@ -34,23 +34,21 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
         <div className="bg-brand-dark text-white p-4 sm:p-6 lg:p-6 lg:w-[30%] flex flex-col justify-center items-center text-center relative">
           <div className="absolute top-0 left-0 w-full h-1 bg-brand-orange"></div>
           
-          <h2 className="text-xs sm:text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-3">Ihr Ankauf-Angebot</h2>
+          <h2 className="text-xs sm:text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em] mb-3">Ihre Preiseinschätzung</h2>
           <div className="text-2xl sm:text-4xl lg:text-3xl font-black text-brand-orange mb-3 tracking-tighter">
             {formatPrice(valuation.estimatedPrice)}
           </div>
           
           <div className="w-full p-2.5 sm:p-4 bg-white/5 rounded-xl border border-white/10 mb-3 lg:mb-5">
-            <span className="text-xs sm:text-[9px] font-black text-slate-500 uppercase tracking-widest block mb-1">Geprüfter Preiskorridor</span>
+            <span className="text-xs sm:text-[9px] font-black text-slate-500 uppercase tracking-widest block mb-1">Unverbindliche Preisspanne</span>
             <div className="text-sm sm:text-lg font-black text-slate-300">
               {formatPrice(valuation.priceRange.min)} — {formatPrice(valuation.priceRange.max)}
             </div>
           </div>
 
-          <div className="flex flex-col gap-2.5 w-full">
-            <div className="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-300 bg-white/5 px-3 py-2 rounded-xl border border-white/5">
-              <span className="text-green-400">●</span> Garantiert für 7 Tage
-            </div>
-          </div>
+          <p className="text-xs leading-relaxed text-slate-300">
+            Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort. Er kann auch unter dieser Spanne liegen.
+          </p>
         </div>
 
         {/* Persuasive Content (Right/Bottom) */}
@@ -62,7 +60,7 @@ const ValuationResults: React.FC<ValuationResultsProps> = ({ valuation, carDetai
               aria-busy={isSubmitting}
               className="w-full bg-brand-orange hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white px-5 py-3 lg:py-4 rounded-xl font-bold text-sm sm:text-base shadow-lg transition-all transform active:scale-95 shadow-orange-900/20"
             >
-              Termin zur Übergabe buchen
+              Termin zur Fahrzeugprüfung buchen
             </button>
             
           </div>

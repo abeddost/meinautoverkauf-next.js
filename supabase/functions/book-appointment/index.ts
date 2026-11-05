@@ -217,13 +217,13 @@ function buildCustomerAppointmentEmail(params: {
     <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Am ${preferredDate} um ${preferredTime} – ${deliveryLabel}.</div>
 
     <h1 style="font-size:22px;font-weight:900;color:#0f172a;margin:0 0 8px;">Ihr Termin ist bestätigt</h1>
-    <p style="font-size:15px;color:#f97316;font-weight:700;margin:0 0 24px;letter-spacing:0.02em;">Übergabetermin gebucht</p>
+    <p style="font-size:15px;color:#f97316;font-weight:700;margin:0 0 24px;letter-spacing:0.02em;">Termin zur Fahrzeugprüfung gebucht</p>
 
     <p style="font-size:15px;color:#334155;margin:0 0 8px;">
       Sehr geehrte(r) ${firstName} ${lastName},
     </p>
     <p style="font-size:15px;color:#334155;line-height:1.7;margin:0 0 28px;">
-      Ihr Übergabetermin wurde erfolgreich gebucht. Wir freuen uns auf Sie und stehen für Fragen jederzeit zur Verfügung.
+      Ihr Termin zur Fahrzeugprüfung wurde erfolgreich gebucht. Wir freuen uns auf Sie und stehen für Fragen jederzeit zur Verfügung.
     </p>
 
     <!-- Appointment highlight box -->
@@ -249,9 +249,13 @@ function buildCustomerAppointmentEmail(params: {
       ${infoRow("Modell", model)}
       ${infoRow("Baujahr", year)}
       ${infoRow("Kilometerstand", formatMileageDisplay(mileage))}
-      ${infoRow("Geschätzter Preis", estimatedPrice.toLocaleString("de-DE") + " EUR")}
-      ${infoRow("Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Unverbindliche Preiseinschätzung", estimatedPrice.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Unverbindliche Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
     </table>
+
+    <p style="font-size:14px;color:#334155;line-height:1.7;margin:0 0 28px;">
+      Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort. Er kann auch unter dieser Spanne liegen.
+    </p>
 
     <!-- CTA -->
     <table cellpadding="0" cellspacing="0" style="margin-bottom:28px;">

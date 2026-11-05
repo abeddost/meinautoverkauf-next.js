@@ -118,7 +118,7 @@ export async function POST(req: Request) {
       AUSGABE-FORMAT (JSON):
       - estimatedPrice: Finaler Preis (Zahl).
       - priceRange: { min: Zahl, max: Zahl } (+/- 10%).
-      - explanation: Ein Text (30 Wörter) an den Kunden, warum unser Angebot fair ist (Sofortankauf, keine Haftung, Banküberweisung).
+      - explanation: Ein Text (30 Wörter) an den Kunden über die Vorteile unseres Services (Sofortankauf, keine Haftung, Banküberweisung). Nenne keine Preise und bezeichne den Preis nie als Angebot, Garantie oder Zusage.
       - marketTrend: (Up, Down, Stable).`;
 
     const response = await ai.models.generateContent({

@@ -87,7 +87,7 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
             Schritt 3 von 3
           </div>
           <h2 className="text-lg sm:text-xl font-black text-brand-dark leading-tight mt-3">
-            Wählen Sie Ihren Übergabe-Termin
+            Wählen Sie Ihren Termin zur Fahrzeugprüfung
           </h2>
           <p className="text-slate-600 mt-1.5 text-sm leading-relaxed">
             Erst Filiale wählen, dann Datum und Uhrzeit festlegen.

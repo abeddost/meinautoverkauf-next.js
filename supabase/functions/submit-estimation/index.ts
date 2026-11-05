@@ -229,9 +229,13 @@ function buildCustomerEstimationEmail(params: {
       ${infoRow("Modell", model)}
       ${infoRow("Baujahr", year)}
       ${infoRow("Kilometerstand", formatMileageDisplay(mileage))}
-      ${infoRow("Geschätzter Preis", estimatedPrice.toLocaleString("de-DE") + " EUR")}
-      ${infoRow("Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Unverbindliche Preiseinschätzung", estimatedPrice.toLocaleString("de-DE") + " EUR")}
+      ${infoRow("Unverbindliche Preisspanne", priceMin.toLocaleString("de-DE") + " – " + priceMax.toLocaleString("de-DE") + " EUR")}
     </table>
+
+    <p style="font-size:14px;color:#334155;line-height:1.7;margin:0 0 28px;">
+      Dies ist eine unverbindliche Online-Schätzung. Den verbindlichen Preis nennen wir nach der Prüfung Ihres Fahrzeugs vor Ort. Er kann auch unter dieser Spanne liegen.
+    </p>
 
     <p style="font-size:14px;color:#64748b;line-height:1.7;margin:0;">
       Unser Team prüft Ihre Anfrage und kontaktiert Sie telefonisch oder per E-Mail, um die nächsten Schritte zu besprechen.
