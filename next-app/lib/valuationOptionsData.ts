@@ -83,7 +83,10 @@ const FUELS = [
   'LPG / Autogas',
 ];
 const TRANSMISSIONS = ['Schaltung', 'Automatik', 'Halbautomatik'];
-export const YEARS = Array.from({ length: 30 }, (_, i) => (2024 - i).toString());
+// Computed at runtime so the list never falls behind the calendar; reaches back far enough for oldtimers.
+const OLDEST_YEAR = 1930;
+const CURRENT_YEAR = new Date().getFullYear();
+export const YEARS = Array.from({ length: CURRENT_YEAR - OLDEST_YEAR + 1 }, (_, i) => (CURRENT_YEAR - i).toString());
 export const MILEAGE_RANGES = [
   ...Array.from({ length: 25 }, (_, i) => {
     const start = i * 10000;
