@@ -94,12 +94,21 @@ export async function POST(req: Request) {
 
     const ai = new GoogleGenAI({ apiKey });
 
+    // Brand, model and variant can be typed by hand, so cap their length before they reach the prompt.
+    const freeText = (value: unknown): string =>
+      typeof value === 'string' ? value.replace(/\s+/g, ' ').trim().slice(0, 60) : '';
+    const brand = freeText(details.brand);
+    const model = freeText(details.model);
+    const variant = freeText(details.variant);
+    const classicCutoffYear = new Date().getFullYear() - 30;
+
     const prompt = `Handel als KFZ-Einkaufsdirektor eines Premium-Ankaufportals.
       ZIEL: Berechne den Händler-Ankaufspreis für ein Fahrzeug mit folgenden Daten:
-      
+
       FAHRZEUG:
-      - Marke: ${details.brand}
-      - Modell: ${details.model}
+      - Marke: ${brand}
+      - Modell: ${model}
+      - Variante / Motor: ${variant || 'nicht angegeben'}
       - Karosserie: ${details.bodyType}
       - Erstzulassung: ${details.year}
       - Kilometerstand (Bereich): ${details.mileage}
@@ -114,7 +123,9 @@ export async function POST(req: Request) {
       1. Nutze Google Search Grounding für aktuelle Marktpreise (Mobile.de/Autoscout24).
       2. Berücksichtige Wertverlust für Getriebeart und Motorleistung.
       3. Abzug Händlermarge & Risiko: Ca. 23-30% vom Marktwert.
-      
+      4. Wenn eine Variante angegeben ist, nutze Vergleichsangebote genau dieser Motorisierung bzw. Ausführung.
+      5. Erstzulassung ${classicCutoffYear} oder älter: als Oldtimer bewerten (Klassik-Marktpreise, H-Kennzeichen-Fähigkeit). Der Zustand ist hier der wichtigste Preisfaktor, die Laufleistung zählt weniger.
+
       AUSGABE-FORMAT (JSON):
       - estimatedPrice: Finaler Preis (Zahl).
       - priceRange: { min: Zahl, max: Zahl } (+/- 10%).

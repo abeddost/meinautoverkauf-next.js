@@ -6,6 +6,11 @@ import { getCarValuation, getValuationErrorMessage } from '@/geminiService';
 import { setPendingPhotoPromise } from '@/lib/pendingPhotoUpload';
 import type { ValuationOptionsData } from '@/lib/valuationOptionsData';
 
+// Mirrors OTHER_BRAND / OTHER_MODEL in lib/valuationOptionsData.ts. Duplicated (not imported)
+// so the large options module stays in its lazily loaded chunk.
+const OTHER_BRAND = '__other_brand__';
+const OTHER_MODEL = '__other_model__';
+
 interface ValuationFormProps {
   onValuationComplete: (details: CarDetails, result: ValuationResult) => void;
   /** If provided, form will navigate to analyzing page with formData instead of calling API inline. */
@@ -72,6 +77,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const [submitError, setSubmitError] = useState('');
   const [optionsData, setOptionsData] = useState<ValuationOptionsData | null>(null);
   const [optionsLoading, setOptionsLoading] = useState(false);
+  const [brandIsOther, setBrandIsOther] = useState(false);
+  const [modelIsOther, setModelIsOther] = useState(false);
   const brandTypeaheadRef = useRef('');
   const brandTypeaheadTimeRef = useRef(0);
   const brandTypeaheadTimerRef = useRef<number | null>(null);
@@ -206,12 +213,36 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     CONTACT_FIELDS.includes(field as ContactField);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
+    let { value } = e.target;
+    const fromSelect = e.target.tagName === 'SELECT';
+    let switchedToOther = false;
+
+    if (fromSelect && name === 'brand') {
+      // "Andere Marke" switches brand and model to free text; a listed brand switches both back.
+      switchedToOther = value === OTHER_BRAND;
+      setBrandIsOther(switchedToOther);
+      setModelIsOther(switchedToOther);
+    } else if (fromSelect && name === 'model') {
+      switchedToOther = value === OTHER_MODEL;
+      setModelIsOther(switchedToOther);
+    }
+    if (switchedToOther) value = '';
+
     setFormData(prev => ({
       ...prev,
       [name]: value,
-      ...(name === 'brand' ? { model: '' } : {})
+      // A new brand invalidates the model; a new model invalidates the variant. Typing into the
+      // free-text brand field keeps the typed model, since both are entered by hand.
+      ...(name === 'brand' && fromSelect ? { model: '', variant: '' } : {}),
+      ...(name === 'model' && fromSelect ? { variant: '' } : {})
     }));
+
+    if (switchedToOther) {
+      // Switching to free text shows an empty input; don't flag it before the user has typed.
+      setFieldError(name, '');
+      return;
+    }
     setDirtyFields(prev => ({ ...prev, [name]: true }));
     const shouldValidateLive = submitAttempted || touchedFields[name] || dirtyFields[name];
     if (shouldValidateLive || fieldErrors[name]) {
@@ -230,6 +261,8 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
         return !fileError;
       case 'brand':
       case 'model':
+        // These can be typed by hand ("Andere Marke" / "Anderes Modell"), so ignore whitespace.
+        return Boolean(fieldValue.trim());
       case 'year':
       case 'power':
       case 'bodyType':
@@ -349,10 +382,13 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
     const match = optionsData.sortedBrands.find((brand) => brand.toLowerCase().startsWith(nextQuery));
     if (match) {
       e.preventDefault();
+      setBrandIsOther(false);
+      setModelIsOther(false);
       setFormData(prev => ({
         ...prev,
         brand: match,
-        model: ''
+        model: '',
+        variant: ''
       }));
       if (fieldErrors.brand) {
         setFieldError('brand', '');
@@ -652,6 +688,12 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
   const optionsReady = optionsData !== null;
   const sortedBrands = optionsData?.sortedBrands ?? [];
   const availableModels = formData.brand ? optionsData?.brandData[formData.brand] ?? [] : [];
+  const variantSuggestions = formData.brand && formData.model
+    ? optionsData?.variantSuggestions[formData.brand]?.[formData.model] ?? []
+    : [];
+  const trimFieldOnBlur = (field: 'brand' | 'model' | 'variant') => {
+    setFormData(prev => ({ ...prev, [field]: prev[field].trim() }));
+  };
   const years = optionsData?.years ?? [];
   const powerRanges = optionsData?.powerRanges ?? [];
   const bodyTypes = optionsData?.bodyTypes ?? [];
@@ -737,7 +779,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 <select
                   id="form-brand"
                   name="brand"
-                  value={formData.brand}
+                  value={brandIsOther ? OTHER_BRAND : formData.brand}
                   onChange={handleSelectChange}
                   onBlur={() => {
                     handleBlur('brand');
@@ -755,31 +797,111 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   onKeyDown={handleBrandKeyDown}
                   required
                   aria-busy={!optionsReady}
-                  className={`${selectClass} ${shouldShowError('brand') ? `${invalidFieldClass} pr-14` : ''}`}
+                  className={`${selectClass} ${!brandIsOther && shouldShowError('brand') ? `${invalidFieldClass} pr-14` : ''}`}
                 >
                   <option value="">{optionsReady ? 'Bitte wählen...' : 'Optionen werden geladen...'}</option>
                   {sortedBrands.map((b) => <option key={b} value={b}>{b}</option>)}
+                  {optionsReady && <option value={OTHER_BRAND}>Andere Marke</option>}
                 </select>
-                {renderErrorIcon('brand', 'Bitte Marke wählen.')}
+                {!brandIsOther && renderErrorIcon('brand', 'Bitte Marke wählen.')}
               </div>
+              {brandIsOther && (
+                <div className="relative">
+                  <StepLabel label="Marke eingeben" required htmlFor="form-brand-custom" />
+                  <input
+                    id="form-brand-custom"
+                    name="brand"
+                    type="text"
+                    value={formData.brand}
+                    onChange={handleSelectChange}
+                    onBlur={() => {
+                      trimFieldOnBlur('brand');
+                      handleBlur('brand');
+                    }}
+                    maxLength={40}
+                    autoComplete="off"
+                    autoFocus
+                    required
+                    placeholder="z. B. Trabant, NSU, Borgward"
+                    className={`${inputClass} ${shouldShowError('brand') ? `${invalidFieldClass} pr-14` : ''}`}
+                  />
+                  {renderErrorIcon('brand', 'Bitte Marke eingeben.')}
+                </div>
+              )}
               <div className="relative">
-                <StepLabel label="Modellreihe" required htmlFor="form-model" />
-                <select
-                  id="form-model"
-                  name="model"
-                  value={formData.model}
-                  onChange={handleSelectChange}
-                  onBlur={() => handleBlur('model')}
-                  onFocus={handleOptionsIntent}
-                  onTouchStart={handleOptionsIntent}
-                  disabled={!formData.brand || !optionsReady}
-                  required
-                  className={`${selectClass} ${shouldShowError('model') ? `${invalidFieldClass} pr-14` : ''}`}
+                <StepLabel label={modelIsOther ? 'Modell eingeben' : 'Modellreihe'} required htmlFor="form-model" />
+                {modelIsOther ? (
+                  <input
+                    id="form-model"
+                    name="model"
+                    type="text"
+                    value={formData.model}
+                    onChange={handleSelectChange}
+                    onBlur={() => {
+                      trimFieldOnBlur('model');
+                      handleBlur('model');
+                    }}
+                    maxLength={40}
+                    autoComplete="off"
+                    autoFocus={!brandIsOther}
+                    required
+                    placeholder="z. B. Prinz 4, Isabella"
+                    className={`${inputClass} ${shouldShowError('model') ? `${invalidFieldClass} pr-14` : ''}`}
+                  />
+                ) : (
+                  <select
+                    id="form-model"
+                    name="model"
+                    value={formData.model}
+                    onChange={handleSelectChange}
+                    onBlur={() => handleBlur('model')}
+                    onFocus={handleOptionsIntent}
+                    onTouchStart={handleOptionsIntent}
+                    disabled={!formData.brand || !optionsReady}
+                    required
+                    className={`${selectClass} ${shouldShowError('model') ? `${invalidFieldClass} pr-14` : ''}`}
+                  >
+                    <option value="">{!optionsReady ? 'Optionen werden geladen...' : formData.brand ? 'Modell wählen...' : 'Wähle zuerst die Marke'}</option>
+                    {formData.brand && availableModels.map((m) => <option key={m} value={m}>{m}</option>)}
+                    {formData.brand && optionsReady && <option value={OTHER_MODEL}>Anderes Modell</option>}
+                  </select>
+                )}
+                {renderErrorIcon('model', modelIsOther ? 'Bitte Modell eingeben.' : 'Bitte Modell wählen.')}
+              </div>
+              {modelIsOther && !brandIsOther && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setModelIsOther(false);
+                    setFormData(prev => ({ ...prev, model: '', variant: '' }));
+                    setFieldError('model', '');
+                  }}
+                  className="-mt-1 ml-1 justify-self-start text-xs font-semibold text-[#004d7c] underline underline-offset-2 hover:text-brand-orange"
                 >
-                  <option value="">{!optionsReady ? 'Optionen werden geladen...' : formData.brand ? 'Modell wählen...' : 'Wähle zuerst die Marke'}</option>
-                  {formData.brand && availableModels.map((m) => <option key={m} value={m}>{m}</option>)}
-                </select>
-                {renderErrorIcon('model', 'Bitte Modell wählen.')}
+                  Zurück zur Modellliste
+                </button>
+              )}
+              <div className="relative">
+                <StepLabel label="Variante / Motor" optional htmlFor="form-variant" />
+                <input
+                  id="form-variant"
+                  name="variant"
+                  type="text"
+                  value={formData.variant}
+                  onChange={handleSelectChange}
+                  onBlur={() => trimFieldOnBlur('variant')}
+                  list={variantSuggestions.length > 0 ? 'form-variant-options' : undefined}
+                  disabled={!formData.model.trim()}
+                  maxLength={40}
+                  autoComplete="off"
+                  placeholder={variantSuggestions.length > 0 ? `z. B. ${variantSuggestions.slice(0, 2).join(', ')}` : 'z. B. 320d, 1.6 TDI'}
+                  className={inputClass}
+                />
+                {variantSuggestions.length > 0 && (
+                  <datalist id="form-variant-options">
+                    {variantSuggestions.map((v) => <option key={v} value={v} />)}
+                  </datalist>
+                )}
               </div>
               <div className="relative">
                 <StepLabel label="Erstzulassung" required htmlFor="form-year" />
