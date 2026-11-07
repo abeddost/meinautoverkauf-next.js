@@ -9,9 +9,14 @@ import { submitEstimation } from '@/lib/supabaseFunctions';
 import { consumePendingPhotoPromise } from '@/lib/pendingPhotoUpload';
 import Footer from '@/components/Footer';
 
+// A Wunschpreis below this share of the AI estimate is treated as a typo or a non-serious entry
+// (e.g. "25" for a 10.000 € car, usually meant as 25.000) and ignored instead of capping the price.
+const MIN_PLAUSIBLE_WISH_SHARE = 0.5;
+
 function applyWunschpreisCap(valuation: ValuationResult, desiredPrice: string | undefined): ValuationResult {
   const wished = desiredPrice ? parseInt(desiredPrice.replace(/\D/g, ''), 10) : NaN;
   if (!wished || isNaN(wished) || valuation.estimatedPrice <= wished) return valuation;
+  if (wished < valuation.estimatedPrice * MIN_PLAUSIBLE_WISH_SHARE) return valuation;
   const capped = Math.round(wished * 0.92);
   return {
     ...valuation,
