@@ -305,7 +305,7 @@ function buildAdminEstimationEmail(params: {
       ${p.doors ? infoRow("Türen", p.doors) : ""}
       ${p.postalCode ? infoRow("PLZ", p.postalCode) : ""}
       ${p.vin ? infoRow("FIN", p.vin) : ""}
-      ${p.desiredPrice ? infoRow("Wunschpreis", p.desiredPrice) : ""}
+      ${p.desiredPrice ? infoRow("Preisvorstellung", p.desiredPrice) : ""}
     </table>
 
     <!-- Bewertung -->

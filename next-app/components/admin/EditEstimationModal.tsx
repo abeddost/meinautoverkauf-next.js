@@ -368,7 +368,7 @@ const EditEstimationModal: React.FC<EditEstimationModalProps> = ({
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Wunschpreis</label>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Preisvorstellung</label>
                 <input
                   type="text"
                   name="desired_price"

@@ -1492,7 +1492,7 @@ const AdminDashboardContent: React.FC = () => {
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-14">PLZ</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-36">Fahrzeug</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Preis</th>
-                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Wunschpreis</th>
+                          <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-24">Preisvorstellung</th>
                           <th className="px-2 py-3 text-left text-xs font-bold text-slate-700 uppercase w-32">Zugewiesen an</th>
                           {estimationSubTab === 'active' && (
                             <>
@@ -2206,7 +2206,7 @@ const AdminDashboardContent: React.FC = () => {
                   )}
                   {selectedEstimation.desired_price && (
                     <div>
-                      <div className="text-xs text-slate-500 mb-1">Wunschpreis</div>
+                      <div className="text-xs text-slate-500 mb-1">Preisvorstellung</div>
                       <div className="font-semibold text-brand-orange">{selectedEstimation.desired_price} €</div>
                     </div>
                   )}
@@ -2577,7 +2577,7 @@ const AdminDashboardContent: React.FC = () => {
                           </div>
                           {estimation.desired_price && (
                             <div>
-                              <span className="font-bold">Wunschpreis:</span>{' '}
+                              <span className="font-bold">Preisvorstellung:</span>{' '}
                               <span className="text-brand-orange font-semibold">{estimation.desired_price} €</span>
                             </div>
                           )}

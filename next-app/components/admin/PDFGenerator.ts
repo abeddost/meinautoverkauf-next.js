@@ -104,7 +104,7 @@ export const generateEstimationPDF = async (
       ['E-Mail', estimation.email],
       ['Telefon', estimation.phone],
       ...(estimation.postal_code ? [['PLZ', estimation.postal_code]] : []),
-      ...(estimation.desired_price ? [['Wunschpreis', `${estimation.desired_price} €`]] : []),
+      ...(estimation.desired_price ? [['Preisvorstellung', `${estimation.desired_price} €`]] : []),
     ];
 
     autoTable(doc, {

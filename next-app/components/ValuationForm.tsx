@@ -315,7 +315,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
       case 'phone':
         return 'Bitte Handynummer eingeben.';
       case 'desiredPrice':
-        return 'Bitte Wunschpreis eingeben.';
+        return 'Bitte Preisvorstellung eingeben.';
       case 'images':
         return 'Maximal 5 Bilder erlaubt.';
       default:
@@ -1319,7 +1319,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('phone', 'Bitte Handynummer eingeben.')}
               </div>
               <div className="relative">
-                <StepLabel label="Dein Wunschpreis (€)" required />
+                <StepLabel label="Preisvorstellung (€)" required />
                 <input
                   type="number"
                   name="desiredPrice"
@@ -1338,7 +1338,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                   min={0}
                   className={`${inputClass} ${shouldShowError('desiredPrice') ? `${invalidFieldClass} pr-14` : ''}`}
                 />
-                {renderErrorIcon('desiredPrice', 'Bitte Wunschpreis eingeben.')}
+                {renderErrorIcon('desiredPrice', 'Bitte Preisvorstellung eingeben.')}
               </div>
             </div>
           )}
