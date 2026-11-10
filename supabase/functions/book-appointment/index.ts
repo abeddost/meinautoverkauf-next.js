@@ -169,6 +169,10 @@ const BRANCH_LOCATIONS = {
     name: "Rüsselsheim",
     address: "Wormser Str. 8b, 65428 Rüsselsheim am Main",
   },
+  wiesbaden: {
+    name: "HF E-Autos – Wiesbaden",
+    address: "Boelckestraße 58A, 55252 Wiesbaden",
+  },
 } as const;
 
 type BranchLocationId = keyof typeof BRANCH_LOCATIONS;
@@ -429,7 +433,7 @@ Deno.serve(async (req: Request) => {
   if (deliveryType === "bring_car") {
     if (!bringLocation || !BRANCH_LOCATION_IDS.includes(bringLocation as BranchLocationId))
       return jsonResp({
-        error: "bring_car requires bringLocation bodenheim or ruesselsheim",
+        error: "bring_car requires bringLocation bodenheim, ruesselsheim or wiesbaden",
         code: "validation_error",
       }, 400);
   } else if (bringLocation) {

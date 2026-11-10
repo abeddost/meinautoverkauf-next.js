@@ -20,6 +20,11 @@ const dropOffLocations = [
     name: 'Rüsselsheim',
     address: 'Wormser Str. 8b, 65428 Rüsselsheim am Main',
   },
+  {
+    id: 'wiesbaden',
+    name: 'HF E-Autos – Wiesbaden',
+    address: 'Boelckestraße 58A, 55252 Wiesbaden',
+  },
 ] as const;
 
 const timeSlots = Array.from({ length: 17 }, (_, index) => {
@@ -54,7 +59,7 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
         preferredDate: date,
         preferredTime: time,
         deliveryType: 'bring_car',
-        bringLocation: dropOffLocation as 'bodenheim' | 'ruesselsheim',
+        bringLocation: dropOffLocation!,
       });
       setBookingLoading(false);
       if (error || !data) {

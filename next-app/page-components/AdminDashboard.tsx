@@ -107,7 +107,7 @@ const AdminDashboardContent: React.FC = () => {
   const [estimationSubTab, setEstimationSubTab] = useState<'active' | 'archived' | 'deleted'>(() => {
     try { return (sessionStorage.getItem('admin_estimationSubTab') as any) ?? 'active'; } catch { return 'active'; }
   });
-  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim'>(() => {
+  const [appointmentSubTab, setAppointmentSubTab] = useState<'all' | 'pickup' | 'bodenheim' | 'ruesselsheim' | 'wiesbaden'>(() => {
     try { return (sessionStorage.getItem('admin_appointmentSubTab') as any) ?? 'all'; } catch { return 'all'; }
   });
   const [appointmentListTab, setAppointmentListTab] = useState<'active' | 'archived' | 'deleted'>(() => {
@@ -1043,6 +1043,7 @@ const AdminDashboardContent: React.FC = () => {
       if (appointmentSubTab === 'pickup') base = base.filter((apt) => apt.delivery_type === 'pickup');
       else if (appointmentSubTab === 'bodenheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'bodenheim');
       else if (appointmentSubTab === 'ruesselsheim') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'ruesselsheim');
+      else if (appointmentSubTab === 'wiesbaden') base = base.filter((apt) => apt.delivery_type === 'bring_car' && apt.bring_location === 'wiesbaden');
       // 'all' — no additional filter
 
       if (filters.dateFrom) {
@@ -1379,6 +1380,9 @@ const AdminDashboardContent: React.FC = () => {
                 </button>
                 <button onClick={() => setAppointmentSubTab('ruesselsheim')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'ruesselsheim' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
                   Rüsselsheim ({appointments.filter((a) => !a.archived_at && !a.deleted_at && a.delivery_type === 'bring_car' && a.bring_location === 'ruesselsheim').length})
+                </button>
+                <button onClick={() => setAppointmentSubTab('wiesbaden')} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${appointmentSubTab === 'wiesbaden' ? 'bg-slate-700 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                  HF E-Autos – Wiesbaden ({appointments.filter((a) => !a.archived_at && !a.deleted_at && a.delivery_type === 'bring_car' && a.bring_location === 'wiesbaden').length})
                 </button>
               </div>
             )}
@@ -2017,7 +2021,7 @@ const AdminDashboardContent: React.FC = () => {
                                   {appt.delivery_type === 'bring_car' ? 'Filial-Abgabe' : 'Abholung'}
                                 </div>
                                 {appt.bring_location && (
-                                  <div className="text-slate-500 text-xs capitalize">{appt.bring_location}</div>
+                                  <div className="text-slate-500 text-xs capitalize">{appt.bring_location === 'wiesbaden' ? 'HF E-Autos – Wiesbaden' : appt.bring_location}</div>
                                 )}
                               </td>
                               <td className="px-4 py-3 text-sm">
@@ -2440,7 +2444,7 @@ const AdminDashboardContent: React.FC = () => {
                             </div>
                             <div className="text-slate-500 text-xs">
                               {appt.delivery_type === 'bring_car'
-                                ? `Filial-Abgabe${appt.bring_location ? ` – ${appt.bring_location}` : ''}`
+                                ? `Filial-Abgabe${appt.bring_location ? ` – ${appt.bring_location === 'wiesbaden' ? 'HF E-Autos – Wiesbaden' : appt.bring_location}` : ''}`
                                 : 'Haus-Abholung'}
                             </div>
                           </div>
@@ -2592,7 +2596,7 @@ const AdminDashboardContent: React.FC = () => {
                             <div>
                               <span className="font-bold">Übergabe:</span>{' '}
                               {appt.delivery_type === 'bring_car'
-                                ? `Filial-Abgabe${appt.bring_location ? ` – ${appt.bring_location}` : ''}`
+                                ? `Filial-Abgabe${appt.bring_location ? ` – ${appt.bring_location === 'wiesbaden' ? 'HF E-Autos – Wiesbaden' : appt.bring_location}` : ''}`
                                 : 'Haus-Abholung'}
                             </div>
                             <div>

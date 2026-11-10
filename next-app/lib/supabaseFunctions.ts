@@ -45,7 +45,7 @@ export interface BookAppointmentBody {
   preferredDate: string;
   preferredTime: string;
   deliveryType: 'bring_car' | 'pickup';
-  bringLocation?: 'bodenheim' | 'ruesselsheim';
+  bringLocation?: 'bodenheim' | 'ruesselsheim' | 'wiesbaden';
 }
 
 export interface BookAppointmentResponse {

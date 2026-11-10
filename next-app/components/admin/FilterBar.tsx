@@ -15,7 +15,7 @@ import {
 
 type EstimationStatus = 'estimated' | 'appointment_booked' | 'converted_to_sale' | 'sold' | 'rejected';
 type DeliveryType = 'pickup' | 'bring_car';
-type BringLocation = 'bodenheim' | 'ruesselsheim';
+type BringLocation = 'bodenheim' | 'ruesselsheim' | 'wiesbaden';
 
 export interface FilterState {
   // Estimation filters (Bewertungen)
