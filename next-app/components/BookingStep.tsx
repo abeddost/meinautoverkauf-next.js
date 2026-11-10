@@ -52,8 +52,13 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
     if (isSubmitDisabled) return;
     setBookingError(null);
 
-    if (estimationId) {
-      setBookingLoading(true);
+    if (!estimationId) {
+      setBookingError('Ihre Bewertung wurde noch nicht gespeichert. Bitte gehen Sie zurück zur Bewertung und versuchen Sie es erneut.');
+      return;
+    }
+
+    setBookingLoading(true);
+    try {
       const { data, error, status } = await bookAppointment({
         estimationId,
         preferredDate: date,
@@ -61,8 +66,7 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
         deliveryType: 'bring_car',
         bringLocation: dropOffLocation!,
       });
-      setBookingLoading(false);
-      if (error || !data) {
+      if (error || !data?.appointmentId || data.estimationId !== estimationId || data.status !== 'appointment_booked') {
         setBookingError(
           status === 429
             ? 'Zu viele Anfragen. Bitte kurz warten und erneut versuchen.'
@@ -70,8 +74,12 @@ const BookingStep: React.FC<BookingStepProps> = ({ estimationId, onComplete, onB
         );
         return;
       }
+      onComplete();
+    } catch {
+      setBookingError('Die Buchung konnte nicht bestätigt werden. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.');
+    } finally {
+      setBookingLoading(false);
     }
-    onComplete();
   };
 
   return (

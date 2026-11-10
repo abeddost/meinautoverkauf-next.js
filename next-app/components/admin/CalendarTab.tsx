@@ -55,6 +55,7 @@ const DELIVERY_LABELS: Record<string, string> = {
 const LOCATION_LABELS: Record<string, string> = {
   bodenheim: 'Bodenheim',
   ruesselsheim: 'Rüsselsheim',
+  wiesbaden: 'HF E-Autos – Wiesbaden',
 };
 
 export default function CalendarTab({
@@ -263,7 +264,7 @@ function NewAppointmentModal({ onClose, onCreated }: NewAppointmentModalProps) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('10:00');
   const [deliveryType, setDeliveryType] = useState<'bring_car' | 'pickup'>('bring_car');
-  const [bringLocation, setBringLocation] = useState<'bodenheim' | 'ruesselsheim'>('bodenheim');
+  const [bringLocation, setBringLocation] = useState<'bodenheim' | 'ruesselsheim' | 'wiesbaden'>('bodenheim');
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -416,11 +417,12 @@ function NewAppointmentModal({ onClose, onCreated }: NewAppointmentModalProps) {
               <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Standort</label>
               <select
                 value={bringLocation}
-                onChange={(e) => setBringLocation(e.target.value as 'bodenheim' | 'ruesselsheim')}
+                onChange={(e) => setBringLocation(e.target.value as 'bodenheim' | 'ruesselsheim' | 'wiesbaden')}
                 className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange"
               >
                 <option value="bodenheim">Bodenheim</option>
                 <option value="ruesselsheim">Rüsselsheim</option>
+                <option value="wiesbaden">HF E-Autos – Wiesbaden</option>
               </select>
             </div>
           )}

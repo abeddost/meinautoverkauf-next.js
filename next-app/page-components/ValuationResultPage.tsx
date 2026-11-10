@@ -39,6 +39,8 @@ const ValuationResultPage: React.FC = () => {
 
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [saveConfirmed, setSaveConfirmed] = useState(false);
+  const [saveAttempt, setSaveAttempt] = useState(0);
   const submittedRef = useRef(false);
 
   useEffect(() => {
@@ -72,6 +74,7 @@ const ValuationResultPage: React.FC = () => {
     if (!carDetails || !valuation || submittedRef.current) return;
     submittedRef.current = true;
     setSubmitting(true);
+    setSaveConfirmed(false);
     setSubmitError(null);
 
     // If estimationId was passed from AnalyzingPage (partial save), photos were
@@ -127,17 +130,18 @@ const ValuationResultPage: React.FC = () => {
       .then(({ data, error, status }) => {
         if (data?.estimationId) {
           setEstimationId(data.estimationId);
+          setSaveConfirmed(true);
         } else {
           setSubmitError(
             status === 429
               ? 'Zu viele Anfragen. Bitte kurz warten und Seite neu laden.'
-              : (error?.error ?? 'Speichern fehlgeschlagen. Sie können trotzdem fortfahren.')
+              : (error?.error ?? 'Ihre Bewertung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.')
           );
         }
       })
-      .catch(() => setSubmitError('Speichern fehlgeschlagen. Sie können trotzdem fortfahren.'))
+      .catch(() => setSubmitError('Ihre Bewertung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.'))
       .finally(() => setSubmitting(false));
-  }, [carDetails, valuation, estimationId]);
+  }, [carDetails, valuation, estimationId, saveAttempt]);
 
   if (!mounted) {
     return (
@@ -184,13 +188,25 @@ const ValuationResultPage: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           {submitError && (
             <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 font-semibold">
-              {submitError}
+              <p>{submitError}</p>
+              <button
+                type="button"
+                disabled={submitting}
+                onClick={() => {
+                  submittedRef.current = false;
+                  setSaveAttempt((attempt) => attempt + 1);
+                }}
+                className="mt-2 font-bold underline disabled:opacity-50"
+              >
+                Erneut speichern
+              </button>
             </div>
           )}
           <ValuationResults
             valuation={valuation}
             carDetails={carDetails}
             onNext={() => {
+              if (!saveConfirmed || !effectiveEstimationId || submitting) return;
               if (typeof window !== 'undefined') {
                 sessionStorage.setItem(
                   'booking_data',
@@ -201,6 +217,7 @@ const ValuationResultPage: React.FC = () => {
             }}
             onBack={() => router.replace('/')}
             isSubmitting={submitting}
+            canBook={saveConfirmed && Boolean(effectiveEstimationId)}
           />
         </div>
       </main>

@@ -1291,7 +1291,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 </div>
               </div>
               <div className="relative">
-                <StepLabel label="Deine E-Mail-Adresse" required />
+                <StepLabel label="Ihre E-Mail-Adresse" required />
                 <input
                   type="email"
                   name="email"
@@ -1305,7 +1305,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
                 {renderErrorIcon('email', 'Bitte E-Mail eingeben.')}
               </div>
               <div className="relative">
-                <StepLabel label="Deine Handynummer" required />
+                <StepLabel label="Ihre Handynummer" required />
                 <input
                   type="tel"
                   name="phone"
@@ -1358,7 +1358,7 @@ const ValuationForm: React.FC<ValuationFormProps> = ({ onValuationComplete, onVa
             className="group w-full bg-gradient-to-r from-[#ffb347] via-[#ff8f2d] to-[#ff7a1a] text-white py-3.5 lg:py-4 rounded-2xl font-black text-sm lg:text-base shadow-[0_14px_30px_-14px_rgba(255,130,50,0.7)] hover:shadow-[0_20px_40px_-16px_rgba(255,130,50,0.9)] hover:brightness-105 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="flex items-center justify-center gap-3">
-              <span>{currentPage === 5 ? "Kostenlosen Verkaufspreis erhalten" : "Kostenlos bewerten"}</span>
+              <span>{currentPage === 5 ? "Kostenlose Preiseinschätzung erhalten" : "Kostenlos bewerten"}</span>
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white transition-transform duration-300 group-hover:translate-x-1">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
