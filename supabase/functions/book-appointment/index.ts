@@ -461,11 +461,20 @@ Deno.serve(async (req: Request) => {
     })
     .select("id")
     .single();
-  if (apptErr)
+  if (apptErr) {
+    // Log diagnostic codes without customer data or raw database details.
+    console.error("Appointment insert failed", { code: apptErr.code });
+    if (apptErr.code === "23505") {
+      return jsonResp({
+        error: "Für diese Bewertung wurde bereits ein Termin gebucht. Bitte kontaktieren Sie uns, wenn Sie ihn ändern möchten.",
+        code: "appointment_already_exists",
+      }, 409);
+    }
     return jsonResp({
-      error: "Failed to create appointment (estimation may already have one)",
+      error: "Der Termin konnte nicht gespeichert werden. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns.",
       code: "db_error",
-    }, 400);
+    }, 500);
+  }
 
   // ── Step 3: Update estimation status ──────────────────────────────
   await supabase
