@@ -8,17 +8,7 @@ import { CarDetails, ValuationResult } from '@/types';
 import { submitEstimation } from '@/lib/supabaseFunctions';
 import { consumePendingPhotoPromise } from '@/lib/pendingPhotoUpload';
 import Footer from '@/components/Footer';
-
-function applyWunschpreisCap(valuation: ValuationResult, desiredPrice: string | undefined): ValuationResult {
-  const wished = desiredPrice ? parseInt(desiredPrice.replace(/\D/g, ''), 10) : NaN;
-  if (!wished || isNaN(wished) || valuation.estimatedPrice <= wished) return valuation;
-  const capped = Math.round(wished * 0.92);
-  return {
-    ...valuation,
-    estimatedPrice: capped,
-    priceRange: { min: Math.round(capped * 0.97), max: Math.round(capped * 1.03) },
-  };
-}
+import { applyWunschpreisRule } from '@/lib/wunschpreis';
 
 const ValuationResultPage: React.FC = () => {
   const router = useRouter();
@@ -30,7 +20,7 @@ const ValuationResultPage: React.FC = () => {
   const [estimationId, setEstimationId] = useState<string | null>(null);
 
   const valuation =
-    rawValuation && carDetails ? applyWunschpreisCap(rawValuation, carDetails.desiredPrice) : rawValuation;
+    rawValuation && carDetails ? applyWunschpreisRule(rawValuation, carDetails.desiredPrice) : rawValuation;
 
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
