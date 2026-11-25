@@ -8,22 +8,7 @@ import { CarDetails, ValuationResult } from '@/types';
 import { submitEstimation } from '@/lib/supabaseFunctions';
 import { consumePendingPhotoPromise } from '@/lib/pendingPhotoUpload';
 import Footer from '@/components/Footer';
-
-// A Wunschpreis below this share of the AI estimate is treated as a typo or a non-serious entry
-// (e.g. "25" for a 10.000 € car, usually meant as 25.000) and ignored instead of capping the price.
-const MIN_PLAUSIBLE_WISH_SHARE = 0.5;
-
-function applyWunschpreisCap(valuation: ValuationResult, desiredPrice: string | undefined): ValuationResult {
-  const wished = desiredPrice ? parseInt(desiredPrice.replace(/\D/g, ''), 10) : NaN;
-  if (!wished || isNaN(wished) || valuation.estimatedPrice <= wished) return valuation;
-  if (wished < valuation.estimatedPrice * MIN_PLAUSIBLE_WISH_SHARE) return valuation;
-  const capped = Math.round(wished * 0.92);
-  return {
-    ...valuation,
-    estimatedPrice: capped,
-    priceRange: { min: Math.round(capped * 0.97), max: Math.round(capped * 1.03) },
-  };
-}
+import { applyWunschpreisRule } from '@/lib/wunschpreis';
 
 const ValuationResultPage: React.FC = () => {
   const router = useRouter();
@@ -35,12 +20,10 @@ const ValuationResultPage: React.FC = () => {
   const [estimationId, setEstimationId] = useState<string | null>(null);
 
   const valuation =
-    rawValuation && carDetails ? applyWunschpreisCap(rawValuation, carDetails.desiredPrice) : rawValuation;
+    rawValuation && carDetails ? applyWunschpreisRule(rawValuation, carDetails.desiredPrice) : rawValuation;
 
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [saveConfirmed, setSaveConfirmed] = useState(false);
-  const [saveAttempt, setSaveAttempt] = useState(0);
   const submittedRef = useRef(false);
 
   useEffect(() => {
@@ -74,7 +57,6 @@ const ValuationResultPage: React.FC = () => {
     if (!carDetails || !valuation || submittedRef.current) return;
     submittedRef.current = true;
     setSubmitting(true);
-    setSaveConfirmed(false);
     setSubmitError(null);
 
     // If estimationId was passed from AnalyzingPage (partial save), photos were
@@ -130,18 +112,17 @@ const ValuationResultPage: React.FC = () => {
       .then(({ data, error, status }) => {
         if (data?.estimationId) {
           setEstimationId(data.estimationId);
-          setSaveConfirmed(true);
         } else {
           setSubmitError(
             status === 429
               ? 'Zu viele Anfragen. Bitte kurz warten und Seite neu laden.'
-              : (error?.error ?? 'Ihre Bewertung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.')
+              : (error?.error ?? 'Speichern fehlgeschlagen. Sie können trotzdem fortfahren.')
           );
         }
       })
-      .catch(() => setSubmitError('Ihre Bewertung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.'))
+      .catch(() => setSubmitError('Speichern fehlgeschlagen. Sie können trotzdem fortfahren.'))
       .finally(() => setSubmitting(false));
-  }, [carDetails, valuation, estimationId, saveAttempt]);
+  }, [carDetails, valuation, estimationId]);
 
   if (!mounted) {
     return (
@@ -188,25 +169,13 @@ const ValuationResultPage: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           {submitError && (
             <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 font-semibold">
-              <p>{submitError}</p>
-              <button
-                type="button"
-                disabled={submitting}
-                onClick={() => {
-                  submittedRef.current = false;
-                  setSaveAttempt((attempt) => attempt + 1);
-                }}
-                className="mt-2 font-bold underline disabled:opacity-50"
-              >
-                Erneut speichern
-              </button>
+              {submitError}
             </div>
           )}
           <ValuationResults
             valuation={valuation}
             carDetails={carDetails}
             onNext={() => {
-              if (!saveConfirmed || !effectiveEstimationId || submitting) return;
               if (typeof window !== 'undefined') {
                 sessionStorage.setItem(
                   'booking_data',
@@ -217,7 +186,6 @@ const ValuationResultPage: React.FC = () => {
             }}
             onBack={() => router.replace('/')}
             isSubmitting={submitting}
-            canBook={saveConfirmed && Boolean(effectiveEstimationId)}
           />
         </div>
       </main>

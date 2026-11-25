@@ -1,5 +1,6 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { buildValuationEventParams } from '@/lib/analytics';
+import { applyWunschpreisRule } from '@/lib/wunschpreis';
 
 // nodejs runtime: avoids Edge cold-start latency; allows more memory for Gemini streaming
 export const runtime = 'nodejs';
@@ -171,8 +172,19 @@ export async function POST(req: Request) {
     }
 
     let result: { estimatedPrice?: number; marketTrend?: string } | null = null;
+    let responseBody = responseText;
     try {
-      result = JSON.parse(responseText);
+      const parsed = JSON.parse(responseText);
+      result = parsed;
+      // Apply the Wunschpreis rule here so the raw AI price never reaches the browser.
+      if (
+        typeof parsed?.estimatedPrice === 'number' &&
+        typeof parsed?.priceRange?.min === 'number' &&
+        typeof parsed?.priceRange?.max === 'number'
+      ) {
+        result = applyWunschpreisRule(parsed, details?.desiredPrice);
+        responseBody = JSON.stringify(result);
+      }
     } catch {
       result = null;
     }
@@ -201,7 +213,7 @@ export async function POST(req: Request) {
       }
     }
 
-    return new Response(responseText, {
+    return new Response(responseBody, {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
