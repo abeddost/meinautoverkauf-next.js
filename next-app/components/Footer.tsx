@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import DesignerCredit from '@/components/DesignerCredit';
 import Link from 'next/link';
 import { COOKIE_SETTINGS_OPEN_EVENT } from '@/lib/consent';
 import { CITY_PAGES } from '@/lib/cityPages';
@@ -174,6 +175,9 @@ const Footer: React.FC<FooterProps> = ({ showBrandLinks = true }) => {
 
         <div className="mt-12 pt-8 border-t border-white/10 text-xs font-bold text-center tracking-[0.3em] uppercase text-slate-500">
           &copy; {currentYear} Meinautoverkauf.de — Echte Preise, echtes Vertrauen.
+        </div>
+        <div className="mt-6 flex justify-center text-slate-400">
+          <DesignerCredit site="meinautoverkauf" />
         </div>
       </div>
     </footer>
