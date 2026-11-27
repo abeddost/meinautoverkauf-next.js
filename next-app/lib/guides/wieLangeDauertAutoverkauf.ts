@@ -131,6 +131,10 @@ export const wieLangeDauertAutoverkauf: GuidePageContent = {
       q: 'Ist der schnellste Verkauf auch der schlechteste Preis?',
       a: 'Nicht unbedingt. Ein Privatverkauf bringt oft mehr, kostet aber Zeit, Standkosten und Aufwand. Rechnen Sie den Mehrerlös gegen diese Faktoren, bevor Sie sich entscheiden.',
     },
+    {
+      q: 'Geht es schneller, wenn ich das Auto selbst vorbeibringe?',
+      a: 'Oft ja. Fahrbereite Fahrzeuge können Sie nach Terminbuchung an unseren Filialen in Bodenheim, Rüsselsheim oder Wiesbaden abgeben. Das spart die Abstimmung eines Abholtermins.',
+    },
   ],
   relatedSlugs: [
     'online-autoankauf-ablauf-7-schritte',

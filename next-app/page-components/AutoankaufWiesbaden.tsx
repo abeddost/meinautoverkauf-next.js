@@ -225,7 +225,7 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>
-                    <span><strong>Unfallwagen Ankauf Wiesbaden</strong> – Repariert oder unrepariert, wir kaufen beides</span>
+                    <span><Link href="/unfallwagen-ankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Unfallwagen Ankauf Wiesbaden</Link> – Repariert oder unrepariert, wir kaufen beides</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange">✓</span>

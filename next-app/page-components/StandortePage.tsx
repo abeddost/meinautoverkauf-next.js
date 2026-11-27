@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { CITY_PAGES } from '@/lib/cityPages';
+import { CITY_SERVICE_PAGES } from '@/lib/cityServicePages';
 
 const StandortePage: React.FC = () => {
   useEffect(() => {
@@ -36,6 +37,26 @@ const StandortePage: React.FC = () => {
             ))}
           </ul>
         </nav>
+
+        <section className="mt-14 max-w-4xl mx-auto">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-3">Unfallwagen-Ankauf vor Ort</h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Unfallauto verkaufen mit Abholung und Abmeldung: Unsere Seiten für den Unfallwagen-Ankauf in Ihrer Stadt.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {CITY_SERVICE_PAGES.map((page) => (
+              <li key={page.path}>
+                <Link
+                  href={page.path}
+                  className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-brand-orange transition-all hover:translate-x-0.5 py-2"
+                >
+                  <span className="text-brand-orange">→</span>
+                  {page.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );

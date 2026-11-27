@@ -1,6 +1,7 @@
 import type { BrandLandingContent } from './brandSeoContent';
 import { altesAuto } from './serviceLandings/altesAuto';
 import { youngtimer } from './serviceLandings/youngtimer';
+import { inZahlungGeben } from './serviceLandings/inZahlungGeben';
 
 /**
  * Service landing pages (vehicle type or situation, e.g. Youngtimer, altes Auto).
@@ -15,7 +16,7 @@ export interface ServiceLandingContent {
   landing: BrandLandingContent;
 }
 
-export const SERVICE_LANDINGS: ServiceLandingContent[] = [youngtimer, altesAuto];
+export const SERVICE_LANDINGS: ServiceLandingContent[] = [youngtimer, altesAuto, inZahlungGeben];
 
 export const SERVICE_LANDING_BY_PATH: Record<string, ServiceLandingContent> = Object.fromEntries(
   SERVICE_LANDINGS.map((item) => [item.landing.canonicalPath, item]),

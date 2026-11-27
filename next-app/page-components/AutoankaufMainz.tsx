@@ -280,7 +280,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
                 <ul className="space-y-2 text-slate-600 font-medium relative z-10">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
-                    <span><strong>Unfallwagen Ankauf Mainz:</strong> Repariert oder unrepariert</span>
+                    <span><Link href="/unfallwagen-ankauf-mainz" className="text-brand-orange font-bold hover:underline">Unfallwagen Ankauf Mainz:</Link> Repariert oder unrepariert</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-orange font-black">→</span>
@@ -525,7 +525,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               Der <strong>Autoankauf Mainz</strong> mit Meinautoverkauf.de ist die persönliche, vertrauensvolle Alternative zum Privatverkauf – perfekt für Mainzer, die Wert auf ehrlichen Service legen. Ob Sie am Rheinufer wohnen, in Gonsenheim Ihre Familie großziehen, in Bretzenheim studieren, am Lerchenberg beim ZDF arbeiten oder in Mainz-Kastel über dem Rhein leben: Wir sind Ihr regionaler Partner. <strong>Auto verkaufen Mainz</strong> – so einfach, so fair, so persönlich.
             </p>
             <p className="relative z-10">
-              Sie sparen Zeit (kein wochenlanges Inserat), vermeiden Stress mit unseriösen Käufern und erhalten einen fairen Preis basierend auf aktuellen Mainzer und Rheinhessischen Marktdaten. <strong>Gebrauchtwagen Ankauf Mainz</strong>, <strong>Unfallwagen Ankauf Mainz</strong> oder <strong>Motorschaden verkaufen Mainz</strong> – wir kaufen alles und behandeln jeden Kunden mit Respekt.
+              Sie sparen Zeit (kein wochenlanges Inserat), vermeiden Stress mit unseriösen Käufern und erhalten einen fairen Preis basierend auf aktuellen Mainzer und Rheinhessischen Marktdaten. <strong>Gebrauchtwagen Ankauf Mainz</strong>, <strong>Unfallwagen Ankauf Mainz</strong> oder <strong>Motorschaden verkaufen Mainz</strong> – wir kaufen alles und behandeln jeden Kunden mit Respekt. Sie planen einen Neuwagenkauf? Dann lesen Sie vorher, wann es sich lohnt, das <Link href="/auto-in-zahlung-geben" className="text-brand-orange font-bold hover:underline">Auto separat zu verkaufen statt es in Zahlung zu geben</Link>.
             </p>
             <p className="font-bold text-brand-dark text-lg mt-6 relative z-10">
               Starten Sie jetzt Ihre kostenlose Bewertung und erleben Sie, wie unkompliziert <strong>KFZ Ankauf Mainz</strong> sein kann. Mainzer vertrauen Mainzern – und wir sind stolz darauf, Teil dieser Gemeinschaft zu sein!

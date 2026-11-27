@@ -301,7 +301,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Was bei laufender Finanzierung zuerst geklärt werden muss',
         paragraphs: [
-          'Bei den meisten Kreditmodellen liegt die Zulassungsbescheinigung Teil II bei der Bank. Damit ist der Fahrzeugbrief nicht sofort verfügbar, obwohl Sie das Fahrzeug nutzen. Für den Verkauf braucht es deshalb eine abgestimmte Ablöse mit der finanzierenden Bank.',
+          'Bei den meisten Kreditmodellen liegt die Zulassungsbescheinigung Teil II bei der Bank. Damit ist der Fahrzeugbrief nicht sofort verfügbar, obwohl Sie das Fahrzeug nutzen. Für den Verkauf braucht es deshalb eine abgestimmte Ablöse mit der finanzierenden Bank. Steht gleichzeitig ein Neuwagenkauf an, lohnt der Vergleich mit der Inzahlungnahme: [Auto in Zahlung geben oder separat verkaufen](/auto-in-zahlung-geben).',
           'Wichtig sind Restschuld, Ablösezeitpunkt und die Frage, wann der Brief freigegeben wird. Ein seriöser Ankauf trennt diese Schritte klar, damit kein Geld ohne Eigentumsklarheit fließt.',
         ],
         bullets: [
@@ -574,7 +574,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         heading: 'Wie Unfallwagen im Ankauf bewertet werden',
         paragraphs: [
           'Ankaufsbewertungen berücksichtigen Schadenart, Karosseriestruktur, Laufleistung, Ausstattungsniveau und Marktgängigkeit des Modells. Ein identischer Schaden kann je nach Fahrzeugklasse unterschiedlich wirken.',
-          'Zusätzlich spielt die Teileverfügbarkeit eine Rolle. Modelle mit guter Ersatzteillage und stabiler Nachfrage erreichen häufig höhere Restwerte.',
+          'Zusätzlich spielt die Teileverfügbarkeit eine Rolle. Modelle mit guter Ersatzteillage und stabiler Nachfrage erreichen häufig höhere Restwerte. Vor Ort kaufen wir Unfallfahrzeuge unter anderem in [Mainz](/unfallwagen-ankauf-mainz) und [Wiesbaden](/unfallwagen-ankauf-wiesbaden) an.',
         ],
       },
       {
@@ -1145,6 +1145,8 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'unterlagen-autoverkauf-checkliste',
       'online-autoankauf-ablauf-7-schritte',
       'autoankauf-firmenwagen-gewerbe',
+      'auto-bewerten-lassen-gutachter-vs-online',
+      'fahrzeugbewertung-tools-vergleich',
     ],
     coreLink: '/auto-bewerten',
   },

@@ -4,6 +4,7 @@ import { GUIDE_CONTENT } from '@/lib/guideContent';
 import { BRAND_SEO_CONTENT } from '@/lib/brandSeoContent';
 import { MODEL_SEO_PAGES } from '@/lib/modelSeoPages';
 import { SERVICE_LANDINGS } from '@/lib/serviceLandingContent';
+import { CITY_SERVICE_PAGES } from '@/lib/cityServicePages';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
 const BUILD_DATE = new Date();
@@ -107,6 +108,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const cityServicePages: MetadataRoute.Sitemap = CITY_SERVICE_PAGES.map((page) => ({
+    url: `${BASE_URL}${page.path}`,
+    lastModified: BUILD_DATE,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticPages,
     ...cityPages,
@@ -114,5 +122,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...brandLandingPages,
     ...modelLandingPages,
     ...serviceLandingPages,
+    ...cityServicePages,
   ];
 }

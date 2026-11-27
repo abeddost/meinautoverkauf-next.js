@@ -66,7 +66,7 @@ export const woAutoVerkaufenVergleich: GuidePageContent = {
       paragraphs: [
         'Wer sein Auto beim Autohaus verkaufen möchte, tut das meist im Zuge eines Neu- oder Gebrauchtwagenkaufs. Die Inzahlungnahme ist bequem: ein Termin, ein Vertrag, und das alte Auto bleibt direkt beim Händler.',
         'Der Haken liegt in der Vergleichbarkeit. Rabatt auf das neue Auto und Preis für das alte werden oft gemeinsam verhandelt, sodass unklar bleibt, was Ihr Fahrzeug tatsächlich bringt. Markenhändler nehmen fremde Marken, ältere Fahrzeuge oder Autos mit Schäden zudem häufig nur mit deutlichem Abschlag, weil sie diese selbst weitervermarkten müssen.',
-        'Holen Sie deshalb vor dem Gespräch im Autohaus eine unabhängige Bewertung ein. Dann können Sie Inzahlungnahme und separaten Verkauf sauber gegeneinander rechnen.',
+        'Holen Sie deshalb vor dem Gespräch im Autohaus eine unabhängige Bewertung ein. Dann können Sie Inzahlungnahme und separaten Verkauf sauber gegeneinander rechnen. Mehr dazu auf unserer Seite [Auto in Zahlung geben](/auto-in-zahlung-geben).',
       ],
     },
     {
