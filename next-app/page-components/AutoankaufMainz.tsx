@@ -201,7 +201,7 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
 
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Welche Autos kaufen wir in Mainz an?</h2>
             <p className="font-medium leading-relaxed">
-              Mainz ist vielfältig – und so auch die Fahrzeuge, die wir hier ankaufen. Vom Studentenauto bis zum Dienstwagen, vom Familien-Kombi bis zum Winzer-Transporter:
+              Mainz ist vielfältig – und so auch die Fahrzeuge, die wir hier ankaufen, bis hin zum <Link href="/altes-auto-verkaufen" className="text-brand-orange font-bold hover:underline">alten Auto oder Schrottauto</Link>. Vom Studentenauto bis zum Dienstwagen, vom Familien-Kombi bis zum Winzer-Transporter:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">

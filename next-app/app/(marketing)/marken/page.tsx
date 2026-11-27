@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BRAND_LINKS, MARKEN_OVERVIEW_PATH } from '@/lib/brandLinks';
+import { SERVICE_LANDINGS } from '@/lib/serviceLandingContent';
 
 const ORDERED_BRAND_LINKS = [...BRAND_LINKS].sort((a, b) => a.order - b.order);
 
@@ -40,6 +41,28 @@ export default function MarkenRoute() {
             ))}
           </ul>
         </nav>
+
+        <section className="max-w-4xl mx-auto mt-12">
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-3">Ankauf nach Fahrzeugtyp und Situation</h2>
+          <p className="text-slate-600 font-medium leading-relaxed mb-5">
+            Unabhängig von der Marke: Diese Seiten erklären den Verkauf für besondere Fahrzeuge und typische Verkaufssituationen.
+          </p>
+          <nav aria-label="Ankauf nach Fahrzeugtyp und Situation">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {SERVICE_LANDINGS.map((service) => (
+                <li key={service.landing.canonicalPath}>
+                  <Link
+                    href={service.landing.canonicalPath}
+                    className="group flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-5 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-brand-orange hover:text-brand-orange hover:-translate-y-0.5"
+                  >
+                    {service.hubLabel}
+                    <span className="text-brand-orange transition-transform group-hover:translate-x-0.5">→</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </section>
 
         <div className="max-w-4xl mx-auto mt-10 rounded-3xl border border-orange-200 bg-orange-50/70 p-6 lg:p-8">
           <h2 className="text-xl font-black text-brand-dark mb-3">Sie suchen eine modellgenaue Seite?</h2>

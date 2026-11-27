@@ -445,7 +445,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         heading: 'Wann sich eine neue HU vor dem Verkauf lohnt',
         paragraphs: [
           'Eine frische HU kann den erzielbaren Preis erhöhen. Sie lohnt sich aber nur, wenn die nötigen Reparaturen überschaubar bleiben und keine großen Folgekosten zu erwarten sind.',
-          'Bei älteren Fahrzeugen mit mehreren Baustellen ist der Direktverkauf häufig wirtschaftlicher, weil Sie keine unplanbaren Werkstattrechnungen vorfinanzieren.',
+          'Bei älteren Fahrzeugen mit mehreren Baustellen ist der Direktverkauf häufig wirtschaftlicher, weil Sie keine unplanbaren Werkstattrechnungen vorfinanzieren. Wie der Ankauf älterer Fahrzeuge abläuft, lesen Sie auf unserer Seite [Altes Auto verkaufen](/altes-auto-verkaufen).',
         ],
         bullets: [
           'HU sinnvoll bei gutem Gesamtzustand und kleiner Mängelliste',
@@ -752,6 +752,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'unterlagen-autoverkauf-checkliste',
       'autoverkauf-betrug-kleinanzeigen-erkennen',
       'autoabmeldung-nach-verkauf',
+      'wie-lange-dauert-autoverkauf',
     ],
     coreLink: '/auto-bewerten',
   },
@@ -878,6 +879,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'unterlagen-autoverkauf-checkliste',
       'rechtssicherer-kaufvertrag-auto',
       'autoabmeldung-nach-verkauf',
+      'wie-lange-dauert-autoverkauf',
     ],
     coreLink: '/auto-bewerten',
   },
@@ -900,7 +902,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Wann ein Fahrzeug für den Export besonders geeignet ist',
         paragraphs: [
-          'Typische Exportkandidaten sind ältere Diesel, Fahrzeuge mit hoher Laufleistung, Modelle mit geringen Reparaturkosten im Zielmarkt und Fahrzeuge ohne aktuelle HU.',
+          'Typische Exportkandidaten sind ältere Diesel, Fahrzeuge mit hoher Laufleistung, Modelle mit geringen Reparaturkosten im Zielmarkt und Fahrzeuge ohne aktuelle HU. Mehr dazu auf unserer Seite [Altes Auto verkaufen](/altes-auto-verkaufen).',
           'Nicht jedes Auto ist automatisch exportstark. Modellbeliebtheit, Ersatzteillage und Zustand entscheiden über den tatsächlichen Exportwert.',
         ],
       },

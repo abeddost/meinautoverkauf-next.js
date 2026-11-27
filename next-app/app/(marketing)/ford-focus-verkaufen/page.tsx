@@ -182,6 +182,22 @@ export default function FordFocusVerkaufenPage() {
               </p>
             </section>
 
+            <section className="mb-12">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Ford Focus mit Motorschaden verkaufen: Was ist zu beachten?</h2>
+              <p className="text-slate-700 font-medium leading-relaxed mb-4">
+                Einen <strong>Ford Focus mit Motorschaden verkaufen</strong> zu müssen, ist ärgerlich, aber kein Grund zur Verschrottung. Die Ursachen
+                unterscheiden sich je nach Motor: Beim 1.0 EcoBoost sind Probleme mit dem Kühlsystem und dem in Öl laufenden Zahnriemen bekannt, ältere
+                Diesel kämpfen eher mit Turbolader, Einspritzung oder Partikelfilter. Oft kündigt sich der Schaden durch Leistungsverlust, Überhitzung oder
+                steigenden Ölverbrauch an.
+              </p>
+              <p className="text-slate-700 font-medium leading-relaxed">
+                Ob sich die Reparatur lohnt, hängt vom Gesamtzustand ab. Bei einem älteren Focus übersteigen Austauschmotor und Arbeitszeit oft den Restwert.
+                Wir kaufen den Focus mit Motorschaden auch nicht fahrbereit an, holen ihn ab und übernehmen die Abmeldung. Wie die Abwicklung abläuft, erklärt
+                der Ratgeber <Link href="/ratgeber/autoankauf-mit-motorschaden" className="text-brand-orange font-black hover:underline">Autoankauf mit Motorschaden</Link>; die Frage Reparatur oder Verkauf
+                beleuchtet der Ratgeber <Link href="/ratgeber/auto-mit-motorschaden-verkaufen" className="text-brand-orange font-black hover:underline">Auto mit Motorschaden verkaufen</Link>.
+              </p>
+            </section>
+
             <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 lg:p-8">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Welche Ford Focus kaufen wir an?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

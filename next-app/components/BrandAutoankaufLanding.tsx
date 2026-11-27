@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import FAQSection from '@/components/FAQSection';
-import { getBrandSeoContent } from '@/lib/brandSeoContent';
+import { renderRichText } from '@/components/RichText';
+import { getBrandSeoContent, type BrandSeoContent } from '@/lib/brandSeoContent';
 
 interface Props {
-  brandSlug: string;
+  /** Brand entry from BRAND_SEO_CONTENT (brand pages and /oldtimer-verkaufen). */
+  brandSlug?: string;
+  /** Landing content passed directly (service pages from lib/serviceLandingContent.ts). */
+  content?: Pick<BrandSeoContent, 'slug' | 'displayName' | 'landing'>;
 }
 
-export default function BrandAutoankaufLanding({ brandSlug }: Props) {
-  const brand = getBrandSeoContent(brandSlug);
+export default function BrandAutoankaufLanding({ brandSlug, content }: Props) {
+  const brand = content ?? (brandSlug ? getBrandSeoContent(brandSlug) : null);
 
   if (!brand) {
     return (
@@ -40,7 +44,7 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
           <div className="space-y-4 mb-8">
             {landing.intro.map((paragraph) => (
               <p key={paragraph} className="text-slate-600 text-base lg:text-lg font-medium leading-relaxed">
-                {paragraph}
+                {renderRichText(paragraph)}
               </p>
             ))}
           </div>
@@ -57,12 +61,40 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
           </div>
         </section>
 
+        {landing.querySections?.map((section) => (
+          <section
+            key={section.heading}
+            className="max-w-5xl mx-auto mb-14 rounded-3xl border border-slate-200 bg-white p-6 lg:p-8 shadow-sm"
+          >
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-5">{section.heading}</h2>
+            <div className="space-y-4">
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="text-slate-600 font-medium leading-relaxed">
+                  {renderRichText(paragraph)}
+                </p>
+              ))}
+            </div>
+            {section.bullets && section.bullets.length > 0 && (
+              <ul className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
+                {section.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-slate-700 font-medium leading-relaxed"
+                  >
+                    {renderRichText(bullet)}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))}
+
         <section className="max-w-5xl mx-auto mb-14 rounded-3xl border border-slate-200 bg-white p-6 lg:p-8 shadow-sm">
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-5">{landing.benefitHeading}</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {landing.benefits.map((benefit) => (
               <li key={benefit} className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-slate-700 font-medium leading-relaxed">
-                {benefit}
+                {renderRichText(benefit)}
               </li>
             ))}
           </ul>
@@ -75,7 +107,7 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
               <article key={step.title} className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
                 <p className="text-sm font-black text-brand-orange uppercase tracking-wider mb-2">Schritt {index + 1}</p>
                 <h3 className="text-base font-black text-brand-dark mb-2">{step.title}</h3>
-                <p className="text-sm text-slate-600 font-medium leading-relaxed">{step.text}</p>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">{renderRichText(step.text)}</p>
               </article>
             ))}
           </div>
@@ -87,7 +119,7 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
             {landing.buyTypes.map((item) => (
               <article key={item.title} className="rounded-2xl border border-slate-100 bg-white p-5">
                 <h3 className="text-base font-black text-brand-dark mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600 font-medium leading-relaxed">{item.text}</p>
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">{renderRichText(item.text)}</p>
               </article>
             ))}
           </div>
@@ -122,7 +154,7 @@ export default function BrandAutoankaufLanding({ brandSlug }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {landing.trustPoints.map((point) => (
               <div key={point} className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-slate-700 font-medium">
-                {point}
+                {renderRichText(point)}
               </div>
             ))}
           </div>

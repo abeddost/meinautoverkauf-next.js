@@ -61,6 +61,8 @@ export interface BrandLandingContent {
   faqs: FAQItem[];
   internalLinksHeading: string;
   internalLinks: BrandInternalLink[];
+  /** Optional extra H2 sections (one per search intent), rendered after the intro. */
+  querySections?: BrandGuideSection[];
 }
 
 export interface BrandGuideSection {
@@ -5369,6 +5371,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterführende Seiten für Ihren Klassiker-Verkauf',
       internalLinks: [
         {
+          href: '/youngtimer-verkaufen',
+          label: 'Youngtimer verkaufen',
+          context: 'Ankauf für Fahrzeuge zwischen etwa 20 und 30 Jahren.',
+        },
+        {
           href: '/ratgeber/oldtimer-verkaufen-privat-haendler-auktion',
           label: 'Oldtimer privat, an Händler oder per Auktion verkaufen',
           context: 'Die Verkaufswege im Vergleich und worauf Sie beim Verkauf achten sollten.',
@@ -5492,7 +5499,7 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           heading: 'Welche Oldtimer sind wertvoll - und welche Youngtimer werden interessant?',
           paragraphs: [
             'Welche Oldtimer sind wertvoll, lässt sich nur modellbezogen beantworten. Typisch sind Fahrzeuge mit starker Markenhistorie, limitierter Produktion, hoher Originalität und nachvollziehbarer Dokumentation.',
-            'Bei Youngtimern spielen zusätzlich Faktoren wie aufkommende Enthusiasten-Nachfrage, technische Besonderheiten, Produktionszahlen und Erhaltungszustand eine große Rolle.',
+            'Bei Youngtimern spielen zusätzlich Faktoren wie aufkommende Enthusiasten-Nachfrage, technische Besonderheiten, Produktionszahlen und Erhaltungszustand eine große Rolle. Für den Verkauf jüngerer Klassiker lesen Sie unsere Seite [Youngtimer verkaufen](/youngtimer-verkaufen).',
             'Für Verkäufer ist entscheidend, das eigene Fahrzeug nicht über allgemeine Listen, sondern über das konkrete Marktprofil bewerten zu lassen.',
           ],
         },

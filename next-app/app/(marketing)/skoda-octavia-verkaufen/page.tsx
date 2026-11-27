@@ -182,6 +182,22 @@ export default function SkodaOctaviaVerkaufenPage() {
               </ul>
             </section>
 
+            <section className="mb-12">
+              <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Skoda Octavia mit Motorschaden verkaufen</h2>
+              <p className="text-slate-700 font-medium leading-relaxed mb-4">
+                Auch einen <strong>Skoda Octavia mit Motorschaden verkaufen</strong> Sie bei uns ohne Umweg über die Werkstatt. Der Octavia teilt sich
+                viele Motoren mit VW, Audi und SEAT, entsprechend ähneln sich die Schadenbilder: gelängte Steuerketten und erhöhter Ölverbrauch bei älteren
+                TSI-Benzinern, Turbolader-, Injektor- oder AGR-Defekte bei den TDI-Dieseln. Weil viele Octavia als Vielfahrer- und Flottenfahrzeuge
+                unterwegs sind, fällt ein Motorschaden oft mit hoher Laufleistung zusammen.
+              </p>
+              <p className="text-slate-700 font-medium leading-relaxed">
+                Bei hoher Laufleistung ist eine Motorinstandsetzung selten wirtschaftlich. Karosserie, DSG-Getriebe und Ausstattung haben aber weiterhin
+                einen Wert, und gerade der Octavia Combi ist auch im Export gefragt. Wir holen nicht fahrbereite Fahrzeuge ab, übernehmen die Abmeldung und
+                veranlassen die Auszahlung direkt nach Vertragsabschluss. Mehr zur Abwicklung lesen Sie im Ratgeber 
+                <Link href="/ratgeber/autoankauf-mit-motorschaden" className="text-brand-orange font-black hover:underline">Autoankauf mit Motorschaden</Link>.
+              </p>
+            </section>
+
             <section className="mb-12 rounded-3xl border border-slate-200 bg-white p-6 lg:p-8">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">Welche Skoda Octavia kaufen wir an?</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
