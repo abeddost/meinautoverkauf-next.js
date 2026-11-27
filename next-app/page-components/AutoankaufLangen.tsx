@@ -25,7 +25,7 @@ const CONTENT: CityPageContent = {
     paragraphs: [
       'Langen liegt zwischen Frankfurt und Darmstadt und ist weit über die Region hinaus bekannt: Hier haben die Deutsche Flugsicherung und das Paul-Ehrlich-Institut ihren Sitz, dazu kommen zahlreiche mittelständische Unternehmen. Viele Langener arbeiten vor Ort, viele pendeln mit der S-Bahn oder über die A5 und die A661 nach Frankfurt und Darmstadt.',
       'Im Sommer zieht der Langener Waldsee Besucher aus dem ganzen Rhein-Main-Gebiet an, im Alltag prägen Pendlerfahrzeuge, Familienautos und Firmenwagen das Straßenbild. Wir bewerten jedes Fahrzeug einzeln nach Zustand, Ausstattung und Historie statt nach Pauschalwerten.',
-      'Wer bei einer Behörde oder einem größeren Arbeitgeber in Langen beschäftigt ist, fährt nicht selten einen Dienstwagen. Kommt ein neuer Dienstwagen, soll das bisherige Privatauto oft schnell verkauft werden. Dafür bieten wir einen klaren Ablauf: Online-Bewertung, Termin in Langen oder an unserer Filiale in Rüsselsheim, Auszahlung direkt nach Vertragsabschluss. Auch Autos, die täglich als Zubringer zur S-Bahn dienen und viele Kurzstrecken auf dem Tacho haben, bewerten wir fair.',
+      'Wer bei einer Behörde oder einem größeren Arbeitgeber in Langen beschäftigt ist, fährt nicht selten einen Dienstwagen. Kommt ein neuer Dienstwagen, soll das bisherige Privatauto oft schnell verkauft werden. Dafür bieten wir einen klaren Ablauf: Online-Bewertung, Termin in Langen oder an unserer Filiale in Rüsselsheim, Auszahlung direkt nach Vertragsabschluss. Auch Autos, die täglich als Zubringer zur S-Bahn dienen und viele Kurzstrecken auf dem Tacho haben, bewerten wir fair und nachvollziehbar.',
     ],
   },
   areaSection: {

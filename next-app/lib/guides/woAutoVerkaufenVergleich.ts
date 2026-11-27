@@ -40,7 +40,7 @@ export const woAutoVerkaufenVergleich: GuidePageContent = {
       bullets: [
         'Privatverkauf über Börsen: höchster Preis möglich, aber Inserat, Besichtigungen, Probefahrten und Verhandlungen liegen bei Ihnen',
         'Autohaus: bequem beim Neuwagenkauf, der Ankaufpreis ist aber oft Teil eines Gesamtpakets',
-        'Freier Autohändler: schneller Verkauf, Preis stark abhängig von Händler und Verhandlung',
+        'Freier Autohändler: schneller Verkauf, Preis stark abhängig von Händler und Verhandlung, alternativ [Verkauf in Kommission](/ratgeber/kommissionsverkauf-auto)',
         'Online-Ankauf: Bewertung in wenigen Minuten, fester Termin, Auszahlung und Abmeldung aus einer Hand',
         'Exporthändler: interessant für ältere Fahrzeuge, Diesel mit hoher Laufleistung oder Autos mit Schäden',
       ],

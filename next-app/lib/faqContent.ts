@@ -1115,3 +1115,49 @@ export const LANGEN_FAQS: FAQItem[] = [
     a: "Ja. Die Abmeldung des OF-Kennzeichens ist im Ankauf enthalten."
   }
 ];
+
+export const ANDERNACH_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie auch in Andernach an?",
+    a: "Ja. Wir kaufen Fahrzeuge in Andernach und allen Stadtteilen an und vereinbaren einen Termin zur Übergabe vor Ort."
+  },
+  {
+    q: "Holen Sie nicht fahrbereite Autos in Andernach ab?",
+    a: "Ja, nach Absprache holen wir auch nicht fahrbereite Fahrzeuge ab. Halten Sie Papiere und Schlüssel bereit."
+  },
+  {
+    q: "Übernehmen Sie die Abmeldung des MYK-Kennzeichens?",
+    a: "Ja. Die Abmeldung ist im Ankauf enthalten."
+  },
+  {
+    q: "Wie schnell bekomme ich mein Geld?",
+    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+  },
+  {
+    q: "Welche Unterlagen brauche ich?",
+    a: "Zulassungsbescheinigung Teil I und II, alle Schlüssel und Ihren Personalausweis. Serviceheft und HU-Bericht sind hilfreich, aber keine Voraussetzung."
+  }
+];
+
+export const LANDAU_FAQS: FAQItem[] = [
+  {
+    q: "Kaufen Sie auch in Landau in der Pfalz an?",
+    a: "Ja. Wir kaufen Fahrzeuge in Landau und allen Stadtteilen an und vereinbaren einen Termin zur Übergabe vor Ort."
+  },
+  {
+    q: "Ich verkaufe mein Auto zum Ende des Studiums – geht das kurzfristig?",
+    a: "Ja. Nach der Online-Bewertung ist ein Termin oft innerhalb weniger Tage möglich, auch abends oder am Wochenende."
+  },
+  {
+    q: "Übernehmen Sie die Abmeldung des LD-Kennzeichens?",
+    a: "Ja. Die Abmeldung ist im Ankauf enthalten."
+  },
+  {
+    q: "Wie schnell bekomme ich mein Geld?",
+    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+  },
+  {
+    q: "Kaufen Sie auch alte Autos ohne TÜV?",
+    a: "Ja. Auch ältere Fahrzeuge ohne gültige Hauptuntersuchung kaufen wir an; der Zustand fließt in die Bewertung ein."
+  }
+];

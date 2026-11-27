@@ -107,6 +107,23 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
             Der Standort spielt eine Rolle. In städtischen Ballungsräumen sind Kleinwagen und kompakte SUVs gefragter, während auf dem Land größere Fahrzeuge oder Geländewagen beliebter sind. Auch regionale Preisunterschiede existieren: In wirtschaftlich starken Regionen wie München oder Hamburg erzielen Fahrzeuge oft höhere Preise als in strukturschwächeren Gebieten. Im Rhein-Main-Gebiet bieten wir direkten <Link href="/autoankauf-frankfurt" className="text-brand-orange font-bold hover:underline">Autoankauf Frankfurt</Link>, <Link href="/autoankauf-wiesbaden" className="text-brand-orange font-bold hover:underline">Autoankauf Wiesbaden</Link> und <Link href="/autoankauf-mainz" className="text-brand-orange font-bold hover:underline">Autoankauf Mainz</Link> an.
           </p>
 
+          <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Restwert und Zeitwert berechnen: So gehen Sie vor</h2>
+          <p className="font-medium leading-relaxed mb-4">
+            Der <strong>Restwert</strong> beschreibt, was Ihr Auto heute noch wert ist; im Alltag wird er meist mit dem <strong>Zeitwert</strong> gleichgesetzt.
+            Versicherungen und Gutachter verwenden die Begriffe teils anders: Nach einem Unfall meint der Restwert den Wert des beschädigten Fahrzeugs.
+            Für den Verkauf zählt der aktuelle Marktwert im heutigen Zustand.
+          </p>
+          <p className="font-medium leading-relaxed mb-4">
+            Wer den <strong>Restwert seines Autos berechnen</strong> möchte, beginnt beim Listenpreis, also dem Neupreis inklusive Sonderausstattung. Ihn finden
+            Sie in der Kaufrechnung, im Kaufvertrag oder in den Preislisten des Herstellers. Davon geht der Wertverlust durch Alter, Laufleistung und Zustand ab.
+            Feste Prozentsätze, wie sie viele Restwertrechner verwenden, sind dabei nur grobe Richtwerte, weil Nachfrage, Modell und Ausstattung stark schwanken.
+          </p>
+          <p className="font-medium leading-relaxed">
+            Genauer als jede Formel ist der Vergleich mit aktuellen Marktdaten – genau das leistet unsere Online-Bewertung. Wie Gutachter den Restwert nach einem
+            Unfall ermitteln, erklärt der Ratgeber <Link href="/ratgeber/unfallwagen-wert-gutachten" className="text-brand-orange font-bold hover:underline">Unfallwagen Bewertung</Link>; wann ein Gutachten sinnvoll
+            ist, lesen Sie im Ratgeber <Link href="/ratgeber/auto-bewerten-lassen-gutachter-vs-online" className="text-brand-orange font-bold hover:underline">Auto bewerten lassen</Link>.
+          </p>
+
           <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-12 mb-6">Traditionelle Bewertung vs. KI-gestützte Autobewertung</h2>
           <p className="font-medium leading-relaxed">
             Früher mussten Autobesitzer ihr <strong>Auto schätzen lassen</strong> durch klassische Methoden wie Schwacke-Listen, DAT-Werte oder lokale Gutachter. Diese Ansätze haben jedoch Schwächen:

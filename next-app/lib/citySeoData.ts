@@ -614,6 +614,36 @@ export const CITY_SEO_DATA: CitySeoData[] = [
     pageComponentName: 'AutoankaufLangen',
     faqKey: 'LANGEN_FAQS',
   },
+  {
+    slug: 'andernach',
+    path: '/autoankauf-andernach',
+    cityName: 'Andernach',
+    state: 'Rheinland-Pfalz',
+    title: 'Autoankauf Andernach | Auto verkaufen am Mittelrhein',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Andernach: Auto online bewerten, Termin in Namedy, Eich, Kell oder Miesenheim, Abmeldung des MYK-Kennzeichens und Auszahlung am selben Tag.',
+    heroHeadline: 'Autoankauf Andernach – Auto fair verkaufen am Rhein',
+    heroSubheadline: 'Bewertung online, Übergabe vor Ort, Auszahlung am selben Tag',
+    schemaDescription: 'Autoankauf in Andernach mit kostenloser Bewertung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufAndernach',
+    faqKey: 'ANDERNACH_FAQS',
+  },
+  {
+    slug: 'landau',
+    path: '/autoankauf-landau',
+    cityName: 'Landau in der Pfalz',
+    state: 'Rheinland-Pfalz',
+    title: 'Autoankauf Landau in der Pfalz | Auto fair verkaufen',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Landau in der Pfalz: Auto online bewerten, Termin in der Stadt und an der Südlichen Weinstraße, Abmeldung des LD-Kennzeichens inklusive.',
+    heroHeadline: 'Autoankauf Landau – Auto verkaufen in der Südpfalz',
+    heroSubheadline: 'Fair bewerten, sicher verkaufen, Auszahlung am selben Tag',
+    schemaDescription: 'Autoankauf in Landau in der Pfalz mit kostenloser Bewertung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufLandau',
+    faqKey: 'LANDAU_FAQS',
+  },
 ];
 
 export const CITY_SEO_BY_SLUG = Object.fromEntries(

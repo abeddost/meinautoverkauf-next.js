@@ -42,6 +42,8 @@ export const CITY_PAGES: CityPage[] = [
   { path: '/autoankauf-karlsruhe', label: 'Autoankauf Karlsruhe' },
   { path: '/autoankauf-frankenthal', label: 'Autoankauf Frankenthal' },
   { path: '/autoankauf-rodgau', label: 'Autoankauf Rodgau' },
+  { path: '/autoankauf-andernach', label: 'Autoankauf Andernach' },
+  { path: '/autoankauf-landau', label: 'Autoankauf Landau in der Pfalz' },
   { path: '/autoankauf-neu-isenburg', label: 'Autoankauf Neu-Isenburg' },
   { path: '/autoankauf-moerfelden-walldorf', label: 'Autoankauf Mörfelden-Walldorf' },
   { path: '/autoankauf-gross-gerau', label: 'Autoankauf Groß-Gerau' },

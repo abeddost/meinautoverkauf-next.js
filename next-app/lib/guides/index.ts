@@ -11,6 +11,7 @@ import { fahrzeuguebergabeCheckliste } from './fahrzeuguebergabeCheckliste';
 import { autoverkaufSichereZahlung } from './autoverkaufSichereZahlung';
 import { unfallwagenWertGutachten } from './unfallwagenWertGutachten';
 import { kiFahrzeugbewertung } from './kiFahrzeugbewertung';
+import { kommissionsverkaufAuto } from './kommissionsverkaufAuto';
 
 /** Ratgeber pages created from the GSC content-gap analysis (Nov 2026). */
 export const CONTENT_GAP_GUIDES: GuidePageContent[] = [
@@ -26,4 +27,5 @@ export const CONTENT_GAP_GUIDES: GuidePageContent[] = [
   autoverkaufSichereZahlung,
   unfallwagenWertGutachten,
   kiFahrzeugbewertung,
+  kommissionsverkaufAuto,
 ];

@@ -271,6 +271,9 @@ const AutoankaufKoblenzPage: React.FC<Props> = ({ onCtaClick }) => {
               <Link href="/autoankauf-neuwied" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Auch in Neuwied verfügbar
               </Link>
+              <Link href="/autoankauf-andernach" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
+                → Auch in Andernach verfügbar
+              </Link>
               <Link href="/autoankauf-mainz" className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">
                 → Autoankauf Mainz
               </Link>

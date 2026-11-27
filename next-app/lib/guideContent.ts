@@ -399,6 +399,26 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
           'Mit dokumentierter Übergabe, schneller Auszahlung und Abmeldung schließen Sie den Verkauf ohne offene Haftungsfragen ab.',
         ],
       },
+      {
+        heading: 'Auto mit Motorschaden: Wert berechnen',
+        paragraphs: [
+          'Den Wert eines Autos mit Motorschaden können Sie grob selbst abschätzen. Ausgangspunkt ist der Marktwert, den das Fahrzeug mit intaktem Motor hätte. Davon ziehen Käufer die erwarteten Reparaturkosten und einen Risikoabschlag für versteckte Folgeschäden ab. Unter das, was das Fahrzeug in Teilen oder im Export noch bringt, fällt der Wert dabei in der Regel nicht.',
+          'Entscheidend sind Modell, Laufleistung, Zustand von Karosserie und Getriebe sowie die Art des Schadens. Eine Werkstattdiagnose macht die Rechnung genauer. Eine erste Orientierung gibt unsere [kostenlose Online-Bewertung](/auto-bewerten), in der Sie bekannte Schäden direkt angeben können.',
+        ],
+        bullets: [
+          'Marktwert mit intaktem Motor als Ausgangspunkt',
+          'abzüglich der erwarteten Reparaturkosten',
+          'abzüglich eines Risikoabschlags für Folgeschäden',
+          'Untergrenze: Teile- oder Exportwert',
+        ],
+      },
+      {
+        heading: 'Motorschaden: reparieren oder verkaufen?',
+        paragraphs: [
+          'Ob Sie bei einem Motorschaden reparieren oder verkaufen sollten, entscheidet die Gegenüberstellung zweier Summen: Was kostet die Reparatur inklusive aller Nebenarbeiten, und um wie viel steigt der Wert des Autos danach? Liegt der Wertzuwachs deutlich über den Kosten und ist der Rest des Fahrzeugs in gutem Zustand, kann sich die Reparatur lohnen. Andernfalls ist der Verkauf im aktuellen Zustand meist wirtschaftlicher.',
+          'Bedenken Sie auch das Risiko: Bei einer Instandsetzung zeigen sich oft weitere Schäden erst nach dem Zerlegen. Typische Fälle einer Marke beschreibt unsere Seite [Audi mit Motorschaden verkaufen](/audi-motorschaden-verkaufen); wie der Ankauf eines nicht fahrbereiten Fahrzeugs abläuft, erklärt der Ratgeber [Autoankauf mit Motorschaden](/ratgeber/autoankauf-mit-motorschaden).',
+        ],
+      },
     ],
     faqs: withBaseFaqs('auto-mit-motorschaden-verkaufen', [
       {
@@ -886,6 +906,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'autoabmeldung-nach-verkauf',
       'wie-lange-dauert-autoverkauf',
       'ki-fahrzeugbewertung',
+      'kommissionsverkauf-auto',
     ],
     coreLink: '/auto-bewerten',
   },
@@ -1082,6 +1103,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'autoankauf-mit-motorschaden',
       'rechtssicherer-kaufvertrag-auto',
       'wo-auto-verkaufen-vergleich',
+      'kommissionsverkauf-auto',
     ],
     coreLink: '/auto-verkaufen',
   },

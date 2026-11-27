@@ -93,7 +93,7 @@ export const oldtimerVerkaufenPrivatHaendlerAuktion: GuidePageContent = {
       heading: 'Kommission: Verkauf über einen Händler ohne Ankauf',
       paragraphs: [
         'Beim Kommissionsverkauf stellt ein Händler Ihren Oldtimer aus und verkauft ihn in Ihrem Auftrag. Sie bleiben bis zum Verkauf Eigentümer und erhalten den Erlös abzüglich der vereinbarten Provision. Das kann sich bei wertvollen Fahrzeugen lohnen, die vom Umfeld und den Kontakten eines Fachhändlers profitieren.',
-        'Achten Sie auf einen schriftlichen Vertrag mit Mindestpreis, Laufzeit, Provision, Versicherung während der Standzeit und klaren Regeln für Probefahrten. Der Nachteil: Ob und wann ein Käufer kommt, bleibt offen, und das Geld fließt erst nach dem Verkauf.',
+        'Achten Sie auf einen schriftlichen Vertrag mit Mindestpreis, Laufzeit, Provision, Versicherung während der Standzeit und klaren Regeln für Probefahrten. Der Nachteil: Ob und wann ein Käufer kommt, bleibt offen, und das Geld fließt erst nach dem Verkauf. Mehr dazu im Ratgeber [Kommissionsverkauf und Autovermittlung](/ratgeber/kommissionsverkauf-auto).',
       ],
     },
     {

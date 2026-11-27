@@ -81,6 +81,7 @@ const CONTENT: CityPageContent = {
     { href: '/autoankauf-neustadt-weinstrasse', label: 'Autoankauf Neustadt an der Weinstraße' },
     { href: '/autoankauf-speyer', label: 'Autoankauf Speyer' },
     { href: '/autoankauf-ludwigshafen', label: 'Autoankauf Ludwigshafen' },
+    { href: '/autoankauf-landau', label: 'Autoankauf Landau in der Pfalz' },
   ],
   cta: {
     heading: 'Jetzt Auto in Haßloch verkaufen',

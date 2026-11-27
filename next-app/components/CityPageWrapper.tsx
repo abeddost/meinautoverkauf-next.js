@@ -49,6 +49,8 @@ const components = {
   AutoankaufGrossGerau: dynamic(() => import('@/page-components/AutoankaufGrossGerau')),
   AutoankaufHassloch: dynamic(() => import('@/page-components/AutoankaufHassloch')),
   AutoankaufLangen: dynamic(() => import('@/page-components/AutoankaufLangen')),
+  AutoankaufAndernach: dynamic(() => import('@/page-components/AutoankaufAndernach')),
+  AutoankaufLandau: dynamic(() => import('@/page-components/AutoankaufLandau')),
 } as const;
 
 type ComponentName = keyof typeof components;

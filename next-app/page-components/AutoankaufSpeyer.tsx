@@ -284,6 +284,7 @@ const AutoankaufSpeyerPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-mannheim', label: '→ Autoankauf Mannheim' },
               { href: '/autoankauf-neustadt-weinstrasse', label: '→ Auch in Neustadt an der Weinstraße verfügbar' },
               { href: '/autoankauf-hassloch', label: '→ Auch in Haßloch verfügbar' },
+              { href: '/autoankauf-landau', label: '→ Auch in Landau verfügbar' },
               { href: '/autoankauf-heidelberg', label: '→ Autoankauf Heidelberg' },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">

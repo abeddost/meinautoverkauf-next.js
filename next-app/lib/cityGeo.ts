@@ -46,6 +46,8 @@ export const CITY_COORDINATES: Record<string, Coordinates> = {
   karlsruhe: { lat: 49.0069, lng: 8.4037 },
   frankenthal: { lat: 49.5344, lng: 8.3539 },
   rodgau: { lat: 50.0170, lng: 8.8830 },
+  'andernach': { lat: 50.4397, lng: 7.4017 },
+  'landau': { lat: 49.1987, lng: 8.118 },
   'neu-isenburg': { lat: 50.0533, lng: 8.6947 },
   'moerfelden-walldorf': { lat: 49.9896, lng: 8.581 },
   'gross-gerau': { lat: 49.9214, lng: 8.4818 },
