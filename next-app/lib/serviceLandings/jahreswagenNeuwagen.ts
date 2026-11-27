@@ -29,7 +29,7 @@ export const jahreswagenNeuwagen: ServiceLandingContent = {
         heading: 'Verkauf von Neuwagen in Deutschland: Garantie, Finanzierung und Leasing',
         paragraphs: [
           'Die Herstellergarantie geht in der Regel mit dem Fahrzeug auf den nächsten Halter über; prüfen Sie im Zweifel die Garantiebedingungen. Für Käufer ist eine Restgarantie ein starkes Argument, das sich im Preis widerspiegelt.',
-          'Ist der Neuwagen finanziert, liegt der Fahrzeugbrief meist bei der Bank. Die Restschuld kann im Ankauf berücksichtigt werden; mehr dazu im Ratgeber [Autoankauf trotz Finanzierung](/ratgeber/autoankauf-trotz-finanzierung). Ein geleastes Fahrzeug gehört dagegen der Leasinggesellschaft und kann nicht ohne deren Zustimmung verkauft werden.',
+          'Ist der Neuwagen finanziert, liegt der Fahrzeugbrief meist bei der Bank. Die Restschuld kann im Ankauf berücksichtigt werden; mehr dazu im Ratgeber [Autoankauf trotz Finanzierung](/ratgeber/autoankauf-trotz-finanzierung). Ein geleastes Fahrzeug gehört dagegen der Leasinggesellschaft und kann nicht ohne deren Zustimmung verkauft werden; welche Wege es gibt, erklärt unser Ratgeber [Leasingauto verkaufen](/ratgeber/leasingauto-verkaufen).',
         ],
       },
       {
