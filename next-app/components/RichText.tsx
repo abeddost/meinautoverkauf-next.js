@@ -19,6 +19,14 @@ export function renderRichText(text: string): React.ReactNode {
       return <strong key={index}>{part.slice(2, -2)}</strong>;
     }
     const link = part.match(LINK_PATTERN);
+    if (link && /\.(pdf|docx?)$/i.test(link[2])) {
+      // Static files (e.g. /downloads/*.pdf) are not routes, so use a plain anchor.
+      return (
+        <a key={index} href={link[2]} target="_blank" rel="noopener" className="text-brand-orange font-bold hover:underline">
+          {link[1]}
+        </a>
+      );
+    }
     if (link) {
       return (
         <Link key={index} href={link[2]} className="text-brand-orange font-bold hover:underline">

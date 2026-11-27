@@ -703,6 +703,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterfuhrende Seiten rund um Ihren Mercedes-Verkauf',
       internalLinks: [
         {
+          href: '/mercedes-oldtimer-verkaufen',
+          label: 'Mercedes Oldtimer verkaufen',
+          context: 'Für klassische Baureihen wie W123, W124, Pagode oder SL R107.',
+        },
+        {
           href: '/auto-bewerten',
           label: 'Mercedes kostenlos bewerten',
           context: 'Fur eine schnelle Preisorientierung vor dem Verkauf.',
@@ -2972,6 +2977,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       ],
       internalLinksHeading: 'Weiterfuhrende Seiten',
       internalLinks: [
+        {
+          href: '/jahreswagen-neuwagen-verkaufen',
+          label: 'Opel Jahreswagen verkaufen',
+          context: 'Junge Opel aus Mitarbeiterprogrammen oder mit Restgarantie verkaufen.',
+        },
         {
           href: '/auto-bewerten',
           label: 'Opel kostenlos bewerten',
@@ -5370,6 +5380,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       ],
       internalLinksHeading: 'Weiterführende Seiten für Ihren Klassiker-Verkauf',
       internalLinks: [
+        {
+          href: '/mercedes-oldtimer-verkaufen',
+          label: 'Mercedes Oldtimer verkaufen',
+          context: 'Vom W123 bis zur Pagode: Ankauf klassischer Mercedes-Modelle.',
+        },
         {
           href: '/youngtimer-verkaufen',
           label: 'Youngtimer verkaufen',

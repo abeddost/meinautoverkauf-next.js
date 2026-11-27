@@ -157,6 +157,18 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
       'BMW mit Totalschaden verkaufen: Ankauf nach Unfall oder Motorschaden, mit Abholung, Abmeldung und sofortiger Auszahlung. Kostenlos online bewerten.',
     canonicalPath: '/bmw-totalschaden-verkaufen',
   },
+  {
+    slug: 'mercedes-oldtimer-verkaufen',
+    href: '/mercedes-oldtimer-verkaufen',
+    label: 'Mercedes Oldtimer verkaufen',
+    brandSlug: 'mercedes',
+    brandHref: '/mercedes-verkaufen',
+    order: 13,
+    seoTitle: 'Mercedes Oldtimer verkaufen | Antike Mercedes im Ankauf',
+    seoDescription:
+      'Antiken Mercedes verkaufen: Ankauf von Mercedes-Oldtimern wie W123, W124, Pagode oder SL R107 mit fachkundiger Bewertung und Abholung.',
+    canonicalPath: '/mercedes-oldtimer-verkaufen',
+  },
 ];
 
 export const MODEL_SEO_PAGE_BY_SLUG: Record<string, ModelSeoPageMeta> = Object.fromEntries(
