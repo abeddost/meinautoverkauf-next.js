@@ -285,6 +285,7 @@ const AutoankaufNeustadtWeinstrassePage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-ludwigshafen', label: '→ Autoankauf Ludwigshafen' },
               { href: '/autoankauf-mannheim', label: '→ Autoankauf Mannheim' },
               { href: '/autoankauf-speyer', label: '→ Auch in Speyer verfügbar' },
+              { href: '/autoankauf-hassloch', label: '→ Auch in Haßloch verfügbar' },
               { href: '/autoankauf-heidelberg', label: '→ Autoankauf Heidelberg' },
             ].map((link) => (
               <Link key={link.href} href={link.href} className="inline-flex items-center gap-2 bg-white border border-slate-200 text-brand-dark font-semibold px-5 py-2.5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all text-sm shadow-sm">

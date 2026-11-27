@@ -1000,3 +1000,118 @@ export const BODENHEIM_FAQS: FAQItem[] = [
     a: "Ja. Auf Wunsch übernehmen wir die Abmeldung bei der für Bodenheim zuständigen Zulassungsstelle im Landkreis Mainz-Bingen und dokumentieren die Abwicklung transparent."
   }
 ];
+
+export const NEU_ISENBURG_FAQS: FAQItem[] = [
+  {
+    q: "Holen Sie mein Auto in Neu-Isenburg ab?",
+    a: "Ja. Wir holen Fahrzeuge in der Kernstadt, in Gravenbruch und in Zeppelinheim kostenlos ab, auch wenn sie nicht mehr fahrbereit sind."
+  },
+  {
+    q: "Wie schnell bekomme ich mein Geld?",
+    a: "Die Auszahlung wird direkt nach Unterzeichnung des Kaufvertrags per Überweisung veranlasst und kommt noch am selben Tag."
+  },
+  {
+    q: "Übernehmen Sie die Abmeldung des OF-Kennzeichens?",
+    a: "Ja. Die Abmeldung ist im Ankauf enthalten, Sie müssen nicht selbst zur Zulassungsstelle."
+  },
+  {
+    q: "Kann ich mein Auto auch selbst vorbeibringen?",
+    a: "Ja. Fahrbereite Fahrzeuge können Sie nach Terminbuchung an unserer Filiale in Rüsselsheim abgeben."
+  },
+  {
+    q: "Kaufen Sie auch Firmenwagen aus Neu-Isenburg an?",
+    a: "Ja. Wir kaufen Dienst- und Flottenfahrzeuge an. Bei laufendem Leasing ist vorher die Zustimmung des Leasinggebers nötig."
+  }
+];
+
+export const MOERFELDEN_WALLDORF_FAQS: FAQItem[] = [
+  {
+    q: "Holen Sie mein Auto in Mörfelden-Walldorf ab?",
+    a: "Ja. Wir holen Fahrzeuge in Mörfelden und in Walldorf kostenlos ab, auch wenn sie nicht mehr fahrbereit sind."
+  },
+  {
+    q: "Kann ich einen Termin nach meiner Schicht vereinbaren?",
+    a: "Ja. Termine sind auch abends oder am Wochenende möglich."
+  },
+  {
+    q: "Wo kann ich mein Auto selbst abgeben?",
+    a: "An unserer Filiale in Rüsselsheim, nach vorheriger Terminbuchung."
+  },
+  {
+    q: "Wann erhalte ich die Auszahlung?",
+    a: "Direkt nach Vertragsabschluss wird die Auszahlung per Überweisung veranlasst; das Geld kommt noch am selben Tag."
+  },
+  {
+    q: "Übernehmen Sie die Abmeldung bei der Zulassungsstelle?",
+    a: "Ja. Die Abmeldung des GG-Kennzeichens ist im Ankauf enthalten."
+  }
+];
+
+export const GROSS_GERAU_FAQS: FAQItem[] = [
+  {
+    q: "Holen Sie mein Auto in Groß-Gerau ab?",
+    a: "Ja. Wir holen Fahrzeuge in der Kernstadt sowie in Dornheim, Wallerstädten, Berkach und Auf Esch kostenlos ab."
+  },
+  {
+    q: "Wo ist Ihre nächste Filiale?",
+    a: "Unsere Filiale in Rüsselsheim liegt im selben Landkreis. Dort können Sie fahrbereite Fahrzeuge nach Terminbuchung abgeben."
+  },
+  {
+    q: "Kaufen Sie auch Transporter und Arbeitsfahrzeuge?",
+    a: "Ja. Auch Nutzfahrzeuge, Transporter und Fahrzeuge mit hoher Laufleistung kaufen wir an."
+  },
+  {
+    q: "Muss ich mein Auto vorher abmelden?",
+    a: "Nein. Die Abmeldung des GG-Kennzeichens übernehmen wir im Rahmen des Ankaufs."
+  },
+  {
+    q: "Wann bekomme ich mein Geld?",
+    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+  }
+];
+
+export const HASSLOCH_FAQS: FAQItem[] = [
+  {
+    q: "Gilt diese Seite für Haßloch in der Pfalz oder für Rüsselsheim-Haßloch?",
+    a: "Diese Seite gilt für Haßloch in der Pfalz. Für den Rüsselsheimer Stadtteil Haßloch finden Sie alle Informationen auf unserer Seite zum Autoankauf in Rüsselsheim."
+  },
+  {
+    q: "Holen Sie mein Auto in Haßloch ab?",
+    a: "Ja, nach Absprache holen wir Fahrzeuge in Haßloch und Umgebung ab, auch wenn sie nicht mehr fahrbereit sind."
+  },
+  {
+    q: "Übernehmen Sie die Abmeldung des DÜW-Kennzeichens?",
+    a: "Ja. Die Abmeldung ist im Ankauf enthalten."
+  },
+  {
+    q: "Wie schnell bekomme ich mein Geld?",
+    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+  },
+  {
+    q: "Kaufen Sie auch alte Autos ohne TÜV?",
+    a: "Ja. Auch ältere Fahrzeuge ohne gültige Hauptuntersuchung kaufen wir an; der Zustand fließt in die Bewertung ein."
+  }
+];
+
+export const LANGEN_FAQS: FAQItem[] = [
+  {
+    q: "Holen Sie mein Auto in Langen ab?",
+    a: "Ja. Wir holen Fahrzeuge in Langen und Egelsbach kostenlos ab, auch wenn sie nicht mehr fahrbereit sind."
+  },
+  {
+    q: "Kann ich mein Auto auch selbst abgeben?",
+    a: "Ja. Fahrbereite Fahrzeuge können Sie nach Terminbuchung an unserer Filiale in Rüsselsheim abgeben."
+  },
+  {
+    q: "Kaufen Sie auch Dienstwagen an?",
+    a: "Ja. Dienst- und Firmenfahrzeuge kaufen wir regelmäßig an. Bei Leasing ist vorher die Zustimmung des Leasinggebers nötig."
+  },
+  {
+    q: "Wann bekomme ich mein Geld?",
+    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+  },
+  {
+    q: "Übernehmen Sie die Abmeldung?",
+    a: "Ja. Die Abmeldung des OF-Kennzeichens ist im Ankauf enthalten."
+  }
+];

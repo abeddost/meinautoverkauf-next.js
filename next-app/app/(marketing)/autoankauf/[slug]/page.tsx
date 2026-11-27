@@ -5,7 +5,9 @@ import CityPageWrapper from '@/components/CityPageWrapper';
 import RouteHero from '@/components/RouteHero';
 import Breadcrumb from '@/components/Breadcrumb';
 import CityLocationInfo from '@/components/CityLocationInfo';
-import { buildBreadcrumbSchema } from '@/lib/structuredData';
+import { buildBreadcrumbSchema, buildFaqPageSchema } from '@/lib/structuredData';
+import * as FAQ_CONTENT from '@/lib/faqContent';
+import type { FAQItem } from '@/lib/faqContent';
 import { getNearestCitySlugs } from '@/lib/cityGeo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meinautoverkauf.de';
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!city) return {};
 
   return {
-    title: city.title,
+    title: city.titleAbsolute ? { absolute: city.title } : city.title,
     description: city.description,
     alternates: { canonical: city.path },
   };
@@ -41,6 +43,9 @@ export default async function AutoankaufCityRoute({ params }: Props) {
     { name: city.cityName, path: city.path },
   ]);
 
+  const cityFaqs = (FAQ_CONTENT as unknown as Record<string, FAQItem[] | undefined>)[city.faqKey];
+  const faqSchema = cityFaqs?.length ? buildFaqPageSchema(SITE_URL, city.path, cityFaqs) : null;
+
   const nearbyCities = getNearestCitySlugs(city.slug, 3)
     .map(({ slug: nearbySlug }) => CITY_SEO_BY_SLUG[nearbySlug])
     .filter((nearbyCity): nearbyCity is NonNullable<typeof nearbyCity> => Boolean(nearbyCity))
@@ -52,6 +57,9 @@ export default async function AutoankaufCityRoute({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <Breadcrumb
         items={[
           { name: 'Home', href: '/' },

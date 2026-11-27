@@ -14,6 +14,8 @@ export interface CitySeoData {
   state: string;
   /** <title> tag */
   title: string;
+  /** Render `title` without the " | Meinautoverkauf.de" suffix (keeps <title> within 60 chars) */
+  titleAbsolute?: boolean;
   /** <meta description> */
   description: string;
   /** Hero headline (h2) */
@@ -536,6 +538,81 @@ export const CITY_SEO_DATA: CitySeoData[] = [
       'Autoankauf in Rodgau für Pendler und Familien im Landkreis Offenbach mit transparenter Bewertung und schneller Auszahlung.',
     pageComponentName: 'AutoankaufRodgau',
     faqKey: 'RODGAU_FAQS',
+  },
+  {
+    slug: 'neu-isenburg',
+    path: '/autoankauf-neu-isenburg',
+    cityName: 'Neu-Isenburg',
+    state: 'Hessen',
+    title: 'Autoankauf Neu-Isenburg | Auto verkaufen mit Abholung',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Neu-Isenburg: Auto online bewerten, Termin in der Kernstadt, Gravenbruch oder Zeppelinheim – mit Abholung, Abmeldung und Sofort-Auszahlung.',
+    heroHeadline: 'Autoankauf Neu-Isenburg – Ihr Auto fair verkaufen',
+    heroSubheadline: 'Kostenlose Abholung zwischen Frankfurt, Dreieich und Flughafen',
+    schemaDescription: 'Autoankauf in Neu-Isenburg mit kostenloser Bewertung, Abholung und Auszahlung am selben Tag.',
+    pageComponentName: 'AutoankaufNeuIsenburg',
+    faqKey: 'NEU_ISENBURG_FAQS',
+  },
+  {
+    slug: 'moerfelden-walldorf',
+    path: '/autoankauf-moerfelden-walldorf',
+    cityName: 'Mörfelden-Walldorf',
+    state: 'Hessen',
+    title: 'Autoankauf Mörfelden-Walldorf | Fair verkaufen am Flughafen',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Mörfelden-Walldorf: online bewerten, Termin auch abends, Abholung und Abmeldung des GG-Kennzeichens inklusive – Auszahlung am selben Tag.',
+    heroHeadline: 'Autoankauf Mörfelden-Walldorf – schnell und fair',
+    heroSubheadline: 'Abholung in Mörfelden und Walldorf, Filiale im nahen Rüsselsheim',
+    schemaDescription: 'Autoankauf in Mörfelden-Walldorf mit kostenloser Bewertung, Abholung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufMoerfeldenWalldorf',
+    faqKey: 'MOERFELDEN_WALLDORF_FAQS',
+  },
+  {
+    slug: 'gross-gerau',
+    path: '/autoankauf-gross-gerau',
+    cityName: 'Groß-Gerau',
+    state: 'Hessen',
+    title: 'Autoankauf Groß-Gerau | Auto verkaufen in der Kreisstadt',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Groß-Gerau: Auto online bewerten, Abholung in Dornheim, Wallerstädten, Berkach oder Abgabe in Rüsselsheim – Auszahlung am selben Tag.',
+    heroHeadline: 'Autoankauf Groß-Gerau – fair verkaufen im Ried',
+    heroSubheadline: 'Abholung in allen Stadtteilen, Filiale im nahen Rüsselsheim',
+    schemaDescription: 'Autoankauf in Groß-Gerau mit kostenloser Bewertung, Abholung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufGrossGerau',
+    faqKey: 'GROSS_GERAU_FAQS',
+  },
+  {
+    slug: 'hassloch',
+    path: '/autoankauf-hassloch',
+    cityName: 'Haßloch',
+    state: 'Rheinland-Pfalz',
+    title: 'Autoankauf Haßloch | Auto verkaufen in der Pfalz',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Haßloch (Pfalz): Auto online bewerten, Abholung nach Absprache, Abmeldung des DÜW-Kennzeichens und Auszahlung am selben Tag.',
+    heroHeadline: 'Autoankauf Haßloch – Auto verkaufen in der Vorderpfalz',
+    heroSubheadline: 'Fair bewerten, sicher verkaufen zwischen Neustadt und Speyer',
+    schemaDescription: 'Autoankauf in Haßloch (Pfalz) mit kostenloser Bewertung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufHassloch',
+    faqKey: 'HASSLOCH_FAQS',
+  },
+  {
+    slug: 'langen',
+    path: '/autoankauf-langen',
+    cityName: 'Langen (Hessen)',
+    state: 'Hessen',
+    title: 'Autoankauf Langen (Hessen) | Auto fair verkaufen',
+    titleAbsolute: true,
+    description:
+      'Autoankauf in Langen (Hessen): Auto online bewerten, kostenlose Abholung in Langen und Egelsbach, Abmeldung und Auszahlung am selben Tag.',
+    heroHeadline: 'Autoankauf Langen – Ihr Auto fair verkaufen',
+    heroSubheadline: 'Kostenlose Abholung in Langen, Egelsbach und Umgebung',
+    schemaDescription: 'Autoankauf in Langen (Hessen) mit kostenloser Bewertung, Abholung und schneller Auszahlung.',
+    pageComponentName: 'AutoankaufLangen',
+    faqKey: 'LANGEN_FAQS',
   },
 ];
 

@@ -44,6 +44,11 @@ const components = {
   AutoankaufKarlsruhe: dynamic(() => import('@/page-components/AutoankaufKarlsruhe')),
   AutoankaufFrankenthal: dynamic(() => import('@/page-components/AutoankaufFrankenthal')),
   AutoankaufRodgau: dynamic(() => import('@/page-components/AutoankaufRodgau')),
+  AutoankaufNeuIsenburg: dynamic(() => import('@/page-components/AutoankaufNeuIsenburg')),
+  AutoankaufMoerfeldenWalldorf: dynamic(() => import('@/page-components/AutoankaufMoerfeldenWalldorf')),
+  AutoankaufGrossGerau: dynamic(() => import('@/page-components/AutoankaufGrossGerau')),
+  AutoankaufHassloch: dynamic(() => import('@/page-components/AutoankaufHassloch')),
+  AutoankaufLangen: dynamic(() => import('@/page-components/AutoankaufLangen')),
 } as const;
 
 type ComponentName = keyof typeof components;

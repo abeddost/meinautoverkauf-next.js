@@ -328,6 +328,7 @@ const AutoankaufDarmstadtPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-offenbach', label: '→ Autoankauf Offenbach' },
               { href: '/autoankauf-bensheim', label: '→ Auch in Bensheim verfügbar' },
               { href: '/autoankauf-rodgau', label: '→ Auch in Rodgau verfügbar' },
+              { href: '/autoankauf-langen', label: '→ Auch in Langen verfügbar' },
             ].map((link) => (
               <Link
                 key={link.href}

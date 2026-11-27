@@ -316,6 +316,8 @@ const AutoankaufRuesselsheimPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/autoankauf-wiesbaden', label: '→ Autoankauf Wiesbaden' },
               { href: '/autoankauf-mainz', label: '→ Autoankauf Mainz' },
               { href: '/autoankauf-offenbach', label: '→ Autoankauf Offenbach' },
+              { href: '/autoankauf-gross-gerau', label: '→ Autoankauf Groß-Gerau' },
+              { href: '/autoankauf-moerfelden-walldorf', label: '→ Autoankauf Mörfelden-Walldorf' },
             ].map((link) => (
               <Link
                 key={link.href}

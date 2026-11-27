@@ -46,6 +46,11 @@ export const CITY_COORDINATES: Record<string, Coordinates> = {
   karlsruhe: { lat: 49.0069, lng: 8.4037 },
   frankenthal: { lat: 49.5344, lng: 8.3539 },
   rodgau: { lat: 50.0170, lng: 8.8830 },
+  'neu-isenburg': { lat: 50.0533, lng: 8.6947 },
+  'moerfelden-walldorf': { lat: 49.9896, lng: 8.581 },
+  'gross-gerau': { lat: 49.9214, lng: 8.4818 },
+  'hassloch': { lat: 49.3631, lng: 8.2583 },
+  'langen': { lat: 49.9894, lng: 8.6803 },
 };
 
 const EARTH_RADIUS_KM = 6371;
