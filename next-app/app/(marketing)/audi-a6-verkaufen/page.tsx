@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const CONTENT: SeoArticleContent = {
   h1: 'Audi A6 verkaufen: Ankauf für Limousine, Avant und allroad – auch mit hoher Laufleistung',
   intro: [
-    'Sie möchten Ihren **Audi A6 verkaufen**? Der A6 ist das klassische Langstrecken- und Dienstfahrzeug: viel Komfort, kräftige Motoren, oft hohe Laufleistung. Wir kaufen den A6 aller Generationen an, als Limousine, Avant oder allroad quattro. Nach der kostenlosen Online-Bewertung erhalten Sie ein Angebot, und nach Vertragsabschluss wird die Auszahlung sofort veranlasst.',
+    'Sie möchten Ihren **Audi A6 verkaufen**? Der A6 ist das klassische Langstrecken- und Dienstfahrzeug: viel Komfort, kräftige Motoren, oft hohe Laufleistung. Wir kaufen den A6 aller Generationen an, als Limousine, Avant oder allroad quattro. Sie bewerten den Wagen kostenlos online, erhalten ein Angebot und bekommen die Auszahlung direkt nach Vertragsabschluss.',
     'Gerade bei Fahrzeugen aus Firmenflotten oder nach dem Ende eines Dienstwagenvertrags ist ein schneller, sauber dokumentierter Verkauf wichtig. Abholung und Abmeldung übernehmen wir auf Wunsch.',
   ],
   sections: [
@@ -90,7 +90,7 @@ const CONTENT: SeoArticleContent = {
       steps: [
         {
           title: 'Online bewerten',
-          text: 'Generation, Motor, Kilometerstand und Ausstattung eingeben. Kostenlos und unverbindlich.',
+          text: 'Karosserie, Motor, Kilometerstand und Ausstattung angeben – die Bewertung kostet nichts und verpflichtet zu nichts.',
         },
         {
           title: 'Angebot und Termin',
@@ -131,7 +131,7 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Wie schnell erhalte ich die Auszahlung?',
-      a: 'Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag.',
+      a: 'Wir veranlassen die Überweisung unmittelbar nach Vertragsabschluss; der Betrag kommt noch am selben Tag, auch bei Firmenfahrzeugen.',
     },
   ],
 };

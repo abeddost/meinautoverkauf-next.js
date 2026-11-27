@@ -111,7 +111,7 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Wann bekomme ich mein Geld?',
-      a: 'Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag.',
+      a: 'Auch beim Unfallwagen gilt: Direkt nach Vertragsabschluss veranlassen wir die Überweisung, das Geld kommt noch am selben Tag.',
     },
     {
       q: 'Übernehmen Sie die Abmeldung?',

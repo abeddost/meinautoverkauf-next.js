@@ -94,22 +94,22 @@ const CONTENT: SeoArticleContent = {
       steps: [
         {
           title: 'Online bewerten',
-          text: 'Generation, Motor, Kilometerstand und Ausstattung eingeben. Kostenlos und unverbindlich.',
+          text: 'Modelljahr, Motorisierung, Laufleistung und Ausstattungspakete eingeben; die Bewertung ist kostenlos.',
         },
         {
           title: 'Angebot und Termin',
-          text: 'Sie erhalten ein Angebot und vereinbaren einen Termin bei Ihnen oder an einer Filiale.',
+          text: 'Mit dem Angebot vereinbaren Sie einen Termin, bei Ihnen zu Hause oder an einer unserer Filialen.',
         },
         {
           title: 'Übergabe und Auszahlung',
-          text: 'Kurze Prüfung, Kaufvertrag, sofort veranlasste Auszahlung. Die Abmeldung übernehmen wir.',
+          text: 'Prüfung vor Ort, Kaufvertrag und sofort veranlasste Überweisung. Um die Abmeldung kümmern wir uns.',
         },
       ],
     },
   ],
   cta: {
     heading: 'Audi Q5 jetzt bewerten',
-    text: 'Kostenlos, unverbindlich und in rund zwei Minuten.',
+    text: 'Die Online-Bewertung Ihres Q5 dauert rund zwei Minuten und ist unverbindlich.',
     primaryLabel: 'Q5 bewerten',
     secondaryHref: '/audi-verkaufen',
     secondaryLabel: 'Zum Audi Ankauf',
@@ -135,7 +135,7 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Wie läuft die Auszahlung ab?',
-      a: 'Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag.',
+      a: 'Noch am Tag der Übergabe: Die Überweisung wird direkt nach Vertragsabschluss veranlasst.',
     },
   ],
 };

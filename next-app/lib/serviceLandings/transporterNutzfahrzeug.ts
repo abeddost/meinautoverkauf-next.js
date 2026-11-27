@@ -35,14 +35,14 @@ export const transporterNutzfahrzeug: ServiceLandingContent = {
       {
         heading: 'Transporter-Bewertung kostenlos: So geht es',
         paragraphs: [
-          'Die Bewertung Ihres Transporters ist bei uns kostenlos und unverbindlich. Sie geben Marke, Modell, Baujahr, Kilometerstand und Zustand online ein und erhalten in rund zwei Minuten eine Preiseinschätzung. Bekannte Schäden tragen Sie direkt mit ein, Besonderheiten wie Ausbauten oder eine Anhängerkupplung zeigen Sie am besten auf Fotos.',
+          'Die Bewertung Ihres Transporters ist bei uns kostenlos und unverbindlich. Sie geben Marke, Modell, Baujahr, Kilometerstand und Zustand online ein und erhalten in rund zwei Minuten eine Preiseinschätzung. Bekannte Schäden tragen Sie direkt mit ein, Besonderheiten wie Ausbauten oder eine Anhängerkupplung zeigen Sie am besten auf Fotos. Merkmale wie Doppelkabine, Allradantrieb oder Standheizung sollten Sie vollständig angeben, denn sie beeinflussen den Wert spürbar.',
           'Für gewerbliche Verkäufer gilt: Halten Sie Fahrzeugpapiere, Wartungsnachweise und gegebenenfalls Angaben zu Leasing oder Finanzierung bereit. Wie der Verkauf von Firmenfahrzeugen abläuft, erklärt unser Ratgeber [Autoankauf für Firmenwagen und Gewerbe](/ratgeber/autoankauf-firmenwagen-gewerbe).',
         ],
       },
       {
         heading: 'Nutzfahrzeug verkaufen in Wiesbaden',
         paragraphs: [
-          'Auch in Wiesbaden kaufen wir Nutzfahrzeuge an, von der Innenstadt bis zu den Gewerbegebieten in Biebrich, Kastel und Erbenheim. Fahrbereite Transporter können Sie nach Terminbuchung an unserer Filiale in der Boelckestraße abgeben. Mehr zum lokalen Service lesen Sie auf unserer Seite [Autoankauf Wiesbaden](/autoankauf-wiesbaden), für Mainz auf der Seite [Autoankauf Mainz](/autoankauf-mainz).',
+          'Auch in Wiesbaden kaufen wir Nutzfahrzeuge an, von der Innenstadt bis zu den Gewerbegebieten in Biebrich, Kastel und Erbenheim. Fahrbereite Transporter können Sie nach Terminbuchung an unserer Filiale in der Boelckestraße abgeben. Mehr zum lokalen Service lesen Sie auf unserer Seite [Autoankauf Wiesbaden](/autoankauf-wiesbaden), für Mainz auf der Seite [Autoankauf Mainz](/autoankauf-mainz). Für Betriebe legen wir Termine so, dass der Arbeitsalltag möglichst wenig gestört wird.',
         ],
       },
       {

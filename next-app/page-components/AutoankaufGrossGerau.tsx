@@ -14,7 +14,7 @@ const CONTENT: CityPageContent = {
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Groß-Gerau',
   advantages: [
     'Kostenlose Online-Bewertung in 2 Minuten',
-    'Sofortige Auszahlung nach Vertragsunterzeichnung',
+    'Geld noch am Tag der Übergabe',
     'Kostenlose Abholung in Groß-Gerau und allen Stadtteilen',
     'Abmeldung des GG-Kennzeichens inklusive',
     'Filiale im benachbarten Rüsselsheim',

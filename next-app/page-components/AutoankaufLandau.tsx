@@ -8,13 +8,13 @@ const CONTENT: CityPageContent = {
   h1Lead: 'Autoankauf Landau –',
   h1Accent: 'Auto verkaufen an der Südlichen Weinstraße',
   intro: [
-    'Beim **Autoankauf Landau** verkaufen Sie Ihr Auto ohne Inserat: kostenlos online bewerten, Angebot erhalten, Termin vereinbaren. Nach Vertragsabschluss wird die Auszahlung sofort veranlasst, die Abmeldung des LD-Kennzeichens übernehmen wir.',
+    'Beim **Autoankauf Landau** brauchen Sie kein Inserat: Sie bewerten Ihr Auto kostenlos online, erhalten ein Angebot und vereinbaren einen Termin. Nach Vertragsabschluss wird die Auszahlung sofort veranlasst, die Abmeldung des LD-Kennzeichens übernehmen wir.',
     'Wir kaufen alle Marken und Zustände an, vom Studentenauto bis zum Familien-SUV, auch mit Mängeln oder ohne TÜV. Ist das Auto noch finanziert, kann die Restschuld direkt im Ankauf berücksichtigt werden.',
   ],
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Landau',
   advantages: [
     'Kostenlose Online-Bewertung in 2 Minuten',
-    'Sofortige Auszahlung nach Vertragsunterzeichnung',
+    'Auszahlung noch am selben Tag',
     'Abholung in Landau und Umgebung nach Absprache',
     'Abmeldung des LD-Kennzeichens inklusive',
     'Ankauf aller Marken und Zustände',
@@ -45,11 +45,11 @@ const CONTENT: CityPageContent = {
     },
     {
       title: 'Termin vereinbaren',
-      text: 'Wir stimmen einen Termin zur Prüfung und Übergabe ab, auch abends oder am Wochenende. Die Besichtigung dauert etwa 15 bis 20 Minuten.',
+      text: 'Den Termin für Prüfung und Übergabe legen wir gemeinsam fest, gern auch abends oder am Wochenende. Planen Sie für die Besichtigung etwa 15 bis 20 Minuten ein.',
     },
     {
       title: 'Vertrag und Auszahlung',
-      text: 'Kaufvertrag unterschreiben, die Auszahlung wird sofort veranlasst. Die Abmeldung des LD-Kennzeichens übernehmen wir.',
+      text: 'Sie unterschreiben den Kaufvertrag, wir veranlassen sofort die Auszahlung und melden das LD-Kennzeichen ab.',
     },
   ],
   vehiclesHeading: 'Welche Fahrzeuge wir in Landau ankaufen',
@@ -76,7 +76,7 @@ const CONTENT: CityPageContent = {
   faqId: 'faq-landau',
   faqs: LANDAU_FAQS,
   relatedHeading: 'Autoankauf in der Pfalz und am Oberrhein',
-  relatedIntro: 'Auch in den Nachbarstädten sind wir für Sie da:',
+  relatedIntro: 'Auch in der übrigen Pfalz und in Karlsruhe sind wir für Sie da:',
   related: [
     { href: '/autoankauf-neustadt-weinstrasse', label: 'Autoankauf Neustadt an der Weinstraße' },
     { href: '/autoankauf-speyer', label: 'Autoankauf Speyer' },

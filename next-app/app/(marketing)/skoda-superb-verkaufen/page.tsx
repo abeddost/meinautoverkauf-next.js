@@ -15,7 +15,7 @@ const CONTENT: SeoArticleContent = {
   h1: 'Skoda Superb Ankauf: Limousine und Combi zum fairen Preis verkaufen',
   intro: [
     'Beim **Skoda Superb Ankauf** zählt vor allem, wie das Fahrzeug genutzt wurde. Der Superb ist für viele das vernünftigste große Auto am Markt: viel Platz, solide Technik und günstiger als vergleichbare Premiummodelle. Entsprechend häufig fährt er als Familienkombi, Dienstwagen oder Vielfahrer-Limousine, und entsprechend unterschiedlich sind Laufleistung und Zustand.',
-    'Wir kaufen den Superb aller Generationen an: kostenlose Online-Bewertung, Angebot auf Basis von Ausstattung, Motor und Historie, sofort veranlasste Auszahlung nach Vertragsabschluss. Abholung und Abmeldung übernehmen wir auf Wunsch.',
+    'Wir kaufen den Superb aller Generationen an: kostenlose Online-Bewertung, Angebot auf Basis von Ausstattung, Motor und Historie, sofort veranlasste Auszahlung nach Vertragsabschluss. Auf Wunsch holen wir den Superb ab und kümmern uns um die Abmeldung.',
   ],
   sections: [
     {
@@ -35,7 +35,7 @@ const CONTENT: SeoArticleContent = {
         },
         {
           title: 'Superb IV (seit 2024)',
-          text: 'Die aktuelle Generation, gemeinsam mit dem VW Passat gebaut. Junge Fahrzeuge bewerten wir nach Ausstattung und Restgarantie.',
+          text: 'Die aktuelle Generation, gemeinsam mit dem VW Passat gebaut. Bei jungen Fahrzeugen zählen vor allem Ausstattung und Restgarantie.',
         },
       ],
     },
@@ -77,7 +77,7 @@ const CONTENT: SeoArticleContent = {
       heading: 'Superb verkaufen: Ankauf oder privat?',
       paragraphs: [
         'Der Superb ist auf den Fahrzeugbörsen stark vertreten, gerade als Combi. Privat konkurrieren Sie deshalb mit vielen ähnlichen Angeboten, und Käufer nutzen jede Auffälligkeit zum Verhandeln. Bei hoher Laufleistung melden sich zudem vor allem Händler und Exporteure.',
-        'Beim Ankauf erhalten Sie ein verbindliches Angebot ohne Inserat. Typische Schwachstellen der Marke beschreibt unser [Skoda-Ratgeber](/ratgeber/skoda-probleme-verkauf), den kleineren Bruder unsere Seite [Skoda Octavia verkaufen](/skoda-octavia-verkaufen).',
+        'Beim Ankauf erhalten Sie ein verbindliches Angebot ohne Inserat. Weitere Skoda-Themen behandelt unser [Skoda-Ratgeber](/ratgeber/skoda-probleme-verkauf), den kleineren Bruder unsere Seite [Skoda Octavia verkaufen](/skoda-octavia-verkaufen).',
       ],
     },
     {
@@ -91,7 +91,7 @@ const CONTENT: SeoArticleContent = {
       steps: [
         {
           title: 'Online bewerten',
-          text: 'Generation, Motor, Kilometerstand und Ausstattung eingeben. Kostenlos und unverbindlich.',
+          text: 'Generation, Motor, Kilometerstand und Ausstattungslinie angeben – kostenlos und unverbindlich.',
         },
         {
           title: 'Angebot und Termin',
@@ -99,14 +99,14 @@ const CONTENT: SeoArticleContent = {
         },
         {
           title: 'Übergabe und Auszahlung',
-          text: 'Kurze Prüfung, Kaufvertrag, sofort veranlasste Auszahlung. Die Abmeldung übernehmen wir.',
+          text: 'Nach der kurzen Prüfung unterschreiben Sie den Vertrag, die Auszahlung wird sofort veranlasst, und die Abmeldung erledigen wir.',
         },
       ],
     },
   ],
   cta: {
     heading: 'Skoda Superb jetzt bewerten',
-    text: 'Kostenlos, unverbindlich und in rund zwei Minuten.',
+    text: 'In rund zwei Minuten wissen Sie, was Ihr Superb aktuell bringt – kostenlos und unverbindlich.',
     primaryLabel: 'Superb bewerten',
     secondaryHref: '/skoda-verkaufen',
     secondaryLabel: 'Zum Skoda Ankauf',
@@ -120,11 +120,11 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Kaufen Sie Superb aus Firmenflotten an?',
-      a: 'Ja. Firmenfahrzeuge kaufen wir regelmäßig an. Bei laufendem Leasing ist vorher die Zustimmung des Leasinggebers nötig.',
+      a: 'Ja. Firmenfahrzeuge kaufen wir regelmäßig an. Bei einem geleasten Superb muss vorher der Leasinggeber zustimmen.',
     },
     {
       q: 'Was ist, wenn das DSG Probleme macht?',
-      a: 'Getriebeprobleme schließen den Ankauf nicht aus. Sie werden im Angebot transparent berücksichtigt.',
+      a: 'Nein, ein DSG-Problem ist kein Ausschlussgrund. Wir berücksichtigen es transparent im Angebot.',
     },
     {
       q: 'Nehmen Sie auch den Superb iV mit Plug-in-Hybrid an?',
@@ -132,7 +132,7 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Wie schnell bekomme ich mein Geld?',
-      a: 'Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag.',
+      a: 'Die Auszahlung per Überweisung wird mit Vertragsabschluss veranlasst und erreicht Sie noch am selben Tag.',
     },
   ],
 };

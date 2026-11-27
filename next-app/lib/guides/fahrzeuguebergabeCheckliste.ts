@@ -66,7 +66,7 @@ export const fahrzeuguebergabeCheckliste: GuidePageContent = {
       heading: 'Gebrauchtwagen-Übergabe: Schlüssel, Papiere und was Sie prüfen sollten',
       paragraphs: [
         'Zählen Sie bei der Übergabe alle Schlüssel und notieren Sie die Anzahl im Protokoll. Fehlende Schlüssel sind für Käufer ein Sicherheitsthema und für Verkäufer ein mögliches Haftungsrisiko, wenn unklar bleibt, wer noch Zugang zum Fahrzeug hat.',
-        'Prüfen Sie gemeinsam den Kilometerstand, sichtbare Schäden, Reifen, Warnleuchten im Cockpit und die Funktion von Licht, Fenstern und Klimaanlage. Was bei der Übergabe dokumentiert ist, kann später nicht mehr strittig werden. Fotos vom Tacho und vom Fahrzeug mit Datum sind eine einfache zusätzliche Absicherung.',
+        'Prüfen Sie gemeinsam den Kilometerstand, sichtbare Schäden, Reifen, Warnleuchten im Cockpit und die Funktion von Licht, Fenstern und Klimaanlage. Was bei der Übergabe dokumentiert ist, kann später nicht mehr strittig werden. Fotos vom Tacho und vom Fahrzeug mit Datum sind eine einfache zusätzliche Absicherung. Halten Sie außerdem fest, ob Winterräder, Ladekabel oder anderes Zubehör mitgegeben werden.',
       ],
     },
     {
@@ -107,7 +107,7 @@ export const fahrzeuguebergabeCheckliste: GuidePageContent = {
       heading: 'Nach der Übergabe: Abmeldung, Versicherung, Zulassungsstelle',
       paragraphs: [
         'Nach der Übergabe melden Sie den Verkauf der Zulassungsbehörde mit den Daten des Käufers und informieren Ihre Kfz-Versicherung. Ist das Fahrzeug noch zugelassen, sollte im Kaufvertrag klar geregelt sein, bis wann der Käufer es ummeldet. Am sichersten ist es, das Fahrzeug vor der Übergabe selbst abzumelden; mehr dazu im Ratgeber zur [Abmeldung nach dem Verkauf](/ratgeber/autoabmeldung-nach-verkauf).',
-        'Bewahren Sie Kaufvertrag, Übergabeprotokoll, Zahlungsnachweis und gegebenenfalls die Abmeldebescheinigung gemeinsam auf. So können Sie bei Rückfragen zu Bußgeldern, Steuer oder Versicherung jederzeit belegen, wann das Fahrzeug den Besitzer gewechselt hat.',
+        'Bewahren Sie Kaufvertrag, Übergabeprotokoll, Zahlungsnachweis und gegebenenfalls die Abmeldebescheinigung gemeinsam auf. So können Sie bei Rückfragen zu Bußgeldern, Steuer oder Versicherung jederzeit belegen, wann das Fahrzeug den Besitzer gewechselt hat. Eine digitale Kopie auf dem Smartphone oder in der Cloud ist eine einfache zusätzliche Sicherung.',
       ],
     },
     {

@@ -1016,11 +1016,11 @@ export const NEU_ISENBURG_FAQS: FAQItem[] = [
   },
   {
     q: "Kann ich mein Auto auch selbst vorbeibringen?",
-    a: "Ja. Fahrbereite Fahrzeuge können Sie nach Terminbuchung an unserer Filiale in Rüsselsheim abgeben."
+    a: "Ja. Nach Terminbuchung nehmen wir fahrbereite Fahrzeuge an unserer Filiale in Rüsselsheim entgegen."
   },
   {
     q: "Kaufen Sie auch Firmenwagen aus Neu-Isenburg an?",
-    a: "Ja. Wir kaufen Dienst- und Flottenfahrzeuge an. Bei laufendem Leasing ist vorher die Zustimmung des Leasinggebers nötig."
+    a: "Ja. Wir kaufen Dienst- und Flottenfahrzeuge an. Läuft noch ein Leasingvertrag, muss der Leasinggeber dem Verkauf zustimmen."
   }
 ];
 
@@ -1031,7 +1031,7 @@ export const MOERFELDEN_WALLDORF_FAQS: FAQItem[] = [
   },
   {
     q: "Kann ich einen Termin nach meiner Schicht vereinbaren?",
-    a: "Ja. Termine sind auch abends oder am Wochenende möglich."
+    a: "Ja. Wir richten uns nach Ihrem Schichtplan und bieten Termine auch abends oder am Wochenende an."
   },
   {
     q: "Wo kann ich mein Auto selbst abgeben?",
@@ -1066,7 +1066,7 @@ export const GROSS_GERAU_FAQS: FAQItem[] = [
   },
   {
     q: "Wann bekomme ich mein Geld?",
-    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+    a: "Am Übergabetag: Nach Unterzeichnung des Kaufvertrags veranlassen wir sofort die Überweisung auf Ihr Konto."
   }
 ];
 
@@ -1085,7 +1085,7 @@ export const HASSLOCH_FAQS: FAQItem[] = [
   },
   {
     q: "Wie schnell bekomme ich mein Geld?",
-    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+    a: "Direkt nach Vertragsabschluss überweisen wir den Kaufpreis; das Geld kommt noch am selben Tag auf Ihr Konto."
   },
   {
     q: "Kaufen Sie auch alte Autos ohne TÜV?",
@@ -1100,7 +1100,7 @@ export const LANGEN_FAQS: FAQItem[] = [
   },
   {
     q: "Kann ich mein Auto auch selbst abgeben?",
-    a: "Ja. Fahrbereite Fahrzeuge können Sie nach Terminbuchung an unserer Filiale in Rüsselsheim abgeben."
+    a: "Ja. Ist Ihr Auto fahrbereit, bringen Sie es nach Terminbuchung einfach zu unserer Filiale in Rüsselsheim."
   },
   {
     q: "Kaufen Sie auch Dienstwagen an?",
@@ -1108,7 +1108,7 @@ export const LANGEN_FAQS: FAQItem[] = [
   },
   {
     q: "Wann bekomme ich mein Geld?",
-    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+    a: "Mit der Unterschrift unter den Kaufvertrag veranlassen wir die Zahlung per Überweisung; sie kommt noch am selben Tag."
   },
   {
     q: "Übernehmen Sie die Abmeldung?",
@@ -1131,7 +1131,7 @@ export const ANDERNACH_FAQS: FAQItem[] = [
   },
   {
     q: "Wie schnell bekomme ich mein Geld?",
-    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+    a: "Sobald der Kaufvertrag unterschrieben ist, veranlassen wir die Überweisung. Das Geld kommt noch am selben Tag."
   },
   {
     q: "Welche Unterlagen brauche ich?",
@@ -1154,10 +1154,10 @@ export const LANDAU_FAQS: FAQItem[] = [
   },
   {
     q: "Wie schnell bekomme ich mein Geld?",
-    a: "Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag."
+    a: "Die Überweisung veranlassen wir unmittelbar nach der Vertragsunterzeichnung, sodass das Geld noch am selben Tag ankommt – praktisch, wenn ein Umzug ansteht."
   },
   {
     q: "Kaufen Sie auch alte Autos ohne TÜV?",
-    a: "Ja. Auch ältere Fahrzeuge ohne gültige Hauptuntersuchung kaufen wir an; der Zustand fließt in die Bewertung ein."
+    a: "Ja. Ein abgelaufener TÜV ist kein Hindernis, gerade bei älteren Studenten- und Zweitwagen. Der Zustand fließt in die Bewertung ein."
   }
 ];

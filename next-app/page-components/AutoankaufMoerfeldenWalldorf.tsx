@@ -14,7 +14,7 @@ const CONTENT: CityPageContent = {
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Mörfelden-Walldorf',
   advantages: [
     'Kostenlose Online-Bewertung in 2 Minuten',
-    'Sofortige Auszahlung nach Vertragsunterzeichnung',
+    'Sofortige Auszahlung per Überweisung am Übergabetag',
     'Kostenlose Abholung in Mörfelden und Walldorf',
     'Abmeldung des GG-Kennzeichens inklusive',
     'Termine auch abends oder am Wochenende',
@@ -45,7 +45,7 @@ const CONTENT: CityPageContent = {
     },
     {
       title: 'Termin nach Ihrem Plan',
-      text: 'Prüfung bei Ihnen oder an unserer Filiale in Rüsselsheim, auch nach der Schicht. Die Besichtigung dauert etwa 15 bis 20 Minuten.',
+      text: 'Prüfung bei Ihnen oder an unserer Filiale in Rüsselsheim, auch nach der Schicht. Die Fahrzeugprüfung selbst dauert nur etwa 15 bis 20 Minuten.',
     },
     {
       title: 'Vertrag und Auszahlung',

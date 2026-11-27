@@ -22,7 +22,7 @@ export const unfallwagenWertGutachten: GuidePageContent = {
     {
       heading: 'Unfallwagen Bewertung: Welche Werte zählen?',
       paragraphs: [
-        'Bei der Bewertung eines Unfallwagens spielen mehrere Werte zusammen. Wer sie kennt, versteht Gutachten, Versicherungsabrechnung und Ankaufsangebote besser:',
+        'Bei der Bewertung eines Unfallwagens spielen mehrere Werte zusammen, die im Gutachten einzeln ausgewiesen werden. Wer sie kennt, versteht Gutachten, Versicherungsabrechnung und Ankaufsangebote besser:',
       ],
       bullets: [
         'Reparaturkosten: was die fachgerechte Instandsetzung kosten würde',
@@ -91,7 +91,7 @@ export const unfallwagenWertGutachten: GuidePageContent = {
     },
     {
       heading: 'Unterlagen für den Verkauf eines Unfallwagens',
-      paragraphs: ['Je vollständiger die Unterlagen, desto schneller und belastbarer das Angebot. Halten Sie diese Dokumente bereit:'],
+      paragraphs: ['Je vollständiger die Unterlagen, desto schneller und belastbarer das Angebot. Fehlende Dokumente lassen sich oft nachreichen, verzögern aber den Abschluss. Halten Sie diese Unterlagen bereit:'],
       bullets: [
         'Gutachten oder Kostenvoranschlag',
         'Fotos vom Schaden und vom Unfallort, soweit vorhanden',

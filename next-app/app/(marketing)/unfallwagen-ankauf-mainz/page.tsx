@@ -98,7 +98,7 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Holen Sie nicht fahrbereite Unfallautos in Mainz ab?',
-      a: 'Ja. Wir holen in allen Mainzer Stadtteilen und im Umland ab. Halten Sie Fahrzeugpapiere und Schlüssel bereit.',
+      a: 'Ja. Wir holen in allen Mainzer Stadtteilen und im Umland ab. Fahrzeugpapiere und Schlüssel sollten bei der Abholung bereitliegen.',
     },
     {
       q: 'Muss ich den Unfallschaden im Vertrag angeben?',

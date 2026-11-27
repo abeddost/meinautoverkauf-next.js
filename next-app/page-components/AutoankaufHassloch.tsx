@@ -14,7 +14,7 @@ const CONTENT: CityPageContent = {
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Haßloch',
   advantages: [
     'Kostenlose Online-Bewertung in 2 Minuten',
-    'Sofortige Auszahlung nach Vertragsunterzeichnung',
+    'Auszahlung direkt nach Vertragsabschluss',
     'Abholung in Haßloch und Umgebung nach Absprache',
     'Abmeldung des DÜW-Kennzeichens inklusive',
     'Ankauf aller Marken und Zustände',
@@ -76,7 +76,7 @@ const CONTENT: CityPageContent = {
   faqId: 'faq-hassloch',
   faqs: HASSLOCH_FAQS,
   relatedHeading: 'Autoankauf in der Pfalz und Rhein-Neckar',
-  relatedIntro: 'Auch in den Nachbarstädten sind wir für Sie da:',
+  relatedIntro: 'Auch in Neustadt, Speyer und der Rhein-Neckar-Region kaufen wir an:',
   related: [
     { href: '/autoankauf-neustadt-weinstrasse', label: 'Autoankauf Neustadt an der Weinstraße' },
     { href: '/autoankauf-speyer', label: 'Autoankauf Speyer' },

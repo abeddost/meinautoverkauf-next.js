@@ -76,13 +76,13 @@ export const leasingautoVerkaufen: GuidePageContent = {
     {
       heading: 'Was ist mein Leasingauto wert?',
       paragraphs: [
-        'Für die Entscheidung brauchen Sie den aktuellen Marktwert. Junge Leasingfahrzeuge haben oft eine gepflegte Historie mit Herstellerwartung und sind entsprechend gefragt. Gleichzeitig ist der Wertverlust in den ersten Jahren am höchsten. Eine Online-Bewertung zeigt Ihnen, wo Ihr Auto steht; vergleichen Sie diesen Wert mit Ablöse, Restraten oder vertraglichem Restwert.',
+        'Für die Entscheidung brauchen Sie den aktuellen Marktwert. Junge Leasingfahrzeuge haben oft eine gepflegte Historie mit Herstellerwartung und sind entsprechend gefragt. Gleichzeitig ist der Wertverlust in den ersten Jahren am höchsten. Eine Online-Bewertung zeigt Ihnen, wo Ihr Auto steht; vergleichen Sie diesen Wert mit Ablöse, Restraten oder vertraglichem Restwert. Berücksichtigen Sie dabei auch Sonderausstattung und den Zustand von Reifen und Bremsen.',
         'Wie junge Fahrzeuge bewertet werden, lesen Sie auf unserer Seite [Neuwagen und Jahreswagen verkaufen](/jahreswagen-neuwagen-verkaufen). Wann sich ein Verkauf generell lohnt, zeigt der Ratgeber [Wann Auto verkaufen?](/ratgeber/wann-auto-verkaufen)',
       ],
     },
     {
       heading: 'Typische Fehler beim Verkauf eines Leasingautos',
-      paragraphs: ['Diese Fehler sollten Sie vermeiden:'],
+      paragraphs: ['Diese Fehler sollten Sie vermeiden, damit der Ausstieg aus dem Vertrag nicht teurer wird als nötig:'],
       bullets: [
         'das Auto ohne Zustimmung der Leasinggesellschaft anbieten',
         'Ablösesumme und Marktwert nicht vergleichen',

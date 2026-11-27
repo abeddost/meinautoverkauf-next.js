@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const CONTENT: SeoArticleContent = {
   h1: 'Opel Astra verkaufen: Ankauf aller Generationen, auch direkt in Rüsselsheim',
   intro: [
-    'Sie möchten Ihren **Opel Astra verkaufen**? Wir kaufen den Astra aller Generationen an – vom älteren Astra H mit hoher Laufleistung bis zum aktuellen Astra L, der im Opel-Stammwerk Rüsselsheim gebaut wird. Sie bewerten Ihr Fahrzeug kostenlos online, erhalten ein Angebot, und nach Vertragsabschluss wird die Auszahlung sofort veranlasst.',
+    'Sie möchten Ihren **Opel Astra verkaufen**? Wir kaufen den Astra aller Generationen an – vom älteren Astra H mit hoher Laufleistung bis zum aktuellen Astra L, der im Opel-Stammwerk Rüsselsheim gebaut wird. Die Bewertung ist kostenlos und dauert rund zwei Minuten, die Auszahlung wird direkt nach Vertragsabschluss veranlasst.',
     'Fahrbereite Fahrzeuge können Sie auch direkt an unserer Filiale in Rüsselsheim abgeben. Einen nicht fahrbereiten Astra holen wir ab, die Abmeldung übernehmen wir.',
   ],
   sections: [
@@ -86,7 +86,7 @@ const CONTENT: SeoArticleContent = {
         },
         {
           title: 'Übergabe und Auszahlung',
-          text: 'Kurze Prüfung, Kaufvertrag, sofort veranlasste Auszahlung und Abmeldung durch uns.',
+          text: 'Nach einer kurzen Prüfung folgen Kaufvertrag und sofortige Auszahlung; die Abmeldung erledigen wir.',
         },
       ],
     },
@@ -119,7 +119,7 @@ const CONTENT: SeoArticleContent = {
     },
     {
       q: 'Wie schnell bekomme ich mein Geld?',
-      a: 'Die Auszahlung wird direkt nach Vertragsabschluss per Überweisung veranlasst und kommt noch am selben Tag.',
+      a: 'Sofort nach Vertragsabschluss veranlassen wir die Überweisung, egal ob Sie den Astra in Rüsselsheim abgeben oder wir ihn abholen. Das Geld kommt noch am selben Tag.',
     },
   ],
 };

@@ -14,7 +14,7 @@ const CONTENT: CityPageContent = {
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Neu-Isenburg',
   advantages: [
     'Kostenlose Online-Bewertung in 2 Minuten',
-    'Sofortige Auszahlung nach Vertragsunterzeichnung',
+    'Auszahlung sofort nach Vertragsunterzeichnung',
     'Kostenlose Abholung in Neu-Isenburg und Umgebung',
     'Abmeldung des OF-Kennzeichens inklusive',
     'Termine auch abends oder am Wochenende',
@@ -45,11 +45,11 @@ const CONTENT: CityPageContent = {
     },
     {
       title: 'Termin wählen',
-      text: 'Prüfung bei Ihnen in Neu-Isenburg oder Abgabe an unserer Filiale in Rüsselsheim. Die Besichtigung dauert etwa 15 bis 20 Minuten.',
+      text: 'Prüfung bei Ihnen in Neu-Isenburg oder Abgabe an unserer Filiale in Rüsselsheim. Rechnen Sie für die Besichtigung mit etwa 15 bis 20 Minuten.',
     },
     {
       title: 'Vertrag und Auszahlung',
-      text: 'Kaufvertrag unterschreiben, die Auszahlung wird sofort veranlasst. Die Abmeldung des OF-Kennzeichens übernehmen wir.',
+      text: 'Nach der Unterschrift unter den Kaufvertrag veranlassen wir sofort die Auszahlung. Um die Abmeldung des OF-Kennzeichens kümmern wir uns.',
     },
   ],
   vehiclesHeading: 'Welche Fahrzeuge wir in Neu-Isenburg ankaufen',
