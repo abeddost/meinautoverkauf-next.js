@@ -240,6 +240,7 @@ export default function SkodaOctaviaVerkaufenPage() {
                 Wenn Sie den Restwert Ihres Octavia vor der naechsten Kostenwelle sichern wollen, starten Sie jetzt mit einer unverbindlichen Bewertung.
                 Mehr Kontext finden Sie auf <Link href="/skoda-verkaufen" className="text-brand-orange font-black hover:underline">Skoda verkaufen</Link>
                 und im <Link href="/modelle" className="text-brand-orange font-black hover:underline">Modelle-Hub</Link>.
+                Für das größere Schwestermodell gibt es die Seite <Link href="/skoda-superb-verkaufen" className="text-brand-orange font-black hover:underline">Skoda Superb verkaufen</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/auto-bewerten" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors">

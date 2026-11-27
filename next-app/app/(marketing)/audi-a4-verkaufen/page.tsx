@@ -274,6 +274,8 @@ export default function AudiA4VerkaufenPage() {
                 <Link href="/modelle" className="text-brand-orange font-black hover:underline"> Modelle-Hub</Link> weitere modellspezifische Seiten.
                 Ist der Motor bereits defekt, lesen Sie unsere Seite
                 <Link href="/audi-motorschaden-verkaufen" className="text-brand-orange font-black hover:underline"> Audi mit Motorschaden verkaufen</Link>.
+                Weitere Audi-Modelle finden Sie unter <Link href="/audi-a6-verkaufen" className="text-brand-orange font-black hover:underline">Audi A6 verkaufen</Link> und
+                <Link href="/audi-q5-verkaufen" className="text-brand-orange font-black hover:underline"> Audi Q5 verkaufen</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/auto-bewerten" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors">

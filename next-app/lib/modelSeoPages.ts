@@ -169,6 +169,66 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
       'Antiken Mercedes verkaufen: Ankauf von Mercedes-Oldtimern wie W123, W124, Pagode oder SL R107 mit fachkundiger Bewertung und Abholung.',
     canonicalPath: '/mercedes-oldtimer-verkaufen',
   },
+  {
+    slug: 'skoda-superb-verkaufen',
+    href: '/skoda-superb-verkaufen',
+    label: 'Skoda Superb verkaufen',
+    brandSlug: 'skoda',
+    brandHref: '/skoda-verkaufen',
+    order: 14,
+    seoTitle: 'Skoda Superb verkaufen | Superb Ankauf fair & schnell',
+    seoDescription:
+      'Skoda Superb Ankauf: Limousine und Combi aller Generationen verkaufen, auch mit hoher Laufleistung oder DSG-Problemen – mit sofortiger Auszahlung.',
+    canonicalPath: '/skoda-superb-verkaufen',
+  },
+  {
+    slug: 'mercedes-g-klasse-verkaufen',
+    href: '/mercedes-g-klasse-verkaufen',
+    label: 'Mercedes G-Klasse verkaufen',
+    brandSlug: 'mercedes',
+    brandHref: '/mercedes-verkaufen',
+    order: 15,
+    seoTitle: 'G-Klasse Ankauf | Mercedes G-Klasse verkaufen',
+    seoDescription:
+      'G-Klasse Ankauf: Mercedes G-Klasse verkaufen – vom W460 bis zum aktuellen G 63 AMG. Fachkundige Bewertung, sichere Abwicklung, sofortige Auszahlung.',
+    canonicalPath: '/mercedes-g-klasse-verkaufen',
+  },
+  {
+    slug: 'opel-astra-verkaufen',
+    href: '/opel-astra-verkaufen',
+    label: 'Opel Astra verkaufen',
+    brandSlug: 'opel',
+    brandHref: '/opel-verkaufen',
+    order: 16,
+    seoTitle: 'Opel Astra verkaufen | Astra Ankauf aller Generationen',
+    seoDescription:
+      'Opel Astra verkaufen: Ankauf von Astra H, J, K und L als Fünftürer, Sports Tourer oder GTC – auch mit hoher Laufleistung, Mängeln oder ohne TÜV.',
+    canonicalPath: '/opel-astra-verkaufen',
+  },
+  {
+    slug: 'audi-q5-verkaufen',
+    href: '/audi-q5-verkaufen',
+    label: 'Audi Q5 verkaufen',
+    brandSlug: 'audi',
+    brandHref: '/audi-verkaufen',
+    order: 17,
+    seoTitle: 'Audi Q5 verkaufen | Q5 Ankauf mit fairer Bewertung',
+    seoDescription:
+      'Audi Q5 verkaufen: Ankauf von Q5 8R, FY und Sportback, auch SQ5, Plug-in-Hybrid, hohe Laufleistung oder S tronic-Probleme. Mit sofortiger Auszahlung.',
+    canonicalPath: '/audi-q5-verkaufen',
+  },
+  {
+    slug: 'audi-a6-verkaufen',
+    href: '/audi-a6-verkaufen',
+    label: 'Audi A6 verkaufen',
+    brandSlug: 'audi',
+    brandHref: '/audi-verkaufen',
+    order: 18,
+    seoTitle: 'Audi A6 verkaufen | A6 Ankauf für Limousine & Avant',
+    seoDescription:
+      'Audi A6 verkaufen: Ankauf von Limousine, Avant und allroad aller Generationen, auch mit hoher Laufleistung oder Getriebeproblemen.',
+    canonicalPath: '/audi-a6-verkaufen',
+  },
 ];
 
 export const MODEL_SEO_PAGE_BY_SLUG: Record<string, ModelSeoPageMeta> = Object.fromEntries(

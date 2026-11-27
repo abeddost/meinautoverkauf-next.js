@@ -264,6 +264,7 @@ export default function OpelCorsaVerkaufenPage() {
                 Wenn Sie Ihren Corsa strukturiert und ohne Zeitverlust verkaufen moechten, starten Sie jetzt mit einer unverbindlichen Bewertung.
                 Weitere Markeninfos finden Sie auf <Link href="/opel-verkaufen" className="text-brand-orange font-black hover:underline">Opel verkaufen</Link>
                 und im <Link href="/modelle" className="text-brand-orange font-black hover:underline">Modelle-Hub</Link>.
+                Für die Kompaktklasse lesen Sie unsere Seite <Link href="/opel-astra-verkaufen" className="text-brand-orange font-black hover:underline">Opel Astra verkaufen</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/auto-bewerten" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors">

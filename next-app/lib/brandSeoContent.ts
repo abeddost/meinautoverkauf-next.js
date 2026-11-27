@@ -703,6 +703,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterfuhrende Seiten rund um Ihren Mercedes-Verkauf',
       internalLinks: [
         {
+          href: '/mercedes-g-klasse-verkaufen',
+          label: 'Mercedes G-Klasse verkaufen',
+          context: 'Vom W460-Klassiker bis zum G 63 AMG mit sicherer Abwicklung.',
+        },
+        {
           href: '/mercedes-oldtimer-verkaufen',
           label: 'Mercedes Oldtimer verkaufen',
           context: 'Für klassische Baureihen wie W123, W124, Pagode oder SL R107.',
@@ -1140,6 +1145,16 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       ],
       internalLinksHeading: 'Weiterführende Seiten',
       internalLinks: [
+        {
+          href: '/audi-a6-verkaufen',
+          label: 'Audi A6 verkaufen',
+          context: 'Limousine, Avant und allroad, auch aus Firmenflotten.',
+        },
+        {
+          href: '/audi-q5-verkaufen',
+          label: 'Audi Q5 verkaufen',
+          context: 'Ankauf aller Q5-Generationen, auch SQ5 und Plug-in-Hybrid.',
+        },
         {
           href: '/audi-motorschaden-verkaufen',
           label: 'Audi mit Motorschaden verkaufen',
@@ -2978,6 +2993,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterfuhrende Seiten',
       internalLinks: [
         {
+          href: '/opel-astra-verkaufen',
+          label: 'Opel Astra verkaufen',
+          context: 'Ankauf aller Astra-Generationen, auch an unserer Filiale in Rüsselsheim.',
+        },
+        {
           href: '/jahreswagen-neuwagen-verkaufen',
           label: 'Opel Jahreswagen verkaufen',
           context: 'Junge Opel aus Mitarbeiterprogrammen oder mit Restgarantie verkaufen.',
@@ -4431,6 +4451,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       ],
       internalLinksHeading: 'Weiterfuhrende Seiten',
       internalLinks: [
+        {
+          href: '/skoda-superb-verkaufen',
+          label: 'Skoda Superb verkaufen',
+          context: 'Limousine und Combi aller Generationen, auch mit hoher Laufleistung.',
+        },
         {
           href: '/auto-bewerten',
           label: 'Skoda kostenlos bewerten',

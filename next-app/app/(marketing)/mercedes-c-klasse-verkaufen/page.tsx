@@ -272,7 +272,8 @@ export default function MercedesCKlasseVerkaufenPage() {
               <p className="text-slate-700 font-medium leading-relaxed mb-5">
                 Wenn Sie den richtigen Verkaufszeitpunkt nutzen möchten, starten Sie mit einer unverbindlichen Bewertung. Ergänzend finden Sie auf
                 <Link href="/mercedes-verkaufen" className="text-brand-orange font-black hover:underline"> Mercedes verkaufen</Link> den Markenüberblick und im
-                <Link href="/modelle" className="text-brand-orange font-black hover:underline"> Modelle-Hub</Link> weitere Modellspezialseiten.
+                <Link href="/modelle" className="text-brand-orange font-black hover:underline"> Modelle-Hub</Link> weitere Modellspezialseiten, etwa
+                <Link href="/mercedes-g-klasse-verkaufen" className="text-brand-orange font-black hover:underline"> Mercedes G-Klasse verkaufen</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/auto-bewerten" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors">

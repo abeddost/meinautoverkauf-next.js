@@ -86,7 +86,7 @@ const AutoankaufRuesselsheimPage: React.FC<Props> = ({ onCtaClick }) => {
             und Citroën-Fahrzeugen, viele davon mit Flottenhistorie oder direktem Werksbezug.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed mb-4">
-            Ob gut gepflegter Firmenopel aus der Werksflotte, zuverlässiger Alltags-Astra oder leistungsstarker
+            Ob gut gepflegter Firmenopel aus der Werksflotte, zuverlässiger <Link href="/opel-astra-verkaufen" className="text-brand-orange font-bold hover:underline">Alltags-Astra</Link> oder leistungsstarker
             Insignia – wir kennen den lokalen Markt und bewerten Ihr Fahrzeug auf Basis aktueller Transaktionsdaten.
             Kein Bauchgefühl, kein veralteter Listenpreis.
           </p>
