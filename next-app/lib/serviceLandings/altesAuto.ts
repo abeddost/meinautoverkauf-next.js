@@ -86,7 +86,7 @@ export const altesAuto: ServiceLandingContent = {
       },
       {
         title: 'Nicht fahrbereite Fahrzeuge',
-        text: 'Motorschaden, Getriebeschaden oder leere Batterie nach langer Standzeit: Wir holen ab. Mehr im Ratgeber [Autoankauf mit Motorschaden](/ratgeber/autoankauf-mit-motorschaden).',
+        text: 'Motorschaden, Getriebeschaden oder leere Batterie nach langer Standzeit: Wir holen ab. Mehr auf unserer Seite [Defektes Auto verkaufen](/defektes-auto-verkaufen).',
       },
       {
         title: 'Erbstücke und Garagenfunde',

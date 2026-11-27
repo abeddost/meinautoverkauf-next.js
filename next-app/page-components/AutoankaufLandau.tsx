@@ -9,7 +9,7 @@ const CONTENT: CityPageContent = {
   h1Accent: 'Auto verkaufen an der Südlichen Weinstraße',
   intro: [
     'Beim **Autoankauf Landau** verkaufen Sie Ihr Auto ohne Inserat: kostenlos online bewerten, Angebot erhalten, Termin vereinbaren. Nach Vertragsabschluss wird die Auszahlung sofort veranlasst, die Abmeldung des LD-Kennzeichens übernehmen wir.',
-    'Wir kaufen alle Marken und Zustände an, vom Studentenauto bis zum Familien-SUV, auch mit Mängeln oder ohne TÜV.',
+    'Wir kaufen alle Marken und Zustände an, vom Studentenauto bis zum Familien-SUV, auch mit Mängeln oder ohne TÜV. Ist das Auto noch finanziert, kann die Restschuld direkt im Ankauf berücksichtigt werden.',
   ],
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Landau',
   advantages: [

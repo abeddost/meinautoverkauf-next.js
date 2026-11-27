@@ -465,7 +465,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         heading: 'Wann sich eine neue HU vor dem Verkauf lohnt',
         paragraphs: [
           'Eine frische HU kann den erzielbaren Preis erhöhen. Sie lohnt sich aber nur, wenn die nötigen Reparaturen überschaubar bleiben und keine großen Folgekosten zu erwarten sind.',
-          'Bei älteren Fahrzeugen mit mehreren Baustellen ist der Direktverkauf häufig wirtschaftlicher, weil Sie keine unplanbaren Werkstattrechnungen vorfinanzieren. Wie der Ankauf älterer Fahrzeuge abläuft, lesen Sie auf unserer Seite [Altes Auto verkaufen](/altes-auto-verkaufen).',
+          'Bei älteren Fahrzeugen mit mehreren Baustellen ist der Direktverkauf häufig wirtschaftlicher, weil Sie keine unplanbaren Werkstattrechnungen vorfinanzieren. Wie der Ankauf älterer Fahrzeuge abläuft, lesen Sie auf unserer Seite [Altes Auto verkaufen](/altes-auto-verkaufen). Kommen zur fälligen HU weitere Defekte hinzu, hilft unsere Seite [Defektes Auto verkaufen](/defektes-auto-verkaufen).',
         ],
         bullets: [
           'HU sinnvoll bei gutem Gesamtzustand und kleiner Mängelliste',
@@ -800,7 +800,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Direktankauf statt Reparaturrisiko',
         paragraphs: [
-          'Bei Motorschaden sind Reparaturkosten oft schwer kalkulierbar. Der Direktankauf vermeidet dieses Risiko, weil keine Vorfinanzierung für Werkstattarbeiten nötig ist.',
+          'Bei Motorschaden sind Reparaturkosten oft schwer kalkulierbar. Der Direktankauf vermeidet dieses Risiko, weil keine Vorfinanzierung für Werkstattarbeiten nötig ist. Für andere Defekte wie Getriebe- oder Elektronikschäden lesen Sie unsere Seite [Defektes Auto verkaufen](/defektes-auto-verkaufen).',
           'Sie erhalten eine marktnahe Restwertbewertung auf Basis der vorhandenen Daten und können ohne lange Standzeit entscheiden.',
         ],
       },
@@ -954,6 +954,15 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
           'Mit strukturierter Übergabe und dokumentierter Zahlung bleibt der Verkauf auch beim Exportmarkt rechtlich stabil.',
         ],
       },
+      // TODO(legal-review): Zoll- und Ausfuhrhinweise (Ausfuhranmeldung, Ausfuhrkennzeichen, USt bei gewerblichen Verkäufen) vor Livegang fachlich prüfen lassen.
+      {
+        heading: 'Autoexport und Zoll: Was beim Verkauf ins Ausland gilt',
+        paragraphs: [
+          'Wird ein Fahrzeug in ein Land außerhalb der EU ausgeführt, ist in der Regel eine Ausfuhranmeldung beim Zoll erforderlich. Für die Fahrt zur Grenze oder zum Hafen nutzen Exporteure häufig ein Ausfuhrkennzeichen mit eigener Versicherung. Innerhalb der EU entfällt die Zollanmeldung; das Fahrzeug wird im Zielland nach den dortigen Regeln neu zugelassen.',
+          'Für Sie als privaten Verkäufer an einen Exporthändler ist vor allem wichtig: Das Fahrzeug muss abgemeldet sein oder die Abmeldung muss vertraglich geregelt werden, und Sie sollten Kaufvertrag, Zahlungsnachweis und Abmeldebescheinigung aufbewahren. Die Zollformalitäten übernimmt in der Regel der Exporteur. Steuerliche Fragen, etwa zur Umsatzsteuer bei gewerblichen Verkäufen, klären Sie am besten mit Ihrer Steuerberatung.',
+          'Verkaufen Sie Ihr Auto selbst an einen Käufer im Ausland, achten Sie besonders auf eine sichere Zahlung vor der Übergabe und eine vollständige Dokumentation. Mehr dazu im Ratgeber [Auto sicher verkaufen](/ratgeber/autoverkauf-sichere-zahlung); wann sich der Exportweg wirtschaftlich lohnt, zeigt der Ratgeber [Autoverkauf an Exporthändler](/ratgeber/autoverkauf-an-exporthaendler).',
+        ],
+      },
     ],
     faqs: withBaseFaqs('autoexport-ankauf', [
       {
@@ -992,7 +1001,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       {
         heading: 'Was Unternehmen beim Fahrzeugverkauf brauchen',
         paragraphs: [
-          'Unternehmen benötigen vor allem Prozesssicherheit: klare Angebotslogik, feste Ansprechpartner und dokumentierte Übergaben. Das reduziert internen Abstimmungsaufwand zwischen Fuhrpark, Buchhaltung und Geschäftsführung.',
+          'Unternehmen benötigen vor allem Prozesssicherheit: klare Angebotslogik, feste Ansprechpartner und dokumentierte Übergaben. Das reduziert internen Abstimmungsaufwand zwischen Fuhrpark, Buchhaltung und Geschäftsführung. Für Transporter und Kastenwagen gibt es unsere Seite [Transporter und Nutzfahrzeuge verkaufen](/transporter-nutzfahrzeug-verkaufen).',
           'Gerade bei mehreren Fahrzeugen ist Standardisierung entscheidend, damit keine Einzelfallchaos entsteht.',
         ],
       },
@@ -1363,6 +1372,20 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
         paragraphs: [
           'Wenn Zeit knapp ist, Sicherheitsrisiken vermieden werden sollen oder das Fahrzeug schwer vermittelbar ist, kann Direktankauf sinnvoller sein.',
           'Der potenziell geringere Bruttopreis wird dann durch geringeren Aufwand, weniger Risiko und schnellen Abschluss kompensiert.',
+        ],
+      },
+      {
+        heading: 'Mängel im Inserat ehrlich angeben, ohne Interessenten abzuschrecken',
+        paragraphs: [
+          'Offen genannte Mängel schrecken weniger ab, als viele Verkäufer befürchten. Entscheidend ist die Darstellung: Beschreiben Sie den Mangel sachlich, nennen Sie, was bereits bekannt ist, etwa eine Werkstattdiagnose oder einen Kostenvoranschlag, und zeigen Sie ihn auf einem Foto. So wissen Interessenten, woran sie sind, und der Preis wirkt nachvollziehbar.',
+          'Rechtlich ist Ehrlichkeit ohnehin Pflicht: Als Privatverkäufer können Sie die Sachmängelhaftung zwar ausschließen, für arglistig verschwiegene Mängel gilt dieser Ausschluss aber nicht. Halten Sie alle bekannten Mängel deshalb auch im Kaufvertrag fest; was dabei wichtig ist, erklärt der Ratgeber zum [rechtssicheren Kaufvertrag](/ratgeber/rechtssicherer-kaufvertrag-auto).',
+        ],
+        bullets: [
+          'Mangel sachlich benennen, ohne zu dramatisieren oder zu verharmlosen',
+          'Diagnose oder Kostenvoranschlag erwähnen',
+          'Foto des Mangels beifügen',
+          'Preis erkennbar am Zustand ausrichten',
+          'Mängel im Kaufvertrag wiederholen',
         ],
       },
     ],

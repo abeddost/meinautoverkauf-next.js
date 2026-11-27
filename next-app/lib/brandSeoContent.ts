@@ -3207,6 +3207,13 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
             'Wenn Sie schnell, transparent und ohne unnötiges Risiko verkaufen wollen, ist der strukturierte Direktankauf meist die effizienteste Losung.',
           ],
         },
+        {
+          heading: 'Opel Reparaturkosten: Wann sich der Verkauf lohnt',
+          paragraphs: [
+            'Opel-Ersatzteile sind meist gut verfügbar, und viele freie Werkstätten kennen die Modelle genau. Trotzdem können sich bei älteren Fahrzeugen Reparaturkosten summieren: Kupplung und Zweimassenschwungrad, Turbolader, Kühlsystem, Steuertrieb oder Fahrwerk. Einzeln sind solche Posten oft überschaubar, zusammen übersteigen sie bei älteren Corsa oder Astra schnell den Restwert.',
+            'Stellen Sie die erwarteten Reparaturkosten der nächsten zwölf Monate dem aktuellen Fahrzeugwert gegenüber. Liegen die Kosten nahe am Wert, ist der Verkauf meist die wirtschaftlichere Wahl. Eine einfache Rechenhilfe bietet unser Ratgeber [Wann Auto verkaufen?](/ratgeber/wann-auto-verkaufen); modellbezogene Hinweise finden Sie unter [Opel Astra verkaufen](/opel-astra-verkaufen) und [Opel Corsa verkaufen](/opel-corsa-verkaufen).',
+          ],
+        },
       ],
       faqs: [
         {
@@ -4681,6 +4688,19 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
             'Ein professioneller Skoda Ankauf bietet klare Prozesse, dokumentierte Zahlung und planbaren Zeitrahmen.',
             'Gerade bei älteren, hochgelaufenen oder defekten Fahrzeugen ist der strukturierte Direktankauf oft die effizienteste Lösung.',
             'Zusätzlich gewinnen Sie früh Planungssicherheit für den Fahrzeugwechsel und vermeiden unnötige Standzeiten sowie organisatorischen Mehraufwand.',
+          ],
+        },
+        {
+          heading: 'Skoda Wertverlust: Was den Restwert bestimmt',
+          paragraphs: [
+            'Wie stark ein Skoda an Wert verliert, hängt weniger von der Marke als vom einzelnen Fahrzeug ab. Volumenmodelle wie Octavia und Superb sind auf dem Gebrauchtwagenmarkt stark vertreten; das sorgt für eine breite Nachfrage, aber auch für viele Vergleichsangebote. Laufleistung, Wartungshistorie, Motorisierung und Ausstattung entscheiden deshalb stärker über den Restwert als das Baujahr allein.',
+            'Typische Wertsprünge entstehen beim Erreichen hoher Kilometermarken, beim Ende der Garantie und wenn größere Wartungen wie ein DSG-Ölwechsel oder ein Zahnriemenwechsel anstehen. Wer den Verkauf vorher plant, sichert in der Regel einen besseren Preis. Modellbezogene Hinweise finden Sie auf unseren Seiten [Skoda Octavia verkaufen](/skoda-octavia-verkaufen) und [Skoda Superb verkaufen](/skoda-superb-verkaufen).',
+          ],
+          bullets: [
+            'Laufleistung und Wartungshistorie',
+            'Motor und Getriebe, etwa DSG',
+            'Ausstattungslinie und Karosserieform',
+            'Verkaufszeitpunkt vor großen Wartungen',
           ],
         },
       ],

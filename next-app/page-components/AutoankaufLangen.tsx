@@ -9,7 +9,7 @@ const CONTENT: CityPageContent = {
   h1Accent: 'Auto verkaufen im Kreis Offenbach',
   intro: [
     'Beim **Autoankauf Langen** verkaufen Sie Ihr Auto ohne Inserat: kostenlos online bewerten, Angebot erhalten, Termin vereinbaren. Wir kommen zu Ihnen nach Langen und Egelsbach, oder Sie geben Ihr Fahrzeug an unserer Filiale in Rüsselsheim ab. Nach Vertragsabschluss wird die Auszahlung sofort veranlasst, die Abmeldung des OF-Kennzeichens übernehmen wir.',
-    'Wir kaufen alle Marken und Zustände an – vom gepflegten Dienstwagen bis zum Zweitwagen mit Mängeln.',
+    'Wir kaufen alle Marken und Zustände an – vom gepflegten Dienstwagen bis zum Zweitwagen mit Mängeln. Auch bei laufender Finanzierung ist ein Verkauf möglich, die Restschuld kann im Ankauf berücksichtigt werden.',
   ],
   advantagesHeading: 'Ihre Vorteile beim Autoankauf in Langen',
   advantages: [

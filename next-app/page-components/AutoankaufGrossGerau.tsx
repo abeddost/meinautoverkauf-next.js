@@ -61,7 +61,7 @@ const CONTENT: CityPageContent = {
     },
     {
       title: 'Transporter und Arbeitsfahrzeuge',
-      text: 'Fahrzeuge aus Landwirtschaft, Handwerk und Gewerbe im Ried, auch mit hoher Laufleistung.',
+      text: 'Fahrzeuge aus Landwirtschaft, Handwerk und Gewerbe im Ried, auch mit hoher Laufleistung. Mehr unter [Transporter und Nutzfahrzeuge verkaufen](/transporter-nutzfahrzeug-verkaufen).',
     },
     {
       title: 'Opel und andere Stellantis-Modelle',
