@@ -309,6 +309,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterführende Seiten',
       internalLinks: [
         {
+          href: '/bmw-totalschaden-verkaufen',
+          label: 'BMW mit Totalschaden verkaufen',
+          context: 'Restwert nach Unfall oder Motorschaden sichern, mit Abholung und Abmeldung.',
+        },
+        {
           href: '/auto-bewerten',
           label: 'BMW kostenlos bewerten',
           context: 'Für eine schnelle Preisorientierung vor dem Verkauf.',
@@ -363,7 +368,7 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
         {
           heading: 'Welche BMW Probleme treten häufig auf?',
           paragraphs: [
-            'BMW häufige Fehler unterscheiden sich je nach Motorfamilie und Baujahr. Bei verschiedenen Benzin- und Dieselreihen treten wiederkehrend Themen rund um Steuertrieb, Ölverbrauch, Kühlkreislauf und thermische Belastung auf. Nicht jeder Hinweis bedeutet automatisch einen Totalschaden, aber die Kosten steigen schnell, wenn frühe Symptome ignoriert werden.',
+            'BMW häufige Fehler unterscheiden sich je nach Motorfamilie und Baujahr. Bei verschiedenen Benzin- und Dieselreihen treten wiederkehrend Themen rund um Steuertrieb, Ölverbrauch, Kühlkreislauf und thermische Belastung auf. Nicht jeder Hinweis bedeutet automatisch einen Totalschaden, aber die Kosten steigen schnell, wenn frühe Symptome ignoriert werden. Lohnt sich die Reparatur nicht mehr, hilft unsere Seite [BMW mit Totalschaden verkaufen](/bmw-totalschaden-verkaufen).',
             'Bei manchen Fahrzeugen zeigen sich zuerst kleine Warnzeichen: unruhiger Leerlauf, erhöhter Ölverbrauch, sporadische Motorkontrollleuchten oder Leistungsverlust unter Last. Solche Signale werden oft aufgeschoben, bis zusätzliche Bauteile betroffen sind. Dadurch wird eine ursprünglich überschaubare Maßnahme zu einer größeren Reparaturkette.',
             'Für die Verkaufsentscheidung ist weniger wichtig, ob ein einzelner Fehler auftritt, sondern wie wahrscheinlich teure Folgereparaturen im nächsten Nutzungsjahr sind. Genau diese Perspektive ist für BMW Zuverlässigkeit im Alltag relevanter als reine Werksangaben.',
           ],
@@ -1129,6 +1134,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterführende Seiten',
       internalLinks: [
         {
+          href: '/audi-motorschaden-verkaufen',
+          label: 'Audi mit Motorschaden verkaufen',
+          context: 'Ankauf auch bei defektem oder nicht fahrbereitem Motor, inklusive Abholung.',
+        },
+        {
           href: '/auto-bewerten',
           label: 'Audi kostenlos bewerten',
           context: 'Für eine schnelle Preisorientierung vor dem Verkauf.',
@@ -1214,7 +1224,7 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
           paragraphs: [
             'Bei einigen TFSI-Generationen wird erhöhtes Ölverbrauchsverhalten berichtet. Relevanz und Kosten hängen von Baujahr, Wartung, Laufleistung und tatsächlichem Schadbild ab.',
             'Audi Motorschaden Ursachen sind selten monokausal. Oft entwickeln sich Probleme über längere Zeit: Ölthemen, thermische Belastung, Steuertrieb und Nebenaggregate können sich gegenseitig verstärken.',
-            'Für Verkäufer entscheidend: Frühzeitige Diagnose und transparente Dokumentation stabilisieren die Verhandlungsposition deutlich.',
+            'Für Verkäufer entscheidend: Frühzeitige Diagnose und transparente Dokumentation stabilisieren die Verhandlungsposition deutlich. Ist der Schaden bereits eingetreten, finden Sie alle Infos auf unserer Seite [Audi mit Motorschaden verkaufen](/audi-motorschaden-verkaufen).',
           ],
           bullets: [
             'Ölverbrauch und Warnsignale früh dokumentieren',
@@ -5359,6 +5369,11 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
       internalLinksHeading: 'Weiterführende Seiten für Ihren Klassiker-Verkauf',
       internalLinks: [
         {
+          href: '/ratgeber/oldtimer-verkaufen-privat-haendler-auktion',
+          label: 'Oldtimer privat, an Händler oder per Auktion verkaufen',
+          context: 'Die Verkaufswege im Vergleich und worauf Sie beim Verkauf achten sollten.',
+        },
+        {
           href: '/auto-bewerten',
           label: 'Oldtimer kostenlos bewerten',
           context: 'Für eine erste, unverbindliche Wertermittlung vor dem Verkauf.',
@@ -5530,6 +5545,7 @@ export const BRAND_SEO_CONTENT: Record<string, BrandSeoContent> = {
         'rechtssicherer-kaufvertrag-auto',
         'autoabmeldung-nach-verkauf',
         'autoverkauf-an-exporthaendler',
+        'oldtimer-verkaufen-privat-haendler-auktion',
       ],
       coreLink: '/auto-verkaufen',
       ctaBridge: {

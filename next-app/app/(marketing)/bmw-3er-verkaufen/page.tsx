@@ -268,6 +268,7 @@ export default function Bmw3erVerkaufenPage() {
                 Wenn Sie den Spagat zwischen Emotion und Vernunft sauber lösen möchten, starten Sie jetzt mit einer unverbindlichen Bewertung.
                 Ergänzend finden Sie den Markenüberblick auf <Link href="/bmw-verkaufen" className="text-brand-orange font-black hover:underline">BMW verkaufen</Link>
                 sowie alle Modellspezialseiten im <Link href="/modelle" className="text-brand-orange font-black hover:underline">Modelle-Hub</Link>.
+                Nach einem schweren Unfall oder Motorschaden hilft die Seite <Link href="/bmw-totalschaden-verkaufen" className="text-brand-orange font-black hover:underline">BMW mit Totalschaden verkaufen</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/auto-bewerten" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors">

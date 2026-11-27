@@ -133,6 +133,30 @@ export const MODEL_SEO_PAGES: ModelSeoPageMeta[] = [
       'Toyota Corolla verkaufen mit schneller Abwicklung und fairer Bewertung. Auch Hybrid, hohe Laufleistung, Unfallwagen oder Motorschaden.',
     canonicalPath: '/toyota-corolla-verkaufen',
   },
+  {
+    slug: 'audi-motorschaden-verkaufen',
+    href: '/audi-motorschaden-verkaufen',
+    label: 'Audi mit Motorschaden verkaufen',
+    brandSlug: 'audi',
+    brandHref: '/audi-verkaufen',
+    order: 11,
+    seoTitle: 'Audi mit Motorschaden verkaufen | Ankauf trotz Defekt',
+    seoDescription:
+      'Audi Motorschaden verkaufen: Ankauf auch nicht fahrbereit, mit Abholung, Abmeldung und sofortiger Auszahlung. Jetzt kostenlos online bewerten.',
+    canonicalPath: '/audi-motorschaden-verkaufen',
+  },
+  {
+    slug: 'bmw-totalschaden-verkaufen',
+    href: '/bmw-totalschaden-verkaufen',
+    label: 'BMW mit Totalschaden verkaufen',
+    brandSlug: 'bmw',
+    brandHref: '/bmw-verkaufen',
+    order: 12,
+    seoTitle: 'BMW Totalschaden verkaufen | Ankauf mit Abholung',
+    seoDescription:
+      'BMW mit Totalschaden verkaufen: Ankauf nach Unfall oder Motorschaden, mit Abholung, Abmeldung und sofortiger Auszahlung. Kostenlos online bewerten.',
+    canonicalPath: '/bmw-totalschaden-verkaufen',
+  },
 ];
 
 export const MODEL_SEO_PAGE_BY_SLUG: Record<string, ModelSeoPageMeta> = Object.fromEntries(

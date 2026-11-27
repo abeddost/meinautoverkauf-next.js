@@ -272,6 +272,8 @@ export default function AudiA4VerkaufenPage() {
                 Wenn Sie den idealen Zeitpunkt nicht verpassen möchten, starten Sie jetzt mit einer unverbindlichen Bewertung. Für den Markenkontext finden Sie ergänzend
                 <Link href="/audi-verkaufen" className="text-brand-orange font-black hover:underline"> Audi verkaufen</Link> sowie im
                 <Link href="/modelle" className="text-brand-orange font-black hover:underline"> Modelle-Hub</Link> weitere modellspezifische Seiten.
+                Ist der Motor bereits defekt, lesen Sie unsere Seite
+                <Link href="/audi-motorschaden-verkaufen" className="text-brand-orange font-black hover:underline"> Audi mit Motorschaden verkaufen</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/auto-bewerten" className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors">

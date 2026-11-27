@@ -5,10 +5,8 @@ import Link from 'next/link';
 
 
 import FAQSection from '@/components/FAQSection';
-import { buildFaqPageSchema } from '@/lib/structuredData';
+import { renderRichText } from '@/components/RichText';
 import { GUIDE_CONTENT_BY_SLUG, getGuideBySlug, getGuidePath } from '@/lib/guideContent';
-
-const SITE_URL = 'https://www.meinautoverkauf.de';
 
 interface Props {
   slug: string;
@@ -212,7 +210,6 @@ const RatgeberGuidePage: React.FC<Props> = ({
     );
   }
 
-  const guidePath = getGuidePath(guide.slug);
   const relatedGuides = guide.relatedSlugs
     .map((relatedSlug) => GUIDE_CONTENT_BY_SLUG[relatedSlug])
     .filter(Boolean);
@@ -241,22 +238,6 @@ const RatgeberGuidePage: React.FC<Props> = ({
   const riskHeading = `Stolperfallen bei ${guide.sections[1]?.heading ?? 'der Umsetzung'}`;
   const riskIntro = `Diese Risikofelder tauchen in diesem Themenfeld am häufigsten auf und sollten vor dem Abschluss geklärt sein.`;
 
-  const articleSchema: Record<string, unknown> = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${SITE_URL}${guidePath}#article`,
-    headline: guide.h1,
-    description: guide.description,
-    mainEntityOfPage: `${SITE_URL}${guidePath}`,
-    inLanguage: 'de-DE',
-    author: {
-      '@type': 'Organization',
-      name: 'Meinautoverkauf.de',
-    },
-    publisher: {
-      '@id': `${SITE_URL}/#organization`,
-    },
-  };
 
   const coreLink = CORE_LINK_COPY[guide.coreLink];
 
@@ -305,7 +286,7 @@ const RatgeberGuidePage: React.FC<Props> = ({
                 <div className="space-y-4">
                   {section.paragraphs.map((paragraph, paragraphIndex) => (
                     <p key={`${section.heading}-${paragraphIndex}`} className="text-slate-600 font-medium leading-relaxed">
-                      {paragraph}
+                      {renderRichText(paragraph)}
                     </p>
                   ))}
                 </div>
@@ -313,7 +294,7 @@ const RatgeberGuidePage: React.FC<Props> = ({
                   <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {section.bullets.map((bullet, bulletIndex) => (
                       <li key={`${section.heading}-bullet-${bulletIndex}`} className="text-sm font-semibold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3">
-                        {bullet}
+                        {renderRichText(bullet)}
                       </li>
                     ))}
                   </ul>
@@ -356,6 +337,8 @@ const RatgeberGuidePage: React.FC<Props> = ({
               </section>
             )}
 
+            {!guide.hideGeneratedBlocks && (
+            <>
             <section className="bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
               <h2 className="text-xl lg:text-2xl font-black text-brand-dark mb-4">{checklistHeading}</h2>
               <p className="text-slate-600 font-medium leading-relaxed mb-6">
@@ -380,11 +363,13 @@ const RatgeberGuidePage: React.FC<Props> = ({
                 {mistakeItems.map((item, i) => (
                   <li key={`${i}-${item.title}`} className="rounded-2xl border border-slate-100 bg-white p-5">
                     <h3 className="font-black text-brand-dark mb-2 text-base">{item.title}</h3>
-                    <p className="text-sm text-slate-600 font-medium leading-relaxed">{item.text}</p>
+                    <p className="text-sm text-slate-600 font-medium leading-relaxed">{renderRichText(item.text)}</p>
                   </li>
                 ))}
               </ul>
             </section>
+            </>
+            )}
 
             <FAQSection
               title={`Häufige Fragen: ${guide.h1}`}

@@ -1,5 +1,6 @@
 import type { FAQItem } from './faqContent';
 import { BRAND_SEO_CONTENT } from './brandSeoContent';
+import { CONTENT_GAP_GUIDES } from './guides';
 
 export interface GuideSection {
   heading: string;
@@ -24,6 +25,10 @@ export interface GuidePageContent {
     href: string;
     label: string;
   };
+  /** Render `title` without the " | Meinautoverkauf.de" template suffix (keeps <title> ≤ 60 chars). */
+  titleAbsolute?: boolean;
+  /** Skip the auto-generated "Checkliste" / "Stolperfallen" boxes, which repeat quick facts and section text. */
+  hideGeneratedBlocks?: boolean;
 }
 
 const SLUG_EVALUATION_FAQ: Record<string, FAQItem> = {
@@ -683,6 +688,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'autoankauf-trotz-finanzierung',
       'online-autoankauf-ablauf-7-schritte',
       'autoabmeldung-nach-verkauf',
+      'auto-verkaufen-tipps-checkliste',
     ],
     coreLink: '/auto-verkaufen',
   },
@@ -1067,6 +1073,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'autoankauf-ohne-tuev',
       'autoankauf-mit-motorschaden',
       'rechtssicherer-kaufvertrag-auto',
+      'wo-auto-verkaufen-vergleich',
     ],
     coreLink: '/auto-verkaufen',
   },
@@ -1206,6 +1213,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'autoverkauf-betrug-kleinanzeigen-erkennen',
       'autoankauf-trotz-finanzierung',
       'autoabmeldung-nach-verkauf',
+      'auto-verkaufen-tipps-checkliste',
     ],
     coreLink: '/auto-verkaufen',
   },
@@ -1337,6 +1345,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'autoverkauf-betrug-kleinanzeigen-erkennen',
       'unterlagen-autoverkauf-checkliste',
       'auto-online-verkaufen-sofort-auszahlung',
+      'wo-auto-verkaufen-vergleich',
     ],
     coreLink: '/auto-bewerten',
   },
@@ -1405,6 +1414,7 @@ const BASE_GUIDE_CONTENT: GuidePageContent[] = [
       'unterlagen-autoverkauf-checkliste',
       'online-autoankauf-ablauf-7-schritte',
       'auto-online-verkaufen-sofort-auszahlung',
+      'auto-verkaufen-tipps-checkliste',
     ],
     coreLink: '/auto-verkaufen',
   },
@@ -1424,7 +1434,11 @@ const BRAND_GUIDE_CONTENT: GuidePageContent[] = Object.values(BRAND_SEO_CONTENT)
   ctaBridge: brand.guide.ctaBridge,
 }));
 
-export const GUIDE_CONTENT: GuidePageContent[] = [...BASE_GUIDE_CONTENT, ...BRAND_GUIDE_CONTENT];
+export const GUIDE_CONTENT: GuidePageContent[] = [
+  ...BASE_GUIDE_CONTENT,
+  ...BRAND_GUIDE_CONTENT,
+  ...CONTENT_GAP_GUIDES,
+];
 
 export const GUIDE_CONTENT_BY_SLUG: Record<string, GuidePageContent> = Object.fromEntries(
   GUIDE_CONTENT.map((guide) => [guide.slug, guide]),
