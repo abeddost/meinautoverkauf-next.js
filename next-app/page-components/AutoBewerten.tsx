@@ -229,6 +229,7 @@ const AutoBewertenPage: React.FC<Props> = ({ onCtaClick }) => {
               { href: '/ratgeber/kilometerstand-scheckheft-vorbesitzer-preis', label: 'Preisfaktoren im Vergleich' },
               { href: '/ratgeber/auto-bewerten-lassen-gutachter-vs-online', label: 'Gutachter oder Online-Bewertung?' },
               { href: '/ratgeber/fahrzeugbewertung-tools-vergleich', label: 'Bewertungstools im Vergleich' },
+              { href: '/ratgeber/ki-fahrzeugbewertung', label: 'So funktioniert die KI-Bewertung' },
               { href: '/ratgeber/auto-online-inserieren-tipps-bilder', label: 'Inserat und Bilder optimieren' },
               { href: '/ratgeber/auto-mit-motorschaden-verkaufen', label: 'Motorschaden richtig bewerten' },
               { href: '/ratgeber/unfallwagen-verkaufen', label: 'Unfallwagen fair einordnen' },

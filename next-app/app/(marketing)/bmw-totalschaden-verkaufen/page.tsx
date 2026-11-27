@@ -32,7 +32,7 @@ const CONTENT: SeoArticleContent = {
       variant: 'highlight',
       paragraphs: [
         'Nach einem Unfall ermittelt ein Gutachter Reparaturkosten, Wiederbeschaffungswert und Restwert. Der Restwert ist der Betrag, den das beschädigte Fahrzeug noch bringt. Bei einem Totalschaden zahlt die Versicherung in der Regel die Differenz zwischen Wiederbeschaffungswert und Restwert; das beschädigte Auto bleibt Ihr Eigentum, und Sie können es verkaufen.',
-        'Läuft die Schadenregulierung noch, stimmen Sie den Verkauf vorab mit Ihrer Versicherung oder Ihrem Anwalt ab. Versicherer legen manchmal eigene Restwertangebote vor, die Sie kennen sollten, bevor Sie verkaufen. Unser Angebot können Sie unverbindlich danebenlegen. Wie Unfallfahrzeuge bewertet werden, erklärt der Ratgeber [Unfallwagen Ankauf](/ratgeber/unfallwagen-ankauf).',
+        'Läuft die Schadenregulierung noch, stimmen Sie den Verkauf vorab mit Ihrer Versicherung oder Ihrem Anwalt ab. Versicherer legen manchmal eigene Restwertangebote vor, die Sie kennen sollten, bevor Sie verkaufen. Unser Angebot können Sie unverbindlich danebenlegen. Wie Gutachter Restwert und Wiederbeschaffungswert ermitteln, erklärt unser Ratgeber [Unfallwagen Bewertung](/ratgeber/unfallwagen-wert-gutachten).',
       ],
     },
     {

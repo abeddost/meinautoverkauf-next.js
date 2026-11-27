@@ -54,7 +54,7 @@ export const autoBewertenLassenGutachterVsOnline: GuidePageContent = {
       heading: 'Fahrzeug bewerten lassen: Wie läuft ein Gutachten ab?',
       paragraphs: [
         'Der Sachverständige prüft Karosserie, Lack, Technik, Innenraum, Reifen und Unterlagen, führt eine Funktionsprüfung oder Probefahrt durch und dokumentiert alles mit Fotos. Daraus ermittelt er je nach Auftrag zum Beispiel den Händlereinkaufswert, den Händlerverkaufswert oder den Wiederbeschaffungswert. Bei Oldtimern kommt meist eine Zustandsnote von 1 bis 5 hinzu. Klären Sie bei der Beauftragung, welcher Wert ermittelt werden soll, denn für den Verkauf ist ein anderer Wert relevant als für die Versicherung.',
-        'Bringen Sie Zulassungsbescheinigung, Serviceheft, Rechnungen und alle Schlüssel mit. Je vollständiger die Unterlagen, desto genauer das Ergebnis. Für Unfallfahrzeuge gelten besondere Regeln, die unser Ratgeber [Unfallwagen Ankauf](/ratgeber/unfallwagen-ankauf) erklärt.',
+        'Bringen Sie Zulassungsbescheinigung, Serviceheft, Rechnungen und alle Schlüssel mit. Je vollständiger die Unterlagen, desto genauer das Ergebnis. Für Unfallfahrzeuge gelten besondere Regeln, die unser Ratgeber [Unfallwagen Bewertung](/ratgeber/unfallwagen-wert-gutachten) erklärt.',
       ],
     },
     {

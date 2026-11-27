@@ -67,7 +67,7 @@ export const fahrzeugbewertungToolsVergleich: GuidePageContent = {
     {
       heading: 'Beste KI-Tools zur Fahrzeugbewertung: Was KI leisten kann',
       paragraphs: [
-        'Viele Anbieter setzen inzwischen künstliche Intelligenz ein. KI-Modelle können große Mengen an Marktdaten auswerten, Ausstattungsmerkmale gewichten und regionale oder saisonale Unterschiede berücksichtigen. Auch unsere Online-Bewertung arbeitet KI-gestützt.',
+        'Viele Anbieter setzen inzwischen künstliche Intelligenz ein. KI-Modelle können große Mengen an Marktdaten auswerten, Ausstattungsmerkmale gewichten und regionale oder saisonale Unterschiede berücksichtigen. Auch unsere Online-Bewertung arbeitet KI-gestützt; wie das funktioniert, erklärt unser Ratgeber [KI-Fahrzeugbewertung](/ratgeber/ki-fahrzeugbewertung).',
         'Ein pauschal bestes KI-Tool gibt es nicht. Entscheidend sind Datenbasis und Aktualität sowie die Frage, ob das Ergebnis nur eine Schätzung bleibt oder in ein konkretes Ankaufsangebot mündet. Eine KI ersetzt außerdem nicht den Blick auf das Fahrzeug: Schäden, die Sie nicht angeben, kann sie nicht berücksichtigen. Fragen Sie deshalb, auf welchen Daten eine Bewertung beruht und wie aktuell diese sind.',
       ],
     },

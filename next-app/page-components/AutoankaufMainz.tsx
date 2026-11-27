@@ -199,6 +199,26 @@ const AutoankaufMainzPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Fahrzeug bewerten in Mainz: Kfz-Wert kostenlos online ermitteln</h2>
+            <p className="font-medium leading-relaxed mb-4">
+              Sie möchten Ihr <strong>Fahrzeug in Mainz bewerten</strong> lassen, bevor Sie sich für einen Verkauf entscheiden? Unsere Online-Bewertung liefert in rund
+              zwei Minuten eine KI-gestützte Preiseinschätzung – kostenlos und ohne Verpflichtung. Das hilft, wenn Sie Angebote von Mainzer Autohäusern, eine
+              Inzahlungnahme oder einen Privatverkauf miteinander vergleichen möchten.
+            </p>
+            <p className="font-medium leading-relaxed mb-6">
+              Ob Sie Ihr <strong>Kfz in Mainz bewerten</strong> lassen, um einen realistischen Inseratspreis zu finden, oder direkt verkaufen möchten: Auf Wunsch prüfen
+              wir das Fahrzeug anschließend bei Ihnen in Mainz oder an unserem Sitz in Bodenheim und bestätigen das Angebot vor Ort. Wann ein Gutachten sinnvoller
+              ist als eine Online-Bewertung, erklärt unser Ratgeber 
+              <Link href="/ratgeber/auto-bewerten-lassen-gutachter-vs-online" className="text-brand-orange font-bold hover:underline">Auto bewerten lassen</Link>. Wie die Bewertung im Hintergrund arbeitet, zeigt der
+              Ratgeber <Link href="/ratgeber/ki-fahrzeugbewertung" className="text-brand-orange font-bold hover:underline">KI-Fahrzeugbewertung</Link>.
+            </p>
+            <Link
+              href="/auto-bewerten"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors"
+            >
+              Fahrzeug in Mainz bewerten
+            </Link>
+
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Welche Autos kaufen wir in Mainz an?</h2>
             <p className="font-medium leading-relaxed">
               Mainz ist vielfältig – und so auch die Fahrzeuge, die wir hier ankaufen, bis hin zum <Link href="/altes-auto-verkaufen" className="text-brand-orange font-bold hover:underline">alten Auto oder Schrottauto</Link>. Vom Studentenauto bis zum Dienstwagen, vom Familien-Kombi bis zum Winzer-Transporter:

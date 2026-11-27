@@ -86,7 +86,7 @@ export const fahrzeuguebergabeCheckliste: GuidePageContent = {
     {
       heading: 'Zahlung und Übergabe in der richtigen Reihenfolge',
       paragraphs: [
-        'Die sichere Reihenfolge lautet: erst Zahlung, dann Übergabe. Prüfen Sie den Zahlungseingang direkt auf Ihrem Konto oder zählen Sie Bargeld in Ruhe nach, bevor Sie Schlüssel und Fahrzeugbrief aushändigen. Vermerken Sie den Zahlungseingang im Übergabeprotokoll. Typische Betrugsmaschen rund um die Bezahlung beschreibt unser Ratgeber [Betrug beim Autoverkauf erkennen](/ratgeber/autoverkauf-betrug-kleinanzeigen-erkennen).',
+        'Die sichere Reihenfolge lautet: erst Zahlung, dann Übergabe. Prüfen Sie den Zahlungseingang direkt auf Ihrem Konto oder zählen Sie Bargeld in Ruhe nach, bevor Sie Schlüssel und Fahrzeugbrief aushändigen. Vermerken Sie den Zahlungseingang im Übergabeprotokoll. Welche Zahlungsart am sichersten ist, vergleicht unser Ratgeber [Auto sicher verkaufen](/ratgeber/autoverkauf-sichere-zahlung); typische Betrugsmaschen beschreibt der Ratgeber [Betrug beim Autoverkauf erkennen](/ratgeber/autoverkauf-betrug-kleinanzeigen-erkennen).',
       ],
     },
     {

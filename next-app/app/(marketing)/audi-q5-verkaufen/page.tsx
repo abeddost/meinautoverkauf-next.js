@@ -86,7 +86,7 @@ const CONTENT: SeoArticleContent = {
     {
       heading: 'Zugfahrzeug und Ausstattung richtig angeben',
       paragraphs: [
-        'Viele Q5 werden als Zugfahrzeug für Wohnwagen, Pferdeanhänger oder Boote genutzt. Das macht die Anhängerkupplung zu einem gefragten Ausstattungsmerkmal, kann aber Spuren an Kupplung, Getriebe und Fahrwerk hinterlassen. Geben Sie die Nutzung offen an und legen Sie Wartungsnachweise bei. Ausstattungspakete wie S line, Matrix-LED oder Assistenzsysteme sollten Sie in der Bewertung vollständig angeben, denn sie machen bei einem Premium-SUV einen spürbaren Unterschied.',
+        'Viele Q5 werden als Zugfahrzeug für Wohnwagen, Pferdeanhänger oder Boote genutzt. Das macht die Anhängerkupplung zu einem gefragten Ausstattungsmerkmal, kann aber Spuren an Kupplung, Getriebe und Fahrwerk hinterlassen. Geben Sie die Nutzung offen an und legen Sie Wartungsnachweise bei. Ausstattungspakete wie S line, Matrix-LED oder Assistenzsysteme sollten Sie in der Bewertung vollständig angeben, denn sie machen bei einem Premium-SUV einen spürbaren Unterschied. Fehlt ein Eintrag im Serviceheft, fragen Sie bei Ihrer Werkstatt nach; viele Betriebe können durchgeführte Arbeiten nachträglich bestätigen.',
       ],
     },
     {

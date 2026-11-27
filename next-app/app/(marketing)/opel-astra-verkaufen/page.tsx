@@ -70,7 +70,7 @@ const CONTENT: SeoArticleContent = {
     {
       heading: 'Astra mit Mängeln, Motorschaden oder ohne TÜV',
       paragraphs: [
-        'Bei älteren Astra fällt die Entscheidung oft vor der nächsten Hauptuntersuchung: Lohnt sich die Reparatur noch, oder ist jetzt der richtige Zeitpunkt zum Verkauf? Wir kaufen den Astra auch mit Mängelbericht, Motor- oder Getriebeschaden und ohne gültigen TÜV. Ein nicht fahrbereites Fahrzeug holen wir ab. Wann sich die HU vor dem Verkauf noch lohnt, beschreibt unser Ratgeber [Autoankauf ohne TÜV](/ratgeber/autoankauf-ohne-tuev).',
+        'Bei älteren Astra fällt die Entscheidung oft vor der nächsten Hauptuntersuchung: Lohnt sich die Reparatur noch, oder ist jetzt der richtige Zeitpunkt zum Verkauf? Wir kaufen den Astra auch mit Mängelbericht, Motor- oder Getriebeschaden und ohne gültigen TÜV. Auch hohe Laufleistung, Rost an den Schwellern oder ein fälliger Zahnriemenwechsel sind kein Grund, das Auto stehen zu lassen. Ein nicht fahrbereites Fahrzeug holen wir ab. Wann sich die HU vor dem Verkauf noch lohnt, beschreibt unser Ratgeber [Autoankauf ohne TÜV](/ratgeber/autoankauf-ohne-tuev).',
       ],
     },
     {

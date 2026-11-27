@@ -179,6 +179,26 @@ const AutoankaufWiesbadenPage: React.FC<Props> = ({ onCtaClick }) => {
               </div>
             </div>
 
+            <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Kfz bewerten in Wiesbaden: Fahrzeugwert kostenlos ermitteln</h2>
+            <p className="font-medium leading-relaxed mb-4">
+              Bevor Sie verkaufen, möchten Sie wissen, was Ihr Wagen wert ist? Mit unserer Online-Bewertung können Sie Ihr <strong>Kfz in Wiesbaden bewerten</strong> lassen –
+              kostenlos, unverbindlich und in rund zwei Minuten. Sie geben Marke, Modell, Baujahr, Kilometerstand und Zustand ein und erhalten eine KI-gestützte
+              Preiseinschätzung auf Basis aktueller Marktdaten.
+            </p>
+            <p className="font-medium leading-relaxed mb-6">
+              Wer den <strong>Kfz-Wert in Wiesbaden ermitteln</strong> möchte, um ihn mit einem Händlerangebot oder einer Inzahlungnahme zu vergleichen, hat damit eine
+              solide Grundlage. Möchten Sie anschließend Ihr Fahrzeug verkaufen, prüfen wir es bei Ihnen vor Ort oder an unserer Filiale in der Boelckestraße und
+              bestätigen das Angebot. Wann statt der Online-Bewertung ein Gutachten sinnvoll ist, erklärt unser Ratgeber 
+              <Link href="/ratgeber/auto-bewerten-lassen-gutachter-vs-online" className="text-brand-orange font-bold hover:underline">Auto bewerten lassen: Gutachter oder online</Link>; wie die KI-Bewertung
+              funktioniert, lesen Sie im Ratgeber <Link href="/ratgeber/ki-fahrzeugbewertung" className="text-brand-orange font-bold hover:underline">KI-Fahrzeugbewertung</Link>.
+            </p>
+            <Link
+              href="/auto-bewerten"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-orange text-white px-5 py-2.5 font-bold hover:bg-orange-600 transition-colors"
+            >
+              Fahrzeug in Wiesbaden bewerten
+            </Link>
+
             <h2 className="text-xl lg:text-2xl font-black text-brand-dark mt-16 mb-6">Welche Fahrzeuge kaufen wir in Wiesbaden an?</h2>
             <p className="font-medium leading-relaxed">
               Beim <strong>Autoankauf Wiesbaden</strong> sind wir auf alle Fahrzeugklassen und Marken spezialisiert. Von der Luxuslimousine bis zum Kleinwagen, vom Neuwagen bis zum Oldtimer – wir kaufen alles:
